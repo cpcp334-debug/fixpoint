@@ -1,0 +1,328 @@
+import type { LocaleCopy } from "./shared";
+
+export const diyCategories = [
+  {
+    slug: "plumbing",
+    sortOrder: 1,
+    status: "published" as const,
+    name: { en: "Plumbing", ar: "السباكة" } satisfies LocaleCopy,
+    description: {
+      en: "Low-risk tap and water guides. Stop and book a plumber when isolation fails or water reaches the wall.",
+      ar: "أدلة منخفضة الخطورة للحنفية والماء. توقف واحجز سباكاً إذا فشل العزل أو وصل الماء إلى الجدار.",
+    } satisfies LocaleCopy,
+  },
+  {
+    slug: "ac",
+    sortOrder: 2,
+    status: "published" as const,
+    name: { en: "Air conditioning", ar: "التكييف" } satisfies LocaleCopy,
+    description: {
+      en: "Filter cleaning only when the unit is off and reachable. No refrigerant or electrical DIY.",
+      ar: "تنظيف الفلتر فقط والوحدة مطفأة وفي متناول اليد. لا إرشاد لوسيط التبريد أو الكهرباء.",
+    } satisfies LocaleCopy,
+  },
+  {
+    slug: "painting",
+    sortOrder: 3,
+    status: "draft" as const,
+    name: { en: "Painting", ar: "الدهان" } satisfies LocaleCopy,
+    description: {
+      en: "Interior touch-up topics are in draft until they are safety-reviewed.",
+      ar: "موضوعات اللمسات الداخلية في المسودة حتى تُراجع من ناحية السلامة.",
+    } satisfies LocaleCopy,
+  },
+  {
+    slug: "walls",
+    sortOrder: 4,
+    status: "draft" as const,
+    name: { en: "Walls", ar: "الجدران" } satisfies LocaleCopy,
+    description: {
+      en: "Small surface-crack topics are in draft. Structural cracks are not DIY.",
+      ar: "موضوعات التشقق السطحي الصغير في المسودة. التشقق الإنشائي ليس عملاً منزلياً.",
+    } satisfies LocaleCopy,
+  },
+  {
+    slug: "cleaning",
+    sortOrder: 5,
+    status: "draft" as const,
+    name: { en: "Cleaning", ar: "التنظيف" } satisfies LocaleCopy,
+    description: {
+      en: "Household cleaning topics are in draft until they are reviewed.",
+      ar: "موضوعات التنظيف المنزلي في المسودة حتى تُراجع.",
+    } satisfies LocaleCopy,
+  },
+];
+
+export const diyGuides = [
+  {
+    slug: "how-to-fix-dripping-faucet",
+    categorySlug: "plumbing",
+    serviceSlug: "plumbing-maintenance",
+    status: "published" as const,
+    schemaType: "howto" as const,
+    relatedServices: ["plumbing-maintenance"],
+    locationSlugs: [] as string[],
+    difficulty: { en: "Easy to moderate", ar: "سهل إلى متوسط" },
+    estimatedTime: { en: "20–45 minutes", ar: "20–45 دقيقة" },
+    riskLevel: "green" as const,
+    related: ["how-to-clean-ac-filter"],
+    title: { en: "How to fix a dripping faucet", ar: "كيف توقف حنفية تقطر" } satisfies LocaleCopy,
+    problem: {
+      en: "A tap keeps dripping after you close it, wasting water and staining the basin.",
+      ar: "الحنفية تواصل التقطير بعد إغلاقها، فتهدر الماء وتبقّع الحوض.",
+    },
+    quickAnswer: {
+      en: "If you can isolate the tap, you can often replace a worn washer or cartridge. If the isolation valve will not close, parts are seized, or water is leaking into the wall, stop and book a plumber.",
+      ar: "إذا استطعت عزل الحنفية يمكنك غالباً استبدال جلدة أو خرطوشة تالفة. إذا لم يُغلق محبس العزل أو كانت القطع عالقة أو الماء يتسرب إلى الجدار، توقف واحجز سباكاً.",
+    },
+    tools: [
+      { en: "Adjustable spanner", ar: "مفتاح إنجليزي" },
+      { en: "Screwdriver", ar: "مفك" },
+      { en: "Cloth and small container", ar: "قماش ووعاء صغير" },
+    ],
+    materials: [
+      { en: "Replacement washer or cartridge matching your tap", ar: "جلدة أو خرطوشة بديلة مطابقة للحنفية" },
+    ],
+    safety: {
+      en: "Isolate the tap. Do not force seized chrome. Keep water away from nearby sockets. This guide is not for mixer valves you cannot identify.",
+      ar: "اعزل الحنفية. لا تجبر الكروم العالق. أبعد الماء عن الأفياش القريبة. هذا الدليل ليس لصمامات خلاط لا تستطيع تمييزها.",
+    },
+    steps: [
+      { en: "Confirm the drip is from the spout, not the wall or a supply pipe.", ar: "تأكد أن التقطير من القصبة وليس من الجدار أو ماسورة التغذية." },
+      { en: "Close the isolation valve for that tap if one exists. If none exists or it will not turn, stop.", ar: "أغلق محبس عزل تلك الحنفية إن وُجد. إذا لم يوجد أو لا يدور، توقف." },
+      { en: "Open the tap to relieve pressure, then remove the handle as the manufacturer design allows.", ar: "افتح الحنفية لتفريغ الضغط، ثم أزل المقبض حسب تصميم المصنّع." },
+      { en: "Inspect the washer or cartridge. Replace only with a matching part.", ar: "افحص الجلدة أو الخرطوشة. استبدل فقط بقطعة مطابقة." },
+      { en: "Reassemble, open isolation slowly, and check for leaks.", ar: "أعد التجميع وافتح العزل ببطء وتحقق من التسرب." },
+    ],
+    checkWork: {
+      en: "The drip should stop. There should be no leak at the handle or under the basin.",
+      ar: "يجب أن يتوقف التقطير. لا تسرب عند المقبض أو تحت الحوض.",
+    },
+    whenToStop: {
+      en: "Stop if the valve will not isolate, threads strip, the body cracks, water appears in the wall, or you cannot identify the cartridge.",
+      ar: "توقف إذا لم يعزل المحبس أو تآكلت الأسنان أو تشقق الجسم أو ظهر ماء في الجدار أو لم تميّز الخرطوشة.",
+    },
+    fallback: {
+      en: "Book plumbing maintenance or WhatsApp photos of the tap and isolation valve. Do not dismantle concealed valves.",
+      ar: "احجز صيانة سباكة أو أرسل صور الحنفية ومحبس العزل عبر واتساب. لا تفكك المحابس المخفية.",
+    },
+    faqs: [
+      {
+        q: { en: "The tap still drips after a new washer.", ar: "الحنفية ما زالت تقطر بعد جلدة جديدة." },
+        a: { en: "The seat may be damaged or the cartridge is the wrong type. Stop repeating parts and request a technician.", ar: "قد تكون القاعدة تالفة أو الخرطوشة غير مطابقة. توقف عن تكرار القطع واطلب فنياً." },
+      },
+    ],
+  },
+  {
+    slug: "how-to-clean-ac-filter",
+    categorySlug: "ac",
+    serviceSlug: "ac-maintenance",
+    status: "published" as const,
+    schemaType: "howto" as const,
+    relatedServices: ["ac-maintenance"],
+    locationSlugs: [] as string[],
+    difficulty: { en: "Easy", ar: "سهل" },
+    estimatedTime: { en: "15–30 minutes", ar: "15–30 دقيقة" },
+    riskLevel: "green" as const,
+    related: ["how-to-fix-dripping-faucet"],
+    title: { en: "How to clean an AC filter", ar: "كيف تنظف فلتر التكييف" } satisfies LocaleCopy,
+    problem: {
+      en: "The room feels warm, dusty, or the indoor unit smells stale. A dirty filter is a common, low-risk cause — not the only cause.",
+      ar: "الغرفة دافئة أو مغبرة أو الوحدة الداخلية رائحتها راكدة. الفلتر المتسخ سبب شائع منخفض الخطورة — وليس السبب الوحيد.",
+    },
+    quickAnswer: {
+      en: "If the filter slides out of a wall or floor-level indoor unit without tools, you can vacuum or rinse it, dry it fully, and refit it. This will not fix refrigerant, electrical, or drain faults.",
+      ar: "إذا انسحب الفلتر من وحدة داخلية جدارية أو قريبة من الأرض دون أدوات، يمكنك شفطه أو شطفه وتجفيفه تماماً وإعادته. هذا لن يصلح عطل وسيط التبريد أو الكهرباء أو التصريف.",
+    },
+    tools: [
+      { en: "Soft brush or vacuum", ar: "فرشاة ناعمة أو مكنسة كهربائية" },
+      { en: "Mild soap and water if the manufacturer allows rinsing", ar: "صابون خفيف وماء إذا سمح المصنّع بالشطف" },
+    ],
+    materials: [{ en: "Dry cloth", ar: "قماش جاف" }],
+    safety: {
+      en: "Switch the unit off first. Do not stand on unstable furniture for high units. Do not open the sealed refrigerant circuit. Do not spray water into electrical parts.",
+      ar: "أطفئ الوحدة أولاً. لا تقف على أثاث غير ثابت للوحدات المرتفعة. لا تفتح دائرة التبريد المغلقة. لا ترش ماء على أجزاء كهربائية.",
+    },
+    steps: [
+      { en: "Turn the AC off at the indoor unit and, if you know it, at the isolator.", ar: "أطفئ التكييف من الوحدة الداخلية ومن العازل إن كنت تعرفه." },
+      { en: "Open the front panel only as the user manual shows for filter access.", ar: "افتح اللوحة الأمامية فقط كما يبيّن دليل المستخدم للوصول إلى الفلتر." },
+      { en: "Slide out the mesh filter. Do not pull coils or pipes.", ar: "اسحب فلتر الشبكة. لا تسحب الملفات أو الأنابيب." },
+      { en: "Vacuum dust. If rinsing is allowed, use mild soap, rinse, and dry completely.", ar: "اشفط الغبار. إذا سُمح بالشطف استخدم صابوناً خفيفاً ثم اشطف وجفف تماماً." },
+      { en: "Refit the dry filter, close the panel, and run the unit.", ar: "أعد الفلتر الجاف وأغلق اللوحة وشغّل الوحدة." },
+    ],
+    checkWork: {
+      en: "Airflow should feel less restricted. If cooling is still poor, the cause may not be the filter.",
+      ar: "يجب أن يصبح تدفق الهواء أقل تقييداً. إذا بقي التبريد ضعيفاً فقد لا يكون السبب الفلتر.",
+    },
+    whenToStop: {
+      en: "Stop for burning smells, ice, water overflowing, units you cannot reach safely, or any need to open refrigerant pipes.",
+      ar: "توقف عند رائحة حرق أو جليد أو فيضان ماء أو وحدات لا تصل إليها بأمان أو أي حاجة لفتح أنابيب التبريد.",
+    },
+    fallback: {
+      en: "Request AC maintenance. Describe whether the unit runs, cools, leaks, or trips power.",
+      ar: "اطلب صيانة تكييف. صف إن كانت الوحدة تعمل أو تبرد أو تسرب أو تفصل الكهرباء.",
+    },
+    faqs: [
+      {
+        q: { en: "How often should I clean the filter?", ar: "كم مرة أنظف الفلتر؟" },
+        a: { en: "Many homes in dusty UAE conditions check monthly in summer. Follow your unit’s manual. That is not a promise of performance.", ar: "كثير من المنازل في ظروف الغبار بالإمارات تفحص شهرياً صيفاً. اتبع دليل جهازك. هذا ليس وعداً بالأداء." },
+      },
+    ],
+  },
+  {
+    slug: "how-to-touch-up-interior-paint",
+    categorySlug: "painting",
+    serviceSlug: "painting-services",
+    status: "draft" as const,
+    schemaType: "article" as const,
+    relatedServices: ["painting-services"],
+    locationSlugs: [] as string[],
+    related: [] as string[],
+    riskLevel: "yellow" as const,
+    difficulty: { en: "Easy", ar: "سهل" },
+    estimatedTime: { en: "Not published yet", ar: "غير منشور بعد" },
+    title: { en: "How to touch up interior paint", ar: "كيف تلمّع دهاناً داخلياً" } satisfies LocaleCopy,
+    problem: {
+      en: "A small interior scuff or faded patch. This draft has no step-by-step instructions until it is reviewed.",
+      ar: "خدش داخلي صغير أو بقعة باهتة. هذه المسودة بلا خطوات حتى تُراجع.",
+    },
+    quickAnswer: {
+      en: "This guide is not published. Do not start painting from this page. Request painting services if the area is large, high, damp, or you cannot match the finish.",
+      ar: "هذا الدليل غير منشور. لا تبدأ الدهان من هذه الصفحة. اطلب خدمات الدهان إذا كانت المساحة كبيرة أو مرتفعة أو رطبة أو لم تستطع مطابقة التشطيب.",
+    },
+    tools: [] as LocaleCopy[],
+    materials: [] as LocaleCopy[],
+    safety: {
+      en: "Do not work at height, on wet walls, or with unknown coatings. Keep solvents away from flames and electrics.",
+      ar: "لا تعمل على ارتفاع أو على جدران رطبة أو بطلاء مجهول. أبعد المذيبات عن اللهب والكهرباء.",
+    },
+    steps: [] as LocaleCopy[],
+    checkWork: { en: "", ar: "" },
+    whenToStop: {
+      en: "Stop for mould, damp, peeling over a large area, work above a safe reach, or any need for exterior or structural coating.",
+      ar: "توقف عند العفن أو الرطوبة أو تقشر مساحة كبيرة أو عمل فوق متناول آمن أو أي حاجة لطلاء خارجي أو إنشائي.",
+    },
+    fallback: {
+      en: "Book painting services for a site look. Do not treat this unpublished page as a method.",
+      ar: "احجز خدمات الدهان لمعاينة الموقع. لا تعامل هذه الصفحة غير المنشورة كطريقة عمل.",
+    },
+    faqs: [] as Array<{ q: LocaleCopy; a: LocaleCopy }>,
+  },
+  {
+    slug: "how-to-check-a-small-wall-crack",
+    categorySlug: "walls",
+    serviceSlug: "wall-maintenance",
+    status: "draft" as const,
+    schemaType: "article" as const,
+    relatedServices: ["wall-maintenance"],
+    locationSlugs: [] as string[],
+    related: [] as string[],
+    riskLevel: "yellow" as const,
+    difficulty: { en: "Observation only", ar: "ملاحظة فقط" },
+    estimatedTime: { en: "Not published yet", ar: "غير منشور بعد" },
+    title: { en: "How to check a small wall crack", ar: "كيف تفحص تشققاً صغيراً في الجدار" } satisfies LocaleCopy,
+    problem: {
+      en: "A hairline indoor crack. This draft has no repair steps. Structural, widening, or damp cracks need a professional.",
+      ar: "تشقق شعري داخلي. هذه المسودة بلا خطوات إصلاح. التشقق الإنشائي أو المتسع أو الرطب يحتاج فنياً.",
+    },
+    quickAnswer: {
+      en: "This guide is not published. Do not fill, chase, or demolish a crack from this page. Book wall maintenance if the crack is widening, damp, or near a beam or opening.",
+      ar: "هذا الدليل غير منشور. لا تملأ التشقق أو تلاحقه أو تهدمه من هذه الصفحة. احجز صيانة الجدران إذا كان التشقق يتسع أو رطباً أو قرب عتبة أو فتحة.",
+    },
+    tools: [] as LocaleCopy[],
+    materials: [] as LocaleCopy[],
+    safety: {
+      en: "Do not demolish, chase, or load a cracked wall. Do not work at height. Leave suspected structural movement to a professional.",
+      ar: "لا تهدم الجدار المتشقق ولا تلاحقه ولا تحمّله. لا تعمل على ارتفاع. اترك الحركة الإنشائية المحتملة لفني.",
+    },
+    steps: [] as LocaleCopy[],
+    checkWork: { en: "", ar: "" },
+    whenToStop: {
+      en: "Stop immediately for diagonal cracks, cracks through bricks/blocks, doors that stick suddenly, damp, or any crack you cannot explain.",
+      ar: "توقف فوراً عند التشقق القطري أو عبر البلوك أو أبواب تعلق فجأة أو رطوبة أو أي تشقق لا تفسّره.",
+    },
+    fallback: {
+      en: "Request wall maintenance or building maintenance. Describe the crack location, size, and whether it is wet.",
+      ar: "اطلب صيانة الجدران أو صيانة المباني. صف موقع التشقق وحجمه وهل هو مبتل.",
+    },
+    faqs: [] as Array<{ q: LocaleCopy; a: LocaleCopy }>,
+  },
+  {
+    slug: "how-to-clean-a-bathroom",
+    categorySlug: "cleaning",
+    serviceSlug: "cleaning-services",
+    status: "draft" as const,
+    schemaType: "article" as const,
+    relatedServices: ["cleaning-services"],
+    locationSlugs: [] as string[],
+    related: [] as string[],
+    riskLevel: "yellow" as const,
+    difficulty: { en: "Easy", ar: "سهل" },
+    estimatedTime: { en: "Not published yet", ar: "غير منشور بعد" },
+    title: { en: "How to clean a bathroom", ar: "كيف تنظف الحمّام" } satisfies LocaleCopy,
+    problem: {
+      en: "A household bathroom needs routine cleaning. This draft has no chemical or method steps until reviewed.",
+      ar: "حمّام منزلي يحتاج تنظيفاً دورياً. هذه المسودة بلا خطوات مواد أو أسلوب حتى تُراجع.",
+    },
+    quickAnswer: {
+      en: "This guide is not published. Do not mix cleaners or work in a poorly ventilated room from this page. Request cleaning services for mould, heavy scale, or common-area toilets.",
+      ar: "هذا الدليل غير منشور. لا تخلط المنظفات ولا تعمل في غرفة سيئة التهوية من هذه الصفحة. اطلب خدمات التنظيف للعفن أو الترسب الثقيل أو دورات المياه المشتركة.",
+    },
+    tools: [] as LocaleCopy[],
+    materials: [] as LocaleCopy[],
+    safety: {
+      en: "Never mix bleach with acids or ammonia. Ventilate. Keep products away from children and electrics.",
+      ar: "لا تخلط المبيض مع الأحماض أو الأمونيا. هوِّ. أبعد المنتجات عن الأطفال والكهرباء.",
+    },
+    steps: [] as LocaleCopy[],
+    checkWork: { en: "", ar: "" },
+    whenToStop: {
+      en: "Stop for black mould over a large area, sewage smell, water in electrics, or dizziness from fumes.",
+      ar: "توقف عند العفن الأسود على مساحة كبيرة أو رائحة صرف أو ماء على الكهرباء أو دوخة من الأبخرة.",
+    },
+    fallback: {
+      en: "Book cleaning services. Describe mould, scale, or whether the bathroom is in a common area.",
+      ar: "احجز خدمات التنظيف. صف العفن أو الترسب أو إن كان الحمّام في منطقة مشتركة.",
+    },
+    faqs: [] as Array<{ q: LocaleCopy; a: LocaleCopy }>,
+  },
+  {
+    slug: "how-to-unclog-a-sink-safely",
+    categorySlug: "plumbing",
+    serviceSlug: "plumbing-maintenance",
+    status: "draft" as const,
+    schemaType: "article" as const,
+    relatedServices: ["plumbing-maintenance"],
+    locationSlugs: [] as string[],
+    related: [] as string[],
+    riskLevel: "yellow" as const,
+    difficulty: { en: "Caution", ar: "بحذر" },
+    estimatedTime: { en: "Not published yet", ar: "غير منشور بعد" },
+    title: { en: "How to unclog a sink safely", ar: "كيف تفتح مصرف المغسلة بأمان" } satisfies LocaleCopy,
+    problem: {
+      en: "A basin drains slowly. This draft has no chemical or dismantling steps until it is reviewed.",
+      ar: "المغسلة تصرف ببطء. هذه المسودة بلا خطوات كيميائية أو تفكيك حتى تُراجع.",
+    },
+    quickAnswer: {
+      en: "This guide is not published. Do not pour drain chemicals or open pipes from this page. If water is backing up, sewage smells, or the blockage is in the wall, book a plumber.",
+      ar: "هذا الدليل غير منشور. لا تصب مواد الصرف ولا تفتح المواسير من هذه الصفحة. إذا ارتد الماء أو ظهرت رائحة صرف أو كان الانسداد في الجدار، احجز سباكاً.",
+    },
+    tools: [] as LocaleCopy[],
+    materials: [] as LocaleCopy[],
+    safety: {
+      en: "Do not mix drain chemicals. Do not put water on nearby sockets. Do not dismantle concealed traps you cannot reseal.",
+      ar: "لا تخلط مواد فتح الصرف. لا تُوصل الماء إلى الأفياش القريبة. لا تفكك المصائد المخفية التي لا تستطيع إعادة إحكامها.",
+    },
+    steps: [] as LocaleCopy[],
+    checkWork: { en: "", ar: "" },
+    whenToStop: {
+      en: "Stop for sewage smell, water in the cabinet electrics, a trap that will not reseal, or a blockage that returns immediately.",
+      ar: "توقف عند رائحة الصرف أو ماء على كهرباء الخزانة أو مصيدة لا تُحكم أو انسداد يعود فوراً.",
+    },
+    fallback: {
+      en: "Book plumbing maintenance. Say whether one fixture or several are blocked.",
+      ar: "احجز صيانة السباكة. بيّن إن كان الانسداد في نقطة واحدة أو في عدة نقاط.",
+    },
+    faqs: [] as Array<{ q: LocaleCopy; a: LocaleCopy }>,
+  },
+];

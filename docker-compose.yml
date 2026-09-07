@@ -1,0 +1,16 @@
+# Optional Docker PostgreSQL. Local Phase 1 uses PGlite on port 5433 (npm run pg).
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: alnajah
+      POSTGRES_PASSWORD: alnajah
+      POSTGRES_DB: alnajah
+    ports:
+      - "5432:5432"
+    volumes:
+      - alnajah_pg:/var/lib/postgresql/data
+
+volumes:
+  alnajah_pg:

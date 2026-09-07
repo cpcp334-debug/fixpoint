@@ -1,0 +1,1145 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ContentStatus {
+  draft
+  review
+  published
+  archived
+}
+
+enum ServiceStatus {
+  draft
+  active
+  requires_approval
+  subcontracted
+  unavailable
+  archived
+}
+
+enum LocationType {
+  country
+  emirate
+  city
+  community
+}
+
+enum LocationStatus {
+  draft
+  active
+  archived
+}
+
+enum RiskLevel {
+  green
+  yellow
+  red
+}
+
+enum QuoteMethod {
+  fixed
+  per_hour
+  per_item
+  per_unit
+  per_sqft
+  per_sqm
+  per_room
+  material_labor
+  project
+  inspection
+  amc
+}
+
+enum LeadStatus {
+  NEW
+  QUALIFIED
+  INSPECTION
+  QUOTATION
+  QUOTATION_SENT
+  FOLLOW_UP
+  APPROVED
+  SCHEDULED
+  COMPLETED
+  LOST
+  CANCELLED
+}
+
+enum BookingStatus {
+  requested
+  pending_confirmation
+  confirmed
+  assigned
+  in_progress
+  completed
+  cancelled
+  rescheduled
+}
+
+enum BookingType {
+  standard
+  site_inspection
+  emergency
+  recurring_cleaning
+  amc_visit
+}
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  HIDDEN
+  FLAGGED
+  VERIFIED
+}
+
+enum ReviewType {
+  service
+  article
+  guide
+}
+
+enum KnowledgeScope {
+  PUBLIC
+  INTERNAL
+  PRIVATE
+}
+
+enum QuoteStatus {
+  DRAFT
+  SENT
+  VIEWED
+  ACCEPTED
+  REJECTED
+  EXPIRED
+  CANCELLED
+}
+
+enum InvoiceStatus {
+  DRAFT
+  ISSUED
+  PARTIALLY_PAID
+  PAID
+  OVERDUE
+  CANCELLED
+}
+
+enum StaffRole {
+  admin
+  manager
+  customer_service
+  sales
+  supervisor
+  technician
+  subcontractor
+  customer
+}
+
+enum LeadQualityClass {
+  HOT
+  WARM
+  NORMAL
+  REVIEW
+  SPAM
+}
+
+enum LeadScoreCause {
+  SYSTEM
+  OVERRIDE
+  RECOMPUTE
+}
+
+model ServiceCategory {
+  id        String         @id @default(cuid())
+  slug      String         @unique
+  sopCode   String?
+  sortOrder Int            @default(0)
+  status    ContentStatus  @default(draft)
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+  translations ServiceCategoryI18n[]
+  services  Service[]
+}
+
+model ServiceCategoryI18n {
+  id          String          @id @default(cuid())
+  categoryId  String
+  locale      String
+  name        String
+  description String          @default("")
+  category    ServiceCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([categoryId, locale])
+}
+
+model Service {
+  id                   String        @id @default(cuid())
+  categoryId           String
+  slug                 String        @unique
+  serviceType          String
+  status               ServiceStatus @default(draft)
+  riskLevel            RiskLevel     @default(yellow)
+  diyAvailable         Boolean       @default(false)
+  quoteMethod          QuoteMethod   @default(inspection)
+  inspectionRequired   Boolean       @default(true)
+  bookingEnabled       Boolean       @default(true)
+  emergencyAvailable   Boolean       @default(false)
+  amcAvailable         Boolean       @default(false)
+  indexable            Boolean       @default(false)
+  heroImage            String?
+  gallery              String        @default("[]")
+  relatedServiceSlugs  String        @default("[]")
+  aiIntakeQuestions    String        @default("[]")
+  schemaData           String        @default("{}")
+  sopCode              String?
+  sopPublic            Boolean       @default(false)
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+  category             ServiceCategory @relation(fields: [categoryId], references: [id])
+  translations         ServiceI18n[]
+  serviceLocations     ServiceLocation[]
+  diyGuides            DiyGuide[]
+  faqs                 Faq[]
+  reviews              Review[]
+  questions            Question[]
+  leads                Lead[]
+  bookings             Booking[]
+  workOrders           WorkOrder[]
+}
+
+model ServiceI18n {
+  id                    String  @id @default(cuid())
+  serviceId             String
+  locale                String
+  name                  String
+  shortDescription      String
+  longDescription       String
+  whoItIsFor            String  @default("")
+  whatWeDo              String  @default("")
+  whenProfessional      String  @default("")
+  process               String  @default("")
+  pricingInfo           String  @default("")
+  professionalFallback  String
+  safetyNotes           String  @default("")
+  seoTitle              String
+  metaDescription       String
+  keywords              String  @default("")
+  faq                   String  @default("[]")
+  service               Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+
+  @@unique([serviceId, locale])
+}
+
+model Location {
+  id          String         @id @default(cuid())
+  slug        String         @unique
+  type        LocationType
+  parentId    String?
+  status      LocationStatus @default(draft)
+  serves      Boolean        @default(false)
+  indexable   Boolean        @default(false)
+  sortOrder   Int            @default(0)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+  parent      Location?      @relation("LocationTree", fields: [parentId], references: [id])
+  children    Location[]     @relation("LocationTree")
+  translations LocationI18n[]
+  serviceLocations ServiceLocation[]
+  faqs        Faq[]
+  reviews     Review[]
+  questions   Question[]
+  leads       Lead[]
+  bookings    Booking[]
+  cityBookings Booking[] @relation("BookingCity")
+  areaBookings Booking[] @relation("BookingArea")
+  workOrders  WorkOrder[]
+}
+
+model LocationI18n {
+  id                 String   @id @default(cuid())
+  locationId         String
+  locale             String
+  name               String
+  intro              String
+  localServiceInfo   String   @default("")
+  propertyTypes      String   @default("")
+  nearbyAreas        String   @default("")
+  seoTitle           String
+  metaDescription    String
+  faq                String   @default("[]")
+  location           Location @relation(fields: [locationId], references: [id], onDelete: Cascade)
+
+  @@unique([locationId, locale])
+}
+
+model ServiceLocation {
+  id            String   @id @default(cuid())
+  serviceId     String
+  locationId    String
+  indexable     Boolean  @default(false)
+  qualityScore  Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  service       Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  location      Location @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  translations  ServiceLocationI18n[]
+
+  @@unique([serviceId, locationId])
+}
+
+model ServiceLocationI18n {
+  id                String          @id @default(cuid())
+  serviceLocationId String
+  locale            String
+  intro             String
+  localInfo         String
+  seoTitle          String
+  metaDescription   String
+  faq               String          @default("[]")
+  serviceLocation   ServiceLocation @relation(fields: [serviceLocationId], references: [id], onDelete: Cascade)
+
+  @@unique([serviceLocationId, locale])
+}
+
+model DiyCategory {
+  id           String             @id @default(cuid())
+  slug         String             @unique
+  status       ContentStatus      @default(draft)
+  indexable    Boolean            @default(false)
+  sortOrder    Int                @default(0)
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+  translations DiyCategoryI18n[]
+  guides       DiyGuide[]
+}
+
+model DiyCategoryI18n {
+  id              String      @id @default(cuid())
+  categoryId      String
+  locale          String
+  name            String
+  description     String      @default("")
+  seoTitle        String      @default("")
+  metaDescription String      @default("")
+  category        DiyCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([categoryId, locale])
+}
+
+model DiyGuide {
+  id                  String        @id @default(cuid())
+  slug                String        @unique
+  categoryId          String
+  categorySlug        String
+  serviceId           String?
+  difficulty          String
+  estimatedTime       String
+  riskLevel           RiskLevel     @default(green)
+  schemaType          String        @default("article")
+  status              ContentStatus @default(draft)
+  indexable           Boolean       @default(false)
+  relatedSlugs        String        @default("[]")
+  relatedServiceSlugs String        @default("[]")
+  locationSlugs       String        @default("[]")
+  publishedAt         DateTime?
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+  category            DiyCategory   @relation(fields: [categoryId], references: [id])
+  service             Service?      @relation(fields: [serviceId], references: [id])
+  translations        DiyGuideI18n[]
+  votes               DiyVote[]
+  reviews             Review[]
+  questions           Question[]
+}
+
+model DiyGuideI18n {
+  id                   String   @id @default(cuid())
+  guideId              String
+  locale               String
+  title                String
+  problem              String
+  quickAnswer          String
+  difficulty           String   @default("")
+  estimatedTime        String   @default("")
+  tools                String   @default("[]")
+  materials            String   @default("[]")
+  safety               String
+  steps                String   @default("[]")
+  checkWork            String   @default("")
+  whenToStop           String
+  professionalFallback String
+  seoTitle             String
+  metaDescription      String
+  faq                  String   @default("[]")
+  guide                DiyGuide @relation(fields: [guideId], references: [id], onDelete: Cascade)
+
+  @@unique([guideId, locale])
+}
+
+model DiyVote {
+  id        String   @id @default(cuid())
+  guideId   String
+  helpful   Boolean
+  createdAt DateTime @default(now())
+  guide     DiyGuide @relation(fields: [guideId], references: [id], onDelete: Cascade)
+}
+
+model Article {
+  id           String        @id @default(cuid())
+  slug         String        @unique
+  status       ContentStatus @default(draft)
+  indexable    Boolean       @default(false)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  translations ArticleI18n[]
+  reviews      Review[]
+  questions    Question[]
+}
+
+model ArticleI18n {
+  id              String  @id @default(cuid())
+  articleId       String
+  locale          String
+  title           String
+  excerpt         String  @default("")
+  body            String  @default("")
+  seoTitle        String
+  metaDescription String
+  article         Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@unique([articleId, locale])
+}
+
+model Project {
+  id           String        @id @default(cuid())
+  slug         String        @unique
+  serviceSlug  String?
+  locationSlug String?
+  propertyType String?
+  workDate     DateTime?
+  status       ContentStatus @default(draft)
+  indexable    Boolean       @default(false)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  translations ProjectI18n[]
+}
+
+model ProjectI18n {
+  id              String  @id @default(cuid())
+  projectId       String
+  locale          String
+  title           String
+  problem         String  @default("")
+  scope           String  @default("")
+  work            String  @default("")
+  result          String  @default("")
+  testimonial     String  @default("")
+  seoTitle        String
+  metaDescription String
+  project         Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, locale])
+}
+
+model Faq {
+  id         String        @id @default(cuid())
+  serviceId  String?
+  locationId String?
+  sortOrder  Int           @default(0)
+  status     ContentStatus @default(published)
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+  service    Service?      @relation(fields: [serviceId], references: [id])
+  location   Location?     @relation(fields: [locationId], references: [id])
+  translations FaqI18n[]
+}
+
+model FaqI18n {
+  id     String @id @default(cuid())
+  faqId  String
+  locale String
+  question String
+  answer   String
+  faq      Faq    @relation(fields: [faqId], references: [id], onDelete: Cascade)
+
+  @@unique([faqId, locale])
+}
+
+model MediaAsset {
+  id             String          @id @default(cuid())
+  storageKey     String          @unique
+  originalName   String
+  mimeType       String
+  sizeBytes      Int
+  alt            String          @default("")
+  caption        String          @default("")
+  visibility     String          @default("private")
+  status         String          @default("ready")
+  conversationId String?
+  createdAt      DateTime        @default(now())
+  conversation   AiConversation? @relation(fields: [conversationId], references: [id], onDelete: SetNull)
+}
+
+model Customer {
+  id                 String   @id @default(cuid())
+  name               String
+  phone              String?
+  whatsapp           String?
+  email              String?
+  preferredLanguage  String   @default("en")
+  consentMarketing   Boolean  @default(false)
+  notes              String   @default("")
+  visitorId          String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  visitor            Visitor? @relation(fields: [visitorId], references: [id], onDelete: SetNull)
+  properties         Property[]
+  leads              Lead[]
+  quotes             Quote[]
+  bookings           Booking[]
+  workOrders         WorkOrder[]
+  invoices           Invoice[]
+  reviews            Review[]
+  amcContracts       AmcContract[]
+
+  @@index([visitorId])
+}
+
+model Property {
+  id         String   @id @default(cuid())
+  customerId String
+  locationId String?
+  type       String
+  notes      String   @default("")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  customer   Customer @relation(fields: [customerId], references: [id])
+}
+
+model Lead {
+  id              String     @id @default(cuid())
+  source          String
+  customerId      String?
+  name            String
+  phone           String
+  email           String?
+  whatsapp        String?
+  serviceId       String?
+  locationId      String?
+  propertyType    String?
+  city            String?
+  area            String?
+  requirement     String
+  urgency         String     @default("normal")
+  estimatedValue  String?
+  status          LeadStatus @default(NEW)
+  assignedStaffId String?
+  photos          String     @default("[]")
+  aiSummary       String     @default("")
+  notes           String     @default("")
+  preferredDate   String?
+  preferredTime   String?
+  locale          String     @default("en")
+  visitorId       String?
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  customer        Customer?  @relation(fields: [customerId], references: [id])
+  service         Service?   @relation(fields: [serviceId], references: [id])
+  location        Location?  @relation(fields: [locationId], references: [id])
+  visitor         Visitor?   @relation(fields: [visitorId], references: [id], onDelete: SetNull)
+  score           LeadScore?
+  bookings        Booking[]
+  quotes          Quote[]
+
+  @@index([visitorId])
+  @@index([customerId])
+  @@index([createdAt])
+  @@index([status])
+  @@index([serviceId])
+  @@index([locationId])
+}
+
+model LeadScore {
+  id             String           @id @default(cuid())
+  leadId         String           @unique
+  score          Int
+  systemClass    LeadQualityClass
+  humanClass     LeadQualityClass?
+  effectiveClass LeadQualityClass
+  reasonsJson    String           @default("[]")
+  modelVersion   String           @default("2f2.1")
+  computedAt     DateTime         @default(now())
+  overrideAt     DateTime?
+  overrideBy     String?
+  overrideNote   String           @default("")
+  quarantined    Boolean          @default(false)
+  lead           Lead             @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  history        LeadScoreHistory[]
+
+  @@index([effectiveClass])
+  @@index([quarantined])
+}
+
+model LeadScoreHistory {
+  id             String           @id @default(cuid())
+  leadScoreId    String
+  leadId         String
+  score          Int
+  systemClass    LeadQualityClass
+  effectiveClass LeadQualityClass
+  reasonsJson    String           @default("[]")
+  actor          String
+  cause          LeadScoreCause
+  note           String           @default("")
+  createdAt      DateTime         @default(now())
+  scoreRow       LeadScore        @relation(fields: [leadScoreId], references: [id], onDelete: Cascade)
+
+  @@index([leadId, createdAt])
+}
+
+model Quote {
+  id                  String      @id @default(cuid())
+  quoteNumber         String      @unique
+  status              QuoteStatus @default(DRAFT)
+  customerId          String?
+  leadId              String?
+  serviceId           String?
+  locationId          String?
+  createdByUserId     String?
+  locationLabel       String      @default("")
+  serviceLabel        String      @default("")
+  customerName        String      @default("")
+  customerPhone       String      @default("")
+  customerEmail       String?
+  scope               String      @default("")
+  materials           String      @default("")
+  labor               String      @default("")
+  exclusions          String      @default("")
+  taxesNote           String      @default("")
+  validity            String      @default("")
+  paymentTerms        String      @default("")
+  estimatedDuration   String      @default("")
+  warrantyTerms       String      @default("")
+  notes               String      @default("")
+  subtotalLabel       String      @default("")
+  discountLabel       String      @default("")
+  taxLabel            String      @default("")
+  totalLabel          String      @default("")
+  humanApproved       Boolean     @default(false)
+  sentAt              DateTime?
+  createdAt           DateTime    @default(now())
+  updatedAt           DateTime    @updatedAt
+  customer            Customer?   @relation(fields: [customerId], references: [id])
+  lead                Lead?       @relation(fields: [leadId], references: [id], onDelete: SetNull)
+  items               QuoteItem[]
+  invoices            Invoice[]
+
+  @@index([leadId])
+  @@index([customerId])
+  @@index([createdAt])
+  @@index([status])
+  @@index([serviceId])
+  @@index([locationId])
+}
+
+model QuoteItem {
+  id          String @id @default(cuid())
+  quoteId     String
+  description String
+  quantity    String @default("1")
+  unit        String @default("")
+  unitPrice   String @default("")
+  lineTotal   String @default("")
+  kind        String @default("item")
+  sortOrder   Int    @default(0)
+  quote       Quote  @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+}
+
+model Invoice {
+  id              String        @id @default(cuid())
+  number          String        @unique
+  status          InvoiceStatus @default(DRAFT)
+  customerId      String?
+  quoteId         String?
+  bookingId       String?
+  workOrderId     String?
+  createdByUserId String?
+  customerName    String        @default("")
+  customerPhone   String        @default("")
+  customerEmail   String?
+  locationLabel   String        @default("")
+  serviceLabel    String        @default("")
+  notes           String        @default("")
+  subtotalLabel   String        @default("")
+  discountLabel   String        @default("")
+  taxLabel        String        @default("")
+  totalLabel      String        @default("")
+  issueDate       String?
+  dueDate         String?
+  paymentRef      String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  customer        Customer?     @relation(fields: [customerId], references: [id])
+  quote           Quote?        @relation(fields: [quoteId], references: [id], onDelete: SetNull)
+  booking         Booking?      @relation(fields: [bookingId], references: [id], onDelete: SetNull)
+  workOrder       WorkOrder?    @relation(fields: [workOrderId], references: [id], onDelete: SetNull)
+  payments        Payment[]
+  items           InvoiceItem[]
+
+  @@index([customerId])
+  @@index([quoteId])
+  @@index([bookingId])
+  @@index([workOrderId])
+  @@index([createdAt])
+  @@index([updatedAt])
+  @@index([status])
+}
+
+model InvoiceItem {
+  id          String  @id @default(cuid())
+  invoiceId   String
+  description String
+  quantity    String  @default("1")
+  unit        String  @default("")
+  unitPrice   String  @default("")
+  lineTotal   String  @default("")
+  kind        String  @default("item")
+  sortOrder   Int     @default(0)
+  invoice     Invoice @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+}
+
+model PricingRule {
+  id          String      @id @default(cuid())
+  name        String
+  serviceId   String?
+  method      QuoteMethod @default(inspection)
+  unitLabel   String      @default("")
+  notes       String      @default("")
+  active      Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String
+  passwordHash  String
+  role          String    @default("customer_service")
+  staffId       String?
+  active        Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  sessions      Session[]
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  tokenHash String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ExportLog {
+  id          String   @id @default(cuid())
+  userId      String
+  role        String
+  dataset     String
+  format      String
+  filters     String   @default("{}")
+  resultCount Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model NumberSequence {
+  id      String @id
+  lastValue Int  @default(0)
+}
+
+model Booking {
+  id               String         @id @default(cuid())
+  number           String         @unique
+  type             BookingType    @default(standard)
+  priority         String         @default("normal")
+  customerId       String?
+  leadId           String?
+  conversationId   String?
+  serviceId        String?
+  locationId       String?
+  cityId           String?
+  areaId           String?
+  name             String
+  phone            String
+  whatsapp         String?
+  email            String?
+  propertyType     String?
+  city             String?
+  area             String?
+  preferredDate    String?
+  preferredTime    String?
+  confirmedDate    String?
+  confirmedTime    String?
+  confirmedAt      DateTime?
+  calendarEventId  String?
+  frequency        String?
+  amcReference     String?
+  technicianId     String?
+  supervisorId     String?
+  requirement      String
+  photos           String         @default("[]")
+  status           BookingStatus  @default(requested)
+  notes            String         @default("")
+  locale           String         @default("en")
+  visitorId        String?
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  customer         Customer?      @relation(fields: [customerId], references: [id])
+  lead             Lead?          @relation(fields: [leadId], references: [id])
+  visitor          Visitor?       @relation(fields: [visitorId], references: [id], onDelete: SetNull)
+  service          Service?       @relation(fields: [serviceId], references: [id])
+  location         Location?      @relation(fields: [locationId], references: [id])
+  cityLocation     Location?      @relation("BookingCity", fields: [cityId], references: [id])
+  areaLocation     Location?      @relation("BookingArea", fields: [areaId], references: [id])
+  technician       Staff?         @relation("BookingTechnician", fields: [technicianId], references: [id])
+  supervisor       Staff?         @relation("BookingSupervisor", fields: [supervisorId], references: [id])
+  workOrders       WorkOrder[]
+  reviews          Review[]
+  inspections      Inspection[]
+  invoices         Invoice[]
+
+  @@index([visitorId])
+  @@index([leadId])
+  @@index([customerId])
+  @@index([technicianId])
+  @@index([supervisorId])
+  @@index([createdAt])
+  @@index([status])
+  @@index([type])
+  @@index([serviceId])
+  @@index([locationId])
+  @@index([updatedAt])
+}
+
+model Inspection {
+  id             String   @id @default(cuid())
+  bookingId      String?
+  assignedTo     String?
+  scheduledAt    DateTime?
+  locationLabel  String   @default("")
+  checklist      String   @default("[]")
+  measurements   String   @default("")
+  photos         String   @default("[]")
+  findings       String   @default("")
+  materials      String   @default("")
+  proposedScope  String   @default("")
+  recommendations String  @default("")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  booking        Booking? @relation(fields: [bookingId], references: [id], onDelete: SetNull)
+}
+
+model WorkOrder {
+  id                 String    @id @default(cuid())
+  number             String    @unique
+  customerId         String?
+  serviceId          String?
+  locationId         String?
+  bookingId          String?
+  locationLabel      String    @default("")
+  propertyLabel      String    @default("")
+  serviceLabel       String    @default("")
+  scope              String    @default("")
+  supervisorId       String?
+  technicianId       String?
+  materials          String    @default("[]")
+  tools              String    @default("[]")
+  ppe                String    @default("[]")
+  scheduledDate      String?
+  scheduledTime      String?
+  status             String    @default("created")
+  notes              String    @default("")
+  photos             String    @default("[]")
+  qcResult           String    @default("")
+  customerSignOff    Boolean   @default(false)
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  customer           Customer? @relation(fields: [customerId], references: [id])
+  service            Service?  @relation(fields: [serviceId], references: [id])
+  location           Location? @relation(fields: [locationId], references: [id])
+  booking            Booking?  @relation(fields: [bookingId], references: [id])
+  reviews            Review[]
+  invoices           Invoice[]
+
+  @@index([bookingId])
+  @@index([customerId])
+  @@index([technicianId])
+  @@index([supervisorId])
+  @@index([createdAt])
+  @@index([updatedAt])
+  @@index([status])
+}
+
+model AmcContract {
+  id               String    @id @default(cuid())
+  customerId       String
+  propertyLabel    String    @default("")
+  coveredServices  String    @default("[]")
+  startDate        DateTime?
+  endDate          DateTime?
+  frequency        String    @default("")
+  sla              String    @default("")
+  included         String    @default("")
+  excluded         String    @default("")
+  contractValue    String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  customer         Customer  @relation(fields: [customerId], references: [id])
+
+  @@index([customerId])
+  @@index([endDate])
+}
+
+model Payment {
+  id         String   @id @default(cuid())
+  invoiceId  String
+  status     String   @default("unconfigured")
+  reference  String?
+  createdAt  DateTime @default(now())
+  invoice    Invoice  @relation(fields: [invoiceId], references: [id])
+}
+
+model Staff {
+  id           String    @id @default(cuid())
+  staffCode    String    @unique
+  role         StaffRole
+  status       String    @default("active")
+  supervisorId String?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  skills       StaffSkill[]
+  assignedBookings   Booking[] @relation("BookingTechnician")
+  supervisedBookings Booking[] @relation("BookingSupervisor")
+}
+
+model StaffSkill {
+  id             String @id @default(cuid())
+  staffId        String
+  categorySlug   String
+  locationSlug   String?
+  staff          Staff  @relation(fields: [staffId], references: [id], onDelete: Cascade)
+}
+
+model Subcontractor {
+  id               String   @id @default(cuid())
+  code             String   @unique
+  specialization   String   @default("")
+  coverage         String   @default("")
+  approvalStatus   String   @default("pending")
+  documentationOk  Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Review {
+  id                String       @id @default(cuid())
+  type              ReviewType
+  status            ReviewStatus @default(PENDING)
+  stars             Int
+  title             String       @default("")
+  body              String       @default("")
+  authorName        String
+  photoKey          String?
+  serviceId         String?
+  locationId        String?
+  bookingId         String?
+  guideId           String?
+  articleId         String?
+  workOrderId       String?
+  customerId        String?
+  area              String?
+  locale            String       @default("en")
+  adminResponse     String       @default("")
+  adminRespondedAt  DateTime?
+  flagCount         Int          @default(0)
+  helpful           Boolean?
+  verified          Boolean      @default(false)
+  visitorId         String?
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+  service           Service?     @relation(fields: [serviceId], references: [id])
+  location          Location?    @relation(fields: [locationId], references: [id])
+  booking           Booking?     @relation(fields: [bookingId], references: [id])
+  guide             DiyGuide?    @relation(fields: [guideId], references: [id])
+  article           Article?     @relation(fields: [articleId], references: [id])
+  workOrder         WorkOrder?   @relation(fields: [workOrderId], references: [id])
+  customer          Customer?    @relation(fields: [customerId], references: [id])
+  visitor           Visitor?     @relation(fields: [visitorId], references: [id], onDelete: SetNull)
+  votes             ReviewVote[]
+  insights          ReviewInsight[]
+
+  @@index([visitorId])
+  @@index([createdAt])
+  @@index([type, status])
+}
+
+model ReviewVote {
+  id        String   @id @default(cuid())
+  reviewId  String
+  helpful   Boolean
+  createdAt DateTime @default(now())
+  review    Review   @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+}
+
+model ReviewInsight {
+  id             String          @id @default(cuid())
+  reviewId       String?
+  serviceId      String?
+  locationId     String?
+  sentiment      String          @default("unknown")
+  themes         String          @default("[]")
+  punctuality    String          @default("")
+  communication  String          @default("")
+  visibility     KnowledgeScope  @default(INTERNAL)
+  notes          String          @default("")
+  createdAt      DateTime        @default(now())
+  review         Review?         @relation(fields: [reviewId], references: [id], onDelete: SetNull)
+}
+
+model Question {
+  id                 String        @id @default(cuid())
+  serviceId          String?
+  locationId         String?
+  guideId            String?
+  articleId          String?
+  customerId         String?
+  askerName          String        @default("")
+  body               String
+  answer             String        @default("")
+  status             ContentStatus @default(draft)
+  moderationStatus   ReviewStatus  @default(PENDING)
+  flagCount          Int           @default(0)
+  locale             String        @default("en")
+  visitorId          String?
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+  service            Service?      @relation(fields: [serviceId], references: [id])
+  location           Location?     @relation(fields: [locationId], references: [id])
+  guide              DiyGuide?     @relation(fields: [guideId], references: [id])
+  article            Article?      @relation(fields: [articleId], references: [id])
+  visitor            Visitor?      @relation(fields: [visitorId], references: [id], onDelete: SetNull)
+
+  @@index([visitorId])
+}
+
+model ContentReport {
+  id        String   @id @default(cuid())
+  entity    String
+  entityId  String
+  reason    String   @default("")
+  createdAt DateTime @default(now())
+}
+
+model AiConversation {
+  id        String       @id @default(cuid())
+  locale    String       @default("en")
+  messages  String       @default("[]")
+  summary   String       @default("")
+  leadId    String?
+  bookingId String?
+  tokenHash String       @default("")
+  photoIds  String       @default("[]")
+  visitorId String?
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  media     MediaAsset[]
+  visitor   Visitor?     @relation(fields: [visitorId], references: [id], onDelete: SetNull)
+
+  @@index([visitorId])
+}
+
+model Visitor {
+  id         String           @id @default(cuid())
+  createdAt  DateTime         @default(now())
+  lastSeenAt DateTime         @default(now())
+  locale     String?
+  optedOut   Boolean          @default(false)
+  customerId String?
+  sessions   VisitSession[]
+  events     AnalyticsEvent[]
+  customers  Customer[]
+  leads      Lead[]
+  bookings   Booking[]
+  reviews    Review[]
+  questions  Question[]
+  conversations AiConversation[]
+
+  @@index([lastSeenAt])
+  @@index([customerId])
+}
+
+model VisitSession {
+  id         String           @id @default(cuid())
+  visitorId  String
+  createdAt  DateTime         @default(now())
+  lastSeenAt DateTime         @default(now())
+  visitor    Visitor          @relation(fields: [visitorId], references: [id], onDelete: Cascade)
+  events     AnalyticsEvent[]
+
+  @@index([visitorId])
+  @@index([lastSeenAt])
+}
+
+model AnalyticsEvent {
+  id         String       @id @default(cuid())
+  visitorId  String
+  sessionId  String
+  name       String
+  path       String?
+  locale     String?
+  entityType String?
+  entityId   String?
+  meta       String       @default("{}")
+  source     String
+  createdAt  DateTime     @default(now())
+  visitor    Visitor      @relation(fields: [visitorId], references: [id], onDelete: Cascade)
+  session    VisitSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([createdAt])
+  @@index([visitorId, createdAt])
+  @@index([name, createdAt])
+  @@index([sessionId])
+}
+
+model KnowledgeDocument {
+  id        String         @id @default(cuid())
+  scope     KnowledgeScope
+  title     String
+  body      String         @default("")
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+}
+
+model AuditLog {
+  id        String   @id @default(cuid())
+  actor     String   @default("system")
+  action    String
+  entity    String
+  entityId  String   @default("")
+  meta      String   @default("{}")
+  createdAt DateTime @default(now())
+
+  @@index([entity, entityId, createdAt])
+  @@index([createdAt])
+}
+
+model SiteSetting {
+  id    String @id @default("site")
+  json  String @default("{}")
+}

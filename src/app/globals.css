@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+:root {
+  --navy: #0b1f3a;
+  --navy-deep: #071525;
+  --ink: #1a2332;
+  --muted: #5c6778;
+  --accent: #1a7a6d;
+  --accent-hover: #15685d;
+  --gold: #b8923a;
+  --sand: #f6f3ee;
+  --sand-2: #ece6db;
+  --line: #ddd6c8;
+  --white: #ffffff;
+  --danger: #b42318;
+  --focus: #1a7a6d;
+}
+
+@theme inline {
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-gold: var(--gold);
+  --color-sand: var(--sand);
+  --color-sand-2: var(--sand-2);
+  --color-line: var(--line);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-sans);
+  --font-arabic: var(--font-arabic);
+}
+
+html,
+body {
+  background: var(--white);
+  color: var(--ink);
+}
+
+body {
+  font-family: var(--font-sans), "Segoe UI", sans-serif;
+  line-height: 1.65;
+}
+
+html[dir="rtl"] body {
+  font-family: var(--font-arabic), var(--font-sans), sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: 12px;
+  top: -40px;
+  z-index: 100;
+  background: var(--navy);
+  color: white;
+  padding: 8px 12px;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
