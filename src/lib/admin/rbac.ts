@@ -26,7 +26,10 @@ export type AdminPermission =
   | "pricing"
   | "exports"
   | "audit"
-  | "staff";
+  | "staff"
+  | "automation"
+  | "knowledge"
+  | "amc";
 
 const ALL: AdminPermission[] = [
   "dashboard",
@@ -45,6 +48,9 @@ const ALL: AdminPermission[] = [
   "exports",
   "audit",
   "staff",
+  "automation",
+  "knowledge",
+  "amc",
 ];
 
 const ROLE_PERMS: Record<StaffRoleName, AdminPermission[]> = {
@@ -74,6 +80,19 @@ export function canOverrideLeadQuality(role: string) {
 /** Set or restore SPAM quarantine. */
 export function canManageLeadSpam(role: string) {
   return role === "super_admin" || role === "admin" || role === "manager";
+}
+
+export function canManageKnowledge(role: string) {
+  return can(role, "knowledge");
+}
+
+export function canManageAutomation(role: string) {
+  return can(role, "automation");
+}
+
+export function canViewTasks(role: string) {
+  if (role === "content_manager") return false;
+  return can(role, "leads") || can(role, "bookings") || can(role, "work_orders") || can(role, "quotes");
 }
 
 export function exportAllowed(role: string, dataset: string) {

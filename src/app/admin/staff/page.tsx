@@ -2,7 +2,7 @@ import { prisma } from "@/server/db";
 import { needPermission } from "@/lib/admin/guard";
 import { STAFF_ROLES } from "@/lib/admin/rbac";
 import { AdminTable, Field, Forbidden, PageHeader, PrimaryButton, SelectField } from "@/components/admin/Ui";
-import { createStaffAction, createStaffRecordAction, resetStaffPasswordAction } from "@/app/admin/actions";
+import { createStaffAction, createStaffRecordAction, resetStaffPasswordAction, setStaffActiveAction } from "@/app/admin/actions";
 
 export default async function StaffPage({ searchParams }: { searchParams: Promise<{ error?: string; ok?: string }> }) {
   const auth = await needPermission("staff");
@@ -14,7 +14,7 @@ export default async function StaffPage({ searchParams }: { searchParams: Promis
   ]);
   return (
     <div className="space-y-8">
-      <PageHeader title="Staff" note="Login accounts use roles for access control. Staff records are used for booking/work-order assignment." />
+      <PageHeader title="Staff" note="Login accounts use roles for access control. Staff records are used for booking/work-order assignment. Deactivating a login revokes all sessions immediately." />
       {error ? <p className="text-sm text-danger">Check email, role, and a password of at least 12 characters.</p> : null}
       {ok ? <p className="text-sm text-accent">Saved.</p> : null}
       <form action={createStaffAction} className="grid max-w-3xl gap-3 rounded-md border border-line bg-white p-4 sm:grid-cols-2">
@@ -25,19 +25,26 @@ export default async function StaffPage({ searchParams }: { searchParams: Promis
         <SelectField label="Link staff record" name="staffId" options={[{ value: "", label: "None" }, ...staff.map((s) => ({ value: s.id, label: s.staffCode }))]} />
         <PrimaryButton>Create login</PrimaryButton>
       </form>
-      <AdminTable headers={["Name", "Email", "Role", "Active", "Reset"]}>
+      <AdminTable headers={["Name", "Email", "Role", "Active", "Actions"]}>
         {users.map((user) => (
           <tr key={user.id} className="border-t border-line">
             <td className="px-3 py-2">{user.name}</td>
             <td className="px-3 py-2">{user.email}</td>
             <td className="px-3 py-2">{user.role}</td>
             <td className="px-3 py-2">{user.active ? "yes" : "no"}</td>
-            <td className="px-3 py-2">
-              <form action={resetStaffPasswordAction} className="flex gap-2">
+            <td className="space-y-2 px-3 py-2">
+              <form action={resetStaffPasswordAction} className="flex flex-wrap gap-2">
                 <input type="hidden" name="id" value={user.id} />
                 <input name="password" type="password" placeholder="New password" className="rounded-md border border-line px-2 py-1 text-sm" />
                 <button type="submit" className="text-sm text-navy">
-                  Reset
+                  Reset password
+                </button>
+              </form>
+              <form action={setStaffActiveAction}>
+                <input type="hidden" name="id" value={user.id} />
+                <input type="hidden" name="active" value={user.active ? "false" : "true"} />
+                <button type="submit" className="text-sm text-navy">
+                  {user.active ? "Deactivate" : "Activate"}
                 </button>
               </form>
             </td>

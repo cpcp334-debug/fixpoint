@@ -1,16 +1,27 @@
-# Optional Docker PostgreSQL. Local Phase 1 uses PGlite on port 5433 (npm run pg).
+# Development-only PostgreSQL (optional)
+#
+# NOT FOR PRODUCTION.
+# Local Phase 1 default remains PGlite on port 5433 (`npm run pg`).
+# Production must use a managed/self-hosted PostgreSQL instance with its own
+# strong credentials — never these Compose defaults.
+#
+# Copy credentials via environment or a local `.env` — do not reuse in prod.
+
 services:
-  db:
+  db-dev:
     image: postgres:16-alpine
     restart: unless-stopped
     environment:
-      POSTGRES_USER: alnajah
-      POSTGRES_PASSWORD: alnajah
-      POSTGRES_DB: alnajah
+      POSTGRES_USER: ${POSTGRES_USER:-alnajah_dev}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change-me-dev-only}
+      POSTGRES_DB: ${POSTGRES_DB:-alnajah_dev}
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
-      - alnajah_pg:/var/lib/postgresql/data
+      - alnajah_pg_dev:/var/lib/postgresql/data
+    labels:
+      - "alnajah.environment=development"
+      - "alnajah.role=optional-local-postgres"
 
 volumes:
-  alnajah_pg:
+  alnajah_pg_dev:

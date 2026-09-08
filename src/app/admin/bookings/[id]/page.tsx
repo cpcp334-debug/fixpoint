@@ -5,6 +5,8 @@ import { can } from "@/lib/admin/rbac";
 import { Field, Forbidden, PageHeader, PrimaryButton, SelectField } from "@/components/admin/Ui";
 import { createWorkOrderAction, updateBookingAction } from "@/app/admin/actions";
 import { JourneyTimeline } from "@/components/admin/JourneyTimeline";
+import { TaskList } from "@/components/admin/TaskList";
+import { tasksVisibleTo } from "@/lib/automation/tasks";
 import { buildJourney } from "@/lib/journey/aggregate";
 import { canViewIdentifiableJourney } from "@/lib/journey/rbac";
 import { journeyPageFromSearch } from "@/lib/journey/types";
@@ -16,15 +18,16 @@ export default async function BookingDetail({
   searchParams,
 }: {
   params: Promise<{ id: string }>;
-  searchParams: Promise<{ jt?: string }>;
+  searchParams: Promise<{ jt?: string; error?: string }>;
 }) {
   const auth = await needPermission("bookings");
   if (!auth.ok) return <Forbidden />;
   const { id } = await params;
   const query = await searchParams;
-  const [row, staff] = await Promise.all([
+  const [row, staff, tasks] = await Promise.all([
     prisma.booking.findUnique({ where: { id }, include: { workOrders: true, inspections: true } }),
     prisma.staff.findMany({ orderBy: { staffCode: "asc" } }),
+    tasksVisibleTo(auth.session, { subjectType: "Booking", subjectId: id }),
   ]);
   if (!row) notFound();
   const timeline = canViewIdentifiableJourney(auth.session.role, "booking")
@@ -60,6 +63,8 @@ export default async function BookingDetail({
         <input type="hidden" name="intent" value="assign" />
         <SelectField label="Technician" name="technicianId" defaultValue={row.technicianId} options={staffOpts} />
         <SelectField label="Supervisor" name="supervisorId" defaultValue={row.supervisorId} options={staffOpts} />
+        <p className="sm:col-span-2 text-xs text-muted">Technician assignment requires a matching StaffSkill. This does not confirm the booking or create a work order.</p>
+        {query.error === "skill" ? <p className="sm:col-span-2 text-sm text-danger">Technician has no matching StaffSkill.</p> : null}
         <PrimaryButton>Assign staff</PrimaryButton>
       </form>
       <form action={updateBookingAction} className="max-w-xl space-y-3 rounded-md border border-line bg-white p-4">
@@ -85,6 +90,7 @@ export default async function BookingDetail({
         </p>
       ) : null}
       {timeline ? <JourneyTimeline journey={timeline} /> : null}
+      <TaskList tasks={tasks} staff={staff} error={query.error && query.error !== "skill" ? query.error : undefined} returnTo={`/admin/bookings/${row.id}`} />
     </div>
   );
 }

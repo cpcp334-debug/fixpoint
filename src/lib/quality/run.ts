@@ -3,6 +3,7 @@ import { prisma } from "@/server/db";
 import { parseJson } from "@/lib/utils";
 import { MODEL_VERSION } from "@/lib/quality/signals";
 import { buildReasons, classify, scoreFromReasons } from "@/lib/quality/score";
+import { emitDomainEventSafe } from "@/lib/automation/emit";
 
 export async function scoreLeadSafe(leadId: string, cause: LeadScoreCause = "SYSTEM") {
   try {
@@ -74,6 +75,7 @@ export async function scoreLead(
   });
   const score = scoreFromReasons(reasons);
   const systemClass = classify(score, reasons) as LeadQualityClass;
+  const previousClass = lead.score?.effectiveClass ?? null;
   const humanClass = lead.score?.humanClass ?? null;
   const effectiveClass = (humanClass || systemClass) as LeadQualityClass;
   const quarantined = effectiveClass === "SPAM";
@@ -107,7 +109,7 @@ export async function scoreLead(
     },
   });
 
-  await prisma.leadScoreHistory.create({
+  const history = await prisma.leadScoreHistory.create({
     data: {
       leadScoreId: row.id,
       leadId: lead.id,
@@ -130,6 +132,14 @@ export async function scoreLead(
       meta: JSON.stringify({ score, systemClass, effectiveClass, modelVersion: MODEL_VERSION }),
     },
   });
+
+  if (previousClass !== "HOT" && effectiveClass === "HOT") {
+    await emitDomainEventSafe({
+      trigger: "HOT_LEAD",
+      subjectId: lead.id,
+      occurrenceKey: history.id,
+    });
+  }
 
   return { score, systemClass, effectiveClass, reasons: parseJson(reasonsJson, reasons), quarantined };
 }

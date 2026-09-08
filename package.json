@@ -9,12 +9,22 @@
     "build": "prisma generate && next build",
     "start": "next start",
     "typecheck": "prisma generate && tsc --noEmit",
-    "lint": "eslint src prisma/data prisma/seed.ts scripts --max-warnings 0",
+    "lint": "eslint src prisma/data prisma/seed.ts prisma/seed-safety.ts scripts --max-warnings 0",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate deploy",
     "db:seed": "tsx prisma/seed.ts",
+    "db:seed:safe": "tsx prisma/seed.ts",
     "db:setup": "prisma generate && prisma migrate deploy && tsx prisma/seed.ts",
-    "db:push": "prisma db push"
+    "verify:seed-safety": "tsx scripts/seed-safety-verify.ts",
+    "verify:db-env": "tsx scripts/db-env-verify.ts",
+    "verify:dr-readiness": "tsx scripts/dr-readiness-verify.ts",
+    "verify:auth-session": "tsx scripts/auth-session-verify.ts",
+    "verify:rate-limit": "tsx scripts/rate-limit-verify.ts",
+    "verify:security-headers": "tsx scripts/security-headers-verify.ts",
+    "verify:automation-reaper": "tsx scripts/automation-reaper-verify.ts",
+    "verify:quote-fk-orphan": "tsx scripts/quote-fk-orphan-audit.ts",
+    "verify:quote-fk": "tsx scripts/quote-fk-verify.ts",
+    "db:push:dev": "prisma db push"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

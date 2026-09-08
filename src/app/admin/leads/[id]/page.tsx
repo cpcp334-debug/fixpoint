@@ -2,12 +2,14 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/server/db";
 import { needPermission } from "@/lib/admin/guard";
 import { Field, Forbidden, PageHeader, PrimaryButton, SelectField } from "@/components/admin/Ui";
-import { overrideLeadQualityAction, updateLeadAction } from "@/app/admin/actions";
+import { overrideLeadQualityAction, updateLeadAction, assignLeadAction } from "@/app/admin/actions";
 import { canManageLeadSpam } from "@/lib/admin/rbac";
 import { pickI18n, parseJson } from "@/lib/utils";
 import { visitorJourneySummary } from "@/lib/quality/journey";
 import { QUALITY_CLASSES, type Reason } from "@/lib/quality/signals";
 import { JourneyTimeline } from "@/components/admin/JourneyTimeline";
+import { TaskList } from "@/components/admin/TaskList";
+import { tasksVisibleTo } from "@/lib/automation/tasks";
 import { buildJourney } from "@/lib/journey/aggregate";
 import { canViewIdentifiableJourney } from "@/lib/journey/rbac";
 import { journeyPageFromSearch } from "@/lib/journey/types";
@@ -19,7 +21,7 @@ export default async function LeadDetail({
   searchParams,
 }: {
   params: Promise<{ id: string }>;
-  searchParams: Promise<{ jt?: string; quality?: string }>;
+  searchParams: Promise<{ jt?: string; quality?: string; error?: string }>;
 }) {
   const auth = await needPermission("leads");
   if (!auth.ok) return <Forbidden />;
@@ -40,6 +42,10 @@ export default async function LeadDetail({
     select: { id: true, quoteNumber: true, status: true },
     take: 10,
   });
+  const [staff, tasks] = await Promise.all([
+    prisma.staff.findMany({ where: { status: "active" }, orderBy: { staffCode: "asc" } }),
+    tasksVisibleTo(auth.session, { subjectType: "Lead", subjectId: row.id }),
+  ]);
   const journey = await visitorJourneySummary(row.visitorId);
   const timeline = canViewIdentifiableJourney(auth.session.role, "lead")
     ? await buildJourney(
@@ -180,6 +186,22 @@ export default async function LeadDetail({
         <Field label="Notes" name="notes" defaultValue={row.notes} textarea />
         <PrimaryButton>Save</PrimaryButton>
       </form>
+      <form action={assignLeadAction} className="mt-4 max-w-xl space-y-4 rounded-md border border-line bg-white p-4">
+        <input type="hidden" name="id" value={row.id} />
+        <SelectField
+          label="Assigned staff"
+          name="assignedStaffId"
+          defaultValue={row.assignedStaffId}
+          options={[{ value: "", label: "Unassigned" }, ...staff.map((s) => ({ value: s.id, label: `${s.staffCode} (${s.role})` }))]}
+        />
+        <p className="text-xs text-muted">Technician assignment requires a matching StaffSkill for this lead’s service and location. Sales and customer service may assign allowed staff. Automation will not overwrite a human assignment.</p>
+        {query.error === "skill" ? <p className="text-sm text-danger">Technician has no matching StaffSkill.</p> : null}
+        {query.error === "forbidden" ? <p className="text-sm text-danger">Your role cannot assign this lead.</p> : null}
+        <PrimaryButton>Save assignment</PrimaryButton>
+      </form>
+      <div className="mt-6">
+        <TaskList tasks={tasks} staff={staff} error={query.error === "missing" || query.error === "forbidden" ? query.error : undefined} returnTo={`/admin/leads/${row.id}`} />
+      </div>
       {timeline ? <div className="mt-6"><JourneyTimeline journey={timeline} /></div> : null}
     </div>
   );

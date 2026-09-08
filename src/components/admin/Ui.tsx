@@ -1,9 +1,10 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { can, exportAllowed, roleLabel, type AdminPermission } from "@/lib/admin/rbac";
+import { can, exportAllowed, roleLabel, type AdminPermission, canViewTasks } from "@/lib/admin/rbac";
 import { DATASETS } from "@/lib/admin/datasets";
 import type { StaffSession } from "@/lib/admin/auth";
 import { canViewAnalytics } from "@/lib/insights/rbac";
+import { canUseCoFounder } from "@/lib/cofounder/rbac";
 
 export function Forbidden() {
   return (
@@ -52,6 +53,7 @@ export function Field({
   type = "text",
   required,
   textarea,
+  rows = 4,
 }: {
   label: string;
   name: string;
@@ -59,13 +61,14 @@ export function Field({
   type?: string;
   required?: boolean;
   textarea?: boolean;
+  rows?: number;
 }) {
   const cls = "mt-1 w-full rounded-md border border-line bg-white px-3 py-2 text-sm";
   return (
     <label className="block text-sm">
       <span className="font-medium">{label}</span>
       {textarea ? (
-        <textarea name={name} defaultValue={defaultValue || ""} rows={4} className={cls} required={required} />
+        <textarea name={name} defaultValue={defaultValue || ""} rows={rows} className={cls} required={required} />
       ) : (
         <input name={name} type={type} defaultValue={defaultValue || ""} className={cls} required={required} />
       )}
@@ -152,10 +155,14 @@ export function LineItems({ rows }: { rows?: Array<{ description: string; quanti
 
 const LINKS: Array<{ href: string; label: string; permission: AdminPermission }> = [
   { href: "/admin", label: "Dashboard", permission: "dashboard" },
+  { href: "/admin/ai", label: "AI Co-Founder", permission: "dashboard" },
   { href: "/admin/analytics", label: "Analytics", permission: "dashboard" },
+  { href: "/admin/automation", label: "Automation", permission: "automation" },
+  { href: "/admin/knowledge", label: "Knowledge", permission: "knowledge" },
   { href: "/admin/leads", label: "Leads", permission: "leads" },
   { href: "/admin/customers", label: "Customers", permission: "customers" },
   { href: "/admin/bookings", label: "Bookings", permission: "bookings" },
+  { href: "/admin/tasks", label: "Tasks", permission: "dashboard" },
   { href: "/admin/work-orders", label: "Work orders", permission: "work_orders" },
   { href: "/admin/reviews", label: "Reviews", permission: "reviews" },
   { href: "/admin/questions", label: "Q&A", permission: "questions" },
@@ -164,6 +171,7 @@ const LINKS: Array<{ href: string; label: string; permission: AdminPermission }>
   { href: "/admin/diy", label: "DIY / content", permission: "diy" },
   { href: "/admin/quotes", label: "Quotations", permission: "quotes" },
   { href: "/admin/invoices", label: "Invoices", permission: "invoices" },
+  { href: "/admin/amc", label: "AMC", permission: "amc" },
   { href: "/admin/pricing", label: "Pricing rules", permission: "pricing" },
   { href: "/admin/exports", label: "Exports", permission: "exports" },
   { href: "/admin/audit", label: "Audit log", permission: "audit" },
@@ -173,6 +181,8 @@ const LINKS: Array<{ href: string; label: string; permission: AdminPermission }>
 export function AdminNav({ session }: { session: StaffSession }) {
   const items = LINKS.filter((link) => {
     if (link.href === "/admin/analytics") return canViewAnalytics(session.role);
+    if (link.href === "/admin/ai") return canUseCoFounder(session.role);
+    if (link.href === "/admin/tasks") return canViewTasks(session.role);
     if (link.permission === "exports") return DATASETS.some((dataset) => exportAllowed(session.role, dataset));
     return can(session.role, link.permission);
   });

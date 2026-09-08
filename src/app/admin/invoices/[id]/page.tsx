@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import { prisma } from "@/server/db";
 import { needPermission } from "@/lib/admin/guard";
+import { mintDownloadCsrfForSession } from "@/lib/admin/download-csrf";
 import { Field, Forbidden, LineItems, PageHeader, PrimaryButton, SelectField } from "@/components/admin/Ui";
+import { AdminDownloadForm } from "@/components/admin/AdminDownloadForm";
 import { saveInvoiceAction } from "@/app/admin/actions";
 
 export default async function InvoiceDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -10,15 +12,23 @@ export default async function InvoiceDetailPage({ params }: { params: Promise<{ 
   const { id } = await params;
   const row = await prisma.invoice.findUnique({ where: { id }, include: { items: { orderBy: { sortOrder: "asc" } } } });
   if (!row) notFound();
+  const csrf = mintDownloadCsrfForSession(auth.session);
   return (
     <div>
       <PageHeader
         title={row.number}
-        note="PDF download is authenticated. No gateway payment is processed from this screen."
+        note="PDF download is authenticated (POST + CSRF). No gateway payment is processed from this screen."
         actions={
-          <a href={`/api/admin/invoices/${row.id}/pdf`} className="rounded-md bg-navy px-4 py-2 text-sm text-white">
-            Download PDF
-          </a>
+          csrf.ok ? (
+            <AdminDownloadForm
+              action={`/api/admin/invoices/${row.id}/pdf`}
+              csrf={csrf.token}
+              label="Download PDF"
+              buttonClassName="rounded-md bg-navy px-4 py-2 text-sm text-white"
+            />
+          ) : (
+            <span className="text-sm text-danger">PDF unavailable (DOWNLOAD_CSRF_SECRET)</span>
+          )
         }
       />
       <form action={saveInvoiceAction} className="space-y-4 rounded-md border border-line bg-white p-4">

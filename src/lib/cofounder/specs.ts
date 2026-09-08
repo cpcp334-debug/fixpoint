@@ -1,0 +1,65 @@
+import type { CofounderToolName } from "@/lib/cofounder/types";
+
+const DESCRIPTIONS: Record<CofounderToolName, string> = {
+  get_daily_brief: "Role-scoped daily business brief from approved analytics aggregations.",
+  get_lead_summary: "Read a single lead summary by id.",
+  get_hot_leads: "List recent HOT leads from LeadScore.",
+  get_lead_quality: "Read stored LeadScore for a lead id. Do not recompute.",
+  get_quote_pipeline: "Quote counts by status. Do not sum label amounts.",
+  get_booking_pipeline: "Booking counts by status.",
+  get_work_order_status: "Work-order counts or one work order by id.",
+  get_invoice_status: "Invoice counts by status. Do not sum labels.",
+  get_payment_status: "Payment row counts by status. unconfigured is not paid.",
+  get_review_summary: "Review counts by status and stars.",
+  get_qna_summary: "Question counts by moderation status.",
+  get_amc_expiring: "AMC contracts ending within 30 days.",
+  get_service_performance: "Service performance from loadInsights (30 days).",
+  get_location_performance: "Location performance from loadInsights (30 days).",
+  get_customer_journey: "Identifiable journey via buildJourney. type=customer|lead|booking|workOrder.",
+  get_sop: "Read one ACTIVE INTERNAL SOP by sopCode, id, or serviceSlug. Never invent SOP text. If missing, say SOP not available.",
+  search_internal_sop: "Search ACTIVE INTERNAL SOPs (title, code, description, body excerpt). Use q. Returns a small set of excerpts only. Never search PRIVATE documents.",
+  get_followup_gaps: "HOT leads that currently have no open follow-up OpsTask. Use this before proposing follow-ups. Do not invent the count.",
+  get_priority_actions: "List real actionable gaps for this role from existing records (follow-up gaps, stale SENT quotes, pending bookings, open jobs, completed work orders without invoices, overdue invoices/tasks, low ratings, Q&A, AMC renewals). Counts only. Do not invent.",
+  propose_follow_up: "Create a PENDING follow-up task proposal for staff approval. Never creates the task itself. Pass subjectId or subjectIds (Lead/Quote). Optional title, dueInHours, assigneeStaffId, reason, sopCode, sopTitle.",
+  propose_task: "Create a PENDING operational task proposal for staff approval. Never creates the task itself. Pass subjectType, subjectId or subjectIds, optional kind (follow_up|customer_service|work_order_prep|generic), title, dueInHours, assigneeStaffId, reason.",
+  propose_draft_quote: "Create a PENDING draft quotation proposal. Never creates a live quote. Never invent prices, labor, material, discount, tax, or totals. Amounts stay empty. Pass subjectType Lead|Customer, subjectId, optional scope, exclusions, notes, propertyLabel, and line descriptions/quantities/units only.",
+  propose_draft_invoice: "Create a PENDING draft invoice proposal from an ACCEPTED quote, completed work order, booking, or customer. Never issues or marks paid. Copy amounts only from an accepted quote's stored labels. Never invent missing money values.",
+};
+
+export function openaiToolSpecs(tools: CofounderToolName[]) {
+  return tools.map((name) => ({
+    type: "function" as const,
+    function: {
+      name,
+      description: DESCRIPTIONS[name],
+      parameters: {
+        type: "object",
+        properties: {
+          id: { type: "string" },
+          range: { type: "string" },
+          type: { type: "string" },
+          sopCode: { type: "string" },
+          sopTitle: { type: "string" },
+          q: { type: "string" },
+          query: { type: "string" },
+          audience: { type: "string" },
+          categorySlug: { type: "string" },
+          serviceSlug: { type: "string" },
+          subjectId: { type: "string" },
+          subjectIds: { type: "string", description: "Comma-separated subject ids" },
+          subjectType: { type: "string" },
+          title: { type: "string" },
+          dueInHours: { type: "number" },
+          assigneeStaffId: { type: "string" },
+          reason: { type: "string" },
+          kind: { type: "string" },
+          scope: { type: "string" },
+          exclusions: { type: "string" },
+          notes: { type: "string" },
+          propertyLabel: { type: "string" },
+          lines: { type: "string", description: "JSON array of {description,quantity,unit} only. No prices." },
+        },
+      },
+    },
+  }));
+}

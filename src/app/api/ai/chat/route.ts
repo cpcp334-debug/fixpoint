@@ -5,7 +5,7 @@ import { clientIp, rateLimit } from "@/server/rate-limit";
 
 export async function POST(request: Request) {
   const ip = clientIp(request.headers);
-  const limited = rateLimit(`ai:${ip}`, 20, 10 * 60 * 1000);
+  const limited = await rateLimit(`ai:${ip}`, 20, 10 * 60 * 1000);
   if (!limited.ok) {
     return NextResponse.json({ error: "rateLimit" }, { status: 429 });
   }

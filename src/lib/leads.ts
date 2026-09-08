@@ -4,6 +4,7 @@ import { rateLimit } from "@/server/rate-limit";
 import { createPublicBooking } from "@/lib/bookings";
 import { stampVisitor, trackServer } from "@/lib/analytics/server";
 import { scoreLeadSafe } from "@/lib/quality/run";
+import { emitDomainEventSafe } from "@/lib/automation/emit";
 
 export const leadSchema = z.object({
   name: z.string().trim().min(2).max(120),
@@ -43,7 +44,7 @@ export async function createLead(input: LeadInput, ip: string) {
     return { ok: false as const, error: "invalid" as const, fieldErrors };
   }
 
-  const limited = rateLimit(`lead:${ip}`, 5, 10 * 60 * 1000);
+  const limited = await rateLimit(`lead:${ip}`, 5, 10 * 60 * 1000);
   if (!limited.ok) {
     return { ok: false as const, error: "rateLimit" as const };
   }
@@ -133,6 +134,11 @@ export async function createLead(input: LeadInput, ip: string) {
   }
 
   await scoreLeadSafe(lead.id);
+  await emitDomainEventSafe({
+    trigger: "NEW_LEAD",
+    subjectId: lead.id,
+    occurrenceKey: "new",
+  });
 
   return { ok: true as const, id: lead.id };
 }

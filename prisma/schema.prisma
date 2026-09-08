@@ -110,6 +110,12 @@ enum KnowledgeScope {
   PRIVATE
 }
 
+enum KnowledgeStatus {
+  DRAFT
+  ACTIVE
+  ARCHIVED
+}
+
 enum QuoteStatus {
   DRAFT
   SENT
@@ -210,6 +216,7 @@ model Service {
   leads                Lead[]
   bookings             Booking[]
   workOrders           WorkOrder[]
+  quotes               Quote[]
 }
 
 model ServiceI18n {
@@ -258,6 +265,7 @@ model Location {
   cityBookings Booking[] @relation("BookingCity")
   areaBookings Booking[] @relation("BookingArea")
   workOrders  WorkOrder[]
+  quotes      Quote[]
 }
 
 model LocationI18n {
@@ -632,10 +640,13 @@ model Quote {
   totalLabel          String      @default("")
   humanApproved       Boolean     @default(false)
   sentAt              DateTime?
+  sourceKey           String?     @unique
   createdAt           DateTime    @default(now())
   updatedAt           DateTime    @updatedAt
   customer            Customer?   @relation(fields: [customerId], references: [id])
   lead                Lead?       @relation(fields: [leadId], references: [id], onDelete: SetNull)
+  service             Service?    @relation(fields: [serviceId], references: [id], onDelete: Restrict, onUpdate: Cascade)
+  location            Location?   @relation(fields: [locationId], references: [id], onDelete: Restrict, onUpdate: Cascade)
   items               QuoteItem[]
   invoices            Invoice[]
 
@@ -682,6 +693,7 @@ model Invoice {
   issueDate       String?
   dueDate         String?
   paymentRef      String?
+  sourceKey       String?       @unique
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
   customer        Customer?     @relation(fields: [customerId], references: [id])
@@ -736,6 +748,9 @@ model User {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   sessions      Session[]
+  staffAiConversations StaffAiConversation[]
+  staffAiProposals     StaffAiProposal[]
+  staffAiDailyUsage    StaffAiDailyUsage[]
 }
 
 model Session {
@@ -745,6 +760,84 @@ model Session {
   expiresAt DateTime
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+/// Failed-login / lockout state keyed by SHA-256 of normalized email (never raw email).
+model AuthLoginGuard {
+  emailHash   String    @id
+  failedCount Int       @default(0)
+  lockedUntil DateTime?
+  updatedAt   DateTime  @updatedAt
+}
+
+/// Durable fixed-window rate limits. keyHash = SHA-256(logical key); never store raw IP/email/phone.
+model RateLimitBucket {
+  keyHash   String   @id
+  count     Int      @default(0)
+  resetAt   DateTime
+  updatedAt DateTime @updatedAt
+
+  @@index([resetAt])
+}
+
+model StaffAiConversation {
+  id           String            @id @default(cuid())
+  userId       String
+  frozenRole   String
+  messagesJson String            @default("[]")
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  user         User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  proposals    StaffAiProposal[]
+
+  @@index([userId, updatedAt])
+}
+
+/// Per-staff Co-Founder chat usage for Asia/Dubai calendar-day caps (Phase 2G.5).
+model StaffAiDailyUsage {
+  id        String   @id @default(cuid())
+  userId    String
+  dayKey    String
+  count     Int      @default(0)
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, dayKey])
+  @@index([dayKey])
+}
+
+model StaffAiProposal {
+  id             String    @id @default(cuid())
+  userId         String
+  conversationId String?
+  actorEmail     String    @default("")
+  frozenRole     String    @default("")
+  status         String    @default("pending")
+  actionType     String
+  title          String
+  reason         String    @default("")
+  sopCode        String    @default("")
+  sopTitle       String    @default("")
+  sideEffects    String    @default("")
+  itemsJson      String    @default("[]")
+  resultJson     String    @default("{}")
+  error          String    @default("")
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  approvedAt     DateTime?
+  approvedBy     String    @default("")
+  cancelledAt    DateTime?
+  cancelledBy    String    @default("")
+  executedAt     DateTime?
+  user           User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  conversation   StaffAiConversation? @relation(fields: [conversationId], references: [id], onDelete: SetNull)
+
+  @@index([userId, createdAt])
+  @@index([status, createdAt])
+  @@index([conversationId])
 }
 
 model ExportLog {
@@ -889,14 +982,19 @@ model WorkOrder {
 model AmcContract {
   id               String    @id @default(cuid())
   customerId       String
+  reference        String    @default("")
   propertyLabel    String    @default("")
-  coveredServices  String    @default("[]")
+  locationLabel    String    @default("")
+  coveredServices  String    @default("")
   startDate        DateTime?
   endDate          DateTime?
   frequency        String    @default("")
   sla              String    @default("")
   included         String    @default("")
   excluded         String    @default("")
+  notes            String    @default("")
+  status           String    @default("active")
+  assignedStaffId  String?
   contractValue    String?
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
@@ -904,6 +1002,7 @@ model AmcContract {
 
   @@index([customerId])
   @@index([endDate])
+  @@index([status, endDate])
 }
 
 model Payment {
@@ -1118,12 +1217,44 @@ model AnalyticsEvent {
 }
 
 model KnowledgeDocument {
-  id        String         @id @default(cuid())
-  scope     KnowledgeScope
-  title     String
-  body      String         @default("")
-  createdAt DateTime       @default(now())
-  updatedAt DateTime       @updatedAt
+  id            String          @id @default(cuid())
+  scope         KnowledgeScope
+  title         String
+  body          String          @default("")
+  sopCode       String?         @unique
+  description   String          @default("")
+  status        KnowledgeStatus @default(DRAFT)
+  version       Int             @default(1)
+  audienceJson  String          @default("[]")
+  categorySlug  String          @default("")
+  serviceSlug   String          @default("")
+  effectiveDate String          @default("")
+  reviewDate    String          @default("")
+  updatedBy     String          @default("")
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  revisions     KnowledgeDocumentRevision[]
+
+  @@index([scope, status])
+  @@index([status, sopCode])
+  @@index([categorySlug])
+  @@index([serviceSlug])
+}
+
+model KnowledgeDocumentRevision {
+  id           String          @id @default(cuid())
+  documentId   String
+  version      Int
+  title        String
+  description  String          @default("")
+  body         String          @default("")
+  status       KnowledgeStatus
+  audienceJson String          @default("[]")
+  updatedBy    String          @default("")
+  createdAt    DateTime        @default(now())
+  document     KnowledgeDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@index([documentId, version])
 }
 
 model AuditLog {
@@ -1142,4 +1273,141 @@ model AuditLog {
 model SiteSetting {
   id    String @id @default("site")
   json  String @default("{}")
+}
+
+enum AutomationTrigger {
+  NEW_LEAD
+  HOT_LEAD
+  QUOTE_CREATED
+  QUOTE_SENT
+  QUOTE_ACCEPTED
+  QUOTE_REJECTED
+  BOOKING_REQUESTED
+  BOOKING_CONFIRMED
+  BOOKING_RESCHEDULED
+  WORK_ORDER_ASSIGNED
+  WORK_ORDER_STARTED
+  WORK_ORDER_COMPLETED
+  INVOICE_ISSUED
+  INVOICE_PAID
+  REVIEW_RECEIVED
+  LOW_RATING_REVIEW
+  QNA_RECEIVED
+  AMC_RENEWAL_APPROACHING
+}
+
+enum AutomationJobStatus {
+  pending
+  running
+  succeeded
+  failed
+  dead
+}
+
+model AutomationRule {
+  id             String             @id @default(cuid())
+  key            String             @unique
+  name           String
+  description    String             @default("")
+  enabled        Boolean            @default(false)
+  priority       Int                @default(100)
+  trigger        AutomationTrigger
+  delaySeconds   Int                @default(0)
+  conditionsJson String             @default("[]")
+  actionsJson    String             @default("[]")
+  ownerUserId    String?
+  createdAt      DateTime           @default(now())
+  updatedAt      DateTime           @updatedAt
+  updatedBy      String             @default("")
+  jobs           AutomationJob[]
+  runs           AutomationRun[]
+  tasks          OpsTask[]
+
+  @@index([enabled, trigger, priority])
+}
+
+model AutomationJob {
+  id             String               @id @default(cuid())
+  status         AutomationJobStatus  @default(pending)
+  trigger        AutomationTrigger
+  subjectType    String
+  subjectId      String
+  payloadJson    String               @default("{}")
+  runAt          DateTime             @default(now())
+  startedAt      DateTime?
+  attempt        Int                  @default(0)
+  maxAttempts    Int                  @default(3)
+  idempotencyKey String               @unique
+  lastError      String               @default("")
+  ruleId         String?
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+  rule           AutomationRule?      @relation(fields: [ruleId], references: [id], onDelete: SetNull)
+  runs           AutomationRun[]
+
+  @@index([status, runAt])
+  @@index([status, startedAt])
+  @@index([trigger, subjectType, subjectId])
+}
+
+model AutomationRun {
+  id                  String             @id @default(cuid())
+  jobId               String
+  ruleId              String?
+  trigger             AutomationTrigger
+  subjectType         String
+  subjectId           String
+  conditionPassed     Boolean
+  conditionDetailJson String             @default("[]")
+  actionsJson         String             @default("[]")
+  ok                  Boolean
+  error               String             @default("")
+  attempt             Int
+  createdAt           DateTime           @default(now())
+  job                 AutomationJob      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  rule                AutomationRule?    @relation(fields: [ruleId], references: [id], onDelete: SetNull)
+
+  @@index([ruleId, createdAt])
+  @@index([ok, createdAt])
+  @@index([createdAt])
+  @@index([jobId])
+}
+
+model OpsTask {
+  id              String          @id @default(cuid())
+  kind            String          @default("generic")
+  status          String          @default("open")
+  title           String
+  dueAt           DateTime?
+  assigneeStaffId String?
+  priority        String          @default("normal")
+  source          String          @default("automation")
+  subjectType     String
+  subjectId       String
+  ruleId          String?
+  idempotencyKey  String          @unique
+  notes           String          @default("")
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  rule            AutomationRule? @relation(fields: [ruleId], references: [id], onDelete: SetNull)
+
+  @@index([status, dueAt])
+  @@index([subjectType, subjectId])
+  @@index([assigneeStaffId])
+  @@index([priority])
+}
+
+model AdminNotification {
+  id             String    @id @default(cuid())
+  userId         String?
+  staffId        String?
+  channel        String    @default("in_app")
+  title          String
+  body           String    @default("")
+  readAt         DateTime?
+  idempotencyKey String    @unique
+  createdAt      DateTime  @default(now())
+
+  @@index([userId, createdAt])
+  @@index([staffId, createdAt])
 }

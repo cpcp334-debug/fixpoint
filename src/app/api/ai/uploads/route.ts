@@ -7,7 +7,7 @@ export const runtime = "nodejs";
 
 export async function POST(request: Request) {
   const ip = clientIp(request.headers);
-  const limited = rateLimit(`ai-upload:${ip}`, 10, 10 * 60 * 1000);
+  const limited = await rateLimit(`ai-upload:${ip}`, 10, 10 * 60 * 1000);
   if (!limited.ok) {
     return NextResponse.json({ ok: false, error: "rateLimit" }, { status: 429 });
   }

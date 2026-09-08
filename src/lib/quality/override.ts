@@ -2,6 +2,7 @@ import type { LeadQualityClass } from "@prisma/client";
 import { prisma } from "@/server/db";
 import { canManageLeadSpam, canOverrideLeadQuality } from "@/lib/admin/rbac";
 import { isQualityClass } from "@/lib/quality/signals";
+import { emitDomainEventSafe } from "@/lib/automation/emit";
 
 export async function overrideLeadQuality(opts: {
   leadId: string;
@@ -25,6 +26,7 @@ export async function overrideLeadQuality(opts: {
     return { ok: false as const, error: "spam" as const };
   }
 
+  const previousClass = lead.score.effectiveClass;
   const now = new Date();
   await prisma.leadScore.update({
     where: { id: lead.score.id },
@@ -37,7 +39,7 @@ export async function overrideLeadQuality(opts: {
       overrideNote: note,
     },
   });
-  await prisma.leadScoreHistory.create({
+  const history = await prisma.leadScoreHistory.create({
     data: {
       leadScoreId: lead.score.id,
       leadId: lead.id,
@@ -63,5 +65,12 @@ export async function overrideLeadQuality(opts: {
       }),
     },
   });
+  if (previousClass !== "HOT" && next === "HOT") {
+    await emitDomainEventSafe({
+      trigger: "HOT_LEAD",
+      subjectId: lead.id,
+      occurrenceKey: history.id,
+    });
+  }
   return { ok: true as const };
 }

@@ -4,6 +4,7 @@ import { rateLimit } from "@/server/rate-limit";
 import { maxUploadBytes, resolvePrivatePath } from "@/lib/ai/uploads";
 import { pickI18n } from "@/lib/utils";
 import { stampVisitor, trackServer } from "@/lib/analytics/server";
+import { emitDomainEventSafe } from "@/lib/automation/emit";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -23,6 +24,23 @@ export const publicReviewSchema = z.object({
 
 export type PublicReviewInput = z.infer<typeof publicReviewSchema>;
 
+async function emitReviewEvents(review: { id: string; stars: number }) {
+  await emitDomainEventSafe({
+    trigger: "REVIEW_RECEIVED",
+    subjectId: review.id,
+    occurrenceKey: "received",
+    payload: { stars: review.stars },
+  });
+  if (review.stars <= 2) {
+    await emitDomainEventSafe({
+      trigger: "LOW_RATING_REVIEW",
+      subjectId: review.id,
+      occurrenceKey: "low",
+      payload: { stars: review.stars },
+    });
+  }
+}
+
 const ALLOWED_MIME = new Set(["image/jpeg", "image/png", "image/webp"]);
 
 function sniffMime(buf: Buffer): string | null {
@@ -39,7 +57,7 @@ export async function createPublicReview(input: PublicReviewInput, ip: string, f
   const parsed = publicReviewSchema.safeParse(input);
   if (!parsed.success) return { ok: false as const, error: "invalid" as const };
 
-  const limited = rateLimit(`review:${ip}`, 3, 60 * 60 * 1000);
+  const limited = await rateLimit(`review:${ip}`, 3, 60 * 60 * 1000);
   if (!limited.ok) return { ok: false as const, error: "rateLimit" as const };
 
   const data = parsed.data;
@@ -78,6 +96,7 @@ export async function createPublicReview(input: PublicReviewInput, ip: string, f
     } catch {
       // Analytics must never fail a review write.
     }
+    await emitReviewEvents(review);
     return { ok: true as const, id: review.id };
   }
 
@@ -129,6 +148,7 @@ export async function createPublicReview(input: PublicReviewInput, ip: string, f
   } catch {
     // Analytics must never fail a review write.
   }
+  await emitReviewEvents(review);
   return { ok: true as const, id: review.id };
 }
 
@@ -202,7 +222,7 @@ export function canShowVerifiedBadge(review: {
 }
 
 export async function voteReviewHelpful(reviewId: string, helpful: boolean, ip: string) {
-  const limited = rateLimit(`review-vote:${ip}:${reviewId}`, 5, 60 * 60 * 1000);
+  const limited = await rateLimit(`review-vote:${ip}:${reviewId}`, 5, 60 * 60 * 1000);
   if (!limited.ok) return { ok: false as const, error: "rateLimit" as const };
   const review = await prisma.review.findFirst({
     where: { id: reviewId, type: "service", status: "APPROVED" },
@@ -213,7 +233,7 @@ export async function voteReviewHelpful(reviewId: string, helpful: boolean, ip: 
 }
 
 export async function reportContent(entity: "review" | "question", entityId: string, reason: string, ip: string) {
-  const limited = rateLimit(`report:${ip}`, 8, 60 * 60 * 1000);
+  const limited = await rateLimit(`report:${ip}`, 8, 60 * 60 * 1000);
   if (!limited.ok) return { ok: false as const, error: "rateLimit" as const };
   await prisma.contentReport.create({
     data: { entity, entityId, reason: reason.slice(0, 400) },

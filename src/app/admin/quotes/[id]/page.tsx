@@ -2,7 +2,9 @@ import { notFound } from "next/navigation";
 import { prisma } from "@/server/db";
 import { needPermission } from "@/lib/admin/guard";
 import { can } from "@/lib/admin/rbac";
+import { mintDownloadCsrfForSession } from "@/lib/admin/download-csrf";
 import { Field, Forbidden, LineItems, PageHeader, PrimaryButton, SelectField } from "@/components/admin/Ui";
+import { AdminDownloadForm } from "@/components/admin/AdminDownloadForm";
 import { invoiceFromQuoteAction, saveQuoteAction } from "@/app/admin/actions";
 
 export default async function QuoteDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -15,15 +17,23 @@ export default async function QuoteDetailPage({ params }: { params: Promise<{ id
     prisma.location.findMany({ where: { type: "emirate" }, include: { translations: true }, orderBy: { sortOrder: "asc" } }),
   ]);
   if (!row) notFound();
+  const csrf = mintDownloadCsrfForSession(auth.session);
   return (
     <div>
       <PageHeader
         title={row.quoteNumber}
         note="PDF uses the ALNAJAH ALDAEM template and only the fields saved here plus approved public business details."
         actions={
-          <a href={`/api/admin/quotes/${row.id}/pdf`} className="rounded-md bg-navy px-4 py-2 text-sm text-white">
-            Download PDF
-          </a>
+          csrf.ok ? (
+            <AdminDownloadForm
+              action={`/api/admin/quotes/${row.id}/pdf`}
+              csrf={csrf.token}
+              label="Download PDF"
+              buttonClassName="rounded-md bg-navy px-4 py-2 text-sm text-white"
+            />
+          ) : (
+            <span className="text-sm text-danger">PDF unavailable (DOWNLOAD_CSRF_SECRET)</span>
+          )
         }
       />
       <form action={saveQuoteAction} className="space-y-4 rounded-md border border-line bg-white p-4">

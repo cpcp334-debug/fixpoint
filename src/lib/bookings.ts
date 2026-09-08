@@ -6,6 +6,9 @@ import { maxUploadBytes, resolvePrivatePath } from "@/lib/ai/uploads";
 import { pickI18n, parseJson } from "@/lib/utils";
 import { stampVisitor, trackServer } from "@/lib/analytics/server";
 import { scoreLeadSafe } from "@/lib/quality/run";
+import { emitDomainEventSafe } from "@/lib/automation/emit";
+import { assertTechnicianAssignmentAllowed } from "@/lib/automation/assign";
+import { loadSubjectFacts } from "@/lib/automation/subject";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -163,7 +166,7 @@ export async function createPublicBooking(input: PublicBookingInput, ip: string,
   const parsed = publicBookingSchema.safeParse(input);
   if (!parsed.success) return { ok: false as const, error: "invalid" as const };
 
-  const limited = rateLimit(`booking:${ip}`, 5, 10 * 60 * 1000);
+  const limited = await rateLimit(`booking:${ip}`, 5, 10 * 60 * 1000);
   if (!limited.ok) return { ok: false as const, error: "rateLimit" as const };
 
   const data = parsed.data;
@@ -216,6 +219,7 @@ export async function createPublicBooking(input: PublicBookingInput, ip: string,
   });
 
   let leadId = data.leadId;
+  let createdNewLead = false;
   if (leadId) {
     const existingLead = await prisma.lead.findUnique({ where: { id: leadId } });
     if (!existingLead) leadId = undefined;
@@ -259,6 +263,7 @@ export async function createPublicBooking(input: PublicBookingInput, ip: string,
       },
     });
     leadId = lead.id;
+    createdNewLead = true;
   }
 
   if (data.conversationId) {
@@ -294,7 +299,14 @@ export async function createPublicBooking(input: PublicBookingInput, ip: string,
           });
         }
       }
-      if (leadId) await scoreLeadSafe(leadId, "RECOMPUTE");
+      if (leadId) await scoreLeadSafe(leadId, createdNewLead ? "SYSTEM" : "RECOMPUTE");
+      if (createdNewLead && leadId) {
+        await emitDomainEventSafe({
+          trigger: "NEW_LEAD",
+          subjectId: leadId,
+          occurrenceKey: "new",
+        });
+      }
       return { ok: true as const, id: updated.id, number: updated.number };
     }
   }
@@ -360,7 +372,19 @@ export async function createPublicBooking(input: PublicBookingInput, ip: string,
     // Analytics must never fail a booking write.
   }
 
-  if (leadId) await scoreLeadSafe(leadId, "RECOMPUTE");
+  if (leadId) await scoreLeadSafe(leadId, createdNewLead ? "SYSTEM" : "RECOMPUTE");
+  if (createdNewLead && leadId) {
+    await emitDomainEventSafe({
+      trigger: "NEW_LEAD",
+      subjectId: leadId,
+      occurrenceKey: "new",
+    });
+  }
+  await emitDomainEventSafe({
+    trigger: "BOOKING_REQUESTED",
+    subjectId: booking.id,
+    occurrenceKey: "requested",
+  });
 
   return { ok: true as const, id: booking.id, number: booking.number };
 }
@@ -396,6 +420,13 @@ export async function setBookingStatus(id: string, status: BookingStatus) {
   await prisma.auditLog.create({
     data: { action: `booking.${status}`, entity: "Booking", entityId: id },
   });
+  if (status === "rescheduled") {
+    await emitDomainEventSafe({
+      trigger: "BOOKING_RESCHEDULED",
+      subjectId: id,
+      occurrenceKey: `rescheduled:${Date.now()}`,
+    });
+  }
   return { ok: true as const };
 }
 
@@ -406,17 +437,23 @@ export async function confirmBookingTime(id: string, confirmedDate: string, conf
   if (!["pending_confirmation", "rescheduled"].includes(existing.status)) {
     return { ok: false as const, error: "illegal" as const };
   }
+  const confirmedAt = new Date();
   await prisma.booking.update({
     where: { id },
     data: {
       status: "confirmed",
       confirmedDate,
       confirmedTime,
-      confirmedAt: new Date(),
+      confirmedAt,
     },
   });
   await prisma.auditLog.create({
     data: { action: "booking.confirm", entity: "Booking", entityId: id },
+  });
+  await emitDomainEventSafe({
+    trigger: "BOOKING_CONFIRMED",
+    subjectId: id,
+    occurrenceKey: confirmedAt.toISOString(),
   });
   return { ok: true as const };
 }
@@ -429,11 +466,14 @@ export async function assignBookingStaff(
 ) {
   const existing = await prisma.booking.findUnique({ where: { id } });
   if (!existing) return { ok: false as const, error: "missing" as const };
+  const facts = (await loadSubjectFacts("Booking", id)) || {};
+  const allowed = await assertTechnicianAssignmentAllowed(technicianId, facts);
+  if (!allowed.ok) return allowed;
   await prisma.booking.update({
     where: { id },
     data: {
-      technicianId,
-      supervisorId,
+      technicianId: technicianId || null,
+      supervisorId: supervisorId || null,
       status: existing.status === "confirmed" ? "assigned" : existing.status,
     },
   });

@@ -3,6 +3,7 @@ import { prisma } from "@/server/db";
 import { adminAudit, nextDocumentNumber } from "@/lib/admin/numbers";
 import { renderBrandedPdf, type BrandedDoc } from "@/lib/admin/pdf";
 import type { LineItemInput } from "@/lib/admin/forms";
+import { emitDomainEventSafe } from "@/lib/automation/emit";
 
 export type QuoteInput = {
   customerName: string;
@@ -31,12 +32,73 @@ export type QuoteInput = {
   humanApproved: boolean;
   status: QuoteStatus;
   items: LineItemInput[];
+  sourceKey?: string | null;
 };
 
-async function labels(input: QuoteInput) {
+export type QuoteWithItems = Quote & { items: QuoteItem[] };
+
+export type QuoteRefError = "invalid_service" | "invalid_location";
+export type QuoteMutationError = QuoteRefError | "missing";
+export type QuoteMutationResult =
+  | { ok: true; quote: QuoteWithItems }
+  | { ok: false; error: QuoteMutationError };
+
+/** Empty string → null. Non-null IDs must exist; never coerce invalid IDs to null. */
+export async function resolveQuoteCatalogRefs(input: {
+  serviceId?: string | null;
+  locationId?: string | null;
+}): Promise<{ ok: true; serviceId: string | null; locationId: string | null } | { ok: false; error: QuoteRefError }> {
+  const serviceId = input.serviceId?.trim() ? input.serviceId.trim() : null;
+  const locationId = input.locationId?.trim() ? input.locationId.trim() : null;
+  if (serviceId) {
+    const service = await prisma.service.findUnique({ where: { id: serviceId }, select: { id: true } });
+    if (!service) return { ok: false, error: "invalid_service" };
+  }
+  if (locationId) {
+    const location = await prisma.location.findUnique({ where: { id: locationId }, select: { id: true } });
+    if (!location) return { ok: false, error: "invalid_location" };
+  }
+  return { ok: true, serviceId, locationId };
+}
+
+async function emitQuoteEvents(
+  quote: { id: string; status: QuoteStatus; sentAt: Date | null },
+  previous: QuoteStatus | null,
+) {
+  if (!previous) {
+    await emitDomainEventSafe({
+      trigger: "QUOTE_CREATED",
+      subjectId: quote.id,
+      occurrenceKey: "created",
+    });
+  }
+  if (quote.status === "SENT" && previous !== "SENT") {
+    await emitDomainEventSafe({
+      trigger: "QUOTE_SENT",
+      subjectId: quote.id,
+      occurrenceKey: quote.sentAt?.toISOString() || "sent",
+    });
+  }
+  if (quote.status === "ACCEPTED" && previous !== "ACCEPTED") {
+    await emitDomainEventSafe({
+      trigger: "QUOTE_ACCEPTED",
+      subjectId: quote.id,
+      occurrenceKey: "accepted",
+    });
+  }
+  if (quote.status === "REJECTED" && previous !== "REJECTED") {
+    await emitDomainEventSafe({
+      trigger: "QUOTE_REJECTED",
+      subjectId: quote.id,
+      occurrenceKey: "rejected",
+    });
+  }
+}
+
+async function labels(input: QuoteInput, serviceId: string | null, locationId: string | null) {
   const [service, location] = await Promise.all([
-    input.serviceId ? prisma.service.findUnique({ where: { id: input.serviceId }, include: { translations: true } }) : null,
-    input.locationId ? prisma.location.findUnique({ where: { id: input.locationId }, include: { translations: true } }) : null,
+    serviceId ? prisma.service.findUnique({ where: { id: serviceId }, include: { translations: true } }) : null,
+    locationId ? prisma.location.findUnique({ where: { id: locationId }, include: { translations: true } }) : null,
   ]);
   const serviceLabel =
     input.serviceLabel || service?.translations.find((t) => t.locale === "en")?.name || "";
@@ -45,17 +107,26 @@ async function labels(input: QuoteInput) {
   return { serviceLabel, locationLabel };
 }
 
-export async function createQuote(input: QuoteInput, actor: { id: string; email: string }) {
+export async function createQuote(input: QuoteInput, actor: { id: string; email: string }): Promise<QuoteMutationResult> {
+  if (input.sourceKey) {
+    const existing = await prisma.quote.findUnique({ where: { sourceKey: input.sourceKey }, include: { items: true } });
+    if (existing) return { ok: true, quote: existing };
+  }
+  const refs = await resolveQuoteCatalogRefs(input);
+  if (!refs.ok) return refs;
+  const fromCofounder = Boolean(input.sourceKey?.startsWith("cofounder:"));
+  const status = fromCofounder ? "DRAFT" : input.status;
+  const humanApproved = fromCofounder ? false : input.humanApproved;
   const quoteNumber = await nextDocumentNumber("quote");
-  const { serviceLabel, locationLabel } = await labels(input);
+  const { serviceLabel, locationLabel } = await labels(input, refs.serviceId, refs.locationId);
   const row = await prisma.quote.create({
     data: {
       quoteNumber,
-      status: input.status,
+      status,
       customerId: input.customerId,
       leadId: input.leadId,
-      serviceId: input.serviceId,
-      locationId: input.locationId,
+      serviceId: refs.serviceId,
+      locationId: refs.locationId,
       createdByUserId: actor.id,
       customerName: input.customerName,
       customerPhone: input.customerPhone,
@@ -76,8 +147,9 @@ export async function createQuote(input: QuoteInput, actor: { id: string; email:
       discountLabel: input.discountLabel,
       taxLabel: input.taxLabel,
       totalLabel: input.totalLabel,
-      humanApproved: input.humanApproved,
-      sentAt: input.status === "SENT" ? new Date() : null,
+      humanApproved,
+      sentAt: status === "SENT" ? new Date() : null,
+      sourceKey: input.sourceKey || null,
       items: {
         create: input.items.map((item, sortOrder) => ({ ...item, sortOrder })),
       },
@@ -85,13 +157,16 @@ export async function createQuote(input: QuoteInput, actor: { id: string; email:
     include: { items: true },
   });
   await adminAudit({ actor: actor.email, action: "quote.create", entity: "Quote", entityId: row.id, meta: { quoteNumber } });
-  return row;
+  await emitQuoteEvents(row, null);
+  return { ok: true, quote: row };
 }
 
-export async function updateQuote(id: string, input: QuoteInput, actorEmail: string) {
+export async function updateQuote(id: string, input: QuoteInput, actorEmail: string): Promise<QuoteMutationResult> {
   const existing = await prisma.quote.findUnique({ where: { id } });
-  if (!existing) return null;
-  const { serviceLabel, locationLabel } = await labels(input);
+  if (!existing) return { ok: false, error: "missing" };
+  const refs = await resolveQuoteCatalogRefs(input);
+  if (!refs.ok) return refs;
+  const { serviceLabel, locationLabel } = await labels(input, refs.serviceId, refs.locationId);
   await prisma.quoteItem.deleteMany({ where: { quoteId: id } });
   const row = await prisma.quote.update({
     where: { id },
@@ -99,8 +174,8 @@ export async function updateQuote(id: string, input: QuoteInput, actorEmail: str
       status: input.status,
       customerId: input.customerId,
       leadId: input.leadId,
-      serviceId: input.serviceId,
-      locationId: input.locationId,
+      serviceId: refs.serviceId,
+      locationId: refs.locationId,
       customerName: input.customerName,
       customerPhone: input.customerPhone,
       customerEmail: input.customerEmail,
@@ -129,7 +204,8 @@ export async function updateQuote(id: string, input: QuoteInput, actorEmail: str
     include: { items: true },
   });
   await adminAudit({ actor: actorEmail, action: "quote.update", entity: "Quote", entityId: id });
-  return row;
+  await emitQuoteEvents(row, existing.status);
+  return { ok: true, quote: row };
 }
 
 export function quoteToPdfDoc(quote: Quote & { items: QuoteItem[] }): BrandedDoc {

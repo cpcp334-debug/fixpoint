@@ -3,6 +3,7 @@ import { prisma } from "@/server/db";
 import { adminAudit, nextDocumentNumber } from "@/lib/admin/numbers";
 import { renderBrandedPdf, type BrandedDoc } from "@/lib/admin/pdf";
 import type { LineItemInput } from "@/lib/admin/forms";
+import { emitDomainEventSafe } from "@/lib/automation/emit";
 
 export type InvoiceInput = {
   customerName: string;
@@ -24,14 +25,40 @@ export type InvoiceInput = {
   paymentRef?: string;
   status: InvoiceStatus;
   items: LineItemInput[];
+  sourceKey?: string | null;
 };
 
+async function emitInvoiceEvents(invoice: { id: string; status: InvoiceStatus }, previous: InvoiceStatus | null) {
+  if (invoice.status === "ISSUED" && previous !== "ISSUED") {
+    await emitDomainEventSafe({
+      trigger: "INVOICE_ISSUED",
+      subjectId: invoice.id,
+      occurrenceKey: "issued",
+      payload: { status: invoice.status },
+    });
+  }
+  if (invoice.status === "PAID" && previous !== "PAID") {
+    await emitDomainEventSafe({
+      trigger: "INVOICE_PAID",
+      subjectId: invoice.id,
+      occurrenceKey: "paid",
+      payload: { status: invoice.status },
+    });
+  }
+}
+
 export async function createInvoice(input: InvoiceInput, actor: { id: string; email: string }) {
+  if (input.sourceKey) {
+    const existing = await prisma.invoice.findUnique({ where: { sourceKey: input.sourceKey }, include: { items: true } });
+    if (existing) return existing;
+  }
+  const fromCofounder = Boolean(input.sourceKey?.startsWith("cofounder:"));
+  const status = fromCofounder ? "DRAFT" : input.status;
   const number = await nextDocumentNumber("invoice");
   const row = await prisma.invoice.create({
     data: {
       number,
-      status: input.status,
+      status,
       customerId: input.customerId,
       quoteId: input.quoteId,
       bookingId: input.bookingId,
@@ -50,11 +77,13 @@ export async function createInvoice(input: InvoiceInput, actor: { id: string; em
       issueDate: input.issueDate,
       dueDate: input.dueDate,
       paymentRef: input.paymentRef,
+      sourceKey: input.sourceKey || null,
       items: { create: input.items.map((item, sortOrder) => ({ ...item, sortOrder })) },
     },
     include: { items: true },
   });
   await adminAudit({ actor: actor.email, action: "invoice.create", entity: "Invoice", entityId: row.id, meta: { number } });
+  await emitInvoiceEvents(row, null);
   return row;
 }
 
@@ -88,6 +117,7 @@ export async function updateInvoice(id: string, input: InvoiceInput, actorEmail:
     include: { items: true },
   });
   await adminAudit({ actor: actorEmail, action: "invoice.update", entity: "Invoice", entityId: id });
+  await emitInvoiceEvents(row, existing.status);
   return row;
 }
 

@@ -6,17 +6,25 @@ import { revalidatePath } from "next/cache";
 import type { BookingStatus, ContentStatus, InvoiceStatus, LeadStatus, LocationStatus, QuoteMethod, QuoteStatus, ReviewStatus, ServiceStatus, StaffRole } from "@prisma/client";
 import { prisma } from "@/server/db";
 import { clientIp } from "@/server/rate-limit";
-import { getStaffSession, loginStaff, logoutStaff, requireStaff } from "@/lib/admin/auth";
+import { getStaffSession, loginStaff, logoutStaff, requireStaff, revokeAllSessionsForUser, clearStaffSessionCookie } from "@/lib/admin/auth";
 import { isStaffRole } from "@/lib/admin/rbac";
 import { hashPassword, verifyPassword } from "@/lib/admin/crypto";
 import { bool, opt, parseLineItems, str } from "@/lib/admin/forms";
 import { createQuote, updateQuote } from "@/lib/admin/quotes";
 import { createInvoice, invoiceFromQuote, updateInvoice } from "@/lib/admin/invoices";
-import { createWorkOrderFromBooking } from "@/lib/admin/work-orders";
+import { createWorkOrderFromBooking, emitWorkOrderEvents, persistWorkOrderUpdate } from "@/lib/admin/work-orders";
 import { adminAudit, nextWorkOrderNumber } from "@/lib/admin/numbers";
+import { parseRuleForm, saveAutomationRule } from "@/lib/admin/automation";
 import { setBookingStatus, confirmBookingTime, assignBookingStaff } from "@/lib/bookings";
+import { retryJob } from "@/lib/automation/engine";
+import { assignLeadStaff, assertTechnicianAssignmentAllowed } from "@/lib/automation/assign";
+import { loadSubjectFacts } from "@/lib/automation/subject";
+import { canViewTasks, safeAdminPath, updateOpsTask } from "@/lib/automation/tasks";
 import { overrideLeadQuality } from "@/lib/quality/override";
 import { respondToReview, setQuestionModeration, setReviewModeration, verifyServiceReview } from "@/lib/moderation";
+import { parseAudienceList, createInternalSop, updateInternalSop, setInternalSopStatus } from "@/lib/knowledge/sops";
+import { SOP_AUDIENCES } from "@/lib/knowledge/types";
+import { createAmcContract, updateAmcContract } from "@/lib/admin/amc";
 
 function deny(): never {
   redirect("/login");
@@ -50,7 +58,9 @@ export async function changePasswordAction(formData: FormData) {
   if (!user || !verifyPassword(current, user.passwordHash)) redirect("/admin/account?error=invalid");
   await prisma.user.update({ where: { id: user.id }, data: { passwordHash: hashPassword(next) } });
   await adminAudit({ actor: session.email, action: "auth.password_change", entity: "User", entityId: user.id });
-  redirect("/admin/account?ok=1");
+  await revokeAllSessionsForUser(user.id, { actor: session.email, reason: "password_change" });
+  await clearStaffSessionCookie();
+  redirect("/login?ok=password");
 }
 
 export async function createStaffAction(formData: FormData) {
@@ -80,9 +90,26 @@ export async function resetStaffPasswordAction(formData: FormData) {
   if (next.length < 12) redirect("/admin/staff?error=short");
   const id = str(formData, "id");
   await prisma.user.update({ where: { id }, data: { passwordHash: hashPassword(next) } });
-  await prisma.session.deleteMany({ where: { userId: id } });
   await adminAudit({ actor: session.email, action: "staff.password_reset", entity: "User", entityId: id });
+  await revokeAllSessionsForUser(id, { actor: session.email, reason: "admin_password_reset" });
   redirect("/admin/staff?ok=reset");
+}
+
+export async function setStaffActiveAction(formData: FormData) {
+  const session = await actor("staff");
+  const id = str(formData, "id");
+  const active = str(formData, "active") === "true";
+  const target = await prisma.user.findUnique({ where: { id } });
+  if (!target) redirect("/admin/staff?error=missing");
+  await prisma.user.update({ where: { id }, data: { active } });
+  if (!active) {
+    await revokeAllSessionsForUser(id, { actor: session.email, reason: "account_deactivated" });
+    await adminAudit({ actor: session.email, action: "staff.deactivate", entity: "User", entityId: id });
+  } else {
+    await adminAudit({ actor: session.email, action: "staff.activate", entity: "User", entityId: id });
+  }
+  revalidatePath("/admin/staff");
+  redirect(active ? "/admin/staff?ok=activated" : "/admin/staff?ok=deactivated");
 }
 
 export async function updateLeadAction(formData: FormData) {
@@ -93,11 +120,24 @@ export async function updateLeadAction(formData: FormData) {
     data: {
       status: str(formData, "status") as LeadStatus,
       notes: str(formData, "notes"),
-      assignedStaffId: opt(formData, "assignedStaffId"),
     },
   });
   await adminAudit({ actor: session.email, action: "lead.update", entity: "Lead", entityId: id });
   revalidatePath("/admin/leads");
+  redirect(`/admin/leads/${id}`);
+}
+
+export async function assignLeadAction(formData: FormData) {
+  const session = await actor("leads");
+  const id = str(formData, "id");
+  const result = await assignLeadStaff({
+    leadId: id,
+    assignedStaffId: opt(formData, "assignedStaffId") || null,
+    actorEmail: session.email,
+    actorRole: session.role,
+  });
+  revalidatePath("/admin/leads");
+  if (!result.ok) redirect(`/admin/leads/${id}?error=${result.error}`);
   redirect(`/admin/leads/${id}`);
 }
 
@@ -148,7 +188,8 @@ export async function updateBookingAction(formData: FormData) {
   } else if (intent === "confirm") {
     await confirmBookingTime(id, str(formData, "confirmedDate"), str(formData, "confirmedTime"));
   } else if (intent === "assign") {
-    await assignBookingStaff(id, opt(formData, "technicianId"), opt(formData, "supervisorId"), session.email);
+    const result = await assignBookingStaff(id, opt(formData, "technicianId"), opt(formData, "supervisorId"), session.email);
+    if (!result.ok) redirect(`/admin/bookings/${id}?error=${result.error}`);
   } else if (intent === "notes") {
     await prisma.booking.update({ where: { id }, data: { notes: str(formData, "notes") } });
   }
@@ -181,6 +222,7 @@ export async function createWorkOrderAction(formData: FormData) {
     },
   });
   await adminAudit({ actor: session.email, action: "work_order.create", entity: "WorkOrder", entityId: created.id });
+  await emitWorkOrderEvents(created.id, { status: created.status, technicianId: created.technicianId }, null);
   redirect(`/admin/work-orders/${created.id}`);
 }
 
@@ -190,21 +232,28 @@ export async function updateWorkOrderAction(formData: FormData) {
   const existing = await prisma.workOrder.findUnique({ where: { id } });
   if (!existing) redirect("/admin/work-orders");
   if (session.role === "technician" && existing.technicianId !== session.staffId) redirect("/admin/work-orders");
-  await prisma.workOrder.update({
-    where: { id },
-    data: {
+  const nextTechnicianId = session.role === "technician" ? existing.technicianId : opt(formData, "technicianId") || existing.technicianId;
+  if (nextTechnicianId && nextTechnicianId !== existing.technicianId) {
+    const facts = (await loadSubjectFacts("WorkOrder", id)) || {};
+    const allowed = await assertTechnicianAssignmentAllowed(nextTechnicianId, facts);
+    if (!allowed.ok) redirect(`/admin/work-orders/${id}?error=${allowed.error}`);
+  }
+  const updated = await persistWorkOrderUpdate(
+    id,
+    {
       status: str(formData, "status") || existing.status,
       notes: str(formData, "notes"),
       qcResult: str(formData, "qcResult"),
       customerSignOff: bool(formData, "customerSignOff"),
-      technicianId: opt(formData, "technicianId") || existing.technicianId,
+      technicianId: nextTechnicianId,
       supervisorId: opt(formData, "supervisorId") || existing.supervisorId,
       scheduledDate: opt(formData, "scheduledDate") || existing.scheduledDate,
       scheduledTime: opt(formData, "scheduledTime") || existing.scheduledTime,
       scope: str(formData, "scope") || existing.scope,
     },
-  });
-  await adminAudit({ actor: session.email, action: "work_order.update", entity: "WorkOrder", entityId: id });
+    session.email,
+  );
+  if (!updated) redirect("/admin/work-orders");
   revalidatePath("/admin/work-orders");
   redirect(`/admin/work-orders/${id}`);
 }
@@ -352,12 +401,14 @@ export async function saveQuoteAction(formData: FormData) {
   const input = quoteInput(formData);
   if (!input.customerName || !input.customerPhone) redirect("/admin/quotes/new?error=required");
   if (id) {
-    await updateQuote(id, input, session.email);
+    const updated = await updateQuote(id, input, session.email);
+    if (!updated.ok) redirect(`/admin/quotes/${id}?error=${updated.error}`);
     revalidatePath("/admin/quotes");
     redirect(`/admin/quotes/${id}`);
   }
-  const row = await createQuote(input, session);
-  redirect(`/admin/quotes/${row.id}`);
+  const created = await createQuote(input, session);
+  if (!created.ok) redirect(`/admin/quotes/new?error=${created.error}`);
+  redirect(`/admin/quotes/${created.quote.id}`);
 }
 
 function invoiceInput(formData: FormData) {
@@ -435,4 +486,143 @@ export async function createStaffRecordAction(formData: FormData) {
   });
   await adminAudit({ actor: session.email, action: "staff.record.create", entity: "Staff" });
   redirect("/admin/staff");
+}
+
+export async function saveAutomationRuleAction(formData: FormData) {
+  const session = await actor("automation");
+  const parsed = parseRuleForm({
+    key: str(formData, "key"),
+    name: str(formData, "name"),
+    description: str(formData, "description"),
+    enabled: bool(formData, "enabled"),
+    priority: str(formData, "priority") || "100",
+    trigger: str(formData, "trigger"),
+    delaySeconds: str(formData, "delaySeconds") || "0",
+    conditionsJson: str(formData, "conditionsJson") || "[]",
+    actionsJson: str(formData, "actionsJson") || "[]",
+  });
+  const id = opt(formData, "id");
+  if (!parsed.ok) {
+    redirect(id ? `/admin/automation/${id}?error=${parsed.error}` : `/admin/automation/new?error=${parsed.error}`);
+  }
+  if (id) {
+    await saveAutomationRule({ id, input: parsed.data, actorEmail: session.email, actorId: session.id });
+    revalidatePath("/admin/automation");
+    redirect(`/admin/automation/${id}`);
+  }
+  const row = await saveAutomationRule({ input: parsed.data, actorEmail: session.email, actorId: session.id });
+  redirect(`/admin/automation/${row?.id || ""}`);
+}
+
+export async function toggleAutomationRuleAction(formData: FormData) {
+  const session = await actor("automation");
+  const id = str(formData, "id");
+  const existing = await prisma.automationRule.findUnique({ where: { id } });
+  if (!existing) redirect("/admin/automation");
+  await prisma.automationRule.update({
+    where: { id },
+    data: { enabled: !existing.enabled, updatedBy: session.email },
+  });
+  await adminAudit({
+    actor: session.email,
+    action: existing.enabled ? "automation.rule.disable" : "automation.rule.enable",
+    entity: "AutomationRule",
+    entityId: id,
+    meta: { key: existing.key },
+  });
+  revalidatePath("/admin/automation");
+  redirect("/admin/automation");
+}
+
+export async function retryAutomationJobAction(formData: FormData) {
+  const session = await actor("automation");
+  const id = str(formData, "id");
+  await retryJob(id);
+  await adminAudit({ actor: session.email, action: "automation.job.retry", entity: "AutomationJob", entityId: id });
+  revalidatePath("/admin/automation/runs");
+  redirect("/admin/automation/runs?retried=1");
+}
+
+export async function updateOpsTaskAction(formData: FormData) {
+  const session = await getStaffSession();
+  if (!session) deny();
+  if (!canViewTasks(session.role)) redirect("/admin");
+  const id = str(formData, "id");
+  const next = safeAdminPath(opt(formData, "next"));
+  const statusRaw = opt(formData, "status");
+  const status = statusRaw === "open" || statusRaw === "done" || statusRaw === "cancelled" ? statusRaw : undefined;
+  const assigneeRaw = formData.has("assigneeStaffId") ? opt(formData, "assigneeStaffId") || null : undefined;
+  const result = await updateOpsTask({
+    id,
+    session,
+    status,
+    assigneeStaffId: assigneeRaw,
+  });
+  revalidatePath("/admin/tasks");
+  revalidatePath(next);
+  if (!result.ok) redirect(`${next}?error=${result.error}`);
+  redirect(next);
+}
+
+function sopInputFromForm(formData: FormData) {
+  return {
+    title: str(formData, "title"),
+    sopCode: str(formData, "sopCode"),
+    description: str(formData, "description"),
+    body: str(formData, "body"),
+    audiences: parseAudienceList(formData.getAll("audience").map((value) => String(value))),
+    categorySlug: opt(formData, "categorySlug"),
+    serviceSlug: opt(formData, "serviceSlug"),
+    effectiveDate: opt(formData, "effectiveDate"),
+    reviewDate: opt(formData, "reviewDate"),
+  };
+}
+
+export async function saveKnowledgeAction(formData: FormData) {
+  const session = await actor("knowledge");
+  const id = opt(formData, "id");
+  const input = sopInputFromForm(formData);
+  if (!input.audiences.length) input.audiences = [...SOP_AUDIENCES.filter((row) => row === "ops")];
+  const result = id
+    ? await updateInternalSop(id, input, session.email)
+    : await createInternalSop(input, session.email);
+  if (!result.ok) redirect(`/admin/knowledge/${id || "new"}?error=${result.error}`);
+  revalidatePath("/admin/knowledge");
+  redirect(`/admin/knowledge/${result.row.id}?ok=1`);
+}
+
+export async function setKnowledgeStatusAction(formData: FormData) {
+  const session = await actor("knowledge");
+  const id = str(formData, "id");
+  const status = str(formData, "status");
+  if (status !== "DRAFT" && status !== "ACTIVE" && status !== "ARCHIVED") redirect("/admin/knowledge");
+  const result = await setInternalSopStatus(id, status, session.email);
+  if (!result.ok) redirect("/admin/knowledge?error=missing");
+  revalidatePath("/admin/knowledge");
+  redirect(`/admin/knowledge/${id}`);
+}
+
+function amcInputFromForm(formData: FormData) {
+  return {
+    customerId: str(formData, "customerId"),
+    reference: str(formData, "reference"),
+    startDate: str(formData, "startDate"),
+    endDate: str(formData, "endDate"),
+    frequency: str(formData, "frequency"),
+    coveredServices: str(formData, "coveredServices"),
+    locationLabel: str(formData, "locationLabel"),
+    propertyLabel: str(formData, "propertyLabel"),
+    notes: str(formData, "notes"),
+    status: (str(formData, "status") === "inactive" ? "inactive" : "active") as "active" | "inactive",
+  };
+}
+
+export async function saveAmcAction(formData: FormData) {
+  const session = await actor("amc");
+  const id = opt(formData, "id");
+  const input = amcInputFromForm(formData);
+  const result = id ? await updateAmcContract(id, input, session.email) : await createAmcContract(input, session.email);
+  if (!result.ok) redirect(`/admin/amc/${id || "new"}?error=${result.error}`);
+  revalidatePath("/admin/amc");
+  redirect(`/admin/amc/${result.row.id}`);
 }

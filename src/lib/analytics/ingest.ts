@@ -118,7 +118,7 @@ function toRows(
 
 export async function ingestClientEvents(request: Request) {
   const ip = clientIp(request.headers);
-  const limited = rateLimit(`t:${ip}`, 60, 10 * 60 * 1000);
+  const limited = await rateLimit(`t:${ip}`, 60, 10 * 60 * 1000, { onStoreError: "open" });
   if (!limited.ok) return empty(429);
 
   const length = Number(request.headers.get("content-length") || "0");

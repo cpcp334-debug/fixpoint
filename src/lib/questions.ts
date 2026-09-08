@@ -2,6 +2,7 @@ import { z } from "zod";
 import { prisma } from "@/server/db";
 import { rateLimit } from "@/server/rate-limit";
 import { stampVisitor, trackServer } from "@/lib/analytics/server";
+import { emitDomainEventSafe } from "@/lib/automation/emit";
 
 export const publicQuestionSchema = z.object({
   askerName: z.string().trim().max(80).optional(),
@@ -18,7 +19,7 @@ export async function createPublicQuestion(input: z.infer<typeof publicQuestionS
   const parsed = publicQuestionSchema.safeParse(input);
   if (!parsed.success) return { ok: false as const, error: "invalid" as const };
 
-  const limited = rateLimit(`qa:${ip}`, 5, 60 * 60 * 1000);
+  const limited = await rateLimit(`qa:${ip}`, 5, 60 * 60 * 1000);
   if (!limited.ok) return { ok: false as const, error: "rateLimit" as const };
 
   const data = parsed.data;
@@ -62,6 +63,12 @@ export async function createPublicQuestion(input: z.infer<typeof publicQuestionS
   } catch {
     // Analytics must never fail a question write.
   }
+  await emitDomainEventSafe({
+    trigger: "QNA_RECEIVED",
+    subjectId: row.id,
+    occurrenceKey: "received",
+    payload: { moderationStatus: "PENDING" },
+  });
   return { ok: true as const, id: row.id };
 }
 

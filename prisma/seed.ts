@@ -4,6 +4,9 @@ import { locationTree } from "./data/locations";
 import { diyCategories, diyGuides } from "./data/diy";
 import { faq, list } from "./data/shared";
 import { hashPassword } from "../src/lib/admin/crypto";
+import { upsertDisabledExampleRules } from "../src/lib/automation/catalog";
+import { upsertTemplateSops } from "../src/lib/knowledge/sops";
+import { resolveSeedMode, destructiveSeedRefusalMessage } from "./seed-safety";
 
 const prisma = new PrismaClient();
 
@@ -28,11 +31,20 @@ function pairIntro(
   return `${serviceName} in ${emirateName}: ${serviceShort} ${climate} ${licenseLine} Request a quote if you need a technician; use ALNAJAH AI if you are not sure which trade applies.`;
 }
 
-async function main() {
-  if (process.env.SEED_STAFF_ONLY === "1") {
-    await bootstrapStaff();
-    return;
-  }
+async function runSafeBootstrap() {
+  console.log("Running production-safe / staff bootstrap seed (no operational data deletion).");
+  await bootstrapStaff();
+  await upsertDisabledExampleRules(prisma);
+  await upsertTemplateSops(prisma);
+  console.log("Safe bootstrap complete.");
+}
+
+async function wipeOperationalAndCatalogData() {
+  await prisma.automationRun.deleteMany();
+  await prisma.opsTask.deleteMany();
+  await prisma.adminNotification.deleteMany();
+  await prisma.automationJob.deleteMany();
+  await prisma.automationRule.deleteMany();
   await prisma.diyVote.deleteMany();
   await prisma.reviewVote.deleteMany();
   await prisma.reviewInsight.deleteMany();
@@ -69,7 +81,27 @@ async function main() {
   await prisma.serviceCategory.deleteMany();
   await prisma.locationI18n.deleteMany();
   await prisma.location.deleteMany();
+}
 
+async function main() {
+  const decided = resolveSeedMode();
+  console.log(`Seed mode: ${decided.mode} (${decided.reason})`);
+
+  if (decided.mode === "safe-bootstrap") {
+    if (decided.refusedDestructive) {
+      console.error(destructiveSeedRefusalMessage());
+    }
+    await runSafeBootstrap();
+    return;
+  }
+
+  await wipeOperationalAndCatalogData();
+  await seedCatalogAndContent();
+  console.log("Seed complete: 7 active services, 2 published DIY guides, 4 draft DIY stubs, 7 emirate hubs.");
+  await runSafeBootstrap();
+}
+
+async function seedCatalogAndContent() {
   const categoryIds = new Map<string, string>();
   for (const cat of categories) {
     const row = await prisma.serviceCategory.create({
@@ -383,9 +415,6 @@ async function main() {
       },
     });
   }
-
-  console.log("Seed complete: 7 active services, 2 published DIY guides, 4 draft DIY stubs, 7 emirate hubs.");
-  await bootstrapStaff();
 }
 
 async function bootstrapStaff() {
