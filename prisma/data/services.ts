@@ -1,6 +1,15 @@
 import type { LocaleCopy } from "./shared";
+import {
+  APPROVED_CATEGORIES,
+  APPROVED_CHILDREN,
+  LEGACY_ORPHAN_CATEGORIES,
+  REVIEW_REQUIRED,
+  childSchemaData,
+  childSlug,
+  serviceTypeForCategory,
+} from "./catalog-a1";
 
-type ServiceSeed = {
+export type ServiceSeed = {
   slug: string;
   categorySlug: string;
   sopCode?: string;
@@ -26,25 +35,38 @@ type ServiceSeed = {
   fallback: LocaleCopy;
   safety: LocaleCopy;
   faqs: Array<{ q: LocaleCopy; a: LocaleCopy }>;
+  /** Optional JSON metadata (A1 catalogRole, REVIEW_REQUIRED flags, sortOrder). */
+  schemaData?: Record<string, unknown>;
+  /** true for approved taxonomy parents; false for legacy orphan categories. */
+  categoryApproved?: boolean;
 };
 
-export const categories = [
-  { slug: "cleaning", sopCode: null, sortOrder: 1, name: { en: "Cleaning", ar: "التنظيف" } },
-  { slug: "general-maintenance", sopCode: "SOP-016", sortOrder: 2, name: { en: "General building maintenance", ar: "الصيانة العامة للمباني" } },
-  { slug: "plumbing", sopCode: "SOP-017", sortOrder: 3, name: { en: "Plumbing", ar: "السباكة" } },
-  { slug: "electrical", sopCode: "SOP-018", sortOrder: 4, name: { en: "Electrical", ar: "الكهرباء" } },
-  { slug: "ac", sopCode: "SOP-019", sortOrder: 5, name: { en: "Air conditioning", ar: "التكييف" } },
-  { slug: "painting", sopCode: "SOP-020", sortOrder: 6, name: { en: "Painting", ar: "الدهان" } },
-  { slug: "walls", sopCode: "SOP-021", sortOrder: 7, name: { en: "Walls", ar: "الجدران" } },
-  { slug: "carpentry", sopCode: "SOP-022", sortOrder: 8, name: { en: "Carpentry", ar: "النجارة" } },
-  { slug: "flooring", sopCode: "SOP-023", sortOrder: 9, name: { en: "Flooring & tiling", ar: "الأرضيات والبلاط" } },
-  { slug: "waterproofing", sopCode: "SOP-024", sortOrder: 10, name: { en: "Waterproofing", ar: "العزل المائي" } },
-  { slug: "roof-exterior", sopCode: "SOP-025", sortOrder: 11, name: { en: "Roof & exterior", ar: "الأسطح والواجهات" } },
-  { slug: "bath-kitchen", sopCode: null, sortOrder: 12, name: { en: "Bathrooms & kitchens", ar: "الحمامات والمطابخ" } },
-  { slug: "openings", sopCode: null, sortOrder: 13, name: { en: "Doors & windows", ar: "الأبواب والنوافذ" } },
-  { slug: "preventive", sopCode: null, sortOrder: 14, name: { en: "Preventive & emergency", ar: "الوقائية والطوارئ" } },
-  { slug: "specialist", sopCode: null, sortOrder: 15, name: { en: "Specialist facilities", ar: "منشآت متخصصة" } },
-  { slug: "appliances", sopCode: null, sortOrder: 16, name: { en: "Appliances", ar: "الأجهزة" } },
+export type CategorySeed = {
+  slug: string;
+  sopCode: string | null;
+  sortOrder: number;
+  name: LocaleCopy;
+  description: LocaleCopy;
+  approved: boolean;
+};
+
+export const categories: CategorySeed[] = [
+  ...APPROVED_CATEGORIES.map((cat) => ({
+    slug: cat.slug,
+    sopCode: cat.sopCode,
+    sortOrder: cat.sortOrder,
+    name: { en: cat.nameEn, ar: cat.nameAr },
+    description: { en: cat.descriptionEn, ar: cat.nameAr === REVIEW_REQUIRED ? REVIEW_REQUIRED : "" },
+    approved: true,
+  })),
+  ...LEGACY_ORPHAN_CATEGORIES.map((cat) => ({
+    slug: cat.slug,
+    sopCode: cat.sopCode,
+    sortOrder: cat.sortOrder,
+    name: { en: cat.nameEn, ar: cat.nameAr },
+    description: { en: cat.descriptionEn, ar: "" },
+    approved: false,
+  })),
 ];
 
 const noPrice: LocaleCopy = {
@@ -462,24 +484,41 @@ export const services: ServiceSeed[] = [
   },
 ];
 
-const draftNames: Array<{ slug: string; categorySlug: string; sopCode?: string; name: LocaleCopy; risk: "green" | "yellow" | "red"; diy: boolean }> = [
-  { slug: "carpentry-joinery", categorySlug: "carpentry", sopCode: "SOP-022", name: { en: "Carpentry & Joinery", ar: "النجارة والتركيبات الخشبية" }, risk: "yellow", diy: true },
-  { slug: "flooring-tiling", categorySlug: "flooring", sopCode: "SOP-023", name: { en: "Flooring & Tiling", ar: "الأرضيات والبلاط" }, risk: "yellow", diy: true },
-  { slug: "waterproofing-sealing", categorySlug: "waterproofing", sopCode: "SOP-024", name: { en: "Waterproofing & Sealing", ar: "العزل المائي والإحكام" }, risk: "red", diy: false },
-  { slug: "roof-exterior-maintenance", categorySlug: "roof-exterior", sopCode: "SOP-025", name: { en: "Roof & Exterior Maintenance", ar: "صيانة الأسطح والواجهات" }, risk: "red", diy: false },
-  { slug: "bathroom-maintenance", categorySlug: "bath-kitchen", name: { en: "Bathroom Maintenance", ar: "صيانة الحمامات" }, risk: "yellow", diy: true },
-  { slug: "kitchen-maintenance", categorySlug: "bath-kitchen", name: { en: "Kitchen Maintenance", ar: "صيانة المطابخ" }, risk: "yellow", diy: true },
-  { slug: "doors-windows", categorySlug: "openings", name: { en: "Doors & Windows", ar: "الأبواب والنوافذ" }, risk: "yellow", diy: true },
-  { slug: "preventive-maintenance", categorySlug: "preventive", name: { en: "Preventive Maintenance", ar: "الصيانة الوقائية" }, risk: "yellow", diy: false },
-  { slug: "emergency-maintenance", categorySlug: "preventive", name: { en: "Emergency Maintenance", ar: "صيانة الطوارئ" }, risk: "red", diy: false },
-  { slug: "demolition-dismantling", categorySlug: "specialist", name: { en: "Demolition & Dismantling", ar: "الهدم والتفكيك" }, risk: "red", diy: false },
-  { slug: "swimming-pool-maintenance", categorySlug: "specialist", name: { en: "Swimming Pool Cleaning & Maintenance", ar: "تنظيف وصيانة المسابح" }, risk: "yellow", diy: false },
-  { slug: "water-tank-cleaning", categorySlug: "specialist", name: { en: "Water Tank Cleaning & Maintenance", ar: "تنظيف وصيانة خزانات المياه" }, risk: "yellow", diy: false },
-  { slug: "sauna-maintenance", categorySlug: "specialist", name: { en: "Sauna Room Maintenance & Cleaning", ar: "صيانة وتنظيف غرف الساونا" }, risk: "yellow", diy: false },
-  { slug: "home-appliance-maintenance", categorySlug: "appliances", name: { en: "Home Appliance Maintenance", ar: "صيانة الأجهزة المنزلية" }, risk: "yellow", diy: false },
-  { slug: "gym-cleaning-maintenance", categorySlug: "specialist", name: { en: "Gym Cleaning & Maintenance", ar: "تنظيف وصيانة الصالات الرياضية" }, risk: "yellow", diy: false },
-  { slug: "oven-cooker-maintenance", categorySlug: "appliances", name: { en: "Oven & Cooker Maintenance", ar: "صيانة الأفران والطباخات" }, risk: "red", diy: false },
-  { slug: "kitchen-appliance-maintenance", categorySlug: "appliances", name: { en: "Kitchen Appliance Maintenance", ar: "صيانة أجهزة المطبخ" }, risk: "yellow", diy: false },
+const draftNames: Array<{
+  slug: string;
+  categorySlug: string;
+  sopCode?: string;
+  name: LocaleCopy;
+  risk: "green" | "yellow" | "red";
+  diy: boolean;
+  catalogRole?: "category_anchor" | "legacy_unmapped";
+  note?: string;
+}> = [
+  { slug: "carpentry-joinery", categorySlug: "carpentry", sopCode: "SOP-022", name: { en: "Carpentry & Joinery", ar: "النجارة والتركيبات الخشبية" }, risk: "yellow", diy: true, catalogRole: "legacy_unmapped" },
+  { slug: "flooring-tiling", categorySlug: "flooring", sopCode: "SOP-023", name: { en: "Flooring & Tiling", ar: "الأرضيات والبلاط" }, risk: "yellow", diy: true, catalogRole: "legacy_unmapped" },
+  { slug: "waterproofing-sealing", categorySlug: "waterproofing", sopCode: "SOP-024", name: { en: "Waterproofing & Sealing", ar: "العزل المائي والإحكام" }, risk: "red", diy: false, catalogRole: "legacy_unmapped" },
+  { slug: "roof-exterior-maintenance", categorySlug: "roof-exterior", sopCode: "SOP-025", name: { en: "Roof & Exterior Maintenance", ar: "صيانة الأسطح والواجهات" }, risk: "red", diy: false, catalogRole: "legacy_unmapped" },
+  { slug: "bathroom-maintenance", categorySlug: "bath-kitchen", name: { en: "Bathroom Maintenance", ar: "صيانة الحمامات" }, risk: "yellow", diy: true, catalogRole: "legacy_unmapped" },
+  { slug: "kitchen-maintenance", categorySlug: "bath-kitchen", name: { en: "Kitchen Maintenance", ar: "صيانة المطابخ" }, risk: "yellow", diy: true, catalogRole: "legacy_unmapped" },
+  { slug: "doors-windows", categorySlug: "openings", name: { en: "Doors & Windows", ar: "الأبواب والنوافذ" }, risk: "yellow", diy: true, catalogRole: "legacy_unmapped" },
+  { slug: "preventive-maintenance", categorySlug: "preventive", name: { en: "Preventive Maintenance", ar: "الصيانة الوقائية" }, risk: "yellow", diy: false, catalogRole: "legacy_unmapped" },
+  { slug: "emergency-maintenance", categorySlug: "preventive", name: { en: "Emergency Maintenance", ar: "صيانة الطوارئ" }, risk: "red", diy: false, catalogRole: "legacy_unmapped" },
+  { slug: "demolition-dismantling", categorySlug: "specialist", name: { en: "Demolition & Dismantling", ar: "الهدم والتفكيك" }, risk: "red", diy: false, catalogRole: "legacy_unmapped" },
+  { slug: "swimming-pool-maintenance", categorySlug: "swimming-pool", name: { en: "Swimming Pool Cleaning & Maintenance", ar: "تنظيف وصيانة المسابح" }, risk: "yellow", diy: false, catalogRole: "category_anchor" },
+  { slug: "water-tank-cleaning", categorySlug: "water-tank", name: { en: "Water Tank Cleaning & Maintenance", ar: "تنظيف وصيانة خزانات المياه" }, risk: "yellow", diy: false, catalogRole: "category_anchor" },
+  {
+    slug: "sauna-maintenance",
+    categorySlug: "sauna",
+    name: { en: "Sauna Room Maintenance & Cleaning", ar: "صيانة وتنظيف غرف الساونا" },
+    risk: "yellow",
+    diy: false,
+    catalogRole: "category_anchor",
+    note: "Word-order only vs approved parent Sauna Room Cleaning & Maintenance",
+  },
+  { slug: "home-appliance-maintenance", categorySlug: "appliances", name: { en: "Home Appliance Maintenance", ar: "صيانة الأجهزة المنزلية" }, risk: "yellow", diy: false, catalogRole: "legacy_unmapped" },
+  { slug: "gym-cleaning-maintenance", categorySlug: "gym", name: { en: "Gym Cleaning & Maintenance", ar: "تنظيف وصيانة الصالات الرياضية" }, risk: "yellow", diy: false, catalogRole: "category_anchor" },
+  { slug: "oven-cooker-maintenance", categorySlug: "appliances", name: { en: "Oven & Cooker Maintenance", ar: "صيانة الأفران والطباخات" }, risk: "red", diy: false, catalogRole: "legacy_unmapped" },
+  { slug: "kitchen-appliance-maintenance", categorySlug: "appliances", name: { en: "Kitchen Appliance Maintenance", ar: "صيانة أجهزة المطبخ" }, risk: "yellow", diy: false, catalogRole: "legacy_unmapped" },
 ];
 
 for (const item of draftNames) {
@@ -521,5 +560,64 @@ for (const item of draftNames) {
       ar: item.risk === "red" ? "هذه الفئة عالية الخطورة. لن تُنشر تعليمات إصلاح منزلية إذا فُعّلت." : "ستُستكمل ملاحظات السلامة قبل التفعيل العام.",
     },
     faqs: [],
+    schemaData: {
+      catalogPhase: "A1",
+      catalogRole: item.catalogRole || "legacy_unmapped",
+      ...(item.note ? { mappingNote: item.note } : {}),
+    },
   });
+}
+
+const stubAr = REVIEW_REQUIRED;
+for (const child of APPROVED_CHILDREN) {
+  const slug = childSlug(child);
+  services.push({
+    slug,
+    categorySlug: child.categorySlug,
+    serviceType: serviceTypeForCategory(child.categorySlug),
+    active: false,
+    riskLevel: "yellow",
+    diyAvailable: false,
+    quoteMethod: "inspection",
+    inspectionRequired: true,
+    bookingEnabled: true,
+    emergencyAvailable: false,
+    amcAvailable: false,
+    related: [],
+    questions: [{ en: "Describe the issue and the property type.", ar: stubAr }],
+    name: { en: child.nameEn, ar: stubAr },
+    short: {
+      en: `${child.nameEn} is a draft catalog offering and is not publicly offered until activated.`,
+      ar: stubAr,
+    },
+    long: {
+      en: `${child.nameEn} is part of the Phase A1 master catalog under its parent category. It remains draft/non-indexable until deliberately activated.`,
+      ar: stubAr,
+    },
+    who: { en: "Not publicly offered yet.", ar: stubAr },
+    what: { en: "Not publicly offered yet.", ar: stubAr },
+    whenPro: { en: "Not publicly offered yet.", ar: stubAr },
+    process: processStandard,
+    pricing: noPrice,
+    fallback: {
+      en: "This service is not active. Choose an active service or contact us with your requirement.",
+      ar: stubAr,
+    },
+    safety: {
+      en: "Safety notes and DIY classification require human review before public activation.",
+      ar: stubAr,
+    },
+    faqs: [],
+    schemaData: childSchemaData(child),
+  });
+}
+
+/** Mark the seven public actives as category anchors in metadata (content preserved). */
+for (const svc of services) {
+  if (!svc.active) continue;
+  svc.schemaData = {
+    ...(svc.schemaData || {}),
+    catalogPhase: "A1",
+    catalogRole: "category_anchor",
+  };
 }

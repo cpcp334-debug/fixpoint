@@ -98,7 +98,7 @@ export default async function ReviewsPage({
       <PublicHero kicker={t("title")} title={t("title")} lead={t("lead")} compact />
 
       <Section>
-        <form method="get" className="grid gap-4 rounded-[16px] border border-line/80 bg-sand p-5 sm:grid-cols-2">
+        <form method="get" className="grid gap-4 rounded-xl border border-line bg-sand p-5 sm:grid-cols-2">
           <p className="text-sm font-medium text-navy sm:col-span-2">{t("filters")}</p>
           <div>
             <label className={fieldLabelClass} htmlFor="rev-filter-service">

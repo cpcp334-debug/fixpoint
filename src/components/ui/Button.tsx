@@ -3,18 +3,17 @@ import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
 const variants = {
-  primary:
-    "bg-accent text-white hover:bg-accent-hover shadow-[0_8px_24px_rgba(26,122,109,0.18)]",
-  secondary: "border border-line bg-white text-navy hover:border-navy/30",
+  primary: "bg-accent text-white hover:bg-accent-hover",
+  secondary: "border border-line bg-white text-navy hover:border-navy/20 hover:bg-sand",
   ghost: "text-navy hover:bg-sand",
-  inverse: "border border-white/30 bg-white/5 text-white hover:bg-white/10",
-  inversePrimary: "bg-accent text-white hover:bg-accent-hover",
+  inverse: "border border-white/25 bg-white/5 text-white hover:bg-white/10",
+  inversePrimary: "bg-white text-navy hover:bg-sand",
 } as const;
 
 type Variant = keyof typeof variants;
 
 const base =
-  "inline-flex min-h-11 items-center justify-center gap-2 rounded-[12px] px-5 text-[0.9375rem] font-medium transition-colors motion-reduce:transition-none";
+  "inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium transition-colors motion-reduce:transition-none";
 
 export function ButtonLink({
   href,

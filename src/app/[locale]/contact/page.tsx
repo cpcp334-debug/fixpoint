@@ -4,7 +4,6 @@ import { buildMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { mailUrl, siteConfig, telUrl, whatsappUrl } from "@/config/site";
-import { AiPanel } from "@/components/ai/AiPanel";
 import { ButtonLink } from "@/components/ui/Button";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { PageShell } from "@/components/public/PageShell";
@@ -37,19 +36,18 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       }
     >
       <PublicHero
-        kicker={t("title")}
         title={t("title")}
         lead={t("lead")}
         compact
         actions={
           <div className="flex flex-wrap gap-3">
-            <ButtonLink href={telUrl()} variant="inversePrimary" external>
+            <ButtonLink href={telUrl()} external>
               {siteConfig.phoneDisplay}
             </ButtonLink>
-            <ButtonLink href={whatsappUrl()} variant="inverse" external>
+            <ButtonLink href={whatsappUrl()} variant="secondary" external>
               {cta("whatsapp")}
             </ButtonLink>
-            <ButtonLink href={mailUrl()} variant="inverse" external>
+            <ButtonLink href={mailUrl()} variant="ghost" external>
               {siteConfig.email}
             </ButtonLink>
           </div>
@@ -65,9 +63,6 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             locations={locations.map((s) => ({ slug: s.slug, name: s.t.name }))}
           />
         </div>
-      </Section>
-      <Section tone="sand" id="alnajah-ai">
-        <AiPanel locale={locale} />
       </Section>
       <CtaBand
         title={home("ctaTitle")}

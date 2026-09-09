@@ -32,9 +32,7 @@
     "privacy": "Privacy policy",
     "terms": "Terms",
     "cancellation": "Cancellation policy",
-    "cookies": "Cookie policy",
-    "copyright": "ALNAJAH ALDAEM. Cleaning and building maintenance services in the UAE.",
-    "licensesNote": "Public licenses currently listed: Sharjah cleaning license 925212 and Ajman maintenance license 132954."
+    "cookies": "Cookie policy"
   },
   "Home": {
     "heroKicker": "United Arab Emirates",
@@ -50,7 +48,7 @@
     "stripMaintenance": "Building Maintenance",
     "stripAi": "AI-Assisted Guidance",
     "stripDiy": "DIY Help",
-    "stripHuman": "Human Support",
+    "stripHuman": "Expert Support",
     "stripCoverage": "UAE Service Coverage",
     "unsureTitle": "Not Sure What Service You Need?",
     "unsureLead": "Tell ALNAJAH AI what is happening. We'll help you understand the next step.",

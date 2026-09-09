@@ -167,6 +167,7 @@ const LINKS: Array<{ href: string; label: string; permission: AdminPermission }>
   { href: "/admin/reviews", label: "Reviews", permission: "reviews" },
   { href: "/admin/questions", label: "Q&A", permission: "questions" },
   { href: "/admin/services", label: "Services", permission: "services" },
+  { href: "/admin/service-pages", label: "Service pages", permission: "services" },
   { href: "/admin/locations", label: "Locations", permission: "locations" },
   { href: "/admin/diy", label: "DIY / content", permission: "diy" },
   { href: "/admin/quotes", label: "Quotations", permission: "quotes" },

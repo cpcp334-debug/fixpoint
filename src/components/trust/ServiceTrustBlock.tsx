@@ -30,7 +30,7 @@ export async function ServiceTrustBlock({
 
   return (
     <div className="mt-10 grid gap-10">
-      <section className="rounded-[16px] border border-line/80 bg-white p-5 sm:p-6">
+      <section className="rounded-xl border border-line bg-white p-5 sm:p-6">
         <ReviewSummary
           count={summary.count}
           average={summary.average}
@@ -70,7 +70,7 @@ export async function ServiceTrustBlock({
           }}
         />
       </section>
-      <section className="rounded-[16px] border border-line/80 bg-white p-5 sm:p-6">
+      <section className="rounded-xl border border-line bg-white p-5 sm:p-6">
         <h2 className="text-[1.5rem] font-semibold leading-tight text-navy">{t("qaTitle")}</h2>
         <QaList
           items={questions}

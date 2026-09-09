@@ -12,7 +12,7 @@ export function PageShell({
   return (
     <div>
       {breadcrumbs ? (
-        <div className="border-b border-line bg-sand/50">
+        <div className="border-b border-line bg-white">
           <Container className="py-4">{breadcrumbs}</Container>
         </div>
       ) : null}
@@ -31,7 +31,7 @@ export function ProseCard({
   className?: string;
 }) {
   return (
-    <div className={cn("rounded-[16px] border border-line/80 bg-white p-5", className)}>
+    <div className={cn("rounded-xl border border-line bg-white p-5", className)}>
       {title ? <h2 className="font-semibold text-navy">{title}</h2> : null}
       <div className={cn("text-sm leading-relaxed text-muted", title && "mt-2")}>{children}</div>
     </div>

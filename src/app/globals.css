@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --navy: #0b1f3a;
-  --navy-deep: #071525;
-  --ink: #1a2332;
-  --muted: #5c6778;
-  --accent: #1a7a6d;
-  --accent-hover: #15685d;
-  --gold: #b8923a;
-  --sand: #f6f3ee;
-  --sand-2: #ece6db;
-  --line: #ddd6c8;
+  --navy: #001a33;
+  --navy-deep: #000d1a;
+  --ink: #0b1726;
+  --muted: #5a6b7d;
+  --accent: #c5a059;
+  --accent-hover: #b08d45;
+  --gold: #d4af37;
+  --sand: #f7f5f0;
+  --sand-2: #efe9dc;
+  --line: #ddd4c4;
   --white: #ffffff;
   --danger: #b42318;
-  --focus: #1a7a6d;
+  --focus: #c5a059;
 }
 
 @theme inline {
@@ -40,7 +40,7 @@ body {
 
 body {
   font-family: var(--font-sans), "Segoe UI", sans-serif;
-  line-height: 1.65;
+  line-height: 1.55;
 }
 
 html[dir="rtl"] body {
@@ -64,6 +64,13 @@ html[dir="rtl"] body {
 
 .skip-link:focus {
   top: 12px;
+}
+
+.hero-atmosphere {
+  background:
+    radial-gradient(ellipse 80% 60% at 85% 20%, rgba(197, 160, 89, 0.22), transparent 55%),
+    radial-gradient(ellipse 55% 45% at 10% 90%, rgba(197, 160, 89, 0.12), transparent 50%),
+    linear-gradient(145deg, #000d1a 0%, #001a33 45%, #0a2744 100%);
 }
 
 @media (prefers-reduced-motion: reduce) {

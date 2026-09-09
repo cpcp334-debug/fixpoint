@@ -26,7 +26,7 @@ export function Section({
     <section
       id={id}
       className={cn(
-        "scroll-mt-24 py-14 sm:py-16 lg:py-20",
+        "scroll-mt-20 py-7 sm:py-9",
         tone === "sand" && "bg-sand",
         tone === "navy" && "bg-navy text-white",
         tone === "white" && "bg-white",
@@ -51,20 +51,18 @@ export function SectionHeader({
 }) {
   return (
     <div className={cn("max-w-2xl", className)}>
-      {eyebrow ? (
-        <p className="text-[0.75rem] font-medium uppercase tracking-[0.16em] text-gold">{eyebrow}</p>
-      ) : null}
-      <h2 className="mt-2 text-[1.5rem] font-semibold leading-tight text-navy sm:text-[1.75rem]">{title}</h2>
-      {lead ? <p className="mt-3 text-muted">{lead}</p> : null}
+      {eyebrow ? <p className="text-sm font-medium text-accent">{eyebrow}</p> : null}
+      <h2 className={cn("text-xl font-semibold tracking-tight text-navy sm:text-2xl", eyebrow && "mt-1.5")}>{title}</h2>
+      {lead ? <p className="mt-2 max-w-xl text-sm text-muted sm:text-base">{lead}</p> : null}
     </div>
   );
 }
 
 export function EmptyState({ title, body }: { title?: string; body: string }) {
   return (
-    <div className="rounded-[16px] border border-line bg-sand/60 px-5 py-6">
-      {title ? <h2 className="text-[1.5rem] font-semibold text-navy">{title}</h2> : null}
-      <p className={cn("text-muted", title && "mt-3")}>{body}</p>
+    <div className="rounded-xl border border-line bg-sand px-4 py-4">
+      {title ? <h2 className="text-lg font-semibold text-navy">{title}</h2> : null}
+      <p className={cn("text-sm text-muted", title && "mt-2")}>{body}</p>
     </div>
   );
 }

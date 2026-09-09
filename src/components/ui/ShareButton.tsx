@@ -40,7 +40,7 @@ export function ShareButton({
         type="button"
         onClick={() => void onShare()}
         className={cn(
-          "inline-flex min-h-10 items-center gap-2 rounded-[12px] px-3 text-sm",
+          "inline-flex min-h-10 items-center gap-2 rounded-lg px-3 text-sm",
           tone === "inverse" ? "text-white/75 hover:text-white" : "border border-line bg-white text-navy hover:border-navy/25",
         )}
         aria-label={label}

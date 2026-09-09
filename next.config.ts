@@ -6,6 +6,8 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Hide the floating Next.js “N” Dev Tools badge (dev-only clutter in screenshots).
+  devIndicators: false,
   serverExternalPackages: ["@prisma/client", "pdfkit", "exceljs"],
   experimental: {
     cpus: 1,

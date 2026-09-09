@@ -36,7 +36,7 @@ export function ReviewList({
   return (
     <ul className="mt-6 grid gap-4">
       {reviews.map((review) => (
-        <li key={review.id} className="rounded-[16px] border border-line/80 bg-white p-5">
+        <li key={review.id} className="rounded-xl border border-line bg-white p-5">
           <div className="flex flex-wrap items-center gap-2">
             <RatingStars value={review.stars} />
             {review.showVerified ? <VerifiedBadge label={labels.verified} /> : null}

@@ -5,8 +5,6 @@ type Chip = { label: string; prompt: string };
 export function ProblemChips({ chips, hint }: { chips: Chip[]; hint: string }) {
   function choose(prompt: string) {
     window.dispatchEvent(new CustomEvent("alnajah-ai-prefill", { detail: prompt }));
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    document.getElementById("alnajah-ai")?.scrollIntoView({ behavior: reduce ? "auto" : "smooth" });
   }
 
   return (
@@ -18,7 +16,7 @@ export function ProblemChips({ chips, hint }: { chips: Chip[]; hint: string }) {
             <button
               type="button"
               onClick={() => choose(chip.prompt)}
-              className="min-h-11 rounded-full border border-line bg-white px-4 text-sm text-navy transition hover:border-navy/30 motion-reduce:transition-none"
+              className="min-h-10 rounded-lg border border-line bg-white px-3 text-sm text-navy hover:border-navy/20"
             >
               {chip.label}
             </button>

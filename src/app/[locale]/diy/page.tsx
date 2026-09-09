@@ -58,7 +58,7 @@ export default async function DiyIndexPage({ params }: { params: Promise<{ local
         )}
       />
 
-      <PublicHero kicker={t("title")} title={t("title")} lead={t("lead")} />
+      <PublicHero title={t("title")} lead={t("lead")} compact={!categories.length} />
 
       <Section>
         <Disclaimer>{siteConfig.disclaimers.diy[locale === "ar" ? "ar" : "en"]}</Disclaimer>

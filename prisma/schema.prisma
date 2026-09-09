@@ -36,6 +36,30 @@ enum LocationStatus {
   archived
 }
 
+enum ServiceLocationLifecycle {
+  draft
+  review
+  approved
+  published
+  archived
+}
+
+enum ServiceLocationQualityStatus {
+  incomplete
+  ready_for_review
+  approved
+  publishable
+  indexable
+  failed_quality
+}
+
+enum ServiceLocationRevisionStatus {
+  draft
+  approved
+  published
+  superseded
+}
+
 enum RiskLevel {
   green
   yellow
@@ -286,18 +310,37 @@ model LocationI18n {
 }
 
 model ServiceLocation {
-  id            String   @id @default(cuid())
-  serviceId     String
-  locationId    String
-  indexable     Boolean  @default(false)
-  qualityScore  Int      @default(0)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  service       Service  @relation(fields: [serviceId], references: [id], onDelete: Cascade)
-  location      Location @relation(fields: [locationId], references: [id], onDelete: Cascade)
-  translations  ServiceLocationI18n[]
+  id                         String                        @id @default(cuid())
+  serviceId                  String
+  locationId                 String
+  indexable                  Boolean                       @default(false)
+  qualityScore               Int                           @default(0)
+  covered                    Boolean                       @default(false)
+  coverageStatus             ServiceLocationLifecycle      @default(draft)
+  qualityStatus              ServiceLocationQualityStatus  @default(incomplete)
+  indexableEn                Boolean                       @default(false)
+  indexableAr                Boolean                       @default(false)
+  bookingEnabledOverride     Boolean?
+  amcAvailableOverride       Boolean?
+  emergencyAvailableOverride Boolean?
+  diyRestricted              Boolean                       @default(false)
+  heroImageOverride          String?
+  publishedAt                DateTime?
+  approvedAt                 DateTime?
+  approvedBy                 String?
+  createdAt                  DateTime                      @default(now())
+  updatedAt                  DateTime                      @updatedAt
+  service                    Service                       @relation(fields: [serviceId], references: [id], onDelete: Cascade)
+  location                   Location                      @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  translations               ServiceLocationI18n[]
+  revisions                  ServiceLocationRevision[]
 
   @@unique([serviceId, locationId])
+  @@index([coverageStatus, indexable])
+  @@index([indexable, updatedAt])
+  @@index([locationId, coverageStatus])
+  @@index([serviceId, coverageStatus])
+  @@index([qualityStatus])
 }
 
 model ServiceLocationI18n {
@@ -309,9 +352,34 @@ model ServiceLocationI18n {
   seoTitle          String
   metaDescription   String
   faq               String          @default("[]")
+  h1                String          @default("")
+  body              String          @default("")
+  directAnswer      String          @default("")
+  geoIntro          String          @default("")
+  imageAlt          String          @default("")
   serviceLocation   ServiceLocation @relation(fields: [serviceLocationId], references: [id], onDelete: Cascade)
 
   @@unique([serviceLocationId, locale])
+}
+
+model ServiceLocationRevision {
+  id                 String                         @id @default(cuid())
+  serviceLocationId  String
+  revisionNumber     Int
+  locale             String
+  snapshotJson       String
+  generatedBy        String                         @default("system")
+  approvedBy         String?
+  approvedAt         DateTime?
+  changeReason       String                         @default("")
+  previousRevisionId String?
+  status             ServiceLocationRevisionStatus  @default(draft)
+  createdAt          DateTime                       @default(now())
+  serviceLocation    ServiceLocation                @relation(fields: [serviceLocationId], references: [id], onDelete: Cascade)
+
+  @@unique([serviceLocationId, locale, revisionNumber])
+  @@index([serviceLocationId, status])
+  @@index([serviceLocationId, locale, status])
 }
 
 model DiyCategory {

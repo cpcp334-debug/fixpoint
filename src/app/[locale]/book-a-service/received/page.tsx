@@ -53,7 +53,7 @@ export default async function BookingReceivedPage({
     >
       <PublicHero kicker={t("title")} title={t("receivedTitle")} lead={t("receivedLead")} compact />
       <Section>
-        <dl className="mx-auto grid max-w-xl gap-3 rounded-[16px] border border-line/80 bg-sand p-5 text-sm">
+        <dl className="mx-auto grid max-w-xl gap-3 rounded-xl border border-line bg-white p-5 text-sm">
           <Row label={t("reference")} value={receipt.number} />
           <Row label={t("serviceLabel")} value={receipt.serviceName || t("notSpecified")} />
           <Row label={t("typeLabel")} value={t(`type_${receipt.type}`)} />

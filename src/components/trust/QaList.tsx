@@ -13,7 +13,7 @@ export function QaList({
   return (
     <dl className="mt-4 grid gap-3">
       {items.map((item) => (
-        <div key={item.id} className="rounded-[16px] border border-line/80 bg-white p-5">
+        <div key={item.id} className="rounded-xl border border-line bg-white p-5">
           <dt className="font-medium text-navy">{item.body}</dt>
           <dd className="mt-2 text-sm text-muted">{item.answer}</dd>
           <ReportQuestion id={item.id} labels={labels} />

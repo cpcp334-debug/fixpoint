@@ -49,38 +49,36 @@ export function PublicHero({
   const publishedImage = resolvePublishedHeroImage(heroImage);
 
   return (
-    <section className="relative overflow-hidden bg-navy text-white">
-      <div className="pointer-events-none absolute -start-24 top-0 h-72 w-72 rounded-full bg-accent/15 blur-3xl" />
-      <div className="pointer-events-none absolute -end-16 bottom-0 h-80 w-80 rounded-full bg-gold/10 blur-3xl" />
+    <section className="border-b border-line bg-white">
       <Container
         className={cn(
-          "relative grid gap-10 py-10 sm:py-14 lg:items-center lg:gap-14",
+          "grid gap-10 py-10 sm:py-14 lg:items-center lg:gap-14",
           compact ? "lg:grid-cols-1" : "lg:grid-cols-2",
         )}
       >
         <div>
-          {kicker ? (
-            <p className="text-[0.75rem] font-medium uppercase tracking-[0.18em] text-gold">{kicker}</p>
-          ) : null}
-          <div className="mt-3 flex items-start gap-3">
+          {kicker && kicker !== title ? <p className="text-sm font-medium text-accent">{kicker}</p> : null}
+          <div className={cn("flex items-start gap-3", kicker && kicker !== title && "mt-3")}>
             {Icon ? (
-              <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 text-gold">
+              <span className="mt-1 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-sand text-navy">
                 <Icon className="h-5 w-5" />
               </span>
             ) : null}
-            <h1 className="max-w-xl text-[2rem] font-semibold leading-[1.15] sm:text-[2.35rem]">{title}</h1>
+            <h1 className="max-w-3xl text-3xl font-semibold tracking-tight text-navy sm:text-4xl sm:leading-[1.15]">
+              {title}
+            </h1>
           </div>
-          {lead ? <p className="mt-4 max-w-xl text-[1.05rem] leading-relaxed text-white/80">{lead}</p> : null}
-          {meta ? <div className="mt-4 text-sm text-white/70">{meta}</div> : null}
+          {lead ? <p className="mt-4 max-w-2xl text-lg leading-relaxed text-muted">{lead}</p> : null}
+          {meta ? <div className="mt-4 text-sm text-muted">{meta}</div> : null}
           {actions ? <div className="mt-8">{actions}</div> : null}
           {shareUrl && shareLabel && copiedLabel ? (
             <div className="mt-6">
-              <ShareButton url={shareUrl} label={shareLabel} copiedLabel={copiedLabel} tone="inverse" />
+              <ShareButton url={shareUrl} label={shareLabel} copiedLabel={copiedLabel} />
             </div>
           ) : null}
         </div>
         {compact ? null : (
-          <div className="relative aspect-[4/3] overflow-hidden rounded-[20px] border border-white/10 bg-navy-deep">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-line bg-sand">
             {publishedImage ? (
               // Real image only when the published row already has a local file. Never the homepage stock hero.
               // eslint-disable-next-line @next/next/no-img-element

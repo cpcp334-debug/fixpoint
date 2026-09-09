@@ -20,17 +20,15 @@ export function CtaBand({
   aiHref?: string;
 }) {
   return (
-    <Section tone="navy">
-      <h2 className="max-w-xl text-[1.75rem] font-semibold leading-tight text-white">{title}</h2>
-      <p className="mt-3 max-w-xl text-white/75">{body}</p>
+    <Section tone="sand">
+      <h2 className="max-w-xl text-2xl font-semibold tracking-tight text-navy sm:text-3xl">{title}</h2>
+      <p className="mt-3 max-w-xl text-muted">{body}</p>
       <div className="mt-8 flex flex-wrap gap-3">
-        <ButtonLink href="/get-a-quote" variant="inversePrimary">
-          {quote}
-        </ButtonLink>
-        <ButtonLink href={aiHref} variant="inverse" external>
+        <ButtonLink href="/get-a-quote">{quote}</ButtonLink>
+        <ButtonLink href={aiHref} variant="secondary" external>
           {ai}
         </ButtonLink>
-        <ButtonLink href={whatsappUrl(whatsappText)} variant="inverse" external>
+        <ButtonLink href={whatsappUrl(whatsappText)} variant="ghost" external>
           {whatsapp}
         </ButtonLink>
       </div>

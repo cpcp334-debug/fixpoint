@@ -2,8 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getActiveServices } from "@/lib/catalog";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
-import { AiPanel } from "@/components/ai/AiPanel";
-import { EmptyState, Section, SectionHeader } from "@/components/ui/Section";
+import { Section } from "@/components/ui/Section";
 import { ServiceCard } from "@/components/home/Cards";
 import { PageShell } from "@/components/public/PageShell";
 import { PublicHero } from "@/components/public/PublicHero";
@@ -33,12 +32,11 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
         />
       }
     >
-      <PublicHero kicker={t("title")} title={t("title")} lead={t("lead")} />
+      <PublicHero title={t("title")} lead={t("lead")} compact={!services.length} />
 
-      <Section>
-        <p className="text-sm text-muted">{t("draftNote")}</p>
-        {services.length ? (
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {services.length ? (
+        <Section>
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {services.map((service) => (
               <ServiceCard
                 key={service.slug}
@@ -52,19 +50,8 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
               />
             ))}
           </div>
-        ) : (
-          <div className="mt-8">
-            <EmptyState body={t("draftNote")} />
-          </div>
-        )}
-      </Section>
-
-      <Section tone="sand" id="alnajah-ai">
-        <SectionHeader title={t("ai")} />
-        <div className="mt-6">
-          <AiPanel locale={locale} />
-        </div>
-      </Section>
+        </Section>
+      ) : null}
 
       <CtaBand
         title={home("ctaTitle")}

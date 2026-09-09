@@ -32,7 +32,7 @@ export default async function LocationsPage({ params }: { params: Promise<{ loca
         />
       }
     >
-      <PublicHero kicker={t("title")} title={t("title")} lead={t("lead")} />
+      <PublicHero title={t("title")} lead={t("lead")} compact={!emirates.length} />
 
       <Section>
         <ul className="grid gap-3 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7">

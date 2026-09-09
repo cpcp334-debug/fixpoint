@@ -41,7 +41,7 @@ export function FaqList({ items }: { items: Array<{ q: string; a: string }> }) {
   return (
     <dl className="grid gap-3">
       {items.map((item) => (
-        <div key={item.q} className="rounded-[16px] border border-line/80 bg-white p-5">
+        <div key={item.q} className="rounded-xl border border-line bg-white p-5">
           <dt className="font-semibold text-navy">{item.q}</dt>
           <dd className="mt-2 text-sm leading-relaxed text-muted">{item.a}</dd>
         </div>
@@ -51,5 +51,5 @@ export function FaqList({ items }: { items: Array<{ q: string; a: string }> }) {
 }
 
 export function Disclaimer({ children }: { children: string }) {
-  return <p className="rounded-[12px] bg-sand px-4 py-3 text-sm text-muted">{children}</p>;
+  return <p className="rounded-lg bg-sand px-4 py-3 text-sm text-muted">{children}</p>;
 }

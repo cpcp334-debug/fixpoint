@@ -3,7 +3,15 @@ import { categories, services } from "./data/services";
 import { locationTree } from "./data/locations";
 import { diyCategories, diyGuides } from "./data/diy";
 import { faq, list } from "./data/shared";
+import {
+  appLocationType,
+  loadLocationMaster,
+  resolveParentCityName,
+  validateLocationMaster,
+  type MasterLocation,
+} from "./data/location-master";
 import { hashPassword } from "../src/lib/admin/crypto";
+import { workingCopySnapshot } from "../src/lib/service-location/revisions";
 import { upsertDisabledExampleRules } from "../src/lib/automation/catalog";
 import { upsertTemplateSops } from "../src/lib/knowledge/sops";
 import { resolveSeedMode, destructiveSeedRefusalMessage } from "./seed-safety";
@@ -29,6 +37,99 @@ function pairIntro(
   licenseLine: string,
 ) {
   return `${serviceName} in ${emirateName}: ${serviceShort} ${climate} ${licenseLine} Request a quote if you need a technician; use ALNAJAH AI if you are not sure which trade applies.`;
+}
+
+function a2LocationIntro(loc: MasterLocation, locale: "en" | "ar") {
+  if (locale === "en") {
+    return `${loc.nameEn} is a catalog location record for ALNAJAH ALDAEM service planning. This entry does not claim service coverage, licensing, or booking availability.`;
+  }
+  return `${loc.nameAr === "REVIEW_REQUIRED" ? loc.nameEn : loc.nameAr} سجل موقع في كتالوج النجاح الدائم للتخطيط. هذا السجل لا يدّعي تغطية الخدمة أو الترخيص أو توفر الحجز.`;
+}
+
+/** Seed Phase A2 cities/communities from master JSON. Never creates ServiceLocation rows. */
+async function seedA2CitiesAndCommunities(uaeId: string, locationIds: Map<string, string>) {
+  const master = loadLocationMaster();
+  const validation = validateLocationMaster(master);
+  if (!validation.ok) {
+    throw new Error(`A2 location master invalid: ${validation.errors.join("; ")}`);
+  }
+
+  const cities = master.locations.filter((l) => l.type === "city");
+  for (const city of cities) {
+    const emirateId = locationIds.get(city.emirateSlug!);
+    if (!emirateId) throw new Error(`A2 missing emirate for city ${city.slug}`);
+    const row = await prisma.location.create({
+      data: {
+        slug: city.slug,
+        type: LocationType.city,
+        parentId: emirateId,
+        status: LocationStatus.draft,
+        serves: false,
+        indexable: false,
+        sortOrder: city.id,
+        translations: {
+          create: [
+            {
+              locale: "en",
+              name: city.nameEn,
+              intro: a2LocationIntro(city, "en"),
+              seoTitle: seoTitle(city.nameEn, ""),
+              metaDescription: meta(a2LocationIntro(city, "en")),
+            },
+            {
+              locale: "ar",
+              name: city.nameAr,
+              intro: a2LocationIntro(city, "ar"),
+              seoTitle: `${city.nameAr === "REVIEW_REQUIRED" ? city.nameEn : city.nameAr} | النجاح الدائم`.slice(0, 60),
+              metaDescription: meta(a2LocationIntro(city, "ar")),
+            },
+          ],
+        },
+      },
+    });
+    locationIds.set(city.slug, row.id);
+  }
+
+  const cityByEmName = new Map(cities.map((c) => [`${c.emirateSlug}|${c.nameEn}`, c.slug]));
+  const communities = master.locations.filter((l) => l.type === "community" || l.type === "area");
+  for (const community of communities) {
+    const parentName = resolveParentCityName(community.parentCityMunicipality);
+    const parentSlug = cityByEmName.get(`${community.emirateSlug}|${parentName}`);
+    const parentId = parentSlug ? locationIds.get(parentSlug) : undefined;
+    if (!parentId) {
+      throw new Error(`A2 missing parent city for ${community.slug} (${community.emirateSlug}|${parentName})`);
+    }
+    const row = await prisma.location.create({
+      data: {
+        slug: community.slug,
+        type: LocationType[appLocationType(community.type)],
+        parentId,
+        status: LocationStatus.draft,
+        serves: false,
+        indexable: false,
+        sortOrder: community.id,
+        translations: {
+          create: [
+            {
+              locale: "en",
+              name: community.nameEn,
+              intro: a2LocationIntro(community, "en"),
+              seoTitle: seoTitle(community.nameEn, ""),
+              metaDescription: meta(a2LocationIntro(community, "en")),
+            },
+            {
+              locale: "ar",
+              name: community.nameAr,
+              intro: a2LocationIntro(community, "ar"),
+              seoTitle: `${community.nameAr === "REVIEW_REQUIRED" ? community.nameEn : community.nameAr} | النجاح الدائم`.slice(0, 60),
+              metaDescription: meta(a2LocationIntro(community, "ar")),
+            },
+          ],
+        },
+      },
+    });
+    locationIds.set(community.slug, row.id);
+  }
 }
 
 async function runSafeBootstrap() {
@@ -67,6 +168,7 @@ async function wipeOperationalAndCatalogData() {
   await prisma.amcContract.deleteMany();
   await prisma.property.deleteMany();
   await prisma.customer.deleteMany();
+  await prisma.serviceLocationRevision.deleteMany();
   await prisma.serviceLocationI18n.deleteMany();
   await prisma.serviceLocation.deleteMany();
   await prisma.diyGuideI18n.deleteMany();
@@ -97,7 +199,9 @@ async function main() {
 
   await wipeOperationalAndCatalogData();
   await seedCatalogAndContent();
-  console.log("Seed complete: 7 active services, 2 published DIY guides, 4 draft DIY stubs, 7 emirate hubs.");
+  console.log(
+    "Seed complete: Phase A1 catalog (18 approved categories + 293 draft children), Phase A2 locations (200 total: UAE + 7 emirates + cities/communities draft), 7 active anchors, legacy drafts/orphans preserved, 2 published DIY guides, 4 draft DIY stubs, ServiceLocation remains 7×7=49.",
+  );
   await runSafeBootstrap();
 }
 
@@ -109,11 +213,11 @@ async function seedCatalogAndContent() {
         slug: cat.slug,
         sopCode: cat.sopCode,
         sortOrder: cat.sortOrder,
-        status: ContentStatus.published,
+        status: cat.approved ? ContentStatus.published : ContentStatus.draft,
         translations: {
           create: [
-            { locale: "en", name: cat.name.en },
-            { locale: "ar", name: cat.name.ar },
+            { locale: "en", name: cat.name.en, description: cat.description.en },
+            { locale: "ar", name: cat.name.ar, description: cat.description.ar },
           ],
         },
       },
@@ -123,10 +227,14 @@ async function seedCatalogAndContent() {
 
   const serviceIds = new Map<string, string>();
   for (const svc of services) {
+    const categoryId = categoryIds.get(svc.categorySlug);
+    if (!categoryId) {
+      throw new Error(`Seed missing category for service ${svc.slug} (categorySlug=${svc.categorySlug})`);
+    }
     const status = svc.active ? ServiceStatus.active : ServiceStatus.draft;
     const row = await prisma.service.create({
       data: {
-        categoryId: categoryIds.get(svc.categorySlug)!,
+        categoryId,
         slug: svc.slug,
         serviceType: svc.serviceType,
         status,
@@ -140,6 +248,7 @@ async function seedCatalogAndContent() {
         indexable: svc.active,
         relatedServiceSlugs: JSON.stringify(svc.related),
         aiIntakeQuestions: JSON.stringify(svc.questions),
+        schemaData: JSON.stringify(svc.schemaData || {}),
         sopCode: svc.sopCode,
         translations: {
           create: (["en", "ar"] as const).map((locale) => ({
@@ -246,6 +355,10 @@ async function seedCatalogAndContent() {
     locationIds.set(em.slug, row.id);
   }
 
+  // Phase A2 — additive city/community catalog (draft, non-serving, non-indexable).
+  // Does not expand ServiceLocation (still active services × emirates only).
+  await seedA2CitiesAndCommunities(uae.id, locationIds);
+
   const activeServices = services.filter((s) => s.active);
   for (const svc of activeServices) {
     for (const em of locationTree.emirates) {
@@ -255,6 +368,14 @@ async function seedCatalogAndContent() {
           locationId: locationIds.get(em.slug)!,
           indexable: true,
           qualityScore: 80,
+          covered: true,
+          coverageStatus: "published",
+          qualityStatus: "indexable",
+          indexableEn: true,
+          indexableAr: true,
+          approvedBy: "seed",
+          approvedAt: new Date(),
+          publishedAt: new Date(),
           translations: {
             create: [
               {
@@ -298,8 +419,23 @@ async function seedCatalogAndContent() {
             ],
           },
         },
+        include: { translations: true },
       });
-      void sl;
+      for (const copy of sl.translations) {
+        await prisma.serviceLocationRevision.create({
+          data: {
+            serviceLocationId: sl.id,
+            locale: copy.locale,
+            revisionNumber: 1,
+            snapshotJson: workingCopySnapshot(copy),
+            generatedBy: "seed",
+            approvedBy: "seed",
+            approvedAt: new Date(),
+            changeReason: "Initial published working copy",
+            status: "published",
+          },
+        });
+      }
     }
   }
 

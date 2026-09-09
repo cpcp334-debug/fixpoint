@@ -8,20 +8,25 @@ export function buildMetadata(opts: {
   path: string;
   index?: boolean;
   ogType?: "website" | "article";
+  /** When set, only these locale alternates are emitted (hreflang). */
+  languages?: Record<string, string>;
 }): Metadata {
   const site = getSiteUrl();
   const canonical = `${site}/${opts.locale}${opts.path === "/" ? "" : opts.path}`;
   const index = opts.index !== false;
+  const languages =
+    opts.languages ??
+    ({
+      en: `${site}/en${opts.path === "/" ? "" : opts.path}`,
+      ar: `${site}/ar${opts.path === "/" ? "" : opts.path}`,
+    } satisfies Record<string, string>);
 
   return {
     title: opts.title,
     description: opts.description,
     alternates: {
       canonical,
-      languages: {
-        en: `${site}/en${opts.path === "/" ? "" : opts.path}`,
-        ar: `${site}/ar${opts.path === "/" ? "" : opts.path}`,
-      },
+      languages,
     },
     robots: index ? { index: true, follow: true } : { index: false, follow: false },
     openGraph: {

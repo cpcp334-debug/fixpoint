@@ -155,6 +155,14 @@ export function IconClose(props: IconProps) {
   );
 }
 
+export function IconMinus(props: IconProps) {
+  return (
+    <Svg {...props}>
+      <path d="M5 12h14" />
+    </Svg>
+  );
+}
+
 export function IconChat(props: IconProps) {
   return (
     <Svg {...props}>

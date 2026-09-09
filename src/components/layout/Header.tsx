@@ -6,17 +6,16 @@ import { useTranslations } from "next-intl";
 import { siteConfig, telUrl, whatsappUrl } from "@/config/site";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
-import { IconChat, IconClose, IconMenu } from "@/components/ui/Icon";
+import { BrandLogo } from "@/components/brand/BrandLogo";
+import { AiMark } from "@/components/ui/AiMark";
+import { IconClose, IconMenu } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 
 const links = [
-  { href: "/", key: "home" },
   { href: "/services", key: "services" },
   { href: "/diy", key: "diy" },
-  { href: "/projects", key: "projects" },
   { href: "/locations", key: "locations" },
   { href: "/reviews", key: "reviews" },
-  { href: "/faq", key: "faq" },
   { href: "/contact", key: "contact" },
 ] as const;
 
@@ -29,53 +28,61 @@ export function Header({ locale }: { locale: string }) {
   const aiHref = `/${locale}#alnajah-ai`;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line/80 bg-white/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 border-b border-line/70 bg-white/95 backdrop-blur-md">
       <a className="skip-link" href="#main">
         {skip}
       </a>
-      <Container className="flex items-center justify-between gap-4 py-3">
-        <Link href="/" className="min-w-0 shrink-0">
-          <span className="block font-semibold tracking-tight text-navy">
-            {locale === "ar" ? siteConfig.brandAr : siteConfig.brand}
-          </span>
-          <span className="mt-0.5 block max-w-[14rem] truncate text-[0.7rem] font-normal text-muted">
-            {siteConfig.positioning[locale === "ar" ? "ar" : "en"]}
-          </span>
+      <Container className="flex h-14 items-center gap-3 sm:h-16 sm:gap-4">
+        <Link href="/" className="shrink-0" aria-label={siteConfig.brand}>
+          <BrandLogo size={44} priority />
         </Link>
-        <nav className="hidden items-center gap-5 text-[0.9rem] xl:flex" aria-label="Main">
+
+        <nav className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 text-sm lg:flex" aria-label="Main">
           {links.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               className={cn(
-                "py-1 text-ink hover:text-accent",
-                pathname === link.href && "font-medium text-accent",
+                "rounded-full px-3 py-1.5 text-muted transition-colors hover:bg-sand hover:text-navy",
+                pathname === link.href && "bg-sand font-medium text-navy",
               )}
             >
               {t(link.key)}
             </Link>
           ))}
         </nav>
-        <div className="hidden items-center gap-2 xl:flex">
-          <Link href={pathname} locale={other} className="rounded-[12px] px-3 py-2 text-sm text-muted hover:text-navy">
-            {other === "ar" ? "العربية" : "English"}
-          </Link>
-          <a href={aiHref} className="inline-flex min-h-11 items-center gap-1.5 rounded-[12px] px-3 text-sm font-medium text-navy hover:bg-sand">
-            <IconChat className="h-4 w-4" />
-            {t("ai")}
+
+        <div className="ms-auto hidden items-center gap-2 lg:flex">
+          <a
+            href={aiHref}
+            aria-label={t("ai")}
+            className="inline-flex items-center gap-1.5 rounded-full border border-gold/50 bg-white py-0.5 pe-3 ps-0.5 text-sm font-medium text-navy hover:border-gold hover:bg-sand"
+          >
+            <AiMark id="header-ai-mark" size={28} />
+            <span>AI</span>
           </a>
-          <ButtonLink href="/get-a-quote">{t("quote")}</ButtonLink>
-        </div>
-        <div className="flex items-center gap-2 xl:hidden">
-          <ButtonLink href="/get-a-quote" className="min-h-10 px-3 text-sm">
+          <Link
+            href={pathname}
+            locale={other}
+            className="rounded-full px-3 py-2 text-sm text-muted hover:bg-sand hover:text-navy"
+          >
+            {other === "ar" ? "العربية" : "EN"}
+          </Link>
+          <ButtonLink href="/get-a-quote" className="rounded-full">
             {t("quote")}
           </ButtonLink>
-          <a href={aiHref} className="inline-flex min-h-10 items-center rounded-[12px] border border-line px-3 text-sm text-navy" aria-label={t("ai")}>
-            <IconChat className="h-4 w-4" />
+        </div>
+
+        <div className="ms-auto flex items-center gap-2 lg:hidden">
+          <a href={aiHref} aria-label={t("ai")} className="inline-flex rounded-full" onClick={() => setOpen(false)}>
+            <AiMark id="header-ai-mark-mobile" size={34} />
           </a>
+          <ButtonLink href="/get-a-quote" className="min-h-10 rounded-full px-3">
+            {t("quote")}
+          </ButtonLink>
           <button
             type="button"
-            className="inline-flex min-h-10 w-10 items-center justify-center rounded-[12px] border border-line text-navy"
+            className="inline-flex min-h-10 w-10 items-center justify-center rounded-full border border-line text-navy"
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((v) => !v)}
@@ -86,25 +93,28 @@ export function Header({ locale }: { locale: string }) {
         </div>
       </Container>
       {open ? (
-        <nav id="mobile-nav" className="border-t border-line bg-white px-4 py-4 xl:hidden">
-          <div className="mx-auto flex max-w-6xl flex-col gap-1">
+        <nav id="mobile-nav" className="border-t border-line bg-white px-4 py-2 lg:hidden">
+          <div className="mx-auto flex max-w-6xl flex-col">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-[12px] px-3 py-3 text-navy hover:bg-sand"
+                className="rounded-lg px-3 py-2 text-navy hover:bg-sand"
                 onClick={() => setOpen(false)}
               >
                 {t(link.key)}
               </Link>
             ))}
-            <Link href={pathname} locale={other} className="rounded-[12px] px-3 py-3" onClick={() => setOpen(false)}>
+            <a href={aiHref} className="rounded-lg px-3 py-2 text-navy hover:bg-sand" onClick={() => setOpen(false)}>
+              {t("ai")}
+            </a>
+            <Link href={pathname} locale={other} className="rounded-lg px-3 py-2 text-navy" onClick={() => setOpen(false)}>
               {other === "ar" ? "العربية" : "English"}
             </Link>
-            <a href={whatsappUrl()} className="rounded-[12px] px-3 py-3">
+            <a href={whatsappUrl()} className="rounded-lg px-3 py-2 text-navy">
               {t("whatsapp")}
             </a>
-            <a href={telUrl()} className="rounded-[12px] px-3 py-3">
+            <a href={telUrl()} className="rounded-lg px-3 py-2 text-navy">
               {t("call")} · {siteConfig.phoneDisplay}
             </a>
           </div>

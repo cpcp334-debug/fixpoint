@@ -19,7 +19,6 @@ import {
 import { parseJson } from "@/lib/utils";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
-import { AiPanel } from "@/components/ai/AiPanel";
 import { Disclaimer, FaqList } from "@/components/ui/Blocks";
 import { VoteButtons } from "@/components/diy/VoteButtons";
 import { GuideReaderFeedback } from "@/components/diy/GuideReaderFeedback";
@@ -281,8 +280,8 @@ async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) 
           <SectionHeader title={t("steps")} />
           <ol className="mt-8 grid gap-4">
             {steps.map((step, index) => (
-              <li key={step} className="rounded-[16px] border border-line/80 bg-white p-5">
-                <p className="text-[0.75rem] font-medium tracking-[0.14em] text-gold">
+              <li key={step} className="rounded-xl border border-line bg-white p-5">
+                <p className="text-xs font-medium text-accent">
                   {String(index + 1).padStart(2, "0")}
                 </p>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{step}</p>
@@ -338,12 +337,6 @@ async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) 
         </Section>
       ) : null}
 
-      <Section tone="sand" id="alnajah-ai">
-        <div>
-          <AiPanel locale={locale} />
-        </div>
-      </Section>
-
       <Section>
         <VoteButtons guideId={guide.id} />
         <div className="mt-10">
@@ -351,7 +344,7 @@ async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) 
           {feedback.length ? (
             <ul className="mt-4 grid gap-3">
               {feedback.map((item) => (
-                <li key={item.id} className="rounded-[16px] border border-line/80 bg-white p-4">
+                <li key={item.id} className="rounded-xl border border-line bg-white p-4">
                   <p className="text-sm font-medium text-navy">
                     {item.authorName} · {item.stars}/5
                   </p>
@@ -372,7 +365,7 @@ async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) 
           {questions.length ? (
             <dl className="mt-4 grid gap-3">
               {questions.map((item) => (
-                <div key={item.id} className="rounded-[16px] border border-line/80 bg-white p-5">
+                <div key={item.id} className="rounded-xl border border-line bg-white p-5">
                   <dt className="font-medium text-navy">{item.body}</dt>
                   <dd className="mt-2 text-sm text-muted">{item.answer}</dd>
                 </div>

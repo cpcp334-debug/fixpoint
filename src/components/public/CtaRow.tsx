@@ -7,6 +7,7 @@ export function CtaRow({
   whatsappText,
   tone = "light",
   includeInspect = false,
+  bookingEnabled = true,
   extra,
 }: {
   labels: {
@@ -19,6 +20,8 @@ export function CtaRow({
   whatsappText?: string;
   tone?: "light" | "inverse";
   includeInspect?: boolean;
+  /** When false, omit the book CTA (effective ServiceLocation ops). */
+  bookingEnabled?: boolean;
   extra?: ReactNode;
 }) {
   const primary = tone === "inverse" ? "inversePrimary" : "primary";
@@ -29,10 +32,12 @@ export function CtaRow({
       <ButtonLink href="/get-a-quote" variant={primary}>
         {labels.quote}
       </ButtonLink>
-      <ButtonLink href="/book-a-service" variant={secondary}>
-        {labels.book}
-      </ButtonLink>
-      {includeInspect && labels.inspect ? (
+      {bookingEnabled ? (
+        <ButtonLink href="/book-a-service" variant={secondary}>
+          {labels.book}
+        </ButtonLink>
+      ) : null}
+      {includeInspect && bookingEnabled && labels.inspect ? (
         <ButtonLink href="/book-a-service?type=inspection" variant={secondary}>
           {labels.inspect}
         </ButtonLink>

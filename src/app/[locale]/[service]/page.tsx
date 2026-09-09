@@ -13,7 +13,6 @@ import { breadcrumbJsonLd, buildMetadata, faqJsonLd, reviewAggregateJsonLd, serv
 import { parseJson } from "@/lib/utils";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
-import { AiPanel } from "@/components/ai/AiPanel";
 import { Disclaimer, FaqList } from "@/components/ui/Blocks";
 import { ServiceTrustBlock } from "@/components/trust/ServiceTrustBlock";
 import { getApprovedServiceReviews, summarizeApprovedServiceReviews, toPublicReview } from "@/lib/reviews";
@@ -136,7 +135,7 @@ export default async function ServicePage({
         shareUrl={publicCanonical(locale, `/${row.slug}`)}
         shareLabel={home("share")}
         copiedLabel={home("copied")}
-        actions={<CtaRow labels={ctaLabels} whatsappText={wa} tone="inverse" />}
+        actions={<CtaRow labels={ctaLabels} whatsappText={wa} />}
       />
 
       {capabilities.length || questions.length ? (
@@ -163,13 +162,6 @@ export default async function ServicePage({
           <ProseCard title={t("overview")}>{row.t.longDescription}</ProseCard>
           <ProseCard title={t("who")}>{row.t.whoItIsFor}</ProseCard>
           <ProseCard title={t("what")}>{row.t.whatWeDo}</ProseCard>
-        </div>
-      </Section>
-
-      <Section tone="sand" id="alnajah-ai">
-        <SectionHeader title={t("ai")} />
-        <div className="mt-6">
-          <AiPanel locale={locale} />
         </div>
       </Section>
 

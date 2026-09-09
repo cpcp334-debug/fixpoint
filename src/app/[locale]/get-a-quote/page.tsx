@@ -35,7 +35,7 @@ export default async function QuotePage({ params }: { params: Promise<{ locale: 
         />
       }
     >
-      <PublicHero kicker={t("title")} title={t("title")} lead={t("lead")} compact />
+      <PublicHero title={t("title")} lead={t("lead")} compact />
       <Section>
         <Disclaimer>{siteConfig.disclaimers.quote[locale === "ar" ? "ar" : "en"]}</Disclaimer>
         <p className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">

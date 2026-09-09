@@ -8,12 +8,16 @@ export default async function ServiceEditPage({ params }: { params: Promise<{ id
   const auth = await needPermission("services");
   if (!auth.ok) return <Forbidden />;
   const { id } = await params;
-  const row = await prisma.service.findUnique({ where: { id }, include: { translations: true } });
+  const row = await prisma.service.findUnique({
+    where: { id },
+    include: { translations: true, category: { include: { translations: true } } },
+  });
   if (!row) notFound();
   const en = row.translations.find((t) => t.locale === "en");
+  const categoryEn = row.category.translations.find((t) => t.locale === "en")?.name || row.category.slug;
   return (
     <div>
-      <PageHeader title={en?.name || row.slug} note={`Slug ${row.slug} — public pages require active + indexable.`} />
+      <PageHeader title={en?.name || row.slug} note={`Slug ${row.slug} · Category ${categoryEn} — public pages require active + indexable.`} />
       <form action={updateServiceAction} className="max-w-xl space-y-3 rounded-md border border-line bg-white p-4">
         <input type="hidden" name="id" value={row.id} />
         <SelectField

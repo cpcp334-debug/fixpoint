@@ -1,6 +1,22 @@
 import { cache } from "react";
+import type { Prisma } from "@prisma/client";
 import { prisma } from "@/server/db";
 import { pickI18n } from "@/lib/utils";
+import {
+  getServiceLocation as resolvePublicServiceLocation,
+  resolveServiceLocationPage,
+} from "@/lib/service-location/page-resolve";
+
+export const publicServiceLocationWhere = {
+  indexable: true,
+  covered: true,
+  coverageStatus: "published",
+  service: { status: "active", indexable: true },
+  location: { status: "active", indexable: true, serves: true },
+} satisfies Prisma.ServiceLocationWhereInput;
+
+export { resolveServiceLocationPage };
+export const getServiceLocation = resolvePublicServiceLocation;
 
 export const getActiveServices = cache(async (locale: string) => {
   const rows = await prisma.service.findMany({
@@ -42,28 +58,6 @@ export const getEmirateBySlug = cache(async (slug: string, locale: string) => {
   });
   if (!row) return null;
   return { ...row, t: pickI18n(row.translations, locale)! };
-});
-
-export const getServiceLocation = cache(async (serviceSlug: string, locationSlug: string, locale: string) => {
-  const row = await prisma.serviceLocation.findFirst({
-    where: {
-      indexable: true,
-      service: { slug: serviceSlug, status: "active", indexable: true },
-      location: { slug: locationSlug, status: "active", indexable: true, serves: true },
-    },
-    include: {
-      translations: true,
-      service: { include: { translations: true } },
-      location: { include: { translations: true } },
-    },
-  });
-  if (!row) return null;
-  return {
-    ...row,
-    t: pickI18n(row.translations, locale)!,
-    serviceT: pickI18n(row.service.translations, locale)!,
-    locationT: pickI18n(row.location.translations, locale)!,
-  };
 });
 
 export const getPublishedGuides = cache(async (locale: string) => {

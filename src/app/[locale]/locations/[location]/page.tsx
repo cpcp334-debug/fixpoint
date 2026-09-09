@@ -5,7 +5,6 @@ import { prisma } from "@/server/db";
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
-import { AiPanel } from "@/components/ai/AiPanel";
 import { FaqList } from "@/components/ui/Blocks";
 import { ServiceTrustBlock } from "@/components/trust/ServiceTrustBlock";
 import { parseJson } from "@/lib/utils";
@@ -96,7 +95,7 @@ export default async function LocationPage({
         shareUrl={publicCanonical(locale, `/locations/${em.slug}`)}
         shareLabel={home("share")}
         copiedLabel={home("copied")}
-        actions={<CtaRow labels={ctaLabels} whatsappText={wa} tone="inverse" />}
+        actions={<CtaRow labels={ctaLabels} whatsappText={wa} />}
       />
 
       <Section tone="sand">
@@ -135,13 +134,6 @@ export default async function LocationPage({
 
       <Section>
         <ServiceTrustBlock locale={locale} locationId={em.id} locationSlug={em.slug} />
-      </Section>
-
-      <Section tone="sand" id="alnajah-ai">
-        <SectionHeader title={servicesT("ai")} />
-        <div className="mt-6">
-          <AiPanel locale={locale} />
-        </div>
       </Section>
 
       {faqItems.length ? (

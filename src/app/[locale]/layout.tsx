@@ -3,14 +3,15 @@ import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
-import { IBM_Plex_Sans, IBM_Plex_Sans_Arabic } from "next/font/google";
+import { IBM_Plex_Sans_Arabic, Plus_Jakarta_Sans } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { Tracker } from "@/components/analytics/Tracker";
+import { AiWidget } from "@/components/ai/AiWidget";
 import "../globals.css";
 
-const sans = IBM_Plex_Sans({
+const sans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
@@ -47,6 +48,7 @@ export default async function LocaleLayout({
           <Header locale={locale} />
           <main id="main">{children}</main>
           <Footer locale={locale} />
+          <AiWidget locale={locale} />
           <Tracker />
         </NextIntlClientProvider>
       </body>
