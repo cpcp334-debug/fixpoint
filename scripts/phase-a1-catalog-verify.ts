@@ -17,6 +17,7 @@ import {
   assertCatalogA1Counts,
   childSlug,
 } from "../prisma/data/catalog-a1";
+import { DIY_SAFETY_ALIGNMENTS_A411 } from "../prisma/data/diy-safety-alignment-a411";
 
 function assert(cond: unknown, message: string): asserts cond {
   if (!cond) throw new Error(message);
@@ -77,7 +78,13 @@ async function main() {
     assert(row.status === "draft", `child ${slug} must be draft`);
     assert(row.indexable === false, `child ${slug} must not be indexable`);
     assert(row.diyAvailable === false, `child ${slug} diyAvailable must be false`);
-    assert(row.riskLevel === "yellow", `child ${slug} riskLevel must be yellow`);
+    const aligned = DIY_SAFETY_ALIGNMENTS_A411[slug];
+    if (aligned) {
+      assert(row.riskLevel === aligned.riskLevel, `child ${slug} riskLevel must match A4.1.1 alignment (${aligned.riskLevel})`);
+      assert(aligned.diyAvailable === false, `A4.1.1 child alignment must keep diyAvailable=false (${slug})`);
+    } else {
+      assert(row.riskLevel === "yellow", `child ${slug} riskLevel must be yellow`);
+    }
     assert(row.category.slug === def.categorySlug, `child ${slug} category mismatch`);
     const en = row.translations.find((t) => t.locale === "en");
     const ar = row.translations.find((t) => t.locale === "ar");

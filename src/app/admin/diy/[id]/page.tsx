@@ -11,15 +11,26 @@ export default async function DiyEditPage({ params }: { params: Promise<{ id: st
   const row = await prisma.diyGuide.findUnique({ where: { id }, include: { translations: true } });
   if (!row) notFound();
   const en = row.translations.find((t) => t.locale === "en");
+  let profilePreview = "";
+  try {
+    const parsed = JSON.parse(row.profileJson || "{}") as { metadata?: { authored?: boolean; status?: string; batch?: string } };
+    profilePreview = `authored=${String(parsed.metadata?.authored ?? false)} status=${parsed.metadata?.status ?? "—"} batch=${parsed.metadata?.batch ?? "—"}`;
+  } catch {
+    profilePreview = "invalid profileJson";
+  }
   return (
     <div>
-      <PageHeader title={en?.title || row.slug} />
+      <PageHeader title={en?.title || row.slug} note={`Profile: ${row.profileStatus} v${row.profileVersion} · AR ${row.arabicReviewStatus} · ${profilePreview}`} />
       <form action={updateDiyAction} className="max-w-xl space-y-3 rounded-md border border-line bg-white p-4">
         <input type="hidden" name="id" value={row.id} />
         <SelectField label="Status" name="status" defaultValue={row.status} options={["draft", "review", "published", "archived"].map((value) => ({ value, label: value }))} />
         <Field label="English title" name="titleEn" defaultValue={en?.title} />
         <Field label="Quick answer" name="quickAnswerEn" defaultValue={en?.quickAnswer} textarea />
         <Field label="Professional fallback" name="fallbackEn" defaultValue={en?.professionalFallback} textarea />
+        <p className="text-sm text-ink/70">
+          profileJson is managed by A4.2 authoring scripts (read-only here). Primary services: check Service.primaryDiyGuideId.
+          No bulk publish from this screen.
+        </p>
         <label className="flex items-center gap-2 text-sm">
           <input type="checkbox" name="indexable" defaultChecked={row.indexable} /> Indexable
         </label>

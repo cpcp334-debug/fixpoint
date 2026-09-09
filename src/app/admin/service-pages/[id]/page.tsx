@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { needPermission } from "@/lib/admin/guard";
 import { Forbidden, PageHeader } from "@/components/admin/Ui";
-import { evaluateRow, getServicePage } from "@/lib/admin/service-pages";
+import { evaluateRow, getServicePage, readinessLabels } from "@/lib/admin/service-pages";
 
 export default async function ServicePagePreview({ params }: { params: Promise<{ id: string }> }) {
   const auth = await needPermission("services");
@@ -11,12 +11,13 @@ export default async function ServicePagePreview({ params }: { params: Promise<{
   const row = await getServicePage(id);
   if (!row) notFound();
   const evald = evaluateRow(row);
+  const ready = readinessLabels(evald.quality, evald.gates);
   const publicPath = `/${row.service.slug}/${row.location.slug}`;
   return (
     <div>
       <PageHeader
         title={`${evald.serviceEn?.name || row.service.slug} × ${evald.locationEn?.name || row.location.slug}`}
-        note="Read-only preview. No publish/approve actions in A3.1. Public URL is unchanged."
+        note="A4.1 read-only readiness. No publish/approve/authoring actions."
         actions={
           <div className="flex gap-3 text-sm">
             <Link className="text-navy" href={`/admin/service-pages/${id}/preview?locale=en`}>
@@ -32,8 +33,26 @@ export default async function ServicePagePreview({ params }: { params: Promise<{
         }
       />
       <p className="mb-4 text-sm text-muted">
-        Public path: <code>{publicPath}</code> · ID <code>{row.id}</code>
+        Public path: <code>{publicPath}</code> · ID <code>{row.id}</code> · Mode{" "}
+        <code>{evald.contentMode}</code>
       </p>
+      <section className="mb-4 rounded-md border border-line bg-white p-4 text-sm">
+        <h2 className="font-semibold">Content readiness</h2>
+        <ul className="mt-2 grid gap-1 sm:grid-cols-2">
+          <li>Coverage: {ready.coverage}</li>
+          <li>EN: {ready.en}</li>
+          <li>AR: {ready.ar}</li>
+          <li>SEO: {ready.seo}</li>
+          <li>GEO: {ready.geo}</li>
+          <li>AEO: {ready.aeo}</li>
+          <li>DIY: {ready.diy}</li>
+          <li>IMAGE: {ready.image}</li>
+          <li>QUALITY: {ready.quality}</li>
+          <li>INDEX EN: {ready.indexEn}</li>
+          <li>INDEX AR: {ready.indexAr}</li>
+          <li>OVERALL: {ready.overall}</li>
+        </ul>
+      </section>
       <div className="grid gap-4 lg:grid-cols-2">
         <section className="rounded-md border border-line bg-white p-4 text-sm">
           <h2 className="font-semibold">Coverage / lifecycle</h2>
@@ -55,8 +74,9 @@ export default async function ServicePagePreview({ params }: { params: Promise<{
             <li>Emergency: {evald.ops.emergencyAvailable ? "yes" : "no"}</li>
             <li>DIY visible: {evald.diy.visible ? "yes" : "no"}</li>
             <li>DIY safety: {evald.diy.safetyClass}</li>
+            <li>Matrix class: {evald.diy.matrixClass || "unmapped"}</li>
+            <li>Risk/matrix mismatch: {evald.diy.riskMatrixMismatch ? "yes" : "no"}</li>
             <li>DIY guide: {evald.diy.guideSlug || "none (inherit service only)"}</li>
-            <li>Safety weakened: {evald.diy.safetyWeakened ? "yes" : "no"}</li>
             <li>Image: {evald.image.source}</li>
           </ul>
         </section>
@@ -73,7 +93,16 @@ export default async function ServicePagePreview({ params }: { params: Promise<{
           <p className="mt-3 text-xs text-muted">Suggested title: {evald.titleAr.title}</p>
         </section>
         <section className="rounded-md border border-line bg-white p-4 text-sm lg:col-span-2">
-          <h2 className="font-semibold">Revisions</h2>
+          <h2 className="font-semibold">Quality checks</h2>
+          <ul className="mt-2 space-y-1">
+            {evald.quality.checks.map((c) => (
+              <li key={c.id}>
+                {c.status.toUpperCase()} · {c.label}
+                {c.detail ? ` — ${c.detail}` : ""}
+              </li>
+            ))}
+          </ul>
+          <h2 className="mt-4 font-semibold">Revisions</h2>
           <ul className="mt-2 space-y-1">
             {row.revisions.map((rev) => (
               <li key={rev.id}>
@@ -86,7 +115,7 @@ export default async function ServicePagePreview({ params }: { params: Promise<{
               <p className="font-medium">Gate notes</p>
               <ul className="mt-1 list-disc ps-5">
                 {evald.gates.failures.map((f) => (
-                  <li key={f.code}>
+                  <li key={`${f.code}-${f.message}`}>
                     {f.code}: {f.message}
                   </li>
                 ))}

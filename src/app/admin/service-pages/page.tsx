@@ -1,7 +1,7 @@
 import { prisma } from "@/server/db";
 import { needPermission } from "@/lib/admin/guard";
 import { AdminTable, Forbidden, PageHeader } from "@/components/admin/Ui";
-import { evaluateRow, listServicePages, servicePageDashboard, type ServicePageFilters } from "@/lib/admin/service-pages";
+import { evaluateRow, listServicePages, readinessLabels, servicePageDashboard, type ServicePageFilters } from "@/lib/admin/service-pages";
 import Link from "next/link";
 
 export default async function ServicePagesAdminPage({
@@ -49,7 +49,7 @@ export default async function ServicePagesAdminPage({
     <div>
       <PageHeader
         title="Service pages"
-        note="A3.1/A3.2 read/filter/preview. Includes published coverage and draft pilot rows. No bulk generation or publish."
+        note="A4.1 read-only completeness/quality. No authoring, approve, publish, or bulk generation."
       />
       <div className="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
         {cards.map(([label, value]) => (
@@ -118,18 +118,25 @@ export default async function ServicePagesAdminPage({
           </button>
         </div>
       </form>
-      <AdminTable headers={["Service", "Location", "Lifecycle", "Covered", "Quality", "EN index", "AR index", ""]}>
+      <AdminTable
+        headers={["Service", "Location", "EN", "AR", "SEO", "GEO", "AEO", "DIY", "Img", "Quality", "Ready", ""]}
+      >
         {rows.map((row) => {
           const evald = evaluateRow(row);
+          const ready = readinessLabels(evald.quality, evald.gates);
           return (
-            <tr key={row.id} className="border-t border-line">
+            <tr key={row.id} className="border-t border-line text-xs">
               <td className="px-3 py-2">{evald.serviceEn?.name || row.service.slug}</td>
               <td className="px-3 py-2">{evald.locationEn?.name || row.location.slug}</td>
-              <td className="px-3 py-2">{row.coverageStatus}</td>
-              <td className="px-3 py-2">{row.covered ? "yes" : "no"}</td>
-              <td className="px-3 py-2">{evald.gates.qualityStatus}</td>
-              <td className="px-3 py-2">{evald.gates.indexableEn ? "yes" : "no"}</td>
-              <td className="px-3 py-2">{evald.gates.indexableAr ? "yes" : "no"}</td>
+              <td className="px-3 py-2">{ready.en}</td>
+              <td className="px-3 py-2">{ready.ar}</td>
+              <td className="px-3 py-2">{ready.seo}</td>
+              <td className="px-3 py-2">{ready.geo}</td>
+              <td className="px-3 py-2">{ready.aeo}</td>
+              <td className="px-3 py-2">{ready.diy}</td>
+              <td className="px-3 py-2">{ready.image}</td>
+              <td className="px-3 py-2">{ready.quality}</td>
+              <td className="px-3 py-2">{ready.overall}</td>
               <td className="px-3 py-2">
                 <Link className="text-navy" href={`/admin/service-pages/${row.id}`}>
                   Preview

@@ -30,6 +30,8 @@ export type ArabicConfidence = "HIGH" | "MEDIUM" | "REVIEW_REQUIRED" | "UNKNOWN"
 
 export type DiySafetyClass = "GREEN" | "YELLOW" | "RED" | "REVIEW_REQUIRED";
 
+export type ContentEvalMode = "LEGACY_COMPAT" | "STRICT_NEW_CONTENT";
+
 export type CoverageInput = {
   covered: boolean;
   coverageStatus: ServiceLocationLifecycle;
@@ -62,6 +64,8 @@ export type WorkingCopy = {
   directAnswer?: string;
   geoIntro?: string;
   imageAlt?: string;
+  /** Hybrid A4.1 structured sections (object or JSON string). */
+  contentJson?: unknown;
 };
 
 export type GateInput = CoverageInput &
@@ -88,6 +92,8 @@ export type GateInput = CoverageInput &
     claimScanOk: boolean;
     thinContentOk: boolean;
     humanApproved: boolean;
+    /** Default LEGACY_COMPAT preserves A3.x grandfathered behavior. */
+    contentMode?: ContentEvalMode;
   };
 
 export type GateFailure = {

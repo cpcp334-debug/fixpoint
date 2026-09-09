@@ -2,7 +2,7 @@ import type { PrismaClient, ServiceLocationRevisionStatus } from "@prisma/client
 import type { WorkingCopy } from "./types";
 
 export function workingCopySnapshot(copy: WorkingCopy) {
-  return JSON.stringify({
+  const payload: Record<string, unknown> = {
     locale: copy.locale,
     intro: copy.intro,
     localInfo: copy.localInfo,
@@ -14,7 +14,11 @@ export function workingCopySnapshot(copy: WorkingCopy) {
     directAnswer: copy.directAnswer ?? "",
     geoIntro: copy.geoIntro ?? "",
     imageAlt: copy.imageAlt ?? "",
-  });
+  };
+  if (copy.contentJson != null) {
+    payload.contentJson = copy.contentJson;
+  }
+  return JSON.stringify(payload);
 }
 
 export async function publishRevision(

@@ -4,6 +4,7 @@ import { getSiteUrl } from "@/config/site";
 import { prisma } from "@/server/db";
 import { parseJson, pickI18n } from "@/lib/utils";
 import { arabicConfidenceForSlug } from "@/lib/service-location/arabic";
+import { isLegacyCompatRow } from "@/lib/service-location/content-completeness";
 import { isPubliclyEligible } from "@/lib/service-location/coverage";
 import { evaluateServiceLocationGates, localeShouldIndex } from "@/lib/service-location/gates";
 import { resolveDiyInheritance } from "@/lib/service-location/diy";
@@ -29,6 +30,7 @@ const resolveInclude = {
   service: {
     include: {
       translations: true,
+      primaryDiyGuide: { include: { translations: true } },
       diyGuides: {
         where: { status: "published", indexable: true },
         include: { translations: true },
@@ -253,12 +255,17 @@ function buildModel(
     if (!arName || !arLoc) return null;
   }
 
-  const guide = row.service.diyGuides[0] ?? null;
+  const primary = row.service.primaryDiyGuide;
+  const guide =
+    primary && primary.status === "published" && primary.indexable
+      ? primary
+      : row.service.diyGuides[0] ?? null;
   const guideT = guide ? pickI18n(guide.translations, locale) : null;
   const diyBase = resolveDiyInheritance({
     serviceRiskLevel: row.service.riskLevel,
     serviceDiyAvailable: row.service.diyAvailable,
     diyRestricted: row.diyRestricted,
+    serviceSlug: row.service.slug,
     guide: guide ? { id: guide.id, slug: guide.slug, riskLevel: guide.riskLevel, status: guide.status } : null,
   });
   const diy = {
@@ -268,6 +275,7 @@ function buildModel(
     whenToStop: guideT?.whenToStop,
     guideHref: diyBase.visible && guide ? `/diy/${guide.slug}` : null,
   };
+  const contentMode = isLegacyCompatRow(row) ? "LEGACY_COMPAT" : "STRICT_NEW_CONTENT";
 
   const ops = resolveEffectiveOps({
     bookingEnabledOverride: row.bookingEnabledOverride,
@@ -354,6 +362,7 @@ function buildModel(
     arabicConfidence: arabicConfidenceForSlug(row.location.slug),
     diySafetyClass: diy.safetyClass,
     safetyReviewComplete: diy.safetyClass !== "RED" && diy.safetyClass !== "REVIEW_REQUIRED",
+    // Grandfathered pairs keep A3 scanner stubs; new content uses STRICT quality path separately.
     uniqueTitleEn: true,
     uniqueTitleAr: true,
     uniqueMetaEn: true,
@@ -362,6 +371,7 @@ function buildModel(
     claimScanOk: true,
     thinContentOk: true,
     humanApproved: Boolean(row.approvedBy),
+    contentMode,
   });
 
   const coverageOk = isCoverageEligible(row);

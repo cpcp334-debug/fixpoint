@@ -2,12 +2,18 @@ import type { Prisma } from "@prisma/client";
 import { prisma } from "@/server/db";
 import { pickI18n } from "@/lib/utils";
 import { arabicConfidenceForSlug } from "@/lib/service-location/arabic";
+import { isLegacyCompatRow } from "@/lib/service-location/content-completeness";
+import {
+  evaluateContentQuality,
+  gateScannerFlagsFromReport,
+  type ContentQualityReport,
+} from "@/lib/service-location/content-quality";
 import { evaluateServiceLocationGates } from "@/lib/service-location/gates";
 import { resolveDiyInheritance } from "@/lib/service-location/diy";
 import { resolveEffectiveOps } from "@/lib/service-location/overrides";
 import { resolveImageInheritance } from "@/lib/service-location/images";
 import { buildServiceLocationTitle } from "@/lib/service-location/seo-title";
-import type { DiySafetyClass, GateInput } from "@/lib/service-location/types";
+import type { DiySafetyClass, GateInput, WorkingCopy } from "@/lib/service-location/types";
 
 const listInclude = {
   translations: true,
@@ -16,6 +22,7 @@ const listInclude = {
       translations: true,
       category: { include: { translations: true } },
       diyGuides: { include: { translations: true } },
+      primaryDiyGuide: { include: { translations: true } },
     },
   },
   location: { include: { translations: true, parent: { include: { translations: true } } } },
@@ -40,16 +47,41 @@ export type ServicePageFilters = {
   language?: string;
 };
 
-function gateInputFromRow(row: ServicePageRow): GateInput {
-  const en = row.translations.find((t) => t.locale === "en") ?? null;
-  const ar = row.translations.find((t) => t.locale === "ar") ?? null;
-  const guide = row.service.diyGuides.find((g) => g.status === "published") ?? row.service.diyGuides[0] ?? null;
+function workingFromRow(row: ServicePageRow, locale: string): WorkingCopy | null {
+  const t = row.translations.find((x) => x.locale === locale);
+  if (!t) return null;
+  return {
+    locale,
+    intro: t.intro,
+    localInfo: t.localInfo,
+    seoTitle: t.seoTitle,
+    metaDescription: t.metaDescription,
+    faq: t.faq,
+    h1: t.h1,
+    body: t.body,
+    directAnswer: t.directAnswer,
+    geoIntro: t.geoIntro,
+    imageAlt: t.imageAlt,
+  };
+}
+
+function gateInputFromRow(row: ServicePageRow, report: ContentQualityReport): GateInput {
+  const en = workingFromRow(row, "en");
+  const ar = workingFromRow(row, "ar");
+  const guide =
+    row.service.primaryDiyGuide ??
+    row.service.diyGuides.find((g) => g.status === "published") ??
+    row.service.diyGuides[0] ??
+    null;
   const diy = resolveDiyInheritance({
     serviceRiskLevel: row.service.riskLevel,
     serviceDiyAvailable: row.service.diyAvailable,
     diyRestricted: row.diyRestricted,
+    serviceSlug: row.service.slug,
     guide: guide ? { id: guide.id, slug: guide.slug, riskLevel: guide.riskLevel, status: guide.status } : null,
   });
+  const scanners = gateScannerFlagsFromReport(report);
+  const mode = isLegacyCompatRow(row) ? "LEGACY_COMPAT" : "STRICT_NEW_CONTENT";
   return {
     covered: row.covered,
     coverageStatus: row.coverageStatus,
@@ -79,29 +111,41 @@ function gateInputFromRow(row: ServicePageRow): GateInput {
     arabicConfidence: arabicConfidenceForSlug(row.location.slug),
     diySafetyClass: diy.safetyClass,
     safetyReviewComplete: diy.safetyClass !== "RED" && diy.safetyClass !== "REVIEW_REQUIRED",
-    uniqueTitleEn: true,
-    uniqueTitleAr: true,
-    uniqueMetaEn: true,
-    uniqueMetaAr: true,
-    duplicateSimilarityOk: true,
-    claimScanOk: true,
-    thinContentOk: true,
+    ...scanners,
+    // Legacy pairs: do not let soft scanners unpublish A3 grandfathered rows
+    ...(mode === "LEGACY_COMPAT"
+      ? {
+          uniqueTitleEn: true,
+          uniqueTitleAr: true,
+          uniqueMetaEn: true,
+          uniqueMetaAr: true,
+          duplicateSimilarityOk: true,
+          claimScanOk: true,
+          thinContentOk: true,
+        }
+      : {}),
     humanApproved: Boolean(row.approvedBy),
+    contentMode: mode,
   };
 }
 
 export function evaluateRow(row: ServicePageRow) {
-  const en = row.translations.find((t) => t.locale === "en");
-  const ar = row.translations.find((t) => t.locale === "ar");
+  const en = workingFromRow(row, "en");
+  const ar = workingFromRow(row, "ar");
   const serviceEn = pickI18n(row.service.translations, "en");
   const locationEn = pickI18n(row.location.translations, "en");
   const serviceAr = pickI18n(row.service.translations, "ar");
   const locationAr = pickI18n(row.location.translations, "ar");
-  const guide = row.service.diyGuides.find((g) => g.status === "published") ?? row.service.diyGuides[0] ?? null;
+  const guide =
+    row.service.primaryDiyGuide ??
+    row.service.diyGuides.find((g) => g.status === "published") ??
+    row.service.diyGuides[0] ??
+    null;
   const diy = resolveDiyInheritance({
     serviceRiskLevel: row.service.riskLevel,
     serviceDiyAvailable: row.service.diyAvailable,
     diyRestricted: row.diyRestricted,
+    serviceSlug: row.service.slug,
     guide: guide ? { id: guide.id, slug: guide.slug, riskLevel: guide.riskLevel, status: guide.status } : null,
   });
   const ops = resolveEffectiveOps({
@@ -139,8 +183,40 @@ export function evaluateRow(row: ServicePageRow) {
     serviceId: row.serviceId,
     locationId: row.locationId,
   });
+
+  const mode = isLegacyCompatRow(row) ? "LEGACY_COMPAT" : "STRICT_NEW_CONTENT";
+  const quality = evaluateContentQuality({
+    mode,
+    covered: row.covered,
+    coverageStatus: row.coverageStatus,
+    serviceExists: true,
+    locationExists: true,
+    serviceStatus: row.service.status,
+    locationStatus: row.location.status,
+    locationServes: row.location.serves,
+    serviceIndexable: row.service.indexable,
+    locationIndexable: row.location.indexable,
+    serviceSlug: row.service.slug,
+    locationSlug: row.location.slug,
+    serviceName: serviceEn?.name || row.service.slug,
+    locationName: locationEn?.name || row.location.slug,
+    serviceHeroImage: row.service.heroImage,
+    heroImageOverride: row.heroImageOverride,
+    en,
+    ar,
+    arabicConfidence: arabicConfidenceForSlug(row.location.slug),
+    diySafetyClass: diy.safetyClass,
+    diyGuideId: diy.guideId,
+    diyMatrixMapped: diy.matrixMapped,
+    safetyReviewComplete: diy.safetyClass !== "RED" && diy.safetyClass !== "REVIEW_REQUIRED",
+    humanApproved: Boolean(row.approvedBy),
+    qualityScore: row.qualityScore,
+    qualityStatusStored: row.qualityStatus,
+  });
+
   return {
-    gates: evaluateServiceLocationGates(gateInputFromRow(row)),
+    gates: evaluateServiceLocationGates(gateInputFromRow(row, quality)),
+    quality,
     diy,
     ops,
     image,
@@ -150,6 +226,52 @@ export function evaluateRow(row: ServicePageRow) {
     ar,
     serviceEn,
     locationEn,
+    contentMode: mode,
+  };
+}
+
+export type AdminReadinessLabels = {
+  coverage: string;
+  en: string;
+  ar: string;
+  seo: string;
+  geo: string;
+  aeo: string;
+  diy: string;
+  image: string;
+  quality: string;
+  indexEn: string;
+  indexAr: string;
+  overall: string;
+};
+
+export function readinessLabels(quality: ContentQualityReport, gates: { indexableEn: boolean; indexableAr: boolean }): AdminReadinessLabels {
+  return {
+    coverage: quality.checks.find((c) => c.id === "coverage")?.status === "pass" ? "PASS" : "FAIL",
+    en: quality.enComplete ? "PASS" : "FAIL",
+    ar:
+      quality.arStatus === "translation-review"
+        ? "REVIEW_REQUIRED"
+        : quality.arComplete
+          ? "PASS"
+          : "FAIL",
+    seo: quality.seoStatus === "pass" ? "PASS" : "FAIL",
+    geo: quality.geoStatus === "skip" ? "N/A" : quality.geoStatus === "pass" ? "PASS" : "FAIL",
+    aeo: quality.aeoStatus === "skip" ? "N/A" : quality.aeoStatus === "pass" ? "PASS" : "FAIL",
+    diy:
+      quality.diyStatus === "safety-review"
+        ? "SAFETY-REVIEW"
+        : quality.diyStatus === "missing"
+          ? "MISSING"
+          : quality.diyStatus === "inherited"
+            ? "INHERITED"
+            : "PASS",
+    image:
+      quality.imageStatus === "ready" ? "READY" : quality.imageStatus === "fallback" ? "FALLBACK" : "MISSING",
+    quality: quality.qualityStatus === "pass" ? "PASS" : "FAIL",
+    indexEn: gates.indexableEn ? "YES" : "NO",
+    indexAr: gates.indexableAr ? "YES" : "NO",
+    overall: quality.overall === "publishable" ? "PUBLISHABLE" : "NOT PUBLISHABLE",
   };
 }
 

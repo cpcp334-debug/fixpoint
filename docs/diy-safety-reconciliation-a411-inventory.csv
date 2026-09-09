@@ -1,0 +1,189 @@
+#,Service,Service riskLevel,Service diyAvailable,Matrix status,Matrix risk,Existing guide,Conflict type,Class,Recommended action,Confidence,Proposed risk,Proposed diyAvailable,Public SL count
+1,ac-drain-pipe-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+2,ac-filter-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+3,ac-gas-check,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+4,ac-gas-recharge,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+5,ac-installation,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+6,ac-replacement,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+7,ac-water-leakage-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+8,apartment-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+9,bathroom-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+10,burner-cooker,yellow,false,RED,red,,missing_service_record,C_SAFETY_CRITICAL,"Create/repair service record — STOP",high,,,0
+11,central-ac-maintenance,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+12,circuit-breaker-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+13,circuit-breaker-replacement,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+14,commercial-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+15,commercial-water-tank-cleaning,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+16,common-area-maintenance,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+17,cooker-igniter-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+18,cross-trainer-maintenance,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+19,damp-wall-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+20,dishwasher,yellow,false,YELLOW,yellow,,missing_service_record,C_SAFETY_CRITICAL,"Create/repair service record — STOP",high,,,0
+21,dishwasher-control-panel-diagnosis,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+22,dishwasher-filter-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+23,dishwasher-heating-problem,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+24,dishwasher-pump-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+25,dishwasher-spray-arm-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+26,distribution-board-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+27,ducted-ac-maintenance,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+28,electric-cooker-repair,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+29,electrical-fault-finding,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+30,electrical-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+31,emergency-water-heater-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+32,exercise-bike-maintenance,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+33,faucet-repair,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+34,faucet-replacement,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+35,fitness-equipment-inspection,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+36,fixture-replacement,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+37,float-valve-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+38,floor-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+39,gas-burner-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+40,gas-burner-replacement,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+41,gas-cooker-ignition-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+42,gas-cooker-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+43,gas-flame-problem-diagnosis,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+44,gas-hose-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+45,gas-hose-replacement,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+46,gas-leakage-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+47,gas-oven-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+48,gas-valve-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+49,gas-valve-replacement,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+50,gym-deep-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+51,gym-disinfection,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+52,gym-equipment-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+53,gym-floor-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+54,gym-glass-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+55,gym-regular-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+56,gym-sanitization,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+57,house-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+58,induction-cooker-inspection,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+59,led-light-installation,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+60,led-light-replacement,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+61,light-installation,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+62,light-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+63,locker-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+64,microwave,yellow,false,YELLOW,yellow,,missing_service_record,C_SAFETY_CRITICAL,"Create/repair service record — STOP",high,,,0
+65,microwave-control-panel-problem,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+66,microwave-display-problem,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+67,microwave-door-problem,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+68,microwave-door-switch-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+69,microwave-electrical-diagnosis,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+70,microwave-fan-problem,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+71,microwave-fuse-replacement,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+72,microwave-heating-problem,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+73,microwave-internal-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+74,microwave-no-power-diagnosis,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+75,microwave-spark-problem,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+76,microwave-turntable-problem,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+77,minor-civil-maintenance,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+78,moisture-damage-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+79,mold-affected-wall-treatment,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+80,move-in-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+81,move-out-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+82,office-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+83,one-time-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+84,oven,yellow,false,YELLOW,yellow,,missing_service_record,C_SAFETY_CRITICAL,"Create/repair service record — STOP",high,,,0
+85,oven-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+86,oven-control-panel-problem,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+87,oven-electrical-fault-diagnosis,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+88,oven-fan-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+89,oven-heating-element-replacement,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+90,oven-not-heating,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+91,oven-temperature-problem,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+92,oven-thermostat-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+93,oven-timer-problem,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+94,oven-uneven-heating,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+95,package-ac-maintenance,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+96,painting-services,green,true,YELLOW,yellow,how-to-touch-up-interior-paint,upward_align_green_to_yellow,A_SAFE_ALIGNMENT,"set riskLevel=yellow",high,yellow,,7
+97,partition-wall-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+98,pipe-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+99,pipe-replacement,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+100,pool-chemical-balancing,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+101,pool-drain-cleaning,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+102,pool-equipment-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+103,pool-filter-cleaning,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+104,pool-filter-maintenance,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+105,pool-leak-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+106,pool-pump-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+107,pool-pump-maintenance,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+108,pool-skimming,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+109,pool-tile-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+110,pool-vacuum-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+111,pool-water-testing,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+112,preventive-gym-maintenance,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+113,property-inspection,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+114,recurring-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+115,refrigerator,yellow,false,YELLOW,yellow,,missing_service_record,C_SAFETY_CRITICAL,"Create/repair service record — STOP",high,,,0
+116,refrigerator-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+117,refrigerator-compressor-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+118,refrigerator-compressor-replacement,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+119,refrigerator-door-hinge-repair,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+120,refrigerator-door-seal-replacement,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+121,refrigerator-electrical-fault-diagnosis,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+122,refrigerator-fan-motor-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+123,refrigerator-temperature-control-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+124,refrigerator-thermostat-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+125,regular-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+126,residential-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+127,residential-water-tank-cleaning,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+128,sauna-bench-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+129,sauna-deep-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+130,sauna-disinfection,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+131,sauna-door-maintenance,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+132,sauna-equipment-inspection,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+133,sauna-floor-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+134,sauna-glass-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+135,sauna-heater-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+136,sauna-heater-maintenance,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+137,sauna-regular-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+138,sauna-ventilation-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+139,sauna-wall-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+140,sauna-wood-treatment,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+141,scheduled-water-tank-maintenance,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+142,short-circuit-diagnosis,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+143,shower-and-changing-room-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+144,shower-mixer-replacement,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+145,sink-installation,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+146,socket-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+147,socket-replacement,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+148,structural-crack-assessment,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+149,swimming-pool-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+150,swimming-pool-inspection,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+151,switch-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+152,switch-replacement,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+153,tank-overflow-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+154,tank-pipe-connection-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+155,toilet-installation,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+156,touch-up-painting,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+157,treadmill-maintenance,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+158,underground-water-tank-cleaning,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+159,uneven-flame-diagnosis,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+160,villa-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+161,villa-water-tank-cleaning,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+162,washing-machine,yellow,false,YELLOW,yellow,,missing_service_record,C_SAFETY_CRITICAL,"Create/repair service record — STOP",high,,,0
+163,washing-machine-belt-replacement,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+164,washing-machine-control-board-diagnosis,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+165,washing-machine-drum-problem,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+166,washing-machine-filter-cleaning,yellow,false,GREEN,green,,service_stricter_than_matrix,E_NO_CHANGE_REQUIRED,"Keep service risk (stricter). Matrix still authoritative for display/eval via matrix loader; do not downgrade.",high,,,0
+167,washing-machine-motor-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+168,washing-machine-pump-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+169,water-heater,yellow,false,YELLOW,yellow,,missing_service_record,C_SAFETY_CRITICAL,"Create/repair service record — STOP",high,,,0
+170,water-heater-electrical-fault-diagnosis,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+171,water-heater-heating-element-replacement,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+172,water-heater-no-hot-water,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+173,water-heater-pressure-problem,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+174,water-heater-slow-heating,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+175,water-heater-temperature-problem,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+176,water-heater-thermostat-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+177,water-heater-valve-replacement,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+178,water-heater-water-leakage-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+179,water-leakage-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+180,water-supply-line-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+181,water-tank-cleaning-service,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+182,water-tank-disinfection,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+183,water-tank-sanitization,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+184,water-tank-valve-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+185,weight-equipment-maintenance,yellow,false,REVIEW_REQUIRED,review_required,,matrix_review_required_enum_gap,E_NO_CHANGE_REQUIRED,"No RiskLevel change (RR not in enum). Evaluator already treats matrix RR as authoritative.",high,,,0
+186,wiring-inspection,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+187,wiring-repair,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0
+188,wiring-replacement,yellow,false,RED,red,,upward_align_yellow_to_red,A_SAFE_ALIGNMENT,"set riskLevel=red; set diyAvailable=false",high,red,false,0

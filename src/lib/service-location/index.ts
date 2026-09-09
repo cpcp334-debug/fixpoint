@@ -2,12 +2,21 @@ export * from "./types";
 export * from "./coverage";
 export * from "./overrides";
 export * from "./diy";
+export * from "./diy-matrix";
 export * from "./images";
 export * from "./seo-title";
 export * from "./arabic";
 export * from "./gates";
 export * from "./revisions";
 export * from "./page-model";
+export * from "./content-contract";
+export * from "./content-parse";
+export * from "./content-builders";
+export * from "./content-claims";
+export * from "./content-similarity";
+export * from "./content-thin";
+export * from "./content-completeness";
+export * from "./content-quality";
 export {
   resolveServiceLocationPage,
   resolveServiceLocationPageFresh,

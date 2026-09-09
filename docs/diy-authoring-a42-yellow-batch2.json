@@ -1,0 +1,186 @@
+{
+  "meta": {
+    "phase": "A4.2",
+    "batch": "YELLOW-1",
+    "generated": "2026-09-09",
+    "yellowAuthoredThisBatch": 20,
+    "yellowRemainingAfter": 108,
+    "skippedHubs": [
+      "refrigerator",
+      "microwave",
+      "washing-machine",
+      "water-heater",
+      "dishwasher",
+      "oven"
+    ],
+    "skippedPainting": "painting-services",
+    "heldReviewRequired": [],
+    "greenAuthoredMin": 46,
+    "redAuthored": 0,
+    "reviewRequiredAuthored": 0,
+    "stop": "Batch 2 complete — do not continue remaining YELLOW / RED / RR"
+  },
+  "authored": [
+    {
+      "slug": "building-maintenance",
+      "title": "General Building Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-building-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "plumbing-maintenance",
+      "title": "Plumbing Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-plumbing-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "ac-maintenance",
+      "title": "AC / Air Conditioning Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-ac-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "wall-maintenance",
+      "title": "Wall Maintenance & Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-wall-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "swimming-pool-maintenance",
+      "title": "Swimming Pool Cleaning & Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-swimming-pool-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "sauna-maintenance",
+      "title": "Sauna Room Cleaning & Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-sauna-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "water-tank-cleaning",
+      "title": "Water Tank Cleaning & Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-water-tank-cleaning",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "gym-cleaning-maintenance",
+      "title": "Gym Cleaning & Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-gym-cleaning-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "building-common-area-cleaning",
+      "title": "Building Common Area Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-building-common-area-cleaning",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "deep-cleaning",
+      "title": "Deep Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-deep-cleaning",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "post-construction-cleaning",
+      "title": "Post-Construction Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-post-construction-cleaning",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "post-renovation-cleaning",
+      "title": "Post-Renovation Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-post-renovation-cleaning",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "kitchen-cleaning",
+      "title": "Kitchen Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-kitchen-cleaning",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "window-cleaning",
+      "title": "Window Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-window-cleaning",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "glass-cleaning",
+      "title": "Glass Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-glass-cleaning",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "carpet-cleaning",
+      "title": "Carpet Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-carpet-cleaning",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "sofa-and-upholstery-cleaning",
+      "title": "Sofa & Upholstery Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-sofa-and-upholstery-cleaning",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "mattress-cleaning",
+      "title": "Mattress Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-mattress-cleaning",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "residential-building-maintenance",
+      "title": "Residential Building Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-residential-building-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    },
+    {
+      "slug": "commercial-building-maintenance",
+      "title": "Commercial Building Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-commercial-building-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": true,
+      "reviewStatus": "draft"
+    }
+  ],
+  "errors": []
+}

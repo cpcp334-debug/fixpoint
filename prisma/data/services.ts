@@ -8,6 +8,7 @@ import {
   childSlug,
   serviceTypeForCategory,
 } from "./catalog-a1";
+import { DIY_SAFETY_ALIGNMENTS_A411 } from "./diy-safety-alignment-a411";
 
 export type ServiceSeed = {
   slug: string;
@@ -619,5 +620,31 @@ for (const svc of services) {
     ...(svc.schemaData || {}),
     catalogPhase: "A1",
     catalogRole: "category_anchor",
+  };
+}
+
+/**
+ * A4.1.1 — apply DIY matrix-authoritative Class A safety alignments.
+ * Excludes painting-services (HUMAN_REVIEW_REQUIRED) and does not create missing hubs.
+ * Never downgrades risk; seed must match DB after reconciliation.
+ */
+for (const svc of services) {
+  const alignment = DIY_SAFETY_ALIGNMENTS_A411[svc.slug];
+  if (!alignment) continue;
+  const rank = { green: 0, yellow: 1, red: 2 } as const;
+  if (rank[alignment.riskLevel] < rank[svc.riskLevel]) {
+    throw new Error(
+      `A4.1.1 refused downward risk for ${svc.slug}: ${svc.riskLevel} → ${alignment.riskLevel}`,
+    );
+  }
+  if (alignment.diyAvailable && !svc.diyAvailable) {
+    throw new Error(`A4.1.1 refused diyAvailable true upgrade for ${svc.slug}`);
+  }
+  svc.riskLevel = alignment.riskLevel;
+  svc.diyAvailable = alignment.diyAvailable;
+  svc.schemaData = {
+    ...(svc.schemaData || {}),
+    diySafetyAlignment: "A4.1.1",
+    diySafetyReason: "diy_matrix_authoritative",
   };
 }

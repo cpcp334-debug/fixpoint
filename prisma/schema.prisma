@@ -66,6 +66,22 @@ enum RiskLevel {
   red
 }
 
+enum DiyProfileStatus {
+  draft
+  safety_review
+  translation_review
+  approved
+  published
+  archived
+}
+
+enum DiyArabicReviewStatus {
+  not_started
+  translation_review
+  ready_for_translation
+  reviewed
+}
+
 enum QuoteMethod {
   fixed
   per_hour
@@ -233,7 +249,7 @@ model Service {
   category             ServiceCategory @relation(fields: [categoryId], references: [id])
   translations         ServiceI18n[]
   serviceLocations     ServiceLocation[]
-  diyGuides            DiyGuide[]
+  diyGuides            DiyGuide[]        @relation("ServiceDiyGuides")
   faqs                 Faq[]
   reviews              Review[]
   questions            Question[]
@@ -241,6 +257,8 @@ model Service {
   bookings             Booking[]
   workOrders           WorkOrder[]
   quotes               Quote[]
+  primaryDiyGuideId    String?
+  primaryDiyGuide      DiyGuide?         @relation("ServicePrimaryDiyGuide", fields: [primaryDiyGuideId], references: [id], onDelete: SetNull)
 }
 
 model ServiceI18n {
@@ -408,29 +426,42 @@ model DiyCategoryI18n {
 }
 
 model DiyGuide {
-  id                  String        @id @default(cuid())
-  slug                String        @unique
+  id                  String                 @id @default(cuid())
+  slug                String                 @unique
   categoryId          String
   categorySlug        String
   serviceId           String?
   difficulty          String
   estimatedTime       String
-  riskLevel           RiskLevel     @default(green)
-  schemaType          String        @default("article")
-  status              ContentStatus @default(draft)
-  indexable           Boolean       @default(false)
-  relatedSlugs        String        @default("[]")
-  relatedServiceSlugs String        @default("[]")
-  locationSlugs       String        @default("[]")
+  riskLevel           RiskLevel              @default(green)
+  schemaType          String                 @default("article")
+  status              ContentStatus          @default(draft)
+  indexable           Boolean                @default(false)
+  relatedSlugs        String                 @default("[]")
+  relatedServiceSlugs String                 @default("[]")
+  locationSlugs       String                 @default("[]")
+  profileJson         String                 @default("{}")
+  profileStatus       DiyProfileStatus       @default(draft)
+  profileVersion      Int                    @default(1)
+  isPrimary           Boolean                @default(false)
+  arabicReviewStatus  DiyArabicReviewStatus  @default(not_started)
+  safetyReviewedBy    String?
+  safetyReviewedAt    DateTime?
+  createdBy           String                 @default("system")
+  updatedBy           String                 @default("system")
   publishedAt         DateTime?
-  createdAt           DateTime      @default(now())
-  updatedAt           DateTime      @updatedAt
-  category            DiyCategory   @relation(fields: [categoryId], references: [id])
-  service             Service?      @relation(fields: [serviceId], references: [id])
+  createdAt           DateTime               @default(now())
+  updatedAt           DateTime               @updatedAt
+  category            DiyCategory            @relation(fields: [categoryId], references: [id])
+  service             Service?               @relation("ServiceDiyGuides", fields: [serviceId], references: [id])
+  primaryForServices  Service[]              @relation("ServicePrimaryDiyGuide")
   translations        DiyGuideI18n[]
   votes               DiyVote[]
   reviews             Review[]
   questions           Question[]
+
+  @@index([serviceId, isPrimary])
+  @@index([profileStatus])
 }
 
 model DiyGuideI18n {

@@ -128,6 +128,7 @@ async function main() {
       serviceRiskLevel: service.riskLevel,
       serviceDiyAvailable: service.diyAvailable,
       diyRestricted: row.diyRestricted,
+      serviceSlug: service.slug,
       guide: guide ? { id: guide.id, slug: guide.slug, riskLevel: guide.riskLevel, status: guide.status } : null,
     });
     assert(diy.safetyWeakened === false, "DIY inheritance must not weaken safety");

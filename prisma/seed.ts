@@ -479,6 +479,13 @@ async function seedCatalogAndContent() {
         relatedSlugs: JSON.stringify(guide.related),
         relatedServiceSlugs: JSON.stringify(guide.relatedServices),
         locationSlugs: JSON.stringify(guide.locationSlugs),
+        profileJson: "{}",
+        profileStatus: "draft",
+        profileVersion: 1,
+        isPrimary: false,
+        arabicReviewStatus: "not_started",
+        createdBy: "seed",
+        updatedBy: "seed",
         publishedAt: published ? new Date() : null,
         translations: {
           create: (["en", "ar"] as const).map((locale) => ({

@@ -93,6 +93,7 @@ export function parseRevisionSnapshot(snapshotJson: string, locale: string): Ser
       geoIntro: String(raw.geoIntro ?? ""),
       imageAlt: String(raw.imageAlt ?? ""),
       faqs,
+      contentJson: raw.contentJson,
     };
   } catch {
     return null;
@@ -112,6 +113,7 @@ export function workingCopyFromContent(content: ServiceLocationPageContent): Wor
     directAnswer: content.directAnswer,
     geoIntro: content.geoIntro,
     imageAlt: content.imageAlt,
+    contentJson: content.contentJson,
   };
 }
 

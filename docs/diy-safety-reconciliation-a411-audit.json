@@ -1,0 +1,905 @@
+{
+  "phase": "A4.1.1",
+  "reason": "diy_matrix_authoritative",
+  "appliedAt": "2026-09-09T12:41:12.664Z",
+  "appliedCount": 110,
+  "held": [
+    {
+      "slug": "painting-services",
+      "status": "HUMAN_REVIEW_REQUIRED",
+      "riskLevel": "green",
+      "diyAvailable": true
+    }
+  ],
+  "unresolvedMissingHubs": [
+    "burner-cooker",
+    "dishwasher",
+    "microwave",
+    "oven",
+    "refrigerator",
+    "washing-machine",
+    "water-heater"
+  ],
+  "changes": [
+    {
+      "slug": "ac-drain-pipe-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "ac-gas-check",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "ac-gas-recharge",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "ac-installation",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "ac-replacement",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "ac-water-leakage-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "central-ac-maintenance",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "circuit-breaker-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "circuit-breaker-replacement",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "commercial-water-tank-cleaning",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "cooker-igniter-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "damp-wall-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "dishwasher-control-panel-diagnosis",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "dishwasher-heating-problem",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "dishwasher-pump-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "distribution-board-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "ducted-ac-maintenance",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "electrical-fault-finding",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "electrical-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "emergency-water-heater-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "float-valve-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "gas-burner-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "gas-burner-replacement",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "gas-cooker-ignition-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "gas-cooker-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "gas-flame-problem-diagnosis",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "gas-hose-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "gas-hose-replacement",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "gas-leakage-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "gas-oven-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "gas-valve-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "gas-valve-replacement",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "led-light-installation",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "led-light-replacement",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "light-installation",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "light-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "microwave-control-panel-problem",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "microwave-display-problem",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "microwave-door-switch-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "microwave-electrical-diagnosis",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "microwave-fan-problem",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "microwave-fuse-replacement",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "microwave-heating-problem",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "microwave-no-power-diagnosis",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "microwave-spark-problem",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "moisture-damage-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "mold-affected-wall-treatment",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "oven-control-panel-problem",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "oven-electrical-fault-diagnosis",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "oven-fan-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "oven-heating-element-replacement",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "oven-not-heating",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "oven-temperature-problem",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "oven-thermostat-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "oven-timer-problem",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "oven-uneven-heating",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "package-ac-maintenance",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "partition-wall-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "pipe-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "pipe-replacement",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "pool-equipment-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "pool-leak-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "pool-pump-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "pool-pump-maintenance",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "refrigerator-compressor-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "refrigerator-compressor-replacement",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "refrigerator-electrical-fault-diagnosis",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "refrigerator-fan-motor-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "refrigerator-temperature-control-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "refrigerator-thermostat-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "residential-water-tank-cleaning",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "sauna-heater-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "sauna-heater-maintenance",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "sauna-ventilation-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "scheduled-water-tank-maintenance",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "short-circuit-diagnosis",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "shower-mixer-replacement",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "sink-installation",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "socket-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "socket-replacement",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "structural-crack-assessment",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "switch-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "switch-replacement",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "tank-overflow-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "tank-pipe-connection-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "toilet-installation",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "underground-water-tank-cleaning",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "uneven-flame-diagnosis",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "villa-water-tank-cleaning",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "washing-machine-belt-replacement",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "washing-machine-control-board-diagnosis",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "washing-machine-drum-problem",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "washing-machine-motor-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "washing-machine-pump-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "water-heater-electrical-fault-diagnosis",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "water-heater-heating-element-replacement",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "water-heater-no-hot-water",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "water-heater-pressure-problem",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "water-heater-slow-heating",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "water-heater-temperature-problem",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "water-heater-thermostat-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "water-heater-valve-replacement",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "water-heater-water-leakage-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "water-leakage-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "water-supply-line-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "water-tank-cleaning-service",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "water-tank-valve-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "wiring-inspection",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "wiring-repair",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    },
+    {
+      "slug": "wiring-replacement",
+      "oldRisk": "yellow",
+      "newRisk": "red",
+      "oldDiyAvailable": false,
+      "newDiyAvailable": false,
+      "reason": "diy_matrix_authoritative"
+    }
+  ]
+}
