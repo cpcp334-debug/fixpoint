@@ -58,7 +58,9 @@ async function main() {
   assert(pubRed === 0, "published red guides");
 
   const sl = await prisma.serviceLocation.count();
-  assert(sl === 99, "SL count");
+  const published = await prisma.serviceLocation.count({ where: { coverageStatus: "published" } });
+  assert(published === 49, `published drifted ${published}`);
+  assert(sl >= 99, `SL count ${sl}`);
 
   console.log(
     JSON.stringify(
@@ -67,7 +69,7 @@ async function main() {
         redAuthored: report.meta.redAuthored,
         reviewRequiredAuthored: report.meta.reviewRequiredAuthored,
         publishedRed: pubRed,
-        serviceLocation: sl,
+        serviceLocation: { total: sl, published },
       },
       null,
       2,

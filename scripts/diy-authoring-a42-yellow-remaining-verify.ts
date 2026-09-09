@@ -64,8 +64,13 @@ async function main() {
 
   const sl = await prisma.serviceLocation.count();
   const published = await prisma.serviceLocation.count({ where: { coverageStatus: "published" } });
-  const draft = await prisma.serviceLocation.count({ where: { coverageStatus: "draft" } });
-  assert(sl === 99 && published === 49 && draft === 50, `SL drifted ${sl}/${published}/${draft}`);
+  const pilots = await prisma.serviceLocation.count({
+    where: { coverageStatus: "draft", covered: false, indexable: false },
+  });
+  // After matrix materialize, total ≫ 99; lock published + that pilots remain draft/uncovered.
+  assert(published === 49, `published drifted ${published}`);
+  assert(pilots >= 50, `pilots/draft-uncovered below 50: ${pilots}`);
+  assert(sl >= 99, `serviceLocation total too low ${sl}`);
 
   console.log(
     JSON.stringify(
@@ -73,7 +78,7 @@ async function main() {
         ok: true,
         authoredVerified: ok,
         matrix: counts.actual,
-        serviceLocation: { total: sl, published, pilot: draft },
+        serviceLocation: { total: sl, published, draftUncovered: pilots },
         hubsAbsent: true,
         paintingUnchanged: true,
       },
