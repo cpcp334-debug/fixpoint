@@ -4,6 +4,7 @@ export const CLIENT_EVENT_NAMES = [
   "PAGE_VIEW",
   "SERVICE_VIEW",
   "LOCATION_VIEW",
+  "SERVICE_LOCATION_VIEW",
   "DIY_VIEW",
   "WHATSAPP_CLICK",
   "PHONE_CLICK",
@@ -11,6 +12,10 @@ export const CLIENT_EVENT_NAMES = [
   "SHARE",
   "QUOTE_START",
   "BOOKING_START",
+  "SERVICE_LOCATION_QUOTE_START",
+  "SERVICE_LOCATION_BOOKING_START",
+  "SERVICE_LOCATION_WHATSAPP",
+  "SERVICE_LOCATION_CALL",
   "REVIEW_START",
   "QUESTION_START",
   "CONTACT_START",
@@ -90,6 +95,11 @@ export function viewsForPath(pathname: string): TrackableView[] {
     views.push({ name: "SERVICE_VIEW", entityType: "service", entityId: parts[0] });
     if (parts[1]) {
       views.push({ name: "LOCATION_VIEW", entityType: "location", entityId: parts[1] });
+      views.push({
+        name: "SERVICE_LOCATION_VIEW",
+        entityType: "service_location",
+        entityId: `${parts[0]}/${parts[1]}`,
+      });
     }
   }
   return views;

@@ -1510,3 +1510,51 @@ model AdminNotification {
   @@index([userId, createdAt])
   @@index([staffId, createdAt])
 }
+
+enum ContentGenerationJobStatus {
+  pending
+  running
+  succeeded
+  failed
+  dead
+}
+
+enum ContentGenerationKind {
+  diy_profile
+  service_canonical
+  service_location_locale
+  image_asset
+  sitemap_shard
+  arabic_locale
+}
+
+/// Async content-generation work queue. IDs are stored as strings (no FK) so catalog
+/// models stay untouched; callers own referential integrity.
+model ContentGenerationJob {
+  id                String                      @id @default(cuid())
+  kind              ContentGenerationKind
+  status            ContentGenerationJobStatus  @default(pending)
+  serviceId         String?
+  locationId        String?
+  serviceLocationId String?
+  locale            String?
+  batchKey          String
+  idempotencyKey    String                      @unique
+  generationVersion Int
+  contentHash       String?
+  attempt           Int                         @default(0)
+  maxAttempts       Int                         @default(3)
+  priority          Int                         @default(0)
+  error             String?
+  payloadJson       String                      @default("{}")
+  resultJson        String                      @default("{}")
+  startedAt         DateTime?
+  finishedAt        DateTime?
+  createdAt         DateTime                    @default(now())
+  updatedAt         DateTime                    @updatedAt
+
+  @@index([status])
+  @@index([kind])
+  @@index([batchKey])
+  @@index([updatedAt])
+}

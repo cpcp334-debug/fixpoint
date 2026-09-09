@@ -1,0 +1,1038 @@
+{
+  "meta": {
+    "phase": "A4.2",
+    "batch": "A4.2-YELLOW-REMAINING",
+    "generated": "2026-09-09",
+    "offset": 0,
+    "batchSize": 101,
+    "yellowAuthoredThisBatch": 101,
+    "totalRemainingBefore": 101,
+    "heldReviewRequired": [
+      "villa-maintenance",
+      "apartment-maintenance",
+      "preventive-building-maintenance",
+      "corrective-building-maintenance",
+      "general-handyman-service",
+      "minor-building-repairs",
+      "door-repair-and-adjustment",
+      "door-hardware-replacement",
+      "lock-repair-and-replacement",
+      "cabinet-and-hardware-repair",
+      "general-property-repair",
+      "plumbing-inspection",
+      "water-leakage-detection",
+      "drain-cleaning",
+      "drain-blockage-removal",
+      "sink-repair",
+      "shower-repair",
+      "toilet-repair",
+      "running-toilet-repair",
+      "water-pressure-problem-diagnosis",
+      "floor-drain-repair",
+      "ac-inspection",
+      "ac-servicing",
+      "ac-cleaning",
+      "ac-drain-cleaning",
+      "ac-cooling-problem-diagnosis",
+      "ac-noise-problem-diagnosis",
+      "split-ac-maintenance",
+      "ac-preventive-maintenance",
+      "interior-painting",
+      "exterior-painting",
+      "residential-painting",
+      "villa-painting",
+      "apartment-painting",
+      "office-painting",
+      "commercial-painting",
+      "wall-painting",
+      "ceiling-painting",
+      "door-painting",
+      "metal-painting",
+      "wood-painting",
+      "repainting",
+      "texture-painting",
+      "decorative-painting",
+      "wall-inspection",
+      "wall-crack-repair",
+      "plaster-repair",
+      "wall-hole-repair",
+      "wall-damage-repair",
+      "peeling-paint-repair",
+      "wall-patching",
+      "wall-skimming",
+      "surface-preparation",
+      "gypsum-wall-repair",
+      "residential-pool-maintenance",
+      "sauna-inspection",
+      "water-tank-inspection",
+      "water-tank-leak-inspection",
+      "water-tank-cover-repair",
+      "rooftop-water-tank-cleaning",
+      "refrigerator-inspection",
+      "refrigerator-cooling-problem",
+      "refrigerator-freezing-problem",
+      "refrigerator-water-leakage",
+      "refrigerator-ice-formation-problem",
+      "refrigerator-drain-blockage-repair",
+      "microwave-inspection",
+      "washing-machine-inspection",
+      "washing-machine-not-starting",
+      "washing-machine-not-spinning",
+      "washing-machine-water-filling-problem",
+      "washing-machine-drainage-problem",
+      "washing-machine-water-leakage",
+      "washing-machine-excessive-noise",
+      "washing-machine-vibration-problem",
+      "washing-machine-door-lock-problem",
+      "washing-machine-preventive-maintenance",
+      "water-heater-inspection",
+      "water-heater-tank-inspection",
+      "water-heater-cleaning",
+      "water-heater-scale-removal",
+      "water-heater-preventive-maintenance",
+      "dishwasher-inspection",
+      "dishwasher-not-starting",
+      "dishwasher-not-cleaning-properly",
+      "dishwasher-water-filling-problem",
+      "dishwasher-drainage-problem",
+      "dishwasher-water-leakage",
+      "dishwasher-poor-drying",
+      "dishwasher-door-seal-replacement",
+      "dishwasher-door-lock-repair",
+      "dishwasher-preventive-maintenance",
+      "oven-inspection",
+      "oven-door-repair",
+      "oven-door-seal-replacement",
+      "oven-preventive-maintenance",
+      "gas-burner-cleaning",
+      "cooker-knob-replacement",
+      "gas-cooker-cleaning",
+      "hob-cleaning",
+      "glass-hob-maintenance"
+    ],
+    "skippedHubs": [
+      "burner-cooker",
+      "dishwasher",
+      "microwave",
+      "oven",
+      "refrigerator",
+      "washing-machine",
+      "water-heater"
+    ],
+    "skippedPainting": "painting-services",
+    "errors": 0
+  },
+  "authored": [
+    {
+      "slug": "villa-maintenance",
+      "title": "Villa Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-villa-maintenance",
+      "parentSlug": "general-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "apartment-maintenance",
+      "title": "Apartment Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-apartment-maintenance",
+      "parentSlug": "general-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "preventive-building-maintenance",
+      "title": "Preventive Building Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-preventive-building-maintenance",
+      "parentSlug": "general-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "corrective-building-maintenance",
+      "title": "Corrective Building Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-corrective-building-maintenance",
+      "parentSlug": "general-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "general-handyman-service",
+      "title": "General Handyman Service — limited DIY troubleshooting",
+      "guideSlug": "diy-general-handyman-service",
+      "parentSlug": "general-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "minor-building-repairs",
+      "title": "Minor Building Repairs — limited DIY troubleshooting",
+      "guideSlug": "diy-minor-building-repairs",
+      "parentSlug": "general-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "door-repair-and-adjustment",
+      "title": "Door Repair & Adjustment — limited DIY troubleshooting",
+      "guideSlug": "diy-door-repair-and-adjustment",
+      "parentSlug": "general-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "door-hardware-replacement",
+      "title": "Door Hardware Replacement — limited DIY troubleshooting",
+      "guideSlug": "diy-door-hardware-replacement",
+      "parentSlug": "general-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "lock-repair-and-replacement",
+      "title": "Lock Repair & Replacement — limited DIY troubleshooting",
+      "guideSlug": "diy-lock-repair-and-replacement",
+      "parentSlug": "general-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "cabinet-and-hardware-repair",
+      "title": "Cabinet & Hardware Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-cabinet-and-hardware-repair",
+      "parentSlug": "general-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "general-property-repair",
+      "title": "General Property Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-general-property-repair",
+      "parentSlug": "general-maintenance",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "plumbing-inspection",
+      "title": "Plumbing Inspection — limited DIY troubleshooting",
+      "guideSlug": "diy-plumbing-inspection",
+      "parentSlug": "plumbing",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "water-leakage-detection",
+      "title": "Water Leakage Detection — limited DIY troubleshooting",
+      "guideSlug": "diy-water-leakage-detection",
+      "parentSlug": "plumbing",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "drain-cleaning",
+      "title": "Drain Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-drain-cleaning",
+      "parentSlug": "plumbing",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "drain-blockage-removal",
+      "title": "Drain Blockage Removal — limited DIY troubleshooting",
+      "guideSlug": "diy-drain-blockage-removal",
+      "parentSlug": "plumbing",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "sink-repair",
+      "title": "Sink Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-sink-repair",
+      "parentSlug": "plumbing",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "shower-repair",
+      "title": "Shower Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-shower-repair",
+      "parentSlug": "plumbing",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "toilet-repair",
+      "title": "Toilet Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-toilet-repair",
+      "parentSlug": "plumbing",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "running-toilet-repair",
+      "title": "Running Toilet Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-running-toilet-repair",
+      "parentSlug": "plumbing",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "water-pressure-problem-diagnosis",
+      "title": "Water Pressure Problem Diagnosis — limited DIY troubleshooting",
+      "guideSlug": "diy-water-pressure-problem-diagnosis",
+      "parentSlug": "plumbing",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "floor-drain-repair",
+      "title": "Floor Drain Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-floor-drain-repair",
+      "parentSlug": "plumbing",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "ac-inspection",
+      "title": "AC Inspection — limited DIY troubleshooting",
+      "guideSlug": "diy-ac-inspection",
+      "parentSlug": "ac",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "ac-servicing",
+      "title": "AC Servicing — limited DIY troubleshooting",
+      "guideSlug": "diy-ac-servicing",
+      "parentSlug": "ac",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "ac-cleaning",
+      "title": "AC Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-ac-cleaning",
+      "parentSlug": "ac",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "ac-drain-cleaning",
+      "title": "AC Drain Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-ac-drain-cleaning",
+      "parentSlug": "ac",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "ac-cooling-problem-diagnosis",
+      "title": "AC Cooling Problem Diagnosis — limited DIY troubleshooting",
+      "guideSlug": "diy-ac-cooling-problem-diagnosis",
+      "parentSlug": "ac",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "ac-noise-problem-diagnosis",
+      "title": "AC Noise Problem Diagnosis — limited DIY troubleshooting",
+      "guideSlug": "diy-ac-noise-problem-diagnosis",
+      "parentSlug": "ac",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "split-ac-maintenance",
+      "title": "Split AC Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-split-ac-maintenance",
+      "parentSlug": "ac",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "ac-preventive-maintenance",
+      "title": "AC Preventive Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-ac-preventive-maintenance",
+      "parentSlug": "ac",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "interior-painting",
+      "title": "Interior Painting — limited DIY troubleshooting",
+      "guideSlug": "diy-interior-painting",
+      "parentSlug": "painting",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "exterior-painting",
+      "title": "Exterior Painting — limited DIY troubleshooting",
+      "guideSlug": "diy-exterior-painting",
+      "parentSlug": "painting",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "residential-painting",
+      "title": "Residential Painting — limited DIY troubleshooting",
+      "guideSlug": "diy-residential-painting",
+      "parentSlug": "painting",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "villa-painting",
+      "title": "Villa Painting — limited DIY troubleshooting",
+      "guideSlug": "diy-villa-painting",
+      "parentSlug": "painting",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "apartment-painting",
+      "title": "Apartment Painting — limited DIY troubleshooting",
+      "guideSlug": "diy-apartment-painting",
+      "parentSlug": "painting",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "office-painting",
+      "title": "Office Painting — limited DIY troubleshooting",
+      "guideSlug": "diy-office-painting",
+      "parentSlug": "painting",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "commercial-painting",
+      "title": "Commercial Painting — limited DIY troubleshooting",
+      "guideSlug": "diy-commercial-painting",
+      "parentSlug": "painting",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "wall-painting",
+      "title": "Wall Painting — limited DIY troubleshooting",
+      "guideSlug": "diy-wall-painting",
+      "parentSlug": "painting",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "ceiling-painting",
+      "title": "Ceiling Painting — limited DIY troubleshooting",
+      "guideSlug": "diy-ceiling-painting",
+      "parentSlug": "painting",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "door-painting",
+      "title": "Door Painting — limited DIY troubleshooting",
+      "guideSlug": "diy-door-painting",
+      "parentSlug": "painting",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "metal-painting",
+      "title": "Metal Painting — limited DIY troubleshooting",
+      "guideSlug": "diy-metal-painting",
+      "parentSlug": "painting",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "wood-painting",
+      "title": "Wood Painting — limited DIY troubleshooting",
+      "guideSlug": "diy-wood-painting",
+      "parentSlug": "painting",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "repainting",
+      "title": "Repainting — limited DIY troubleshooting",
+      "guideSlug": "diy-repainting",
+      "parentSlug": "painting",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "texture-painting",
+      "title": "Texture Painting — limited DIY troubleshooting",
+      "guideSlug": "diy-texture-painting",
+      "parentSlug": "painting",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "decorative-painting",
+      "title": "Decorative Painting — limited DIY troubleshooting",
+      "guideSlug": "diy-decorative-painting",
+      "parentSlug": "painting",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "wall-inspection",
+      "title": "Wall Inspection — limited DIY troubleshooting",
+      "guideSlug": "diy-wall-inspection",
+      "parentSlug": "walls",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "wall-crack-repair",
+      "title": "Wall Crack Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-wall-crack-repair",
+      "parentSlug": "walls",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "plaster-repair",
+      "title": "Plaster Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-plaster-repair",
+      "parentSlug": "walls",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "wall-hole-repair",
+      "title": "Wall Hole Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-wall-hole-repair",
+      "parentSlug": "walls",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "wall-damage-repair",
+      "title": "Wall Damage Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-wall-damage-repair",
+      "parentSlug": "walls",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "peeling-paint-repair",
+      "title": "Peeling Paint Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-peeling-paint-repair",
+      "parentSlug": "walls",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "wall-patching",
+      "title": "Wall Patching — limited DIY troubleshooting",
+      "guideSlug": "diy-wall-patching",
+      "parentSlug": "walls",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "wall-skimming",
+      "title": "Wall Skimming — limited DIY troubleshooting",
+      "guideSlug": "diy-wall-skimming",
+      "parentSlug": "walls",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "surface-preparation",
+      "title": "Surface Preparation — limited DIY troubleshooting",
+      "guideSlug": "diy-surface-preparation",
+      "parentSlug": "walls",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "gypsum-wall-repair",
+      "title": "Gypsum Wall Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-gypsum-wall-repair",
+      "parentSlug": "walls",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "residential-pool-maintenance",
+      "title": "Residential Pool Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-residential-pool-maintenance",
+      "parentSlug": "swimming-pool",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "sauna-inspection",
+      "title": "Sauna Inspection — limited DIY troubleshooting",
+      "guideSlug": "diy-sauna-inspection",
+      "parentSlug": "sauna",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "water-tank-inspection",
+      "title": "Water Tank Inspection — limited DIY troubleshooting",
+      "guideSlug": "diy-water-tank-inspection",
+      "parentSlug": "water-tank",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "water-tank-leak-inspection",
+      "title": "Water Tank Leak Inspection — limited DIY troubleshooting",
+      "guideSlug": "diy-water-tank-leak-inspection",
+      "parentSlug": "water-tank",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "water-tank-cover-repair",
+      "title": "Water Tank Cover Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-water-tank-cover-repair",
+      "parentSlug": "water-tank",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "rooftop-water-tank-cleaning",
+      "title": "Rooftop Water Tank Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-rooftop-water-tank-cleaning",
+      "parentSlug": "water-tank",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "refrigerator-inspection",
+      "title": "Refrigerator Inspection — limited DIY troubleshooting",
+      "guideSlug": "diy-refrigerator-inspection",
+      "parentSlug": "refrigerator",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "refrigerator-cooling-problem",
+      "title": "Refrigerator Cooling Problem — limited DIY troubleshooting",
+      "guideSlug": "diy-refrigerator-cooling-problem",
+      "parentSlug": "refrigerator",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "refrigerator-freezing-problem",
+      "title": "Refrigerator Freezing Problem — limited DIY troubleshooting",
+      "guideSlug": "diy-refrigerator-freezing-problem",
+      "parentSlug": "refrigerator",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "refrigerator-water-leakage",
+      "title": "Refrigerator Water Leakage — limited DIY troubleshooting",
+      "guideSlug": "diy-refrigerator-water-leakage",
+      "parentSlug": "refrigerator",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "refrigerator-ice-formation-problem",
+      "title": "Refrigerator Ice Formation Problem — limited DIY troubleshooting",
+      "guideSlug": "diy-refrigerator-ice-formation-problem",
+      "parentSlug": "refrigerator",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "refrigerator-drain-blockage-repair",
+      "title": "Refrigerator Drain Blockage Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-refrigerator-drain-blockage-repair",
+      "parentSlug": "refrigerator",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "microwave-inspection",
+      "title": "Microwave Inspection — limited DIY troubleshooting",
+      "guideSlug": "diy-microwave-inspection",
+      "parentSlug": "microwave",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "washing-machine-inspection",
+      "title": "Washing Machine Inspection — limited DIY troubleshooting",
+      "guideSlug": "diy-washing-machine-inspection",
+      "parentSlug": "washing-machine",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "washing-machine-not-starting",
+      "title": "Washing Machine Not Starting — limited DIY troubleshooting",
+      "guideSlug": "diy-washing-machine-not-starting",
+      "parentSlug": "washing-machine",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "washing-machine-not-spinning",
+      "title": "Washing Machine Not Spinning — limited DIY troubleshooting",
+      "guideSlug": "diy-washing-machine-not-spinning",
+      "parentSlug": "washing-machine",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "washing-machine-water-filling-problem",
+      "title": "Washing Machine Water Filling Problem — limited DIY troubleshooting",
+      "guideSlug": "diy-washing-machine-water-filling-problem",
+      "parentSlug": "washing-machine",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "washing-machine-drainage-problem",
+      "title": "Washing Machine Drainage Problem — limited DIY troubleshooting",
+      "guideSlug": "diy-washing-machine-drainage-problem",
+      "parentSlug": "washing-machine",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "washing-machine-water-leakage",
+      "title": "Washing Machine Water Leakage — limited DIY troubleshooting",
+      "guideSlug": "diy-washing-machine-water-leakage",
+      "parentSlug": "washing-machine",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "washing-machine-excessive-noise",
+      "title": "Washing Machine Excessive Noise — limited DIY troubleshooting",
+      "guideSlug": "diy-washing-machine-excessive-noise",
+      "parentSlug": "washing-machine",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "washing-machine-vibration-problem",
+      "title": "Washing Machine Vibration Problem — limited DIY troubleshooting",
+      "guideSlug": "diy-washing-machine-vibration-problem",
+      "parentSlug": "washing-machine",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "washing-machine-door-lock-problem",
+      "title": "Washing Machine Door Lock Problem — limited DIY troubleshooting",
+      "guideSlug": "diy-washing-machine-door-lock-problem",
+      "parentSlug": "washing-machine",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "washing-machine-preventive-maintenance",
+      "title": "Washing Machine Preventive Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-washing-machine-preventive-maintenance",
+      "parentSlug": "washing-machine",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "water-heater-inspection",
+      "title": "Water Heater Inspection — limited DIY troubleshooting",
+      "guideSlug": "diy-water-heater-inspection",
+      "parentSlug": "water-heater",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "water-heater-tank-inspection",
+      "title": "Water Heater Tank Inspection — limited DIY troubleshooting",
+      "guideSlug": "diy-water-heater-tank-inspection",
+      "parentSlug": "water-heater",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "water-heater-cleaning",
+      "title": "Water Heater Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-water-heater-cleaning",
+      "parentSlug": "water-heater",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "water-heater-scale-removal",
+      "title": "Water Heater Scale Removal — limited DIY troubleshooting",
+      "guideSlug": "diy-water-heater-scale-removal",
+      "parentSlug": "water-heater",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "water-heater-preventive-maintenance",
+      "title": "Water Heater Preventive Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-water-heater-preventive-maintenance",
+      "parentSlug": "water-heater",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "dishwasher-inspection",
+      "title": "Dishwasher Inspection — limited DIY troubleshooting",
+      "guideSlug": "diy-dishwasher-inspection",
+      "parentSlug": "dishwasher",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "dishwasher-not-starting",
+      "title": "Dishwasher Not Starting — limited DIY troubleshooting",
+      "guideSlug": "diy-dishwasher-not-starting",
+      "parentSlug": "dishwasher",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "dishwasher-not-cleaning-properly",
+      "title": "Dishwasher Not Cleaning Properly — limited DIY troubleshooting",
+      "guideSlug": "diy-dishwasher-not-cleaning-properly",
+      "parentSlug": "dishwasher",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "dishwasher-water-filling-problem",
+      "title": "Dishwasher Water Filling Problem — limited DIY troubleshooting",
+      "guideSlug": "diy-dishwasher-water-filling-problem",
+      "parentSlug": "dishwasher",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "dishwasher-drainage-problem",
+      "title": "Dishwasher Drainage Problem — limited DIY troubleshooting",
+      "guideSlug": "diy-dishwasher-drainage-problem",
+      "parentSlug": "dishwasher",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "dishwasher-water-leakage",
+      "title": "Dishwasher Water Leakage — limited DIY troubleshooting",
+      "guideSlug": "diy-dishwasher-water-leakage",
+      "parentSlug": "dishwasher",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "dishwasher-poor-drying",
+      "title": "Dishwasher Poor Drying — limited DIY troubleshooting",
+      "guideSlug": "diy-dishwasher-poor-drying",
+      "parentSlug": "dishwasher",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "dishwasher-door-seal-replacement",
+      "title": "Dishwasher Door Seal Replacement — limited DIY troubleshooting",
+      "guideSlug": "diy-dishwasher-door-seal-replacement",
+      "parentSlug": "dishwasher",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "dishwasher-door-lock-repair",
+      "title": "Dishwasher Door Lock Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-dishwasher-door-lock-repair",
+      "parentSlug": "dishwasher",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "dishwasher-preventive-maintenance",
+      "title": "Dishwasher Preventive Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-dishwasher-preventive-maintenance",
+      "parentSlug": "dishwasher",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "oven-inspection",
+      "title": "Oven Inspection — limited DIY troubleshooting",
+      "guideSlug": "diy-oven-inspection",
+      "parentSlug": "oven",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "oven-door-repair",
+      "title": "Oven Door Repair — limited DIY troubleshooting",
+      "guideSlug": "diy-oven-door-repair",
+      "parentSlug": "oven",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "oven-door-seal-replacement",
+      "title": "Oven Door Seal Replacement — limited DIY troubleshooting",
+      "guideSlug": "diy-oven-door-seal-replacement",
+      "parentSlug": "oven",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "oven-preventive-maintenance",
+      "title": "Oven Preventive Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-oven-preventive-maintenance",
+      "parentSlug": "oven",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "gas-burner-cleaning",
+      "title": "Gas Burner Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-gas-burner-cleaning",
+      "parentSlug": "burner-cooker",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "cooker-knob-replacement",
+      "title": "Cooker Knob Replacement — limited DIY troubleshooting",
+      "guideSlug": "diy-cooker-knob-replacement",
+      "parentSlug": "burner-cooker",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "gas-cooker-cleaning",
+      "title": "Gas Cooker Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-gas-cooker-cleaning",
+      "parentSlug": "burner-cooker",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "hob-cleaning",
+      "title": "Hob Cleaning — limited DIY troubleshooting",
+      "guideSlug": "diy-hob-cleaning",
+      "parentSlug": "burner-cooker",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    },
+    {
+      "slug": "glass-hob-maintenance",
+      "title": "Glass Hob Maintenance — limited DIY troubleshooting",
+      "guideSlug": "diy-glass-hob-maintenance",
+      "parentSlug": "burner-cooker",
+      "profileStatus": "draft",
+      "safetyOk": false,
+      "reviewStatus": "safety_review"
+    }
+  ],
+  "errors": [],
+  "remainingAfterBatch": []
+}

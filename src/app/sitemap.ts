@@ -1,9 +1,30 @@
 import type { MetadataRoute } from "next";
 import { getSiteUrl } from "@/config/site";
+import { publicServiceLocationWhere } from "@/lib/catalog";
 import { prisma } from "@/server/db";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const site = getSiteUrl();
+/** Fixed shard count for service×location URLs (scales toward ~124k locale URLs). */
+export const SITEMAP_PAIR_SHARDS = 32;
+
+/**
+ * Stable non-crypto hash → bucket in [0, shards).
+ * Same pair always lands in the same shard across builds.
+ */
+export function pairShardId(serviceSlug: string, locationSlug: string, shards = SITEMAP_PAIR_SHARDS): number {
+  const key = `${serviceSlug}/${locationSlug}`;
+  let h = 2166136261;
+  for (let i = 0; i < key.length; i += 1) {
+    h ^= key.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return (h >>> 0) % shards;
+}
+
+export async function generateSitemaps() {
+  return Array.from({ length: SITEMAP_PAIR_SHARDS }, (_, id) => ({ id }));
+}
+
+async function staticAndCatalogEntries(site: string): Promise<MetadataRoute.Sitemap> {
   const locales = ["en", "ar"] as const;
   const staticPaths = [
     "",
@@ -33,30 +54,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }
   }
 
-  const services = await prisma.service.findMany({
-    where: { status: "active", indexable: true },
-    select: { slug: true, updatedAt: true },
-  });
-  const locations = await prisma.location.findMany({
-    where: { type: "emirate", status: "active", indexable: true, serves: true },
-    select: { slug: true, updatedAt: true },
-  });
-  const pairs = await prisma.serviceLocation.findMany({
-    where: {
-      indexable: true,
-      service: { status: "active", indexable: true },
-      location: { status: "active", indexable: true, serves: true },
-    },
-    include: { service: true, location: true },
-  });
-  const guides = await prisma.diyGuide.findMany({
-    where: { status: "published", indexable: true },
-    select: { slug: true, updatedAt: true },
-  });
-  const diyCategories = await prisma.diyCategory.findMany({
-    where: { status: "published", indexable: true },
-    select: { slug: true, updatedAt: true },
-  });
+  const [services, locations, guides, diyCategories] = await Promise.all([
+    prisma.service.findMany({
+      where: { status: "active", indexable: true },
+      select: { slug: true, updatedAt: true },
+    }),
+    prisma.location.findMany({
+      where: { type: "emirate", status: "active", indexable: true, serves: true },
+      select: { slug: true, updatedAt: true },
+    }),
+    prisma.diyGuide.findMany({
+      where: { status: "published", indexable: true },
+      select: { slug: true, updatedAt: true },
+    }),
+    prisma.diyCategory.findMany({
+      where: { status: "published", indexable: true },
+      select: { slug: true, updatedAt: true },
+    }),
+  ]);
 
   for (const locale of locales) {
     for (const service of services) {
@@ -65,17 +80,47 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const location of locations) {
       entries.push({ url: `${site}/${locale}/locations/${location.slug}`, lastModified: location.updatedAt });
     }
-    for (const pair of pairs) {
-      entries.push({
-        url: `${site}/${locale}/${pair.service.slug}/${pair.location.slug}`,
-        lastModified: pair.updatedAt,
-      });
-    }
     for (const category of diyCategories) {
       entries.push({ url: `${site}/${locale}/diy/${category.slug}`, lastModified: category.updatedAt });
     }
     for (const guide of guides) {
       entries.push({ url: `${site}/${locale}/diy/${guide.slug}`, lastModified: guide.updatedAt });
+    }
+  }
+
+  return entries;
+}
+
+export default async function sitemap(props: {
+  id: Promise<string>;
+}): Promise<MetadataRoute.Sitemap> {
+  const idRaw = await props.id;
+  const shard = Number(idRaw);
+  if (!Number.isInteger(shard) || shard < 0 || shard >= SITEMAP_PAIR_SHARDS) {
+    return [];
+  }
+
+  const site = getSiteUrl();
+  // Static + service + emirate + diy catalog only on shard 0 (avoid duplicate URLs across shards).
+  const entries: MetadataRoute.Sitemap = shard === 0 ? await staticAndCatalogEntries(site) : [];
+
+  const pairs = await prisma.serviceLocation.findMany({
+    where: publicServiceLocationWhere,
+    select: {
+      updatedAt: true,
+      service: { select: { slug: true } },
+      location: { select: { slug: true } },
+    },
+  });
+
+  const locales = ["en", "ar"] as const;
+  for (const pair of pairs) {
+    if (pairShardId(pair.service.slug, pair.location.slug) !== shard) continue;
+    for (const locale of locales) {
+      entries.push({
+        url: `${site}/${locale}/${pair.service.slug}/${pair.location.slug}`,
+        lastModified: pair.updatedAt,
+      });
     }
   }
 

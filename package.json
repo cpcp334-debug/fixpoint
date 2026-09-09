@@ -32,6 +32,8 @@
     "verify:diy-authoring-a42-yellow": "tsx scripts/diy-authoring-a42-yellow-verify.ts",
     "db:diy-authoring-a42-yellow-remaining": "tsx scripts/diy-authoring-a42-yellow-remaining-apply.ts",
     "verify:diy-authoring-a42-yellow-remaining": "tsx scripts/diy-authoring-a42-yellow-remaining-verify.ts",
+    "db:diy-authoring-a42-red-rr": "tsx scripts/diy-authoring-a42-red-rr-apply.ts",
+    "verify:diy-authoring-a42-red-rr": "tsx scripts/diy-authoring-a42-red-rr-verify.ts",
     "verify:seed-safety": "tsx scripts/seed-safety-verify.ts",
     "verify:db-env": "tsx scripts/db-env-verify.ts",
     "verify:dr-readiness": "tsx scripts/dr-readiness-verify.ts",
@@ -41,6 +43,10 @@
     "verify:automation-reaper": "tsx scripts/automation-reaper-verify.ts",
     "verify:quote-fk-orphan": "tsx scripts/quote-fk-orphan-audit.ts",
     "verify:quote-fk": "tsx scripts/quote-fk-verify.ts",
+    "db:matrix:materialize": "tsx scripts/service-location-matrix-materialize.ts",
+    "verify:matrix": "tsx scripts/service-location-matrix-verify.ts",
+    "db:content-jobs:reaper": "tsx scripts/content-generation-reaper.ts",
+    "verify:content-jobs": "tsx scripts/content-generation-jobs-verify.ts",
     "db:push:dev": "prisma db push"
   },
   "prisma": {
