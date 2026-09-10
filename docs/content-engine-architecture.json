@@ -1,0 +1,64 @@
+{
+  "version": "2026.09.10",
+  "phase": 1,
+  "aiMayPublish": false,
+  "inventCoverage": false,
+  "corpus": {
+    "totalContentRecords": 63963,
+    "serviceLocation": 63400,
+    "diyRecords": 563,
+    "enVersions": 63963,
+    "arVersions": 63963,
+    "totalEnArVersions": 127926,
+    "approvedServices": 311,
+    "protectedPublic": { "diy": 45, "serviceLocation": 49, "total": 94 }
+  },
+  "pipeline": [
+    "MANIFEST",
+    "GENERATOR",
+    "VALIDATOR",
+    "REVIEW_QUEUE",
+    "PUBLICATION_QUEUE",
+    "DATABASE"
+  ],
+  "directories": [
+    "content-engine/config",
+    "content-engine/manifests",
+    "content-engine/generators",
+    "content-engine/validators",
+    "content-engine/pipeline",
+    "content-engine/images",
+    "content-engine/reports",
+    "content-engine/scripts",
+    "content-engine/tests"
+  ],
+  "prismaModels": [
+    "ContentGenerationJob",
+    "ContentEngineManifest",
+    "ContentEngineValidation",
+    "ContentEngineBatch",
+    "ContentEngineRunItem"
+  ],
+  "validators": [
+    "rendered_word_count",
+    "exact_duplicate",
+    "token_similarity",
+    "location_swap",
+    "seo",
+    "aeo",
+    "geo",
+    "safety",
+    "localization",
+    "image_webp_alt",
+    "diy_self_help",
+    "publication_gate"
+  ],
+  "hardGates": {
+    "minRenderedWords": 1000,
+    "similarityThreshold": 0.85,
+    "requireWebp": true,
+    "requireAlt": true,
+    "requireEnAr": true,
+    "noEnglishFallback": true
+  }
+}

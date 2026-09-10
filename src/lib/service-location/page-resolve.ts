@@ -18,6 +18,9 @@ import {
   type ServiceLocationPageModel,
 } from "@/lib/service-location/page-model";
 import type { WorkingCopy } from "@/lib/service-location/types";
+import { parseContentJson } from "@/lib/service-location/content-parse";
+import { ensureDiySelfHelpSection } from "@/lib/service-location/content-builders";
+import { emptyContentJson, type ServiceLocationContentJson } from "@/lib/service-location/content-contract";
 
 const RELATED_LIMIT = 6;
 
@@ -256,24 +259,34 @@ function buildModel(
   }
 
   const primary = row.service.primaryDiyGuide;
-  const guide =
+  const publishedGuide =
     primary && primary.status === "published" && primary.indexable
       ? primary
       : row.service.diyGuides[0] ?? null;
-  const guideT = guide ? pickI18n(guide.translations, locale) : null;
+  const guideT = publishedGuide ? pickI18n(publishedGuide.translations, locale) : null;
   const diyBase = resolveDiyInheritance({
     serviceRiskLevel: row.service.riskLevel,
     serviceDiyAvailable: row.service.diyAvailable,
     diyRestricted: row.diyRestricted,
     serviceSlug: row.service.slug,
-    guide: guide ? { id: guide.id, slug: guide.slug, riskLevel: guide.riskLevel, status: guide.status } : null,
+    guide: publishedGuide
+      ? {
+          id: publishedGuide.id,
+          slug: publishedGuide.slug,
+          riskLevel: publishedGuide.riskLevel,
+          status: publishedGuide.status,
+        }
+      : primary
+        ? { id: primary.id, slug: primary.slug, riskLevel: primary.riskLevel, status: primary.status }
+        : null,
   });
   const diy = {
     ...diyBase,
-    title: guideT?.title,
-    quickAnswer: guideT?.quickAnswer,
-    whenToStop: guideT?.whenToStop,
-    guideHref: diyBase.visible && guide ? `/diy/${guide.slug}` : null,
+    title: guideT?.title ?? pickI18n(primary?.translations || [], locale)?.title,
+    quickAnswer: guideT?.quickAnswer ?? pickI18n(primary?.translations || [], locale)?.quickAnswer,
+    whenToStop: guideT?.whenToStop ?? pickI18n(primary?.translations || [], locale)?.whenToStop,
+    guideHref: diyBase.visible && publishedGuide ? `/diy/${publishedGuide.slug}` : null,
+    guideSlug: primary?.slug ?? publishedGuide?.slug ?? diyBase.guideSlug,
   };
   const contentMode = isLegacyCompatRow(row) ? "LEGACY_COMPAT" : "STRICT_NEW_CONTENT";
 
@@ -409,6 +422,25 @@ function buildModel(
     previewContent.h1.trim() ||
     (locale === "ar" ? `${serviceName} — ${locationName}` : `${serviceName} — ${locationName}`);
 
+  // P2: every Service×Location article gets a safety-aware DIY/self-help block (public + preview).
+  const existingParsed = previewContent.contentJson
+    ? parseContentJson(
+        typeof previewContent.contentJson === "string"
+          ? previewContent.contentJson
+          : JSON.stringify(previewContent.contentJson),
+      )
+    : null;
+  const diyBlock = ensureDiySelfHelpSection({
+    existing: existingParsed?.ok ? existingParsed.value.diy : null,
+    safetyState: diy.safetyClass,
+    serviceName,
+    locale,
+    guideSlug: diy.guideSlug,
+  });
+  const contentJson: ServiceLocationContentJson = existingParsed?.ok
+    ? { ...existingParsed.value, diy: diyBlock }
+    : { ...emptyContentJson(), diy: diyBlock };
+
   return {
     mode,
     locale,
@@ -422,7 +454,7 @@ function buildModel(
     serviceLongDescription: serviceLong,
     serviceShortDescription: serviceShort,
     whenProfessional,
-    content: { ...previewContent, h1 },
+    content: { ...previewContent, h1, contentJson },
     revisionNumber: publishedRev?.revisionNumber ?? null,
     revisionStatus: publishedRev?.status ?? null,
     breadcrumbs: chain,

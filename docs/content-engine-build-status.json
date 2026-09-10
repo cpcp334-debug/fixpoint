@@ -1,0 +1,33 @@
+{
+  "phase": 1,
+  "updated": "2026-09-10",
+  "status": "foundation_complete_mass_generation_off",
+  "completed": [
+    "scaffold",
+    "config_freeze_gate",
+    "validators",
+    "queues_audit_batch",
+    "generator_stub",
+    "prisma_models_added",
+    "diy_311_status",
+    "blog_architecture_status",
+    "dry_tests_1_10_100",
+    "docs"
+  ],
+  "dbPush": true,
+  "prismaGenerateNote": "May need stop next dev on Windows EPERM",
+  "remainingBefore1000ArticleGeneration": [
+    "prisma_generate_if_eperm",
+    "persist_validations_to_db",
+    "real_generator",
+    "wire_production_similarity",
+    "image_render_pipeline",
+    "full_manifest_materialization",
+    "live_1_10_100_clean",
+    "review_admin_ui",
+    "cost_and_failure_queues"
+  ],
+  "massGenerate": false,
+  "massPublish": false,
+  "protectedPublicTotal": 94
+}

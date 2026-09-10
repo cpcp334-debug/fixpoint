@@ -497,15 +497,23 @@ model DiyVote {
 }
 
 model Article {
-  id           String        @id @default(cuid())
-  slug         String        @unique
-  status       ContentStatus @default(draft)
-  indexable    Boolean       @default(false)
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @updatedAt
-  translations ArticleI18n[]
-  reviews      Review[]
-  questions    Question[]
+  id                   String        @id @default(cuid())
+  slug                 String        @unique
+  status               ContentStatus @default(draft)
+  indexable            Boolean       @default(false)
+  /** JSON string array of category slugs */
+  categorySlugs        String        @default("[]")
+  heroImage            String?
+  /** JSON string array of service slugs */
+  relatedServiceSlugs  String        @default("[]")
+  /** JSON string array of DIY guide slugs */
+  relatedDiySlugs      String        @default("[]")
+  publishedAt          DateTime?
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+  translations         ArticleI18n[]
+  reviews              Review[]
+  questions            Question[]
 }
 
 model ArticleI18n {
@@ -515,6 +523,9 @@ model ArticleI18n {
   title           String
   excerpt         String  @default("")
   body            String  @default("")
+  diySection      String  @default("")
+  faq             String  @default("[]")
+  imageAlt        String  @default("")
   seoTitle        String
   metaDescription String
   article         Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
@@ -1526,6 +1537,9 @@ enum ContentGenerationKind {
   image_asset
   sitemap_shard
   arabic_locale
+  blog_article
+  engine_validate
+  diy_primary_mapping
 }
 
 /// Async content-generation work queue. IDs are stored as strings (no FK) so catalog
@@ -1557,4 +1571,110 @@ model ContentGenerationJob {
   @@index([kind])
   @@index([batchKey])
   @@index([updatedAt])
+}
+
+/// Content Engine lifecycle for generated/validated units (Phase 1).
+enum ContentEngineLifecycle {
+  DISCOVERED
+  QUEUED
+  GENERATING
+  GENERATED
+  VALIDATING
+  NEEDS_REWRITE
+  VALIDATED
+  READY_FOR_REVIEW
+  APPROVED
+  READY_TO_PUBLISH
+  PUBLISHED
+  BLOCKED_SAFETY
+  BLOCKED_COVERAGE
+  BLOCKED_QUALITY
+  BLOCKED_LOCALIZATION
+  BLOCKED_IMAGE
+  BLOCKED_DUPLICATE
+  BLOCKED_CLAIM
+  BLOCKED_SEO
+  BLOCKED_AEO
+  BLOCKED_GEO
+  BLOCKED_WORDS
+}
+
+enum ContentEngineContentType {
+  SERVICE
+  SERVICE_LOCATION
+  DIY
+  BLOG
+  CATEGORY
+}
+
+/// Desired corpus unit — deterministic; does not invent coverage.
+model ContentEngineManifest {
+  id               String                   @id @default(cuid())
+  contentKey       String
+  contentType      ContentEngineContentType
+  locale           String                   @default("en")
+  serviceSlug      String?
+  locationSlug     String?
+  diySlug          String?
+  articleSlug      String?
+  safetyClass      String?
+  coverageRequired Boolean                  @default(false)
+  required         Boolean                  @default(true)
+  priority         Int                      @default(0)
+  generationVersion String                  @default("2026.09.10")
+  metaJson         String                   @default("{}")
+  createdAt        DateTime                 @default(now())
+  updatedAt        DateTime                 @updatedAt
+  validations      ContentEngineValidation[]
+  runs             ContentEngineRunItem[]
+
+  @@unique([contentKey, locale, generationVersion])
+  @@index([contentType])
+  @@index([priority])
+}
+
+model ContentEngineValidation {
+  id         String                 @id @default(cuid())
+  manifestId String
+  passed     Boolean                @default(false)
+  lifecycle  ContentEngineLifecycle @default(VALIDATING)
+  scoreJson  String                 @default("{}")
+  issuesJson String                 @default("[]")
+  wordCount  Int                    @default(0)
+  createdAt  DateTime               @default(now())
+  manifest   ContentEngineManifest  @relation(fields: [manifestId], references: [id], onDelete: Cascade)
+
+  @@index([manifestId, createdAt])
+  @@index([passed])
+}
+
+model ContentEngineBatch {
+  id                String   @id @default(cuid())
+  batchKey          String   @unique
+  generationVersion String
+  size              Int
+  status            String   @default("pending")
+  startedAt         DateTime?
+  finishedAt        DateTime?
+  costEstimateUsd   Float    @default(0)
+  metaJson          String   @default("{}")
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  items             ContentEngineRunItem[]
+}
+
+model ContentEngineRunItem {
+  id         String                  @id @default(cuid())
+  batchId    String
+  manifestId String
+  lifecycle  ContentEngineLifecycle  @default(QUEUED)
+  attempt    Int                     @default(0)
+  error      String?
+  createdAt  DateTime                @default(now())
+  updatedAt  DateTime                @updatedAt
+  batch      ContentEngineBatch      @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  manifest   ContentEngineManifest   @relation(fields: [manifestId], references: [id], onDelete: Cascade)
+
+  @@unique([batchId, manifestId])
+  @@index([lifecycle])
 }

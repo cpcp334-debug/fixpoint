@@ -1,0 +1,379 @@
+{
+  "reportType": "latest-project-status",
+  "inspectedAt": "2026-09-10T13:59:52.891Z",
+  "readOnly": true,
+  "currentProjectPhase": "CONTENT ENGINE BUILD",
+  "phaseEvidence": "content-engine foundation + dry tests exist; generator is stub; engine tables empty; mass generation off; local HTTP 500; production missing",
+  "overall": {
+    "application": "LOCAL_UP_BUT_HTTP_500",
+    "database": "LOCAL_POSTGRES_REACHABLE",
+    "prisma": "USABLE_FOR_QUERIES_GENERATE_EPERM_RISK",
+    "contentEngine": "FOUNDATION_PARTIAL",
+    "generationSystem": "LEGACY_JOBS_HEAVY_ENGINE_STUB",
+    "publicationSystem": "CATALOG_GATES_PLUS_ENGINE_IN_MEMORY",
+    "admin": "IMPLEMENTED_SESSION_GATE",
+    "blog": "IMPLEMENTED_45_PUBLISHED",
+    "diy": "563_TOTAL_45_PUBLIC_GREEN",
+    "serviceLocation": "63400_TOTAL_49_PUBLIC_COVERED",
+    "images": "LOCAL_WEBP_NO_OBJECT_STORAGE",
+    "seo": "PARTIAL",
+    "aeo": "PARTIAL",
+    "geo": "PARTIAL",
+    "sitemap": "32_SHARD_ARCHITECTURE_LIVE_FETCH_500",
+    "security": "PARTIAL",
+    "production": "MISSING"
+  },
+  "counts": {
+    "serviceTotal": 317,
+    "serviceActive": 7,
+    "serviceDraft": 310,
+    "serviceActiveIndexable": 7,
+    "approvedOfferingsMatrix311": 311,
+    "locationTotal": 200,
+    "locationActive": 8,
+    "locationServes": 8,
+    "serviceLocationTotal": 63400,
+    "serviceLocationCovered": 49,
+    "serviceLocationCoveragePublished": 49,
+    "serviceLocationIndexable": 49,
+    "serviceLocationPublic": 49,
+    "serviceLocationUncovered": 63351,
+    "diyTotal": 563,
+    "diyPrimary": 302,
+    "diyPublished": 45,
+    "diyPublicPublishedIndexable": 45,
+    "diyPublicGreenOnly": 45,
+    "diyDraft": 518,
+    "diySafety": {
+      "GREEN": 46,
+      "YELLOW": 245,
+      "RED": 222,
+      "REVIEW_REQUIRED": 50
+    },
+    "diyRiskLevel": {
+      "green": 46,
+      "yellow": 245,
+      "red": 272
+    },
+    "matrix311Safety": {
+      "GREEN": 46,
+      "YELLOW": 128,
+      "RED": 112,
+      "REVIEW_REQUIRED": 25,
+      "rows": 311
+    },
+    "articleTotal": 45,
+    "articlePublished": 45,
+    "articlePublic": 45,
+    "articleDraft": 0,
+    "blogTotal": 45,
+    "blogPublic": 45,
+    "blogDraft": 0,
+    "totalContentRecords": 63963,
+    "enVersions": 63963,
+    "arVersions": 63963,
+    "totalEnArVersions": 127926,
+    "publicDiyPlusSl": 94,
+    "publicIncludingBlog": 139,
+    "noteBlogExtraToCorpus": "Blog Articles are additional to DIY+SL 63963 corpus"
+  },
+  "mapping311": {
+    "fromDoc": {
+      "approvedServices": 311,
+      "primaryExists": 304,
+      "needsCreation": 7,
+      "uniquePrimaryGuideIds": 302,
+      "missingPrimaryServices": [
+        "refrigerator",
+        "microwave",
+        "washing-machine",
+        "water-heater",
+        "dishwasher",
+        "oven",
+        "burner-cooker"
+      ]
+    },
+    "live": {
+      "servicesWithPrimaryDiyGuideId": 304,
+      "servicesWithoutPrimary": 13,
+      "invalidPrimary": 0,
+      "diyIsPrimaryTrue": 302,
+      "isPrimaryButNotLinked": 0,
+      "linkedButNotIsPrimary": 0,
+      "sharedPrimaryGuideCount": 0,
+      "primaryMismatchCount": 0,
+      "activeServicesWithPrimary": "7/7"
+    }
+  },
+  "contentEngine": {
+    "exists": true,
+    "productionReady": false,
+    "components": {
+      "folderStructure": "IMPLEMENTED",
+      "scripts": "IMPLEMENTED",
+      "generators": "PARTIAL",
+      "validators": "PARTIAL",
+      "reviewQueue": "PARTIAL",
+      "publicationQueue": "PARTIAL",
+      "worker": "PARTIAL",
+      "retry": "PARTIAL",
+      "checkpoint": "PARTIAL",
+      "idempotency": "PARTIAL",
+      "generationVersions": "PARTIAL",
+      "costTracking": "MISSING",
+      "failureQueue": "PARTIAL",
+      "auditLogs": "PARTIAL",
+      "reporting": "PARTIAL",
+      "databaseModels": "IMPLEMENTED"
+    },
+    "tableRowCounts": {
+      "ContentEngineManifest": 0,
+      "ContentEngineValidation": 0,
+      "ContentEngineBatch": 0,
+      "ContentEngineRunItem": 0,
+      "ContentGenerationJob": 254012,
+      "ContentGenerationJobSucceeded": 254012
+    }
+  },
+  "wordCounts": {
+    "method": "DB_FIELD_ASSEMBLY_NOT_FULL_HTML_RENDER",
+    "publicDiyEn": {
+      "n": 45,
+      "min": 1257,
+      "max": 1734,
+      "avg": 1619,
+      "median": 1630,
+      "under1000": 0,
+      "b1000_1099": 0,
+      "b1100_1299": 1,
+      "b1300plus": 44
+    },
+    "publicDiyAr": {
+      "n": 45,
+      "min": 1025,
+      "max": 1438,
+      "avg": 1341,
+      "median": 1343,
+      "under1000": 0,
+      "b1000_1099": 2,
+      "b1100_1299": 6,
+      "b1300plus": 37
+    },
+    "publicSlEn": {
+      "n": 49,
+      "min": 286,
+      "max": 328,
+      "avg": 307,
+      "median": 305,
+      "under1000": 49,
+      "b1000_1099": 0,
+      "b1100_1299": 0,
+      "b1300plus": 0
+    },
+    "publicSlAr": {
+      "n": 49,
+      "min": 245,
+      "max": 284,
+      "avg": 261,
+      "median": 261,
+      "under1000": 49,
+      "b1000_1099": 0,
+      "b1100_1299": 0,
+      "b1300plus": 0
+    },
+    "publicBlogEn": {
+      "n": 45,
+      "min": 1215,
+      "max": 1954,
+      "avg": 1592,
+      "median": 1804,
+      "under1000": 0,
+      "b1000_1099": 0,
+      "b1100_1299": 19,
+      "b1300plus": 26
+    },
+    "publicBlogAr": {
+      "n": 45,
+      "min": 1210,
+      "max": 1325,
+      "avg": 1268,
+      "median": 1268,
+      "under1000": 0,
+      "b1000_1099": 0,
+      "b1100_1299": 40,
+      "b1300plus": 5
+    }
+  },
+  "uniqueness": {
+    "authoritative": "src/lib/service-location/content-similarity.ts SIMILARITY_THRESHOLD=0.85",
+    "threshold": 0.85,
+    "publicDiy": { "exactDup": 0, "blockingPairs": 0, "highPairs": 0, "n": 45 },
+    "publicBlogLiveBodyScan": { "exactDup": 0, "blockingPairs": 0, "highPairs": 0, "n": 45 },
+    "publicSl": { "exactDup": 42, "blockingPairs": 637, "highPairs": 0, "n": 49 },
+    "blogAuditDocBlockingSimilarity": 2,
+    "templateDominanceLocationSwapRisk": "HIGH_ON_PUBLIC_SL"
+  },
+  "diySelfHelp": {
+    "publicSl": 49,
+    "slDiyEn": 42,
+    "slDiyAr": 49,
+    "publicBlog": 45,
+    "blogDiyEn": 45,
+    "blogDiyAr": 45,
+    "blogFaqGte2": 45,
+    "slAeoDirectAnswerGte40chars": 0,
+    "slGeoContext": 49
+  },
+  "images": {
+    "storage": "local_public_media",
+    "objectStorage": "MISSING",
+    "cdn": "MISSING",
+    "publicSlWithImage": 49,
+    "publicSlWebp": 49,
+    "publicSlAltOk": 49,
+    "publicBlogWithImage": 45,
+    "publicBlogWebp": 45,
+    "publicBlogAltMissing": 0,
+    "renderVerification": "NOT_RUN_SITE_500",
+    "samplePaths": [
+      "/media/topics/plumbing.webp",
+      "/media/topics/ac.webp",
+      "/media/topics/cleaning.webp",
+      "/media/topics/electrical.webp",
+      "/media/topics/painting.webp",
+      "/media/topics/walls.webp",
+      "/media/topics/general.webp"
+    ]
+  },
+  "blog": {
+    "routesImplemented": [
+      "/en/blog",
+      "/ar/blog",
+      "/en/blog/[slug]",
+      "/ar/blog/[slug]"
+    ],
+    "articleModel": true,
+    "published": 45,
+    "draft": 0,
+    "categories": [
+      "plumbing",
+      "uae-local-guides",
+      "cleaning",
+      "home-maintenance",
+      "air-conditioning",
+      "electrical",
+      "diy-safety",
+      "painting-walls",
+      "building-maintenance"
+    ],
+    "paginationSearch": "PARTIAL",
+    "httpStatusAtProbe": 500
+  },
+  "seoAeoGeo": {
+    "technicalSeo": "PARTIAL",
+    "onPageSeo": "PARTIAL",
+    "indexability": "PASS_CODE",
+    "sitemap": "PARTIAL",
+    "canonical": "PARTIAL",
+    "hreflang": "PARTIAL",
+    "structuredData": "PARTIAL",
+    "internalLinking": "PARTIAL",
+    "imageSeo": "PARTIAL",
+    "aeoImplementation": "PARTIAL",
+    "geoImplementation": "PARTIAL",
+    "rankingClaimed": false,
+    "aiCitationClaimed": false,
+    "uaeGeoPerformanceClaimed": false
+  },
+  "routesHttp": {
+    "/en": 500,
+    "/en/blog": 500,
+    "/en/diy": 500,
+    "/en/get-a-quote": 500,
+    "/admin": 500,
+    "/sitemap/0.xml": 500
+  },
+  "security": {
+    "draftDiyProtection": "PASS_CODE",
+    "uncoveredSlProtection": "PASS_CODE",
+    "adminProtection": "PASS_CODE",
+    "secretsProduction": "MISSING",
+    "liveHttpProof": "PARTIAL",
+    "overall": "PARTIAL"
+  },
+  "sitemap": {
+    "pairShards": 32,
+    "expectedDiyLocaleUrls": 90,
+    "expectedSlLocaleUrls": 98,
+    "expectedBlogLocaleUrls": 90,
+    "draftExclusion": "BY_QUERY",
+    "liveFetch": 500
+  },
+  "production": {
+    "hosting": "MISSING",
+    "productionDomain": "MISSING",
+    "https": "MISSING",
+    "dns": "MISSING",
+    "managedPostgres": "MISSING",
+    "databaseUrl": "PARTIAL_LOCAL",
+    "pooling": "PARTIAL_LOCAL",
+    "backups": "MISSING",
+    "pitr": "MISSING",
+    "objectStorage": "MISSING",
+    "cdn": "MISSING",
+    "monitoring": "MISSING",
+    "cron": "MISSING",
+    "secrets": "MISSING",
+    "deploymentTarget": "MISSING",
+    "siteUrlLocalhost": true
+  },
+  "testBuild": {
+    "engineDryPathPrior": "PASS",
+    "engineValidatorPrior": "PASS",
+    "liveHttp": "FAIL_500",
+    "prismaGenerateWindows": "EPERM_RISK",
+    "productionBuildThisPass": "NOT_VERIFIED",
+    "typecheckThisPass": "NOT_RUN"
+  },
+  "blockers": {
+    "code": [
+      "Local HTTP 500 on public and admin routes",
+      "Prisma generate EPERM risk with next.dev lock",
+      "Content Engine generator stub only",
+      "Engine validation tables empty"
+    ],
+    "content": [
+      "Public SL 49/49 under 1000 words in stored fields",
+      "Public SL uniqueness: 42 exact + 637 blocking pairs",
+      "Public SL directAnswer empty 0/49",
+      "Blog audit doc still lists 2 blocking pairs",
+      "Only 7 Service rows active vs 311 matrix offerings"
+    ],
+    "safety": [
+      "7 missing hubs need creation (do not invent)",
+      "YELLOW/RED/RR must stay non-public without policy"
+    ],
+    "coverage": [
+      "63351 uncovered SL must remain private",
+      "Do not invent ServiceLocation.covered"
+    ],
+    "infrastructure": [
+      "No production host/domain/HTTPS/managed DB/backups/CDN/monitoring"
+    ],
+    "searchNotYetProven": [
+      "No ranking/AEO citation/GEO visibility measurement"
+    ]
+  },
+  "recommendedNextStep": "Diagnose local HTTP 500, then continue Content Engine toward a single live test generation under freeze rules (no mass generate/publish/cover).",
+  "doNotTouch": [
+    "mass generate 63963",
+    "mass cover / invent covered",
+    "delete DIY records",
+    "safety downgrade",
+    "production deploy before engine+QA"
+  ],
+  "reportFiles": [
+    "docs/latest-project-status.md",
+    "docs/latest-project-status.json"
+  ]
+}

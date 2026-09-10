@@ -1,0 +1,181 @@
+{
+  "at": "2026-09-10T13:52:39.641Z",
+  "freeze": {
+    "publicDiy": 45,
+    "publicServiceLocation": 49,
+    "publicTotal": 94,
+    "coveredServiceLocation": 49,
+    "diyDbRecords": 563,
+    "approvedServices": 311,
+    "serviceLocationPairs": 63400,
+    "totalContentRecords": 63963,
+    "totalEnArVersions": 127926,
+    "rules": [
+      "Do not modify existing 94 public pages",
+      "Do not change ServiceLocation.covered",
+      "Do not change safety classifications",
+      "Do not change service/location/diy slugs or public URLs",
+      "Do not mass-generate or mass-publish the 63,963 corpus",
+      "Do not invent coverage",
+      "AI never publishes directly"
+    ]
+  },
+  "manifestSummary": {
+    "totals": {
+      "totalContentRecords": 63963,
+      "serviceLocation": 63400,
+      "diyRecords": 563,
+      "enVersions": 63963,
+      "arVersions": 63963,
+      "totalEnArVersions": 127926,
+      "approvedServices": 311,
+      "protectedPublic": {
+        "diy": 45,
+        "serviceLocation": 49,
+        "total": 94
+      }
+    },
+    "freeze": {
+      "publicDiy": 45,
+      "publicServiceLocation": 49,
+      "publicTotal": 94,
+      "coveredServiceLocation": 49,
+      "diyDbRecords": 563,
+      "approvedServices": 311,
+      "serviceLocationPairs": 63400,
+      "totalContentRecords": 63963,
+      "totalEnArVersions": 127926,
+      "rules": [
+        "Do not modify existing 94 public pages",
+        "Do not change ServiceLocation.covered",
+        "Do not change safety classifications",
+        "Do not change service/location/diy slugs or public URLs",
+        "Do not mass-generate or mass-publish the 63,963 corpus",
+        "Do not invent coverage",
+        "AI never publishes directly"
+      ]
+    },
+    "stages": [
+      "MANIFEST",
+      "GENERATOR",
+      "VALIDATOR",
+      "REVIEW_QUEUE",
+      "PUBLICATION_QUEUE",
+      "DATABASE"
+    ],
+    "note": "Phase 1 foundation only — do not expand to full corpus yet"
+  },
+  "diy311": {
+    "approvedServices": 311,
+    "diyDbRecords": 563,
+    "deleteExtras": false,
+    "extraClassifications": [
+      "legacy",
+      "duplicate",
+      "unmapped",
+      "not_appropriate",
+      "needs_creation"
+    ],
+    "existingArtifacts": [
+      "docs/diy-service-311-mapping.md",
+      "docs/diy-service-311-mapping.json",
+      "scripts/master-311-reconcile-and-audit.ts"
+    ],
+    "missingHubsDoNotInvent": [
+      "refrigerator",
+      "microwave",
+      "washing-machine",
+      "water-heater",
+      "dishwasher",
+      "oven",
+      "burner-cooker"
+    ],
+    "phase1Status": "wired-to-existing-reconcile; engine does not mutate coverage or DIY rows"
+  },
+  "blog": {
+    "routes": [
+      "/en/blog",
+      "/ar/blog",
+      "/en/blog/[slug]",
+      "/ar/blog/[slug]"
+    ],
+    "initialEditorialTarget": 45,
+    "generateInPhase1": false,
+    "rules": [
+      "Blog articles are NOT copies of DIY / service / location pages",
+      "Each public blog: 1000+ words, unique, useful, WebP+alt, SEO, AEO, GEO where relevant, EN/AR",
+      "Publication only via gate + human approval"
+    ],
+    "existingAppPaths": [
+      "src/app/[locale]/blog",
+      "src/lib/blog/catalog.ts",
+      "src/lib/blog/categories.ts"
+    ],
+    "phase1Status": "architecture acknowledged; generation deferred"
+  },
+  "images": {
+    "status": "foundation",
+    "requireWebp": true,
+    "requireAlt": true,
+    "requireRenderCheck": true,
+    "massGenerationEnabled": false,
+    "notes": [
+      "Relevant WebP + alt required before publication gate",
+      "Broken image = blocker",
+      "Wire to existing image_asset ContentGenerationKind later"
+    ]
+  },
+  "dryRun": {
+    "n": 100,
+    "batchKey": "engine-2026.09.10-n100-b1",
+    "generationSkipped": 100,
+    "validated": 100,
+    "reviewQueued": 100,
+    "publicationQueued": 0,
+    "blockers": 100,
+    "checkpoint": {
+      "batchKey": "engine-2026.09.10-n100-b1",
+      "processed": 100,
+      "succeeded": 0,
+      "failed": 100,
+      "updatedAt": "2026-09-10T13:52:39.641Z",
+      "lastContentKey": "engine-test-blog-100"
+    },
+    "sampleValidation": {
+      "passed": false,
+      "lifecycle": "BLOCKED_WORDS",
+      "wordCount": 6,
+      "issueCodes": [
+        "WORDS_BELOW_FLOOR",
+        "WORDS_BELOW_FLOOR",
+        "SEO_TITLE",
+        "SEO_META",
+        "SEO_H1",
+        "SEO_H2",
+        "SEO_CANONICAL",
+        "SEO_HREFLANG",
+        "SEO_INTERNAL_LINKS",
+        "SEO_SCHEMA",
+        "AEO_DIRECT_ANSWER",
+        "AEO_QUESTIONS",
+        "AEO_FAQ",
+        "AEO_NEXT_STEPS",
+        "EN_INCOMPLETE",
+        "AR_INCOMPLETE",
+        "IMAGE_MISSING",
+        "IMAGE_GATE",
+        "LOCALIZATION",
+        "SEO",
+        "AEO",
+        "APPROVAL"
+      ]
+    }
+  },
+  "reviewQueueSize": 100,
+  "auditEvents": 102,
+  "assertions": {
+    "noMassGeneration": true,
+    "publicationQueuedZeroWithoutApproval": true,
+    "reviewReceivesFailures": true
+  }
+}
