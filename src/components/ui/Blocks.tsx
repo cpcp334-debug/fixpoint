@@ -1,5 +1,6 @@
 import { mailUrl, siteConfig, telUrl, whatsappUrl } from "@/config/site";
 import { ButtonLink } from "@/components/ui/Button";
+import { normalizeFaqItems, type FaqItem } from "@/lib/faq";
 
 export function ProfessionalCtas({
   labels,
@@ -36,11 +37,16 @@ export function ProfessionalCtas({
   );
 }
 
-export function FaqList({ items }: { items: Array<{ q: string; a: string }> }) {
-  if (!items.length) return null;
+export function FaqList({
+  items,
+}: {
+  items: Array<FaqItem | { q?: string; a?: string; question?: string; answer?: string }>;
+}) {
+  const normalized = normalizeFaqItems(items);
+  if (!normalized.length) return null;
   return (
     <dl className="grid gap-3">
-      {items.map((item) => (
+      {normalized.map((item) => (
         <div key={item.q} className="rounded-xl border border-line bg-white p-5">
           <dt className="font-semibold text-navy">{item.q}</dt>
           <dd className="mt-2 text-sm leading-relaxed text-muted">{item.a}</dd>

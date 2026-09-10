@@ -1,0 +1,240 @@
+{
+  "generatedAt": "2026-09-10T08:32:03.962Z",
+  "authorization": "FINAL COMMAND — PUBLISH ALL LEGITIMATELY ELIGIBLE ARTICLES",
+  "totalRecords": 63963,
+  "localizedEnArVersions": 127926,
+  "coverageSource": {
+    "authority": "ServiceLocation.covered boolean managed via /admin/service-pages/coverage",
+    "verifiedCoveredPairs": 49,
+    "coveredNotYetPublished": 0,
+    "inventedCoverage": false,
+    "note": "No additional authoritative coverage registry found beyond DB covered flags. Uncovered pairs remain blocked."
+  },
+  "eligible": {
+    "diy": 45,
+    "serviceLocationCovered": 49,
+    "total": 94,
+    "note": "Eligible = already-public GREEN DIY + verified covered SL pairs only"
+  },
+  "published": {
+    "diy": 45,
+    "serviceLocation": 49,
+    "total": 94,
+    "newlyPublishedThisCommand": 0
+  },
+  "indexable": {
+    "diy": 45,
+    "serviceLocation": 49,
+    "total": 94
+  },
+  "remainingDrafts": {
+    "diy": 518,
+    "serviceLocationUncovered": 63351,
+    "total": 63869
+  },
+  "exactBlockers": {
+    "diy": {
+      "YELLOW safety review — public publication not permitted by safety system": {
+        "count": 245,
+        "samples": [
+          "diy-ac-cleaning",
+          "diy-ac-cooling-problem-diagnosis",
+          "diy-ac-drain-cleaning",
+          "diy-ac-inspection",
+          "diy-ac-maintenance",
+          "diy-ac-noise-problem-diagnosis",
+          "diy-ac-preventive-maintenance",
+          "diy-ac-servicing",
+          "diy-apartment-maintenance",
+          "diy-apartment-painting",
+          "diy-building-common-area-cleaning",
+          "diy-building-maintenance",
+          "diy-cabinet-and-hardware-repair",
+          "diy-carpet-cleaning",
+          "diy-ceiling-painting",
+          "diy-commercial-building-maintenance",
+          "diy-commercial-painting",
+          "diy-cooker-knob-replacement",
+          "diy-corrective-building-maintenance",
+          "diy-decorative-painting"
+        ]
+      },
+      "RED safety gate": {
+        "count": 222,
+        "samples": [
+          "diy-ac-drain-pipe-repair",
+          "diy-ac-gas-check",
+          "diy-ac-gas-recharge",
+          "diy-ac-installation",
+          "diy-ac-replacement",
+          "diy-ac-water-leakage-repair",
+          "diy-central-ac-maintenance",
+          "diy-circuit-breaker-inspection",
+          "diy-circuit-breaker-replacement",
+          "diy-commercial-water-tank-cleaning",
+          "diy-cooker-igniter-repair",
+          "diy-damp-wall-repair",
+          "diy-dishwasher-control-panel-diagnosis",
+          "diy-dishwasher-heating-problem",
+          "diy-dishwasher-pump-inspection",
+          "diy-distribution-board-inspection",
+          "diy-ducted-ac-maintenance",
+          "diy-electrical-fault-finding",
+          "diy-electrical-inspection",
+          "diy-electrical-maintenance"
+        ]
+      },
+      "REVIEW_REQUIRED — required review not passed": {
+        "count": 50,
+        "samples": [
+          "diy-common-area-maintenance",
+          "diy-cross-trainer-maintenance",
+          "diy-electric-cooker-repair",
+          "diy-exercise-bike-maintenance",
+          "diy-fitness-equipment-inspection",
+          "diy-fixture-replacement",
+          "diy-gym-disinfection",
+          "diy-gym-sanitization",
+          "diy-induction-cooker-inspection",
+          "diy-microwave-door-problem",
+          "diy-microwave-turntable-problem",
+          "diy-minor-civil-maintenance",
+          "diy-pool-chemical-balancing",
+          "diy-pool-drain-cleaning",
+          "diy-pool-filter-cleaning",
+          "diy-pool-filter-maintenance",
+          "diy-pool-water-testing",
+          "diy-preventive-gym-maintenance",
+          "diy-sauna-disinfection",
+          "diy-sauna-equipment-inspection"
+        ]
+      },
+      "legacy non-primary duplicate of diy-bathroom-cleaning": {
+        "count": 1,
+        "samples": [
+          "how-to-clean-a-bathroom"
+        ]
+      }
+    },
+    "serviceLocation": {
+      "real coverage not verified": {
+        "count": 63351
+      }
+    }
+  },
+  "unexplainedDrafts": 0,
+  "enGe1000PublicDiy": {
+    "total": 45,
+    "ge1000": 45,
+    "lt1000": 0,
+    "average": 1089.8,
+    "median": 1110,
+    "minimum": 1026,
+    "maximum": 1122
+  },
+  "arGe1000PublicDiy": {
+    "total": 45,
+    "ge1000": 45,
+    "lt1000": 0,
+    "average": 1074.4,
+    "median": 1094,
+    "minimum": 1013,
+    "maximum": 1107
+  },
+  "grandfathered49Words": {
+    "policy": "protected — bodies not rewritten for 1000-word floor",
+    "en": {
+      "total": 49,
+      "ge1000": 0,
+      "lt1000": 49,
+      "average": 438.4,
+      "median": 428,
+      "minimum": 398,
+      "maximum": 505
+    },
+    "ar": {
+      "total": 49,
+      "ge1000": 0,
+      "lt1000": 49,
+      "average": 344.9,
+      "median": 334,
+      "minimum": 316,
+      "maximum": 425
+    }
+  },
+  "uniqueness": {
+    "threshold": 0.85,
+    "exactDuplicates": 0,
+    "highSimilarityFlags": 0,
+    "remainingFlagged": 0
+  },
+  "images": {
+    "publicArticleLocales": 188,
+    "present": 188,
+    "webp": 188,
+    "missingAlt": 0,
+    "broken": 0
+  },
+  "relatedLinks": {
+    "totalPublicRelated": 0,
+    "invalidBeforeFix": 0,
+    "remainingInvalid": 0,
+    "removed": []
+  },
+  "diy": {
+    "total": 563,
+    "matrixServices": {
+      "GREEN": 46,
+      "YELLOW": 128,
+      "RED": 112,
+      "REVIEW_REQUIRED": 25
+    },
+    "published": 45,
+    "indexable": 45,
+    "draft": 518,
+    "draftByClass": {
+      "GREEN": 1,
+      "YELLOW": 245,
+      "RED": 222,
+      "REVIEW_REQUIRED": 50,
+      "UNKNOWN": 0
+    }
+  },
+  "serviceLocation": {
+    "total": 63400,
+    "covered": 49,
+    "published": 49,
+    "indexable": 49,
+    "uncovered": 63351,
+    "blockedByCoverage": 63351,
+    "newCoveredThisCommand": 0,
+    "newPublishedThisCommand": 0
+  },
+  "seo": {
+    "technical": "PASS",
+    "searchPerformance": "NOT YET PROVEN"
+  },
+  "aeo": {
+    "implementation": "PASS",
+    "atScale": "NOT YET PROVEN"
+  },
+  "geo": {
+    "implementation": "PASS",
+    "atScale": "NOT YET PROVEN"
+  },
+  "sitemap": {
+    "status": "PASS",
+    "shards": 32
+  },
+  "security": "PASS",
+  "externalBlockers": [
+    "real coverage not verified for uncovered Service×Location pairs",
+    "YELLOW DIY public publication not permitted by safety system",
+    "RED DIY never public",
+    "REVIEW_REQUIRED DIY gated until review passes",
+    "legacy non-primary DIY how-to-clean-a-bathroom",
+    "search rankings / AI citations not measured"
+  ],
+  "exactNextOperationalAction": "Supply verified real Service×Location coverage via /admin/service-pages/coverage; then process only those newly covered pairs through CONFIRM_PUBLISH with full gates. Do not invent coverage.",
+  "maximumLegitimatePublicationReached": true
+}

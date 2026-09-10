@@ -282,29 +282,24 @@ export async function listServicePages(filters: ServicePageFilters) {
   if (filters.quality) where.qualityStatus = filters.quality as Prisma.ServiceLocationWhereInput["qualityStatus"];
   if (filters.coverage === "covered") where.covered = true;
   if (filters.coverage === "not_covered") where.covered = false;
+  if (filters.parent) where.service = { ...(where.service as object), category: { slug: filters.parent } };
   if (filters.location) {
     where.location = { slug: filters.location };
   } else if (filters.emirate) {
-    where.location = { slug: filters.emirate };
+    where.location = {
+      OR: [{ slug: filters.emirate }, { parent: { slug: filters.emirate } }, { parent: { parent: { slug: filters.emirate } } }],
+    };
   }
+  // Hard bound — never load full 63k cartesian into admin memory
+  const take = 100;
   const rows = await prisma.serviceLocation.findMany({
     where,
     include: listInclude,
     orderBy: [{ service: { slug: "asc" } }, { location: { sortOrder: "asc" } }],
+    take,
   });
   return rows.filter((row) => {
     const evald = evaluateRow(row);
-    if (filters.parent) {
-      const parentSlug = row.service.category.slug;
-      if (parentSlug !== filters.parent) return false;
-    }
-    if (filters.city && row.location.type !== "city" && row.location.slug !== filters.city) return false;
-    if (filters.booking === "yes" && !evald.ops.bookingEnabled) return false;
-    if (filters.booking === "no" && evald.ops.bookingEnabled) return false;
-    if (filters.amc === "yes" && !evald.ops.amcAvailable) return false;
-    if (filters.amc === "no" && evald.ops.amcAvailable) return false;
-    if (filters.emergency === "yes" && !evald.ops.emergencyAvailable) return false;
-    if (filters.emergency === "no" && evald.ops.emergencyAvailable) return false;
     if (filters.diy === "yes" && !evald.diy.visible) return false;
     if (filters.diy === "no" && evald.diy.visible) return false;
     if (filters.language === "en" && !evald.gates.indexableEn) return false;
@@ -318,25 +313,101 @@ export async function getServicePage(id: string) {
 }
 
 export async function servicePageDashboard() {
-  const rows = await prisma.serviceLocation.findMany({ include: listInclude });
-  const evaluated = rows.map((row) => ({ row, ...evaluateRow(row) }));
+  const { measureServiceLocationPopulation } = await import("@/lib/service-location/population");
+  const [
+    totalRows,
+    covered,
+    draft,
+    review,
+    approved,
+    published,
+    archived,
+    indexable,
+    missingEn,
+    missingAr,
+    population,
+    qualityPublishable,
+    qualityReadyReview,
+    qualityFailed,
+    qualityIncomplete,
+    qualityIndexable,
+    enReady,
+    arReady,
+    seoReady,
+    geoReady,
+    aeoReady,
+    imageAltReady,
+  ] = await Promise.all([
+    prisma.serviceLocation.count(),
+    prisma.serviceLocation.count({ where: { covered: true } }),
+    prisma.serviceLocation.count({ where: { coverageStatus: "draft" } }),
+    prisma.serviceLocation.count({ where: { coverageStatus: "review" } }),
+    prisma.serviceLocation.count({ where: { coverageStatus: "approved" } }),
+    prisma.serviceLocation.count({ where: { coverageStatus: "published" } }),
+    prisma.serviceLocation.count({ where: { coverageStatus: "archived" } }),
+    prisma.serviceLocation.count({ where: { indexable: true } }),
+    prisma.serviceLocation.count({
+      where: { translations: { none: { locale: "en", intro: { not: "" } } } },
+    }),
+    prisma.serviceLocation.count({
+      where: { translations: { none: { locale: "ar", intro: { not: "" } } } },
+    }),
+    measureServiceLocationPopulation(prisma),
+    prisma.serviceLocation.count({ where: { qualityStatus: "publishable" } }),
+    prisma.serviceLocation.count({ where: { qualityStatus: "ready_for_review" } }),
+    prisma.serviceLocation.count({ where: { qualityStatus: "failed_quality" } }),
+    prisma.serviceLocation.count({ where: { qualityStatus: "incomplete" } }),
+    prisma.serviceLocation.count({ where: { qualityStatus: "indexable" } }),
+    prisma.serviceLocationI18n.count({ where: { locale: "en", h1: { not: "" }, intro: { not: "" }, seoTitle: { not: "" } } }),
+    prisma.serviceLocationI18n.count({ where: { locale: "ar", h1: { not: "" }, intro: { not: "" }, seoTitle: { not: "" } } }),
+    prisma.serviceLocationI18n.count({ where: { locale: "en", seoTitle: { not: "" }, metaDescription: { not: "" } } }),
+    prisma.serviceLocationI18n.count({ where: { locale: "en", geoIntro: { not: "" } } }),
+    prisma.serviceLocationI18n.count({ where: { locale: "en", directAnswer: { not: "" } } }),
+    prisma.serviceLocationI18n.count({ where: { locale: "en", imageAlt: { not: "" } } }),
+  ]);
+
+  const approvedMatrixCandidates = population.classification.approvedMatrixRows;
+  const legacyExtraRows = population.classification.legacyOutsideMatrixRows;
+  const totalExpected = approvedMatrixCandidates + legacyExtraRows;
   return {
-    possible: 62200,
-    covered: rows.filter((r) => r.covered).length,
-    notCovered: 62200 - rows.filter((r) => r.covered).length,
-    draft: rows.filter((r) => r.coverageStatus === "draft").length,
-    review: rows.filter((r) => r.coverageStatus === "review").length,
-    approved: rows.filter((r) => r.coverageStatus === "approved").length,
-    published: rows.filter((r) => r.coverageStatus === "published").length,
-    archived: rows.filter((r) => r.coverageStatus === "archived").length,
-    indexable: evaluated.filter((r) => r.gates.pairIndexable).length,
-    noindex: evaluated.filter((r) => !r.gates.pairIndexable).length,
-    missingEn: evaluated.filter((r) => !r.en || !r.en.intro).length,
-    missingAr: evaluated.filter((r) => !r.ar || !r.ar.intro).length,
-    missingDiy: evaluated.filter((r) => !r.diy.guideId).length,
-    missingImage: evaluated.filter((r) => r.image.source === "approved_fallback").length,
-    qualityFailures: evaluated.filter((r) => r.gates.qualityStatus === "failed_quality").length,
-    totalRows: rows.length,
+    possible: approvedMatrixCandidates,
+    approvedMatrixCandidates,
+    legacyExtraRows,
+    totalExpected,
+    theoreticalWithHubs: 62200,
+    hubsNotMaterializedRows: population.hubsNotMaterializedRows,
+    netVsTheoretical62200: population.netVsTheoretical62200,
+    covered,
+    notCovered: totalRows - covered,
+    draft,
+    review,
+    approved,
+    published,
+    archived,
+    indexable,
+    noindex: totalRows - indexable,
+    missingEn,
+    missingAr,
+    missingDiy: null as number | null,
+    missingImage: null as number | null,
+    qualityFailures: qualityFailed,
+    qualityPublishable,
+    qualityReadyReview,
+    qualityIncomplete,
+    qualityIndexable,
+    readyForPublish: qualityPublishable,
+    enReady,
+    arReady,
+    seoReady,
+    geoReady,
+    aeoReady,
+    imageReady: imageAltReady,
+    totalRows,
+    publishedIndexable: population.published,
+    pilotsPreserved: population.pilotsPreserved,
+    unexplainedRows: population.classification.unexplainedRows,
+    legitimacy: population.legitimacy,
+    scalable: true,
   };
 }
 

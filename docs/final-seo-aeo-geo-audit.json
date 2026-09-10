@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-09-10T13:14:00.518Z",
+  "seo": "PASS",
+  "aeo": "PASS",
+  "geo": "PASS",
+  "sitemap": "PASS (32 shards)",
+  "security": "PASS",
+  "images": {
+    "publicLocales": 188,
+    "coverage": 188,
+    "webp": 188,
+    "alt": 188,
+    "broken": 0
+  }
+}

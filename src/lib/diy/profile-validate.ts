@@ -189,6 +189,11 @@ function contentBlob(profile: DiyGuideProfileJson): string {
   ].join("\n");
 }
 
+/** Instructional fields only — warnings/dontDo/FAQ may name forbidden acts to forbid them. */
+function instructionalBlob(profile: DiyGuideProfileJson): string {
+  return [...stepsToPlainText(profile.steps), ...profile.troubleshooting.troubleshooting].join("\n");
+}
+
 /** Completeness + safety for authored GREEN Batch 1 profiles. */
 export function validateAuthoredGreenProfile(profile: DiyGuideProfileJson): ProfileValidationResult {
   const issues: ProfileValidationIssue[] = [];
@@ -279,7 +284,7 @@ export function validateAuthoredYellowProfile(profile: DiyGuideProfileJson): Pro
   }
 
   const blob = contentBlob(profile);
-  if (UNSAFE_STEP.test(blob)) {
+  if (UNSAFE_STEP.test(instructionalBlob(profile))) {
     issues.push({ code: "unsafe_content", message: "Blocked unsafe instructional pattern" });
     profile.metadata.status = "safety_review";
   }

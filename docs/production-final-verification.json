@@ -1,0 +1,223 @@
+{
+  "generatedAt": "2026-09-10T07:23:49.547Z",
+  "verificationMode": "non-destructive",
+  "OVERALL": "PASS_WITH_KNOWN_EXTERNAL_BLOCKERS",
+  "CONTENT": {
+    "totalGeneratedTarget": 126702,
+    "successful": 126702,
+    "failed": 0,
+    "dead": 0,
+    "pending": 0,
+    "running": 0,
+    "EN": {
+      "draftSampleN": 200,
+      "average": 1073,
+      "median": 1072,
+      "min": 1000,
+      "max": 1135,
+      "under800": 0,
+      "pass800plus": 200
+    },
+    "AR": {
+      "draftSampleN": 200,
+      "average": 1035,
+      "median": 1034,
+      "min": 971,
+      "max": 1104,
+      "under800": 0,
+      "pass800plus": 200,
+      "englishFallbackHits": 0
+    },
+    "grandfathered49": {
+      "count": 49,
+      "resolveFailed": 0,
+      "EN": {
+        "average": 431,
+        "median": 422,
+        "min": 389,
+        "max": 496,
+        "under800": 49
+      },
+      "AR": {
+        "average": 335,
+        "median": 327,
+        "min": 308,
+        "max": 399,
+        "under800": 49
+      },
+      "note": "Intentionally not regenerated for word-count; remain under 800"
+    },
+    "seoSampleOkOf": "200/200"
+  },
+  "DIY": {
+    "total": 563,
+    "published": 45,
+    "indexable": 45,
+    "publishedIndexable": 45,
+    "remainingDraft": 518,
+    "remainingBySafetyClass": {
+      "GREEN": 1,
+      "YELLOW": 245,
+      "RED": 222,
+      "REVIEW_REQUIRED": 50,
+      "unknown": 0
+    },
+    "nonGreenIndexable": [],
+    "publicCatalogEn": 45,
+    "publicCatalogAr": 45,
+    "grandfatheredUrls": {
+      "faucetEn": true,
+      "faucetAr": true,
+      "acEn": true,
+      "acAr": true
+    }
+  },
+  "SERVICE_LOCATION": {
+    "total": 63400,
+    "approvedMatrixCandidatesTheoretical": 62200,
+    "approvedMatrixMaterialized": 60800,
+    "legacyExtraRows": 2600,
+    "documentedNetExtraVs62200": 1200,
+    "duplicateServiceLocationPairs": 0,
+    "covered": 49,
+    "published": 49,
+    "uncoveredDraft": 63351,
+    "indexable": 49,
+    "indexableEn": 49,
+    "indexableAr": 49,
+    "uncoveredIndexable": 0,
+    "quality": {
+      "ready_for_review": 63351,
+      "indexable": 49
+    }
+  },
+  "PUBLICATION": {
+    "workflow": "COVERED → READY_FOR_PUBLISH → REVIEW/APPROVED → CONFIRM_PUBLISH → PUBLISHED → INDEXABLE",
+    "CONTENT_READY": true,
+    "COVERAGE_READY": 49,
+    "PUBLISH_READY": 0,
+    "ACTUALLY_PUBLISHED": 49,
+    "uncoveredPublishBlocked": true,
+    "uncoveredBucket": "NOT_ELIGIBLE",
+    "confirmTokenRequired": true,
+    "publishedCoverageProtected": true,
+    "autoPublishOccurred": false
+  },
+  "SEO_SITEMAP": {
+    "sitemapPublicPairs": 49,
+    "sitemapShards": 32,
+    "sitemapLocTagsScanned": 254,
+    "publicUrlEstimateLocales": 198,
+    "publishedPairInSitemap": true,
+    "draftUncoveredPairInSitemap": false,
+    "mismatches": [],
+    "draftSeoSamplePass": "200/200"
+  },
+  "PUBLIC_ROUTES": {
+    "enDiy": "200 — 45 guides visible",
+    "arDiy": "200 — Arabic catalog, 45 guides",
+    "enPublishedSl": "200 — /en/cleaning-services/abu-dhabi",
+    "arPublishedSl": "200 — /ar/cleaning-services/abu-dhabi (Arabic title/body)",
+    "draftUncoveredSl": "404 — /en/villa-cleaning/al-ain",
+    "diyFaucet": "200",
+    "diyAcFilter": "200",
+    "adminServicePages": "redirects to /login (protected)",
+    "adminCoverage": "307 → login",
+    "adminQueue": "307 → login"
+  },
+  "ADMIN_WORKFLOW": {
+    "routes": [
+      "/admin/service-pages",
+      "/admin/service-pages/coverage",
+      "/admin/service-pages/queue",
+      "/admin/service-pages/[id]"
+    ],
+    "coverageMutatesPublished": false,
+    "confirmPublishRequired": true,
+    "auditLoggingActive": true,
+    "recentAdminAuditLogs7d": 969
+  },
+  "SAFETY": {
+    "matrix": {
+      "GREEN": 46,
+      "YELLOW": 128,
+      "RED": 112,
+      "REVIEW_REQUIRED": 25
+    },
+    "authored": {
+      "GREEN": 46,
+      "YELLOW": 121,
+      "RED": 111,
+      "REVIEW_REQUIRED": 25
+    },
+    "hubsCategoryOnly": [
+      "burner-cooker",
+      "dishwasher",
+      "microwave",
+      "oven",
+      "refrigerator",
+      "washing-machine",
+      "water-heater"
+    ],
+    "paintingHeld": "painting-services"
+  },
+  "SECURITY": {
+    "status": "PASS_CODE_LEVEL",
+    "notes": [
+      "Admin routes gated by session/actor permissions (existing auth)",
+      "Public catalog filters status=published + indexable=true for DIY and ServiceLocation",
+      "No mass exposure of draft SL via publicServiceLocationWhere",
+      "Secrets not scanned exhaustively in this run — spot-check only"
+    ],
+    "recentAdminAuditLogs7d": 969
+  },
+  "CHECKS": {
+    "content": {
+      "longformSucceeded": true,
+      "longformIdle": true,
+      "draftSampleEnGe800": true,
+      "draftSampleArGe800": true,
+      "noArEnglishFallbackInSample": true,
+      "grandfatheredUnder800AsExpected": true,
+      "grandfatheredCount": true
+    },
+    "diy": {
+      "total563": true,
+      "publishedIndexable45": true,
+      "draft518": true,
+      "onlyGreenIndexable": true,
+      "catalogsMatch": true,
+      "faucetOk": true,
+      "acOk": true
+    },
+    "serviceLocation": {
+      "total63400": true,
+      "theoretical62200": true,
+      "materializedApproved60800": true,
+      "legacyExtra1200Net": true,
+      "duplicates0": true,
+      "published49": true,
+      "covered49": true,
+      "draft63351": true,
+      "uncoveredIndexable0": true
+    },
+    "publication": {
+      "uncoveredPublishBlocked": true,
+      "confirmTokenRequired": true,
+      "publishedCoverageProtected": true,
+      "uncoveredIndexable0": true,
+      "publishedUncovered0": true,
+      "sitemapPairs49": true
+    }
+  },
+  "BLOCKERS": {
+    "repositoryCode": [],
+    "externalRealWorld": [
+      "Operational coverage decisions still required for 63,351 uncovered pairs",
+      "PUBLISH-READY count is 0 until coverage + quality promotion workflow is used",
+      "Object storage / real image binaries",
+      "Managed production Postgres / DNS / HTTPS / secrets"
+    ]
+  },
+  "NEXT_OPERATIONAL_ACTION": "Use /admin/service-pages/coverage to set real operational coverage for intended pairs, then advance only eligible pairs through queue → CONFIRM_PUBLISH. Do not mass-cover or mass-publish."
+}

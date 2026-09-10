@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2026-09-10T10:26:31.751Z",
+  "coverageAuthority": "ServiceLocation.covered via /admin/service-pages/coverage",
+  "total": 63400,
+  "covered": 49,
+  "published": 49,
+  "indexable": 49,
+  "uncovered": 63351,
+  "coverageBlocked": 63351,
+  "coveredNotPublished": 0,
+  "coveredPendingSamples": [],
+  "inventedCoverage": false,
+  "newlyPublishedThisRun": 0,
+  "grandfathered49Words": {
+    "en": {
+      "total": 49,
+      "ge1000": 0,
+      "lt1000": 49,
+      "average": 438.4,
+      "median": 428,
+      "minimum": 398,
+      "maximum": 505
+    },
+    "ar": {
+      "total": 49,
+      "ge1000": 0,
+      "lt1000": 49,
+      "average": 344.9,
+      "median": 334,
+      "minimum": 316,
+      "maximum": 425
+    }
+  }
+}

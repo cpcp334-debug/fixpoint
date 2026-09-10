@@ -1,0 +1,81 @@
+{
+  "total": 563,
+  "published": 45,
+  "indexable": 45,
+  "publishedIndexable": 45,
+  "publishedGreenCount": 45,
+  "indexableGreenCount": 45,
+  "draftByClass": {
+    "GREEN": 1,
+    "YELLOW": 245,
+    "RED": 222,
+    "REVIEW_REQUIRED": 50,
+    "unknown": 0
+  },
+  "nonGreenPublic": [],
+  "publicCatalogEnCards": 45,
+  "publicCatalogArCards": 45,
+  "categorySectionsEn": [
+    {
+      "slug": "plumbing",
+      "n": 1,
+      "name": "Plumbing"
+    },
+    {
+      "slug": "ac",
+      "n": 1,
+      "name": "Air conditioning"
+    },
+    {
+      "slug": "painting",
+      "n": 1,
+      "name": "Painting"
+    },
+    {
+      "slug": "walls",
+      "n": 1,
+      "name": "Walls"
+    },
+    {
+      "slug": "cleaning",
+      "n": 41,
+      "name": "Cleaning"
+    }
+  ],
+  "categorySectionsAr": [
+    {
+      "slug": "plumbing",
+      "n": 1,
+      "name": "السباكة"
+    },
+    {
+      "slug": "ac",
+      "n": 1,
+      "name": "التكييف"
+    },
+    {
+      "slug": "painting",
+      "n": 1,
+      "name": "الدهان"
+    },
+    {
+      "slug": "walls",
+      "n": 1,
+      "name": "الجدران"
+    },
+    {
+      "slug": "cleaning",
+      "n": 41,
+      "name": "التنظيف"
+    }
+  ],
+  "grandfathered": {
+    "faucet": true,
+    "ac": true
+  },
+  "sampleNew": {
+    "ovenEnSteps": 6,
+    "ovenArSteps": 6,
+    "ovenArArabic": true
+  }
+}

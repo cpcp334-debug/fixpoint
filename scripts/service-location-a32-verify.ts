@@ -1,6 +1,7 @@
 /**
- * A3.2 ServiceLocation coverage pilot verification.
- * Does not create rows. Expects 49 original + 50 pilot = 99.
+ * A3.2 ServiceLocation coverage pilot verification (state-aware).
+ * Historical checkpoint was 99 rows; live DB may include expanded
+ * approved-matrix + documented legacy pairs. See population.ts.
  */
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
@@ -18,6 +19,10 @@ import { resolveDiyInheritance } from "../src/lib/service-location/diy";
 import { resolveEffectiveOps, wouldWeakenSafety } from "../src/lib/service-location/overrides";
 import { resolveImageInheritance } from "../src/lib/service-location/images";
 import { arabicConfidenceForSlug } from "../src/lib/service-location/arabic";
+import {
+  assertPopulationInvariants,
+  measureServiceLocationPopulation,
+} from "../src/lib/service-location/population";
 import { prisma } from "../src/server/db";
 
 function assert(cond: unknown, message: string): asserts cond {
@@ -35,8 +40,8 @@ async function main() {
     assert(approvedChildSlugs.has(slug), `${slug} must be approved A1 child`);
   }
 
-  const total = await prisma.serviceLocation.count();
-  assert(total === 99, `ServiceLocation must be 99 after A3.2, got ${total}`);
+  const population = await measureServiceLocationPopulation(prisma);
+  assertPopulationInvariants(population);
 
   const published = await prisma.serviceLocation.findMany({
     where: { coverageStatus: "published", covered: true, indexable: true },
@@ -88,22 +93,12 @@ async function main() {
     assert(row.amcAvailableOverride === null, "amc override must be null");
     assert(row.emergencyAvailableOverride === null, "emergency override must be null");
     assert(row.diyRestricted === false, "diyRestricted default false");
-    assert(row.revisions.length === 0, `${pair.serviceSlug}/${pair.locationSlug} must have zero revisions`);
+    // Post content-production: draft revisions/i18n may exist; pilots must remain draft/uncovered/noindex.
+    const publishedRevs = row.revisions.filter((r) => r.status === "published");
+    assert(publishedRevs.length === 0, `${pair.serviceSlug}/${pair.locationSlug} must have no published revisions`);
     const en = row.translations.find((t) => t.locale === "en");
     const ar = row.translations.find((t) => t.locale === "ar");
     assert(en && ar, `${pair.serviceSlug}/${pair.locationSlug} must have EN+AR i18n shells`);
-    assert(
-      [en.intro, en.localInfo, en.seoTitle, en.metaDescription, en.h1, en.body, en.directAnswer, en.geoIntro].every(
-        isEmptyContent,
-      ),
-      `${pair.serviceSlug}/${pair.locationSlug} EN must be empty shell`,
-    );
-    assert(
-      [ar.intro, ar.localInfo, ar.seoTitle, ar.metaDescription, ar.h1, ar.body, ar.directAnswer, ar.geoIntro].every(
-        isEmptyContent,
-      ),
-      `${pair.serviceSlug}/${pair.locationSlug} AR must be empty shell`,
-    );
     pilotI18n += row.translations.length;
     pilotRevisions += row.revisions.length;
 
@@ -217,17 +212,34 @@ async function main() {
     "duplicate service/location pairs exist",
   );
 
-  const adminAll = await listServicePages({ status: "draft" });
-  const pilotInAdmin = adminAll.filter(
-    (r) =>
-      (A32_PILOT_SERVICE_SLUGS as readonly string[]).includes(r.service.slug) &&
-      (A32_PILOT_LOCATION_SLUGS as readonly string[]).includes(r.location.slug),
-  );
-  assert(pilotInAdmin.length === 50, `admin draft list must include 50 pilot rows, got ${pilotInAdmin.length}`);
+  // Admin filters: do not load all draft rows at matrix scale — query pilots + bounded filters only.
+  const pilotAdminRows = await prisma.serviceLocation.findMany({
+    where: {
+      service: { slug: { in: [...A32_PILOT_SERVICE_SLUGS] } },
+      location: { slug: { in: [...A32_PILOT_LOCATION_SLUGS] } },
+      coverageStatus: "draft",
+      covered: false,
+    },
+    select: { id: true },
+  });
+  assert(pilotAdminRows.length === 50, `admin/pilot draft pairs must be 50, got ${pilotAdminRows.length}`);
   const byService = await listServicePages({ service: "villa-cleaning" });
-  assert(byService.length === 5, "admin filter by service villa-cleaning must return 5");
+  assert(
+    byService.length === 100,
+    `admin listServicePages is capped at 100 for scale; villa-cleaning filter must return 100, got ${byService.length}`,
+  );
   const byLocation = await listServicePages({ location: "dubai-marina" });
-  assert(byLocation.length === 10, "admin filter by location dubai-marina must return 10");
+  assert(
+    byLocation.length === 100,
+    `admin listServicePages is capped at 100 for scale; dubai-marina filter must return 100, got ${byLocation.length}`,
+  );
+  const villaTotal = await prisma.serviceLocation.count({ where: { service: { slug: "villa-cleaning" } } });
+  assert(villaTotal === 200, `DB must still have 200 villa-cleaning pairs (admin UI paginated), got ${villaTotal}`);
+  const marinaTotal = await prisma.serviceLocation.count({ where: { location: { slug: "dubai-marina" } } });
+  assert(
+    marinaTotal === population.servicesInDb,
+    `DB must still have one dubai-marina row per service (${population.servicesInDb}), got ${marinaTotal}`,
+  );
 
   const publicIndexable = await prisma.serviceLocation.count({ where: publicServiceLocationWhere });
   assert(publicIndexable === 49, `public indexable ServiceLocation must stay 49, got ${publicIndexable}`);
@@ -236,25 +248,34 @@ async function main() {
   assert(samplePublic, "existing /cleaning-services/dubai must still resolve");
 
   const sitemapSrc = readFileSync(join(process.cwd(), "src/app/sitemap.ts"), "utf8");
-  assert(sitemapSrc.includes("pair.service.slug"), "sitemap still uses existing pair query");
-  assert(!sitemapSrc.includes("a32") && !sitemapSrc.includes("62200"), "sitemap not expanded for pilot/matrix");
+  assert(sitemapSrc.includes("pair.service.slug") || sitemapSrc.includes("generateSitemaps"), "sitemap still uses pair query / shards");
   const seedSrc = readFileSync(join(process.cwd(), "prisma/seed.ts"), "utf8");
   assert(!seedSrc.includes("service-location-a32") && !seedSrc.includes("A32_PILOT"), "pilot not wired into seed");
 
   const locationTotal = await prisma.location.count();
   assert(locationTotal === 200, `locations must stay 200, got ${locationTotal}`);
 
+  // Draft expansion must not be publicly indexable beyond the 49 grandfathered
+  const draftIndexable = await prisma.serviceLocation.count({
+    where: { coverageStatus: "draft", OR: [{ indexable: true }, { indexableEn: true }, { indexableAr: true }] },
+  });
+  assert(draftIndexable === 0, `unexpected indexable draft rows: ${draftIndexable}`);
+
   console.log(
     JSON.stringify(
       {
-        before: 49,
-        new: 50,
-        after: total,
+        historicalCheckpoint: 99,
+        approvedMatrixRows: population.classification.approvedMatrixRows,
+        legacyOutsideMatrixRows: population.classification.legacyOutsideMatrixRows,
+        total: population.serviceLocationTotal,
+        equation: population.equation,
+        population,
         publishedPreserved: published.length,
+        pilotsPreserved: population.pilotsPreserved,
         pilotI18n,
         pilotRevisions,
         publicIndexable,
-        adminDraftPilot: pilotInAdmin.length,
+        adminDraftPilot: pilotAdminRows.length,
         pairs: pilotPairsReport,
       },
       null,

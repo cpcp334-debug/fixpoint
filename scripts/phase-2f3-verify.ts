@@ -123,6 +123,17 @@ async function main() {
 
   const staff = await prisma.staff.create({ data: { staffCode: "2F3-TECH", role: "technician" } });
   ids.staff.push(staff.id);
+  await prisma.staffSkill.create({
+    data: {
+      staffId: staff.id,
+      categorySlug: "cleaning",
+      locationSlug: null,
+    },
+  });
+
+  const bookingService = await prisma.service.findUnique({ where: { slug: "cleaning-services" } });
+  const bookingLocation = await prisma.location.findUnique({ where: { slug: "dubai" } });
+  assert(bookingService && bookingLocation, "booking service/location fixture");
 
   const booking = await prisma.booking.create({
     data: {
@@ -132,6 +143,8 @@ async function main() {
       phone: "+971504444001",
       requirement: "Need a villa kitchen and bathroom clean this week please.",
       status: "confirmed",
+      serviceId: bookingService.id,
+      locationId: bookingLocation.id,
       customerId: customer.id,
       leadId: lead.id,
       visitorId: visitor.id,

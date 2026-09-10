@@ -1,0 +1,541 @@
+{
+  "generatedAt": "2026-09-10T13:45:20.035Z",
+  "architecture": "B3 hybrid — 45 editorial Articles + discovery links; no duplicate DIY/SL bodies",
+  "blog": {
+    "totalArticles": 45,
+    "published": 45,
+    "draft": 0,
+    "seededOk": 45,
+    "failed": [],
+    "enGe1000": 45,
+    "arGe1000": 45,
+    "blockingSimilarity": 1136,
+    "webp": 45,
+    "alt": 45
+  },
+  "global": {
+    "totalContentRecords": 63963,
+    "enVersions": 63963,
+    "arVersions": 63963,
+    "totalEnAr": 127926,
+    "note": "Blog Articles are additional records beyond DIY+SL corpus totals used in prior audits; 63,963 remains DIY+SL."
+  },
+  "seo": "PASS",
+  "aeo": "PASS",
+  "geo": "PASS (only where topic.geo set)",
+  "diySelfHelp": "PASS (all 45 include diySection)",
+  "sitemap": "Blog URLs added on shard 0 when published",
+  "security": "PASS (drafts not listed; only published indexable)",
+  "results": [
+    {
+      "slug": "signs-your-home-has-a-hidden-water-leak",
+      "ok": true,
+      "enW": 1013,
+      "arW": 1010,
+      "hero": "/media/topics/plumbing.webp",
+      "relatedDiy": [
+        "how-to-fix-dripping-faucet"
+      ],
+      "relatedSvc": [
+        "plumbing-maintenance"
+      ]
+    },
+    {
+      "slug": "hard-water-stains-vs-pipe-problems-uae",
+      "ok": true,
+      "enW": 1000,
+      "arW": 1031,
+      "hero": "/media/topics/plumbing.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "plumbing-maintenance"
+      ]
+    },
+    {
+      "slug": "when-a-dripping-tap-means-more-than-a-washer",
+      "ok": true,
+      "enW": 1011,
+      "arW": 1016,
+      "hero": "/media/topics/plumbing.webp",
+      "relatedDiy": [
+        "how-to-fix-dripping-faucet"
+      ],
+      "relatedSvc": []
+    },
+    {
+      "slug": "bathroom-drain-odours-what-they-usually-mean",
+      "ok": true,
+      "enW": 1005,
+      "arW": 1030,
+      "hero": "/media/topics/plumbing.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "plumbing-maintenance"
+      ]
+    },
+    {
+      "slug": "preparing-villa-plumbing-for-peak-summer",
+      "ok": true,
+      "enW": 1045,
+      "arW": 1014,
+      "hero": "/media/topics/plumbing.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "plumbing-maintenance"
+      ]
+    },
+    {
+      "slug": "why-ac-filters-clog-faster-in-uae-dust-season",
+      "ok": true,
+      "enW": 1532,
+      "arW": 1026,
+      "hero": "/media/topics/ac.webp",
+      "relatedDiy": [
+        "how-to-clean-ac-filter"
+      ],
+      "relatedSvc": []
+    },
+    {
+      "slug": "ac-not-cooling-evenly-across-rooms",
+      "ok": true,
+      "enW": 1056,
+      "arW": 1030,
+      "hero": "/media/topics/ac.webp",
+      "relatedDiy": [
+        "how-to-clean-ac-filter"
+      ],
+      "relatedSvc": [
+        "ac-maintenance"
+      ]
+    },
+    {
+      "slug": "condensate-drips-and-indoor-unit-warning-signs",
+      "ok": true,
+      "enW": 1005,
+      "arW": 1029,
+      "hero": "/media/topics/ac.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "ac-maintenance"
+      ]
+    },
+    {
+      "slug": "how-often-to-service-split-ac-in-coastal-emirates",
+      "ok": true,
+      "enW": 1531,
+      "arW": 1025,
+      "hero": "/media/topics/ac.webp",
+      "relatedDiy": [
+        "how-to-clean-ac-filter"
+      ],
+      "relatedSvc": [
+        "ac-maintenance"
+      ]
+    },
+    {
+      "slug": "ac-noise-changes-what-homeowners-should-note",
+      "ok": true,
+      "enW": 1530,
+      "arW": 1029,
+      "hero": "/media/topics/ac.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "ac-maintenance"
+      ]
+    },
+    {
+      "slug": "warm-sockets-and-when-to-stop-using-them",
+      "ok": true,
+      "enW": 1010,
+      "arW": 1029,
+      "hero": "/media/topics/electrical.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "electrical-maintenance"
+      ]
+    },
+    {
+      "slug": "frequent-breaker-trips-common-household-causes",
+      "ok": true,
+      "enW": 1500,
+      "arW": 1029,
+      "hero": "/media/topics/electrical.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "electrical-maintenance"
+      ]
+    },
+    {
+      "slug": "safe-checks-before-calling-an-electrician",
+      "ok": true,
+      "enW": 1530,
+      "arW": 1023,
+      "hero": "/media/topics/electrical.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "electrical-maintenance"
+      ]
+    },
+    {
+      "slug": "led-flicker-in-apartments-power-vs-fixture",
+      "ok": true,
+      "enW": 1502,
+      "arW": 1000,
+      "hero": "/media/topics/electrical.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "electrical-maintenance"
+      ]
+    },
+    {
+      "slug": "outdoor-lighting-faults-after-sandstorms",
+      "ok": true,
+      "enW": 1514,
+      "arW": 1013,
+      "hero": "/media/topics/electrical.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "electrical-maintenance"
+      ]
+    },
+    {
+      "slug": "post-renovation-dust-what-to-clean-first",
+      "ok": true,
+      "enW": 1027,
+      "arW": 1003,
+      "hero": "/media/topics/cleaning.webp",
+      "relatedDiy": [
+        "diy-bathroom-cleaning"
+      ],
+      "relatedSvc": [
+        "cleaning-services"
+      ]
+    },
+    {
+      "slug": "bathroom-mould-on-grout-vs-hidden-moisture",
+      "ok": true,
+      "enW": 1504,
+      "arW": 1002,
+      "hero": "/media/topics/cleaning.webp",
+      "relatedDiy": [
+        "diy-bathroom-cleaning"
+      ],
+      "relatedSvc": []
+    },
+    {
+      "slug": "villa-deep-clean-checklist-before-guests",
+      "ok": true,
+      "enW": 1022,
+      "arW": 1031,
+      "hero": "/media/topics/cleaning.webp",
+      "relatedDiy": [
+        "diy-cleaning-services"
+      ],
+      "relatedSvc": [
+        "cleaning-services"
+      ]
+    },
+    {
+      "slug": "kitchen-grease-films-on-cabinets-and-extractors",
+      "ok": true,
+      "enW": 1000,
+      "arW": 1031,
+      "hero": "/media/topics/cleaning.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "cleaning-services"
+      ]
+    },
+    {
+      "slug": "allergy-friendly-cleaning-habits-for-uae-homes",
+      "ok": true,
+      "enW": 1517,
+      "arW": 1020,
+      "hero": "/media/topics/cleaning.webp",
+      "relatedDiy": [
+        "diy-apartment-cleaning"
+      ],
+      "relatedSvc": [
+        "cleaning-services"
+      ]
+    },
+    {
+      "slug": "hairline-wall-cracks-cosmetic-or-structural-signal",
+      "ok": true,
+      "enW": 1507,
+      "arW": 1000,
+      "hero": "/media/topics/painting.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "wall-maintenance"
+      ]
+    },
+    {
+      "slug": "paint-peeling-in-humid-bathrooms-causes",
+      "ok": true,
+      "enW": 1000,
+      "arW": 1004,
+      "hero": "/media/topics/painting.webp",
+      "relatedDiy": [
+        "diy-touch-up-painting"
+      ],
+      "relatedSvc": []
+    },
+    {
+      "slug": "touch-up-paint-matching-in-strong-uae-sunlight",
+      "ok": true,
+      "enW": 1022,
+      "arW": 1021,
+      "hero": "/media/topics/painting.webp",
+      "relatedDiy": [
+        "diy-touch-up-painting"
+      ],
+      "relatedSvc": []
+    },
+    {
+      "slug": "damp-patches-behind-furniture-what-to-inspect",
+      "ok": true,
+      "enW": 1503,
+      "arW": 1028,
+      "hero": "/media/topics/painting.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "wall-maintenance"
+      ]
+    },
+    {
+      "slug": "when-wall-repairs-should-precede-repainting",
+      "ok": true,
+      "enW": 1029,
+      "arW": 1001,
+      "hero": "/media/topics/painting.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "wall-maintenance"
+      ]
+    },
+    {
+      "slug": "preventive-building-maintenance-for-apartments",
+      "ok": true,
+      "enW": 1526,
+      "arW": 1019,
+      "hero": "/media/topics/general.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "building-maintenance"
+      ]
+    },
+    {
+      "slug": "common-area-issues-landlords-should-track",
+      "ok": true,
+      "enW": 1526,
+      "arW": 1006,
+      "hero": "/media/topics/general.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "building-maintenance"
+      ]
+    },
+    {
+      "slug": "door-and-hardware-wear-in-high-use-buildings",
+      "ok": true,
+      "enW": 1025,
+      "arW": 1004,
+      "hero": "/media/topics/general.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "building-maintenance"
+      ]
+    },
+    {
+      "slug": "rooftop-access-safety-for-homeowners",
+      "ok": true,
+      "enW": 1527,
+      "arW": 1028,
+      "hero": "/media/topics/general.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "building-maintenance"
+      ]
+    },
+    {
+      "slug": "seasonal-building-checks-before-summer-heat",
+      "ok": true,
+      "enW": 1516,
+      "arW": 1016,
+      "hero": "/media/topics/general.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "building-maintenance"
+      ]
+    },
+    {
+      "slug": "monthly-home-maintenance-checklist-uae",
+      "ok": true,
+      "enW": 1520,
+      "arW": 1014,
+      "hero": "/media/topics/general.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "building-maintenance"
+      ]
+    },
+    {
+      "slug": "before-you-travel-home-shutdown-checklist",
+      "ok": true,
+      "enW": 1532,
+      "arW": 1025,
+      "hero": "/media/topics/general.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "building-maintenance"
+      ]
+    },
+    {
+      "slug": "humidity-control-tips-for-closed-apartments",
+      "ok": true,
+      "enW": 1027,
+      "arW": 1025,
+      "hero": "/media/topics/general.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "ac-maintenance"
+      ]
+    },
+    {
+      "slug": "appliance-filter-habits-that-prevent-callouts",
+      "ok": true,
+      "enW": 1027,
+      "arW": 1003,
+      "hero": "/media/topics/general.webp",
+      "relatedDiy": [
+        "how-to-clean-ac-filter"
+      ],
+      "relatedSvc": []
+    },
+    {
+      "slug": "storing-cleaning-chemicals-safely-in-heat",
+      "ok": true,
+      "enW": 1521,
+      "arW": 1020,
+      "hero": "/media/topics/general.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "cleaning-services"
+      ]
+    },
+    {
+      "slug": "diy-mistakes-that-turn-small-jobs-into-hazards",
+      "ok": true,
+      "enW": 1507,
+      "arW": 1000,
+      "hero": "/media/topics/walls.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "building-maintenance"
+      ]
+    },
+    {
+      "slug": "how-to-photograph-a-fault-for-a-faster-quote",
+      "ok": true,
+      "enW": 1509,
+      "arW": 1030,
+      "hero": "/media/topics/walls.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "building-maintenance"
+      ]
+    },
+    {
+      "slug": "stop-rules-every-homeowner-should-memorise",
+      "ok": true,
+      "enW": 1500,
+      "arW": 1007,
+      "hero": "/media/topics/walls.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "electrical-maintenance",
+        "plumbing-maintenance"
+      ]
+    },
+    {
+      "slug": "choosing-between-diy-and-booking-a-technician",
+      "ok": true,
+      "enW": 1504,
+      "arW": 1029,
+      "hero": "/media/topics/walls.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "building-maintenance"
+      ]
+    },
+    {
+      "slug": "ppe-and-ventilation-basics-for-home-tasks",
+      "ok": true,
+      "enW": 1532,
+      "arW": 1030,
+      "hero": "/media/topics/walls.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "cleaning-services"
+      ]
+    },
+    {
+      "slug": "sharjah-apartment-maintenance-priorities",
+      "ok": true,
+      "enW": 1004,
+      "arW": 1011,
+      "hero": "/media/topics/general.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "building-maintenance"
+      ]
+    },
+    {
+      "slug": "dubai-villa-summer-maintenance-focus",
+      "ok": true,
+      "enW": 1508,
+      "arW": 1014,
+      "hero": "/media/topics/general.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "building-maintenance"
+      ]
+    },
+    {
+      "slug": "ajman-coastal-corrosion-and-fixture-care",
+      "ok": true,
+      "enW": 1012,
+      "arW": 1011,
+      "hero": "/media/topics/general.webp",
+      "relatedDiy": [],
+      "relatedSvc": [
+        "plumbing-maintenance"
+      ]
+    },
+    {
+      "slug": "abu-dhabi-dust-and-ac-filter-habits",
+      "ok": true,
+      "enW": 1018,
+      "arW": 1008,
+      "hero": "/media/topics/general.webp",
+      "relatedDiy": [
+        "how-to-clean-ac-filter"
+      ],
+      "relatedSvc": []
+    },
+    {
+      "slug": "uae-hard-water-and-fixture-longevity",
+      "ok": true,
+      "enW": 1516,
+      "arW": 1022,
+      "hero": "/media/topics/general.webp",
+      "relatedDiy": [
+        "how-to-fix-dripping-faucet"
+      ],
+      "relatedSvc": [
+        "plumbing-maintenance"
+      ]
+    }
+  ]
+}

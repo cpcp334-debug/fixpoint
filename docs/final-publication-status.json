@@ -1,0 +1,89 @@
+{
+  "generatedAt": "2026-09-10T13:16:35.486Z",
+  "content": {
+    "totalRecords": 63963,
+    "en": 63963,
+    "ar": 63963,
+    "totalEnAr": 127926
+  },
+  "primaryDiy": {
+    "approvedServices": 311,
+    "primaryDiyLinkages": 304,
+    "uniquePrimaryGuides": 302,
+    "missingPrimary": 7,
+    "duplicateLegacy": 261,
+    "unmapped": 0,
+    "diyNotAppropriate": 0
+  },
+  "public": {
+    "total": 94,
+    "diy": 45,
+    "serviceLocation": 49,
+    "indexable": 94
+  },
+  "words": {
+    "en": {
+      "total": 94,
+      "ge1000": 45,
+      "lt1000": 49,
+      "average": 989.6,
+      "median": 499,
+      "minimum": 398,
+      "maximum": 1680
+    },
+    "ar": {
+      "total": 94,
+      "ge1000": 45,
+      "lt1000": 49,
+      "average": 814.1,
+      "median": 413,
+      "minimum": 316,
+      "maximum": 1407
+    }
+  },
+  "diySection": {
+    "applicable": 49,
+    "with": 49,
+    "missing": 0
+  },
+  "uniqueness": {
+    "exactDuplicates": 0,
+    "blockingSimilarity": 0
+  },
+  "images": {
+    "publicLocales": 188,
+    "coverage": 188,
+    "webp": 188,
+    "alt": 188,
+    "broken": 0
+  },
+  "seo": "PASS",
+  "aeo": "PASS",
+  "geo": "PASS",
+  "sitemap": "PASS",
+  "security": "PASS",
+  "serviceLocation": {
+    "total": 63400,
+    "covered": 49,
+    "published": 49,
+    "indexable": 49,
+    "uncovered": 63351,
+    "coverageBlocked": 63351
+  },
+  "diy": {
+    "total": 563,
+    "published": 45,
+    "GREEN": 45,
+    "YELLOW": 246,
+    "RED": 222,
+    "REVIEW_REQUIRED": 50,
+    "UNKNOWN": 0,
+    "matrixOfferings": {
+      "GREEN": 46,
+      "YELLOW": 128,
+      "RED": 112,
+      "REVIEW_REQUIRED": 25
+    },
+    "remaining": 518
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "mode": "B3-hybrid",
+  "initialEditorial": 45,
+  "canonical": "/{locale}/blog/{slug}",
+  "noDuplicateBodies": true,
+  "corpusBasis": {
+    "diyPlusSl": 63963,
+    "localized": 127926
+  }
+}

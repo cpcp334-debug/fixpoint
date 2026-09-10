@@ -6,6 +6,7 @@ import type {
   PrismaClient,
 } from "@prisma/client";
 import { prisma as defaultPrisma } from "@/server/db";
+import { recordPipelineMetric } from "@/lib/observability/pipeline-metrics";
 
 export type EnqueueJobInput = {
   kind: ContentGenerationKind;
@@ -20,6 +21,8 @@ export type EnqueueJobInput = {
   priority?: number;
   maxAttempts?: number;
   payloadJson?: string;
+  /** When true, reset a succeeded job back to pending for safe regeneration. */
+  requeueSucceeded?: boolean;
 };
 
 export type ListJobsFilter = {
@@ -80,6 +83,19 @@ export async function enqueueJob(
   }
 
   if (existing.status === "succeeded") {
+    if (input.requeueSucceeded) {
+      return db(client).contentGenerationJob.update({
+        where: { id: existing.id },
+        data: {
+          ...shared,
+          status: "pending",
+          attempt: 0,
+          error: null,
+          startedAt: null,
+          finishedAt: null,
+        },
+      });
+    }
     return db(client).contentGenerationJob.update({
       where: { id: existing.id },
       data: shared,
@@ -100,13 +116,36 @@ export async function enqueueJob(
 
 export async function markRunning(id: string, client?: PrismaClient): Promise<ContentGenerationJob> {
   const now = new Date();
+  const row = await db(client).contentGenerationJob.findUniqueOrThrow({ where: { id } });
+  if (row.status !== "pending" && row.status !== "failed") {
+    throw new Error(`markRunning failed for ContentGenerationJob ${id} (not pending/failed)`);
+  }
+
+  let result: Record<string, unknown> = {};
+  try {
+    result = JSON.parse(row.resultJson || "{}") as Record<string, unknown>;
+  } catch {
+    result = {};
+  }
+  if (row.error) {
+    const history = Array.isArray(result.errorHistory) ? [...(result.errorHistory as unknown[])] : [];
+    history.push({
+      at: now.toISOString(),
+      event: "start_run_preserving_prior_error",
+      attempt: row.attempt,
+      priorError: row.error,
+    });
+    result.errorHistory = history.slice(-50);
+  }
+
   const updated = await db(client).contentGenerationJob.updateMany({
     where: { id, status: { in: ["pending", "failed"] } },
     data: {
       status: "running",
       startedAt: now,
       finishedAt: null,
-      error: null,
+      // keep row.error until success so audit still shows last failure during run
+      resultJson: JSON.stringify(result),
     },
   });
   if (updated.count !== 1) {
@@ -129,11 +168,15 @@ export async function markSucceeded(
       resultJson: result?.resultJson ?? "{}",
       ...(result?.contentHash !== undefined ? { contentHash: result.contentHash } : {}),
     },
+  }).then((row) => {
+    recordPipelineMetric({ metric: "generation_job_succeeded", tags: { kind: row.kind, locale: row.locale } });
+    return row;
   });
 }
 
 /**
  * Increment attempt; status becomes failed, or dead when attempt >= maxAttempts.
+ * Appends to resultJson.errorHistory for audit (does not erase prior errors).
  */
 export async function markFailed(
   id: string,
@@ -143,7 +186,22 @@ export async function markFailed(
   const row = await db(client).contentGenerationJob.findUniqueOrThrow({ where: { id } });
   const attempt = row.attempt + 1;
   const status: ContentGenerationJobStatus = attempt >= row.maxAttempts ? "dead" : "failed";
-  return db(client).contentGenerationJob.update({
+  let result: Record<string, unknown> = {};
+  try {
+    result = JSON.parse(row.resultJson || "{}") as Record<string, unknown>;
+  } catch {
+    result = {};
+  }
+  const history = Array.isArray(result.errorHistory) ? [...(result.errorHistory as unknown[])] : [];
+  history.push({
+    at: new Date().toISOString(),
+    attempt,
+    status,
+    error: error.slice(0, 4000),
+  });
+  result.errorHistory = history.slice(-50);
+
+  const updated = await db(client).contentGenerationJob.update({
     where: { id },
     data: {
       attempt,
@@ -151,8 +209,64 @@ export async function markFailed(
       error,
       finishedAt: new Date(),
       startedAt: null,
+      resultJson: JSON.stringify(result),
     },
   });
+  recordPipelineMetric({
+    metric: "generation_job_failed",
+    tags: { kind: updated.kind, locale: updated.locale, status: updated.status, attempt: updated.attempt },
+  });
+  return updated;
+}
+
+/**
+ * Safe FAILED → PENDING requeue only.
+ * Preserves serviceId/locationId/locale/generationVersion/attempt/error and
+ * appends a requeue event to resultJson.errorHistory. Does NOT touch succeeded/dead/published content.
+ */
+export async function requeueFailedJobs(
+  opts: { take?: number; kind?: ContentGenerationKind } = {},
+  client?: PrismaClient,
+): Promise<{ requeued: number; ids: string[] }> {
+  const rows = await db(client).contentGenerationJob.findMany({
+    where: {
+      status: "failed",
+      ...(opts.kind ? { kind: opts.kind } : {}),
+    },
+    take: opts.take ?? 500,
+    orderBy: { updatedAt: "asc" },
+  });
+
+  const ids: string[] = [];
+  for (const row of rows) {
+    let result: Record<string, unknown> = {};
+    try {
+      result = JSON.parse(row.resultJson || "{}") as Record<string, unknown>;
+    } catch {
+      result = {};
+    }
+    const history = Array.isArray(result.errorHistory) ? [...(result.errorHistory as unknown[])] : [];
+    history.push({
+      at: new Date().toISOString(),
+      event: "requeue_failed_to_pending",
+      attempt: row.attempt,
+      priorError: row.error,
+    });
+    result.errorHistory = history.slice(-50);
+
+    await db(client).contentGenerationJob.update({
+      where: { id: row.id },
+      data: {
+        status: "pending",
+        startedAt: null,
+        finishedAt: null,
+        // intentionally keep: attempt, error, serviceId, locationId, locale, generationVersion
+        resultJson: JSON.stringify(result),
+      },
+    });
+    ids.push(row.id);
+  }
+  return { requeued: ids.length, ids };
 }
 
 /**

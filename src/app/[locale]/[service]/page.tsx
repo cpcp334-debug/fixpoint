@@ -11,6 +11,7 @@ import {
 import { prisma } from "@/server/db";
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd, reviewAggregateJsonLd, serviceJsonLd } from "@/lib/seo";
 import { parseJson } from "@/lib/utils";
+import { parseFaqJson } from "@/lib/faq";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { Disclaimer, FaqList } from "@/components/ui/Blocks";
@@ -58,6 +59,7 @@ export async function generateMetadata({
     title: row.t.seoTitle,
     description: row.t.metaDescription,
     path: `/${row.slug}`,
+    index: row.publicIndexable,
   });
 }
 
@@ -77,7 +79,7 @@ export default async function ServicePage({
   const home = await getTranslations("Home");
   const emirates = await getActiveEmirates(locale);
   const related = await getRelatedServices(parseJson<string[]>(row.relatedServiceSlugs, []), locale);
-  const faqs = parseJson<Array<{ q: string; a: string }>>(row.t.faq, []);
+  const faqs = parseFaqJson(row.t.faq);
   const guides = (await getPublishedGuides(locale)).filter((g) => g.serviceId === row.id);
   const [reviewSummary, approvedReviews] = await Promise.all([
     summarizeApprovedServiceReviews({ serviceId: row.id }),

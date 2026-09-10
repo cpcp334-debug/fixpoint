@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-09-10T13:14:00.515Z",
+  "totalRecords": 63963,
+  "enVersions": 63963,
+  "arVersions": 63963,
+  "totalEnAr": 127926,
+  "expected": {
+    "records": 63963,
+    "en": 63963,
+    "ar": 63963,
+    "total": 127926
+  },
+  "matchExpected": true,
+  "breakdown": {
+    "diy": 563,
+    "serviceLocation": 63400
+  },
+  "public": {
+    "diy": 45,
+    "serviceLocation": 49,
+    "total": 94,
+    "enCompletePublic": 45,
+    "arCompletePublic": 45
+  },
+  "note": "Non-public records remain tracked in the 127,926 version corpus; readiness ≠ public."
+}

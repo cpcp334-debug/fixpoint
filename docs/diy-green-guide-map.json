@@ -1,0 +1,385 @@
+{
+  "uniqueGuides": 45,
+  "offerings": 46,
+  "byCat": {
+    "cleaning": 41,
+    "plumbing": 1,
+    "ac": 1,
+    "painting": 1,
+    "walls": 1
+  },
+  "shared": [
+    {
+      "slug": "how-to-fix-dripping-faucet",
+      "offerings": [
+        "faucet-repair",
+        "faucet-replacement"
+      ],
+      "categorySlug": "plumbing",
+      "status": "published"
+    }
+  ],
+  "details": [
+    {
+      "slug": "diy-cleaning-services",
+      "offerings": [
+        "cleaning-services"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-residential-cleaning",
+      "offerings": [
+        "residential-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-apartment-cleaning",
+      "offerings": [
+        "apartment-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-villa-cleaning",
+      "offerings": [
+        "villa-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-house-cleaning",
+      "offerings": [
+        "house-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-office-cleaning",
+      "offerings": [
+        "office-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-commercial-cleaning",
+      "offerings": [
+        "commercial-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-one-time-cleaning",
+      "offerings": [
+        "one-time-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-regular-cleaning",
+      "offerings": [
+        "regular-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-recurring-cleaning",
+      "offerings": [
+        "recurring-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-move-in-cleaning",
+      "offerings": [
+        "move-in-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-move-out-cleaning",
+      "offerings": [
+        "move-out-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-bathroom-cleaning",
+      "offerings": [
+        "bathroom-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-floor-cleaning",
+      "offerings": [
+        "floor-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-property-inspection",
+      "offerings": [
+        "property-inspection"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "how-to-fix-dripping-faucet",
+      "offerings": [
+        "faucet-repair",
+        "faucet-replacement"
+      ],
+      "categorySlug": "plumbing",
+      "status": "published"
+    },
+    {
+      "slug": "how-to-clean-ac-filter",
+      "offerings": [
+        "ac-filter-cleaning"
+      ],
+      "categorySlug": "ac",
+      "status": "published"
+    },
+    {
+      "slug": "diy-touch-up-painting",
+      "offerings": [
+        "touch-up-painting"
+      ],
+      "categorySlug": "painting",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-swimming-pool-inspection",
+      "offerings": [
+        "swimming-pool-inspection"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-swimming-pool-cleaning",
+      "offerings": [
+        "swimming-pool-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-pool-vacuum-cleaning",
+      "offerings": [
+        "pool-vacuum-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-pool-skimming",
+      "offerings": [
+        "pool-skimming"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-pool-tile-cleaning",
+      "offerings": [
+        "pool-tile-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-sauna-deep-cleaning",
+      "offerings": [
+        "sauna-deep-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-sauna-regular-cleaning",
+      "offerings": [
+        "sauna-regular-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-sauna-bench-cleaning",
+      "offerings": [
+        "sauna-bench-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-sauna-floor-cleaning",
+      "offerings": [
+        "sauna-floor-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-sauna-wall-cleaning",
+      "offerings": [
+        "sauna-wall-cleaning"
+      ],
+      "categorySlug": "walls",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-sauna-glass-cleaning",
+      "offerings": [
+        "sauna-glass-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-sauna-door-maintenance",
+      "offerings": [
+        "sauna-door-maintenance"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-refrigerator-door-seal-replacement",
+      "offerings": [
+        "refrigerator-door-seal-replacement"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-refrigerator-door-hinge-repair",
+      "offerings": [
+        "refrigerator-door-hinge-repair"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-refrigerator-cleaning",
+      "offerings": [
+        "refrigerator-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-microwave-internal-cleaning",
+      "offerings": [
+        "microwave-internal-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-washing-machine-filter-cleaning",
+      "offerings": [
+        "washing-machine-filter-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-dishwasher-spray-arm-cleaning",
+      "offerings": [
+        "dishwasher-spray-arm-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-dishwasher-filter-cleaning",
+      "offerings": [
+        "dishwasher-filter-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-gym-deep-cleaning",
+      "offerings": [
+        "gym-deep-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-gym-regular-cleaning",
+      "offerings": [
+        "gym-regular-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-gym-equipment-cleaning",
+      "offerings": [
+        "gym-equipment-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-gym-floor-cleaning",
+      "offerings": [
+        "gym-floor-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-gym-glass-cleaning",
+      "offerings": [
+        "gym-glass-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-locker-cleaning",
+      "offerings": [
+        "locker-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-shower-and-changing-room-cleaning",
+      "offerings": [
+        "shower-and-changing-room-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    },
+    {
+      "slug": "diy-oven-cleaning",
+      "offerings": [
+        "oven-cleaning"
+      ],
+      "categorySlug": "cleaning",
+      "status": "draft"
+    }
+  ]
+}

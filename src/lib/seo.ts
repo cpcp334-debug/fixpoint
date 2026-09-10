@@ -197,3 +197,30 @@ export function collectionPageJsonLd(opts: {
     url: `${site}/${opts.locale}${opts.path}`,
   };
 }
+
+export function blogPostingJsonLd(opts: {
+  title: string;
+  description: string;
+  path: string;
+  locale: string;
+  image?: string | null;
+  datePublished?: string | null;
+  dateModified?: string | null;
+}) {
+  const site = getSiteUrl();
+  const url = `${site}/${opts.locale}${opts.path}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: opts.title,
+    description: opts.description,
+    url,
+    mainEntityOfPage: url,
+    inLanguage: opts.locale === "ar" ? "ar" : "en",
+    image: opts.image ? `${site}${opts.image}` : undefined,
+    datePublished: opts.datePublished || undefined,
+    dateModified: opts.dateModified || undefined,
+    author: { "@type": "Organization", name: "ALNAJAH ALDAEM" },
+    publisher: { "@type": "Organization", name: "ALNAJAH ALDAEM", url: site },
+  };
+}

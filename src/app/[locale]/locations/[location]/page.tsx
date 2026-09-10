@@ -7,7 +7,7 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FaqList } from "@/components/ui/Blocks";
 import { ServiceTrustBlock } from "@/components/trust/ServiceTrustBlock";
-import { parseJson } from "@/lib/utils";
+import { normalizeFaqItems, parseFaqJson } from "@/lib/faq";
 import { EmptyState, Section, SectionHeader } from "@/components/ui/Section";
 import { ServiceCard } from "@/components/home/Cards";
 import { IconMap } from "@/components/ui/Icon";
@@ -59,9 +59,9 @@ export default async function LocationPage({
   const home = await getTranslations("Home");
   const servicesT = await getTranslations("Services");
   const services = await getActiveServices(locale);
-  const faqs = parseJson<Array<{ q: string; a: string }>>(em.t.faq, []);
+  const faqs = parseFaqJson(em.t.faq);
   const global = await getGlobalFaqs(locale);
-  const faqItems = [...faqs, ...global];
+  const faqItems = normalizeFaqItems([...faqs, ...global]);
   const ctaLabels = {
     quote: cta("quote"),
     book: cta("book"),

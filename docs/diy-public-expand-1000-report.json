@@ -1,0 +1,322 @@
+{
+  "threshold": 0.85,
+  "updated": [
+    {
+      "slug": "diy-apartment-cleaning",
+      "enWords": 1072,
+      "arWords": 1052,
+      "enSim": 0,
+      "arSim": 0
+    },
+    {
+      "slug": "diy-bathroom-cleaning",
+      "enWords": 1073,
+      "arWords": 1052,
+      "enSim": 0.2947976878612717,
+      "arSim": 0.22362204724409449
+    },
+    {
+      "slug": "diy-cleaning-services",
+      "enWords": 1072,
+      "arWords": 1052,
+      "enSim": 0.29355149181905676,
+      "arSim": 0.22344610542879623
+    },
+    {
+      "slug": "diy-commercial-cleaning",
+      "enWords": 1072,
+      "arWords": 1052,
+      "enSim": 0.2972972972972973,
+      "arSim": 0.22362204724409449
+    },
+    {
+      "slug": "diy-dishwasher-filter-cleaning",
+      "enWords": 1112,
+      "arWords": 1099,
+      "enSim": 0.28448275862068967,
+      "arSim": 0.22309505106048705
+    },
+    {
+      "slug": "diy-dishwasher-spray-arm-cleaning",
+      "enWords": 1030,
+      "arWords": 1021,
+      "enSim": 0.3388338833883388,
+      "arSim": 0.2502164502164502
+    },
+    {
+      "slug": "diy-floor-cleaning",
+      "enWords": 1071,
+      "arWords": 1056,
+      "enSim": 0.32317736670293795,
+      "arSim": 0.2450388265746333
+    },
+    {
+      "slug": "diy-gym-deep-cleaning",
+      "enWords": 1119,
+      "arWords": 1099,
+      "enSim": 0.32212581344902386,
+      "arSim": 0.24482758620689654
+    },
+    {
+      "slug": "diy-gym-equipment-cleaning",
+      "enWords": 1119,
+      "arWords": 1107,
+      "enSim": 0.3207343412526998,
+      "arSim": 0.24440619621342513
+    },
+    {
+      "slug": "diy-gym-floor-cleaning",
+      "enWords": 1118,
+      "arWords": 1107,
+      "enSim": 0.32212581344902386,
+      "arSim": 0.24440619621342513
+    },
+    {
+      "slug": "diy-gym-glass-cleaning",
+      "enWords": 1117,
+      "arWords": 1107,
+      "enSim": 0.32212581344902386,
+      "arSim": 0.24440619621342513
+    },
+    {
+      "slug": "diy-gym-regular-cleaning",
+      "enWords": 1122,
+      "arWords": 1099,
+      "enSim": 0.323943661971831,
+      "arSim": 0.24482758620689654
+    },
+    {
+      "slug": "diy-house-cleaning",
+      "enWords": 1068,
+      "arWords": 1052,
+      "enSim": 0.32247557003257327,
+      "arSim": 0.24546240276577355
+    },
+    {
+      "slug": "diy-locker-cleaning",
+      "enWords": 1071,
+      "arWords": 1060,
+      "enSim": 0.32212581344902386,
+      "arSim": 0.24482758620689654
+    },
+    {
+      "slug": "diy-microwave-internal-cleaning",
+      "enWords": 1121,
+      "arWords": 1103,
+      "enSim": 0.3210810810810811,
+      "arSim": 0.24676445211389128
+    },
+    {
+      "slug": "diy-move-in-cleaning",
+      "enWords": 1116,
+      "arWords": 1097,
+      "enSim": 0.3217768147345612,
+      "arSim": 0.24546240276577355
+    },
+    {
+      "slug": "diy-move-out-cleaning",
+      "enWords": 1114,
+      "arWords": 1097,
+      "enSim": 0.32212581344902386,
+      "arSim": 0.2452504317789292
+    },
+    {
+      "slug": "diy-office-cleaning",
+      "enWords": 1071,
+      "arWords": 1052,
+      "enSim": 0.32212581344902386,
+      "arSim": 0.24546240276577355
+    },
+    {
+      "slug": "diy-one-time-cleaning",
+      "enWords": 1116,
+      "arWords": 1097,
+      "enSim": 0.32142857142857145,
+      "arSim": 0.2450388265746333
+    },
+    {
+      "slug": "diy-oven-cleaning",
+      "enWords": 1077,
+      "arWords": 1052,
+      "enSim": 0.3228602383531961,
+      "arSim": 0.24546240276577355
+    },
+    {
+      "slug": "diy-pool-skimming",
+      "enWords": 1064,
+      "arWords": 1058,
+      "enSim": 0.3235294117647059,
+      "arSim": 0.24482758620689654
+    },
+    {
+      "slug": "diy-pool-tile-cleaning",
+      "enWords": 1110,
+      "arWords": 1103,
+      "enSim": 0.32461873638344224,
+      "arSim": 0.24482758620689654
+    },
+    {
+      "slug": "diy-pool-vacuum-cleaning",
+      "enWords": 1117,
+      "arWords": 1103,
+      "enSim": 0.32356134636264927,
+      "arSim": 0.24482758620689654
+    },
+    {
+      "slug": "diy-property-inspection",
+      "enWords": 1069,
+      "arWords": 1058,
+      "enSim": 0.3217391304347826,
+      "arSim": 0.2446167097329888
+    },
+    {
+      "slug": "diy-recurring-cleaning",
+      "enWords": 1070,
+      "arWords": 1052,
+      "enSim": 0.3217768147345612,
+      "arSim": 0.24546240276577355
+    },
+    {
+      "slug": "diy-refrigerator-cleaning",
+      "enWords": 1075,
+      "arWords": 1052,
+      "enSim": 0.32142857142857145,
+      "arSim": 0.24546240276577355
+    },
+    {
+      "slug": "diy-refrigerator-door-hinge-repair",
+      "enWords": 1026,
+      "arWords": 1019,
+      "enSim": 0.3726474278544542,
+      "arSim": 0.274209012464046
+    },
+    {
+      "slug": "diy-refrigerator-door-seal-replacement",
+      "enWords": 1026,
+      "arWords": 1017,
+      "enSim": 0.3770491803278688,
+      "arSim": 0.2828185328185328
+    },
+    {
+      "slug": "diy-regular-cleaning",
+      "enWords": 1073,
+      "arWords": 1052,
+      "enSim": 0.32142857142857145,
+      "arSim": 0.24546240276577355
+    },
+    {
+      "slug": "diy-residential-cleaning",
+      "enWords": 1071,
+      "arWords": 1052,
+      "enSim": 0.3217768147345612,
+      "arSim": 0.24546240276577355
+    },
+    {
+      "slug": "diy-sauna-bench-cleaning",
+      "enWords": 1112,
+      "arWords": 1105,
+      "enSim": 0.3260632497273719,
+      "arSim": 0.2446167097329888
+    },
+    {
+      "slug": "diy-sauna-deep-cleaning",
+      "enWords": 1115,
+      "arWords": 1097,
+      "enSim": 0.3260632497273719,
+      "arSim": 0.2450388265746333
+    },
+    {
+      "slug": "diy-sauna-door-maintenance",
+      "enWords": 1120,
+      "arWords": 1097,
+      "enSim": 0.325,
+      "arSim": 0.24784110535405873
+    },
+    {
+      "slug": "diy-sauna-floor-cleaning",
+      "enWords": 1112,
+      "arWords": 1105,
+      "enSim": 0.32641921397379914,
+      "arSim": 0.2446167097329888
+    },
+    {
+      "slug": "diy-sauna-glass-cleaning",
+      "enWords": 1111,
+      "arWords": 1105,
+      "enSim": 0.32641921397379914,
+      "arSim": 0.2446167097329888
+    },
+    {
+      "slug": "diy-sauna-regular-cleaning",
+      "enWords": 1112,
+      "arWords": 1097,
+      "enSim": 0.3260632497273719,
+      "arSim": 0.2450388265746333
+    },
+    {
+      "slug": "diy-sauna-wall-cleaning",
+      "enWords": 1112,
+      "arWords": 1097,
+      "enSim": 0.3260632497273719,
+      "arSim": 0.24482758620689654
+    },
+    {
+      "slug": "diy-shower-and-changing-room-cleaning",
+      "enWords": 1039,
+      "arWords": 1017,
+      "enSim": 0.3706467661691542,
+      "arSim": 0.272552783109405
+    },
+    {
+      "slug": "diy-swimming-pool-cleaning",
+      "enWords": 1117,
+      "arWords": 1097,
+      "enSim": 0.3239130434782609,
+      "arSim": 0.24546240276577355
+    },
+    {
+      "slug": "diy-swimming-pool-inspection",
+      "enWords": 1113,
+      "arWords": 1103,
+      "enSim": 0.3224400871459695,
+      "arSim": 0.2459016393442623
+    },
+    {
+      "slug": "diy-touch-up-painting",
+      "enWords": 1106,
+      "arWords": 1097,
+      "enSim": 0.3227917121046892,
+      "arSim": 0.24438687392055267
+    },
+    {
+      "slug": "diy-villa-cleaning",
+      "enWords": 1071,
+      "arWords": 1052,
+      "enSim": 0.33478735005452565,
+      "arSim": 0.24588744588744588
+    },
+    {
+      "slug": "diy-washing-machine-filter-cleaning",
+      "enWords": 1028,
+      "arWords": 1013,
+      "enSim": 0.375,
+      "arSim": 0.273339749759384
+    },
+    {
+      "slug": "how-to-clean-ac-filter",
+      "enWords": 1111,
+      "arWords": 1094,
+      "enSim": 0.32142857142857145,
+      "arSim": 0.2445980985306828
+    },
+    {
+      "slug": "how-to-fix-dripping-faucet",
+      "enWords": 1112,
+      "arWords": 1093,
+      "enSim": 0.32100108813928185,
+      "arSim": 0.24206008583690988
+    }
+  ],
+  "similarityFlags": [],
+  "claimFlags": []
+}

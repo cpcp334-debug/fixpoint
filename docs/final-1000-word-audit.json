@@ -1,0 +1,42 @@
+{
+  "publicDiy": {
+    "en": {
+      "total": 45,
+      "ge1000": 45,
+      "lt1000": 0,
+      "average": 1089.8,
+      "median": 1110,
+      "minimum": 1026,
+      "maximum": 1122
+    },
+    "ar": {
+      "total": 45,
+      "ge1000": 45,
+      "lt1000": 0,
+      "average": 1074.4,
+      "median": 1094,
+      "minimum": 1013,
+      "maximum": 1107
+    }
+  },
+  "grandfathered49": {
+    "en": {
+      "total": 49,
+      "ge1000": 0,
+      "lt1000": 49,
+      "average": 438.4,
+      "median": 428,
+      "minimum": 398,
+      "maximum": 505
+    },
+    "ar": {
+      "total": 49,
+      "ge1000": 0,
+      "lt1000": 49,
+      "average": 344.9,
+      "median": 334,
+      "minimum": 316,
+      "maximum": 425
+    }
+  }
+}

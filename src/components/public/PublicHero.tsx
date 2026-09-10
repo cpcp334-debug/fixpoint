@@ -32,6 +32,7 @@ export function PublicHero({
   actions,
   meta,
   heroImage,
+  imageAlt = "",
   compact,
 }: {
   kicker?: string;
@@ -44,6 +45,7 @@ export function PublicHero({
   actions?: ReactNode;
   meta?: ReactNode;
   heroImage?: string | null;
+  imageAlt?: string;
   compact?: boolean;
 }) {
   const publishedImage = resolvePublishedHeroImage(heroImage);
@@ -82,7 +84,7 @@ export function PublicHero({
             {publishedImage ? (
               // Real image only when the published row already has a local file. Never the homepage stock hero.
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={publishedImage} alt="" className="h-full w-full object-cover" />
+              <img src={publishedImage} alt={imageAlt} className="h-full w-full object-cover" />
             ) : (
               <HeroFallback />
             )}

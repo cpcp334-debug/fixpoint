@@ -1,5 +1,7 @@
 import { Link } from "@/i18n/routing";
 import type { ServiceLocationPageModel } from "@/lib/service-location/page-model";
+import { parseContentJson } from "@/lib/service-location/content-parse";
+import { ensureDiySelfHelpSection } from "@/lib/service-location/content-builders";
 import { breadcrumbJsonLd, faqJsonLd, organizationJsonLd, reviewAggregateJsonLd, serviceJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -12,6 +14,17 @@ import { CtaRow } from "@/components/public/CtaRow";
 import { CtaBand } from "@/components/public/CtaBand";
 import { ServiceTrustBlock } from "@/components/trust/ServiceTrustBlock";
 import { ButtonLink } from "@/components/ui/Button";
+
+function BulletList({ items }: { items: string[] }) {
+  if (!items.length) return null;
+  return (
+    <ul className="mt-2 list-disc space-y-1 ps-5 text-sm text-muted">
+      {items.map((item) => (
+        <li key={item.slice(0, 64) + String(item.length)}>{item}</li>
+      ))}
+    </ul>
+  );
+}
 
 export function ServiceLocationView({
   model,
@@ -45,6 +58,13 @@ export function ServiceLocationView({
     emergency?: string;
     amc?: string;
     previewBanner?: string;
+    whatService?: string;
+    problems?: string;
+    symptoms?: string;
+    process?: string;
+    safety?: string;
+    whenPro?: string;
+    expert?: string;
   };
   reviewSummary?: { average: number; count: number };
   approvedReviews?: Array<{ authorName: string; stars: number; body: string }>;
@@ -70,6 +90,23 @@ export function ServiceLocationView({
   const geoText = [model.content.geoIntro, geoBits.length ? geoBits.join(" → ") : "", model.content.localInfo]
     .filter((part) => part && part.trim())
     .join("\n\n");
+
+  const parsed = model.content.contentJson
+    ? parseContentJson(
+        typeof model.content.contentJson === "string"
+          ? model.content.contentJson
+          : JSON.stringify(model.content.contentJson),
+      )
+    : null;
+  const structuredBase = parsed?.ok ? parsed.value : null;
+  const diyBlock = ensureDiySelfHelpSection({
+    existing: structuredBase?.diy,
+    safetyState: model.diy.safetyClass,
+    serviceName: model.serviceName,
+    locale: model.locale === "ar" ? "ar" : "en",
+    guideSlug: model.diy.guideSlug,
+  });
+  const structured = structuredBase ? { ...structuredBase, diy: diyBlock } : { diy: diyBlock };
 
   return (
     <PageShell breadcrumbs={<Breadcrumbs label={labels.breadcrumb} items={crumbItems} />}>
@@ -109,6 +146,7 @@ export function ServiceLocationView({
         lead={model.content.intro || undefined}
         icon={Icon}
         heroImage={model.image.src}
+        imageAlt={model.image.alt}
         shareUrl={publicCanonical(model.locale, model.path)}
         shareLabel={labels.share}
         copiedLabel={labels.copied}
@@ -151,10 +189,84 @@ export function ServiceLocationView({
             <ProseCard title={labels.local}>{model.content.localInfo}</ProseCard>
           ) : null}
           <ProseCard title={labels.overview}>
-            {model.content.body || model.serviceLongDescription}
+            <div className="whitespace-pre-line">{model.content.body || model.serviceLongDescription}</div>
           </ProseCard>
         </div>
       </Section>
+
+      {structured?.main ? (
+        <Section>
+          <div className="grid gap-4">
+            {structured.main.serviceExplanation ? (
+              <ProseCard title={labels.whatService || labels.overview}>
+                <div className="whitespace-pre-line">{structured.main.serviceExplanation}</div>
+              </ProseCard>
+            ) : null}
+            {structured.main.problems.length ? (
+              <ProseCard title={labels.problems || "Problems"}>
+                <BulletList items={structured.main.problems} />
+              </ProseCard>
+            ) : null}
+            {structured.main.symptomsUseCases.length ? (
+              <ProseCard title={labels.symptoms || "Symptoms"}>
+                <BulletList items={structured.main.symptomsUseCases} />
+              </ProseCard>
+            ) : null}
+            {structured.main.process.length ? (
+              <ProseCard title={labels.process || "Process"}>
+                <BulletList items={structured.main.process} />
+              </ProseCard>
+            ) : null}
+            {structured.main.professionalRecommendation ? (
+              <ProseCard title={labels.whenPro || "Professional help"}>
+                <div className="whitespace-pre-line">{structured.main.professionalRecommendation}</div>
+              </ProseCard>
+            ) : null}
+          </div>
+        </Section>
+      ) : null}
+
+      {structured?.diy ? (
+        <Section tone="sand">
+          <SectionHeader title={labels.diy} />
+          <div className="mt-4 grid gap-4">
+            {structured.diy.safeSelfChecks.length ? <BulletList items={structured.diy.safeSelfChecks} /> : null}
+            {structured.diy.whatNotToDo.length || structured.diy.safetyNotes.length ? (
+              <ProseCard title={labels.safety || "Safety"}>
+                <BulletList items={[...structured.diy.whatNotToDo, ...structured.diy.safetyNotes]} />
+              </ProseCard>
+            ) : null}
+            {structured.diy.stopConditions.length ? (
+              <ProseCard title={labels.whenPro || "When to stop"}>
+                <BulletList items={structured.diy.stopConditions} />
+              </ProseCard>
+            ) : null}
+            {structured.diy.professionalFallback ? (
+              <p className="text-sm text-muted whitespace-pre-line">{structured.diy.professionalFallback}</p>
+            ) : null}
+            {structured.diy.safetyState === "GREEN" || structured.diy.safetyState === "YELLOW"
+              ? structured.diy.steps.length
+                ? <BulletList items={structured.diy.steps} />
+                : null
+              : null}
+            {model.diy.guideHref ? (
+              <p className="mt-2">
+                <Link href={model.diy.guideHref} className="font-medium text-accent">
+                  {model.diy.title || model.diy.guideSlug}
+                </Link>
+              </p>
+            ) : null}
+          </div>
+        </Section>
+      ) : null}
+
+      {structured?.expert?.helpSummary ? (
+        <Section>
+          <ProseCard title={labels.expert || "Expert guidance"}>
+            <div className="whitespace-pre-line">{structured.expert.helpSummary}</div>
+          </ProseCard>
+        </Section>
+      ) : null}
 
       <Section>
         <SectionHeader title={labels.aeo} />
@@ -167,18 +279,6 @@ export function ServiceLocationView({
           ))}
         </div>
       </Section>
-
-      {model.diy.visible && model.diy.guideHref ? (
-        <Section tone="sand">
-          <SectionHeader title={labels.diy} />
-          {model.diy.quickAnswer ? <p className="mt-3 max-w-2xl text-sm text-muted">{model.diy.quickAnswer}</p> : null}
-          <p className="mt-3">
-            <Link href={model.diy.guideHref} className="font-medium text-accent">
-              {model.diy.title || model.diy.guideSlug}
-            </Link>
-          </p>
-        </Section>
-      ) : null}
 
       {faqs.length ? (
         <Section>

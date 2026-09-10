@@ -1,0 +1,17 @@
+{
+  "publicGuidesAudited": 45,
+  "totalRelatedLinksBefore": 1,
+  "unpublishedTargetsFound": 1,
+  "removedLinks": [
+    {
+      "from": "how-to-fix-dripping-faucet",
+      "to": "how-to-unclog-a-sink-safely"
+    }
+  ],
+  "replacedLinks": [],
+  "brokenLinks": 0,
+  "finalPublicSafeRelatedLinks": 0,
+  "unpublishedTargetsRemaining": 0,
+  "status": "PASS",
+  "note": "Sanitized this round; public render must not expose unpublished targets. No invented replacement slug — target had no same-category published substitute at sanitize time."
+}

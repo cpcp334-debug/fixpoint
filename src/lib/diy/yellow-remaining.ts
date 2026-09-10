@@ -38,6 +38,23 @@ export function listBatch2AuthoredSlugs(cwd = process.cwd()): Set<string> {
 
 export function listRemainingYellow(cwd = process.cwd()): YellowOffering[] {
   const authored = listBatch2AuthoredSlugs(cwd);
+  // Also exclude already-written remaining batch (idempotent reruns)
+  try {
+    const { readFileSync, existsSync } = require("node:fs") as typeof import("node:fs");
+    const { join } = require("node:path") as typeof import("node:path");
+    const reportPath = join(cwd, "docs/diy-authoring-a42-yellow-remaining.json");
+    if (existsSync(reportPath)) {
+      const report = JSON.parse(readFileSync(reportPath, "utf8")) as {
+        authored?: Array<{ slug: string }>;
+        meta?: { heldReviewRequired?: string[] };
+      };
+      for (const row of report.authored || []) authored.add(row.slug);
+      // Held items still count as processed for "remaining eligible" — they need human review, not re-author
+      for (const slug of report.meta?.heldReviewRequired || []) authored.add(slug);
+    }
+  } catch {
+    /* ignore missing report */
+  }
   return listAuthorableYellow(cwd).filter((r) => !authored.has(r.offeringSlug));
 }
 

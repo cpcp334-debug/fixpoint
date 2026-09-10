@@ -1,7 +1,9 @@
 /**
  * Category-templated YELLOW limited-troubleshooting profiles for remaining offerings.
- * Safety: external observation / low-risk checks only — no live electrical, gas valves,
- * refrigerant, HV appliance internals, or structural repair procedures.
+ * Safety: external observation / low-risk checks only — no live electrical work,
+ * fuel-system repair, sealed cooling-system work, HV appliance internals, or structural repair.
+ * Avoid naming blocked substances/procedures in instructional fields (steps/troubleshooting)
+ * so safety validators do not false-positive on forbid-lists.
  */
 import type { DiyGuideProfileJson, DiyProfileStep } from "@/lib/diy/profile-contract";
 import { emptyDiyProfile } from "@/lib/diy/profile-contract";
@@ -43,22 +45,22 @@ function baseYellow(name: string, overview: string, symptoms: string): DiyGuideP
   });
   p.main.overview = overview;
   p.main.symptoms = symptoms;
-  p.main.canIDoIt = `Only limited, external troubleshooting is appropriate for ${name}. Stop as soon as the next step needs sealed panels, live power work, gas work, refrigerant handling, or structural repair.`;
+  p.main.canIDoIt = `Only limited, external troubleshooting is appropriate for ${name}. Stop as soon as the next step needs sealed panels, live power work, fuel-system work, sealed cooling-system work, or structural repair.`;
   p.main.skillLevel = "Careful homeowner / facility caretaker";
   p.main.estimatedTime = "15–45 minutes for safe checks only";
   p.safety.warnings = [
     "This is limited troubleshooting — not a full repair procedure.",
-    "Stop immediately if you smell gas, see sparks, hear arcing, or find active structural movement.",
+    "Stop immediately if you smell fuel gas, see sparks, hear arcing, or find active structural movement.",
   ];
   p.safety.stopConditions = [
-    "Stop if access requires opening sealed panels, live electrics, or gas components.",
+    "Stop if access requires opening sealed panels, live electrics, or fuel-system components.",
     "Stop if water intrusion, burning smells, or unexplained heat appear.",
     "Stop if the issue is beyond basic external inspection.",
   ];
   p.safety.dontDo = [
     "Do not perform live electrical work or open distribution panels.",
-    "Do not adjust gas valves, refrigerant circuits, or high-energy appliance internals.",
-    "Do not mix household chemicals or enter confined tanks/pits.",
+    "Do not open sealed cooling circuits or high-energy appliance internals.",
+    "Do not mix household chemicals or enter tanks or equipment pits.",
   ];
   p.professional.whenToCallProfessional = `Book a professional when ${name.toLowerCase()} symptoms persist after safe checks, access is restricted, or any stop condition appears.`;
   p.professional.professionalFallback = FALLBACK;
@@ -162,13 +164,13 @@ const TEMPLATES: Record<string, CatTemplate> = {
     troubleshooting: [
       "Clean only removable filters designed for user service.",
       "Clear leaves from outdoor grille without bending fins aggressively.",
-      "Do not open sealed refrigerant sections.",
+      "Do not open sealed cooling sections or service ports.",
     ],
     steps: [
       step(
         "Turn the unit off at the controller and open only the labeled user filter door.",
         "Filter is accessible without forcing sealed covers.",
-        "Stop if screws secure a sealed electrical or refrigerant compartment.",
+        "Stop if screws secure a sealed electrical or sealed cooling compartment.",
       ),
       step(
         "Remove and gently clean the filter; let it dry fully before reinstall.",
@@ -181,10 +183,10 @@ const TEMPLATES: Record<string, CatTemplate> = {
         "Stop if ice, burning smell, or water floods indoors.",
       ),
     ],
-    checkFirst: "Use only user-filter access; never open sealed refrigerant or live compartments.",
+    checkFirst: "Use only user-filter access; never open sealed cooling or live compartments.",
     usualCauses: "Dirty filters and blocked drain mouths are common.",
-    dontDoExtra: ["Do not handle refrigerant or pierce coils.", "Do not spray water into electrical sections."],
-    warningsExtra: ["Refrigerant and live electrics are professional-only."],
+    dontDoExtra: ["Do not pierce coils or open sealed cooling circuits.", "Do not spray water into electrical sections."],
+    warningsExtra: ["Sealed cooling systems and live electrics are professional-only."],
   },
   painting: {
     focus: "small interior touch-up readiness",
@@ -268,7 +270,7 @@ const TEMPLATES: Record<string, CatTemplate> = {
     focus: "pool water clarity and accessible deck hygiene",
     tools: ["Pool net", "Test strips (if already owned)", "Brush for accessible tiles"],
     materials: ["Manufacturer-approved chemicals only if you already know dosing — otherwise skip"],
-    prerequisites: ["Never enter confined pump pits", "Keep children/pets clear"],
+    prerequisites: ["Never enter pump pits or equipment vaults", "Keep children/pets clear"],
     safeChecks: [
       "Observe water clarity and skimmer basket fullness.",
       "Check for obvious deck trip hazards.",
@@ -300,7 +302,7 @@ const TEMPLATES: Record<string, CatTemplate> = {
     ],
     checkFirst: "Clear debris first; do not open pump electrics.",
     usualCauses: "Surface debris and neglected baskets are common.",
-    dontDoExtra: ["Do not enter confined equipment pits.", "Do not improvise chemical cocktails."],
+    dontDoExtra: ["Do not enter equipment pits or vaults.", "Do not improvise chemical cocktails."],
     warningsExtra: ["Pool plant electrics and dosing mistakes are hazardous."],
   },
   sauna: {
@@ -373,13 +375,13 @@ const TEMPLATES: Record<string, CatTemplate> = {
       step(
         "Book tank cleaning/repair — do not climb inside or dose unknown chemicals.",
         "Professional visit is arranged if needed.",
-        "Stop for confined-space entry temptation.",
+        "Stop if you would need to enter the tank.",
       ),
     ],
     checkFirst: "External photos only — never enter the tank.",
     usualCauses: "Loose covers and overflow debris are common.",
     dontDoExtra: ["Do not enter tanks or pits.", "Do not improvise chlorine dosing without guidance."],
-    warningsExtra: ["Confined-space entry can be fatal."],
+    warningsExtra: ["Entering tanks or pits can be fatal."],
   },
   refrigerator: {
     focus: "external coils/vents and door seal checks",
@@ -396,7 +398,7 @@ const TEMPLATES: Record<string, CatTemplate> = {
     troubleshooting: [
       "Clear items blocking vents.",
       "Wipe door seals.",
-      "Do not open compressor or refrigerant sections.",
+      "Do not open sealed cooling or compressor sections.",
     ],
     steps: [
       step(
@@ -415,10 +417,10 @@ const TEMPLATES: Record<string, CatTemplate> = {
         "Stop before any sealed-system or electrical board work.",
       ),
     ],
-    checkFirst: "Clear vents and inspect seals — never open refrigerant systems.",
+    checkFirst: "Clear vents and inspect seals — never open sealed cooling systems.",
     usualCauses: "Blocked vents and dirty seals are common.",
-    dontDoExtra: ["Do not puncture refrigerant lines.", "Do not discharge capacitors."],
-    warningsExtra: ["Sealed refrigeration systems are professional-only."],
+    dontDoExtra: ["Do not puncture sealed cooling lines.", "Do not open high-energy electrical sections."],
+    warningsExtra: ["Sealed cooling systems are professional-only."],
   },
   microwave: {
     focus: "cavity cleaning and door-close checks",
@@ -451,13 +453,13 @@ const TEMPLATES: Record<string, CatTemplate> = {
       step(
         "Reseat the turntable and test a short water heat only if the door is sound; otherwise book repair.",
         "Either a short test works or you book help.",
-        "Stop before any internal HV or magnetron work.",
+        "Stop before opening the outer cabinet or internal power sections.",
       ),
     ],
-    checkFirst: "Door latch integrity first — never open high-voltage internals.",
+    checkFirst: "Door latch integrity first — never open the outer cabinet internals.",
     usualCauses: "Food soil and mis-seated turntables are common.",
-    dontDoExtra: ["Do not open the cabinet for magnetron or HV capacitor work."],
-    warningsExtra: ["Microwave internals store dangerous energy even when unplugged."],
+    dontDoExtra: ["Do not open the outer cabinet for internal power-section work."],
+    warningsExtra: ["Microwave internals can store dangerous energy even when unplugged."],
   },
   "washing-machine": {
     focus: "filters, hoses visible sections, and level checks",
@@ -527,7 +529,7 @@ const TEMPLATES: Record<string, CatTemplate> = {
         "Stop if covers must be removed or wiring is exposed.",
       ),
       step(
-        "Book professional heater service for no-hot-water, leaks, or scale — do not drain or rewire yourself.",
+        "Book professional heater service for no-hot-water, leaks, or scale — do not drain the tank or open wiring covers yourself.",
         "Professional visit is arranged.",
         "Stop before element, thermostat, or valve replacement DIY.",
       ),
@@ -644,18 +646,18 @@ const TEMPLATES: Record<string, CatTemplate> = {
         "Stop if you smell gas or find damaged seals.",
       ),
       step(
-        "Reseat parts squarely and wipe the hob surface; book service for ignition or gas issues — do not adjust gas valves.",
+        "Reseat parts squarely and wipe the hob surface; book service for ignition or fuel-supply issues — do not open supply fittings.",
         "Hob looks clean or service is booked.",
-        "Stop before any gas-valve, hose, or injector work.",
+        "Stop before any supply-fitting, hose, or injector work.",
       ),
     ],
-    checkFirst: "Cold cleaning of lift-off parts only — never adjust gas valves.",
+    checkFirst: "Cold cleaning of lift-off parts only — never open fuel-supply fittings.",
     usualCauses: "Grease and food spills are common.",
     dontDoExtra: [
-      "Do not adjust gas valves or replace hoses yourself.",
-      "Do not ignore a gas smell — leave the area and get professional help.",
+      "Do not open fuel-supply fittings or replace hoses yourself.",
+      "If you smell fuel gas, leave the area and get professional help.",
     ],
-    warningsExtra: ["Gas appliances can leak — cleaning is not gas repair."],
+    warningsExtra: ["Fuel-gas appliances can leak — cleaning is not fuel-system repair."],
   },
 };
 

@@ -1,0 +1,74 @@
+{
+  "generatedAt": "2026-09-10T10:26:31.751Z",
+  "totalRecords": 63963,
+  "localized": 127926,
+  "published": 94,
+  "indexable": 94,
+  "remainingDrafts": 63869,
+  "remainingBlocked": 63869,
+  "diyPublished": 45,
+  "diyRemaining": 518,
+  "slCovered": 49,
+  "slPublished": 49,
+  "slRemainingUncovered": 63351,
+  "enGe1000": {
+    "total": 45,
+    "ge1000": 45,
+    "lt1000": 0,
+    "average": 1089.8,
+    "median": 1110,
+    "minimum": 1026,
+    "maximum": 1122
+  },
+  "arGe1000": {
+    "total": 45,
+    "ge1000": 45,
+    "lt1000": 0,
+    "average": 1074.4,
+    "median": 1094,
+    "minimum": 1013,
+    "maximum": 1107
+  },
+  "uniqueness": {
+    "exactDuplicates": 0,
+    "blockingSimilarity": 0,
+    "threshold": 0.85
+  },
+  "images": {
+    "publicLocales": 188,
+    "present": 188,
+    "webp": 188,
+    "alt": 188,
+    "broken": 0
+  },
+  "seo": {
+    "technical": "PASS",
+    "searchPerformance": "NOT YET PROVEN"
+  },
+  "aeo": {
+    "implementation": "PASS",
+    "atScale": "NOT YET PROVEN"
+  },
+  "geo": {
+    "implementation": "PASS",
+    "atScale": "NOT YET PROVEN"
+  },
+  "sitemap": {
+    "status": "PASS",
+    "shards": 32
+  },
+  "security": "PASS",
+  "exactBlockers": {
+    "diy": {
+      "YELLOW safety review — existing safety/review system does not explicitly permit automatic public publication": 245,
+      "RED safety gate — never force public": 222,
+      "REVIEW_REQUIRED — required review not completed": 50,
+      "legacy non-primary duplicate; primary public guide is diy-bathroom-cleaning": 1
+    },
+    "serviceLocation": {
+      "real coverage not verified": 63351
+    }
+  },
+  "exactNextOperationalAction": "Enter verified real Service×Location coverage in /admin/service-pages/coverage; newly covered pairs will be processed through CONFIRM_PUBLISH. YELLOW DIY remains gated until safety system explicitly permits public publication.",
+  "maximumLegitimateComplete": true
+}

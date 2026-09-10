@@ -1,0 +1,223 @@
+{
+  "generatedAt": "2026-09-09T18:12:11.630Z",
+  "CATALOG": {
+    "approvedOfferings": 311,
+    "parentCategories": 18,
+    "childOfferings": 293,
+    "approvedLinkedServices": 304,
+    "legacyUnmappedServices": 13,
+    "categoryOnlyHubs": [
+      "refrigerator",
+      "microwave",
+      "washing-machine",
+      "water-heater",
+      "dishwasher",
+      "oven",
+      "burner-cooker"
+    ],
+    "serviceRowsInDb": 317
+  },
+  "LOCATIONS": {
+    "total": 200,
+    "country": 1,
+    "emirates": 7,
+    "cities": 21,
+    "communities": 171,
+    "areas": 0
+  },
+  "SERVICELOCATION": {
+    "approvedMatrixCandidates": 62200,
+    "approvedMatrixMaterialized": 60800,
+    "documentedLegacyExtra": 2600,
+    "documentedExtraVs62200": 1200,
+    "total": 63400,
+    "covered": 49,
+    "uncovered": 63351,
+    "draft": 63351,
+    "review": 0,
+    "approved": 0,
+    "published": 49,
+    "indexableEN": 49,
+    "indexableAR": 49,
+    "indexableFlag": 49
+  },
+  "DIY": {
+    "matrix": {
+      "GREEN": 46,
+      "YELLOW": 128,
+      "RED": 112,
+      "REVIEW_REQUIRED": 25
+    },
+    "authored": {
+      "GREEN": 46,
+      "YELLOW": 121,
+      "RED": 111,
+      "REVIEW_REQUIRED": 25
+    },
+    "authoredTotal": 303,
+    "remainingEligibleYellow": 0,
+    "EN": 563,
+    "AR": 563,
+    "arabicReview": 557,
+    "publishedDiyHeld": "painting-services + hubs excluded from yellow remaining; published 49 untouched"
+  },
+  "CONTENT": {
+    "canonicalEN": 304,
+    "canonicalAR": 304,
+    "serviceLocationEN": 63351,
+    "serviceLocationAR": 63351,
+    "complete": 63351,
+    "missingEN": 49,
+    "missingAR": 49,
+    "review": 62971,
+    "failed": 0,
+    "ready": 380
+  },
+  "SEO": {
+    "EN": 63400,
+    "AR": 63400,
+    "pass": 63400,
+    "fail": 0
+  },
+  "GEO": {
+    "EN": 63351,
+    "AR": 63351,
+    "pass": 63351,
+    "fail": 0
+  },
+  "AEO": {
+    "EN": 63351,
+    "AR": 63351,
+    "pass": 63351,
+    "fail": 0
+  },
+  "FAQ": {
+    "EN": 63400,
+    "AR": 63400,
+    "complete": 63400,
+    "missing": 0
+  },
+  "IMAGES": {
+    "real": 0,
+    "realOverride": 0,
+    "realService": 0,
+    "fallback": 63400,
+    "missing": 0,
+    "EN_ALT": 63351,
+    "AR_ALT": 63351,
+    "objectStorage": "EXTERNAL_REQUIRED",
+    "storageProvider": "local",
+    "storageAdapterOk": true
+  },
+  "GENERATION": {
+    "pending": 0,
+    "running": 0,
+    "succeeded": 127310,
+    "failed": 0,
+    "dead": 0
+  },
+  "PUBLICATION": {
+    "ready": 380,
+    "review": 62971,
+    "approved": 0,
+    "published": 49,
+    "indexable": 49,
+    "workflow": "COVERAGE → QUALITY → REVIEW → APPROVED → CONFIRM_PUBLISH → PUBLISHED → INDEXABLE",
+    "autoMassPublish": false,
+    "autoMassIndex": false
+  },
+  "SITEMAP": {
+    "shards": 32,
+    "EN": 49,
+    "AR": 49,
+    "indexable": 98,
+    "potentialCapacity": 124400,
+    "includesOnlyPublishedIndexableCovered": true
+  },
+  "PRODUCTION": {
+    "repositoryReady": true,
+    "externalRequired": true,
+    "status": "REPOSITORY_READY_EXTERNAL_REQUIRED",
+    "external": {
+      "managedPostgres": "EXTERNAL_REQUIRED",
+      "objectStorage": "EXTERNAL_REQUIRED",
+      "backupPitr": "EXTERNAL_REQUIRED",
+      "monitoring": "EXTERNAL_REQUIRED",
+      "cron": "EXTERNAL_REQUIRED",
+      "dns": "EXTERNAL_REQUIRED",
+      "https": "EXTERNAL_REQUIRED",
+      "productionSecrets": "EXTERNAL_REQUIRED",
+      "realImageBinaries": "EXTERNAL_REQUIRED",
+      "businessCoverageDecisions": "EXTERNAL_REQUIRED"
+    },
+    "docs": [
+      "docs/production-external-setup.md",
+      "docs/production-database.md",
+      "docs/object-storage.md",
+      "docs/disaster-recovery.md"
+    ]
+  },
+  "GATES": {
+    "published49Preserved": true,
+    "pilotsPreserved": true,
+    "legacyExtraPreserved": true,
+    "hubsHaveNoServiceRows": true
+  },
+  "CLAIMS_FALSE": {
+    "pagesPublished62200": false,
+    "pagesIndexed124400": false,
+    "allLocationsServed": false,
+    "productionReady": false
+  },
+  "BUSINESS_SUMMARY": {
+    "WHAT_IS_FULLY_COMPLETE": [
+      "Catalog 311 offerings / 18 parents / 293 children / 304 Service rows / 13 legacy / 7 category-only hubs",
+      "Locations 200 (1 country / 7 emirates / 21 cities / 171 communities)",
+      "ServiceLocation 63,400 (60,800 matrix + 2,600 legacy = +1,200 vs 62,200)",
+      "Canonical EN+AR for 304 matrix services",
+      "DIY authored GREEN/YELLOW/RED/RR = 46/121/111/25",
+      "SL draft EN+AR content ~63,351 each with SEO/GEO/AEO/FAQ/ALT",
+      "Generation jobs succeeded path + retry/reaper/idempotency",
+      "Quality engine + duplicate/claim flags",
+      "Controlled coverage + publication workflow + admin queue",
+      "Sitemap shards (published+indexable+covered only)",
+      "Analytics event architecture for service/location/locale",
+      "Security stack preserved (auth, sessions, rate limits, CSP, etc.)"
+    ],
+    "WHAT_IS_READY_FOR_PUBLICATION": "380 pages qualityStatus=publishable (still require real coverage + lifecycle + CONFIRM_PUBLISH)",
+    "WHAT_IS_ALREADY_PUBLISHED": 49,
+    "WHAT_IS_INDEXABLE": "49 EN / 49 AR",
+    "WHAT_IS_STILL_DRAFT": 63351,
+    "WHAT_IS_REVIEW_REQUIRED": 62971,
+    "WHAT_IS_FAILED": 0,
+    "WHAT_IS_EXTERNAL": [
+      "Managed PostgreSQL + pooling",
+      "Object storage + real image binaries",
+      "Backups / PITR",
+      "Monitoring / cron / DNS / HTTPS / secrets",
+      "Business operational coverage map"
+    ],
+    "WHAT_OWNER_MUST_DO": [
+      "Approve production host + domain",
+      "Authorize which service×location pairs are actually covered",
+      "Do not authorize mass publish/index of 62,200",
+      "Review AR translation_review DIY shells for hazardous terms",
+      "Optional: enrich GEO/AEO on the protected published-49 via admin (do not bulk-regen)"
+    ],
+    "WHAT_SERVER_DEVOPS_MUST_DO": [
+      "Provision Postgres, set production DATABASE_URL (non-localhost)",
+      "Configure object storage credentials (replace S3 stub)",
+      "Enable backups/PITR per docs/disaster-recovery.md",
+      "Wire cron to automation tick + HEALTH_CHECK_SECRET",
+      "DNS + HTTPS + monitoring alerts",
+      "Load production secrets (never commit)"
+    ],
+    "WHAT_BUSINESS_TEAM_MUST_DO": [
+      "Supply real coverage (covered / not_covered / temporarily_closed) via /admin/service-pages/coverage",
+      "Confirm booking / AMC / emergency only where true",
+      "Promote eligible pages: draft → review → approved → CONFIRM_PUBLISH",
+      "Human-review template-dominant (ready_for_review) pages before publish",
+      "Provide or approve real service imagery where fallback is insufficient"
+    ]
+  }
+}

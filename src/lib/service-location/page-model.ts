@@ -1,4 +1,5 @@
 import type { FaqItem } from "@/lib/seo";
+import { normalizeFaqItems } from "@/lib/faq";
 import type { DiyInheritance, EffectiveOps, GateResult, ImageInheritance, WorkingCopy } from "./types";
 
 export type LocationBreadcrumb = {
@@ -73,13 +74,15 @@ export function parseRevisionSnapshot(snapshotJson: string, locale: string): Ser
     const metaDescription = String(raw.metaDescription ?? "");
     const faqRaw = raw.faq;
     const faqStr = typeof faqRaw === "string" ? faqRaw : JSON.stringify(faqRaw ?? []);
-    let faqs: FaqItem[] = [];
-    try {
-      const parsed = JSON.parse(faqStr) as FaqItem[];
-      if (Array.isArray(parsed)) faqs = parsed.filter((f) => f && typeof f.q === "string" && typeof f.a === "string");
-    } catch {
-      faqs = [];
-    }
+    const faqs = normalizeFaqItems(
+      (() => {
+        try {
+          return JSON.parse(faqStr);
+        } catch {
+          return [];
+        }
+      })(),
+    );
     return {
       locale,
       intro,

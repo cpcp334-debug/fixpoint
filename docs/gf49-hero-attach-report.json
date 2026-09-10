@@ -1,0 +1,250 @@
+{
+  "updated": 49,
+  "rows": [
+    {
+      "service": "cleaning-services",
+      "location": "abu-dhabi",
+      "hero": "/media/topics/cleaning.webp"
+    },
+    {
+      "service": "cleaning-services",
+      "location": "sharjah",
+      "hero": "/media/topics/cleaning.webp"
+    },
+    {
+      "service": "cleaning-services",
+      "location": "ajman",
+      "hero": "/media/topics/cleaning.webp"
+    },
+    {
+      "service": "cleaning-services",
+      "location": "umm-al-quwain",
+      "hero": "/media/topics/cleaning.webp"
+    },
+    {
+      "service": "cleaning-services",
+      "location": "ras-al-khaimah",
+      "hero": "/media/topics/cleaning.webp"
+    },
+    {
+      "service": "cleaning-services",
+      "location": "fujairah",
+      "hero": "/media/topics/cleaning.webp"
+    },
+    {
+      "service": "building-maintenance",
+      "location": "dubai",
+      "hero": "/media/topics/general.webp"
+    },
+    {
+      "service": "building-maintenance",
+      "location": "abu-dhabi",
+      "hero": "/media/topics/general.webp"
+    },
+    {
+      "service": "building-maintenance",
+      "location": "sharjah",
+      "hero": "/media/topics/general.webp"
+    },
+    {
+      "service": "building-maintenance",
+      "location": "ajman",
+      "hero": "/media/topics/general.webp"
+    },
+    {
+      "service": "building-maintenance",
+      "location": "umm-al-quwain",
+      "hero": "/media/topics/general.webp"
+    },
+    {
+      "service": "building-maintenance",
+      "location": "ras-al-khaimah",
+      "hero": "/media/topics/general.webp"
+    },
+    {
+      "service": "building-maintenance",
+      "location": "fujairah",
+      "hero": "/media/topics/general.webp"
+    },
+    {
+      "service": "plumbing-maintenance",
+      "location": "dubai",
+      "hero": "/media/topics/plumbing.webp"
+    },
+    {
+      "service": "plumbing-maintenance",
+      "location": "abu-dhabi",
+      "hero": "/media/topics/plumbing.webp"
+    },
+    {
+      "service": "plumbing-maintenance",
+      "location": "sharjah",
+      "hero": "/media/topics/plumbing.webp"
+    },
+    {
+      "service": "plumbing-maintenance",
+      "location": "ajman",
+      "hero": "/media/topics/plumbing.webp"
+    },
+    {
+      "service": "plumbing-maintenance",
+      "location": "umm-al-quwain",
+      "hero": "/media/topics/plumbing.webp"
+    },
+    {
+      "service": "plumbing-maintenance",
+      "location": "ras-al-khaimah",
+      "hero": "/media/topics/plumbing.webp"
+    },
+    {
+      "service": "plumbing-maintenance",
+      "location": "fujairah",
+      "hero": "/media/topics/plumbing.webp"
+    },
+    {
+      "service": "electrical-maintenance",
+      "location": "dubai",
+      "hero": "/media/topics/electrical.webp"
+    },
+    {
+      "service": "electrical-maintenance",
+      "location": "abu-dhabi",
+      "hero": "/media/topics/electrical.webp"
+    },
+    {
+      "service": "electrical-maintenance",
+      "location": "sharjah",
+      "hero": "/media/topics/electrical.webp"
+    },
+    {
+      "service": "electrical-maintenance",
+      "location": "ajman",
+      "hero": "/media/topics/electrical.webp"
+    },
+    {
+      "service": "electrical-maintenance",
+      "location": "umm-al-quwain",
+      "hero": "/media/topics/electrical.webp"
+    },
+    {
+      "service": "electrical-maintenance",
+      "location": "ras-al-khaimah",
+      "hero": "/media/topics/electrical.webp"
+    },
+    {
+      "service": "electrical-maintenance",
+      "location": "fujairah",
+      "hero": "/media/topics/electrical.webp"
+    },
+    {
+      "service": "ac-maintenance",
+      "location": "dubai",
+      "hero": "/media/topics/ac.webp"
+    },
+    {
+      "service": "ac-maintenance",
+      "location": "abu-dhabi",
+      "hero": "/media/topics/ac.webp"
+    },
+    {
+      "service": "ac-maintenance",
+      "location": "sharjah",
+      "hero": "/media/topics/ac.webp"
+    },
+    {
+      "service": "ac-maintenance",
+      "location": "ajman",
+      "hero": "/media/topics/ac.webp"
+    },
+    {
+      "service": "ac-maintenance",
+      "location": "umm-al-quwain",
+      "hero": "/media/topics/ac.webp"
+    },
+    {
+      "service": "ac-maintenance",
+      "location": "ras-al-khaimah",
+      "hero": "/media/topics/ac.webp"
+    },
+    {
+      "service": "ac-maintenance",
+      "location": "fujairah",
+      "hero": "/media/topics/ac.webp"
+    },
+    {
+      "service": "painting-services",
+      "location": "dubai",
+      "hero": "/media/topics/painting.webp"
+    },
+    {
+      "service": "painting-services",
+      "location": "abu-dhabi",
+      "hero": "/media/topics/painting.webp"
+    },
+    {
+      "service": "painting-services",
+      "location": "sharjah",
+      "hero": "/media/topics/painting.webp"
+    },
+    {
+      "service": "painting-services",
+      "location": "ajman",
+      "hero": "/media/topics/painting.webp"
+    },
+    {
+      "service": "painting-services",
+      "location": "umm-al-quwain",
+      "hero": "/media/topics/painting.webp"
+    },
+    {
+      "service": "painting-services",
+      "location": "ras-al-khaimah",
+      "hero": "/media/topics/painting.webp"
+    },
+    {
+      "service": "painting-services",
+      "location": "fujairah",
+      "hero": "/media/topics/painting.webp"
+    },
+    {
+      "service": "wall-maintenance",
+      "location": "dubai",
+      "hero": "/media/topics/walls.webp"
+    },
+    {
+      "service": "wall-maintenance",
+      "location": "abu-dhabi",
+      "hero": "/media/topics/walls.webp"
+    },
+    {
+      "service": "wall-maintenance",
+      "location": "sharjah",
+      "hero": "/media/topics/walls.webp"
+    },
+    {
+      "service": "wall-maintenance",
+      "location": "ajman",
+      "hero": "/media/topics/walls.webp"
+    },
+    {
+      "service": "wall-maintenance",
+      "location": "umm-al-quwain",
+      "hero": "/media/topics/walls.webp"
+    },
+    {
+      "service": "wall-maintenance",
+      "location": "ras-al-khaimah",
+      "hero": "/media/topics/walls.webp"
+    },
+    {
+      "service": "wall-maintenance",
+      "location": "fujairah",
+      "hero": "/media/topics/walls.webp"
+    },
+    {
+      "service": "cleaning-services",
+      "location": "dubai",
+      "hero": "/media/topics/cleaning.webp"
+    }
+  ]
+}

@@ -17,6 +17,7 @@ import {
   howToJsonLd,
 } from "@/lib/seo";
 import { parseJson } from "@/lib/utils";
+import { parseFaqJson } from "@/lib/faq";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { Disclaimer, FaqList } from "@/components/ui/Blocks";
@@ -29,6 +30,7 @@ import { PageShell, ProseCard } from "@/components/public/PageShell";
 import { PublicHero, publicCanonical } from "@/components/public/PublicHero";
 import { CtaRow } from "@/components/public/CtaRow";
 import { CtaBand } from "@/components/public/CtaBand";
+import { topicWebpForDiyCategory, altForTopic } from "@/lib/media/topic-webp";
 
 export async function generateStaticParams() {
   try {
@@ -171,7 +173,7 @@ async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) 
   const tools = parseJson<string[]>(guide.t.tools, []);
   const materials = parseJson<string[]>(guide.t.materials, []);
   const steps = parseJson<string[]>(guide.t.steps, []);
-  const faqs = parseJson<Array<{ q: string; a: string }>>(guide.t.faq, []);
+  const faqs = parseFaqJson(guide.t.faq);
   const relatedSlugs = parseJson<string[]>(guide.relatedSlugs, []);
   const published = await getPublishedGuides(locale);
   const relatedGuides = published.filter((row) => relatedSlugs.includes(row.slug) && row.slug !== guide.slug);
@@ -234,6 +236,12 @@ async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) 
         kicker={guide.categoryT?.name || t("title")}
         title={guide.t.title}
         lead={guide.t.problem}
+        heroImage={topicWebpForDiyCategory(guide.categorySlug)}
+        imageAlt={altForTopic(
+          locale === "ar" ? "ar" : "en",
+          guide.categoryT?.name || guide.categorySlug,
+          guide.categoryT?.name || guide.categorySlug,
+        )}
         shareUrl={publicCanonical(locale, `/diy/${guide.slug}`)}
         shareLabel={home("share")}
         copiedLabel={home("copied")}

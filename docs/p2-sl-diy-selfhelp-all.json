@@ -1,0 +1,21 @@
+{
+  "generatedAt": "2026-09-10T13:30:25.081Z",
+  "scope": "P2 — DIY/self-help on all Service×Location records (EN+AR), no publish, no coverage invent",
+  "serviceLocationTotal": 63400,
+  "processed": 63400,
+  "updatedEn": 63400,
+  "updatedAr": 63400,
+  "skippedEn": 0,
+  "skippedAr": 0,
+  "createdI18n": 0,
+  "audit": {
+    "enWithDiyMarker": 63400,
+    "arWithDiyMarker": 63400,
+    "enI18nTotal": 63400,
+    "arI18nTotal": 63400,
+    "enCoveragePct": 100,
+    "arCoveragePct": 100,
+    "publicCoveredUnchanged": 49
+  },
+  "note": "Uncovered/draft pairs stay non-public. Runtime page-resolve also injects structured DIY for preview/public."
+}

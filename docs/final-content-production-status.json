@@ -1,0 +1,140 @@
+{
+  "generatedAt": "2026-09-09T18:07:56.260Z",
+  "runPolicy": {
+    "publishNewPages": false,
+    "inventCoverage": false,
+    "preservePublished49": true,
+    "preservePilot50Draft": true,
+    "preserveLegacyExtra1200": true,
+    "failedJobRequeue": "FAILED→PENDING only; history preserved"
+  },
+  "SERVICES": {
+    "approvedOfferings": 311,
+    "linkedServiceRows": 304,
+    "legacy": 13,
+    "categoryOnlyHubs": 7,
+    "totalServiceRowsInDb": 317
+  },
+  "LOCATIONS": {
+    "total": 200,
+    "country": 1,
+    "emirates": 7,
+    "cities": 21,
+    "communities": 171,
+    "areas": 0
+  },
+  "SERVICELOCATION": {
+    "approvedMatrixCandidates": 60800,
+    "theoretical311x200": 62200,
+    "legacyExtraRows": 2600,
+    "documentedExtraVs62200": 1200,
+    "total": 63400,
+    "covered": 49,
+    "uncovered": 63351,
+    "published": 49,
+    "draft": 63351,
+    "review": 0,
+    "ready_approved_lifecycle": 0,
+    "indexableEN": 49,
+    "indexableAR": 49,
+    "legitimacy": "DOCUMENTED_LEGACY_PLUS_APPROVED_MATRIX",
+    "equation": "60800 approved (304×200) + 2600 legacy (13×200) = 63400; vs 311×200=62200 ⇒ net 1200 (= −1400 hubs + 2600 legacy)"
+  },
+  "DIY": {
+    "matrix": {
+      "GREEN": 46,
+      "YELLOW": 128,
+      "RED": 112,
+      "REVIEW_REQUIRED": 25
+    },
+    "authored": {
+      "GREEN": 46,
+      "YELLOW": 121,
+      "RED": 111,
+      "REVIEW_REQUIRED": 25
+    },
+    "remainingEligibleYellow": 0,
+    "EN": 563,
+    "AR": 563,
+    "AR_translation_review": 557,
+    "guidesTotal": 563
+  },
+  "CANONICAL": {
+    "EN": 304,
+    "AR": 304,
+    "AR_review": 0
+  },
+  "PAGE_CONTENT": {
+    "ServiceLocation_EN": 63351,
+    "ServiceLocation_AR": 63351,
+    "legacyDraftMissingEN": 0,
+    "draft": 63351,
+    "review": 0,
+    "ready": 0,
+    "published": 49,
+    "quality_failed": 0,
+    "quality_incomplete": 0
+  },
+  "IMAGES": {
+    "override": 0,
+    "serviceHero": 0,
+    "approvedFallback": 63400,
+    "EN_alt": 63351,
+    "AR_alt": 63351,
+    "objectStorage": "NOT_CONFIGURED"
+  },
+  "SEO": {
+    "draftEN": 63400,
+    "draftAR": 63400,
+    "publishedPass": 49,
+    "publishedFail": 0
+  },
+  "GEO": {
+    "draftEN": 63351,
+    "draftAR": 63351,
+    "publishedPass": 0,
+    "publishedFail": 49,
+    "note": "Published 49 not rewritten; GEO fields may remain empty there by protection policy"
+  },
+  "AEO": {
+    "draftEN": 63351,
+    "draftAR": 63351,
+    "publishedPass": 0,
+    "publishedFail": 49,
+    "note": "Published 49 not rewritten; AEO fields may remain empty there by protection policy"
+  },
+  "QUALITY": {
+    "failed_quality": 0,
+    "incomplete": 0,
+    "publishable_lifecycle_proxy": 0
+  },
+  "GENERATION": {
+    "pending": 0,
+    "running": 0,
+    "succeeded": 127310,
+    "failed": 0,
+    "dead": 0
+  },
+  "SITEMAP": {
+    "indexCount": 1,
+    "shardCount": 32,
+    "indexableEN": 49,
+    "indexableAR": 49,
+    "potentialLocalizedCapacity": 124400
+  },
+  "EXTERNAL": [
+    "Object storage provider client + credentials (S3 stub only)",
+    "Managed Postgres pooling/backups/PITR in production",
+    "Production monitoring/alerts/cron/DNS/HTTPS proxy wiring",
+    "Real category/service hero image binary assets under public/media",
+    "Human review for DIY Arabic translation_review shells",
+    "Controlled publication workflow DRAFT/REVIEW/READY → published",
+    "Optional enrichment of published 49 GEO/AEO without unsafe regen"
+  ],
+  "CLAIMS": {
+    "pagesComplete124400": false,
+    "productionReady": false,
+    "allLocationsServed": false,
+    "allPagesIndexable": false
+  }
+}

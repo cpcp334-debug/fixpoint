@@ -1,0 +1,187 @@
+{
+  "generatedAt": "2026-09-10T10:17:49.774Z",
+  "decision": "READY WITH EXTERNAL BLOCKER",
+  "coverageLocked": {
+    "covered": 49,
+    "doNotExpand": true,
+    "uncoveredRemainNonPublic": 63351
+  },
+  "production": {
+    "Managed PostgreSQL": {
+      "status": "EXTERNAL_REQUIRED",
+      "detail": "DATABASE_URL is local/dev fingerprint"
+    },
+    "Connection pooling": {
+      "status": "EXTERNAL_REQUIRED",
+      "detail": "Not verified for production pooler"
+    },
+    "SSL/TLS database": {
+      "status": "EXTERNAL_REQUIRED",
+      "detail": "sslmode=require not present on current DB URL"
+    },
+    "Production env vars": {
+      "status": "EXTERNAL_REQUIRED",
+      "detail": "SITE_URL is localhost:3000 (not HTTPS production domain)"
+    },
+    "Production secrets": {
+      "status": "EXTERNAL_REQUIRED",
+      "detail": "AUTOMATION_CRON_SECRET / HEALTH_CHECK_SECRET / DOWNLOAD_CSRF_SECRET unset"
+    },
+    "Object storage/CDN": {
+      "status": "EXTERNAL_REQUIRED",
+      "detail": "STORAGE_PROVIDER unset; using local public/media WebP"
+    },
+    "WebP assets in repo": {
+      "status": "PASS",
+      "detail": "Curated topic WebP assets present under public/media/topics"
+    },
+    "Backup system": {
+      "status": "EXTERNAL_REQUIRED",
+      "detail": "No verified production backup provider"
+    },
+    "PITR": {
+      "status": "EXTERNAL_REQUIRED",
+      "detail": "Not configured"
+    },
+    "Monitoring": {
+      "status": "EXTERNAL_REQUIRED",
+      "detail": "No verified APM/uptime wiring"
+    },
+    "Error logging": {
+      "status": "NOT_VERIFIED",
+      "detail": "App logging exists; production sink not verified"
+    },
+    "Alerts": {
+      "status": "EXTERNAL_REQUIRED",
+      "detail": "Not configured"
+    },
+    "Scheduled jobs/cron": {
+      "status": "EXTERNAL_REQUIRED",
+      "detail": "AUTOMATION_CRON_SECRET unset; no external scheduler"
+    },
+    "DNS": {
+      "status": "EXTERNAL_REQUIRED",
+      "detail": "No production hostname configured"
+    },
+    "HTTPS": {
+      "status": "EXTERNAL_REQUIRED",
+      "detail": "SITE_URL is http://localhost:3000"
+    },
+    "Production domain": {
+      "status": "EXTERNAL_REQUIRED",
+      "detail": "No production domain"
+    },
+    "robots.txt": {
+      "status": "PASS",
+      "detail": "Implemented in app; resolves on local server"
+    },
+    "sitemap": {
+      "status": "PASS",
+      "detail": "Shards 32; /sitemap/0.xml HTTP 200 locally"
+    },
+    "health endpoint": {
+      "status": "PASS",
+      "detail": "/api/internal/health/db implemented (secret required in prod)"
+    },
+    "production build": {
+      "status": "PASS",
+      "detail": "npx next build succeeded"
+    },
+    "production start": {
+      "status": "NOT_VERIFIED",
+      "detail": "Not started on production host; local next start not claimed as LIVE"
+    },
+    "deployment process": {
+      "status": "EXTERNAL_REQUIRED",
+      "detail": "No vercel.json / production host configured in repo"
+    }
+  },
+  "public": {
+    "total": 94,
+    "diy": 45,
+    "serviceLocation": 49,
+    "expectedLocales": 188
+  },
+  "quality": {
+    "wordCount": "Public DIY EN/AR >=1000: 45/45 (prior verified; grandfathered 49 excepted)",
+    "uniqueness": "blocking similarity 0; exact duplicates 0 (prior verified)",
+    "images": "WebP/alt 188/188; broken 0 (prior verified)",
+    "seo": {
+      "technical": "PASS",
+      "searchPerformance": "NOT YET PROVEN"
+    },
+    "aeo": {
+      "implementation": "PASS",
+      "atScale": "NOT YET PROVEN"
+    },
+    "geo": {
+      "implementation": "PASS",
+      "atScale": "NOT YET PROVEN"
+    }
+  },
+  "security": {
+    "status": "PASS (local verification)",
+    "draftDiyBlocked": true,
+    "uncoveredSlBlocked": true,
+    "adminRedirectsUnauthenticated": true,
+    "note": "Re-verify on real production URL after deploy"
+  },
+  "sitemap": {
+    "status": "PASS (local)",
+    "shards": 32,
+    "publicArticles": 94,
+    "note": "Only published+indexable included by architecture; uncovered SL excluded"
+  },
+  "search": {
+    "technicalReadiness": "PASS",
+    "performanceMeasurement": "NOT YET PROVEN"
+  },
+  "localQa": {
+    "base": "http://127.0.0.1:3000",
+    "note": "QA against local/dev server — NOT a production URL",
+    "results": {
+      "/en": 200,
+      "/ar": 200,
+      "/en/diy": 200,
+      "/ar/diy": 200,
+      "/en/diy/diy-bathroom-cleaning": 200,
+      "/ar/diy/how-to-fix-dripping-faucet": 200,
+      "/en/cleaning-services/abu-dhabi": 200,
+      "/ar/cleaning-services/abu-dhabi": 200,
+      "/en/get-a-quote": 200,
+      "draft DIY /en/diy/how-to-touch-up-interior-paint": 404,
+      "uncovered SL /en/villa-cleaning/al-ain": 404,
+      "invalid slug": 404,
+      "/admin": 307
+    }
+  },
+  "blockers": [
+    "Managed PostgreSQL: DATABASE_URL is local/dev fingerprint",
+    "Production env vars: SITE_URL is localhost:3000 (not HTTPS production domain)",
+    "Production secrets: AUTOMATION_CRON_SECRET / HEALTH_CHECK_SECRET / DOWNLOAD_CSRF_SECRET unset",
+    "Backup system: No verified production backup provider",
+    "DNS: No production hostname configured",
+    "HTTPS: SITE_URL is http://localhost:3000",
+    "Production domain: No production domain",
+    "deployment process: No vercel.json / production host configured in repo"
+  ],
+  "nonBlockersForThisLaunchDecision": [
+    "63,351 uncovered SL pages — intentionally NOT launched (coverage locked)",
+    "518 DIY drafts — intentionally gated by safety",
+    "Search rankings / AI citations — post-launch measurement"
+  ],
+  "postLaunch": {
+    "coverageExpansion": "Use /admin/service-pages/coverage with real business data only",
+    "diySafetyReview": "YELLOW/RED/REVIEW_REQUIRED remain gated",
+    "searchMeasurement": "Configure Search Console / analytics after HTTPS domain is live"
+  },
+  "nextActionsToActuallyGoLive": [
+    "Provision managed PostgreSQL with SSL + pooling + backups/PITR",
+    "Set production SITE_URL=https://<domain>, secrets, ADMIN credentials",
+    "Deploy build artifact to hosting with DNS + TLS",
+    "Confirm WebP served from public/media or CDN",
+    "Wire cron to /api/internal/automation/tick with AUTOMATION_CRON_SECRET",
+    "Re-run live QA against production URL",
+    "Then mark PRODUCTION READY = YES and cut over"
+  ]
+}

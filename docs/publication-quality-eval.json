@@ -1,0 +1,15 @@
+{
+  "offset": 63200,
+  "limit": 800,
+  "selected": 151,
+  "publishable": 1,
+  "ready_for_review": 150,
+  "failed_quality": 0,
+  "incomplete": 0,
+  "skippedPublished": 0,
+  "claimFlags": 0,
+  "thinFlags": 0,
+  "duplicateFlags": 150,
+  "templateFlags": 150,
+  "uncoveredKeptNoindex": 151
+}

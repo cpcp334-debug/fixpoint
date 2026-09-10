@@ -1,0 +1,89 @@
+{
+  "generatedAt": "2026-09-10T10:21:00.000Z",
+  "decision": "BLOCKED — INFRASTRUCTURE",
+  "contentFrozen": true,
+  "publicCorpus": {
+    "total": 94,
+    "diy": 45,
+    "serviceLocation": 49,
+    "coveredLocked": 49,
+    "uncoveredPrivate": 63351,
+    "diyDraftPrivate": 518
+  },
+  "doNot": [
+    "generate content",
+    "regenerate longform",
+    "change publication logic",
+    "expand coverage",
+    "mass-publish",
+    "modify catalog/locations/slugs",
+    "change safety classifications"
+  ],
+  "verifiedLocally": {
+    "productionBuild": "PASS (npx next build / .next/BUILD_ID present)",
+    "localSmokeQa": "PASS against http://127.0.0.1:3000 — not production"
+  },
+  "productionTargetProvided": false,
+  "blockers": [
+    {
+      "id": "HOSTING_TARGET",
+      "missing": "Actual production Node/Next.js hosting provider and project (Vercel/Railway/Fly/VPS/etc.)"
+    },
+    {
+      "id": "MANAGED_POSTGRES",
+      "missing": "Managed PostgreSQL instance + production DATABASE_URL with SSL"
+    },
+    {
+      "id": "CONNECTION_POOLING",
+      "missing": "Production pooler settings verified for the chosen host"
+    },
+    {
+      "id": "SITE_URL",
+      "missing": "Real HTTPS production domain (current env is localhost:3000)"
+    },
+    {
+      "id": "PRODUCTION_SECRETS",
+      "missing": "AUTOMATION_CRON_SECRET, HEALTH_CHECK_SECRET, DOWNLOAD_CSRF_SECRET, production ADMIN_*"
+    },
+    {
+      "id": "DNS",
+      "missing": "DNS records pointing to the deploy target"
+    },
+    {
+      "id": "HTTPS_TLS",
+      "missing": "TLS certificate / platform HTTPS on production domain"
+    },
+    {
+      "id": "BACKUPS_PITR",
+      "missing": "Database backup + PITR configuration on managed Postgres"
+    },
+    {
+      "id": "MONITORING_ALERTS",
+      "missing": "Uptime/APM/alerting wiring"
+    },
+    {
+      "id": "CRON",
+      "missing": "Scheduler calling /api/internal/automation/tick with AUTOMATION_CRON_SECRET"
+    },
+    {
+      "id": "DEPLOYMENT_CREDENTIALS",
+      "missing": "Deploy credentials / tokens — not invented"
+    },
+    {
+      "id": "LIVE_HTTPS_QA",
+      "missing": "Cannot run until real HTTPS URL exists"
+    }
+  ],
+  "objectStorageCdn": {
+    "status": "OPTIONAL_FOR_INITIAL_LIVE",
+    "detail": "Local public/media WebP can ship in deploy artifact; CDN can follow"
+  },
+  "awaitingFromOwner": [
+    "Hosting provider + project access",
+    "Managed Postgres connection string (sslmode=require)",
+    "Production domain (e.g. https://www.example.com)",
+    "Secret values for cron/health/CSRF/admin (via secure channel, not chat if sensitive)",
+    "Confirmation DNS is ready to point at the host"
+  ],
+  "nextStep": "Owner provides hosting target + DATABASE_URL + SITE_URL + secrets → configure → deploy → live HTTPS QA → then LIVE or READY FOR LIVE DEPLOYMENT"
+}

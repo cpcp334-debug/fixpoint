@@ -31,9 +31,14 @@ import {
 import { diyLimitedGuidanceAllowed, diyProceduralAllowed, resolveDiyInheritance } from "../src/lib/service-location/diy";
 import { evaluateServiceLocationGates, localeShouldIndex } from "../src/lib/service-location/gates";
 import { resolveImageInheritance } from "../src/lib/service-location/images";
+import {
+  assertPopulationInvariants,
+  measureServiceLocationPopulation,
+} from "../src/lib/service-location/population";
 import { workingCopySnapshot } from "../src/lib/service-location/revisions";
 import { parseRevisionSnapshot } from "../src/lib/service-location/page-model";
 import type { WorkingCopy } from "../src/lib/service-location/types";
+import { a32PilotPairs } from "../prisma/data/service-location-a32-pilot";
 
 function assert(cond: unknown, message: string): asserts cond {
   if (!cond) throw new Error(message);
@@ -177,8 +182,9 @@ function completeEnCopy(content: ServiceLocationContentJson): WorkingCopy {
 }
 
 async function main() {
-  const beforeCount = await prisma.serviceLocation.count();
-  assert(beforeCount === 99, `ServiceLocation count before must be 99, got ${beforeCount}`);
+  const populationBefore = await measureServiceLocationPopulation(prisma);
+  assertPopulationInvariants(populationBefore);
+  const beforeCount = populationBefore.serviceLocationTotal;
 
   // DIY matrix counts
   const matrixCounts = assertDiyMatrixCounts();
@@ -402,16 +408,27 @@ async function main() {
     assert(row.qualityStatus === "indexable", `23c: ${row.id} quality indexable`);
   }
 
-  const pilots = await prisma.serviceLocation.findMany({
-    where: { coverageStatus: "draft", covered: false },
-  });
-  assert(pilots.length === 50, `24: pilots remain 50, got ${pilots.length}`);
-  for (const row of pilots) {
+  // Original 50 pilots remain draft/uncovered/non-indexable (draft uncovered ≫ 50 after matrix expand)
+  for (const pair of a32PilotPairs()) {
+    const svc = await prisma.service.findUnique({ where: { slug: pair.serviceSlug } });
+    const loc = await prisma.location.findUnique({ where: { slug: pair.locationSlug } });
+    assert(svc && loc, `24: pilot catalog ${pair.serviceSlug}/${pair.locationSlug}`);
+    const row = await prisma.serviceLocation.findUnique({
+      where: { serviceId_locationId: { serviceId: svc.id, locationId: loc.id } },
+    });
+    assert(row, `24: pilot row ${pair.serviceSlug}/${pair.locationSlug}`);
+    assert(row.coverageStatus === "draft" && row.covered === false, "24: pilot draft/uncovered");
     assert(!row.indexable && !row.indexableEn && !row.indexableAr, "24b: pilot noindex flags");
   }
 
-  const afterCount = await prisma.serviceLocation.count();
-  assert(afterCount === 99, `25: ServiceLocation after must be 99, got ${afterCount}`);
+  const populationAfter = await measureServiceLocationPopulation(prisma);
+  assertPopulationInvariants(populationAfter);
+  const afterCount = populationAfter.serviceLocationTotal;
+  assert(
+    beforeCount === afterCount,
+    `25: ServiceLocation count must stay stable, before=${beforeCount} after=${afterCount}`,
+  );
+  assert(populationAfter.pilotsPreserved === 50, `24c: pilotsPreserved ${populationAfter.pilotsPreserved}`);
 
   const publicCount = await prisma.serviceLocation.count({ where: publicServiceLocationWhere });
   assert(publicCount === 49, `26: public URL set unchanged at 49, got ${publicCount}`);
@@ -435,8 +452,11 @@ async function main() {
         phase: "A4.1",
         serviceLocationBefore: beforeCount,
         serviceLocationAfter: afterCount,
+        approvedMatrixRows: populationAfter.classification.approvedMatrixRows,
+        legacyOutsideMatrixRows: populationAfter.classification.legacyOutsideMatrixRows,
+        equation: populationAfter.equation,
         publishedLegacy: published.length,
-        pilots: pilots.length,
+        pilotsPreserved: populationAfter.pilotsPreserved,
         publicWhere: publicCount,
         diyMatrix: matrixCounts.expected,
         riskMatrixMismatchCount: mismatches.length,

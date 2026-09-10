@@ -19,7 +19,7 @@ export default async function ServicePagesAdminPage({
       where: {
         OR: [{ status: "active" }, { serviceLocations: { some: {} } }],
       },
-      include: { translations: true },
+      include: { translations: true, category: true },
       orderBy: { slug: "asc" },
     }),
     prisma.location.findMany({
@@ -36,22 +36,44 @@ export default async function ServicePagesAdminPage({
 
   const cards = [
     ["Rows", dash.totalRows],
+    ["Matrix", dash.approvedMatrixCandidates],
+    ["Legacy", dash.legacyExtraRows],
     ["Covered", dash.covered],
+    ["Uncovered", dash.notCovered],
+    ["Draft", dash.draft],
+    ["Review LC", dash.review],
+    ["Approved LC", dash.approved],
     ["Published", dash.published],
     ["Indexable", dash.indexable],
-    ["Noindex", dash.noindex],
-    ["Missing EN", dash.missingEn],
-    ["Missing AR", dash.missingAr],
-    ["Quality fail", dash.qualityFailures],
+    ["Ready publish", dash.readyForPublish],
+    ["Q review", dash.qualityReadyReview],
+    ["Q fail", dash.qualityFailures],
+    ["EN ready", dash.enReady],
+    ["AR ready", dash.arReady],
+    ["SEO", dash.seoReady],
+    ["GEO", dash.geoReady],
+    ["AEO", dash.aeoReady],
+    ["Image alt", dash.imageReady],
   ] as const;
 
   return (
     <div>
       <PageHeader
         title="Service pages"
-        note="A4.1 read-only completeness/quality. No authoring, approve, publish, or bulk generation."
+        note="Publication readiness dashboard. Coverage ≠ catalog. New pages stay draft/noindex until coverage + gates."
+        actions={
+          <div className="flex gap-3 text-sm">
+            <Link className="text-navy" href="/admin/service-pages/coverage">
+              Coverage
+            </Link>
+            <Link className="text-navy" href="/admin/service-pages/queue">
+              Queue
+            </Link>
+          </div>
+        }
       />
-      <div className="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+      <p className="mb-3 text-xs text-muted">Table capped at 100 rows — use filters or Coverage/Queue tools for scale.</p>
+      <div className="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-5">
         {cards.map(([label, value]) => (
           <div key={label} className="rounded-md border border-line bg-white px-3 py-2 text-sm">
             <p className="text-muted">{label}</p>
@@ -110,6 +132,28 @@ export default async function ServicePagesAdminPage({
             <option value="">All</option>
             <option value="covered">Covered</option>
             <option value="not_covered">Not covered</option>
+          </select>
+        </label>
+        <label className="text-sm">
+          Quality
+          <select name="quality" defaultValue={filters.quality || ""} className="mt-1 w-full rounded-md border border-line px-2 py-1">
+            <option value="">All</option>
+            {["publishable", "ready_for_review", "failed_quality", "incomplete", "indexable", "approved"].map((value) => (
+              <option key={value} value={value}>
+                {value}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="text-sm">
+          Category
+          <select name="parent" defaultValue={filters.parent || ""} className="mt-1 w-full rounded-md border border-line px-2 py-1">
+            <option value="">All</option>
+            {[...new Set(services.map((s) => s.category?.slug).filter(Boolean))].sort().map((slug) => (
+              <option key={slug as string} value={slug as string}>
+                {slug as string}
+              </option>
+            ))}
           </select>
         </label>
         <div className="sm:col-span-4">

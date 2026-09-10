@@ -1,0 +1,13 @@
+{
+  "offset": 60000,
+  "limit": 5000,
+  "selected": 3351,
+  "altsWritten": 0,
+  "overrideReady": 0,
+  "serviceHeroReady": 0,
+  "categoryFilePresent": 0,
+  "approvedFallback": 6702,
+  "skippedPublished": 0,
+  "storageProvider": "local",
+  "objectStorageConfigured": false
+}

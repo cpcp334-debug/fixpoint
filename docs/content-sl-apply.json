@@ -1,0 +1,13 @@
+{
+  "batchKey": "sl-content-2026-09-09",
+  "offset": 2400,
+  "limit": 400,
+  "concurrency": 12,
+  "legacyOnly": true,
+  "includeLegacy": true,
+  "selected": 200,
+  "enOk": 200,
+  "arOk": 200,
+  "skippedPublished": 0,
+  "failed": []
+}

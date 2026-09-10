@@ -134,7 +134,7 @@ export type DiyInheritance = {
 
 export type ImageInheritance = {
   src: string | null;
-  source: "override" | "service" | "approved_fallback";
+  source: "override" | "service" | "category" | "approved_fallback";
   alt: string;
   gatePass: boolean;
 };

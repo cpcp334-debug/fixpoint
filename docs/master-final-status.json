@@ -1,0 +1,127 @@
+{
+  "generatedAt": "2026-09-09T18:07:28.849Z",
+  "completionPercent": 86,
+  "checks": {
+    "catalog": true,
+    "locations": true,
+    "slPopulation": true,
+    "diyMatrix": true,
+    "diyAuthored": true,
+    "noDuplicates": true,
+    "hubsAbsent": true,
+    "publishedStable": true,
+    "draftNoindex": true,
+    "revisionsPresent": true,
+    "seoPublishedPass": true,
+    "geoPublishedPass": false,
+    "aeoPublishedPass": false,
+    "slLocalizedAtScale": true
+  },
+  "services": {
+    "approvedOfferingsCatalog": 311,
+    "approvedServiceRows": 304,
+    "legacyServiceRows": 13,
+    "totalServiceRows": 317,
+    "categoryOnlyHubs": 7
+  },
+  "locations": {
+    "total": 200,
+    "country": 1,
+    "emirates": 7,
+    "cities": 21,
+    "communities": 171,
+    "areas": 0
+  },
+  "serviceLocation": {
+    "approvedMatrixCandidates": 60800,
+    "theoreticalApproved311x200": 62200,
+    "documentedExtraVs62200": 1200,
+    "legacyOutsideMatrixRows": 2600,
+    "total": 63400,
+    "covered": 49,
+    "uncovered": 63351,
+    "published": 49,
+    "draft": 63351,
+    "review": 0,
+    "approved": 0,
+    "archived": 0,
+    "indexableEn": 49,
+    "indexableAr": 49,
+    "equation": "60800 approved (304×200) + 2600 legacy (13×200) = 63400; vs 311×200=62200 ⇒ net 1200 (= −1400 hubs + 2600 legacy)",
+    "unexplainedRows": 0,
+    "legitimacy": "DOCUMENTED_LEGACY_PLUS_APPROVED_MATRIX"
+  },
+  "diy": {
+    "matrix": {
+      "GREEN": 46,
+      "YELLOW": 128,
+      "RED": 112,
+      "REVIEW_REQUIRED": 25
+    },
+    "authored": {
+      "GREEN": 46,
+      "YELLOW": 121,
+      "RED": 111,
+      "REVIEW_REQUIRED": 25
+    },
+    "intentionallyExcludedYellow": 7,
+    "remainingEligibleYellow": 0
+  },
+  "content": {
+    "enServiceLocationNonEmpty": 63400,
+    "arServiceLocationNonEmpty": 63400,
+    "enServiceLocationMissing": 0,
+    "arServiceLocationMissing": 0
+  },
+  "images": {
+    "override": 0,
+    "serviceInherited": 0,
+    "approvedFallback": 63400,
+    "missing": 0
+  },
+  "quality": {
+    "failed": 0,
+    "passOrPending": 63400
+  },
+  "seo": {
+    "pass": 49,
+    "fail": 0
+  },
+  "geo": {
+    "pass": 0,
+    "fail": 49
+  },
+  "aeo": {
+    "pass": 0,
+    "fail": 49
+  },
+  "generationQueue": [
+    {
+      "_count": 127310,
+      "status": "succeeded"
+    }
+  ],
+  "revisions": [
+    {
+      "_count": 126702,
+      "status": "draft"
+    },
+    {
+      "_count": 98,
+      "status": "published"
+    }
+  ],
+  "sitemap": {
+    "shards": 32,
+    "potentialLocalizedUrls": 124400,
+    "currentlyIndexableLocalized": 98
+  },
+  "productionReadiness": {
+    "repositorySide": "largely complete",
+    "externalDependencies": [
+      "real object storage provider client (current s3 adapter is stub)",
+      "managed postgres with pooling/backups/PITR",
+      "monitoring/alerts and production cron wiring"
+    ]
+  }
+}

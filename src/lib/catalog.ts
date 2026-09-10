@@ -6,6 +6,7 @@ import {
   getServiceLocation as resolvePublicServiceLocation,
   resolveServiceLocationPage,
 } from "@/lib/service-location/page-resolve";
+import { isApprovedPublicServiceSlug } from "@/lib/catalog/approved-nav";
 
 export const publicServiceLocationWhere = {
   indexable: true,
@@ -31,12 +32,25 @@ export const getActiveServices = cache(async (locale: string) => {
 });
 
 export const getServiceBySlug = cache(async (slug: string, locale: string) => {
+  const approvedNav = isApprovedPublicServiceSlug(slug);
   const row = await prisma.service.findFirst({
-    where: { slug, status: "active", indexable: true },
+    where: approvedNav
+      ? { slug, status: { in: ["active", "draft"] } }
+      : { slug, status: "active", indexable: true },
     include: { translations: true, category: true },
   });
   if (!row) return null;
-  return { ...row, t: pickI18n(row.translations, locale)! };
+  const t =
+    locale === "ar"
+      ? row.translations.find((x) => x.locale === "ar") || undefined
+      : row.translations.find((x) => x.locale === "en") || pickI18n(row.translations, locale);
+  if (!t) return null;
+  return {
+    ...row,
+    t,
+    /** Approved draft catalog pages are reachable but must not be indexed. */
+    publicIndexable: row.status === "active" && row.indexable,
+  };
 });
 
 export const getActiveEmirates = cache(async (locale: string) => {

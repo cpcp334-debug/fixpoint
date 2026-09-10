@@ -1,0 +1,189 @@
+{
+  "locales": 188,
+  "present": 188,
+  "webp": 188,
+  "missingAlt": 0,
+  "broken": 0,
+  "rowsSample": [
+    {
+      "type": "diy",
+      "id": "diy-apartment-cleaning",
+      "locale": "en",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-apartment-cleaning",
+      "locale": "ar",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-bathroom-cleaning",
+      "locale": "en",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-bathroom-cleaning",
+      "locale": "ar",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-cleaning-services",
+      "locale": "en",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-cleaning-services",
+      "locale": "ar",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-commercial-cleaning",
+      "locale": "en",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-commercial-cleaning",
+      "locale": "ar",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-dishwasher-filter-cleaning",
+      "locale": "en",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-dishwasher-filter-cleaning",
+      "locale": "ar",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-dishwasher-spray-arm-cleaning",
+      "locale": "en",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-dishwasher-spray-arm-cleaning",
+      "locale": "ar",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-floor-cleaning",
+      "locale": "en",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-floor-cleaning",
+      "locale": "ar",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-gym-deep-cleaning",
+      "locale": "en",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-gym-deep-cleaning",
+      "locale": "ar",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-gym-equipment-cleaning",
+      "locale": "en",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-gym-equipment-cleaning",
+      "locale": "ar",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-gym-floor-cleaning",
+      "locale": "en",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    },
+    {
+      "type": "diy",
+      "id": "diy-gym-floor-cleaning",
+      "locale": "ar",
+      "src": "/media/topics/cleaning.webp",
+      "exists": true,
+      "webp": true,
+      "altWired": true
+    }
+  ]
+}

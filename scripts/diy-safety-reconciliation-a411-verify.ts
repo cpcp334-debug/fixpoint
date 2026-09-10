@@ -12,6 +12,10 @@ import {
   DIY_SAFETY_A411_UNRESOLVED_MISSING_HUBS,
 } from "../prisma/data/diy-safety-alignment-a411";
 import { assertDiyMatrixCounts } from "../src/lib/service-location/diy-matrix";
+import {
+  assertPopulationInvariants,
+  measureServiceLocationPopulation,
+} from "../src/lib/service-location/population";
 import { APPROVED_CATEGORIES, APPROVED_CHILDREN } from "../prisma/data/catalog-a1";
 
 function assert(cond: unknown, message: string): asserts cond {
@@ -87,17 +91,10 @@ async function main() {
   assert(APPROVED_CATEGORIES.length === 18, "18 parents");
   assert(APPROVED_CHILDREN.length === 293, "293 children");
 
-  const sl = await prisma.serviceLocation.count();
-  const pub = await prisma.serviceLocation.count({
-    where: { covered: true, coverageStatus: "published", indexable: true },
-  });
-  const pilots = await prisma.serviceLocation.findMany({ where: { coverageStatus: "draft", covered: false } });
-  assert(sl === 99, `SL ${sl}`);
-  assert(pub === 49, `pub ${pub}`);
-  assert(pilots.length === 50, `pilots ${pilots.length}`);
-  for (const p of pilots) {
-    assert(!p.indexable && !p.indexableEn && !p.indexableAr, "pilot noindex");
-  }
+  const population = await measureServiceLocationPopulation(prisma);
+  assertPopulationInvariants(population);
+  assert(population.published === 49, `pub ${population.published}`);
+  assert(population.pilotsPreserved === 50, `pilotsPreserved ${population.pilotsPreserved}`);
 
   // DIY guide bodies for original 6 preserved (A4.2 may add coverage shells)
   const EXISTING_SIX = [
@@ -136,7 +133,14 @@ async function main() {
         applied: 110,
         held: "painting-services",
         unresolvedHubs: 7,
-        serviceLocation: { total: sl, published: pub, pilots: pilots.length },
+        serviceLocation: {
+          total: population.serviceLocationTotal,
+          published: population.published,
+          pilotsPreserved: population.pilotsPreserved,
+          approvedMatrixRows: population.classification.approvedMatrixRows,
+          legacyOutsideMatrixRows: population.classification.legacyOutsideMatrixRows,
+          equation: population.equation,
+        },
         guideBodyFingerprint: bodyFingerprint,
         matrix: matrix.expected,
       },

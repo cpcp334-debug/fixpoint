@@ -84,9 +84,24 @@ async function main() {
   await markRunning(failJob.id);
   const f1 = await markFailed(failJob.id, "boom1");
   assert(f1.status === "failed" && f1.attempt === 1, "first fail → failed");
+  assert(f1.error === "boom1", "error preserved on failed");
+
+  const { requeueFailedJobs } = await import("../src/lib/content-generation/jobs");
+  const rq = await requeueFailedJobs({ take: 10 });
+  assert(rq.requeued >= 1, "requeueFailedJobs requeues failed");
+  const afterRq = await prisma.contentGenerationJob.findUniqueOrThrow({ where: { id: failJob.id } });
+  assert(afterRq.status === "pending", "FAILED → PENDING");
+  assert(afterRq.attempt === 1, "attempt preserved on requeue");
+  assert(afterRq.error === "boom1", "error field preserved on requeue");
+  assert(afterRq.resultJson.includes("errorHistory"), "errorHistory audit retained");
+
   await markRunning(failJob.id);
   const f2 = await markFailed(failJob.id, "boom2");
   assert(f2.status === "dead" && f2.attempt === 2, "second fail → dead");
+  const rqDead = await requeueFailedJobs({ take: 10 });
+  const stillDead = await prisma.contentGenerationJob.findUniqueOrThrow({ where: { id: failJob.id } });
+  assert(stillDead.status === "dead", "dead jobs are not requeued by FAILED-only policy");
+  void rqDead;
 
   const okKey = `${PREFIX}-ok-${Date.now()}`;
   const okJob = await enqueueJob({

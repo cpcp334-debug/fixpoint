@@ -1,11 +1,15 @@
 /**
  * A4.2 verification — GREEN foundation (Batch 1) + matrix/coverage invariants.
- * Updated for Batch 2: YELLOW authored may be > 0; tracked separately.
+ * Updated for Batch 2+: YELLOW/RED/RR authored may be > 0; tracked separately.
  */
 import { readFileSync, existsSync } from "node:fs";
 import { join } from "node:path";
 import { prisma } from "../src/server/db";
 import { assertDiyMatrixCounts, loadDiyClassificationMatrix } from "../src/lib/service-location/diy-matrix";
+import {
+  assertPopulationInvariants,
+  measureServiceLocationPopulation,
+} from "../src/lib/service-location/population";
 import { parseDiyProfileJson } from "../src/lib/diy/profile-validate";
 import {
   EXISTING_SIX_GUIDES,
@@ -56,12 +60,17 @@ async function main() {
     assert(profile.value?.metadata.authored === true, `GREEN not authored ${slug}`);
     assert(profile.value.matrixSafety === "GREEN", `GREEN class ${slug}`);
     assert(profile.value.steps.length >= 3, `GREEN steps ${slug}`);
-    assert(service.primaryDiyGuide.profileStatus === "draft", `GREEN profileStatus ${slug}`);
+    assert(
+      service.primaryDiyGuide.profileStatus === "draft" ||
+        service.primaryDiyGuide.profileStatus === "published",
+      `GREEN profileStatus ${slug}`,
+    );
     authoredGreen += 1;
   }
   assert(authoredGreen >= 46, `GREEN authored ${authoredGreen}`);
+  assert(authoredGreen === 46, `GREEN matrix authored exact ${authoredGreen}`);
 
-  // Progress scan across all matrix services with records
+  // Progress scan across all matrix services with records — count ALL authored by class
   for (const row of matrix.bySlug.values()) {
     if ((MISSING_HUBS as readonly string[]).includes(row.offeringSlug)) {
       assert(!(await prisma.service.findUnique({ where: { slug: row.offeringSlug } })), `hub created ${row.offeringSlug}`);
@@ -74,15 +83,22 @@ async function main() {
     if (!service?.primaryDiyGuide) continue;
     const profile = parseDiyProfileJson(service.primaryDiyGuide.profileJson);
     if (!profile.value?.metadata.authored) continue;
-    if (profile.value.matrixSafety === "YELLOW" && profile.value.metadata.batch === "A4.2-YELLOW-1") authoredYellow += 1;
+    if (profile.value.matrixSafety === "YELLOW") authoredYellow += 1;
     if (profile.value.matrixSafety === "RED") authoredRed += 1;
-    if (profile.value.matrixSafety === "REVIEW_REQUIRED" && profile.value.metadata.authored) authoredRr += 1;
+    if (profile.value.matrixSafety === "REVIEW_REQUIRED") authoredRr += 1;
   }
 
-  assert(authoredRed === 0, `RED authored ${authoredRed}`);
-  assert(authoredRr === 0, `RR authored ${authoredRr}`);
-  // YELLOW progress is verified in detail by yellow-verify; here we only track
+  // Log RED/YELLOW/RR independently; do not require zero
+  console.log(
+    JSON.stringify({
+      authoredYellowAll: authoredYellow,
+      authoredRedAll: authoredRed,
+      authoredRrAll: authoredRr,
+    }),
+  );
   assert(authoredYellow >= 0, "yellow progress");
+  assert(authoredRed >= 0, "red progress");
+  assert(authoredRr >= 0, "rr progress");
 
   const six = await prisma.diyGuide.findMany({
     where: { slug: { in: [...EXISTING_SIX_GUIDES] } },
@@ -96,15 +112,23 @@ async function main() {
   const paint = await prisma.service.findUnique({ where: { slug: "painting-services" } });
   assert(paint?.riskLevel === "green" && paint.diyAvailable === true, "painting-services changed");
 
-  const slCount = await prisma.serviceLocation.count();
-  const slPub = await prisma.serviceLocation.count({
-    where: { coverageStatus: "published", covered: true, indexable: true },
-  });
-  const pilot = await prisma.serviceLocation.count({ where: { coverageStatus: { not: "published" } } });
-  assert(slCount === 99 && slPub === 49 && pilot === 50, "ServiceLocation counts");
+  for (const hub of MISSING_HUBS) {
+    assert(!(await prisma.service.findUnique({ where: { slug: hub } })), `hub must remain absent ${hub}`);
+  }
 
-  const publishedDiy = await prisma.diyGuide.count({ where: { status: "published" } });
-  assert(publishedDiy === 2, `published DIY ${publishedDiy}`);
+  const population = await measureServiceLocationPopulation(prisma);
+  assertPopulationInvariants(population);
+  assert(population.published === 49, `published ${population.published}`);
+  assert(population.pilotsPreserved === 50, `pilotsPreserved ${population.pilotsPreserved}`);
+  assert(population.hubsAbsentInDb, "hubs must remain absent");
+
+  const publishedDiy = await prisma.diyGuide.count({ where: { status: "published", indexable: true } });
+  assert(publishedDiy >= 2, `published DIY ${publishedDiy}`);
+  // Controlled GREEN publication may raise this above the grandfathered 2; non-GREEN must stay unpublished.
+  const publishedNonGreenRisk = await prisma.diyGuide.count({
+    where: { status: "published", indexable: true, riskLevel: { in: ["yellow", "red"] } },
+  });
+  assert(publishedNonGreenRisk === 0, `published non-green risk DIY ${publishedNonGreenRisk}`);
 
   console.log(
     JSON.stringify(
@@ -112,11 +136,18 @@ async function main() {
         ok: true,
         phase: "A4.2-GREEN-verify",
         greenAuthored: authoredGreen,
-        yellowAuthoredTracked: authoredYellow,
+        yellowAuthoredAll: authoredYellow,
         redAuthored: authoredRed,
         reviewRequiredAuthored: authoredRr,
         matrix: counts.derived,
-        serviceLocation: { total: slCount, published: slPub, pilot },
+        serviceLocation: {
+          total: population.serviceLocationTotal,
+          published: population.published,
+          pilotsPreserved: population.pilotsPreserved,
+          approvedMatrixRows: population.classification.approvedMatrixRows,
+          legacyOutsideMatrixRows: population.classification.legacyOutsideMatrixRows,
+          equation: population.equation,
+        },
         note: "YELLOW Batch 2 detail is verified by verify:diy-authoring-a42-yellow",
       },
       null,

@@ -1,0 +1,57 @@
+{
+  "generatedAt": "2026-09-10T13:14:00.517Z",
+  "en": {
+    "total": 94,
+    "ge1000": 45,
+    "lt1000": 49,
+    "average": 989.6,
+    "median": 499,
+    "minimum": 398,
+    "maximum": 1680
+  },
+  "ar": {
+    "total": 94,
+    "ge1000": 45,
+    "lt1000": 49,
+    "average": 814.1,
+    "median": 413,
+    "minimum": 316,
+    "maximum": 1407
+  },
+  "diyEn": {
+    "total": 45,
+    "ge1000": 45,
+    "lt1000": 0,
+    "average": 1580.5,
+    "median": 1587,
+    "minimum": 1227,
+    "maximum": 1680
+  },
+  "diyAr": {
+    "total": 45,
+    "ge1000": 45,
+    "lt1000": 0,
+    "average": 1317.7,
+    "median": 1321,
+    "minimum": 1007,
+    "maximum": 1407
+  },
+  "slEn": {
+    "total": 49,
+    "ge1000": 0,
+    "lt1000": 49,
+    "average": 447,
+    "median": 436,
+    "minimum": 398,
+    "maximum": 499
+  },
+  "slAr": {
+    "total": 49,
+    "ge1000": 0,
+    "lt1000": 49,
+    "average": 351.7,
+    "median": 338,
+    "minimum": 316,
+    "maximum": 417
+  }
+}

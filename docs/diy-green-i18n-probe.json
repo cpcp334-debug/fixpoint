@@ -1,0 +1,154 @@
+{
+  "green": 46,
+  "profileOk": 46,
+  "enStepsOk": 3,
+  "arArabic": 46,
+  "catPublic": 3,
+  "svcGreen": 1,
+  "cats": [
+    {
+      "slug": "plumbing",
+      "status": "published",
+      "indexable": true,
+      "_count": {
+        "guides": 49
+      }
+    },
+    {
+      "slug": "ac",
+      "status": "published",
+      "indexable": true,
+      "_count": {
+        "guides": 33
+      }
+    },
+    {
+      "slug": "painting",
+      "status": "draft",
+      "indexable": false,
+      "_count": {
+        "guides": 35
+      }
+    },
+    {
+      "slug": "walls",
+      "status": "draft",
+      "indexable": false,
+      "_count": {
+        "guides": 32
+      }
+    },
+    {
+      "slug": "cleaning",
+      "status": "draft",
+      "indexable": false,
+      "_count": {
+        "guides": 414
+      }
+    }
+  ],
+  "sample": [
+    {
+      "offering": "cleaning-services",
+      "guide": "diy-cleaning-services",
+      "expected": "diy-cleaning-services",
+      "status": "draft",
+      "svcRisk": "green",
+      "guideRisk": "green",
+      "cat": "cleaning:draft:false",
+      "profileSteps": 6,
+      "profileTools": 4,
+      "profileFaq": 7,
+      "enSteps": 0,
+      "enMeta": "Draft DIY profile",
+      "arTitle": "دليل DIY معتمد — مراجعة عربية مطلوبة",
+      "arArabic": true,
+      "arabicReviewStatus": "translation_review"
+    },
+    {
+      "offering": "residential-cleaning",
+      "guide": "diy-residential-cleaning",
+      "expected": "diy-residential-cleaning",
+      "status": "draft",
+      "svcRisk": "yellow",
+      "guideRisk": "green",
+      "cat": "cleaning:draft:false",
+      "profileSteps": 6,
+      "profileTools": 4,
+      "profileFaq": 7,
+      "enSteps": 0,
+      "enMeta": "Draft DIY profile",
+      "arTitle": "دليل DIY معتمد — مراجعة عربية مطلوبة",
+      "arArabic": true,
+      "arabicReviewStatus": "translation_review"
+    },
+    {
+      "offering": "apartment-cleaning",
+      "guide": "diy-apartment-cleaning",
+      "expected": "diy-apartment-cleaning",
+      "status": "draft",
+      "svcRisk": "yellow",
+      "guideRisk": "green",
+      "cat": "cleaning:draft:false",
+      "profileSteps": 6,
+      "profileTools": 4,
+      "profileFaq": 7,
+      "enSteps": 0,
+      "enMeta": "Draft DIY profile",
+      "arTitle": "دليل DIY معتمد — مراجعة عربية مطلوبة",
+      "arArabic": true,
+      "arabicReviewStatus": "translation_review"
+    },
+    {
+      "offering": "faucet-repair",
+      "guide": "how-to-fix-dripping-faucet",
+      "expected": "how-to-fix-dripping-faucet",
+      "status": "published",
+      "svcRisk": "yellow",
+      "guideRisk": "green",
+      "cat": "plumbing:published:true",
+      "profileSteps": 5,
+      "profileTools": 4,
+      "profileFaq": 6,
+      "enSteps": 5,
+      "enMeta": "If you can isolate the tap, you can ofte",
+      "arTitle": "كيف توقف حنفية تقطر",
+      "arArabic": true,
+      "arabicReviewStatus": "not_started"
+    },
+    {
+      "offering": "faucet-replacement",
+      "guide": "how-to-fix-dripping-faucet",
+      "expected": "how-to-fix-dripping-faucet",
+      "status": "published",
+      "svcRisk": "yellow",
+      "guideRisk": "green",
+      "cat": "plumbing:published:true",
+      "profileSteps": 5,
+      "profileTools": 4,
+      "profileFaq": 6,
+      "enSteps": 5,
+      "enMeta": "If you can isolate the tap, you can ofte",
+      "arTitle": "كيف توقف حنفية تقطر",
+      "arArabic": true,
+      "arabicReviewStatus": "not_started"
+    },
+    {
+      "offering": "ac-filter-cleaning",
+      "guide": "how-to-clean-ac-filter",
+      "expected": "how-to-clean-ac-filter",
+      "status": "published",
+      "svcRisk": "yellow",
+      "guideRisk": "green",
+      "cat": "ac:published:true",
+      "profileSteps": 6,
+      "profileTools": 3,
+      "profileFaq": 6,
+      "enSteps": 5,
+      "enMeta": "If the filter slides out of a wall or fl",
+      "arTitle": "كيف تنظف فلتر التكييف",
+      "arArabic": true,
+      "arabicReviewStatus": "not_started"
+    }
+  ]
+}

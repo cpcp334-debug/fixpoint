@@ -7,109 +7,7 @@
     "batchSize": 101,
     "yellowAuthoredThisBatch": 101,
     "totalRemainingBefore": 101,
-    "heldReviewRequired": [
-      "villa-maintenance",
-      "apartment-maintenance",
-      "preventive-building-maintenance",
-      "corrective-building-maintenance",
-      "general-handyman-service",
-      "minor-building-repairs",
-      "door-repair-and-adjustment",
-      "door-hardware-replacement",
-      "lock-repair-and-replacement",
-      "cabinet-and-hardware-repair",
-      "general-property-repair",
-      "plumbing-inspection",
-      "water-leakage-detection",
-      "drain-cleaning",
-      "drain-blockage-removal",
-      "sink-repair",
-      "shower-repair",
-      "toilet-repair",
-      "running-toilet-repair",
-      "water-pressure-problem-diagnosis",
-      "floor-drain-repair",
-      "ac-inspection",
-      "ac-servicing",
-      "ac-cleaning",
-      "ac-drain-cleaning",
-      "ac-cooling-problem-diagnosis",
-      "ac-noise-problem-diagnosis",
-      "split-ac-maintenance",
-      "ac-preventive-maintenance",
-      "interior-painting",
-      "exterior-painting",
-      "residential-painting",
-      "villa-painting",
-      "apartment-painting",
-      "office-painting",
-      "commercial-painting",
-      "wall-painting",
-      "ceiling-painting",
-      "door-painting",
-      "metal-painting",
-      "wood-painting",
-      "repainting",
-      "texture-painting",
-      "decorative-painting",
-      "wall-inspection",
-      "wall-crack-repair",
-      "plaster-repair",
-      "wall-hole-repair",
-      "wall-damage-repair",
-      "peeling-paint-repair",
-      "wall-patching",
-      "wall-skimming",
-      "surface-preparation",
-      "gypsum-wall-repair",
-      "residential-pool-maintenance",
-      "sauna-inspection",
-      "water-tank-inspection",
-      "water-tank-leak-inspection",
-      "water-tank-cover-repair",
-      "rooftop-water-tank-cleaning",
-      "refrigerator-inspection",
-      "refrigerator-cooling-problem",
-      "refrigerator-freezing-problem",
-      "refrigerator-water-leakage",
-      "refrigerator-ice-formation-problem",
-      "refrigerator-drain-blockage-repair",
-      "microwave-inspection",
-      "washing-machine-inspection",
-      "washing-machine-not-starting",
-      "washing-machine-not-spinning",
-      "washing-machine-water-filling-problem",
-      "washing-machine-drainage-problem",
-      "washing-machine-water-leakage",
-      "washing-machine-excessive-noise",
-      "washing-machine-vibration-problem",
-      "washing-machine-door-lock-problem",
-      "washing-machine-preventive-maintenance",
-      "water-heater-inspection",
-      "water-heater-tank-inspection",
-      "water-heater-cleaning",
-      "water-heater-scale-removal",
-      "water-heater-preventive-maintenance",
-      "dishwasher-inspection",
-      "dishwasher-not-starting",
-      "dishwasher-not-cleaning-properly",
-      "dishwasher-water-filling-problem",
-      "dishwasher-drainage-problem",
-      "dishwasher-water-leakage",
-      "dishwasher-poor-drying",
-      "dishwasher-door-seal-replacement",
-      "dishwasher-door-lock-repair",
-      "dishwasher-preventive-maintenance",
-      "oven-inspection",
-      "oven-door-repair",
-      "oven-door-seal-replacement",
-      "oven-preventive-maintenance",
-      "gas-burner-cleaning",
-      "cooker-knob-replacement",
-      "gas-cooker-cleaning",
-      "hob-cleaning",
-      "glass-hob-maintenance"
-    ],
+    "heldReviewRequired": [],
     "skippedHubs": [
       "burner-cooker",
       "dishwasher",
@@ -129,8 +27,8 @@
       "guideSlug": "diy-villa-maintenance",
       "parentSlug": "general-maintenance",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "apartment-maintenance",
@@ -138,8 +36,8 @@
       "guideSlug": "diy-apartment-maintenance",
       "parentSlug": "general-maintenance",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "preventive-building-maintenance",
@@ -147,8 +45,8 @@
       "guideSlug": "diy-preventive-building-maintenance",
       "parentSlug": "general-maintenance",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "corrective-building-maintenance",
@@ -156,8 +54,8 @@
       "guideSlug": "diy-corrective-building-maintenance",
       "parentSlug": "general-maintenance",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "general-handyman-service",
@@ -165,8 +63,8 @@
       "guideSlug": "diy-general-handyman-service",
       "parentSlug": "general-maintenance",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "minor-building-repairs",
@@ -174,8 +72,8 @@
       "guideSlug": "diy-minor-building-repairs",
       "parentSlug": "general-maintenance",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "door-repair-and-adjustment",
@@ -183,8 +81,8 @@
       "guideSlug": "diy-door-repair-and-adjustment",
       "parentSlug": "general-maintenance",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "door-hardware-replacement",
@@ -192,8 +90,8 @@
       "guideSlug": "diy-door-hardware-replacement",
       "parentSlug": "general-maintenance",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "lock-repair-and-replacement",
@@ -201,8 +99,8 @@
       "guideSlug": "diy-lock-repair-and-replacement",
       "parentSlug": "general-maintenance",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "cabinet-and-hardware-repair",
@@ -210,8 +108,8 @@
       "guideSlug": "diy-cabinet-and-hardware-repair",
       "parentSlug": "general-maintenance",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "general-property-repair",
@@ -219,8 +117,8 @@
       "guideSlug": "diy-general-property-repair",
       "parentSlug": "general-maintenance",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "plumbing-inspection",
@@ -228,8 +126,8 @@
       "guideSlug": "diy-plumbing-inspection",
       "parentSlug": "plumbing",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "water-leakage-detection",
@@ -237,8 +135,8 @@
       "guideSlug": "diy-water-leakage-detection",
       "parentSlug": "plumbing",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "drain-cleaning",
@@ -246,8 +144,8 @@
       "guideSlug": "diy-drain-cleaning",
       "parentSlug": "plumbing",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "drain-blockage-removal",
@@ -255,8 +153,8 @@
       "guideSlug": "diy-drain-blockage-removal",
       "parentSlug": "plumbing",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "sink-repair",
@@ -264,8 +162,8 @@
       "guideSlug": "diy-sink-repair",
       "parentSlug": "plumbing",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "shower-repair",
@@ -273,8 +171,8 @@
       "guideSlug": "diy-shower-repair",
       "parentSlug": "plumbing",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "toilet-repair",
@@ -282,8 +180,8 @@
       "guideSlug": "diy-toilet-repair",
       "parentSlug": "plumbing",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "running-toilet-repair",
@@ -291,8 +189,8 @@
       "guideSlug": "diy-running-toilet-repair",
       "parentSlug": "plumbing",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "water-pressure-problem-diagnosis",
@@ -300,8 +198,8 @@
       "guideSlug": "diy-water-pressure-problem-diagnosis",
       "parentSlug": "plumbing",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "floor-drain-repair",
@@ -309,8 +207,8 @@
       "guideSlug": "diy-floor-drain-repair",
       "parentSlug": "plumbing",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "ac-inspection",
@@ -318,8 +216,8 @@
       "guideSlug": "diy-ac-inspection",
       "parentSlug": "ac",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "ac-servicing",
@@ -327,8 +225,8 @@
       "guideSlug": "diy-ac-servicing",
       "parentSlug": "ac",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "ac-cleaning",
@@ -336,8 +234,8 @@
       "guideSlug": "diy-ac-cleaning",
       "parentSlug": "ac",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "ac-drain-cleaning",
@@ -345,8 +243,8 @@
       "guideSlug": "diy-ac-drain-cleaning",
       "parentSlug": "ac",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "ac-cooling-problem-diagnosis",
@@ -354,8 +252,8 @@
       "guideSlug": "diy-ac-cooling-problem-diagnosis",
       "parentSlug": "ac",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "ac-noise-problem-diagnosis",
@@ -363,8 +261,8 @@
       "guideSlug": "diy-ac-noise-problem-diagnosis",
       "parentSlug": "ac",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "split-ac-maintenance",
@@ -372,8 +270,8 @@
       "guideSlug": "diy-split-ac-maintenance",
       "parentSlug": "ac",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "ac-preventive-maintenance",
@@ -381,8 +279,8 @@
       "guideSlug": "diy-ac-preventive-maintenance",
       "parentSlug": "ac",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "interior-painting",
@@ -390,8 +288,8 @@
       "guideSlug": "diy-interior-painting",
       "parentSlug": "painting",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "exterior-painting",
@@ -399,8 +297,8 @@
       "guideSlug": "diy-exterior-painting",
       "parentSlug": "painting",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "residential-painting",
@@ -408,8 +306,8 @@
       "guideSlug": "diy-residential-painting",
       "parentSlug": "painting",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "villa-painting",
@@ -417,8 +315,8 @@
       "guideSlug": "diy-villa-painting",
       "parentSlug": "painting",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "apartment-painting",
@@ -426,8 +324,8 @@
       "guideSlug": "diy-apartment-painting",
       "parentSlug": "painting",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "office-painting",
@@ -435,8 +333,8 @@
       "guideSlug": "diy-office-painting",
       "parentSlug": "painting",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "commercial-painting",
@@ -444,8 +342,8 @@
       "guideSlug": "diy-commercial-painting",
       "parentSlug": "painting",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "wall-painting",
@@ -453,8 +351,8 @@
       "guideSlug": "diy-wall-painting",
       "parentSlug": "painting",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "ceiling-painting",
@@ -462,8 +360,8 @@
       "guideSlug": "diy-ceiling-painting",
       "parentSlug": "painting",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "door-painting",
@@ -471,8 +369,8 @@
       "guideSlug": "diy-door-painting",
       "parentSlug": "painting",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "metal-painting",
@@ -480,8 +378,8 @@
       "guideSlug": "diy-metal-painting",
       "parentSlug": "painting",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "wood-painting",
@@ -489,8 +387,8 @@
       "guideSlug": "diy-wood-painting",
       "parentSlug": "painting",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "repainting",
@@ -498,8 +396,8 @@
       "guideSlug": "diy-repainting",
       "parentSlug": "painting",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "texture-painting",
@@ -507,8 +405,8 @@
       "guideSlug": "diy-texture-painting",
       "parentSlug": "painting",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "decorative-painting",
@@ -516,8 +414,8 @@
       "guideSlug": "diy-decorative-painting",
       "parentSlug": "painting",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "wall-inspection",
@@ -525,8 +423,8 @@
       "guideSlug": "diy-wall-inspection",
       "parentSlug": "walls",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "wall-crack-repair",
@@ -534,8 +432,8 @@
       "guideSlug": "diy-wall-crack-repair",
       "parentSlug": "walls",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "plaster-repair",
@@ -543,8 +441,8 @@
       "guideSlug": "diy-plaster-repair",
       "parentSlug": "walls",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "wall-hole-repair",
@@ -552,8 +450,8 @@
       "guideSlug": "diy-wall-hole-repair",
       "parentSlug": "walls",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "wall-damage-repair",
@@ -561,8 +459,8 @@
       "guideSlug": "diy-wall-damage-repair",
       "parentSlug": "walls",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "peeling-paint-repair",
@@ -570,8 +468,8 @@
       "guideSlug": "diy-peeling-paint-repair",
       "parentSlug": "walls",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "wall-patching",
@@ -579,8 +477,8 @@
       "guideSlug": "diy-wall-patching",
       "parentSlug": "walls",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "wall-skimming",
@@ -588,8 +486,8 @@
       "guideSlug": "diy-wall-skimming",
       "parentSlug": "walls",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "surface-preparation",
@@ -597,8 +495,8 @@
       "guideSlug": "diy-surface-preparation",
       "parentSlug": "walls",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "gypsum-wall-repair",
@@ -606,8 +504,8 @@
       "guideSlug": "diy-gypsum-wall-repair",
       "parentSlug": "walls",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "residential-pool-maintenance",
@@ -615,8 +513,8 @@
       "guideSlug": "diy-residential-pool-maintenance",
       "parentSlug": "swimming-pool",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "sauna-inspection",
@@ -624,8 +522,8 @@
       "guideSlug": "diy-sauna-inspection",
       "parentSlug": "sauna",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "water-tank-inspection",
@@ -633,8 +531,8 @@
       "guideSlug": "diy-water-tank-inspection",
       "parentSlug": "water-tank",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "water-tank-leak-inspection",
@@ -642,8 +540,8 @@
       "guideSlug": "diy-water-tank-leak-inspection",
       "parentSlug": "water-tank",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "water-tank-cover-repair",
@@ -651,8 +549,8 @@
       "guideSlug": "diy-water-tank-cover-repair",
       "parentSlug": "water-tank",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "rooftop-water-tank-cleaning",
@@ -660,8 +558,8 @@
       "guideSlug": "diy-rooftop-water-tank-cleaning",
       "parentSlug": "water-tank",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "refrigerator-inspection",
@@ -669,8 +567,8 @@
       "guideSlug": "diy-refrigerator-inspection",
       "parentSlug": "refrigerator",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "refrigerator-cooling-problem",
@@ -678,8 +576,8 @@
       "guideSlug": "diy-refrigerator-cooling-problem",
       "parentSlug": "refrigerator",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "refrigerator-freezing-problem",
@@ -687,8 +585,8 @@
       "guideSlug": "diy-refrigerator-freezing-problem",
       "parentSlug": "refrigerator",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "refrigerator-water-leakage",
@@ -696,8 +594,8 @@
       "guideSlug": "diy-refrigerator-water-leakage",
       "parentSlug": "refrigerator",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "refrigerator-ice-formation-problem",
@@ -705,8 +603,8 @@
       "guideSlug": "diy-refrigerator-ice-formation-problem",
       "parentSlug": "refrigerator",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "refrigerator-drain-blockage-repair",
@@ -714,8 +612,8 @@
       "guideSlug": "diy-refrigerator-drain-blockage-repair",
       "parentSlug": "refrigerator",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "microwave-inspection",
@@ -723,8 +621,8 @@
       "guideSlug": "diy-microwave-inspection",
       "parentSlug": "microwave",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "washing-machine-inspection",
@@ -732,8 +630,8 @@
       "guideSlug": "diy-washing-machine-inspection",
       "parentSlug": "washing-machine",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "washing-machine-not-starting",
@@ -741,8 +639,8 @@
       "guideSlug": "diy-washing-machine-not-starting",
       "parentSlug": "washing-machine",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "washing-machine-not-spinning",
@@ -750,8 +648,8 @@
       "guideSlug": "diy-washing-machine-not-spinning",
       "parentSlug": "washing-machine",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "washing-machine-water-filling-problem",
@@ -759,8 +657,8 @@
       "guideSlug": "diy-washing-machine-water-filling-problem",
       "parentSlug": "washing-machine",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "washing-machine-drainage-problem",
@@ -768,8 +666,8 @@
       "guideSlug": "diy-washing-machine-drainage-problem",
       "parentSlug": "washing-machine",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "washing-machine-water-leakage",
@@ -777,8 +675,8 @@
       "guideSlug": "diy-washing-machine-water-leakage",
       "parentSlug": "washing-machine",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "washing-machine-excessive-noise",
@@ -786,8 +684,8 @@
       "guideSlug": "diy-washing-machine-excessive-noise",
       "parentSlug": "washing-machine",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "washing-machine-vibration-problem",
@@ -795,8 +693,8 @@
       "guideSlug": "diy-washing-machine-vibration-problem",
       "parentSlug": "washing-machine",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "washing-machine-door-lock-problem",
@@ -804,8 +702,8 @@
       "guideSlug": "diy-washing-machine-door-lock-problem",
       "parentSlug": "washing-machine",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "washing-machine-preventive-maintenance",
@@ -813,8 +711,8 @@
       "guideSlug": "diy-washing-machine-preventive-maintenance",
       "parentSlug": "washing-machine",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "water-heater-inspection",
@@ -822,8 +720,8 @@
       "guideSlug": "diy-water-heater-inspection",
       "parentSlug": "water-heater",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "water-heater-tank-inspection",
@@ -831,8 +729,8 @@
       "guideSlug": "diy-water-heater-tank-inspection",
       "parentSlug": "water-heater",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "water-heater-cleaning",
@@ -840,8 +738,8 @@
       "guideSlug": "diy-water-heater-cleaning",
       "parentSlug": "water-heater",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "water-heater-scale-removal",
@@ -849,8 +747,8 @@
       "guideSlug": "diy-water-heater-scale-removal",
       "parentSlug": "water-heater",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "water-heater-preventive-maintenance",
@@ -858,8 +756,8 @@
       "guideSlug": "diy-water-heater-preventive-maintenance",
       "parentSlug": "water-heater",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "dishwasher-inspection",
@@ -867,8 +765,8 @@
       "guideSlug": "diy-dishwasher-inspection",
       "parentSlug": "dishwasher",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "dishwasher-not-starting",
@@ -876,8 +774,8 @@
       "guideSlug": "diy-dishwasher-not-starting",
       "parentSlug": "dishwasher",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "dishwasher-not-cleaning-properly",
@@ -885,8 +783,8 @@
       "guideSlug": "diy-dishwasher-not-cleaning-properly",
       "parentSlug": "dishwasher",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "dishwasher-water-filling-problem",
@@ -894,8 +792,8 @@
       "guideSlug": "diy-dishwasher-water-filling-problem",
       "parentSlug": "dishwasher",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "dishwasher-drainage-problem",
@@ -903,8 +801,8 @@
       "guideSlug": "diy-dishwasher-drainage-problem",
       "parentSlug": "dishwasher",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "dishwasher-water-leakage",
@@ -912,8 +810,8 @@
       "guideSlug": "diy-dishwasher-water-leakage",
       "parentSlug": "dishwasher",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "dishwasher-poor-drying",
@@ -921,8 +819,8 @@
       "guideSlug": "diy-dishwasher-poor-drying",
       "parentSlug": "dishwasher",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "dishwasher-door-seal-replacement",
@@ -930,8 +828,8 @@
       "guideSlug": "diy-dishwasher-door-seal-replacement",
       "parentSlug": "dishwasher",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "dishwasher-door-lock-repair",
@@ -939,8 +837,8 @@
       "guideSlug": "diy-dishwasher-door-lock-repair",
       "parentSlug": "dishwasher",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "dishwasher-preventive-maintenance",
@@ -948,8 +846,8 @@
       "guideSlug": "diy-dishwasher-preventive-maintenance",
       "parentSlug": "dishwasher",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "oven-inspection",
@@ -957,8 +855,8 @@
       "guideSlug": "diy-oven-inspection",
       "parentSlug": "oven",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "oven-door-repair",
@@ -966,8 +864,8 @@
       "guideSlug": "diy-oven-door-repair",
       "parentSlug": "oven",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "oven-door-seal-replacement",
@@ -975,8 +873,8 @@
       "guideSlug": "diy-oven-door-seal-replacement",
       "parentSlug": "oven",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "oven-preventive-maintenance",
@@ -984,8 +882,8 @@
       "guideSlug": "diy-oven-preventive-maintenance",
       "parentSlug": "oven",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "gas-burner-cleaning",
@@ -993,8 +891,8 @@
       "guideSlug": "diy-gas-burner-cleaning",
       "parentSlug": "burner-cooker",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "cooker-knob-replacement",
@@ -1002,8 +900,8 @@
       "guideSlug": "diy-cooker-knob-replacement",
       "parentSlug": "burner-cooker",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "gas-cooker-cleaning",
@@ -1011,8 +909,8 @@
       "guideSlug": "diy-gas-cooker-cleaning",
       "parentSlug": "burner-cooker",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "hob-cleaning",
@@ -1020,8 +918,8 @@
       "guideSlug": "diy-hob-cleaning",
       "parentSlug": "burner-cooker",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     },
     {
       "slug": "glass-hob-maintenance",
@@ -1029,8 +927,8 @@
       "guideSlug": "diy-glass-hob-maintenance",
       "parentSlug": "burner-cooker",
       "profileStatus": "draft",
-      "safetyOk": false,
-      "reviewStatus": "safety_review"
+      "safetyOk": true,
+      "reviewStatus": "draft"
     }
   ],
   "errors": [],

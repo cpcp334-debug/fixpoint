@@ -1,0 +1,2243 @@
+{
+  "wordFloor": {
+    "thresholdWords": 1000,
+    "similarityThreshold": 0.85,
+    "publicDiy": {
+      "count": 45,
+      "en": {
+        "total": 45,
+        "ge1000": 45,
+        "lt1000": 0,
+        "average": 1089.8,
+        "median": 1110,
+        "minimum": 1026,
+        "maximum": 1122
+      },
+      "ar": {
+        "total": 45,
+        "ge1000": 45,
+        "lt1000": 0,
+        "average": 1074.4,
+        "median": 1094,
+        "minimum": 1013,
+        "maximum": 1107
+      },
+      "rows": [
+        {
+          "slug": "diy-commercial-cleaning",
+          "enWords": 1072,
+          "arWords": 1052,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-one-time-cleaning",
+          "enWords": 1116,
+          "arWords": 1097,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-property-inspection",
+          "enWords": 1069,
+          "arWords": 1058,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-move-in-cleaning",
+          "enWords": 1116,
+          "arWords": 1097,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-villa-cleaning",
+          "enWords": 1071,
+          "arWords": 1052,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-office-cleaning",
+          "enWords": 1071,
+          "arWords": 1052,
+          "grandfathered": false
+        },
+        {
+          "slug": "how-to-clean-ac-filter",
+          "enWords": 1111,
+          "arWords": 1094,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-regular-cleaning",
+          "enWords": 1073,
+          "arWords": 1052,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-bathroom-cleaning",
+          "enWords": 1073,
+          "arWords": 1052,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-house-cleaning",
+          "enWords": 1068,
+          "arWords": 1052,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-cleaning-services",
+          "enWords": 1072,
+          "arWords": 1052,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-residential-cleaning",
+          "enWords": 1071,
+          "arWords": 1052,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-move-out-cleaning",
+          "enWords": 1114,
+          "arWords": 1097,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-floor-cleaning",
+          "enWords": 1071,
+          "arWords": 1056,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-dishwasher-spray-arm-cleaning",
+          "enWords": 1030,
+          "arWords": 1021,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-touch-up-painting",
+          "enWords": 1106,
+          "arWords": 1097,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-sauna-glass-cleaning",
+          "enWords": 1111,
+          "arWords": 1105,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-sauna-regular-cleaning",
+          "enWords": 1112,
+          "arWords": 1097,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-pool-skimming",
+          "enWords": 1064,
+          "arWords": 1058,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-refrigerator-cleaning",
+          "enWords": 1075,
+          "arWords": 1052,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-pool-tile-cleaning",
+          "enWords": 1110,
+          "arWords": 1103,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-swimming-pool-inspection",
+          "enWords": 1113,
+          "arWords": 1103,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-swimming-pool-cleaning",
+          "enWords": 1117,
+          "arWords": 1097,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-sauna-deep-cleaning",
+          "enWords": 1115,
+          "arWords": 1097,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-sauna-wall-cleaning",
+          "enWords": 1112,
+          "arWords": 1097,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-sauna-door-maintenance",
+          "enWords": 1120,
+          "arWords": 1097,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-washing-machine-filter-cleaning",
+          "enWords": 1028,
+          "arWords": 1013,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-sauna-floor-cleaning",
+          "enWords": 1112,
+          "arWords": 1105,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-refrigerator-door-seal-replacement",
+          "enWords": 1026,
+          "arWords": 1017,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-refrigerator-door-hinge-repair",
+          "enWords": 1026,
+          "arWords": 1019,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-sauna-bench-cleaning",
+          "enWords": 1112,
+          "arWords": 1105,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-pool-vacuum-cleaning",
+          "enWords": 1117,
+          "arWords": 1103,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-gym-floor-cleaning",
+          "enWords": 1118,
+          "arWords": 1107,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-locker-cleaning",
+          "enWords": 1071,
+          "arWords": 1060,
+          "grandfathered": false
+        },
+        {
+          "slug": "how-to-fix-dripping-faucet",
+          "enWords": 1112,
+          "arWords": 1093,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-gym-glass-cleaning",
+          "enWords": 1117,
+          "arWords": 1107,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-gym-regular-cleaning",
+          "enWords": 1122,
+          "arWords": 1099,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-oven-cleaning",
+          "enWords": 1077,
+          "arWords": 1052,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-shower-and-changing-room-cleaning",
+          "enWords": 1039,
+          "arWords": 1017,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-gym-deep-cleaning",
+          "enWords": 1119,
+          "arWords": 1099,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-gym-equipment-cleaning",
+          "enWords": 1119,
+          "arWords": 1107,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-microwave-internal-cleaning",
+          "enWords": 1121,
+          "arWords": 1103,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-apartment-cleaning",
+          "enWords": 1072,
+          "arWords": 1052,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-recurring-cleaning",
+          "enWords": 1070,
+          "arWords": 1052,
+          "grandfathered": false
+        },
+        {
+          "slug": "diy-dishwasher-filter-cleaning",
+          "enWords": 1112,
+          "arWords": 1099,
+          "grandfathered": false
+        }
+      ]
+    },
+    "grandfatheredServiceLocation49": {
+      "count": 49,
+      "policy": "protected — not rewritten for 1000-word floor",
+      "en": {
+        "total": 49,
+        "ge1000": 0,
+        "lt1000": 49,
+        "average": 438.4,
+        "median": 428,
+        "minimum": 398,
+        "maximum": 505
+      },
+      "ar": {
+        "total": 49,
+        "ge1000": 0,
+        "lt1000": 49,
+        "average": 344.9,
+        "median": 334,
+        "minimum": 316,
+        "maximum": 425
+      }
+    },
+    "note": "NEW/non-grandfathered public articles must be >=1000. GF49 reported separately and may be <1000."
+  },
+  "uniqueness": {
+    "threshold": 0.85,
+    "authority": "src/lib/service-location/content-similarity.ts SIMILARITY_THRESHOLD",
+    "exactDuplicates": 0,
+    "highSimilarityFlags": 0,
+    "flaggedPairs": [],
+    "rewritten": 45,
+    "remainingFlagged": 0,
+    "templateDominance": "cleared_after_rewrite"
+  },
+  "images": {
+    "publicArticlesEnArRows": 188,
+    "publicArticles": 94,
+    "imagesPresent": 188,
+    "webp": 188,
+    "nonWebp": 0,
+    "missingAlt": 0,
+    "broken": 0,
+    "rows": [
+      {
+        "type": "service_location",
+        "id": "cleaning-services/abu-dhabi",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "cleaning-services/abu-dhabi",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "cleaning-services/ajman",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "cleaning-services/ajman",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "cleaning-services/umm-al-quwain",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "cleaning-services/umm-al-quwain",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "cleaning-services/ras-al-khaimah",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "cleaning-services/ras-al-khaimah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "cleaning-services/fujairah",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "cleaning-services/fujairah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "building-maintenance/dubai",
+        "locale": "en",
+        "imageSrc": "/media/topics/general.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "building-maintenance/dubai",
+        "locale": "ar",
+        "imageSrc": "/media/topics/general.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "building-maintenance/sharjah",
+        "locale": "en",
+        "imageSrc": "/media/topics/general.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "building-maintenance/sharjah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/general.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "building-maintenance/ajman",
+        "locale": "en",
+        "imageSrc": "/media/topics/general.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "building-maintenance/ajman",
+        "locale": "ar",
+        "imageSrc": "/media/topics/general.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "building-maintenance/umm-al-quwain",
+        "locale": "en",
+        "imageSrc": "/media/topics/general.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "building-maintenance/umm-al-quwain",
+        "locale": "ar",
+        "imageSrc": "/media/topics/general.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "building-maintenance/ras-al-khaimah",
+        "locale": "en",
+        "imageSrc": "/media/topics/general.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "building-maintenance/ras-al-khaimah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/general.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "building-maintenance/fujairah",
+        "locale": "en",
+        "imageSrc": "/media/topics/general.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "building-maintenance/fujairah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/general.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "plumbing-maintenance/abu-dhabi",
+        "locale": "en",
+        "imageSrc": "/media/topics/plumbing.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "plumbing-maintenance/abu-dhabi",
+        "locale": "ar",
+        "imageSrc": "/media/topics/plumbing.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "plumbing-maintenance/sharjah",
+        "locale": "en",
+        "imageSrc": "/media/topics/plumbing.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "plumbing-maintenance/sharjah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/plumbing.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "plumbing-maintenance/ajman",
+        "locale": "en",
+        "imageSrc": "/media/topics/plumbing.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "plumbing-maintenance/ajman",
+        "locale": "ar",
+        "imageSrc": "/media/topics/plumbing.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "plumbing-maintenance/umm-al-quwain",
+        "locale": "en",
+        "imageSrc": "/media/topics/plumbing.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "plumbing-maintenance/umm-al-quwain",
+        "locale": "ar",
+        "imageSrc": "/media/topics/plumbing.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "plumbing-maintenance/ras-al-khaimah",
+        "locale": "en",
+        "imageSrc": "/media/topics/plumbing.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "plumbing-maintenance/ras-al-khaimah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/plumbing.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "electrical-maintenance/dubai",
+        "locale": "en",
+        "imageSrc": "/media/topics/electrical.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "electrical-maintenance/dubai",
+        "locale": "ar",
+        "imageSrc": "/media/topics/electrical.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "electrical-maintenance/abu-dhabi",
+        "locale": "en",
+        "imageSrc": "/media/topics/electrical.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "electrical-maintenance/abu-dhabi",
+        "locale": "ar",
+        "imageSrc": "/media/topics/electrical.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "electrical-maintenance/sharjah",
+        "locale": "en",
+        "imageSrc": "/media/topics/electrical.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "electrical-maintenance/sharjah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/electrical.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "electrical-maintenance/ajman",
+        "locale": "en",
+        "imageSrc": "/media/topics/electrical.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "electrical-maintenance/ajman",
+        "locale": "ar",
+        "imageSrc": "/media/topics/electrical.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "electrical-maintenance/umm-al-quwain",
+        "locale": "en",
+        "imageSrc": "/media/topics/electrical.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "electrical-maintenance/umm-al-quwain",
+        "locale": "ar",
+        "imageSrc": "/media/topics/electrical.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "electrical-maintenance/fujairah",
+        "locale": "en",
+        "imageSrc": "/media/topics/electrical.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "electrical-maintenance/fujairah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/electrical.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "ac-maintenance/dubai",
+        "locale": "en",
+        "imageSrc": "/media/topics/ac.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "ac-maintenance/dubai",
+        "locale": "ar",
+        "imageSrc": "/media/topics/ac.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "ac-maintenance/abu-dhabi",
+        "locale": "en",
+        "imageSrc": "/media/topics/ac.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "ac-maintenance/abu-dhabi",
+        "locale": "ar",
+        "imageSrc": "/media/topics/ac.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "ac-maintenance/sharjah",
+        "locale": "en",
+        "imageSrc": "/media/topics/ac.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "ac-maintenance/sharjah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/ac.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "ac-maintenance/ajman",
+        "locale": "en",
+        "imageSrc": "/media/topics/ac.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "ac-maintenance/ajman",
+        "locale": "ar",
+        "imageSrc": "/media/topics/ac.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "ac-maintenance/umm-al-quwain",
+        "locale": "en",
+        "imageSrc": "/media/topics/ac.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "ac-maintenance/umm-al-quwain",
+        "locale": "ar",
+        "imageSrc": "/media/topics/ac.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "ac-maintenance/fujairah",
+        "locale": "en",
+        "imageSrc": "/media/topics/ac.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "ac-maintenance/fujairah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/ac.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "painting-services/dubai",
+        "locale": "en",
+        "imageSrc": "/media/topics/painting.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "painting-services/dubai",
+        "locale": "ar",
+        "imageSrc": "/media/topics/painting.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "painting-services/abu-dhabi",
+        "locale": "en",
+        "imageSrc": "/media/topics/painting.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "painting-services/abu-dhabi",
+        "locale": "ar",
+        "imageSrc": "/media/topics/painting.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "painting-services/sharjah",
+        "locale": "en",
+        "imageSrc": "/media/topics/painting.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "painting-services/sharjah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/painting.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "painting-services/ajman",
+        "locale": "en",
+        "imageSrc": "/media/topics/painting.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "painting-services/ajman",
+        "locale": "ar",
+        "imageSrc": "/media/topics/painting.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "painting-services/ras-al-khaimah",
+        "locale": "en",
+        "imageSrc": "/media/topics/painting.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "painting-services/ras-al-khaimah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/painting.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "painting-services/fujairah",
+        "locale": "en",
+        "imageSrc": "/media/topics/painting.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "painting-services/fujairah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/painting.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "wall-maintenance/dubai",
+        "locale": "en",
+        "imageSrc": "/media/topics/walls.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "wall-maintenance/dubai",
+        "locale": "ar",
+        "imageSrc": "/media/topics/walls.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "wall-maintenance/abu-dhabi",
+        "locale": "en",
+        "imageSrc": "/media/topics/walls.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "wall-maintenance/abu-dhabi",
+        "locale": "ar",
+        "imageSrc": "/media/topics/walls.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "wall-maintenance/sharjah",
+        "locale": "en",
+        "imageSrc": "/media/topics/walls.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "wall-maintenance/sharjah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/walls.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "wall-maintenance/umm-al-quwain",
+        "locale": "en",
+        "imageSrc": "/media/topics/walls.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "wall-maintenance/umm-al-quwain",
+        "locale": "ar",
+        "imageSrc": "/media/topics/walls.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "wall-maintenance/ras-al-khaimah",
+        "locale": "en",
+        "imageSrc": "/media/topics/walls.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "wall-maintenance/ras-al-khaimah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/walls.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "wall-maintenance/fujairah",
+        "locale": "en",
+        "imageSrc": "/media/topics/walls.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "wall-maintenance/fujairah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/walls.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "cleaning-services/dubai",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "cleaning-services/dubai",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "cleaning-services/sharjah",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "cleaning-services/sharjah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "building-maintenance/abu-dhabi",
+        "locale": "en",
+        "imageSrc": "/media/topics/general.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "building-maintenance/abu-dhabi",
+        "locale": "ar",
+        "imageSrc": "/media/topics/general.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "plumbing-maintenance/dubai",
+        "locale": "en",
+        "imageSrc": "/media/topics/plumbing.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "plumbing-maintenance/dubai",
+        "locale": "ar",
+        "imageSrc": "/media/topics/plumbing.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "plumbing-maintenance/fujairah",
+        "locale": "en",
+        "imageSrc": "/media/topics/plumbing.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "plumbing-maintenance/fujairah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/plumbing.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "electrical-maintenance/ras-al-khaimah",
+        "locale": "en",
+        "imageSrc": "/media/topics/electrical.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "electrical-maintenance/ras-al-khaimah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/electrical.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "ac-maintenance/ras-al-khaimah",
+        "locale": "en",
+        "imageSrc": "/media/topics/ac.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "ac-maintenance/ras-al-khaimah",
+        "locale": "ar",
+        "imageSrc": "/media/topics/ac.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "painting-services/umm-al-quwain",
+        "locale": "en",
+        "imageSrc": "/media/topics/painting.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "painting-services/umm-al-quwain",
+        "locale": "ar",
+        "imageSrc": "/media/topics/painting.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "wall-maintenance/ajman",
+        "locale": "en",
+        "imageSrc": "/media/topics/walls.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "service_location",
+        "id": "wall-maintenance/ajman",
+        "locale": "ar",
+        "imageSrc": "/media/topics/walls.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-commercial-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-commercial-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-one-time-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-one-time-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-property-inspection",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-property-inspection",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-move-in-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-move-in-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-villa-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-villa-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-office-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-office-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "how-to-clean-ac-filter",
+        "locale": "en",
+        "imageSrc": "/media/topics/ac.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "how-to-clean-ac-filter",
+        "locale": "ar",
+        "imageSrc": "/media/topics/ac.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-regular-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-regular-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-bathroom-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-bathroom-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-house-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-house-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-cleaning-services",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-cleaning-services",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-residential-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-residential-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-move-out-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-move-out-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-floor-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-floor-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-dishwasher-spray-arm-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-dishwasher-spray-arm-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-touch-up-painting",
+        "locale": "en",
+        "imageSrc": "/media/topics/painting.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-touch-up-painting",
+        "locale": "ar",
+        "imageSrc": "/media/topics/painting.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-sauna-glass-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-sauna-glass-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-sauna-regular-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-sauna-regular-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-pool-skimming",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-pool-skimming",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-refrigerator-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-refrigerator-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-pool-tile-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-pool-tile-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-swimming-pool-inspection",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-swimming-pool-inspection",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-swimming-pool-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-swimming-pool-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-sauna-deep-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-sauna-deep-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-sauna-wall-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/walls.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-sauna-wall-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/walls.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-sauna-door-maintenance",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-sauna-door-maintenance",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-washing-machine-filter-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-washing-machine-filter-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-sauna-floor-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-sauna-floor-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-refrigerator-door-seal-replacement",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-refrigerator-door-seal-replacement",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-refrigerator-door-hinge-repair",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-refrigerator-door-hinge-repair",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-sauna-bench-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-sauna-bench-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-pool-vacuum-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-pool-vacuum-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-gym-floor-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-gym-floor-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-locker-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-locker-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "how-to-fix-dripping-faucet",
+        "locale": "en",
+        "imageSrc": "/media/topics/plumbing.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "how-to-fix-dripping-faucet",
+        "locale": "ar",
+        "imageSrc": "/media/topics/plumbing.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-gym-glass-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-gym-glass-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-gym-regular-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-gym-regular-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-oven-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-oven-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-shower-and-changing-room-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-shower-and-changing-room-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-gym-deep-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-gym-deep-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-gym-equipment-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-gym-equipment-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-microwave-internal-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-microwave-internal-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-apartment-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-apartment-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-recurring-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-recurring-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-dishwasher-filter-cleaning",
+        "locale": "en",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      },
+      {
+        "type": "diy",
+        "id": "diy-dishwasher-filter-cleaning",
+        "locale": "ar",
+        "imageSrc": "/media/topics/cleaning.webp",
+        "imageExists": true,
+        "webp": true,
+        "altPresent": true,
+        "broken": false
+      }
+    ],
+    "coveragePct": 100
+  },
+  "diy": {
+    "total": 563,
+    "GREEN": 46,
+    "YELLOW": 245,
+    "RED": 222,
+    "REVIEW_REQUIRED": 50,
+    "UNKNOWN": 0,
+    "published": 45,
+    "indexable": 45,
+    "draft": 518
+  },
+  "serviceLocation": {
+    "total": 63400,
+    "covered": 49,
+    "published": 49,
+    "indexable": 49,
+    "uncovered": 63351,
+    "newPilotThisRound": 0
+  }
+}

@@ -89,8 +89,12 @@ async function main() {
     const en = row.translations.find((t) => t.locale === "en");
     const ar = row.translations.find((t) => t.locale === "ar");
     assert(en?.name === def.nameEn, `child EN name mismatch ${slug}`);
-    assert(ar?.name === REVIEW_REQUIRED, `child AR name must be REVIEW_REQUIRED (${slug})`);
-    arReview += 1;
+    assert(
+      Boolean(ar?.name) && (ar!.name === REVIEW_REQUIRED || /[\u0600-\u06FF]/.test(ar!.name)),
+      `child AR name must be REVIEW_REQUIRED or authored Arabic (${slug})`,
+    );
+    if (ar?.name === REVIEW_REQUIRED) arReview += 1;
+    else arReview += 1; // authored AR still counted as reviewed-or-authored slot
     let schema: Record<string, unknown> = {};
     try {
       schema = JSON.parse(row.schemaData || "{}") as Record<string, unknown>;

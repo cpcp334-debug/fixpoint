@@ -21,6 +21,7 @@ import type { WorkingCopy } from "@/lib/service-location/types";
 import { parseContentJson } from "@/lib/service-location/content-parse";
 import { ensureDiySelfHelpSection } from "@/lib/service-location/content-builders";
 import { emptyContentJson, type ServiceLocationContentJson } from "@/lib/service-location/content-contract";
+import { parseFaqJson } from "@/lib/faq";
 
 const RELATED_LIMIT = 6;
 
@@ -221,7 +222,7 @@ function buildModel(
         directAnswer: w.directAnswer ?? "",
         geoIntro: w.geoIntro ?? "",
         imageAlt: w.imageAlt ?? "",
-        faqs: parseJson<Array<{ q: string; a: string }>>(w.faq, []),
+        faqs: parseFaqJson(w.faq),
       };
     })() : null);
 

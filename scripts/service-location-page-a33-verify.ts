@@ -18,6 +18,10 @@ import {
   resolveServiceLocationPageFresh,
   resolveServiceLocationPreviewImpl,
 } from "../src/lib/service-location/page-resolve";
+import {
+  assertPopulationInvariants,
+  measureServiceLocationPopulation,
+} from "../src/lib/service-location/population";
 import { reviewAggregateJsonLd, serviceJsonLd } from "../src/lib/seo";
 import { prisma } from "../src/server/db";
 
@@ -28,13 +32,10 @@ function assert(cond: unknown, message: string): asserts cond {
 const BANNED = /\b(best|#1|number one|certified|licensed|guarantee|guaranteed|24\/7|cheapest|lowest price)\b/i;
 
 async function main() {
-  const total = await prisma.serviceLocation.count();
-  assert(total === 99, `ServiceLocation must remain 99, got ${total}`);
-
-  const published = await prisma.serviceLocation.count({
-    where: { coverageStatus: "published", covered: true, indexable: true },
-  });
-  assert(published === 49, `published/indexable must remain 49, got ${published}`);
+  const population = await measureServiceLocationPopulation(prisma);
+  assertPopulationInvariants(population);
+  assert(population.published === 49, `published/indexable must remain 49, got ${population.published}`);
+  const published = population.published;
 
   // 1–3 published EN/AR + URLs unchanged
   const en = await resolveServiceLocationPageFresh({
@@ -84,7 +85,10 @@ async function main() {
     assert(row, "pilot row exists");
     assert(row.coverageStatus === "draft" && row.covered === false, "pilot stays draft/uncovered");
     assert(!row.indexableEn && !row.indexableAr && !row.indexable, "pilot not indexable");
-    assert(row.revisions.length === 0, "pilot has 0 revisions");
+    assert(
+      row.revisions.every((r) => r.status !== "published"),
+      "pilot must have no published revisions",
+    );
   }
 
   // 6 unpublished revision never renders (include filter + pilot shells)
@@ -324,8 +328,12 @@ async function main() {
     JSON.stringify(
       {
         ok: true,
-        serviceLocationTotal: total,
+        serviceLocationTotal: population.serviceLocationTotal,
+        approvedMatrixRows: population.classification.approvedMatrixRows,
+        legacyOutsideMatrixRows: population.classification.legacyOutsideMatrixRows,
+        equation: population.equation,
         publishedIndexable: published,
+        pilotsPreserved: population.pilotsPreserved,
         publicWhere: publicCount,
         samplePath: restored!.path,
         relatedServices: restored!.relatedServices.length,

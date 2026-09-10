@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-09-09T18:58:34.410Z",
+  "batchKey": "sl-longform-v2-2026-09-09",
+  "offset": 17500,
+  "generated": 5000,
+  "pass800plus": 5000,
+  "under800": 0,
+  "bands": {
+    "<500": 0,
+    "500-799": 0,
+    "800-999": 2488,
+    "1000-1200": 2512,
+    ">1200": 0
+  },
+  "average": 997,
+  "median": 1000,
+  "arLocales": 2500,
+  "failed": 0,
+  "systemicHealthy": true
+}

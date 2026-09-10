@@ -1,0 +1,18 @@
+{
+  "generatedAt": "2026-09-10T13:14:00.515Z",
+  "approvedServices": 311,
+  "primaryDiyLinkages": 304,
+  "uniquePrimaryGuides": 302,
+  "missingPrimary": 7,
+  "diyNotAppropriate": 0,
+  "duplicateLegacyRecords": 261,
+  "unmappedOrStandalone": 0,
+  "diyRecordsTotal": 563,
+  "unpublishedThisRun": 518,
+  "greenPublicKeptOrPublished": 45,
+  "yellowPublicAllowed": false,
+  "explanation": {
+    "whyNot311UniqueUrls": "Primary linkages=304; unique guide URLs=302 because some offerings share one canonical guide (e.g. faucet-repair + faucet-replacement). Missing hubs=7 await real primary creation (not invented).",
+    "target": "311 primary service-linked articles where applicable (= linkages when all hubs resolved and no shares, or 311 linkages with possible shared URLs)"
+  }
+}

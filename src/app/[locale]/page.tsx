@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { siteConfig } from "@/config/site";
 import { getActiveEmirates, getActiveServices, getGlobalFaqs, getPublishedGuides } from "@/lib/catalog";
+import { buildApprovedNavTree } from "@/lib/catalog/approved-nav";
 import { summarizeApprovedServiceReviews } from "@/lib/reviews";
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd, localBusinessJsonLd, organizationJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -9,6 +10,7 @@ import { FaqList } from "@/components/ui/Blocks";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { Hero } from "@/components/home/Hero";
 import { DiyCard, LocationCard, ProblemCard, ServiceCard } from "@/components/home/Cards";
+import { MainCategoryCard } from "@/components/catalog/MainCategoryCard";
 import { ProblemChips } from "@/components/home/ProblemChips";
 import { CtaBand } from "@/components/public/CtaBand";
 import {
@@ -59,6 +61,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const guides = await getPublishedGuides(locale);
   const faqs = await getGlobalFaqs(locale);
   const reviewStats = await summarizeApprovedServiceReviews({});
+  const mainCategories = buildApprovedNavTree();
   const featured = FEATURED.map((slug) => services.find((s) => s.slug === slug)).filter(Boolean) as typeof services;
   const rest = services.filter((s) => !FEATURED.includes(s.slug));
   const cleaning = featured.filter((s) => s.slug === "cleaning-services");
@@ -148,8 +151,24 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </Section>
 
+      <Section tone="sand" id="main-services">
+        <SectionHeader title={t("mainServicesTitle")} lead={t("mainServicesLead")} />
+        <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {mainCategories.map((cat) => (
+            <li key={cat.slug}>
+              <MainCategoryCard category={cat} locale={locale} />
+            </li>
+          ))}
+        </ul>
+        <p className="mt-6 text-sm">
+          <Link href="/services" className="font-medium text-accent">
+            {t("browseAllServices")}
+          </Link>
+        </p>
+      </Section>
+
       {services.length ? (
-        <Section tone="sand">
+        <Section>
           <SectionHeader title={t("helpTitle")} lead={t("helpLead")} />
           <div className="mt-8 space-y-8">
             {cleaning.length ? (

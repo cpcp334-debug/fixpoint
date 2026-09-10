@@ -1,0 +1,134 @@
+{
+  "generatedAt": "2026-09-10T03:45:48.971Z",
+  "method": "countRenderedWords(ServiceLocationPageModel) matching ServiceLocationView",
+  "population": {
+    "total": 63400,
+    "published": 49,
+    "draft": 63351,
+    "covered": 49,
+    "indexableEn": 49,
+    "indexableAr": 49,
+    "approvedMatrix": 60800,
+    "legacy": 2600,
+    "theoretical62200": 62200,
+    "extraVs62200": 1200
+  },
+  "longformJobsSucceeded": 44302,
+  "longformJobStatus": {
+    "running": 1,
+    "succeeded": 44302
+  },
+  "TOTAL_DRAFT_LOCALES_TARGET": 126702,
+  "protectedPublished49": {
+    "pairs": 49,
+    "grandfathered": true,
+    "autoRegenerate": false,
+    "failed": 0,
+    "EN": {
+      "count": 49,
+      "average": 419,
+      "median": 415,
+      "bands": {
+        "<500": 49,
+        "500-799": 0,
+        "800-999": 0,
+        "1000-1200": 0,
+        ">1200": 0
+      },
+      "under800": 49,
+      "in800_999": 0,
+      "in1000_1200": 0,
+      "over1200": 0
+    },
+    "AR": {
+      "count": 49,
+      "average": 325,
+      "median": 324,
+      "bands": {
+        "<500": 49,
+        "500-799": 0,
+        "800-999": 0,
+        "1000-1200": 0,
+        ">1200": 0
+      },
+      "under800": 49,
+      "in800_999": 0,
+      "in1000_1200": 0,
+      "over1200": 0
+    }
+  },
+  "draftSampleFirst1000Pairs": {
+    "pairs": 1000,
+    "locales": 2000,
+    "failed": 0,
+    "EN": {
+      "count": 1000,
+      "average": 993,
+      "median": 999,
+      "bands": {
+        "<500": 0,
+        "500-799": 0,
+        "800-999": 511,
+        "1000-1200": 489,
+        ">1200": 0
+      },
+      "under800": 0,
+      "in800_999": 511,
+      "in1000_1200": 489,
+      "over1200": 0
+    },
+    "AR": {
+      "count": 1000,
+      "average": 973,
+      "median": 974,
+      "bands": {
+        "<500": 0,
+        "500-799": 0,
+        "800-999": 952,
+        "1000-1200": 48,
+        ">1200": 0
+      },
+      "under800": 0,
+      "in800_999": 952,
+      "in1000_1200": 48,
+      "over1200": 0
+    }
+  },
+  "QUALITY": {
+    "publishable": 260,
+    "ready_for_review": 63091,
+    "failed_quality": 0,
+    "incomplete": 0,
+    "indexable": 49,
+    "note": "Length failure does not auto-set failed_quality for uncovered drafts"
+  },
+  "READINESS": {
+    "READY_FOR_PUBLISH_proxy": 260,
+    "DRAFT": 63351,
+    "REVIEW_REQUIRED": 63091,
+    "QUALITY_FAILED": 0,
+    "PUBLISHED": 49,
+    "INDEXABLE_EN": 49,
+    "INDEXABLE_AR": 49
+  },
+  "legacySlugs": [
+    "carpentry-joinery",
+    "flooring-tiling",
+    "waterproofing-sealing",
+    "roof-exterior-maintenance",
+    "bathroom-maintenance",
+    "kitchen-maintenance",
+    "doors-windows",
+    "preventive-maintenance",
+    "emergency-maintenance",
+    "demolition-dismantling",
+    "home-appliance-maintenance",
+    "oven-cooker-maintenance",
+    "kitchen-appliance-maintenance"
+  ],
+  "CLAIMS_FALSE": {
+    "allDraftsAt1000Words": false,
+    "massPublished": false,
+    "productionReady": false
+  }
+}

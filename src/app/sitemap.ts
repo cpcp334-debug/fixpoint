@@ -31,6 +31,7 @@ async function staticAndCatalogEntries(site: string): Promise<MetadataRoute.Site
     "/about",
     "/services",
     "/diy",
+    "/blog",
     "/faq",
     "/locations",
     "/reviews",
@@ -54,7 +55,7 @@ async function staticAndCatalogEntries(site: string): Promise<MetadataRoute.Site
     }
   }
 
-  const [services, locations, guides, diyCategories] = await Promise.all([
+  const [services, locations, guides, diyCategories, articles] = await Promise.all([
     prisma.service.findMany({
       where: { status: "active", indexable: true },
       select: { slug: true, updatedAt: true },
@@ -71,6 +72,10 @@ async function staticAndCatalogEntries(site: string): Promise<MetadataRoute.Site
       where: { status: "published", indexable: true },
       select: { slug: true, updatedAt: true },
     }),
+    prisma.article.findMany({
+      where: { status: "published", indexable: true },
+      select: { slug: true, updatedAt: true, publishedAt: true },
+    }),
   ]);
 
   for (const locale of locales) {
@@ -85,6 +90,12 @@ async function staticAndCatalogEntries(site: string): Promise<MetadataRoute.Site
     }
     for (const guide of guides) {
       entries.push({ url: `${site}/${locale}/diy/${guide.slug}`, lastModified: guide.updatedAt });
+    }
+    for (const article of articles) {
+      entries.push({
+        url: `${site}/${locale}/blog/${article.slug}`,
+        lastModified: article.publishedAt ?? article.updatedAt,
+      });
     }
   }
 

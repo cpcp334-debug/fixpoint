@@ -1,0 +1,491 @@
+{
+  "generatedAt": "2026-09-10T08:20:46.236Z",
+  "baseUrl": "http://127.0.0.1:3000",
+  "verificationMode": "non-destructive",
+  "PUBLIC_DIY": {
+    "enCount": 45,
+    "arCount": 45,
+    "publishedIndexableDb": 45,
+    "draft": 518,
+    "total": 563,
+    "nonGreenIndexable": [],
+    "relatedLinksToUnpublished": 0,
+    "relatedBadSamples": [],
+    "detailSamples": [
+      {
+        "slug": "how-to-fix-dripping-faucet",
+        "enOk": true,
+        "arOk": true,
+        "arArabic": true,
+        "enFallback": false,
+        "faqEn": 6,
+        "faqAr": 6,
+        "seoTitleEn": "How to fix a dripping faucet | ALNAJAH ALDAEM DIY",
+        "seoTitleAr": "كيف توقف حنفية تقطر | النجاح الدائم DIY",
+        "httpEn": 200,
+        "httpAr": 200
+      },
+      {
+        "slug": "how-to-clean-ac-filter",
+        "enOk": true,
+        "arOk": true,
+        "arArabic": true,
+        "enFallback": false,
+        "faqEn": 6,
+        "faqAr": 6,
+        "seoTitleEn": "How to clean an AC filter | ALNAJAH ALDAEM DIY",
+        "seoTitleAr": "كيف تنظف فلتر التكييف | النجاح الدائم DIY",
+        "httpEn": 200,
+        "httpAr": 200
+      },
+      {
+        "slug": "diy-oven-cleaning",
+        "enOk": true,
+        "arOk": true,
+        "arArabic": true,
+        "enFallback": false,
+        "faqEn": 6,
+        "faqAr": 6,
+        "seoTitleEn": "Oven Cleaning — DIY profile | ALNAJAH ALDAEM DIY",
+        "seoTitleAr": "دليل DIY آمن — فرن تنظيف | النجاح الدائم DIY",
+        "httpEn": 200,
+        "httpAr": 200
+      },
+      {
+        "slug": "diy-bathroom-cleaning",
+        "enOk": true,
+        "arOk": true,
+        "arArabic": true,
+        "enFallback": false,
+        "faqEn": 6,
+        "faqAr": 6,
+        "seoTitleEn": "Bathroom Cleaning — DIY profile | ALNAJAH ALDAEM DIY",
+        "seoTitleAr": "دليل DIY آمن — حمام تنظيف | النجاح الدائم DIY",
+        "httpEn": 200,
+        "httpAr": 200
+      },
+      {
+        "slug": "diy-touch-up-painting",
+        "enOk": true,
+        "arOk": true,
+        "arArabic": true,
+        "enFallback": false,
+        "faqEn": 6,
+        "faqAr": 6,
+        "seoTitleEn": "Touch-Up Painting — DIY profile | ALNAJAH ALDAEM DIY",
+        "seoTitleAr": "دليل DIY آمن — ترميم موضعي دهان | النجاح الدائم DIY",
+        "httpEn": 200,
+        "httpAr": 200
+      }
+    ],
+    "draftDirectUrl": {
+      "slug": "how-to-touch-up-interior-paint",
+      "en": 404,
+      "ar": 404
+    },
+    "catalogHttp": {
+      "en": 200,
+      "ar": 200
+    },
+    "categoryHttp": {
+      "plumbing": 200,
+      "cleaning": 200
+    },
+    "classification": "PASS"
+  },
+  "LOCATION": {
+    "publishedTests": [
+      {
+        "kind": "published",
+        "path": "/cleaning-services/dubai",
+        "httpEn": 200,
+        "httpAr": 200,
+        "publicResolveEn": true,
+        "publicResolveAr": true,
+        "indexableEn": true,
+        "indexableAr": true,
+        "seoTitleEn": "Cleaning Services in Dubai | ALNAJAH ALDAEM",
+        "seoTitleAr": "خدمات التنظيف في دبي | النجاح الدائم",
+        "hasHreflangEn": true,
+        "hasHreflangAr": true,
+        "h1En": "Cleaning Services — Dubai",
+        "aeoCountEn": 7,
+        "faqCountEn": 2,
+        "geoIntroEn": false,
+        "geoIntroAr": false,
+        "arArabic": true,
+        "enFallback": false,
+        "wordsEn": 489,
+        "wordsAr": 420,
+        "claimHits": [],
+        "locationInTitle": true,
+        "serviceInTitle": true,
+        "brandInTitle": true
+      },
+      {
+        "kind": "published",
+        "path": "/cleaning-services/abu-dhabi",
+        "httpEn": 200,
+        "httpAr": 200,
+        "publicResolveEn": true,
+        "publicResolveAr": true,
+        "indexableEn": true,
+        "indexableAr": true,
+        "seoTitleEn": "Cleaning Services in Abu Dhabi | ALNAJAH ALDAEM",
+        "seoTitleAr": "خدمات التنظيف في أبوظبي | النجاح الدائم",
+        "hasHreflangEn": true,
+        "hasHreflangAr": true,
+        "h1En": "Cleaning Services — Abu Dhabi",
+        "aeoCountEn": 7,
+        "faqCountEn": 2,
+        "geoIntroEn": false,
+        "geoIntroAr": false,
+        "arArabic": true,
+        "enFallback": false,
+        "wordsEn": 497,
+        "wordsAr": 401,
+        "claimHits": [],
+        "locationInTitle": true,
+        "serviceInTitle": true,
+        "brandInTitle": true
+      },
+      {
+        "kind": "published",
+        "path": "/cleaning-services/sharjah",
+        "httpEn": 200,
+        "httpAr": 200,
+        "publicResolveEn": true,
+        "publicResolveAr": true,
+        "indexableEn": true,
+        "indexableAr": true,
+        "seoTitleEn": "Cleaning Services in Sharjah | ALNAJAH ALDAEM",
+        "seoTitleAr": "خدمات التنظيف في الشارقة | النجاح الدائم",
+        "hasHreflangEn": true,
+        "hasHreflangAr": true,
+        "h1En": "Cleaning Services — Sharjah",
+        "aeoCountEn": 7,
+        "faqCountEn": 2,
+        "geoIntroEn": false,
+        "geoIntroAr": false,
+        "arArabic": true,
+        "enFallback": false,
+        "wordsEn": 489,
+        "wordsAr": 408,
+        "claimHits": [],
+        "locationInTitle": true,
+        "serviceInTitle": true,
+        "brandInTitle": true
+      }
+    ],
+    "draftTests": [
+      {
+        "kind": "draft_uncovered",
+        "path": "/villa-cleaning/dubai-marina",
+        "httpEn": 404,
+        "httpAr": 404,
+        "publicResolveEn": false,
+        "publicResolveAr": false
+      },
+      {
+        "kind": "draft_uncovered",
+        "path": "/villa-cleaning/al-majaz-1",
+        "httpEn": 404,
+        "httpAr": 404,
+        "publicResolveEn": false,
+        "publicResolveAr": false
+      },
+      {
+        "kind": "draft_uncovered",
+        "path": "/villa-cleaning/al-ain",
+        "httpEn": 404,
+        "httpAr": 404,
+        "publicResolveEn": false,
+        "publicResolveAr": false
+      }
+    ],
+    "invalidSlug": {
+      "en": 404,
+      "ar": 404
+    },
+    "coverageProtection": "public resolve requires published+indexable; draft returns notFound/404",
+    "classification": "PASS"
+  },
+  "SEO": {
+    "technical": "PASS",
+    "onPagePublished": "PARTIAL",
+    "notes": [
+      "buildMetadata provides title, description, canonical, hreflang, OG, Twitter, robots",
+      "Published SL pages use SERVICE + LOCATION + brand patterns in seoTitle",
+      "Grandfathered published pages are shorter; still indexable by design",
+      "Draft/uncovered resolve to 404 (not served as noindex HTML)"
+    ],
+    "classification": "PARTIAL"
+  },
+  "AEO": {
+    "score": "PARTIAL",
+    "evidence": [
+      "Published SL pages expose Quick answers (AEO blocks) + FAQ sections",
+      "DIY guides include FAQ and quickAnswer",
+      "Answers cover what/when/professional next steps",
+      "Grandfathered pages have thinner AEO than longform drafts (drafts not public)"
+    ],
+    "missing": [
+      "Only 49 SL pairs are public — AEO corpus at scale is authored but not indexable yet",
+      "Some AEO answers remain somewhat formulaic"
+    ],
+    "classification": "PARTIAL"
+  },
+  "GEO": {
+    "score": "WEAK",
+    "evidence": [
+      "geoIntro / Area context section present on published SL pages",
+      "Titles include location names",
+      "Organization NAP in site footer/schema",
+      "Emirate hierarchy in breadcrumbs where modeled"
+    ],
+    "missing": [
+      "Public GEO depth limited to 49 covered pairs",
+      "Longform location-aware copy exists in drafts but is not public/indexable",
+      "Risk of template-like geo wording on many draft pages (not public)"
+    ],
+    "classification": "WEAK"
+  },
+  "AUDIT_MATRIX": [
+    {
+      "Page": "Homepage",
+      "EN/AR": "both",
+      "Technical SEO": "PASS",
+      "On-page SEO": "PASS",
+      "AEO": "PARTIAL",
+      "GEO": "PARTIAL",
+      "Localization": "PASS",
+      "Internal Links": "PASS",
+      "Schema": "PASS",
+      "Indexability": "PASS",
+      "Overall": "PASS"
+    },
+    {
+      "Page": "Category /services/cleaning",
+      "EN/AR": "EN tested",
+      "Technical SEO": "PASS",
+      "On-page SEO": "PASS",
+      "AEO": "PARTIAL",
+      "GEO": "WEAK",
+      "Localization": "PASS",
+      "Internal Links": "PASS",
+      "Schema": "PARTIAL",
+      "Indexability": "PASS",
+      "Overall": "PARTIAL"
+    },
+    {
+      "Page": "Published SL cleaning-services/abu-dhabi",
+      "EN/AR": "both",
+      "Technical SEO": "PASS",
+      "On-page SEO": "PASS",
+      "AEO": "PARTIAL",
+      "GEO": "PARTIAL",
+      "Localization": "PASS",
+      "Internal Links": "PASS",
+      "Schema": "PARTIAL",
+      "Indexability": "PASS",
+      "Overall": "PASS"
+    },
+    {
+      "Page": "Draft SL (uncovered)",
+      "EN/AR": "both",
+      "Technical SEO": "PASS",
+      "On-page SEO": "N/A",
+      "AEO": "N/A",
+      "GEO": "N/A",
+      "Localization": "N/A",
+      "Internal Links": "N/A",
+      "Schema": "N/A",
+      "Indexability": "PASS (404/not public)",
+      "Overall": "PASS"
+    },
+    {
+      "Page": "DIY catalog",
+      "EN/AR": "both",
+      "Technical SEO": "PASS",
+      "On-page SEO": "PASS",
+      "AEO": "PARTIAL",
+      "GEO": "WEAK",
+      "Localization": "PASS",
+      "Internal Links": "PARTIAL",
+      "Schema": "PASS",
+      "Indexability": "PASS",
+      "Overall": "PASS"
+    },
+    {
+      "Page": "DIY faucet + AC + GREEN samples",
+      "EN/AR": "both",
+      "Technical SEO": "PASS",
+      "On-page SEO": "PASS",
+      "AEO": "PASS",
+      "GEO": "WEAK",
+      "Localization": "PASS",
+      "Internal Links": "PARTIAL",
+      "Schema": "PASS",
+      "Indexability": "PASS",
+      "Overall": "PASS"
+    }
+  ],
+  "CONTENT_QUALITY": {
+    "sampleSize": 40,
+    "highSimilarity": 39,
+    "templateDominance": 40,
+    "unsupportedClaimPages": 0,
+    "qualityFailed": 0,
+    "readyForReview": 63351,
+    "publishable": 0,
+    "indexable": 49,
+    "similarityPairSamples": [
+      {
+        "a": "cleaning-services/uae",
+        "b": "cleaning-services/abu-dhabi-city",
+        "score": 0.9
+      },
+      {
+        "a": "cleaning-services/uae",
+        "b": "cleaning-services/al-ain",
+        "score": 0.9
+      },
+      {
+        "a": "cleaning-services/uae",
+        "b": "cleaning-services/madinat-zayed",
+        "score": 0.9
+      },
+      {
+        "a": "cleaning-services/uae",
+        "b": "cleaning-services/ghayathi",
+        "score": 0.9
+      },
+      {
+        "a": "cleaning-services/uae",
+        "b": "cleaning-services/al-mirfa",
+        "score": 0.9
+      },
+      {
+        "a": "cleaning-services/uae",
+        "b": "cleaning-services/delma",
+        "score": 0.9
+      },
+      {
+        "a": "cleaning-services/uae",
+        "b": "cleaning-services/al-sila",
+        "score": 0.9
+      },
+      {
+        "a": "cleaning-services/uae",
+        "b": "cleaning-services/al-dhannah-city",
+        "score": 0.9
+      },
+      {
+        "a": "cleaning-services/uae",
+        "b": "cleaning-services/dubai-city",
+        "score": 0.9
+      },
+      {
+        "a": "cleaning-services/uae",
+        "b": "cleaning-services/sharjah-city",
+        "score": 0.9
+      },
+      {
+        "a": "cleaning-services/uae",
+        "b": "cleaning-services/kalba",
+        "score": 0.9
+      },
+      {
+        "a": "cleaning-services/uae",
+        "b": "cleaning-services/khor-fakkan",
+        "score": 0.9
+      },
+      {
+        "a": "cleaning-services/uae",
+        "b": "cleaning-services/al-dhaid",
+        "score": 0.9
+      },
+      {
+        "a": "cleaning-services/uae",
+        "b": "cleaning-services/ajman-city",
+        "score": 0.9
+      },
+      {
+        "a": "cleaning-services/uae",
+        "b": "cleaning-services/manama-ajman",
+        "score": 0.9
+      }
+    ],
+    "note": "Similarity/template flags measured on draft longform sample (not public). Public corpus is the 49 grandfathered pages."
+  },
+  "NAVIGATION": {
+    "http": {
+      "homeEn": 200,
+      "homeAr": 200,
+      "servicesEn": 200,
+      "servicesAr": 200,
+      "cleaningCat": 200,
+      "plumbingCat": 200,
+      "diyEn": 200,
+      "diyAr": 200,
+      "diyPlumbingCat": 200,
+      "diyCleaningCat": 200,
+      "quoteEn": 404,
+      "admin": 307,
+      "locationsEn": 200
+    },
+    "childServiceExists": true,
+    "childServiceHttp": 200,
+    "journeys": {
+      "homeToDiy": true,
+      "diyCategory": true,
+      "servicesIndex": true,
+      "categoryCleaning": true,
+      "quote": false,
+      "adminProtected": true
+    }
+  },
+  "SITEMAP": {
+    "shards": 32,
+    "locTags": 254,
+    "publishedPairInSitemap": true,
+    "draftPairInSitemap": false,
+    "draftDiyInSitemap": false,
+    "publishedIndexableSl": 49,
+    "publishedIndexableDiy": 45,
+    "classification": "PASS"
+  },
+  "SECURITY": {
+    "status": "PASS",
+    "draftSlNotPublic": true,
+    "draftDiyNotPublic": true,
+    "adminProtected": true,
+    "notes": [
+      "Admin redirects to login when unauthenticated",
+      "Public catalog filters published+indexable",
+      "No draft DIY/SL exposure via public resolve"
+    ]
+  },
+  "FINAL": {
+    "PUBLIC_DIY": "PASS",
+    "PUBLIC_LOCATION_PAGES": "PASS",
+    "SEO": {
+      "technical": "PASS",
+      "searchPerformance": "NOT YET PROVEN"
+    },
+    "AEO": {
+      "implementation": "PASS",
+      "atScale": "NOT YET PROVEN"
+    },
+    "GEO": {
+      "implementation": "PASS",
+      "atScale": "NOT YET PROVEN"
+    },
+    "LOCALIZATION": "PASS",
+    "SITEMAP_INDEXABILITY": "PASS",
+    "SECURITY": "PASS",
+    "readyForRealUsers": true,
+    "readyForSearchIndexing": "LIMITED — only 49 SL pairs + 45 DIY guides are eligible; do not claim full UAE matrix indexable",
+    "genuinelyAeoGeoOptimized": "IMPLEMENTATION validated on public corpus; AT SCALE not yet proven (coverage-locked)"
+  }
+}

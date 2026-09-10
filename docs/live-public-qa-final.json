@@ -1,0 +1,1418 @@
+﻿{
+    "generatedAt":  "2026-09-10T08:19:02.757Z",
+    "base":  "http://127.0.0.1:3000",
+    "server":  {
+                   "healthy":  true,
+                   "homeStatus":  200
+               },
+    "publicArticles":  94,
+    "diy":  {
+                "published":  45,
+                "draft":  518,
+                "dbWordsEnGe1000":  45,
+                "dbWordsArGe1000":  45,
+                "dbWordsEnUnder":  0,
+                "dbWordsArUnder":  0,
+                "liveSampleLocales":  24,
+                "liveUnder1000":  0,
+                "liveTechSeoFails":  0,
+                "liveImageFails":  0,
+                "liveAeoFails":  0,
+                "samples":  [
+                                {
+                                    "slug":  "how-to-fix-dripping-faucet",
+                                    "locale":  "en",
+                                    "status":  200,
+                                    "words":  1327,
+                                    "title":  "How to fix a dripping faucet | ALNAJAH ALDAEM DIY",
+                                    "h1":  "How to fix a dripping faucet",
+                                    "metaLen":  137,
+                                    "canonical":  "http://localhost:3000/en/diy/how-to-fix-dripping-faucet",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "en",
+                                    "dir":  "ltr",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "how-to-fix-dripping-faucet",
+                                    "locale":  "ar",
+                                    "status":  200,
+                                    "words":  1289,
+                                    "title":  "ÙƒÙŠÙ ØªÙˆÙ‚Ù Ø­Ù†ÙÙŠØ© ØªÙ‚Ø·Ø± | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù… DIY",
+                                    "h1":  "ÙƒÙŠÙ ØªÙˆÙ‚Ù Ø­Ù†ÙÙŠØ© ØªÙ‚Ø·Ø±",
+                                    "metaLen":  102,
+                                    "canonical":  "http://localhost:3000/ar/diy/how-to-fix-dripping-faucet",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "ar",
+                                    "dir":  "rtl",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "how-to-clean-ac-filter",
+                                    "locale":  "en",
+                                    "status":  200,
+                                    "words":  1330,
+                                    "title":  "How to clean an AC filter | ALNAJAH ALDAEM DIY",
+                                    "h1":  "How to clean an AC filter",
+                                    "metaLen":  133,
+                                    "canonical":  "http://localhost:3000/en/diy/how-to-clean-ac-filter",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "en",
+                                    "dir":  "ltr",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "how-to-clean-ac-filter",
+                                    "locale":  "ar",
+                                    "status":  200,
+                                    "words":  1292,
+                                    "title":  "ÙƒÙŠÙ ØªÙ†Ø¸Ù ÙÙ„ØªØ± Ø§Ù„ØªÙƒÙŠÙŠÙ | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù… DIY",
+                                    "h1":  "ÙƒÙŠÙ ØªÙ†Ø¸Ù ÙÙ„ØªØ± Ø§Ù„ØªÙƒÙŠÙŠÙ",
+                                    "metaLen":  98,
+                                    "canonical":  "http://localhost:3000/ar/diy/how-to-clean-ac-filter",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "ar",
+                                    "dir":  "rtl",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-bathroom-cleaning",
+                                    "locale":  "en",
+                                    "status":  200,
+                                    "words":  1288,
+                                    "title":  "Bathroom Cleaning â€” DIY profile | ALNAJAH ALDAEM DIY",
+                                    "h1":  "Bathroom Cleaning â€” DIY profile",
+                                    "metaLen":  135,
+                                    "canonical":  "http://localhost:3000/en/diy/diy-bathroom-cleaning",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "en",
+                                    "dir":  "ltr",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-bathroom-cleaning",
+                                    "locale":  "ar",
+                                    "status":  200,
+                                    "words":  1248,
+                                    "title":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” Ø­Ù…Ø§Ù… ØªÙ†Ø¸ÙŠÙ | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù… DIY",
+                                    "h1":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” Ø­Ù…Ø§Ù… ØªÙ†Ø¸ÙŠÙ",
+                                    "metaLen":  100,
+                                    "canonical":  "http://localhost:3000/ar/diy/diy-bathroom-cleaning",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "ar",
+                                    "dir":  "rtl",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-apartment-cleaning",
+                                    "locale":  "en",
+                                    "status":  200,
+                                    "words":  1287,
+                                    "title":  "Apartment Cleaning â€” DIY profile | ALNAJAH ALDAEM DIY",
+                                    "h1":  "Apartment Cleaning â€” DIY profile",
+                                    "metaLen":  136,
+                                    "canonical":  "http://localhost:3000/en/diy/diy-apartment-cleaning",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "en",
+                                    "dir":  "ltr",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-apartment-cleaning",
+                                    "locale":  "ar",
+                                    "status":  200,
+                                    "words":  1248,
+                                    "title":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” Ø´Ù‚Ù‚ ØªÙ†Ø¸ÙŠÙ | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù… DIY",
+                                    "h1":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” Ø´Ù‚Ù‚ ØªÙ†Ø¸ÙŠÙ",
+                                    "metaLen":  101,
+                                    "canonical":  "http://localhost:3000/ar/diy/diy-apartment-cleaning",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "ar",
+                                    "dir":  "rtl",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-touch-up-painting",
+                                    "locale":  "en",
+                                    "status":  200,
+                                    "words":  1321,
+                                    "title":  "Touch-Up Painting â€” DIY profile | ALNAJAH ALDAEM DIY",
+                                    "h1":  "Touch-Up Painting â€” DIY profile",
+                                    "metaLen":  135,
+                                    "canonical":  "http://localhost:3000/en/diy/diy-touch-up-painting",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "en",
+                                    "dir":  "ltr",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-touch-up-painting",
+                                    "locale":  "ar",
+                                    "status":  200,
+                                    "words":  1295,
+                                    "title":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” ØªØ±Ù…ÙŠÙ… Ù…ÙˆØ¶Ø¹ÙŠ Ø¯Ù‡Ø§Ù† | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù… DIY",
+                                    "h1":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” ØªØ±Ù…ÙŠÙ… Ù…ÙˆØ¶Ø¹ÙŠ Ø¯Ù‡Ø§Ù†",
+                                    "metaLen":  100,
+                                    "canonical":  "http://localhost:3000/ar/diy/diy-touch-up-painting",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "ar",
+                                    "dir":  "rtl",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-oven-cleaning",
+                                    "locale":  "en",
+                                    "status":  200,
+                                    "words":  1290,
+                                    "title":  "Oven Cleaning â€” DIY profile | ALNAJAH ALDAEM DIY",
+                                    "h1":  "Oven Cleaning â€” DIY profile",
+                                    "metaLen":  131,
+                                    "canonical":  "http://localhost:3000/en/diy/diy-oven-cleaning",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "en",
+                                    "dir":  "ltr",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-oven-cleaning",
+                                    "locale":  "ar",
+                                    "status":  200,
+                                    "words":  1249,
+                                    "title":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” ÙØ±Ù† ØªÙ†Ø¸ÙŠÙ | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù… DIY",
+                                    "h1":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” ÙØ±Ù† ØªÙ†Ø¸ÙŠÙ",
+                                    "metaLen":  96,
+                                    "canonical":  "http://localhost:3000/ar/diy/diy-oven-cleaning",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "ar",
+                                    "dir":  "rtl",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-cleaning-services",
+                                    "locale":  "en",
+                                    "status":  200,
+                                    "words":  1287,
+                                    "title":  "Cleaning Services â€” DIY profile | ALNAJAH ALDAEM DIY",
+                                    "h1":  "Cleaning Services â€” DIY profile",
+                                    "metaLen":  135,
+                                    "canonical":  "http://localhost:3000/en/diy/diy-cleaning-services",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "en",
+                                    "dir":  "ltr",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-cleaning-services",
+                                    "locale":  "ar",
+                                    "status":  200,
+                                    "words":  1248,
+                                    "title":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” Ø®Ø¯Ù…Ø§Øª Ø§Ù„ØªÙ†Ø¸ÙŠÙ | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù… DIY",
+                                    "h1":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” Ø®Ø¯Ù…Ø§Øª Ø§Ù„ØªÙ†Ø¸ÙŠÙ",
+                                    "metaLen":  100,
+                                    "canonical":  "http://localhost:3000/ar/diy/diy-cleaning-services",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "ar",
+                                    "dir":  "rtl",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-commercial-cleaning",
+                                    "locale":  "en",
+                                    "status":  200,
+                                    "words":  1287,
+                                    "title":  "Commercial Cleaning â€” DIY profile | ALNAJAH ALDAEM DIY",
+                                    "h1":  "Commercial Cleaning â€” DIY profile",
+                                    "metaLen":  137,
+                                    "canonical":  "http://localhost:3000/en/diy/diy-commercial-cleaning",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "en",
+                                    "dir":  "ltr",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-commercial-cleaning",
+                                    "locale":  "ar",
+                                    "status":  200,
+                                    "words":  1248,
+                                    "title":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” ØªØ¬Ø§Ø±ÙŠ ØªÙ†Ø¸ÙŠÙ | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù… DIY",
+                                    "h1":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” ØªØ¬Ø§Ø±ÙŠ ØªÙ†Ø¸ÙŠÙ",
+                                    "metaLen":  102,
+                                    "canonical":  "http://localhost:3000/ar/diy/diy-commercial-cleaning",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "ar",
+                                    "dir":  "rtl",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-dishwasher-filter-cleaning",
+                                    "locale":  "en",
+                                    "status":  200,
+                                    "words":  1329,
+                                    "title":  "Dishwasher Filter Cleaning â€” DIY profile | ALNAJAH ALDAEM DIY",
+                                    "h1":  "Dishwasher Filter Cleaning â€” DIY profile",
+                                    "metaLen":  144,
+                                    "canonical":  "http://localhost:3000/en/diy/diy-dishwasher-filter-cleaning",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "en",
+                                    "dir":  "ltr",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-dishwasher-filter-cleaning",
+                                    "locale":  "ar",
+                                    "status":  200,
+                                    "words":  1301,
+                                    "title":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” ØºØ³Ø§Ù„Ø© ØµØ­ÙˆÙ† ÙÙ„ØªØ± ØªÙ†Ø¸ÙŠÙ | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù… DIY",
+                                    "h1":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” ØºØ³Ø§Ù„Ø© ØµØ­ÙˆÙ† ÙÙ„ØªØ± ØªÙ†Ø¸ÙŠÙ",
+                                    "metaLen":  109,
+                                    "canonical":  "http://localhost:3000/ar/diy/diy-dishwasher-filter-cleaning",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "ar",
+                                    "dir":  "rtl",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-dishwasher-spray-arm-cleaning",
+                                    "locale":  "en",
+                                    "status":  200,
+                                    "words":  1250,
+                                    "title":  "Dishwasher Spray Arm Cleaning â€” DIY profile | ALNAJAH ALDAEM DIY",
+                                    "h1":  "Dishwasher Spray Arm Cleaning â€” DIY profile",
+                                    "metaLen":  147,
+                                    "canonical":  "http://localhost:3000/en/diy/diy-dishwasher-spray-arm-cleaning",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "en",
+                                    "dir":  "ltr",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-dishwasher-spray-arm-cleaning",
+                                    "locale":  "ar",
+                                    "status":  200,
+                                    "words":  1231,
+                                    "title":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” ØºØ³Ø§Ù„Ø© ØµØ­ÙˆÙ† ØªÙ†Ø¸ÙŠÙ â€” ØµÙŠØ§Ù†Ø© ÙˆØ¥ØµÙ„Ø§Ø­ ØºØ³Ø§Ù„Ø§Øª Ø§Ù„ØµØ­ÙˆÙ† | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù… DIY",
+                                    "h1":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” ØºØ³Ø§Ù„Ø© ØµØ­ÙˆÙ† ØªÙ†Ø¸ÙŠÙ â€” ØµÙŠØ§Ù†Ø© ÙˆØ¥ØµÙ„Ø§Ø­ ØºØ³Ø§Ù„Ø§Øª Ø§Ù„ØµØ­ÙˆÙ†",
+                                    "metaLen":  112,
+                                    "canonical":  "http://localhost:3000/ar/diy/diy-dishwasher-spray-arm-cleaning",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "ar",
+                                    "dir":  "rtl",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-floor-cleaning",
+                                    "locale":  "en",
+                                    "status":  200,
+                                    "words":  1286,
+                                    "title":  "Floor Cleaning â€” DIY profile | ALNAJAH ALDAEM DIY",
+                                    "h1":  "Floor Cleaning â€” DIY profile",
+                                    "metaLen":  132,
+                                    "canonical":  "http://localhost:3000/en/diy/diy-floor-cleaning",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "en",
+                                    "dir":  "ltr",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-floor-cleaning",
+                                    "locale":  "ar",
+                                    "status":  200,
+                                    "words":  1256,
+                                    "title":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” Ø®Ø¯Ù…Ø© Ø¶Ù…Ù† Ø®Ø¯Ù…Ø§Øª Ø§Ù„ØªÙ†Ø¸ÙŠÙ | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù… DIY",
+                                    "h1":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” Ø®Ø¯Ù…Ø© Ø¶Ù…Ù† Ø®Ø¯Ù…Ø§Øª Ø§Ù„ØªÙ†Ø¸ÙŠÙ",
+                                    "metaLen":  97,
+                                    "canonical":  "http://localhost:3000/ar/diy/diy-floor-cleaning",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "ar",
+                                    "dir":  "rtl",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-gym-deep-cleaning",
+                                    "locale":  "en",
+                                    "status":  200,
+                                    "words":  1336,
+                                    "title":  "Gym Deep Cleaning â€” DIY profile | ALNAJAH ALDAEM DIY",
+                                    "h1":  "Gym Deep Cleaning â€” DIY profile",
+                                    "metaLen":  135,
+                                    "canonical":  "http://localhost:3000/en/diy/diy-gym-deep-cleaning",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "en",
+                                    "dir":  "ltr",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                },
+                                {
+                                    "slug":  "diy-gym-deep-cleaning",
+                                    "locale":  "ar",
+                                    "status":  200,
+                                    "words":  1301,
+                                    "title":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” ØµØ§Ù„Ø© Ø±ÙŠØ§Ø¶ÙŠØ© Ø¹Ù…ÙŠÙ‚ ØªÙ†Ø¸ÙŠÙ | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù… DIY",
+                                    "h1":  "Ø¯Ù„ÙŠÙ„ DIY Ø¢Ù…Ù† â€” ØµØ§Ù„Ø© Ø±ÙŠØ§Ø¶ÙŠØ© Ø¹Ù…ÙŠÙ‚ ØªÙ†Ø¸ÙŠÙ",
+                                    "metaLen":  100,
+                                    "canonical":  "http://localhost:3000/ar/diy/diy-gym-deep-cleaning",
+                                    "hreflangEn":  true,
+                                    "hreflangAr":  true,
+                                    "lang":  "ar",
+                                    "dir":  "rtl",
+                                    "robots":  "index, follow",
+                                    "ogImage":  false,
+                                    "webpOk":  true,
+                                    "altOk":  true,
+                                    "imgCount":  3,
+                                    "hasFaq":  true,
+                                    "ctaOk":  true,
+                                    "badLiveRelated":  [
+
+                                                       ],
+                                    "techOk":  true,
+                                    "adminLeak":  false
+                                }
+                            ],
+                "dbWordRows":  [
+                                   {
+                                       "slug":  "diy-apartment-cleaning",
+                                       "en":  1072,
+                                       "ar":  1052
+                                   },
+                                   {
+                                       "slug":  "diy-bathroom-cleaning",
+                                       "en":  1073,
+                                       "ar":  1052
+                                   },
+                                   {
+                                       "slug":  "diy-cleaning-services",
+                                       "en":  1072,
+                                       "ar":  1052
+                                   },
+                                   {
+                                       "slug":  "diy-commercial-cleaning",
+                                       "en":  1072,
+                                       "ar":  1052
+                                   },
+                                   {
+                                       "slug":  "diy-dishwasher-filter-cleaning",
+                                       "en":  1112,
+                                       "ar":  1099
+                                   },
+                                   {
+                                       "slug":  "diy-dishwasher-spray-arm-cleaning",
+                                       "en":  1030,
+                                       "ar":  1021
+                                   },
+                                   {
+                                       "slug":  "diy-floor-cleaning",
+                                       "en":  1071,
+                                       "ar":  1056
+                                   },
+                                   {
+                                       "slug":  "diy-gym-deep-cleaning",
+                                       "en":  1119,
+                                       "ar":  1099
+                                   },
+                                   {
+                                       "slug":  "diy-gym-equipment-cleaning",
+                                       "en":  1119,
+                                       "ar":  1107
+                                   },
+                                   {
+                                       "slug":  "diy-gym-floor-cleaning",
+                                       "en":  1118,
+                                       "ar":  1107
+                                   },
+                                   {
+                                       "slug":  "diy-gym-glass-cleaning",
+                                       "en":  1117,
+                                       "ar":  1107
+                                   },
+                                   {
+                                       "slug":  "diy-gym-regular-cleaning",
+                                       "en":  1122,
+                                       "ar":  1099
+                                   },
+                                   {
+                                       "slug":  "diy-house-cleaning",
+                                       "en":  1068,
+                                       "ar":  1052
+                                   },
+                                   {
+                                       "slug":  "diy-locker-cleaning",
+                                       "en":  1071,
+                                       "ar":  1060
+                                   },
+                                   {
+                                       "slug":  "diy-microwave-internal-cleaning",
+                                       "en":  1121,
+                                       "ar":  1103
+                                   },
+                                   {
+                                       "slug":  "diy-move-in-cleaning",
+                                       "en":  1116,
+                                       "ar":  1097
+                                   },
+                                   {
+                                       "slug":  "diy-move-out-cleaning",
+                                       "en":  1114,
+                                       "ar":  1097
+                                   },
+                                   {
+                                       "slug":  "diy-office-cleaning",
+                                       "en":  1071,
+                                       "ar":  1052
+                                   },
+                                   {
+                                       "slug":  "diy-one-time-cleaning",
+                                       "en":  1116,
+                                       "ar":  1097
+                                   },
+                                   {
+                                       "slug":  "diy-oven-cleaning",
+                                       "en":  1077,
+                                       "ar":  1052
+                                   },
+                                   {
+                                       "slug":  "diy-pool-skimming",
+                                       "en":  1064,
+                                       "ar":  1058
+                                   },
+                                   {
+                                       "slug":  "diy-pool-tile-cleaning",
+                                       "en":  1110,
+                                       "ar":  1103
+                                   },
+                                   {
+                                       "slug":  "diy-pool-vacuum-cleaning",
+                                       "en":  1117,
+                                       "ar":  1103
+                                   },
+                                   {
+                                       "slug":  "diy-property-inspection",
+                                       "en":  1069,
+                                       "ar":  1058
+                                   },
+                                   {
+                                       "slug":  "diy-recurring-cleaning",
+                                       "en":  1070,
+                                       "ar":  1052
+                                   },
+                                   {
+                                       "slug":  "diy-refrigerator-cleaning",
+                                       "en":  1075,
+                                       "ar":  1052
+                                   },
+                                   {
+                                       "slug":  "diy-refrigerator-door-hinge-repair",
+                                       "en":  1026,
+                                       "ar":  1019
+                                   },
+                                   {
+                                       "slug":  "diy-refrigerator-door-seal-replacement",
+                                       "en":  1026,
+                                       "ar":  1017
+                                   },
+                                   {
+                                       "slug":  "diy-regular-cleaning",
+                                       "en":  1073,
+                                       "ar":  1052
+                                   },
+                                   {
+                                       "slug":  "diy-residential-cleaning",
+                                       "en":  1071,
+                                       "ar":  1052
+                                   },
+                                   {
+                                       "slug":  "diy-sauna-bench-cleaning",
+                                       "en":  1112,
+                                       "ar":  1105
+                                   },
+                                   {
+                                       "slug":  "diy-sauna-deep-cleaning",
+                                       "en":  1115,
+                                       "ar":  1097
+                                   },
+                                   {
+                                       "slug":  "diy-sauna-door-maintenance",
+                                       "en":  1120,
+                                       "ar":  1097
+                                   },
+                                   {
+                                       "slug":  "diy-sauna-floor-cleaning",
+                                       "en":  1112,
+                                       "ar":  1105
+                                   },
+                                   {
+                                       "slug":  "diy-sauna-glass-cleaning",
+                                       "en":  1111,
+                                       "ar":  1105
+                                   },
+                                   {
+                                       "slug":  "diy-sauna-regular-cleaning",
+                                       "en":  1112,
+                                       "ar":  1097
+                                   },
+                                   {
+                                       "slug":  "diy-sauna-wall-cleaning",
+                                       "en":  1112,
+                                       "ar":  1097
+                                   },
+                                   {
+                                       "slug":  "diy-shower-and-changing-room-cleaning",
+                                       "en":  1039,
+                                       "ar":  1017
+                                   },
+                                   {
+                                       "slug":  "diy-swimming-pool-cleaning",
+                                       "en":  1117,
+                                       "ar":  1097
+                                   },
+                                   {
+                                       "slug":  "diy-swimming-pool-inspection",
+                                       "en":  1113,
+                                       "ar":  1103
+                                   },
+                                   {
+                                       "slug":  "diy-touch-up-painting",
+                                       "en":  1106,
+                                       "ar":  1097
+                                   },
+                                   {
+                                       "slug":  "diy-villa-cleaning",
+                                       "en":  1071,
+                                       "ar":  1052
+                                   },
+                                   {
+                                       "slug":  "diy-washing-machine-filter-cleaning",
+                                       "en":  1028,
+                                       "ar":  1013
+                                   },
+                                   {
+                                       "slug":  "how-to-clean-ac-filter",
+                                       "en":  1111,
+                                       "ar":  1094
+                                   },
+                                   {
+                                       "slug":  "how-to-fix-dripping-faucet",
+                                       "en":  1112,
+                                       "ar":  1093
+                                   }
+                               ]
+            },
+    "relatedLinks":  {
+                         "totalPublicRelated":  0,
+                         "invalidTargets":  0,
+                         "removedThisPass":  0,
+                         "replacedThisPass":  0,
+                         "remainingInvalid":  0,
+                         "liveBadRelatedHrefs":  0,
+                         "invalidSamples":  [
+
+                                            ],
+                         "status":  "PASS"
+                     },
+    "uniqueness":  {
+                       "threshold":  0.85,
+                       "exactDuplicates":  0,
+                       "highSimilarityFlags":  0,
+                       "pairs":  [
+
+                                 ],
+                       "templateDominance":  "cleared"
+                   },
+    "grandfathered49":  {
+                            "total":  49,
+                            "httpLocalesChecked":  98,
+                            "httpFails":  0,
+                            "deepSamples":  [
+                                                {
+                                                    "path":  "/en/cleaning-services/abu-dhabi",
+                                                    "status":  200,
+                                                    "words":  630,
+                                                    "grandfatheredWordException":  true,
+                                                    "title":  "Cleaning Services in Abu Dhabi | ALNAJAH ALDAEM",
+                                                    "h1":  "Cleaning Services â€” Abu Dhabi",
+                                                    "techOk":  true,
+                                                    "webpOk":  true,
+                                                    "altOk":  true,
+                                                    "hasFaq":  true,
+                                                    "hasGeo":  true,
+                                                    "ctaOk":  true,
+                                                    "lang":  "en",
+                                                    "dir":  "ltr"
+                                                },
+                                                {
+                                                    "path":  "/ar/cleaning-services/abu-dhabi",
+                                                    "status":  200,
+                                                    "words":  502,
+                                                    "grandfatheredWordException":  true,
+                                                    "title":  "Ø®Ø¯Ù…Ø§Øª Ø§Ù„ØªÙ†Ø¸ÙŠÙ ÙÙŠ Ø£Ø¨ÙˆØ¸Ø¨ÙŠ | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù…",
+                                                    "h1":  "Ø®Ø¯Ù…Ø§Øª Ø§Ù„ØªÙ†Ø¸ÙŠÙ â€” Ø£Ø¨ÙˆØ¸Ø¨ÙŠ",
+                                                    "techOk":  true,
+                                                    "webpOk":  true,
+                                                    "altOk":  true,
+                                                    "hasFaq":  true,
+                                                    "hasGeo":  true,
+                                                    "ctaOk":  true,
+                                                    "lang":  "ar",
+                                                    "dir":  "rtl"
+                                                },
+                                                {
+                                                    "path":  "/en/cleaning-services/ajman",
+                                                    "status":  200,
+                                                    "words":  612,
+                                                    "grandfatheredWordException":  true,
+                                                    "title":  "Cleaning Services in Ajman | ALNAJAH ALDAEM",
+                                                    "h1":  "Cleaning Services â€” Ajman",
+                                                    "techOk":  true,
+                                                    "webpOk":  true,
+                                                    "altOk":  true,
+                                                    "hasFaq":  true,
+                                                    "hasGeo":  true,
+                                                    "ctaOk":  true,
+                                                    "lang":  "en",
+                                                    "dir":  "ltr"
+                                                },
+                                                {
+                                                    "path":  "/ar/cleaning-services/ajman",
+                                                    "status":  200,
+                                                    "words":  505,
+                                                    "grandfatheredWordException":  true,
+                                                    "title":  "Ø®Ø¯Ù…Ø§Øª Ø§Ù„ØªÙ†Ø¸ÙŠÙ ÙÙŠ Ø¹Ø¬Ù…Ø§Ù† | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù…",
+                                                    "h1":  "Ø®Ø¯Ù…Ø§Øª Ø§Ù„ØªÙ†Ø¸ÙŠÙ â€” Ø¹Ø¬Ù…Ø§Ù†",
+                                                    "techOk":  true,
+                                                    "webpOk":  true,
+                                                    "altOk":  true,
+                                                    "hasFaq":  true,
+                                                    "hasGeo":  true,
+                                                    "ctaOk":  true,
+                                                    "lang":  "ar",
+                                                    "dir":  "rtl"
+                                                },
+                                                {
+                                                    "path":  "/en/cleaning-services/umm-al-quwain",
+                                                    "status":  200,
+                                                    "words":  629,
+                                                    "grandfatheredWordException":  true,
+                                                    "title":  "Cleaning Services in Umm Al Quwain | ALNAJAH ALDAEM",
+                                                    "h1":  "Cleaning Services â€” Umm Al Quwain",
+                                                    "techOk":  true,
+                                                    "webpOk":  true,
+                                                    "altOk":  true,
+                                                    "hasFaq":  true,
+                                                    "hasGeo":  true,
+                                                    "ctaOk":  true,
+                                                    "lang":  "en",
+                                                    "dir":  "ltr"
+                                                },
+                                                {
+                                                    "path":  "/ar/cleaning-services/umm-al-quwain",
+                                                    "status":  200,
+                                                    "words":  517,
+                                                    "grandfatheredWordException":  true,
+                                                    "title":  "Ø®Ø¯Ù…Ø§Øª Ø§Ù„ØªÙ†Ø¸ÙŠÙ ÙÙŠ Ø£Ù… Ø§Ù„Ù‚ÙŠÙˆÙŠÙ† | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù…",
+                                                    "h1":  "Ø®Ø¯Ù…Ø§Øª Ø§Ù„ØªÙ†Ø¸ÙŠÙ â€” Ø£Ù… Ø§Ù„Ù‚ÙŠÙˆÙŠÙ†",
+                                                    "techOk":  true,
+                                                    "webpOk":  true,
+                                                    "altOk":  true,
+                                                    "hasFaq":  true,
+                                                    "hasGeo":  true,
+                                                    "ctaOk":  true,
+                                                    "lang":  "ar",
+                                                    "dir":  "rtl"
+                                                },
+                                                {
+                                                    "path":  "/en/cleaning-services/ras-al-khaimah",
+                                                    "status":  200,
+                                                    "words":  630,
+                                                    "grandfatheredWordException":  true,
+                                                    "title":  "Cleaning Services in Ras Al Khaimah | ALNAJAH ALDAEM",
+                                                    "h1":  "Cleaning Services â€” Ras Al Khaimah",
+                                                    "techOk":  true,
+                                                    "webpOk":  true,
+                                                    "altOk":  true,
+                                                    "hasFaq":  true,
+                                                    "hasGeo":  true,
+                                                    "ctaOk":  true,
+                                                    "lang":  "en",
+                                                    "dir":  "ltr"
+                                                },
+                                                {
+                                                    "path":  "/ar/cleaning-services/ras-al-khaimah",
+                                                    "status":  200,
+                                                    "words":  506,
+                                                    "grandfatheredWordException":  true,
+                                                    "title":  "Ø®Ø¯Ù…Ø§Øª Ø§Ù„ØªÙ†Ø¸ÙŠÙ ÙÙŠ Ø±Ø£Ø³ Ø§Ù„Ø®ÙŠÙ…Ø© | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù…",
+                                                    "h1":  "Ø®Ø¯Ù…Ø§Øª Ø§Ù„ØªÙ†Ø¸ÙŠÙ â€” Ø±Ø£Ø³ Ø§Ù„Ø®ÙŠÙ…Ø©",
+                                                    "techOk":  true,
+                                                    "webpOk":  true,
+                                                    "altOk":  true,
+                                                    "hasFaq":  true,
+                                                    "hasGeo":  true,
+                                                    "ctaOk":  true,
+                                                    "lang":  "ar",
+                                                    "dir":  "rtl"
+                                                },
+                                                {
+                                                    "path":  "/en/cleaning-services/fujairah",
+                                                    "status":  200,
+                                                    "words":  608,
+                                                    "grandfatheredWordException":  true,
+                                                    "title":  "Cleaning Services in Fujairah | ALNAJAH ALDAEM",
+                                                    "h1":  "Cleaning Services â€” Fujairah",
+                                                    "techOk":  true,
+                                                    "webpOk":  true,
+                                                    "altOk":  true,
+                                                    "hasFaq":  true,
+                                                    "hasGeo":  true,
+                                                    "ctaOk":  true,
+                                                    "lang":  "en",
+                                                    "dir":  "ltr"
+                                                },
+                                                {
+                                                    "path":  "/ar/cleaning-services/fujairah",
+                                                    "status":  200,
+                                                    "words":  507,
+                                                    "grandfatheredWordException":  true,
+                                                    "title":  "Ø®Ø¯Ù…Ø§Øª Ø§Ù„ØªÙ†Ø¸ÙŠÙ ÙÙŠ Ø§Ù„ÙØ¬ÙŠØ±Ø© | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù…",
+                                                    "h1":  "Ø®Ø¯Ù…Ø§Øª Ø§Ù„ØªÙ†Ø¸ÙŠÙ â€” Ø§Ù„ÙØ¬ÙŠØ±Ø©",
+                                                    "techOk":  true,
+                                                    "webpOk":  true,
+                                                    "altOk":  true,
+                                                    "hasFaq":  true,
+                                                    "hasGeo":  true,
+                                                    "ctaOk":  true,
+                                                    "lang":  "ar",
+                                                    "dir":  "rtl"
+                                                },
+                                                {
+                                                    "path":  "/en/building-maintenance/dubai",
+                                                    "status":  200,
+                                                    "words":  576,
+                                                    "grandfatheredWordException":  true,
+                                                    "title":  "General Building Maintenance in Dubai | ALNAJAH ALDAEM",
+                                                    "h1":  "General Building Maintenance â€” Dubai",
+                                                    "techOk":  true,
+                                                    "webpOk":  true,
+                                                    "altOk":  true,
+                                                    "hasFaq":  true,
+                                                    "hasGeo":  true,
+                                                    "ctaOk":  true,
+                                                    "lang":  "en",
+                                                    "dir":  "ltr"
+                                                },
+                                                {
+                                                    "path":  "/ar/building-maintenance/dubai",
+                                                    "status":  200,
+                                                    "words":  480,
+                                                    "grandfatheredWordException":  true,
+                                                    "title":  "Ø§Ù„ØµÙŠØ§Ù†Ø© Ø§Ù„Ø¹Ø§Ù…Ø© Ù„Ù„Ù…Ø¨Ø§Ù†ÙŠ ÙÙŠ Ø¯Ø¨ÙŠ | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù…",
+                                                    "h1":  "Ø§Ù„ØµÙŠØ§Ù†Ø© Ø§Ù„Ø¹Ø§Ù…Ø© Ù„Ù„Ù…Ø¨Ø§Ù†ÙŠ â€” Ø¯Ø¨ÙŠ",
+                                                    "techOk":  true,
+                                                    "webpOk":  true,
+                                                    "altOk":  true,
+                                                    "hasFaq":  true,
+                                                    "hasGeo":  true,
+                                                    "ctaOk":  true,
+                                                    "lang":  "ar",
+                                                    "dir":  "rtl"
+                                                },
+                                                {
+                                                    "path":  "/en/building-maintenance/sharjah",
+                                                    "status":  200,
+                                                    "words":  576,
+                                                    "grandfatheredWordException":  true,
+                                                    "title":  "General Building Maintenance in Sharjah | ALNAJAH ALDAEM",
+                                                    "h1":  "General Building Maintenance â€” Sharjah",
+                                                    "techOk":  true,
+                                                    "webpOk":  true,
+                                                    "altOk":  true,
+                                                    "hasFaq":  true,
+                                                    "hasGeo":  true,
+                                                    "ctaOk":  true,
+                                                    "lang":  "en",
+                                                    "dir":  "ltr"
+                                                },
+                                                {
+                                                    "path":  "/ar/building-maintenance/sharjah",
+                                                    "status":  200,
+                                                    "words":  468,
+                                                    "grandfatheredWordException":  true,
+                                                    "title":  "Ø§Ù„ØµÙŠØ§Ù†Ø© Ø§Ù„Ø¹Ø§Ù…Ø© Ù„Ù„Ù…Ø¨Ø§Ù†ÙŠ ÙÙŠ Ø§Ù„Ø´Ø§Ø±Ù‚Ø© | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù…",
+                                                    "h1":  "Ø§Ù„ØµÙŠØ§Ù†Ø© Ø§Ù„Ø¹Ø§Ù…Ø© Ù„Ù„Ù…Ø¨Ø§Ù†ÙŠ â€” Ø§Ù„Ø´Ø§Ø±Ù‚Ø©",
+                                                    "techOk":  true,
+                                                    "webpOk":  true,
+                                                    "altOk":  true,
+                                                    "hasFaq":  true,
+                                                    "hasGeo":  true,
+                                                    "ctaOk":  true,
+                                                    "lang":  "ar",
+                                                    "dir":  "rtl"
+                                                },
+                                                {
+                                                    "path":  "/en/building-maintenance/ajman",
+                                                    "status":  200,
+                                                    "words":  566,
+                                                    "grandfatheredWordException":  true,
+                                                    "title":  "General Building Maintenance in Ajman | ALNAJAH ALDAEM",
+                                                    "h1":  "General Building Maintenance â€” Ajman",
+                                                    "techOk":  true,
+                                                    "webpOk":  true,
+                                                    "altOk":  true,
+                                                    "hasFaq":  true,
+                                                    "hasGeo":  true,
+                                                    "ctaOk":  true,
+                                                    "lang":  "en",
+                                                    "dir":  "ltr"
+                                                },
+                                                {
+                                                    "path":  "/ar/building-maintenance/ajman",
+                                                    "status":  200,
+                                                    "words":  464,
+                                                    "grandfatheredWordException":  true,
+                                                    "title":  "Ø§Ù„ØµÙŠØ§Ù†Ø© Ø§Ù„Ø¹Ø§Ù…Ø© Ù„Ù„Ù…Ø¨Ø§Ù†ÙŠ ÙÙŠ Ø¹Ø¬Ù…Ø§Ù† | Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù…",
+                                                    "h1":  "Ø§Ù„ØµÙŠØ§Ù†Ø© Ø§Ù„Ø¹Ø§Ù…Ø© Ù„Ù„Ù…Ø¨Ø§Ù†ÙŠ â€” Ø¹Ø¬Ù…Ø§Ù†",
+                                                    "techOk":  true,
+                                                    "webpOk":  true,
+                                                    "altOk":  true,
+                                                    "hasFaq":  true,
+                                                    "hasGeo":  true,
+                                                    "ctaOk":  true,
+                                                    "lang":  "ar",
+                                                    "dir":  "rtl"
+                                                }
+                                            ],
+                            "deepTechFails":  0,
+                            "deepAeoWeak":  0,
+                            "deepGeoWeak":  0,
+                            "deepImageFails":  0,
+                            "wordCountPolicy":  "grandfathered â€” body not rewritten for 1000-word floor"
+                        },
+    "serviceLocation":  {
+                            "total":  63400,
+                            "covered":  49,
+                            "published":  49,
+                            "uncovered":  63351,
+                            "newPublicationThisRound":  0
+                        },
+    "images":  {
+                   "mediaWebpContentTypeOk":  true,
+                   "mediaContentType":  "image/webp",
+                   "diyLiveImageFails":  0,
+                   "gfDeepImageFails":  0,
+                   "expectedPublicLocales":  188,
+                   "priorAuditCoverage":  "188/188 from previous pass; live sample revalidated"
+               },
+    "seo":  {
+                "technicalSeo":  "PASS",
+                "searchPerformance":  "NOT YET PROVEN",
+                "technicalDefects":  [
+
+                                     ],
+                "note":  "PASS reflects live technical fields on public corpus, not rankings or SERP share."
+            },
+    "aeo":  {
+                "implementation":  "PASS",
+                "atScale":  "NOT YET PROVEN",
+                "evidence":  {
+                                 "diyLiveAeoFails":  0,
+                                 "gfDeepAeoWeak":  0,
+                                 "criteria":  "answer-first/quick answer/FAQ/direct next-step CTA present on live public samples"
+                             }
+            },
+    "geo":  {
+                "implementation":  "PASS",
+                "atScale":  "NOT YET PROVEN",
+                "evidence":  {
+                                 "gfDeepGeoWeak":  0,
+                                 "publicSlCorpus":  49,
+                                 "criteria":  "location present in title/body, local context markers, no fabricated branches/jobs claimed in audit"
+                             }
+            },
+    "sitemap":  {
+                    "sitemapXmlRootStatus":  404,
+                    "note":  "Next.js generateSitemaps serves /sitemap/{id}.xml; /sitemap.xml may abort locally â€” shards are authoritative",
+                    "shard0Status":  200,
+                    "diyUrlsInShard0":  100,
+                    "slLikeUrlsInSampledShards":  36,
+                    "gfPairFoundInShards":  true,
+                    "shardSample":  [
+                                        {
+                                            "id":  0,
+                                            "status":  200,
+                                            "urls":  156
+                                        },
+                                        {
+                                            "id":  1,
+                                            "status":  200,
+                                            "urls":  4
+                                        },
+                                        {
+                                            "id":  2,
+                                            "status":  200,
+                                            "urls":  0
+                                        },
+                                        {
+                                            "id":  3,
+                                            "status":  200,
+                                            "urls":  0
+                                        },
+                                        {
+                                            "id":  4,
+                                            "status":  200,
+                                            "urls":  2
+                                        },
+                                        {
+                                            "id":  5,
+                                            "status":  200,
+                                            "urls":  8
+                                        },
+                                        {
+                                            "id":  6,
+                                            "status":  200,
+                                            "urls":  6
+                                        },
+                                        {
+                                            "id":  7,
+                                            "status":  200,
+                                            "urls":  2
+                                        }
+                                    ],
+                    "resolveSamplesOk":  5,
+                    "resolveSamplesFail":  0,
+                    "sitemapPairShardsConfig":  32,
+                    "draftDiyInSitemap":  false,
+                    "status":  "PASS"
+                },
+    "security":  {
+                     "draftDiyHttp":  {
+                                          "slug":  "how-to-touch-up-interior-paint",
+                                          "en":  404,
+                                          "ar":  404
+                                      },
+                     "uncoveredHttp":  {
+                                           "path":  "/villa-cleaning/al-ain",
+                                           "en":  404,
+                                           "ar":  404
+                                       },
+                     "invalidHttp":  {
+                                         "en":  404,
+                                         "ar":  404
+                                     },
+                     "adminLeaks":  0,
+                     "status":  "PASS"
+                 },
+    "navigation":  [
+                       {
+                           "path":  "/en",
+                           "status":  200,
+                           "title":  "ALNAJAH ALDAEM | Cleaning \u0026amp; Building Maintenance UAE",
+                           "h1":  "Professional Cleaning \u0026amp; Building Maintenance Services",
+                           "canonical":  true,
+                           "hreflang":  true
+                       },
+                       {
+                           "path":  "/ar",
+                           "status":  200,
+                           "title":  "Ø§Ù„Ù†Ø¬Ø§Ø­ Ø§Ù„Ø¯Ø§Ø¦Ù… | ØªÙ†Ø¸ÙŠÙ ÙˆØµÙŠØ§Ù†Ø© Ù…Ø¨Ø§Ù†ÙŠ ÙÙŠ Ø§Ù„Ø¥Ù…Ø§Ø±Ø§Øª",
+                           "h1":  "Ø®Ø¯Ù…Ø§Øª ØªÙ†Ø¸ÙŠÙ ÙˆØµÙŠØ§Ù†Ø© Ù…Ø¨Ø§Ù†ÙŠ Ù…Ù‡Ù†ÙŠØ©",
+                           "canonical":  true,
+                           "hreflang":  true
+                       },
+                       {
+                           "path":  "/en/services",
+                           "status":  200,
+                           "title":  "Services | ALNAJAH ALDAEM",
+                           "h1":  "Services",
+                           "canonical":  true,
+                           "hreflang":  true
+                       },
+                       {
+                           "path":  "/en/services/cleaning",
+                           "status":  200,
+                           "title":  "Cleaning Services | ALNAJAH ALDAEM",
+                           "h1":  "Cleaning Services",
+                           "canonical":  true,
+                           "hreflang":  true
+                       },
+                       {
+                           "path":  "/en/diy",
+                           "status":  200,
+                           "title":  "DIY Help Center | ALNAJAH ALDAEM",
+                           "h1":  "DIY Help Center",
+                           "canonical":  true,
+                           "hreflang":  true
+                       },
+                       {
+                           "path":  "/ar/diy",
+                           "status":  200,
+                           "title":  "Ù…Ø±ÙƒØ² Ø§Ù„Ø¥Ø±Ø´Ø§Ø¯ Ø§Ù„Ù…Ù†Ø²Ù„ÙŠ | ALNAJAH ALDAEM",
+                           "h1":  "Ù…Ø±ÙƒØ² Ø§Ù„Ø¥Ø±Ø´Ø§Ø¯ Ø§Ù„Ù…Ù†Ø²Ù„ÙŠ",
+                           "canonical":  true,
+                           "hreflang":  true
+                       },
+                       {
+                           "path":  "/en/get-a-quote",
+                           "status":  200,
+                           "title":  "Get a free quote | ALNAJAH ALDAEM",
+                           "h1":  "Get a free quote",
+                           "canonical":  true,
+                           "hreflang":  true
+                       },
+                       {
+                           "path":  "/ar/get-a-quote",
+                           "status":  200,
+                           "title":  "Ø§Ø·Ù„Ø¨ Ø¹Ø±Ø¶ Ø³Ø¹Ø± Ù…Ø¬Ø§Ù†ÙŠ | ALNAJAH ALDAEM",
+                           "h1":  "Ø§Ø·Ù„Ø¨ Ø¹Ø±Ø¶ Ø³Ø¹Ø± Ù…Ø¬Ø§Ù†ÙŠ",
+                           "canonical":  true,
+                           "hreflang":  true
+                       },
+                       {
+                           "path":  "/en/cleaning-services",
+                           "status":  200,
+                           "title":  "Professional Cleaning Services | ALNAJAH ALDAEM",
+                           "h1":  "Cleaning Services",
+                           "canonical":  true,
+                           "hreflang":  true
+                       },
+                       {
+                           "path":  "/en/cleaning-services/abu-dhabi",
+                           "status":  200,
+                           "title":  "Cleaning Services in Abu Dhabi | ALNAJAH ALDAEM",
+                           "h1":  "Cleaning Services â€” Abu Dhabi",
+                           "canonical":  true,
+                           "hreflang":  true
+                       }
+                   ],
+    "remainingDrafts":  {
+                            "diy":  518,
+                            "slUncovered":  63351
+                        },
+    "exactExternalBlockers":  [
+                                  "Real coverage not verified for 63,351 uncovered ServiceÃ—Location pairs",
+                                  "YELLOW/RED/REVIEW_REQUIRED DIY remain gated",
+                                  "Search performance / rankings / AI citations not measured",
+                                  "GEO at UAE matrix scale not proven (only 49 public SL pages)"
+                              ],
+    "exactNextOperationalAction":  "Keep SL pilot at 0 until real coverage decisions; optionally strengthen GF49 AEO/GEO copy quality without mass-publish; measure search only after intentional indexing window",
+    "notes":  [
+
+              ],
+    "FINAL":  {
+                  "publicArticles":  94,
+                  "diyPublic":  45,
+                  "slPublic":  49,
+                  "enGe1000":  45,
+                  "arGe1000":  45,
+                  "uniqueArticles":  45,
+                  "webpCoverage":  "PASS (live sample + asset probe)",
+                  "altCoverage":  "PASS (live sample)",
+                  "relatedLinkHealth":  "PASS",
+                  "seo":  {
+                              "technical":  "PASS",
+                              "searchPerformance":  "NOT YET PROVEN"
+                          },
+                  "aeo":  {
+                              "implementation":  "PASS",
+                              "atScale":  "NOT YET PROVEN"
+                          },
+                  "geo":  {
+                              "implementation":  "PASS",
+                              "atScale":  "NOT YET PROVEN"
+                          },
+                  "sitemap":  "PASS",
+                  "security":  "PASS"
+              },
+    "browserSpotChecks":  [
+                              {
+                                  "status":  200,
+                                  "url":  "/en/diy/diy-bathroom-cleaning",
+                                  "webp":  "/media/topics/cleaning.webp"
+                              },
+                              {
+                                  "status":  200,
+                                  "url":  "/ar/diy/how-to-fix-dripping-faucet",
+                                  "webp":  "/media/topics/plumbing.webp",
+                                  "rtl":  true
+                              },
+                              {
+                                  "status":  200,
+                                  "url":  "/en/cleaning-services/abu-dhabi",
+                                  "webp":  "/media/topics/cleaning.webp",
+                                  "titlePattern":  "SERVICE + LOCATION + BRAND"
+                              }
+                          ]
+}

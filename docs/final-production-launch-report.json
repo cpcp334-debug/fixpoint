@@ -1,0 +1,165 @@
+{
+  "generatedAt": "2026-09-10T08:51:13.625Z",
+  "decision": "READY WITH EXTERNAL BLOCKERS",
+  "decisionRationale": "Eligible public corpus (94) is content-ready with technical SEO/AEO/GEO/security/sitemap PASS. Production go-live and matrix expansion remain blocked on external coverage data + infrastructure.",
+  "coveragePhase1": {
+    "authority": "ServiceLocation.covered via /admin/service-pages/coverage",
+    "authorizedDatasetImported": false,
+    "totalCovered": 49,
+    "totalUncovered": 63351,
+    "coveredByService": {
+      "cleaning-services": 7,
+      "building-maintenance": 7,
+      "plumbing-maintenance": 7,
+      "electrical-maintenance": 7,
+      "ac-maintenance": 7,
+      "painting-services": 7,
+      "wall-maintenance": 7
+    },
+    "coveredByLocation": {
+      "abu-dhabi": 7,
+      "ajman": 7,
+      "umm-al-quwain": 7,
+      "ras-al-khaimah": 7,
+      "fujairah": 7,
+      "dubai": 7,
+      "sharjah": 7
+    },
+    "note": "No new coverage applied — inventing coverage is forbidden."
+  },
+  "content": {
+    "totalRecords": 63963,
+    "localizedEnAr": 127926,
+    "public": 94,
+    "unpublishedDiy": 518,
+    "uncoveredSl": 63351,
+    "blockers": [
+      "COVERAGE_DATA_MISSING",
+      "DIY_SAFETY_GATES",
+      "PRODUCTION_DATABASE",
+      "OBJECT_STORAGE_CDN",
+      "BACKUPS_PITR",
+      "MONITORING_CRON_DNS_HTTPS_SECRETS",
+      "SEARCH_PERFORMANCE_NOT_MEASURED"
+    ]
+  },
+  "serviceLocation": {
+    "total": 63400,
+    "covered": 49,
+    "published": 49,
+    "indexable": 49,
+    "uncovered": 63351
+  },
+  "diy": {
+    "total": 563,
+    "matrixServices": {
+      "GREEN": 46,
+      "YELLOW": 128,
+      "RED": 112,
+      "REVIEW_REQUIRED": 25
+    },
+    "published": 45,
+    "blocked": 518,
+    "draftByClass": {
+      "GREEN": 1,
+      "YELLOW": 245,
+      "RED": 222,
+      "REVIEW_REQUIRED": 50,
+      "UNKNOWN": 0
+    }
+  },
+  "words": {
+    "enGe1000": 45,
+    "enLt1000": 0,
+    "arGe1000": 45,
+    "arLt1000": 0,
+    "publicDiyEnCount": 45,
+    "publicDiyArCount": 45
+  },
+  "uniqueness": {
+    "exactDuplicates": 0,
+    "highSimilarity": 0,
+    "templateDominance": "cleared_on_public_diy"
+  },
+  "images": {
+    "publicLocalesAudited": 188,
+    "imageCoverage": 188,
+    "webp": 188,
+    "alt": "wired_on_public_pages",
+    "broken": 0
+  },
+  "seo": {
+    "technical": "PASS",
+    "searchPerformance": "NOT YET PROVEN"
+  },
+  "aeo": {
+    "implementation": "PASS",
+    "atScale": "NOT YET PROVEN"
+  },
+  "geo": {
+    "implementation": "PASS",
+    "atScale": "NOT YET PROVEN"
+  },
+  "sitemap": {
+    "status": "PASS",
+    "shards": 32
+  },
+  "security": "PASS",
+  "infrastructure": {
+    "database": "EXTERNAL_REQUIRED (local/dev DATABASE_URL in use)",
+    "connectionPooling": "EXTERNAL_REQUIRED",
+    "productionEnvVars": "EXTERNAL_REQUIRED (SITE_URL HTTPS, secrets, ADMIN_*)",
+    "objectStorageCdn": "EXTERNAL_REQUIRED (public/media local WebP only; S3 stub)",
+    "backupsPitr": "EXTERNAL_REQUIRED",
+    "monitoringAlerts": "EXTERNAL_REQUIRED",
+    "cronScheduledJobs": "EXTERNAL_REQUIRED (AUTOMATION_CRON_SECRET scheduler)",
+    "errorLogging": "PARTIAL (app logging; APM EXTERNAL_REQUIRED)",
+    "dns": "EXTERNAL_REQUIRED",
+    "https": "EXTERNAL_REQUIRED",
+    "domain": "EXTERNAL_REQUIRED",
+    "robotsSitemap": "IMPLEMENTED in app (shards=32)",
+    "productionBuildStart": "NOT VERIFIED this run",
+    "healthCheck": "IMPLEMENTED (/api/internal/health/db) — secret EXTERNAL_REQUIRED",
+    "deploymentProcess": "EXTERNAL_REQUIRED"
+  },
+  "nodeEnv": "development",
+  "siteUrl": "http://localhost:3000",
+  "externalBlockers": [
+    {
+      "id": "COVERAGE_DATA_MISSING",
+      "detail": "No authorized business coverage dataset supplied in this launch command. Covered remains 49. Cannot expand 63,351 uncovered without inventing coverage."
+    },
+    {
+      "id": "DIY_SAFETY_GATES",
+      "detail": "518 DIY drafts blocked: YELLOW 245, RED 222, REVIEW_REQUIRED 50, legacy GREEN non-primary 1"
+    },
+    {
+      "id": "PRODUCTION_DATABASE",
+      "detail": "EXTERNAL_REQUIRED (local/dev DATABASE_URL in use)"
+    },
+    {
+      "id": "OBJECT_STORAGE_CDN",
+      "detail": "EXTERNAL_REQUIRED (public/media local WebP only; S3 stub)"
+    },
+    {
+      "id": "BACKUPS_PITR",
+      "detail": "EXTERNAL_REQUIRED"
+    },
+    {
+      "id": "MONITORING_CRON_DNS_HTTPS_SECRETS",
+      "detail": "Monitoring, cron, DNS, HTTPS, production secrets not verified as live."
+    },
+    {
+      "id": "SEARCH_PERFORMANCE_NOT_MEASURED",
+      "detail": "Technical SEO/AEO/GEO PASS; rankings/AI citations NOT YET PROVEN."
+    }
+  ],
+  "nextActions": [
+    "Supply authorized coverage CSV/JSON (serviceSlug, locationSlug) for Phase 1 import",
+    "Provision managed Postgres + pooling + SSL + backups/PITR",
+    "Configure object storage/CDN for media",
+    "Set production SITE_URL HTTPS + secrets + cron + health monitoring",
+    "DNS + TLS + deploy production build",
+    "After coverage import: process newly covered pairs through CONFIRM_PUBLISH with full gates"
+  ]
+}

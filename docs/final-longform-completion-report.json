@@ -1,0 +1,216 @@
+{
+  "generatedAt": "2026-09-10T07:19:08.399Z",
+  "LONGFORM_STATUS": {
+    "succeeded": 126702,
+    "failed": 0,
+    "dead": 0,
+    "pending": 0,
+    "running": 0,
+    "draftLocalesTarget": 126702,
+    "corpusComplete": true,
+    "progressPct": 100
+  },
+  "POPULATION": {
+    "total": 63400,
+    "approvedMatrixMaterialized": 60800,
+    "theoretical311x200": 62200,
+    "legacyExtra": 2600,
+    "documentedExtraVs62200": 1200,
+    "duplicateServiceLocationPairs": 0,
+    "published": 49,
+    "covered": 49,
+    "draft": 63351,
+    "uncovered": 63351,
+    "indexableEn": 49,
+    "indexableAr": 49
+  },
+  "CONTENT": {
+    "method": "countRenderedWords matching ServiceLocationView",
+    "publishedGrandfathered": {
+      "label": "protected_published_49",
+      "pairsSampled": 49,
+      "localesAttempted": 98,
+      "failed": 0,
+      "missingSections": 0,
+      "EN": {
+        "count": 49,
+        "average": 431,
+        "median": 422,
+        "min": 389,
+        "max": 496,
+        "bands": {
+          "<500": 49,
+          "500-799": 0,
+          "800-999": 0,
+          "1000-1200": 0,
+          ">1200": 0
+        },
+        "under800": 49,
+        "in800_999": 0,
+        "in1000_1200": 0,
+        "over1200": 0
+      },
+      "AR": {
+        "count": 49,
+        "average": 335,
+        "median": 327,
+        "min": 308,
+        "max": 399,
+        "bands": {
+          "<500": 49,
+          "500-799": 0,
+          "800-999": 0,
+          "1000-1200": 0,
+          ">1200": 0
+        },
+        "under800": 49,
+        "in800_999": 0,
+        "in1000_1200": 0,
+        "over1200": 0
+      }
+    },
+    "draftHeadSample": {
+      "label": "draft_sample",
+      "pairsSampled": 3000,
+      "localesAttempted": 6000,
+      "failed": 0,
+      "missingSections": 0,
+      "EN": {
+        "count": 3000,
+        "average": 1006,
+        "median": 1012,
+        "min": 909,
+        "max": 1135,
+        "bands": {
+          "<500": 0,
+          "500-799": 0,
+          "800-999": 963,
+          "1000-1200": 2037,
+          ">1200": 0
+        },
+        "under800": 0,
+        "in800_999": 963,
+        "in1000_1200": 2037,
+        "over1200": 0
+      },
+      "AR": {
+        "count": 3000,
+        "average": 991,
+        "median": 997,
+        "min": 901,
+        "max": 1104,
+        "bands": {
+          "<500": 0,
+          "500-799": 0,
+          "800-999": 1552,
+          "1000-1200": 1448,
+          ">1200": 0
+        },
+        "under800": 0,
+        "in800_999": 1552,
+        "in1000_1200": 1448,
+        "over1200": 0
+      }
+    },
+    "draftMidSample": {
+      "label": "draft_mid_sample",
+      "pairsSampled": 1500,
+      "localesAttempted": 3000,
+      "failed": 0,
+      "missingSections": 0,
+      "EN": {
+        "count": 1500,
+        "average": 947,
+        "median": 917,
+        "min": 897,
+        "max": 1073,
+        "bands": {
+          "<500": 0,
+          "500-799": 0,
+          "800-999": 1106,
+          "1000-1200": 394,
+          ">1200": 0
+        },
+        "under800": 0,
+        "in800_999": 1106,
+        "in1000_1200": 394,
+        "over1200": 0
+      },
+      "AR": {
+        "count": 1500,
+        "average": 1007,
+        "median": 1010,
+        "min": 920,
+        "max": 1057,
+        "bands": {
+          "<500": 0,
+          "500-799": 0,
+          "800-999": 537,
+          "1000-1200": 963,
+          ">1200": 0
+        },
+        "under800": 0,
+        "in800_999": 537,
+        "in1000_1200": 963,
+        "over1200": 0
+      }
+    }
+  },
+  "QUALITY": {
+    "publishable": 0,
+    "ready_for_review": 63351,
+    "failed_quality": 0,
+    "incomplete": 0,
+    "indexable": 49,
+    "note": "Most drafts remain ready_for_review due to template/dup gates; length does not auto-fail qualityStatus"
+  },
+  "SAFETY": {
+    "matrix": {
+      "GREEN": 46,
+      "YELLOW": 128,
+      "RED": 112,
+      "REVIEW_REQUIRED": 25
+    },
+    "authored": {
+      "GREEN": 46,
+      "YELLOW": 121,
+      "RED": 111,
+      "REVIEW_REQUIRED": 25
+    },
+    "intentionalYellowExclusions": 7,
+    "hubsCategoryOnly": [
+      "burner-cooker",
+      "dishwasher",
+      "microwave",
+      "oven",
+      "refrigerator",
+      "washing-machine",
+      "water-heater"
+    ],
+    "paintingHeld": "painting-services",
+    "remainingEligibleYellow": 0
+  },
+  "PUBLICATION": {
+    "workflow": "COVERED → READY_FOR_PUBLISH → REVIEW/APPROVED → CONFIRM_PUBLISH → PUBLISHED → INDEXABLE",
+    "autoPublishOccurred": false,
+    "uncoveredIndexable": 0,
+    "publishedUncovered": 0,
+    "sitemapPublicPairs": 49,
+    "sitemapShards": 32,
+    "CONTENT_READY": true,
+    "COVERAGE_READY": 49,
+    "PUBLISH_READY": 0,
+    "ACTUALLY_PUBLISHED": 49
+  },
+  "CLAIMS_FALSE": {
+    "entireUaeMatrixPublishReady": false,
+    "all124400Indexed": false,
+    "allLocationsServed": false
+  },
+  "BLOCKERS": [
+    "Operational coverage decisions still EXTERNAL_REQUIRED for remaining uncovered pairs",
+    "Object storage / real image binaries EXTERNAL_REQUIRED",
+    "Managed production Postgres / DNS / HTTPS / secrets EXTERNAL_REQUIRED"
+  ],
+  "NEXT_OPERATIONAL_STEP": "Use /admin/service-pages/coverage to set real coverage, then queue → CONFIRM_PUBLISH for eligible pairs only."
+}

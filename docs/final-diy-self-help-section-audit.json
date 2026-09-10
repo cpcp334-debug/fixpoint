@@ -1,0 +1,305 @@
+{
+  "generatedAt": "2026-09-10T13:16:05.123Z",
+  "applicablePublicSl": 49,
+  "withDiySelfHelp": 49,
+  "missingDiySelfHelp": 0,
+  "pass": true,
+  "publicDiy": 45,
+  "publicTotal": 94,
+  "rows": [
+    {
+      "pair": "cleaning-services/abu-dhabi",
+      "ok": true,
+      "safety": "GREEN",
+      "checks": 3
+    },
+    {
+      "pair": "cleaning-services/ajman",
+      "ok": true,
+      "safety": "GREEN",
+      "checks": 3
+    },
+    {
+      "pair": "cleaning-services/umm-al-quwain",
+      "ok": true,
+      "safety": "GREEN",
+      "checks": 3
+    },
+    {
+      "pair": "cleaning-services/ras-al-khaimah",
+      "ok": true,
+      "safety": "GREEN",
+      "checks": 3
+    },
+    {
+      "pair": "cleaning-services/fujairah",
+      "ok": true,
+      "safety": "GREEN",
+      "checks": 3
+    },
+    {
+      "pair": "building-maintenance/dubai",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "building-maintenance/sharjah",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "building-maintenance/ajman",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "building-maintenance/umm-al-quwain",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "building-maintenance/ras-al-khaimah",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "building-maintenance/fujairah",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "plumbing-maintenance/abu-dhabi",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "plumbing-maintenance/sharjah",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "plumbing-maintenance/ajman",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "plumbing-maintenance/umm-al-quwain",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "plumbing-maintenance/ras-al-khaimah",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "electrical-maintenance/dubai",
+      "ok": true,
+      "safety": "RED",
+      "checks": 3
+    },
+    {
+      "pair": "electrical-maintenance/abu-dhabi",
+      "ok": true,
+      "safety": "RED",
+      "checks": 3
+    },
+    {
+      "pair": "electrical-maintenance/sharjah",
+      "ok": true,
+      "safety": "RED",
+      "checks": 3
+    },
+    {
+      "pair": "electrical-maintenance/ajman",
+      "ok": true,
+      "safety": "RED",
+      "checks": 3
+    },
+    {
+      "pair": "electrical-maintenance/umm-al-quwain",
+      "ok": true,
+      "safety": "RED",
+      "checks": 3
+    },
+    {
+      "pair": "electrical-maintenance/fujairah",
+      "ok": true,
+      "safety": "RED",
+      "checks": 3
+    },
+    {
+      "pair": "ac-maintenance/dubai",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "ac-maintenance/abu-dhabi",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "ac-maintenance/sharjah",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "ac-maintenance/ajman",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "ac-maintenance/umm-al-quwain",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "ac-maintenance/fujairah",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "painting-services/dubai",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "painting-services/abu-dhabi",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "painting-services/sharjah",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "painting-services/ajman",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "painting-services/ras-al-khaimah",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "painting-services/fujairah",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "wall-maintenance/dubai",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "wall-maintenance/abu-dhabi",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "wall-maintenance/sharjah",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "wall-maintenance/umm-al-quwain",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "wall-maintenance/ras-al-khaimah",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "wall-maintenance/fujairah",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "cleaning-services/dubai",
+      "ok": true,
+      "safety": "GREEN",
+      "checks": 3
+    },
+    {
+      "pair": "cleaning-services/sharjah",
+      "ok": true,
+      "safety": "GREEN",
+      "checks": 3
+    },
+    {
+      "pair": "building-maintenance/abu-dhabi",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "plumbing-maintenance/dubai",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "plumbing-maintenance/fujairah",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "electrical-maintenance/ras-al-khaimah",
+      "ok": true,
+      "safety": "RED",
+      "checks": 3
+    },
+    {
+      "pair": "ac-maintenance/ras-al-khaimah",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "painting-services/umm-al-quwain",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    },
+    {
+      "pair": "wall-maintenance/ajman",
+      "ok": true,
+      "safety": "YELLOW",
+      "checks": 4
+    }
+  ]
+}
