@@ -48,7 +48,7 @@ async function main() {
   const legacyCats = cats.filter((c) => LEGACY_ORPHAN_CATEGORIES.some((l) => l.slug === c.slug));
 
   assert(approvedCats.length === 18, `approved categories in DB must be 18, got ${approvedCats.length}`);
-  assert(counts.offerings === 311, "offerings must be 311");
+  assert(counts.offerings === 454, "offerings must be 454");
 
   for (const def of APPROVED_CATEGORIES) {
     const row = approvedCats.find((c) => c.slug === def.slug);
@@ -67,7 +67,7 @@ async function main() {
   const childBySlug = new Map(
     svcs.filter((s) => APPROVED_CHILD_SLUGS.includes(s.slug)).map((s) => [s.slug, s]),
   );
-  assert(childBySlug.size === 293, `approved children in DB must be 293, got ${childBySlug.size}`);
+  assert(childBySlug.size === 436, `approved children in DB must be 436, got ${childBySlug.size}`);
 
   let arReview = 0;
   let diyReview = 0;

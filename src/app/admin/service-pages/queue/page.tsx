@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { prisma } from "@/server/db";
 import { needPermission } from "@/lib/admin/guard";
-import { AdminTable, Forbidden, PageHeader } from "@/components/admin/Ui";
+import { AdminBulkTable, AdminFlash, Forbidden, PageHeader } from "@/components/admin/Ui";
 import { listPublicationQueue, publicationQueueCounts } from "@/lib/admin/publication-queue";
 import { refreshPilotQueueAction } from "@/app/admin/service-pages/actions";
 
 export default async function ServicePagesQueuePage({
   searchParams,
 }: {
-  searchParams: Promise<{ bucket?: string; service?: string }>;
+  searchParams: Promise<{ bucket?: string; service?: string; ok?: string; error?: string }>;
 }) {
   const auth = await needPermission("services");
   if (!auth.ok) return <Forbidden />;
@@ -28,11 +28,16 @@ export default async function ServicePagesQueuePage({
     pilot = [];
   }
 
+  const sp = new URLSearchParams();
+  sp.set("bucket", bucket);
+  if (filters.service) sp.set("service", filters.service);
+  const returnTo = `/admin/service-pages/queue?${sp.toString()}`;
+
   return (
     <div>
       <PageHeader
         title="Publication queue"
-        note="No automatic publish. READY_FOR_PUBLISH requires covered + quality. Pilot list is candidates only."
+        note="Bulk Publish only for covered rows. Hide = noindex. Soft-remove = archived. Pilot list is candidates only."
         actions={
           <div className="flex gap-3 text-sm">
             <Link className="text-navy" href="/admin/service-pages">
@@ -44,6 +49,7 @@ export default async function ServicePagesQueuePage({
           </div>
         }
       />
+      <AdminFlash ok={filters.ok} error={filters.error} />
 
       <div className="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
         {Object.entries(counts).map(([label, value]) => (
@@ -71,27 +77,27 @@ export default async function ServicePagesQueuePage({
         </button>
       </form>
 
-      <AdminTable headers={["Service", "Category", "Location", "Covered", "Lifecycle", "Quality", "Bucket", "EN/AR", ""]}>
-        {rows.map((row) => (
-          <tr key={row.id} className="border-t border-line text-xs">
-            <td className="px-3 py-2">{row.serviceSlug}</td>
-            <td className="px-3 py-2">{row.categorySlug}</td>
-            <td className="px-3 py-2">{row.locationSlug}</td>
-            <td className="px-3 py-2">{row.covered ? "yes" : "no"}</td>
-            <td className="px-3 py-2">{row.lifecycle}</td>
-            <td className="px-3 py-2">{row.qualityStatus}</td>
-            <td className="px-3 py-2">{row.bucket}</td>
-            <td className="px-3 py-2">
-              {row.eligibleEn ? "EN" : "-"}/{row.eligibleAr ? "AR" : "-"}
-            </td>
-            <td className="px-3 py-2">
-              <Link className="text-navy" href={`/admin/service-pages/${row.id}`}>
-                Manage
-              </Link>
-            </td>
-          </tr>
-        ))}
-      </AdminTable>
+      <AdminBulkTable
+        entity="service_pages"
+        returnTo={returnTo}
+        headers={["Service", "Category", "Location", "Covered", "Lifecycle", "Quality", "Bucket", "EN/AR", ""]}
+        rows={rows.map((row) => ({
+          id: row.id,
+          cells: [
+            row.serviceSlug,
+            row.categorySlug,
+            row.locationSlug,
+            row.covered ? "yes" : "no",
+            row.lifecycle,
+            row.qualityStatus,
+            row.bucket,
+            `${row.eligibleEn ? "EN" : "-"}/${row.eligibleAr ? "AR" : "-"}`,
+            <Link key="manage" className="text-navy" href={`/admin/service-pages/${row.id}`}>
+              Manage
+            </Link>,
+          ],
+        }))}
+      />
 
       <section className="mt-8 rounded-md border border-line bg-white p-4">
         <div className="flex items-center justify-between gap-3">

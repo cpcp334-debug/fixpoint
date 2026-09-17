@@ -10,6 +10,7 @@ import { coverageLifecycleAllowed } from "./coverage";
 import { resolveDiyInheritance } from "./diy";
 import { evaluatePublicationEligibility } from "./publication-eligibility";
 import { publishRevision } from "./revisions";
+import { estimateWorkingCopyWords } from "./rendered-words";
 import type { WorkingCopy } from "./types";
 
 const OBJECT_STORAGE_CONFIGURED = Boolean(
@@ -82,6 +83,15 @@ export async function loadEligibilityForId(prisma: PrismaClient, id: string) {
     guide: guide ? { id: guide.id, slug: guide.slug, riskLevel: guide.riskLevel, status: guide.status } : null,
   });
 
+  const en = workingFromI18n(
+    row.translations.find((t) => t.locale === "en"),
+    "en",
+  );
+  const ar = workingFromI18n(
+    row.translations.find((t) => t.locale === "ar"),
+    "ar",
+  );
+
   const eligibility = evaluatePublicationEligibility({
     serviceValid: Boolean(row.service),
     locationValid: Boolean(row.location),
@@ -98,18 +108,14 @@ export async function loadEligibilityForId(prisma: PrismaClient, id: string) {
     diySafetyClass: diy.safetyClass,
     diySafetyOk: diy.safetyClass !== "REVIEW_REQUIRED" || Boolean(guide),
     arabicConfidence: arabicConfidenceForSlug(row.location.slug),
-    en: workingFromI18n(
-      row.translations.find((t) => t.locale === "en"),
-      "en",
-    ),
-    ar: workingFromI18n(
-      row.translations.find((t) => t.locale === "ar"),
-      "ar",
-    ),
+    en,
+    ar,
     heroImageOverride: row.heroImageOverride,
     serviceHeroImage: row.service.heroImage,
     objectStorageConfigured: OBJECT_STORAGE_CONFIGURED,
     allowApprovedImageFallback: true,
+    enRenderedWords: estimateWorkingCopyWords(en, "en"),
+    arRenderedWords: estimateWorkingCopyWords(ar, "ar"),
   });
 
   return { row, diy, eligibility };

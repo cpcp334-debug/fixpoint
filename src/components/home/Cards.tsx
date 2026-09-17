@@ -14,6 +14,7 @@ export function ServiceCard({
   amcLabel,
   featured,
   href,
+  compact,
 }: {
   slug: string;
   name: string;
@@ -25,28 +26,35 @@ export function ServiceCard({
   amcLabel?: string;
   featured?: boolean;
   href?: string;
+  compact?: boolean;
 }) {
   const Icon = serviceIcons[slug as keyof typeof serviceIcons] ?? serviceIcons["building-maintenance"];
+  const chips = [diyLabel, emergencyLabel, amcLabel].filter(Boolean);
   return (
     <Link
       href={href ?? `/${slug}`}
       className={cn(
-        "group flex h-full flex-col rounded-xl border border-line bg-white p-5 transition-colors hover:border-navy/20",
-        featured && "lg:p-6",
+        "pass group flex h-full flex-col rounded-xl border border-line bg-white transition-colors hover:border-navy/20",
+        compact ? "p-3" : "p-5",
+        featured && !compact && "lg:p-6",
       )}
     >
-      <span className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-sand text-navy">
+      <span className={cn("inline-flex items-center justify-center rounded-lg bg-sand text-navy", compact ? "h-7 w-7" : "h-9 w-9")}>
         <Icon className="h-4 w-4" />
       </span>
-      <h3 className="mt-4 text-lg font-semibold tracking-tight text-navy">{name}</h3>
-      <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{description}</p>
-      {benefit ? <p className="mt-3 text-sm text-ink">{benefit}</p> : null}
-      <div className="mt-4 flex flex-wrap gap-2">
-        {diyLabel ? <span className="rounded-md bg-sand px-2 py-0.5 text-xs text-navy">{diyLabel}</span> : null}
-        {emergencyLabel ? <span className="rounded-md bg-sand px-2 py-0.5 text-xs text-navy">{emergencyLabel}</span> : null}
-        {amcLabel ? <span className="rounded-md bg-sand px-2 py-0.5 text-xs text-navy">{amcLabel}</span> : null}
-      </div>
-      <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-accent">
+      <h3 className={cn("font-semibold tracking-tight text-navy", compact ? "mt-2 text-sm" : "mt-4 text-lg")}>{name}</h3>
+      <p className={cn("text-muted", compact ? "mt-1 text-xs leading-snug" : "mt-2 flex-1 text-sm leading-relaxed")}>{description}</p>
+      {benefit ? <p className={cn("text-ink", compact ? "mt-1 text-xs leading-snug" : "mt-3 text-sm")}>{benefit}</p> : null}
+      {chips.length ? (
+        <div className={cn("flex flex-wrap", compact ? "mt-2 gap-1" : "mt-4 gap-2")}>
+          {chips.map((label) => (
+            <span key={label} className="rounded-md bg-sand px-2 py-0.5 text-xs text-navy">
+              {label}
+            </span>
+          ))}
+        </div>
+      ) : null}
+      <span className={cn("inline-flex items-center gap-1 font-medium text-accent", compact ? "mt-2 text-xs" : "mt-5 text-sm")}>
         {cta}
         <IconArrow className="h-4 w-4 rtl:rotate-180" />
       </span>
@@ -72,7 +80,7 @@ export function DiyCard({
   cta: string;
 }) {
   return (
-    <article className="flex h-full flex-col rounded-xl border border-line bg-white p-5">
+    <article className="pass flex h-full flex-col rounded-xl border border-line bg-white p-5">
       {category ? <p className="text-xs font-medium text-accent">{category}</p> : null}
       <h3 className="mt-2 text-lg font-semibold tracking-tight text-navy">
         <Link href={`/diy/${slug}`} className="hover:text-accent">
@@ -106,7 +114,7 @@ export function LocationCard({
   return (
     <Link
       href={href ?? `/locations/${slug}`}
-      className="flex h-full flex-col rounded-xl border border-line bg-white p-4 hover:border-navy/20"
+      className="pass flex h-full flex-col rounded-xl border border-line bg-white p-4 hover:border-navy/20"
     >
       <p className="font-semibold text-navy">{name}</p>
       <p className="mt-2 text-xs leading-relaxed text-muted">{note}</p>
@@ -142,7 +150,7 @@ export function ProblemCard({
     <Link
       href={href}
       className={cn(
-        "group flex min-h-[6.25rem] flex-col items-start justify-between rounded-2xl border p-4 transition-colors",
+        "pass group flex min-h-[6.25rem] flex-col items-start justify-between rounded-2xl border p-4 transition-colors",
         colors.card,
       )}
     >

@@ -3,7 +3,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -217,7 +217,7 @@ model ServiceCategoryI18n {
   categoryId  String
   locale      String
   name        String
-  description String          @default("")
+  description String @default("") @db.Text
   category    ServiceCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 
   @@unique([categoryId, locale])
@@ -238,10 +238,10 @@ model Service {
   amcAvailable         Boolean       @default(false)
   indexable            Boolean       @default(false)
   heroImage            String?
-  gallery              String        @default("[]")
-  relatedServiceSlugs  String        @default("[]")
-  aiIntakeQuestions    String        @default("[]")
-  schemaData           String        @default("{}")
+  gallery String @default("[]") @db.LongText
+  relatedServiceSlugs String @default("[]") @db.LongText
+  aiIntakeQuestions String @default("[]") @db.LongText
+  schemaData String @default("{}") @db.LongText
   sopCode              String?
   sopPublic            Boolean       @default(false)
   createdAt            DateTime      @default(now())
@@ -266,19 +266,19 @@ model ServiceI18n {
   serviceId             String
   locale                String
   name                  String
-  shortDescription      String
-  longDescription       String
-  whoItIsFor            String  @default("")
-  whatWeDo              String  @default("")
-  whenProfessional      String  @default("")
-  process               String  @default("")
-  pricingInfo           String  @default("")
-  professionalFallback  String
-  safetyNotes           String  @default("")
-  seoTitle              String
-  metaDescription       String
-  keywords              String  @default("")
-  faq                   String  @default("[]")
+  shortDescription String @db.Text
+  longDescription String @db.LongText
+  whoItIsFor String @default("") @db.Text
+  whatWeDo String @default("") @db.LongText
+  whenProfessional String @default("") @db.Text
+  process String @default("") @db.LongText
+  pricingInfo String @default("") @db.Text
+  professionalFallback String @db.Text
+  safetyNotes String @default("") @db.Text
+  seoTitle String @db.Text
+  metaDescription String @db.Text
+  keywords String @default("") @db.Text
+  faq String @default("[]") @db.LongText
   service               Service @relation(fields: [serviceId], references: [id], onDelete: Cascade)
 
   @@unique([serviceId, locale])
@@ -315,13 +315,13 @@ model LocationI18n {
   locationId         String
   locale             String
   name               String
-  intro              String
-  localServiceInfo   String   @default("")
-  propertyTypes      String   @default("")
-  nearbyAreas        String   @default("")
-  seoTitle           String
-  metaDescription    String
-  faq                String   @default("[]")
+  intro String @db.LongText
+  localServiceInfo String @default("") @db.LongText
+  propertyTypes String @default("") @db.Text
+  nearbyAreas String @default("") @db.Text
+  seoTitle String @db.Text
+  metaDescription String @db.Text
+  faq String @default("[]") @db.LongText
   location           Location @relation(fields: [locationId], references: [id], onDelete: Cascade)
 
   @@unique([locationId, locale])
@@ -365,16 +365,16 @@ model ServiceLocationI18n {
   id                String          @id @default(cuid())
   serviceLocationId String
   locale            String
-  intro             String
-  localInfo         String
-  seoTitle          String
-  metaDescription   String
-  faq               String          @default("[]")
-  h1                String          @default("")
-  body              String          @default("")
-  directAnswer      String          @default("")
-  geoIntro          String          @default("")
-  imageAlt          String          @default("")
+  intro String @db.LongText
+  localInfo String @db.LongText
+  seoTitle String @db.Text
+  metaDescription String @db.Text
+  faq String @default("[]") @db.LongText
+  h1 String @default("") @db.Text
+  body String @default("") @db.LongText
+  directAnswer String @default("") @db.Text
+  geoIntro String @default("") @db.Text
+  imageAlt String @default("") @db.Text
   serviceLocation   ServiceLocation @relation(fields: [serviceLocationId], references: [id], onDelete: Cascade)
 
   @@unique([serviceLocationId, locale])
@@ -385,11 +385,11 @@ model ServiceLocationRevision {
   serviceLocationId  String
   revisionNumber     Int
   locale             String
-  snapshotJson       String
+  snapshotJson String @db.LongText
   generatedBy        String                         @default("system")
   approvedBy         String?
   approvedAt         DateTime?
-  changeReason       String                         @default("")
+  changeReason String @default("") @db.Text
   previousRevisionId String?
   status             ServiceLocationRevisionStatus  @default(draft)
   createdAt          DateTime                       @default(now())
@@ -417,9 +417,9 @@ model DiyCategoryI18n {
   categoryId      String
   locale          String
   name            String
-  description     String      @default("")
-  seoTitle        String      @default("")
-  metaDescription String      @default("")
+  description String @default("") @db.Text
+  seoTitle String @default("") @db.Text
+  metaDescription String @default("") @db.Text
   category        DiyCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 
   @@unique([categoryId, locale])
@@ -437,10 +437,10 @@ model DiyGuide {
   schemaType          String                 @default("article")
   status              ContentStatus          @default(draft)
   indexable           Boolean                @default(false)
-  relatedSlugs        String                 @default("[]")
-  relatedServiceSlugs String                 @default("[]")
-  locationSlugs       String                 @default("[]")
-  profileJson         String                 @default("{}")
+  relatedSlugs String @default("[]") @db.LongText
+  relatedServiceSlugs String @default("[]") @db.LongText
+  locationSlugs String @default("[]") @db.LongText
+  profileJson String @default("{}") @db.LongText
   profileStatus       DiyProfileStatus       @default(draft)
   profileVersion      Int                    @default(1)
   isPrimary           Boolean                @default(false)
@@ -468,21 +468,21 @@ model DiyGuideI18n {
   id                   String   @id @default(cuid())
   guideId              String
   locale               String
-  title                String
-  problem              String
-  quickAnswer          String
+  title String @db.Text
+  problem String @db.Text
+  quickAnswer String @db.Text
   difficulty           String   @default("")
   estimatedTime        String   @default("")
-  tools                String   @default("[]")
-  materials            String   @default("[]")
-  safety               String
-  steps                String   @default("[]")
-  checkWork            String   @default("")
-  whenToStop           String
-  professionalFallback String
-  seoTitle             String
-  metaDescription      String
-  faq                  String   @default("[]")
+  tools String @default("[]") @db.LongText
+  materials String @default("[]") @db.LongText
+  safety String @db.LongText
+  steps String @default("[]") @db.LongText
+  checkWork String @default("") @db.Text
+  whenToStop String @db.Text
+  professionalFallback String @db.Text
+  seoTitle String @db.Text
+  metaDescription String @db.Text
+  faq String @default("[]") @db.LongText
   guide                DiyGuide @relation(fields: [guideId], references: [id], onDelete: Cascade)
 
   @@unique([guideId, locale])
@@ -502,12 +502,12 @@ model Article {
   status               ContentStatus @default(draft)
   indexable            Boolean       @default(false)
   /** JSON string array of category slugs */
-  categorySlugs        String        @default("[]")
+  categorySlugs String @default("[]") @db.LongText
   heroImage            String?
   /** JSON string array of service slugs */
-  relatedServiceSlugs  String        @default("[]")
+  relatedServiceSlugs String @default("[]") @db.LongText
   /** JSON string array of DIY guide slugs */
-  relatedDiySlugs      String        @default("[]")
+  relatedDiySlugs String @default("[]") @db.LongText
   publishedAt          DateTime?
   createdAt            DateTime      @default(now())
   updatedAt            DateTime      @updatedAt
@@ -520,14 +520,14 @@ model ArticleI18n {
   id              String  @id @default(cuid())
   articleId       String
   locale          String
-  title           String
-  excerpt         String  @default("")
-  body            String  @default("")
-  diySection      String  @default("")
-  faq             String  @default("[]")
-  imageAlt        String  @default("")
-  seoTitle        String
-  metaDescription String
+  title String @db.Text
+  excerpt String @default("") @db.Text
+  body String @default("") @db.LongText
+  diySection String @default("") @db.LongText
+  faq String @default("[]") @db.LongText
+  imageAlt String @default("") @db.Text
+  seoTitle String @db.Text
+  metaDescription String @db.Text
   article         Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
 
   @@unique([articleId, locale])
@@ -551,14 +551,14 @@ model ProjectI18n {
   id              String  @id @default(cuid())
   projectId       String
   locale          String
-  title           String
-  problem         String  @default("")
+  title String @db.Text
+  problem String @default("") @db.Text
   scope           String  @default("")
-  work            String  @default("")
-  result          String  @default("")
-  testimonial     String  @default("")
-  seoTitle        String
-  metaDescription String
+  work String @default("") @db.Text
+  result String @default("") @db.Text
+  testimonial String @default("") @db.Text
+  seoTitle String @db.Text
+  metaDescription String @db.Text
   project         Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
   @@unique([projectId, locale])
@@ -581,8 +581,8 @@ model FaqI18n {
   id     String @id @default(cuid())
   faqId  String
   locale String
-  question String
-  answer   String
+  question String @db.Text
+  answer String @db.Text
   faq      Faq    @relation(fields: [faqId], references: [id], onDelete: Cascade)
 
   @@unique([faqId, locale])
@@ -594,8 +594,8 @@ model MediaAsset {
   originalName   String
   mimeType       String
   sizeBytes      Int
-  alt            String          @default("")
-  caption        String          @default("")
+  alt String @default("") @db.Text
+  caption String @default("") @db.Text
   visibility     String          @default("private")
   status         String          @default("ready")
   conversationId String?
@@ -611,7 +611,7 @@ model Customer {
   email              String?
   preferredLanguage  String   @default("en")
   consentMarketing   Boolean  @default(false)
-  notes              String   @default("")
+  notes String @default("") @db.Text
   visitorId          String?
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
@@ -633,7 +633,7 @@ model Property {
   customerId String
   locationId String?
   type       String
-  notes      String   @default("")
+  notes String @default("") @db.Text
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
   customer   Customer @relation(fields: [customerId], references: [id])
@@ -657,9 +657,9 @@ model Lead {
   estimatedValue  String?
   status          LeadStatus @default(NEW)
   assignedStaffId String?
-  photos          String     @default("[]")
+  photos String @default("[]") @db.LongText
   aiSummary       String     @default("")
-  notes           String     @default("")
+  notes String @default("") @db.Text
   preferredDate   String?
   preferredTime   String?
   locale          String     @default("en")
@@ -689,7 +689,7 @@ model LeadScore {
   systemClass    LeadQualityClass
   humanClass     LeadQualityClass?
   effectiveClass LeadQualityClass
-  reasonsJson    String           @default("[]")
+  reasonsJson String @default("[]") @db.LongText
   modelVersion   String           @default("2f2.1")
   computedAt     DateTime         @default(now())
   overrideAt     DateTime?
@@ -710,7 +710,7 @@ model LeadScoreHistory {
   score          Int
   systemClass    LeadQualityClass
   effectiveClass LeadQualityClass
-  reasonsJson    String           @default("[]")
+  reasonsJson String @default("[]") @db.LongText
   actor          String
   cause          LeadScoreCause
   note           String           @default("")
@@ -735,19 +735,19 @@ model Quote {
   customerPhone       String      @default("")
   customerEmail       String?
   scope               String      @default("")
-  materials           String      @default("")
-  labor               String      @default("")
-  exclusions          String      @default("")
-  taxesNote           String      @default("")
-  validity            String      @default("")
-  paymentTerms        String      @default("")
-  estimatedDuration   String      @default("")
-  warrantyTerms       String      @default("")
-  notes               String      @default("")
-  subtotalLabel       String      @default("")
-  discountLabel       String      @default("")
-  taxLabel            String      @default("")
-  totalLabel          String      @default("")
+  materials String @default("") @db.LongText
+  labor String @default("") @db.Text
+  exclusions String @default("") @db.Text
+  taxesNote String @default("") @db.Text
+  validity String @default("") @db.Text
+  paymentTerms String @default("") @db.Text
+  estimatedDuration String @default("") @db.Text
+  warrantyTerms String @default("") @db.Text
+  notes String @default("") @db.Text
+  subtotalLabel String @default("") @db.Text
+  discountLabel String @default("") @db.Text
+  taxLabel String @default("") @db.Text
+  totalLabel String @default("") @db.Text
   humanApproved       Boolean     @default(false)
   sentAt              DateTime?
   sourceKey           String?     @unique
@@ -771,7 +771,7 @@ model Quote {
 model QuoteItem {
   id          String @id @default(cuid())
   quoteId     String
-  description String
+  description String @db.Text
   quantity    String @default("1")
   unit        String @default("")
   unitPrice   String @default("")
@@ -795,11 +795,11 @@ model Invoice {
   customerEmail   String?
   locationLabel   String        @default("")
   serviceLabel    String        @default("")
-  notes           String        @default("")
-  subtotalLabel   String        @default("")
-  discountLabel   String        @default("")
-  taxLabel        String        @default("")
-  totalLabel      String        @default("")
+  notes String @default("") @db.Text
+  subtotalLabel String @default("") @db.Text
+  discountLabel String @default("") @db.Text
+  taxLabel String @default("") @db.Text
+  totalLabel String @default("") @db.Text
   issueDate       String?
   dueDate         String?
   paymentRef      String?
@@ -825,7 +825,7 @@ model Invoice {
 model InvoiceItem {
   id          String  @id @default(cuid())
   invoiceId   String
-  description String
+  description String @db.Text
   quantity    String  @default("1")
   unit        String  @default("")
   unitPrice   String  @default("")
@@ -841,7 +841,7 @@ model PricingRule {
   serviceId   String?
   method      QuoteMethod @default(inspection)
   unitLabel   String      @default("")
-  notes       String      @default("")
+  notes String @default("") @db.Text
   active      Boolean     @default(true)
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
@@ -896,8 +896,8 @@ model RateLimitBucket {
 model StaffAiConversation {
   id           String            @id @default(cuid())
   userId       String
-  frozenRole   String
-  messagesJson String            @default("[]")
+  frozenRole String @db.Text
+  messagesJson String @default("[]") @db.LongText
   createdAt    DateTime          @default(now())
   updatedAt    DateTime          @updatedAt
   user         User              @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -923,18 +923,18 @@ model StaffAiProposal {
   id             String    @id @default(cuid())
   userId         String
   conversationId String?
-  actorEmail     String    @default("")
-  frozenRole     String    @default("")
+  actorEmail String @default("") @db.Text
+  frozenRole String @default("") @db.Text
   status         String    @default("pending")
-  actionType     String
-  title          String
-  reason         String    @default("")
+  actionType String @db.Text
+  title String @db.Text
+  reason String @default("") @db.Text
   sopCode        String    @default("")
-  sopTitle       String    @default("")
-  sideEffects    String    @default("")
-  itemsJson      String    @default("[]")
-  resultJson     String    @default("{}")
-  error          String    @default("")
+  sopTitle String @default("") @db.Text
+  sideEffects String @default("") @db.LongText
+  itemsJson String @default("[]") @db.LongText
+  resultJson String @default("{}") @db.LongText
+  error String @default("") @db.Text
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
   approvedAt     DateTime?
@@ -954,9 +954,9 @@ model ExportLog {
   id          String   @id @default(cuid())
   userId      String
   role        String
-  dataset     String
-  format      String
-  filters     String   @default("{}")
+  dataset String @db.Text
+  format String @db.Text
+  filters String @default("{}") @db.LongText
   resultCount Int      @default(0)
   createdAt   DateTime @default(now())
 }
@@ -991,14 +991,14 @@ model Booking {
   confirmedTime    String?
   confirmedAt      DateTime?
   calendarEventId  String?
-  frequency        String?
+  frequency String? @db.Text
   amcReference     String?
   technicianId     String?
   supervisorId     String?
   requirement      String
-  photos           String         @default("[]")
+  photos String @default("[]") @db.LongText
   status           BookingStatus  @default(requested)
-  notes            String         @default("")
+  notes String @default("") @db.Text
   locale           String         @default("en")
   visitorId        String?
   createdAt        DateTime       @default(now())
@@ -1038,9 +1038,9 @@ model Inspection {
   locationLabel  String   @default("")
   checklist      String   @default("[]")
   measurements   String   @default("")
-  photos         String   @default("[]")
+  photos String @default("[]") @db.LongText
   findings       String   @default("")
-  materials      String   @default("")
+  materials String @default("") @db.LongText
   proposedScope  String   @default("")
   recommendations String  @default("")
   createdAt      DateTime @default(now())
@@ -1056,20 +1056,20 @@ model WorkOrder {
   locationId         String?
   bookingId          String?
   locationLabel      String    @default("")
-  propertyLabel      String    @default("")
+  propertyLabel String @default("") @db.Text
   serviceLabel       String    @default("")
   scope              String    @default("")
   supervisorId       String?
   technicianId       String?
-  materials          String    @default("[]")
-  tools              String    @default("[]")
+  materials String @default("[]") @db.LongText
+  tools String @default("[]") @db.LongText
   ppe                String    @default("[]")
   scheduledDate      String?
   scheduledTime      String?
   status             String    @default("created")
-  notes              String    @default("")
-  photos             String    @default("[]")
-  qcResult           String    @default("")
+  notes String @default("") @db.Text
+  photos String @default("[]") @db.LongText
+  qcResult String @default("") @db.Text
   customerSignOff    Boolean   @default(false)
   createdAt          DateTime  @default(now())
   updatedAt          DateTime  @updatedAt
@@ -1093,19 +1093,19 @@ model AmcContract {
   id               String    @id @default(cuid())
   customerId       String
   reference        String    @default("")
-  propertyLabel    String    @default("")
+  propertyLabel String @default("") @db.Text
   locationLabel    String    @default("")
-  coveredServices  String    @default("")
+  coveredServices String @default("") @db.LongText
   startDate        DateTime?
   endDate          DateTime?
-  frequency        String    @default("")
-  sla              String    @default("")
-  included         String    @default("")
-  excluded         String    @default("")
-  notes            String    @default("")
+  frequency String @default("") @db.Text
+  sla String @default("") @db.Text
+  included String @default("") @db.LongText
+  excluded String @default("") @db.LongText
+  notes String @default("") @db.Text
   status           String    @default("active")
   assignedStaffId  String?
-  contractValue    String?
+  contractValue String? @db.Text
   createdAt        DateTime  @default(now())
   updatedAt        DateTime  @updatedAt
   customer         Customer  @relation(fields: [customerId], references: [id])
@@ -1148,8 +1148,8 @@ model StaffSkill {
 model Subcontractor {
   id               String   @id @default(cuid())
   code             String   @unique
-  specialization   String   @default("")
-  coverage         String   @default("")
+  specialization String @default("") @db.Text
+  coverage String @default("") @db.Text
   approvalStatus   String   @default("pending")
   documentationOk  Boolean  @default(false)
   createdAt        DateTime @default(now())
@@ -1161,8 +1161,8 @@ model Review {
   type              ReviewType
   status            ReviewStatus @default(PENDING)
   stars             Int
-  title             String       @default("")
-  body              String       @default("")
+  title String @default("") @db.Text
+  body String @default("") @db.LongText
   authorName        String
   photoKey          String?
   serviceId         String?
@@ -1174,7 +1174,7 @@ model Review {
   customerId        String?
   area              String?
   locale            String       @default("en")
-  adminResponse     String       @default("")
+  adminResponse String @default("") @db.Text
   adminRespondedAt  DateTime?
   flagCount         Int          @default(0)
   helpful           Boolean?
@@ -1216,7 +1216,7 @@ model ReviewInsight {
   punctuality    String          @default("")
   communication  String          @default("")
   visibility     KnowledgeScope  @default(INTERNAL)
-  notes          String          @default("")
+  notes String @default("") @db.Text
   createdAt      DateTime        @default(now())
   review         Review?         @relation(fields: [reviewId], references: [id], onDelete: SetNull)
 }
@@ -1229,8 +1229,8 @@ model Question {
   articleId          String?
   customerId         String?
   askerName          String        @default("")
-  body               String
-  answer             String        @default("")
+  body String @db.LongText
+  answer String @default("") @db.Text
   status             ContentStatus @default(draft)
   moderationStatus   ReviewStatus  @default(PENDING)
   flagCount          Int           @default(0)
@@ -1251,7 +1251,7 @@ model ContentReport {
   id        String   @id @default(cuid())
   entity    String
   entityId  String
-  reason    String   @default("")
+  reason String @default("") @db.Text
   createdAt DateTime @default(now())
 }
 
@@ -1310,9 +1310,9 @@ model AnalyticsEvent {
   visitorId  String
   sessionId  String
   name       String
-  path       String?
+  path String? @db.Text
   locale     String?
-  entityType String?
+  entityType String? @db.Text
   entityId   String?
   meta       String       @default("{}")
   source     String
@@ -1329,13 +1329,13 @@ model AnalyticsEvent {
 model KnowledgeDocument {
   id            String          @id @default(cuid())
   scope         KnowledgeScope
-  title         String
-  body          String          @default("")
+  title String @db.Text
+  body String @default("") @db.LongText
   sopCode       String?         @unique
-  description   String          @default("")
+  description String @default("") @db.Text
   status        KnowledgeStatus @default(DRAFT)
   version       Int             @default(1)
-  audienceJson  String          @default("[]")
+  audienceJson String @default("[]") @db.LongText
   categorySlug  String          @default("")
   serviceSlug   String          @default("")
   effectiveDate String          @default("")
@@ -1355,11 +1355,11 @@ model KnowledgeDocumentRevision {
   id           String          @id @default(cuid())
   documentId   String
   version      Int
-  title        String
-  description  String          @default("")
-  body         String          @default("")
+  title String @db.Text
+  description String @default("") @db.Text
+  body String @default("") @db.LongText
   status       KnowledgeStatus
-  audienceJson String          @default("[]")
+  audienceJson String @default("[]") @db.LongText
   updatedBy    String          @default("")
   createdAt    DateTime        @default(now())
   document     KnowledgeDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
@@ -1418,13 +1418,13 @@ model AutomationRule {
   id             String             @id @default(cuid())
   key            String             @unique
   name           String
-  description    String             @default("")
+  description String @default("") @db.Text
   enabled        Boolean            @default(false)
   priority       Int                @default(100)
   trigger        AutomationTrigger
   delaySeconds   Int                @default(0)
-  conditionsJson String             @default("[]")
-  actionsJson    String             @default("[]")
+  conditionsJson String @default("[]") @db.LongText
+  actionsJson String @default("[]") @db.LongText
   ownerUserId    String?
   createdAt      DateTime           @default(now())
   updatedAt      DateTime           @updatedAt
@@ -1442,7 +1442,7 @@ model AutomationJob {
   trigger        AutomationTrigger
   subjectType    String
   subjectId      String
-  payloadJson    String               @default("{}")
+  payloadJson String @default("{}") @db.LongText
   runAt          DateTime             @default(now())
   startedAt      DateTime?
   attempt        Int                  @default(0)
@@ -1468,10 +1468,10 @@ model AutomationRun {
   subjectType         String
   subjectId           String
   conditionPassed     Boolean
-  conditionDetailJson String             @default("[]")
-  actionsJson         String             @default("[]")
+  conditionDetailJson String @default("[]") @db.LongText
+  actionsJson String @default("[]") @db.LongText
   ok                  Boolean
-  error               String             @default("")
+  error String @default("") @db.Text
   attempt             Int
   createdAt           DateTime           @default(now())
   job                 AutomationJob      @relation(fields: [jobId], references: [id], onDelete: Cascade)
@@ -1487,7 +1487,7 @@ model OpsTask {
   id              String          @id @default(cuid())
   kind            String          @default("generic")
   status          String          @default("open")
-  title           String
+  title String @db.Text
   dueAt           DateTime?
   assigneeStaffId String?
   priority        String          @default("normal")
@@ -1496,7 +1496,7 @@ model OpsTask {
   subjectId       String
   ruleId          String?
   idempotencyKey  String          @unique
-  notes           String          @default("")
+  notes String @default("") @db.Text
   createdAt       DateTime        @default(now())
   updatedAt       DateTime        @updatedAt
   rule            AutomationRule? @relation(fields: [ruleId], references: [id], onDelete: SetNull)
@@ -1511,9 +1511,9 @@ model AdminNotification {
   id             String    @id @default(cuid())
   userId         String?
   staffId        String?
-  channel        String    @default("in_app")
-  title          String
-  body           String    @default("")
+  channel String @default("in_app") @db.Text
+  title String @db.Text
+  body String @default("") @db.LongText
   readAt         DateTime?
   idempotencyKey String    @unique
   createdAt      DateTime  @default(now())
@@ -1559,9 +1559,9 @@ model ContentGenerationJob {
   attempt           Int                         @default(0)
   maxAttempts       Int                         @default(3)
   priority          Int                         @default(0)
-  error             String?
-  payloadJson       String                      @default("{}")
-  resultJson        String                      @default("{}")
+  error String? @db.Text
+  payloadJson String @default("{}") @db.LongText
+  resultJson String @default("{}") @db.LongText
   startedAt         DateTime?
   finishedAt        DateTime?
   createdAt         DateTime                    @default(now())
@@ -1622,7 +1622,7 @@ model ContentEngineManifest {
   required         Boolean                  @default(true)
   priority         Int                      @default(0)
   generationVersion String                  @default("2026.09.10")
-  metaJson         String                   @default("{}")
+  metaJson String @default("{}") @db.LongText
   createdAt        DateTime                 @default(now())
   updatedAt        DateTime                 @updatedAt
   validations      ContentEngineValidation[]
@@ -1638,8 +1638,8 @@ model ContentEngineValidation {
   manifestId String
   passed     Boolean                @default(false)
   lifecycle  ContentEngineLifecycle @default(VALIDATING)
-  scoreJson  String                 @default("{}")
-  issuesJson String                 @default("[]")
+  scoreJson String @default("{}") @db.LongText
+  issuesJson String @default("[]") @db.LongText
   wordCount  Int                    @default(0)
   createdAt  DateTime               @default(now())
   manifest   ContentEngineManifest  @relation(fields: [manifestId], references: [id], onDelete: Cascade)
@@ -1657,7 +1657,7 @@ model ContentEngineBatch {
   startedAt         DateTime?
   finishedAt        DateTime?
   costEstimateUsd   Float    @default(0)
-  metaJson          String   @default("{}")
+  metaJson String @default("{}") @db.LongText
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
   items             ContentEngineRunItem[]
@@ -1669,7 +1669,7 @@ model ContentEngineRunItem {
   manifestId String
   lifecycle  ContentEngineLifecycle  @default(QUEUED)
   attempt    Int                     @default(0)
-  error      String?
+  error String? @db.Text
   createdAt  DateTime                @default(now())
   updatedAt  DateTime                @updatedAt
   batch      ContentEngineBatch      @relation(fields: [batchId], references: [id], onDelete: Cascade)
@@ -1677,4 +1677,18 @@ model ContentEngineRunItem {
 
   @@unique([batchId, manifestId])
   @@index([lifecycle])
+}
+
+/// Editable public site chrome (home / header / footer). EN+AR JSON payloads.
+/// When status=published, public pages prefer these over hardcoded message defaults.
+model SiteShellDocument {
+  id          String        @id @default(cuid())
+  section     String        @unique
+  status      ContentStatus @default(draft)
+  payloadEn String @default("{}") @db.LongText
+  payloadAr String @default("{}") @db.LongText
+  updatedBy   String        @default("system")
+  publishedAt DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
 }

@@ -30,11 +30,17 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files
+# env files / secrets
 .env
-.env.local
-.env*.local
+.env.*
 !.env.example
+*.pem
+secrets/
+**/secrets/
+*.key
+*.p12
+credentials.json
+service-account*.json
 
 # local databases
 /prisma/dev.db
@@ -42,7 +48,28 @@ yarn-error.log*
 /prisma/pgdata
 /prisma/pgdata-corrupt-*
 /src/generated
-/uploads/private
+/uploads/
+/logs/
+
+# SQL dumps & data exports (keep Prisma migration SQL)
+*.sql
+!prisma/migrations/**/*.sql
+*.dump
+*.sql.gz
+*.dump.gz
+
+# Hostinger / deploy artifacts (binaries + dumps)
+/deploy/tools/
+/deploy/out/
+/deploy/out/*.dump
+*.zip
+
+# large / native binaries
+*.exe
+*.dll
+*.bin
+*.so
+*.dylib
 
 # vercel
 .vercel

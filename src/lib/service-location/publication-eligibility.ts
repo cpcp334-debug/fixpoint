@@ -1,10 +1,13 @@
 /**
  * Controlled publication eligibility — covered ≠ catalog.
  * Never invents coverage. Never auto-publishes.
+ * Aligns with docs/public-article-publication-gates.md (SL floor 800).
  */
 import type { ServiceLocationLifecycle, ServiceLocationQualityStatus } from "@prisma/client";
 import { arabicIndexBlocked } from "./arabic";
+import { scanUnsupportedClaims } from "./content-claims";
 import { isPublishedHeroPath } from "./images";
+import { RENDERED_WORD_MIN_PUBLISH } from "./rendered-words";
 import type { ArabicConfidence, DiySafetyClass, WorkingCopy } from "./types";
 
 export type PublicationQueueBucket =
@@ -14,6 +17,7 @@ export type PublicationQueueBucket =
   | "EN_MISSING"
   | "AR_MISSING"
   | "IMAGE_MISSING"
+  | "ALT_MISSING"
   | "SEO_FAILED"
   | "GEO_FAILED"
   | "AEO_FAILED"
@@ -50,6 +54,8 @@ export type PublicationEligibilityInput = {
   /** Optional rendered word counts — blocks READY/INDEXABLE when below 800. */
   enRenderedWords?: number | null;
   arRenderedWords?: number | null;
+  /** Prefer WebP for newly controlled publishes (default false for legacy rows). */
+  requireWebp?: boolean;
 };
 
 export type PublicationEligibilityResult = {
@@ -76,8 +82,13 @@ function shellOk(copy: WorkingCopy | null) {
   );
 }
 
-function hasBannedClaim(text: string) {
-  return /\b(best|#1|no\.?\s*1|certified|licensed|guaranteed|cheapest)\b/i.test(text);
+function altOk(copy: WorkingCopy | null) {
+  return Boolean(copy?.imageAlt?.trim() && copy.imageAlt.trim().length >= 8);
+}
+
+function isWebpPath(src: string | null | undefined) {
+  if (!src) return false;
+  return /\.webp($|\?)/i.test(src.trim());
 }
 
 export function evaluatePublicationEligibility(
@@ -86,16 +97,25 @@ export function evaluatePublicationEligibility(
   const blocks: PublicationQueueBucket[] = [];
   const enOk = shellOk(input.en);
   const arOk = shellOk(input.ar);
-  const seoOk = Boolean(input.en?.seoTitle?.trim() && input.en?.metaDescription?.trim());
+  const seoOk = Boolean(input.en?.seoTitle?.trim() && input.en?.metaDescription?.trim() && input.en?.h1?.trim());
   const geoOk = Boolean(input.en?.geoIntro?.trim());
   const aeoOk = Boolean(input.en?.directAnswer?.trim());
-  const arSeoOk = Boolean(input.ar?.seoTitle?.trim() && input.ar?.metaDescription?.trim());
+  const arSeoOk = Boolean(input.ar?.seoTitle?.trim() && input.ar?.metaDescription?.trim() && input.ar?.h1?.trim());
   const arGeoOk = Boolean(input.ar?.geoIntro?.trim());
   const arAeoOk = Boolean(input.ar?.directAnswer?.trim());
+  const enAltOk = altOk(input.en);
+  const arAltOk = !arOk || altOk(input.ar);
+  // SL pages always render Get a Quote chrome in ServiceLocationView.
+  const ctaOk = true;
 
   const imageReal =
     isPublishedHeroPath(input.heroImageOverride) || isPublishedHeroPath(input.serviceHeroImage);
   const imageOk = imageReal || input.allowApprovedImageFallback;
+  const webpOk =
+    !input.requireWebp ||
+    isWebpPath(input.heroImageOverride) ||
+    isWebpPath(input.serviceHeroImage) ||
+    input.allowApprovedImageFallback;
   if (!imageReal && !input.objectStorageConfigured && !input.allowApprovedImageFallback) {
     blocks.push("IMAGE_EXTERNAL_SETUP_REQUIRED");
   }
@@ -112,19 +132,40 @@ export function evaluatePublicationEligibility(
   if (input.qualityStatus === "ready_for_review" || input.qualityStatus === "incomplete") {
     blocks.push("REVIEW_REQUIRED");
   }
-  if (!imageOk) blocks.push("IMAGE_MISSING");
+  if (!imageOk || !webpOk) blocks.push("IMAGE_MISSING");
+  if (enOk && !enAltOk) blocks.push("ALT_MISSING");
+  if (arOk && !arAltOk) blocks.push("ALT_MISSING");
   if (!arOk) blocks.push("AR_MISSING");
 
-  const claimText = [input.en?.seoTitle, input.en?.metaDescription, input.en?.intro, input.ar?.seoTitle]
+  const claimText = [
+    input.en?.seoTitle,
+    input.en?.metaDescription,
+    input.en?.intro,
+    input.en?.h1,
+    input.en?.body,
+    input.en?.directAnswer,
+    input.en?.geoIntro,
+    input.ar?.seoTitle,
+    input.ar?.metaDescription,
+    input.ar?.intro,
+    input.ar?.h1,
+    input.ar?.body,
+    input.ar?.directAnswer,
+    input.ar?.geoIntro,
+  ]
     .filter(Boolean)
     .join("\n");
-  if (hasBannedClaim(claimText)) blocks.push("QUALITY_FAILED");
+  const claimsOk = scanUnsupportedClaims(claimText).ok;
+  if (!claimsOk) blocks.push("QUALITY_FAILED");
 
-  const enWordsOk = input.enRenderedWords == null || input.enRenderedWords >= 800;
-  const arWordsOk = !arOk || input.arRenderedWords == null || input.arRenderedWords >= 800;
-  // Length failure blocks READY/INDEXABLE only — does not force qualityStatus=failed
-  if (input.enRenderedWords != null && input.enRenderedWords < 800) blocks.push("WORD_COUNT_BELOW_MIN");
-  if (arOk && input.arRenderedWords != null && input.arRenderedWords < 800) blocks.push("WORD_COUNT_BELOW_MIN");
+  const enWordsOk = input.enRenderedWords == null || input.enRenderedWords >= RENDERED_WORD_MIN_PUBLISH;
+  const arWordsOk = !arOk || input.arRenderedWords == null || input.arRenderedWords >= RENDERED_WORD_MIN_PUBLISH;
+  if (input.enRenderedWords != null && input.enRenderedWords < RENDERED_WORD_MIN_PUBLISH) {
+    blocks.push("WORD_COUNT_BELOW_MIN");
+  }
+  if (arOk && input.arRenderedWords != null && input.arRenderedWords < RENDERED_WORD_MIN_PUBLISH) {
+    blocks.push("WORD_COUNT_BELOW_MIN");
+  }
 
   const qualityPublishable =
     input.qualityStatus === "publishable" ||
@@ -139,10 +180,13 @@ export function evaluatePublicationEligibility(
     aeoOk &&
     input.diySafetyOk &&
     imageOk &&
+    webpOk &&
+    enAltOk &&
     qualityPublishable &&
     enWordsOk &&
     arWordsOk &&
-    !hasBannedClaim(claimText)
+    claimsOk &&
+    ctaOk
   ) {
     if (!blocks.includes("READY_FOR_PUBLISH")) blocks.unshift("READY_FOR_PUBLISH");
   }
@@ -168,6 +212,13 @@ export function evaluatePublicationEligibility(
         aeoOk,
         diyOk: input.diySafetyOk,
         imageOk,
+        webpOk,
+        enAltOk,
+        arAltOk,
+        ctaOk,
+        claimsOk,
+        enWordsOk,
+        arWordsOk,
         qualityPublishable,
       },
     };
@@ -186,8 +237,10 @@ export function evaluatePublicationEligibility(
         "DIY_BLOCKED",
         "QUALITY_FAILED",
         "IMAGE_MISSING",
+        "ALT_MISSING",
         "IMAGE_EXTERNAL_SETUP_REQUIRED",
         "REVIEW_REQUIRED",
+        "WORD_COUNT_BELOW_MIN",
       ].includes(b),
     );
 
@@ -198,6 +251,7 @@ export function evaluatePublicationEligibility(
       arSeoOk &&
       arGeoOk &&
       arAeoOk &&
+      arAltOk &&
       !arabicIndexBlocked(input.arabicConfidence),
   );
 
@@ -230,6 +284,13 @@ export function evaluatePublicationEligibility(
       aeoOk,
       diyOk: input.diySafetyOk,
       imageOk,
+      webpOk,
+      enAltOk,
+      arAltOk,
+      ctaOk,
+      claimsOk,
+      enWordsOk,
+      arWordsOk,
       qualityPublishable,
     },
   };

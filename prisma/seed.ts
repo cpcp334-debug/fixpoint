@@ -19,8 +19,8 @@ import { resolveSeedMode, destructiveSeedRefusalMessage } from "./seed-safety";
 const prisma = new PrismaClient();
 
 function seoTitle(name: string, extra: string) {
-  const base = `${name} | ALNAJAH ALDAEM`;
-  const full = extra ? `${name} in ${extra} | ALNAJAH ALDAEM` : base;
+  const base = `${name} | Al Najah Al Daem · Fixpoint`;
+  const full = extra ? `${name} in ${extra} | Al Najah Al Daem · Fixpoint` : base;
   return full.slice(0, 60);
 }
 
@@ -41,9 +41,9 @@ function pairIntro(
 
 function a2LocationIntro(loc: MasterLocation, locale: "en" | "ar") {
   if (locale === "en") {
-    return `${loc.nameEn} is a catalog location record for ALNAJAH ALDAEM service planning. This entry does not claim service coverage, licensing, or booking availability.`;
+    return `${loc.nameEn} is a catalog location record for Al Najah Al Daem · Fixpoint service planning. This entry does not claim service coverage, licensing, or booking availability.`;
   }
-  return `${loc.nameAr === "REVIEW_REQUIRED" ? loc.nameEn : loc.nameAr} سجل موقع في كتالوج النجاح الدائم للتخطيط. هذا السجل لا يدّعي تغطية الخدمة أو الترخيص أو توفر الحجز.`;
+  return `${loc.nameAr === "REVIEW_REQUIRED" ? loc.nameEn : loc.nameAr} سجل موقع في كتالوج النجاح الدائم · Fixpoint للتخطيط. هذا السجل لا يدّعي تغطية الخدمة أو الترخيص أو توفر الحجز.`;
 }
 
 /** Seed Phase A2 cities/communities from master JSON. Never creates ServiceLocation rows. */
@@ -80,7 +80,7 @@ async function seedA2CitiesAndCommunities(uaeId: string, locationIds: Map<string
               locale: "ar",
               name: city.nameAr,
               intro: a2LocationIntro(city, "ar"),
-              seoTitle: `${city.nameAr === "REVIEW_REQUIRED" ? city.nameEn : city.nameAr} | النجاح الدائم`.slice(0, 60),
+              seoTitle: `${city.nameAr === "REVIEW_REQUIRED" ? city.nameEn : city.nameAr} | النجاح الدائم · Fixpoint`.slice(0, 60),
               metaDescription: meta(a2LocationIntro(city, "ar")),
             },
           ],
@@ -94,7 +94,12 @@ async function seedA2CitiesAndCommunities(uaeId: string, locationIds: Map<string
   const communities = master.locations.filter((l) => l.type === "community" || l.type === "area");
   for (const community of communities) {
     const parentName = resolveParentCityName(community.parentCityMunicipality);
-    const parentSlug = cityByEmName.get(`${community.emirateSlug}|${parentName}`);
+    const emirateMaster = master.locations.find((row) => row.slug === community.emirateSlug);
+    // Some communities parent directly to the emirate (e.g. Abu Dhabi municipality = emirate name).
+    const parentSlug =
+      emirateMaster?.nameEn === parentName
+        ? community.emirateSlug!
+        : cityByEmName.get(`${community.emirateSlug}|${parentName}`);
     const parentId = parentSlug ? locationIds.get(parentSlug) : undefined;
     if (!parentId) {
       throw new Error(`A2 missing parent city for ${community.slug} (${community.emirateSlug}|${parentName})`);
@@ -121,7 +126,7 @@ async function seedA2CitiesAndCommunities(uaeId: string, locationIds: Map<string
               locale: "ar",
               name: community.nameAr,
               intro: a2LocationIntro(community, "ar"),
-              seoTitle: `${community.nameAr === "REVIEW_REQUIRED" ? community.nameEn : community.nameAr} | النجاح الدائم`.slice(0, 60),
+              seoTitle: `${community.nameAr === "REVIEW_REQUIRED" ? community.nameEn : community.nameAr} | النجاح الدائم · Fixpoint`.slice(0, 60),
               metaDescription: meta(a2LocationIntro(community, "ar")),
             },
           ],
@@ -287,15 +292,15 @@ async function seedCatalogAndContent() {
           {
             locale: "en",
             name: locationTree.uae.name.en,
-            intro: "ALNAJAH ALDAEM serves cleaning and building maintenance enquiries across the UAE. Dedicated pages are published per emirate when content is useful.",
-            seoTitle: "Locations | ALNAJAH ALDAEM",
+            intro: "Al Najah Al Daem · Fixpoint serves cleaning and building maintenance enquiries across the UAE. Dedicated pages are published per emirate when content is useful.",
+            seoTitle: "Locations | Al Najah Al Daem · Fixpoint",
             metaDescription: "Cleaning and building maintenance enquiry coverage across the United Arab Emirates.",
           },
           {
             locale: "ar",
             name: locationTree.uae.name.ar,
-            intro: "تستقبل النجاح الدائم طلبات التنظيف وصيانة المباني في الإمارات. تُنشر صفحات مستقلة لكل إمارة عندما يكون المحتوى مفيداً.",
-            seoTitle: "المناطق | النجاح الدائم",
+            intro: "تستقبل النجاح الدائم · Fixpoint طلبات التنظيف وصيانة المباني في الإمارات. تُنشر صفحات مستقلة لكل إمارة عندما يكون المحتوى مفيداً.",
+            seoTitle: "المناطق | النجاح الدائم · Fixpoint",
             metaDescription: "تغطية طلبات التنظيف وصيانة المباني في دولة الإمارات العربية المتحدة.",
           },
         ],
@@ -319,7 +324,7 @@ async function seedCatalogAndContent() {
             {
               locale: "en",
               name: em.name.en,
-              intro: `${em.name.en} service area for ALNAJAH ALDAEM. ${em.local}`,
+              intro: `${em.name.en} service area for Al Najah Al Daem · Fixpoint. ${em.local}`,
               localServiceInfo: em.local,
               propertyTypes: em.properties,
               nearbyAreas: em.nearby,
@@ -339,7 +344,7 @@ async function seedCatalogAndContent() {
               localServiceInfo: em.localAr,
               propertyTypes: em.propertiesAr,
               nearbyAreas: em.nearbyAr,
-              seoTitle: `تنظيف وصيانة في ${em.name.ar} | النجاح الدائم`,
+              seoTitle: `تنظيف وصيانة في ${em.name.ar} | النجاح الدائم · Fixpoint`,
               metaDescription: meta(em.localAr),
               faq: JSON.stringify([
                 {
@@ -401,7 +406,7 @@ async function seedCatalogAndContent() {
                 locale: "ar",
                 intro: pairIntro(svc.name.ar, em.name.ar, svc.short.ar, em.climateAr, em.localAr),
                 localInfo: `${em.propertiesAr} ${svc.whenPro.ar}`,
-                seoTitle: `${svc.name.ar} في ${em.name.ar} | النجاح الدائم`,
+                seoTitle: `${svc.name.ar} في ${em.name.ar} | النجاح الدائم · Fixpoint`,
                 metaDescription: meta(`${svc.short.ar} ${em.name.ar}. ${em.localAr}`),
                 faq: JSON.stringify([
                   {

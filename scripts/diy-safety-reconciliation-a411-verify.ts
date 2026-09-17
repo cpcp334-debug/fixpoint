@@ -89,7 +89,7 @@ async function main() {
   const matrix = assertDiyMatrixCounts();
   assert(matrix.ok, "matrix counts");
   assert(APPROVED_CATEGORIES.length === 18, "18 parents");
-  assert(APPROVED_CHILDREN.length === 293, "293 children");
+  assert(APPROVED_CHILDREN.length === 436, "436 children");
 
   const population = await measureServiceLocationPopulation(prisma);
   assertPopulationInvariants(population);

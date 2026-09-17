@@ -1,6 +1,9 @@
 import type { MetadataRoute } from "next";
 import { getSiteUrl } from "@/config/site";
 
+/** Keep in sync with SITEMAP_PAIR_SHARDS in sitemap.ts. Do not import sitemap.ts (it loads Prisma). */
+const SITEMAP_PAIR_SHARDS = 32;
+
 const publicSiteAllow = "/";
 const crawlerDisallow = [
   "/admin",
@@ -26,6 +29,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "Bingbot", ...rule },
       { userAgent: "OAI-SearchBot", ...rule },
     ],
-    sitemap: `${site}/sitemap.xml`,
+    // generateSitemaps serves /sitemap/{id}.xml. /sitemap.xml is not a live index in this app.
+    sitemap: Array.from({ length: SITEMAP_PAIR_SHARDS }, (_, id) => `${site}/sitemap/${id}.xml`),
   };
 }

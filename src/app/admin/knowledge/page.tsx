@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { needPermission } from "@/lib/admin/guard";
-import { AdminTable, Forbidden, PageHeader } from "@/components/admin/Ui";
+import { AdminBulkTable, AdminFlash, Forbidden, PageHeader } from "@/components/admin/Ui";
 import { parseAudiences } from "@/lib/knowledge/access";
 import { listInternalSops } from "@/lib/knowledge/sops";
-import { setKnowledgeStatusAction } from "@/app/admin/actions";
 
 export const metadata = {
   title: "Knowledge | Admin",
@@ -13,23 +12,29 @@ export const metadata = {
 export default async function KnowledgePage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; status?: string; audience?: string }>;
+  searchParams: Promise<{ q?: string; status?: string; audience?: string; ok?: string; error?: string }>;
 }) {
   const auth = await needPermission("knowledge");
   if (!auth.ok) return <Forbidden />;
   const query = await searchParams;
   const rows = await listInternalSops({ q: query.q, status: query.status, audience: query.audience });
+  const sp = new URLSearchParams();
+  if (query.q) sp.set("q", query.q);
+  if (query.status) sp.set("status", query.status);
+  if (query.audience) sp.set("audience", query.audience);
+  const returnTo = `/admin/knowledge${sp.toString() ? `?${sp}` : ""}`;
   return (
     <div>
       <PageHeader
         title="Knowledge / SOPs"
-        note="Internal operating procedures for staff and the Co-Founder. These are not public pages. Only ACTIVE INTERNAL SOPs are retrievable by AI."
+        note="Bulk: Publish = ACTIVE, Hide = DRAFT, Soft-remove = ARCHIVED. Internal only — not public pages."
         actions={
           <Link className="text-navy" href="/admin/knowledge/new">
             New SOP
           </Link>
         }
       />
+      <AdminFlash ok={query.ok} error={query.error} />
       <form className="mb-4 flex flex-wrap gap-2 text-sm" method="get">
         <input name="q" defaultValue={query.q || ""} placeholder="Search title, code, audience" className="min-w-48 rounded-md border border-line px-3 py-2" />
         <select name="status" defaultValue={query.status || ""} className="rounded-md border border-line px-3 py-2">
@@ -49,60 +54,35 @@ export default async function KnowledgePage({
           Filter
         </button>
       </form>
-      <AdminTable headers={["SOP", "Code", "Audience", "Status", "Version", "Updated", "Updated by", ""]}>
-        {rows.map((row) => (
-          <tr key={row.id} className="border-t border-line">
-            <td className="px-3 py-2">
+      <AdminBulkTable
+        entity="knowledge"
+        returnTo={returnTo}
+        headers={["SOP", "Code", "Audience", "Status", "Version", "Updated", "Updated by", ""]}
+        actionLabels={{ publish: "Activate", hide: "Deactivate", archive: "Archive" }}
+        rows={rows.map((row) => ({
+          id: row.id,
+          cells: [
+            <Link key="title" className="text-navy" href={`/admin/knowledge/${row.id}`}>
+              {row.title}
+            </Link>,
+            row.sopCode,
+            parseAudiences(row.audienceJson).join(", ") || "—",
+            row.status,
+            row.version,
+            row.updatedAt.toISOString().slice(0, 10),
+            row.updatedBy || "—",
+            <div key="links" className="flex flex-wrap gap-2">
               <Link className="text-navy" href={`/admin/knowledge/${row.id}`}>
-                {row.title}
+                Edit
               </Link>
-            </td>
-            <td className="px-3 py-2">{row.sopCode}</td>
-            <td className="px-3 py-2">{parseAudiences(row.audienceJson).join(", ") || "—"}</td>
-            <td className="px-3 py-2">{row.status}</td>
-            <td className="px-3 py-2">{row.version}</td>
-            <td className="px-3 py-2">{row.updatedAt.toISOString().slice(0, 10)}</td>
-            <td className="px-3 py-2">{row.updatedBy || "—"}</td>
-            <td className="px-3 py-2">
-              <div className="flex flex-wrap gap-2">
-                <Link className="text-navy" href={`/admin/knowledge/${row.id}`}>
-                  Edit
-                </Link>
-                <Link className="text-navy" href={`/admin/knowledge/${row.id}/preview`}>
-                  Preview
-                </Link>
-                {row.status !== "ACTIVE" ? (
-                  <form action={setKnowledgeStatusAction}>
-                    <input type="hidden" name="id" value={row.id} />
-                    <input type="hidden" name="status" value="ACTIVE" />
-                    <button type="submit" className="text-navy">
-                      Activate
-                    </button>
-                  </form>
-                ) : (
-                  <form action={setKnowledgeStatusAction}>
-                    <input type="hidden" name="id" value={row.id} />
-                    <input type="hidden" name="status" value="DRAFT" />
-                    <button type="submit" className="text-navy">
-                      Deactivate
-                    </button>
-                  </form>
-                )}
-                {row.status !== "ARCHIVED" ? (
-                  <form action={setKnowledgeStatusAction}>
-                    <input type="hidden" name="id" value={row.id} />
-                    <input type="hidden" name="status" value="ARCHIVED" />
-                    <button type="submit" className="text-navy">
-                      Archive
-                    </button>
-                  </form>
-                ) : null}
-              </div>
-            </td>
-          </tr>
-        ))}
-      </AdminTable>
-      {!rows.length ? <p className="mt-4 text-sm text-muted">No internal SOPs match.</p> : null}
+              <Link className="text-navy" href={`/admin/knowledge/${row.id}/preview`}>
+                Preview
+              </Link>
+            </div>,
+          ],
+        }))}
+        emptyNote="No internal SOPs match."
+      />
     </div>
   );
 }

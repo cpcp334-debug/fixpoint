@@ -1,3 +1,4 @@
+import { brandName } from "@/config/site";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getActiveEmirates, getActiveServices } from "@/lib/catalog";
 import { getApprovedServiceReviews, summarizeApprovedServiceReviews, toPublicReview } from "@/lib/reviews";
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: "ReviewsPage" });
   return buildMetadata({
     locale,
-    title: `${t("title")} | ALNAJAH ALDAEM`,
+    title: `${t("title")} | ${brandName(locale)}`,
     description: t("lead"),
     path: "/reviews",
   });
@@ -95,7 +96,7 @@ export default async function ReviewsPage({
         )}
       />
 
-      <PublicHero kicker={t("title")} title={t("title")} lead={t("lead")} compact />
+      <PublicHero locale={locale} kicker={t("title")} title={t("title")} lead={t("lead")} compact />
 
       <Section>
         <form method="get" className="grid gap-4 rounded-xl border border-line bg-sand p-5 sm:grid-cols-2">

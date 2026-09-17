@@ -1,3 +1,4 @@
+import { brandName } from "@/config/site";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const articles = await getPublishedBlogArticles(locale);
   return buildMetadata({
     locale,
-    title: `${t("title")} | ALNAJAH ALDAEM`,
+    title: `${t("title")} | ${brandName(locale)}`,
     description: t("lead"),
     path: "/blog",
     index: articles.length > 0,

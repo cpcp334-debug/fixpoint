@@ -1,5 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { siteConfig } from "@/config/site";
+import { brandName } from "@/config/site";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { Section, SectionHeader } from "@/components/ui/Section";
@@ -11,7 +11,7 @@ import { CtaBand } from "@/components/public/CtaBand";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "About" });
-  return buildMetadata({ locale, title: `${t("title")} | ALNAJAH ALDAEM`, description: t("lead"), path: "/about" });
+  return buildMetadata({ locale, title: `${t("title")} | ${brandName(locale)}`, description: t("lead"), path: "/about" });
 }
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -31,7 +31,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         />
       }
     >
-      <PublicHero kicker={siteConfig.brand} title={t("title")} lead={t("lead")} />
+      <PublicHero locale={locale} kicker={brandName(locale)} title={t("title")} lead={t("lead")} />
       <Section>
         <ProseCard title={t("teamTitle")}>{t("teamBody")}</ProseCard>
       </Section>

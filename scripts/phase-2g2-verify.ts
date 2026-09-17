@@ -296,7 +296,7 @@ async function main() {
   assert(publicSrc.includes("runAlnajahAi"), "public AI orchestrator intact");
   assert(!publicSrc.includes("get_sop"), "public AI has no internal SOP tools");
   const openaiSrc = readFileSync(join(process.cwd(), "src/lib/ai/openai.ts"), "utf8");
-  assert(openaiSrc.includes("You are ALNAJAH AI for ALNAJAH ALDAEM"), "public system prompt unchanged");
+  assert(openaiSrc.includes("You are ALNAJAH AI for Al Najah Al Daem"), "public system prompt unchanged");
   const publicRoute = readFileSync(join(process.cwd(), "src/app/api/ai/chat/route.ts"), "utf8");
   assert(publicRoute.includes("runAlnajahAi") && !publicRoute.includes("runCofounder"), "public chat route unchanged");
 

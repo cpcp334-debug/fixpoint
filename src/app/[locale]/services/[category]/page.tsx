@@ -1,8 +1,9 @@
+import { brandName } from "@/config/site";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { buildApprovedNavTree, getNavCategory, getNavCategoryLocalized } from "@/lib/catalog/approved-nav";
-import { getServiceBySlug } from "@/lib/catalog";
+import { getApprovedCatalogServiceBySlug, getServiceBySlug } from "@/lib/catalog";
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -11,6 +12,8 @@ import { PageShell } from "@/components/public/PageShell";
 import { PublicHero } from "@/components/public/PublicHero";
 import { CtaBand } from "@/components/public/CtaBand";
 import { CategoryChildGrid } from "@/components/catalog/CategoryChildGrid";
+import { TopElectricalServices } from "@/components/catalog/TopElectricalServices";
+import { TOP_ELECTRICAL_SLUGS } from "../../../../../prisma/data/electrical-service-copy";
 
 export async function generateStaticParams() {
   return buildApprovedNavTree().map((c) => ({ category: c.slug }));
@@ -27,7 +30,7 @@ export async function generateMetadata({
   const loc = getNavCategoryLocalized(cat, locale);
   return buildMetadata({
     locale,
-    title: `${loc.name} | ALNAJAH ALDAEM`,
+    title: `${loc.name} | ${brandName(locale)}`,
     description: loc.description,
     path: `/services/${cat.slug}`,
   });
@@ -49,20 +52,22 @@ export default async function CategoryPage({
   const cta = await getTranslations("Cta");
   const loc = getNavCategoryLocalized(cat, locale);
 
+  const anchorPublished = cat.anchorSlug ? Boolean(await getServiceBySlug(cat.anchorSlug, locale)) : false;
   const childrenWithNames = await Promise.all(
     cat.children.map(async (child) => {
-      const svc = await getServiceBySlug(child.slug, locale);
+      const svc = await getApprovedCatalogServiceBySlug(child.slug, locale);
       let name = child.nameEn;
-      let description = cat.descriptionEn;
-      if (locale === "ar") {
-        const arName = svc?.translations?.find((x) => x.locale === "ar")?.name;
-        const arDesc = svc?.translations?.find((x) => x.locale === "ar")?.shortDescription;
-        name = arName && /[\u0600-\u06FF]/.test(arName) ? arName : t("serviceFallback", { slug: child.slug });
-        description =
-          arDesc && /[\u0600-\u06FF]/.test(arDesc) ? arDesc : cat.descriptionAr;
-      } else if (svc?.t) {
-        name = svc.t.name || child.nameEn;
-        description = svc.t.shortDescription || cat.descriptionEn;
+      let description = locale === "ar" ? cat.descriptionAr : cat.descriptionEn;
+      if (svc) {
+        if (locale === "ar") {
+          const arName = svc.translations?.find((x) => x.locale === "ar")?.name;
+          const arDesc = svc.translations?.find((x) => x.locale === "ar")?.shortDescription;
+          name = arName && /[\u0600-\u06FF]/.test(arName) ? arName : t("serviceFallback", { slug: child.slug });
+          description = arDesc && /[\u0600-\u06FF]/.test(arDesc) ? arDesc : cat.descriptionAr;
+        } else {
+          name = svc.t.name || child.nameEn;
+          description = svc.t.shortDescription || cat.descriptionEn;
+        }
       }
       return {
         slug: child.slug,
@@ -76,7 +81,7 @@ export default async function CategoryPage({
   const aeo = [
     {
       q: t("aeoWhatQ", { category: loc.name }),
-      a: t("aeoWhatA", { category: loc.name, count: cat.childCount }),
+      a: t("aeoWhatA", { category: loc.name, count: childrenWithNames.length }),
     },
     { q: t("aeoBookQ"), a: t("aeoBookA") },
     { q: t("aeoCoverQ"), a: t("aeoCoverA") },
@@ -111,18 +116,29 @@ export default async function CategoryPage({
           "@type": "CollectionPage",
           name: loc.name,
           description: loc.description,
-          numberOfItems: cat.childCount,
+          numberOfItems: childrenWithNames.length,
         }}
       />
       <JsonLd data={faqJsonLd(aeo.map((x) => ({ q: x.q, a: x.a })))} />
 
-      <PublicHero title={loc.name} lead={loc.description} kicker={loc.childCountLabel} />
+      <PublicHero locale={locale} title={loc.name} lead={loc.description} kicker={loc.childCountLabel} />
+
+      {cat.slug === "electrical" ? (
+        <Section>
+          <TopElectricalServices
+            locale={locale}
+            title={t("topElectricalTitle")}
+            lead={t("topElectricalLead")}
+            cta={home("viewService")}
+          />
+        </Section>
+      ) : null}
 
       {cat.isCategoryOnlyHub ? (
         <Section>
           <p className="text-sm text-muted">{t("hubNote")}</p>
         </Section>
-      ) : cat.anchorSlug ? (
+      ) : cat.anchorSlug && anchorPublished ? (
         <Section>
           <p className="text-sm">
             <Link href={`/${cat.anchorSlug}`} className="font-medium text-accent">
@@ -133,10 +149,20 @@ export default async function CategoryPage({
       ) : null}
 
       <Section tone="sand">
-        <SectionHeader title={t("childrenTitle")} lead={t("childrenLead", { count: cat.childCount })} />
+        <SectionHeader title={t("childrenTitle")} lead={t("childrenLead", { count: childrenWithNames.length })} />
         <div className="mt-6">
           <CategoryChildGrid
-            items={childrenWithNames}
+            items={
+              cat.slug === "electrical"
+                ? [...childrenWithNames].sort((a, b) => {
+                    const rank = (slug: string) => {
+                      const i = TOP_ELECTRICAL_SLUGS.indexOf(slug as (typeof TOP_ELECTRICAL_SLUGS)[number]);
+                      return i === -1 ? 100 : i;
+                    };
+                    return rank(a.slug) - rank(b.slug);
+                  })
+                : childrenWithNames
+            }
             searchPlaceholder={t("searchPlaceholder")}
             emptyLabel={t("searchEmpty")}
             cta={home("viewService")}

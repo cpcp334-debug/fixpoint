@@ -1,5 +1,5 @@
 /**
- * Approved A1 navigation tree — 18 parents + 293 children.
+ * Approved navigation tree — 18 parents + 436 children.
  * Category-only hubs have no parent Service row; children link directly.
  */
 import {
@@ -63,7 +63,7 @@ const DESCRIPTION_AR: Record<string, string> = {
   cleaning: "خدمات تنظيف المباني والوحدات السكنية والتجارية داخل الإمارات.",
   "general-maintenance": "صيانة عامة وإصلاحات للمباني السكنية والتجارية.",
   plumbing: "معالجة التسريبات والصرف والتجهيزات الصحية.",
-  electrical: "فحص وإصلاح كهربائي مهني مع الالتزام بالسلامة.",
+  electrical: "فحص وتشخيص وإصلاح للمقابس والإنارة والتمديدات ولوحات التوزيع والتأريض وأعطال كهرباء المباني. ذكر الخدمة لا يعني التغطية. أعمال الكهرباء الحية ليست دليلاً منزلياً.",
   ac: "صيانة وتشخيص وخدمة أجهزة التكييف.",
   painting: "خدمات الدهان الداخلي وما يرتبط بها.",
   walls: "إصلاح الجبس والتشققات وأسطح الجدران.",
@@ -122,6 +122,17 @@ export function buildApprovedNavTree(): NavCategory[] {
       anchorSlug: anchorForCategory(cat.slug),
     } satisfies NavCategory;
   });
+}
+
+/** Visitor grids: Electrical first, Cleaning last. Catalog sortOrder is unchanged. */
+export function buildVisitorNavTree(): NavCategory[] {
+  return buildApprovedNavTree().slice().sort((a, b) => visitorRank(a.slug) - visitorRank(b.slug));
+}
+
+function visitorRank(slug: string) {
+  if (slug === "electrical") return 0;
+  if (slug === "cleaning") return 1000;
+  return 10;
 }
 
 export function getNavCategory(slug: string): NavCategory | undefined {

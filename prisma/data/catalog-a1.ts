@@ -1,7 +1,9 @@
 /**
- * Phase A1 — authoritative 311-offering master catalog (18 parents + 293 children).
- * Do not invent/remove/merge/silently rename approved names.
+ * Authoritative catalog: 18 parents + 436 children = 454 offerings.
+ * Electrical children are the approved 160 list. Do not invent extra names.
  */
+
+import { ELECTRICAL_CHILD_NAMES } from "./electrical-children-160";
 
 export const REVIEW_REQUIRED = "REVIEW_REQUIRED";
 
@@ -47,7 +49,8 @@ export const APPROVED_CATEGORIES: ApprovedCategorySeed[] = [
     sopCode: "SOP-018",
     nameEn: "Electrical Maintenance",
     nameAr: "الكهرباء",
-    descriptionEn: "Professional electrical inspection and repair.",
+    descriptionEn:
+      "Professional inspection, diagnosis, and repair for sockets, lighting, wiring, distribution boards, earthing, and building electrical faults. A listed job is not a coverage promise. Live electrical work is not a DIY topic.",
   },
   {
     slug: "ac",
@@ -299,7 +302,7 @@ function children(categorySlug: string, names: string[], startOrder: number): Ap
 }
 
 /**
- * Exact approved 293 children. Only slug exception:
+ * Exact approved 436 children. Only slug exception:
  * "Water Tank Cleaning" → water-tank-cleaning-service (legacy draft keeps water-tank-cleaning).
  */
 export const APPROVED_CHILDREN: ApprovedChildDef[] = [
@@ -380,29 +383,7 @@ export const APPROVED_CHILDREN: ApprovedChildDef[] = [
     ],
     41,
   ),
-  ...children(
-    "electrical",
-    [
-      "Electrical Inspection",
-      "Electrical Fault Finding",
-      "Socket Repair",
-      "Socket Replacement",
-      "Switch Repair",
-      "Switch Replacement",
-      "Light Installation",
-      "Light Repair",
-      "LED Light Installation",
-      "LED Light Replacement",
-      "Wiring Inspection",
-      "Wiring Repair",
-      "Wiring Replacement",
-      "Circuit Breaker Inspection",
-      "Circuit Breaker Replacement",
-      "Distribution Board Inspection",
-      "Short-Circuit Diagnosis",
-    ],
-    60,
-  ),
+  ...children("electrical", [...ELECTRICAL_CHILD_NAMES], 60),
   ...children(
     "ac",
     [
@@ -730,8 +711,32 @@ export function assertCatalogA1Counts(): { parents: number; children: number; of
   const children = APPROVED_CHILDREN.length;
   const offerings = parents + children;
   if (parents !== 18) throw new Error(`A1 parents must be 18, got ${parents}`);
-  if (children !== 293) throw new Error(`A1 children must be 293, got ${children}`);
-  if (offerings !== 311) throw new Error(`A1 offerings must be 311, got ${offerings}`);
+  if (children !== 436) throw new Error(`A1 children must be 436, got ${children}`);
+  if (offerings !== 454) throw new Error(`A1 offerings must be 454, got ${offerings}`);
+  const expectedByCategory: Record<string, number> = {
+    cleaning: 23,
+    "general-maintenance": 17,
+    plumbing: 19,
+    electrical: 160,
+    ac: 18,
+    painting: 16,
+    walls: 15,
+    "swimming-pool": 15,
+    sauna: 14,
+    "water-tank": 16,
+    refrigerator: 15,
+    microwave: 13,
+    "washing-machine": 16,
+    "water-heater": 15,
+    dishwasher: 15,
+    gym: 15,
+    oven: 15,
+    "burner-cooker": 19,
+  };
+  for (const [slug, expected] of Object.entries(expectedByCategory)) {
+    const got = APPROVED_CHILDREN.filter((c) => c.categorySlug === slug).length;
+    if (got !== expected) throw new Error(`${slug} children must be ${expected}, got ${got}`);
+  }
 
   const slugs = APPROVED_CHILDREN.map(childSlug);
   const seen = new Set<string>();

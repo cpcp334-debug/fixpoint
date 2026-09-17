@@ -221,7 +221,7 @@ function buildEn(args: {
       a: `${focus} follows dry clear → spot test → sectioned wet pass → rinse → dry → document. A tidy skips verification and often spreads grit. Compare against ${uniq[32]} notes.`,
     },
     {
-      q: `When should I book ALNAJAH ALDAEM instead of more DIY ${focus}?`,
+      q: `When should I book Al Najah Al Daem instead of more DIY ${focus}?`,
       a: `When access needs tools beyond hand removal, finishes are valuable or unknown, moisture returns within a day, or symptoms involve building systems. Bring photos tagged ${uniq[33]}.`,
     },
     {
@@ -262,8 +262,8 @@ function buildEn(args: {
     faq: JSON.stringify(faqs),
     difficulty: seed % 2 === 0 ? "easy" : "moderate",
     estimatedTime: `${30 + (seed % 6) * 5}-${50 + (seed % 4) * 10} minutes`,
-    seoTitle: `${args.title} | ALNAJAH ALDAEM DIY`,
-    metaDescription: `Practical ${focus} guidance: safe sequence, stop conditions, and when to book inspection. Educational DIY from ALNAJAH ALDAEM.`,
+    seoTitle: `${args.title} | Al Najah Al Daem DIY`,
+    metaDescription: `Practical ${focus} guidance: safe sequence, stop conditions, and when to book inspection. Educational DIY from Al Najah Al Daem.`,
   });
 }
 

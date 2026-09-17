@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
-import { can, exportAllowed, roleLabel, type AdminPermission, canViewTasks } from "@/lib/admin/rbac";
-import { DATASETS } from "@/lib/admin/datasets";
-import type { StaffSession } from "@/lib/admin/auth";
-import { canViewAnalytics } from "@/lib/insights/rbac";
-import { canUseCoFounder } from "@/lib/cofounder/rbac";
+
+export { AdminNav } from "@/components/admin/AdminNav";
+export { AdminBulkTable } from "@/components/admin/AdminBulkTable";
+export { AdminFlash } from "@/components/admin/AdminFlash";
+export { AdminCatalogEmptyHint, AdminListSummary } from "@/components/admin/AdminListSummary";
+export { AdminPreviewLinks } from "@/components/admin/AdminPreviewLinks";
+export { AdminHardDeleteButton } from "@/components/admin/AdminHardDeleteButton";
 
 export function Forbidden() {
   return (
@@ -150,63 +151,5 @@ export function LineItems({ rows }: { rows?: Array<{ description: string; quanti
         </tbody>
       </table>
     </div>
-  );
-}
-
-const LINKS: Array<{ href: string; label: string; permission: AdminPermission }> = [
-  { href: "/admin", label: "Dashboard", permission: "dashboard" },
-  { href: "/admin/ai", label: "AI Co-Founder", permission: "dashboard" },
-  { href: "/admin/analytics", label: "Analytics", permission: "dashboard" },
-  { href: "/admin/automation", label: "Automation", permission: "automation" },
-  { href: "/admin/knowledge", label: "Knowledge", permission: "knowledge" },
-  { href: "/admin/leads", label: "Leads", permission: "leads" },
-  { href: "/admin/customers", label: "Customers", permission: "customers" },
-  { href: "/admin/bookings", label: "Bookings", permission: "bookings" },
-  { href: "/admin/tasks", label: "Tasks", permission: "dashboard" },
-  { href: "/admin/work-orders", label: "Work orders", permission: "work_orders" },
-  { href: "/admin/reviews", label: "Reviews", permission: "reviews" },
-  { href: "/admin/questions", label: "Q&A", permission: "questions" },
-  { href: "/admin/services", label: "Services", permission: "services" },
-  { href: "/admin/service-pages", label: "Service pages", permission: "services" },
-  { href: "/admin/locations", label: "Locations", permission: "locations" },
-  { href: "/admin/diy", label: "DIY / content", permission: "diy" },
-  { href: "/admin/quotes", label: "Quotations", permission: "quotes" },
-  { href: "/admin/invoices", label: "Invoices", permission: "invoices" },
-  { href: "/admin/amc", label: "AMC", permission: "amc" },
-  { href: "/admin/pricing", label: "Pricing rules", permission: "pricing" },
-  { href: "/admin/exports", label: "Exports", permission: "exports" },
-  { href: "/admin/audit", label: "Audit log", permission: "audit" },
-  { href: "/admin/staff", label: "Staff", permission: "staff" },
-];
-
-export function AdminNav({ session }: { session: StaffSession }) {
-  const items = LINKS.filter((link) => {
-    if (link.href === "/admin/analytics") return canViewAnalytics(session.role);
-    if (link.href === "/admin/ai") return canUseCoFounder(session.role);
-    if (link.href === "/admin/tasks") return canViewTasks(session.role);
-    if (link.permission === "exports") return DATASETS.some((dataset) => exportAllowed(session.role, dataset));
-    return can(session.role, link.permission);
-  });
-  return (
-    <aside className="flex w-60 shrink-0 flex-col bg-navy text-white">
-      <div className="border-b border-white/10 px-4 py-4">
-        <p className="text-xs uppercase tracking-widest text-gold">Staff</p>
-        <p className="font-semibold">ALNAJAH ALDAEM</p>
-      </div>
-      <nav className="flex-1 overflow-y-auto px-2 py-3 text-sm">
-        {items.map((link) => (
-          <Link key={link.href} href={link.href} className="block rounded-md px-3 py-2 text-white/85 hover:bg-white/10">
-            {link.label}
-          </Link>
-        ))}
-      </nav>
-      <div className="border-t border-white/10 px-4 py-3 text-xs text-white/70">
-        <p>{session.name}</p>
-        <p className="capitalize">{roleLabel(session.role)}</p>
-        <Link href="/admin/account" className="mt-2 inline-block text-gold">
-          Account
-        </Link>
-      </div>
-    </aside>
   );
 }

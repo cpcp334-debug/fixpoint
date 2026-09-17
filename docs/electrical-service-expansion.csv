@@ -1,0 +1,122 @@
+name,slug,area,action,riskLevel,diyAvailable,duplicateCheck,regulatoryReview,reason
+AC Isolator Installation,ac-isolator-installation,connections,ADD,RED,false,unique,standard,AC isolator — building electrical
+Backup Generator Changeover Inspection,backup-generator-changeover-inspection,other,ADD,REVIEW_REQUIRED,false,unique,required,Generator ATS/changeover; specialized
+Breaker Tripping Diagnosis,breaker-tripping-diagnosis,diagnosis,ADD,YELLOW,true,unique,standard,Distinct from short-circuit diagnosis
+Building Electrical Preventive Maintenance,building-electrical-preventive-maintenance,preventive,ADD,YELLOW,true,unique,standard,Scheduled building electrical PM
+Burning Smell Electrical Investigation,burning-smell-electrical-investigation,emergency,ADD,RED,false,unique,standard,High-risk investigation; no DIY procedure
+Cable Replacement,cable-replacement,wiring,ADD,RED,false,unique,standard,Cable run replacement
+Cable Tray Installation,cable-tray-installation,commercial,ADD,RED,false,unique,standard,Commercial containment
+Ceiling Fan Installation,ceiling-fan-installation,fans,ADD,RED,false,unique,standard,Ceiling fan mount/electrical
+Ceiling Fan Repair,ceiling-fan-repair,fans,ADD,YELLOW,true,unique,standard,Fan repair intent
+Ceiling Fan Replacement,ceiling-fan-replacement,fans,ADD,RED,false,unique,standard,Full fan swap
+Ceiling Light Installation,ceiling-light-installation,lighting,ADD,RED,false,unique,standard,Fixture-specific install
+Chandelier Installation,chandelier-installation,lighting,ADD,RED,false,unique,standard,Heavy fixture / structural fixings
+Circuit Breaker Inspection,circuit-breaker-inspection,existing,KEEP,YELLOW,true,unique,standard,Existing approved baseline service
+Circuit Breaker Replacement,circuit-breaker-replacement,existing,KEEP,RED,false,unique,standard,Existing approved baseline service
+Commercial Electrical Maintenance,commercial-electrical-maintenance,commercial,ADD,YELLOW,true,unique,standard,Commercial property electrical
+Common Area Electrical Maintenance,common-area-electrical-maintenance,building,ADD,YELLOW,true,unique,standard,Shared-area electrical maintenance
+Concealed Wiring Installation,concealed-wiring-installation,wiring,ADD,REVIEW_REQUIRED,false,unique,required,In-wall works; higher risk/regulatory
+Contactor Replacement,contactor-replacement,controls,ADD,RED,false,unique,standard,Control gear replacement
+Cooker Electrical Connection,cooker-electrical-connection,connections,ADD,REVIEW_REQUIRED,false,unique,required,Cooker circuit connection; safety review
+DB Labeling and Circuit Mapping,db-labeling-and-circuit-mapping,distribution,ADD,YELLOW,true,unique,standard,Documentation / identification service
+Dedicated Circuit Installation,dedicated-circuit-installation,wiring,ADD,RED,false,unique,standard,New circuit from DB
+Dimmer Switch Installation,dimmer-switch-installation,sockets-switches,ADD,RED,false,unique,standard,Distinct switch type install
+Dimmer Switch Repair,dimmer-switch-repair,sockets-switches,ADD,YELLOW,true,unique,standard,Dimmer-specific fault
+Distribution Board Inspection,distribution-board-inspection,existing,KEEP,REVIEW_REQUIRED,false,unique,required,Existing approved baseline service
+Distribution Board Installation,distribution-board-installation,distribution,ADD,REVIEW_REQUIRED,false,unique,required,Major DB work; authorized contractors
+Distribution Board Repair,distribution-board-repair,distribution,ADD,RED,false,unique,standard,DB corrective work
+Distribution Board Upgrade,distribution-board-upgrade,distribution,ADD,REVIEW_REQUIRED,false,unique,required,Capacity/upgrade scope
+Doorbell Installation,doorbell-installation,other,ADD,YELLOW,true,unique,standard,Low-voltage/doorbell install
+Doorbell Repair,doorbell-repair,other,ADD,GREEN,true,unique,standard,Often low-risk observation/simple repair path
+Downlight Installation,downlight-installation,lighting,ADD,RED,false,unique,standard,Recessed lighting scope
+Downlight Replacement,downlight-replacement,lighting,ADD,YELLOW,true,unique,standard,Like-for-like recessed swap when safe
+Earthing Inspection,earthing-inspection,earthing,ADD,YELLOW,true,unique,standard,Earthing health check
+Earthing Repair,earthing-repair,earthing,ADD,RED,false,unique,standard,Protective earth work requires qualified work
+Electric Gate Motor Electrical Diagnosis,electric-gate-motor-electrical-diagnosis,other,ADD,REVIEW_REQUIRED,false,unique,required,Gate automation electrical; specialized
+Electrical Appliance Point Installation,electrical-appliance-point-installation,connections,ADD,RED,false,unique,standard,New appliance supply point
+Electrical Control Panel Inspection,electrical-control-panel-inspection,controls,ADD,YELLOW,true,unique,standard,Panel inspection
+Electrical Control Panel Repair,electrical-control-panel-repair,controls,ADD,REVIEW_REQUIRED,false,unique,required,Panel repair may be specialized
+Electrical Fault Diagnosis,electrical-fault-diagnosis,existing,RENAME,YELLOW,true,unique,standard,Aligns terminology with other diagnosis offerings; clearer customer language. Pre-launch OK to change.
+Electrical Inspection,electrical-inspection,existing,KEEP,YELLOW,true,unique,standard,Existing approved baseline service
+Electrical Load Inspection,electrical-load-inspection,inspection,ADD,YELLOW,true,unique,standard,Load assessment intent distinct from fault finding
+Electrical Overheating Investigation,electrical-overheating-investigation,emergency,ADD,RED,false,unique,standard,Thermal hazard investigation
+Electrical Safety Inspection,electrical-safety-inspection,inspection,ADD,YELLOW,true,unique,standard,Distinct safety-focused inspection vs general inspection
+Emergency Electrical Fault Repair,emergency-electrical-fault-repair,emergency,ADD,RED,false,unique,standard,Emergency response offering
+Emergency Light Inspection,emergency-light-inspection,lighting,ADD,YELLOW,true,unique,standard,Life-safety lighting check
+Emergency Light Repair,emergency-light-repair,lighting,ADD,RED,false,unique,standard,Emergency lighting repair
+Equipotential Bonding Inspection,equipotential-bonding-inspection,earthing,ADD,REVIEW_REQUIRED,false,unique,required,Specialized bonding; regulated context possible
+Exhaust Fan Installation,exhaust-fan-installation,fans,ADD,RED,false,unique,standard,Exhaust fan install
+Exhaust Fan Repair,exhaust-fan-repair,fans,ADD,YELLOW,true,unique,standard,Exhaust fan repair
+Exhaust Fan Replacement,exhaust-fan-replacement,fans,ADD,RED,false,unique,standard,Exhaust fan swap
+Garden Electrical Fault Diagnosis,garden-electrical-fault-diagnosis,outdoor,ADD,YELLOW,true,unique,standard,Outdoor circuit faults
+Garden Light Installation,garden-light-installation,outdoor,ADD,RED,false,unique,standard,Landscape lighting install
+Ground Fault Diagnosis,ground-fault-diagnosis,diagnosis,ADD,YELLOW,true,unique,standard,Earth leakage / GF intent
+Intercom Power Supply Repair,intercom-power-supply-repair,other,ADD,YELLOW,true,unique,standard,Intercom PSU electrical
+Isolator Switch Installation,isolator-switch-installation,sockets-switches,ADD,RED,false,unique,standard,Appliance isolator point
+Isolator Switch Replacement,isolator-switch-replacement,sockets-switches,ADD,RED,false,unique,standard,Isolator replacement
+Junction Box Repair,junction-box-repair,wiring,ADD,RED,false,unique,standard,Joint/enclosure repair
+LED Light Installation,led-light-installation,existing,KEEP,RED,false,unique,standard,Existing approved baseline service
+LED Light Replacement,led-light-replacement,existing,KEEP,RED,false,unique,standard,Existing approved baseline service
+Light Installation,light-installation,existing,KEEP,RED,false,unique,standard,Existing approved baseline service
+Light Repair,light-repair,existing,KEEP,YELLOW,true,unique,standard,Existing approved baseline service
+Light Timer Installation,light-timer-installation,smart-sensor,ADD,RED,false,unique,standard,Timer control install
+Lobby Lighting Maintenance,lobby-lighting-maintenance,building,ADD,YELLOW,true,unique,standard,Lobby lighting maintenance
+MCB Installation,mcb-installation,protection,ADD,RED,false,unique,standard,MCB install distinct from inspection
+MCB Replacement,mcb-replacement,protection,ADD,RED,false,unique,standard,MCB like-for-like/upsize
+MCCB Inspection,mccb-inspection,protection,ADD,YELLOW,true,unique,standard,MCCB-focused inspection
+MCCB Replacement,mccb-replacement,protection,ADD,REVIEW_REQUIRED,false,unique,required,Higher-capacity breaker work
+Motion Sensor Installation,motion-sensor-installation,smart-sensor,ADD,RED,false,unique,standard,Occupancy/motion control
+Motor Starter Repair,motor-starter-repair,motors,ADD,RED,false,unique,standard,Starter gear repair
+Neutral Fault Diagnosis,neutral-fault-diagnosis,diagnosis,ADD,RED,false,unique,standard,Dangerous neutral faults
+Neutral Link Replacement,neutral-link-replacement,distribution,ADD,RED,false,unique,standard,DB neutral hardware
+No Power Diagnosis,no-power-diagnosis,diagnosis,ADD,YELLOW,true,unique,standard,Common booking intent phrase
+Office Electrical Fault Diagnosis,office-electrical-fault-diagnosis,commercial,ADD,YELLOW,true,unique,standard,Office fault intent
+Outdoor Junction Box Repair,outdoor-junction-box-repair,outdoor,ADD,RED,false,unique,standard,Weatherproof enclosure repair
+Outdoor Light Installation,outdoor-light-installation,outdoor,ADD,RED,false,unique,standard,Weather-exposed lighting
+Outdoor Light Repair,outdoor-light-repair,outdoor,ADD,YELLOW,true,unique,standard,Outdoor fixture repair
+Overload Relay Replacement,overload-relay-replacement,controls,ADD,RED,false,unique,standard,Motor protection relay
+Parking Area Electrical Maintenance,parking-area-electrical-maintenance,building,ADD,YELLOW,true,unique,standard,Parking electrical maintenance
+Partial Power Failure Diagnosis,partial-power-failure-diagnosis,diagnosis,ADD,YELLOW,true,unique,standard,Circuit-level outage vs total failure
+Phase Failure Diagnosis,phase-failure-diagnosis,commercial,ADD,YELLOW,true,unique,standard,Missing-phase / imbalance symptoms
+Pool Area Electrical Inspection,pool-area-electrical-inspection,outdoor,ADD,REVIEW_REQUIRED,false,unique,required,Wet-area electrical; heightened safety
+Power Failure Diagnosis,power-failure-diagnosis,diagnosis,ADD,YELLOW,true,unique,standard,Whole/partial outage triage
+Preventive Electrical Maintenance,preventive-electrical-maintenance,preventive,ADD,YELLOW,true,unique,standard,General preventive electrical
+RCBO Installation,rcbo-installation,protection,ADD,RED,false,unique,standard,Combined RCD/MCB device
+RCBO Replacement,rcbo-replacement,protection,ADD,RED,false,unique,standard,RCBO replacement
+RCCB Installation,rccb-installation,protection,ADD,RED,false,unique,standard,Residual current device install
+RCCB Replacement,rccb-replacement,protection,ADD,RED,false,unique,standard,RCCB replacement
+Scheduled Electrical Inspection,scheduled-electrical-inspection,preventive,ADD,YELLOW,true,unique,standard,Recurring inspection contracts
+Sensor Light Installation,sensor-light-installation,smart-sensor,ADD,RED,false,unique,standard,Sensor lighting install
+Shop Electrical Inspection,shop-electrical-inspection,commercial,ADD,YELLOW,true,unique,standard,Retail unit inspection
+Short-Circuit Diagnosis,short-circuit-diagnosis,existing,KEEP,YELLOW,true,unique,standard,Existing approved baseline service
+Site Electrical Safety Check,site-electrical-safety-check,inspection,ADD,YELLOW,true,unique,standard,Pre-handover / site safety check
+Smart Lighting Setup,smart-lighting-setup,smart-sensor,ADD,YELLOW,true,unique,standard,Commissioning/setup of smart lights
+Smart Switch Installation,smart-switch-installation,smart-sensor,ADD,RED,false,unique,standard,Smart switch install
+Smart Switch Replacement,smart-switch-replacement,smart-sensor,ADD,RED,false,unique,standard,Smart switch swap
+Socket Installation,socket-installation,sockets-switches,ADD,RED,false,unique,standard,New point install ≠ replacement
+Socket Relocation,socket-relocation,sockets-switches,ADD,RED,false,unique,standard,Position change / circuit work
+Socket Repair,socket-repair,existing,KEEP,YELLOW,true,unique,standard,Existing approved baseline service
+Socket Replacement,socket-replacement,existing,KEEP,RED,false,unique,standard,Existing approved baseline service
+Sparking Outlet Investigation,sparking-outlet-investigation,emergency,ADD,RED,false,unique,standard,Immediate hazard investigation
+Staircase Lighting Repair,staircase-lighting-repair,building,ADD,YELLOW,true,unique,standard,Common-area stair lighting
+Surface Wiring Installation,surface-wiring-installation,wiring,ADD,RED,false,unique,standard,Surface conduit/wiring
+Surge Protection Device Installation,surge-protection-device-installation,protection,ADD,RED,false,unique,standard,SPD install
+Switch Repair,switch-repair,existing,KEEP,YELLOW,true,unique,standard,Existing approved baseline service
+Switch Replacement,switch-replacement,existing,KEEP,RED,false,unique,standard,Existing approved baseline service
+Temporary Power Setup,temporary-power-setup,other,ADD,REVIEW_REQUIRED,false,unique,required,Temporary supply; controls needed
+Three-Phase Supply Inspection,three-phase-supply-inspection,commercial,ADD,REVIEW_REQUIRED,false,unique,required,Three-phase commercial inspection
+Timer Switch Installation,timer-switch-installation,controls,ADD,RED,false,unique,standard,Electromechanical/digital timer
+Timer Switch Repair,timer-switch-repair,controls,ADD,YELLOW,true,unique,standard,Timer fault repair
+Track Lighting Installation,track-lighting-installation,lighting,ADD,RED,false,unique,standard,Track system install
+Two-Way Switch Installation,two-way-switch-installation,sockets-switches,ADD,RED,false,unique,standard,Multiway switching scope
+UPS Electrical Connection Inspection,ups-electrical-connection-inspection,other,ADD,REVIEW_REQUIRED,false,unique,required,UPS integration inspection
+Voltage Problem Diagnosis,voltage-problem-diagnosis,diagnosis,ADD,YELLOW,true,unique,standard,Customer voltage-fluctuation intent
+Wall Fan Installation,wall-fan-installation,fans,ADD,RED,false,unique,standard,Wall fan install
+Wall Fan Repair,wall-fan-repair,fans,ADD,YELLOW,true,unique,standard,Wall fan repair
+Wall Light Installation,wall-light-installation,lighting,ADD,RED,false,unique,standard,Fixture-specific install
+Water Heater Electrical Connection,water-heater-electrical-connection,connections,ADD,REVIEW_REQUIRED,false,unique,required,Fixed appliance connection; safety review
+Water Pump Motor Electrical Repair,water-pump-motor-electrical-repair,motors,ADD,RED,false,unique,standard,Pump motor electrical — not appliance category
+Weatherproof Socket Installation,weatherproof-socket-installation,sockets-switches,ADD,RED,false,unique,standard,Outdoor IP-rated socket work
+Wiring Inspection,wiring-inspection,existing,KEEP,RED,false,unique,standard,Existing approved baseline service
+Wiring Repair,wiring-repair,existing,KEEP,RED,false,unique,standard,Existing approved baseline service
+Wiring Replacement,wiring-replacement,existing,KEEP,REVIEW_REQUIRED,false,unique,required,Existing approved baseline service

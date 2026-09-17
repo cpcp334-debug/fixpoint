@@ -30,8 +30,8 @@ async function staticAndCatalogEntries(site: string): Promise<MetadataRoute.Site
     "",
     "/about",
     "/services",
-    "/diy",
     "/blog",
+    "/diy",
     "/faq",
     "/locations",
     "/reviews",
@@ -55,13 +55,13 @@ async function staticAndCatalogEntries(site: string): Promise<MetadataRoute.Site
     }
   }
 
-  const [services, locations, guides, diyCategories, articles] = await Promise.all([
+  const [services, locations, guides, categories, articles] = await Promise.all([
     prisma.service.findMany({
       where: { status: "active", indexable: true },
       select: { slug: true, updatedAt: true },
     }),
     prisma.location.findMany({
-      where: { type: "emirate", status: "active", indexable: true, serves: true },
+      where: { status: "active", indexable: true, serves: true, type: { in: ["emirate", "city", "community"] } },
       select: { slug: true, updatedAt: true },
     }),
     prisma.diyGuide.findMany({
@@ -85,15 +85,16 @@ async function staticAndCatalogEntries(site: string): Promise<MetadataRoute.Site
     for (const location of locations) {
       entries.push({ url: `${site}/${locale}/locations/${location.slug}`, lastModified: location.updatedAt });
     }
-    for (const category of diyCategories) {
-      entries.push({ url: `${site}/${locale}/diy/${category.slug}`, lastModified: category.updatedAt });
-    }
     for (const guide of guides) {
       entries.push({ url: `${site}/${locale}/diy/${guide.slug}`, lastModified: guide.updatedAt });
     }
+    for (const category of categories) {
+      entries.push({ url: `${site}/${locale}/diy/${category.slug}`, lastModified: category.updatedAt });
+    }
     for (const article of articles) {
+      const path = article.slug.startsWith("faq-") ? `/faq/${article.slug}` : `/blog/${article.slug}`;
       entries.push({
-        url: `${site}/${locale}/blog/${article.slug}`,
+        url: `${site}/${locale}${path}`,
         lastModified: article.publishedAt ?? article.updatedAt,
       });
     }

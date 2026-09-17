@@ -146,7 +146,7 @@ function buildEn(topic: Topic, idx: number) {
     `- Do not mix bleach with acids`,
     `- Do not stand on unstable furniture for height work`,
     `- Do not treat a silent fault as safe merely because there is no smell yet`,
-    `## How ALNAJAH ALDAEM can help next`,
+    `## How Al Najah Al Daem can help next`,
     `When professional help is appropriate, share photos, property type, emirate, and access notes through /get-a-quote. Related public DIY or service pages are linked separately — this Blog article remains an editorial explanation with its own canonical URL.`,
     `Additional reading intent for index ${idx + 1}: visitors comparing prevention versus repair, landlords tracking common areas, and households preparing for seasonal UAE climate stress.`,
   ].join("\n\n");
@@ -168,7 +168,7 @@ function buildEn(topic: Topic, idx: number) {
     diySection: diy,
     faq: JSON.stringify(faqs),
     imageAlt: `Educational illustration for ${topic.enTitle}`,
-    seoTitle: `${topic.enTitle} | ALNAJAH ALDAEM Blog`,
+    seoTitle: `${topic.enTitle} | Al Najah Al Daem Blog`,
     metaDescription: excerpt.slice(0, 155),
   };
 }
@@ -209,7 +209,7 @@ function buildAr(topic: Topic, idx: number) {
     `- لا تخلط مبيضاً مع أحماض`,
     `- لا تقف على أثاث غير ثابت لأعمال الارتفاع`,
     `- لا تفترض أن العطل الصامت آمن لمجرد غياب الرائحة`,
-    `## كيف تساعد ALNAJAH ALDAEM لاحقاً`,
+    `## كيف تساعد Al Najah Al Daem لاحقاً`,
     `عند الحاجة لمختص، شارك الصور ونوع العقار والإمارة وملاحظات الوصول عبر /get-a-quote. صفحات DIY أو الخدمات العامة تُربط بشكل منفصل — تبقى مقالة المدونة شرحاً تحريرياً بعنوانها الكانوني.`,
     `قصد قراءة إضافي للفهرس ${idx + 1}: زوار يقارنون الوقاية بالإصلاح، وملاك يتابعون المناطق المشتركة، ومنازل تستعد لإجهاد مناخ الإمارات الموسمي.`,
   ].join("\n\n");
@@ -231,7 +231,7 @@ function buildAr(topic: Topic, idx: number) {
     diySection: diy,
     faq: JSON.stringify(faqs),
     imageAlt: `صورة توضيحية تعليمية لموضوع ${topic.arTitle}`,
-    seoTitle: `${topic.arTitle} | مدونة ALNAJAH ALDAEM`,
+    seoTitle: `${topic.arTitle} | مدونة Al Najah Al Daem`,
     metaDescription: excerpt.slice(0, 155),
   };
 }

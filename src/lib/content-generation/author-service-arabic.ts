@@ -180,7 +180,7 @@ export function buildCanonicalServiceAr(
 
   const shortDescription = `${name} ضمن ${categoryAr}. نساعد في تقييم المشكلة واقتراح المسار المهني المناسب دون اختلاق أسعار أو تغطية غير مؤكدة.`;
   const longDescription = [
-    `${name} جزء من كتالوج النجاح الدائم تحت فئة ${categoryAr}.`,
+    `${name} جزء من كتالوج النجاح الدائم · Fixpoint تحت فئة ${categoryAr}.`,
     `تهدف الخدمة إلى توضيح المشكلة، وتحديد ما إذا كانت المعاينة مطلوبة، وتقديم توصية مهنية واضحة.`,
     safety === "RED" || safety === "REVIEW_REQUIRED"
       ? `نظرًا لتصنيف السلامة، لا نقدّم إجراءات إصلاح ذاتي خطرة؛ يُفضَّل التعامل المهني.`
@@ -196,14 +196,14 @@ export function buildCanonicalServiceAr(
   const pricingInfo = input.inspectionRequired
     ? `يعتمد السعر على نتائج المعاينة ونطاق العمل. لا ننشر أسعارًا ثابتة مخترعة.`
     : `يعتمد السعر على النطاق وظروف الموقع. اطلب عرض سعر.`;
-  const professionalFallback = `هل تحتاج مساعدة بخصوص ${name}؟ يمكن لفريق النجاح الدائم فحص المشكلة واقتراح الصيانة أو الإصلاح المناسب.`;
+  const professionalFallback = `هل تحتاج مساعدة بخصوص ${name}؟ يمكن لفريق النجاح الدائم · Fixpoint فحص المشكلة واقتراح الصيانة أو الإصلاح المناسب.`;
   const safetyNotes = hazardous
     ? `REVIEW_REQUIRED`
     : `التزم بشروط التوقف في أي دليل معتمد. لا تتعامل مع الكهرباء الحية أو الغاز أو أنظمة التبريد المغلقة بنفسك.`;
 
-  const seoTitle = `${name} | النجاح الدائم`;
-  const metaDescription = `${name} ضمن ${categoryAr}. اطلب تقييمًا وعرض سعر من النجاح الدائم دون ادعاءات غير مؤكدة.`;
-  const keywords = [name, categoryAr, "صيانة الإمارات", "النجاح الدائم"].join("، ");
+  const seoTitle = `${name} | النجاح الدائم · Fixpoint`;
+  const metaDescription = `${name} ضمن ${categoryAr}. اطلب تقييمًا وعرض سعر من النجاح الدائم · Fixpoint دون ادعاءات غير مؤكدة.`;
+  const keywords = [name, categoryAr, "صيانة الإمارات", "النجاح الدائم · Fixpoint"].join("، ");
 
   const faq = JSON.stringify([
     {
@@ -218,7 +218,7 @@ export function buildCanonicalServiceAr(
           : `لا يُنصح بالإصلاح الذاتي لهذه الفئة. اطلب تقييمًا مهنيًا.`,
     },
     {
-      question: `متى أتواصل مع النجاح الدائم؟`,
+      question: `متى أتواصل مع النجاح الدائم · Fixpoint؟`,
       answer: `عند استمرار الأعراض أو الحاجة لأدوات متخصصة أو الشك في السبب.`,
     },
     {

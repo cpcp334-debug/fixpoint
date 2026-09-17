@@ -1,21 +1,25 @@
 import { prisma } from "@/server/db";
 import { needSession } from "@/lib/admin/guard";
 import { can } from "@/lib/admin/rbac";
+import { canViewSlCorpusOps, getSlCorpusDashboardStatus } from "@/lib/admin/sl-corpus-status";
 import { canUseCoFounder } from "@/lib/cofounder/rbac";
 import { getPriorityActions } from "@/lib/cofounder/priority";
 import { dashboardPromptsForRole } from "@/lib/cofounder/prompts";
+import { SlCorpusOpsPanel } from "@/components/admin/SlCorpusOpsPanel";
 import { PageHeader } from "@/components/admin/Ui";
 import Link from "next/link";
 
 export default async function AdminHome() {
   const session = await needSession();
-  const [leads, bookings, reviews, quotes, invoices, questions] = await Promise.all([
+  const showSlCorpus = canViewSlCorpusOps(session.role);
+  const [leads, bookings, reviews, quotes, invoices, questions, slCorpus] = await Promise.all([
     can(session.role, "leads") ? prisma.lead.count({ where: { status: "NEW" } }) : 0,
     can(session.role, "bookings") ? prisma.booking.count({ where: { status: "requested" } }) : 0,
     can(session.role, "reviews") ? prisma.review.count({ where: { status: "PENDING" } }) : 0,
     can(session.role, "quotes") ? prisma.quote.count({ where: { status: "DRAFT" } }) : 0,
     can(session.role, "invoices") ? prisma.invoice.count({ where: { status: "DRAFT" } }) : 0,
     can(session.role, "questions") ? prisma.question.count({ where: { moderationStatus: "PENDING" } }) : 0,
+    showSlCorpus ? getSlCorpusDashboardStatus() : Promise.resolve(null),
   ]);
   const assigned =
     session.role === "technician"
@@ -43,6 +47,7 @@ export default async function AdminHome() {
   return (
     <div>
       <PageHeader title="Dashboard" note="Operations inbox. Payments, customer portal, and WhatsApp Business API are out of this phase." />
+      {slCorpus ? <SlCorpusOpsPanel status={slCorpus} /> : null}
       {showCofounder ? (
         <section className="mb-6 overflow-hidden rounded-md border border-line bg-gradient-to-br from-white via-sand/40 to-sand-2/60 p-4 shadow-sm">
           <div className="flex flex-wrap items-start justify-between gap-3">

@@ -1,8 +1,9 @@
 /**
  * Publication gate — all conditions must pass before READY_TO_PUBLISH.
  * Service × Location coverage remains controlled by ServiceLocation.covered (never invent).
+ * Word floors: SL 800 / Blog+DIY 1000 — see docs/public-article-publication-gates.md
  */
-import { HARD_GATES } from "./engine.config";
+import { HARD_GATES, minWordsForContentType, type ContentType } from "./engine.config";
 import type { EngineIssue, ValidationResult, ValidationScore } from "./types";
 
 export type GateInput = {
@@ -21,16 +22,18 @@ export type GateInput = {
   safetyOk: boolean;
   coverageOk: boolean; // true when N/A (DIY/Blog); for SL must mirror ServiceLocation.covered
   humanApproved: boolean;
+  contentType?: ContentType;
 };
 
 export function evaluatePublicationGate(input: GateInput): ValidationResult {
   const issues: EngineIssue[] = [];
+  const wordFloor = minWordsForContentType(input.contentType ?? "SERVICE_LOCATION");
 
-  if (input.wordCount < HARD_GATES.minRenderedWords) {
+  if (input.wordCount < wordFloor) {
     issues.push({
       code: "WORDS_BELOW_FLOOR",
       severity: "blocker",
-      message: `Rendered words ${input.wordCount} < ${HARD_GATES.minRenderedWords}`,
+      message: `Rendered words ${input.wordCount} < ${wordFloor}`,
       field: "body",
     });
   }

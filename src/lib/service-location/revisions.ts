@@ -21,6 +21,21 @@ export function workingCopySnapshot(copy: WorkingCopy) {
   return JSON.stringify(payload);
 }
 
+/**
+ * Only status / approval metadata may change on an existing revision row.
+ * Snapshot payload fields are immutable (also enforced by MySQL trigger in
+ * prisma/migrations/.../migration.sql). Prefer creating a new revision.
+ */
+export async function supersedePublishedRevision(
+  prisma: PrismaClient,
+  id: string,
+) {
+  return prisma.serviceLocationRevision.update({
+    where: { id },
+    data: { status: "superseded" satisfies ServiceLocationRevisionStatus },
+  });
+}
+
 export async function publishRevision(
   prisma: PrismaClient,
   args: {
@@ -37,10 +52,7 @@ export async function publishRevision(
     orderBy: { revisionNumber: "desc" },
   });
   if (current?.status === "published") {
-    await prisma.serviceLocationRevision.update({
-      where: { id: current.id },
-      data: { status: "superseded" satisfies ServiceLocationRevisionStatus },
-    });
+    await supersedePublishedRevision(prisma, current.id);
   }
   return prisma.serviceLocationRevision.create({
     data: {

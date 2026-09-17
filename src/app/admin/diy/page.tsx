@@ -1,8 +1,19 @@
 import { needPermission } from "@/lib/admin/guard";
-import { AdminTable, Forbidden, PageHeader } from "@/components/admin/Ui";
+import {
+  AdminBulkTable,
+  AdminCatalogEmptyHint,
+  AdminFlash,
+  AdminListSummary,
+  AdminPreviewLinks,
+  Forbidden,
+  PageHeader,
+} from "@/components/admin/Ui";
 import { prisma } from "@/server/db";
 import { loadDiyClassificationMatrix } from "@/lib/service-location/diy-matrix";
 import { parseDiyProfileJson } from "@/lib/diy/profile-validate";
+import type { ContentStatus, Prisma } from "@prisma/client";
+
+const STATUSES: ContentStatus[] = ["draft", "review", "published", "archived"];
 
 function sectionCompleteness(profileJson: string): string {
   const parsed = parseDiyProfileJson(profileJson);
@@ -22,92 +33,115 @@ function sectionCompleteness(profileJson: string): string {
   return `${ok}/${checks.length}`;
 }
 
-export default async function DiyAdminPage() {
+export default async function DiyAdminPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string; status?: string; ok?: string; error?: string }>;
+}) {
   const auth = await needPermission("diy");
   if (!auth.ok) return <Forbidden />;
-
+  const query = await searchParams;
   const matrix = loadDiyClassificationMatrix();
-  const services = await prisma.service.findMany({
-    orderBy: { slug: "asc" },
-    include: {
-      category: true,
-      primaryDiyGuide: true,
-    },
-  });
-
-  const matrixSlugs = new Set(matrix.bySlug.keys());
-  const rows = services.filter((s) => matrixSlugs.has(s.slug));
+  const where: Prisma.DiyGuideWhereInput = {};
+  if (query.status && (STATUSES as string[]).includes(query.status)) {
+    where.status = query.status as ContentStatus;
+  }
+  if (query.q?.trim()) {
+    const q = query.q.trim();
+    where.OR = [
+      { slug: { contains: q } },
+      { translations: { some: { title: { contains: q } } } },
+      { service: { is: { slug: { contains: q } } } },
+    ];
+  }
+  const [totalGuides, matchingCount, publicGuides, guides] = await Promise.all([
+    prisma.diyGuide.count(),
+    prisma.diyGuide.count({ where }),
+    prisma.diyGuide.count({ where: { status: "published", indexable: true } }),
+    prisma.diyGuide.findMany({
+      where,
+      include: {
+        translations: { where: { locale: "en" }, take: 1 },
+        service: { include: { category: true } },
+      },
+      orderBy: { slug: "asc" },
+      take: 500,
+    }),
+  ]);
+  const sp = new URLSearchParams();
+  if (query.q) sp.set("q", query.q);
+  if (query.status) sp.set("status", query.status);
+  const returnTo = `/admin/diy${sp.toString() ? `?${sp}` : ""}`;
 
   return (
     <div>
       <PageHeader
-        title="DIY / profiles (A4.2)"
-        note="311 coverage registry. Batch 1 = 46 GREEN authored drafts. No bulk publish."
+        title="DIY / profiles"
+        note="Bulk uses ContentStatus on DiyGuide. Publish = published+indexable; Hide = draft+noindex; Soft-remove = archived."
       />
-      <AdminTable
-        headers={[
-          "Service",
-          "Category",
-          "DIY status",
-          "Risk",
-          "Profile",
-          "Primary guide",
-          "EN",
-          "AR",
-          "Safety",
-          "Ver",
-          "Completeness",
-          "",
-        ]}
-      >
-        {rows.map((row) => {
-          const m = matrix.bySlug.get(row.slug)!;
-          const guide = row.primaryDiyGuide;
-          const profile = guide ? parseDiyProfileJson(guide.profileJson).value : null;
-          const authored = Boolean(profile?.metadata.authored);
-          const enStatus = authored ? "draft_authored" : "coverage_only";
-          const completeness = m.diyStatus === "GREEN" && guide ? sectionCompleteness(guide.profileJson) : "—";
-          const quality =
-            m.diyStatus === "GREEN"
-              ? profile?.metadata.status === "safety_review"
-                ? "safety_review"
-                : authored
-                  ? "draft_ok"
-                  : "missing"
-              : "n/a";
-          return (
-            <tr key={row.id} className="border-t border-line text-sm">
-              <td className="px-3 py-2">{row.slug}</td>
-              <td className="px-3 py-2">{row.category?.slug ?? "—"}</td>
-              <td className="px-3 py-2">{m.diyStatus}</td>
-              <td className="px-3 py-2">{row.riskLevel}</td>
-              <td className="px-3 py-2">{guide?.profileStatus ?? "—"}</td>
-              <td className="px-3 py-2">{guide?.slug ?? "—"}</td>
-              <td className="px-3 py-2">{enStatus}</td>
-              <td className="px-3 py-2">{guide?.arabicReviewStatus ?? "not_started"}</td>
-              <td className="px-3 py-2">{quality}</td>
-              <td className="px-3 py-2">{guide?.profileVersion ?? "—"}</td>
-              <td className="px-3 py-2">
-                {m.diyStatus === "GREEN" ? (
-                  <span>
-                    {completeness}
-                    {guide?.updatedAt ? ` · ${guide.updatedAt.toISOString().slice(0, 10)}` : ""}
-                  </span>
-                ) : (
-                  "—"
-                )}
-              </td>
-              <td className="px-3 py-2">
-                {guide ? (
-                  <a className="text-navy" href={`/admin/diy/${guide.id}`}>
-                    Open
-                  </a>
-                ) : null}
-              </td>
-            </tr>
-          );
+      <AdminFlash ok={query.ok} error={query.error} />
+      <form className="mb-4 flex flex-wrap gap-2 text-sm" method="get">
+        <input
+          name="q"
+          defaultValue={query.q || ""}
+          placeholder="Search slug, title, or service"
+          className="min-w-48 rounded-md border border-line px-3 py-2"
+        />
+        <select name="status" defaultValue={query.status || ""} className="rounded-md border border-line px-3 py-2">
+          <option value="">All statuses</option>
+          {STATUSES.map((status) => (
+            <option key={status} value={status}>
+              {status}
+            </option>
+          ))}
+        </select>
+        <button type="submit" className="rounded-md border border-line px-3 py-2">
+          Filter
+        </button>
+      </form>
+      <AdminCatalogEmptyHint
+        total={totalGuides}
+        noun="DIY guides"
+        steps="Run npm run db:diy-publish-454 after services exist in the database."
+      />
+      <AdminListSummary
+        noun="DIY guides"
+        total={totalGuides}
+        matching={matchingCount}
+        showing={guides.length}
+        stats={[{ label: "public (published + indexable)", value: publicGuides }]}
+      />
+      <AdminBulkTable
+        entity="diy"
+        returnTo={returnTo}
+        headers={["Guide", "Service", "Matrix", "Status", "Indexable", "Profile", "Completeness", ""]}
+        rows={guides.map((guide) => {
+          const serviceSlug = guide.service?.slug || "—";
+          const m = guide.service?.slug ? matrix.bySlug.get(guide.service.slug) : undefined;
+          const profile = parseDiyProfileJson(guide.profileJson).value;
+          const completeness =
+            m?.diyStatus === "GREEN" ? sectionCompleteness(guide.profileJson) : profile?.metadata.authored ? sectionCompleteness(guide.profileJson) : "—";
+          return {
+            id: guide.id,
+            cells: [
+              guide.translations[0]?.title || guide.slug,
+              serviceSlug,
+              m?.diyStatus || "—",
+              guide.status,
+              guide.indexable ? "yes" : "no",
+              guide.profileStatus,
+              completeness,
+            <span key="actions" className="inline-flex flex-col gap-1">
+              <a className="text-navy" href={`/admin/diy/${guide.id}`}>
+                Open
+              </a>
+              <AdminPreviewLinks enPath={`/diy/${guide.slug}`} />
+            </span>,
+            ],
+          };
         })}
-      </AdminTable>
+        emptyNote="No DIY guides match."
+      />
     </div>
   );
 }

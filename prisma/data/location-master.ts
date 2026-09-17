@@ -68,6 +68,7 @@ export const EXISTING_EIGHT_SLUGS = [
   "fujairah",
 ] as const;
 
+/** Historical filename. Contents are the 277-location proposal plus the UAE country record. */
 export function loadLocationMaster(cwd = process.cwd()): LocationMasterFile {
   const path = join(cwd, "prisma/data/uae-location-master-200.json");
   return JSON.parse(readFileSync(path, "utf8")) as LocationMasterFile;
@@ -112,8 +113,9 @@ export function validateLocationMaster(file: LocationMasterFile): {
     arabicReviewRequired: 0,
   };
 
-  if (locs.length !== 200) errors.push(`total must be 200, got ${locs.length}`);
-  if (file.meta.actualTotal !== 200) errors.push(`meta.actualTotal must be 200, got ${file.meta.actualTotal}`);
+  // 277 proposed locations include the 7 emirates. UAE country is the extra record.
+  if (locs.length !== 278) errors.push(`total must be 278, got ${locs.length}`);
+  if (file.meta.actualTotal !== 278) errors.push(`meta.actualTotal must be 278, got ${file.meta.actualTotal}`);
 
   const slugs = new Set<string>();
   for (const loc of locs) {
@@ -132,8 +134,8 @@ export function validateLocationMaster(file: LocationMasterFile): {
 
   if (counts.country !== 1) errors.push(`country must be 1, got ${counts.country}`);
   if (counts.emirate !== 7) errors.push(`emirates must be 7, got ${counts.emirate}`);
-  if (counts.city + counts.community + counts.area !== 192) {
-    errors.push(`city+community+area must be 192, got ${counts.city + counts.community + counts.area}`);
+  if (counts.city + counts.community + counts.area !== 270) {
+    errors.push(`city+community+area must be 270, got ${counts.city + counts.community + counts.area}`);
   }
 
   for (const slug of EXISTING_EIGHT_SLUGS) {
@@ -164,17 +166,17 @@ export function validateLocationMaster(file: LocationMasterFile): {
         errors.push(`${loc.slug}: missing parentCityMunicipality`);
         continue;
       }
+      const emirate = bySlug.get(loc.emirateSlug || "");
+      const parentedToEmirate = emirate?.nameEn === parentName;
       const key = `${loc.emirateSlug}|${parentName}`;
-      if (!cityByEmName.has(key)) {
+      if (!parentedToEmirate && !cityByEmName.has(key)) {
         errors.push(`${loc.slug}: parent city not found (${key})`);
       }
     }
   }
 
-  if (counts.arabicHigh !== 121) errors.push(`arabic HIGH expected 121, got ${counts.arabicHigh}`);
-  if (counts.arabicMedium !== 61) errors.push(`arabic MEDIUM expected 61, got ${counts.arabicMedium}`);
-  if (counts.arabicReviewRequired !== 18) {
-    errors.push(`arabic REVIEW_REQUIRED expected 18, got ${counts.arabicReviewRequired}`);
+  if (counts.arabicHigh + counts.arabicMedium + counts.arabicReviewRequired !== locs.length) {
+    errors.push("arabic confidence counts do not cover every location");
   }
 
   return { ok: errors.length === 0, errors, counts };

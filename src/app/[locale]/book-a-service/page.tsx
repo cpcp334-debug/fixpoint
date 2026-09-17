@@ -1,3 +1,4 @@
+import { brandName } from "@/config/site";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { getActiveEmirates, getActiveServices } from "@/lib/catalog";
@@ -15,7 +16,7 @@ import { CtaBand } from "@/components/public/CtaBand";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Booking" });
-  return buildMetadata({ locale, title: `${t("title")} | ALNAJAH ALDAEM`, description: t("lead"), path: "/book-a-service" });
+  return buildMetadata({ locale, title: `${t("title")} | ${brandName(locale)}`, description: t("lead"), path: "/book-a-service" });
 }
 
 const TYPE_HREF = [
@@ -56,7 +57,7 @@ export default async function BookingPage({
         />
       }
     >
-      <PublicHero kicker={t("title")} title={t(`type_${type}_title`)} lead={t(`type_${type}_lead`)} compact />
+      <PublicHero locale={locale} kicker={t("title")} title={t(`type_${type}_title`)} lead={t(`type_${type}_lead`)} compact />
       <Section>
         <Disclaimer>{t("notConfirmed")}</Disclaimer>
         <nav className="mt-6 flex flex-wrap gap-2" aria-label={t("types")}>

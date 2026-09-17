@@ -2,9 +2,16 @@ export const locales = ["en", "ar"] as const;
 export type AppLocale = (typeof locales)[number];
 export const defaultLocale: AppLocale = "en";
 
+/** Production public origin (Fixpoint). Override locally with SITE_URL. */
+export const productionSiteUrl = "https://fixpoint.ae";
+
 export const siteConfig = {
-  brand: "ALNAJAH ALDAEM",
+  brand: "Al Najah Al Daem",
   brandAr: "النجاح الدائم",
+  domainBrand: "Fixpoint",
+  /** Public display: company + Fixpoint together. */
+  brandDisplayEn: "Al Najah Al Daem · Fixpoint",
+  brandDisplayAr: "النجاح الدائم · Fixpoint",
   positioning: {
     en: "Cleaning & Building Maintenance Services",
     ar: "خدمات التنظيف وصيانة المباني",
@@ -14,6 +21,13 @@ export const siteConfig = {
   whatsappE164: "971543447959",
   email: "alnajahaldaem42@gmail.com",
   country: "United Arab Emirates",
+  mapsUrl: "https://share.google/6IKOdhxe7qHvLWWcJ",
+  social: {
+    youtube: "https://www.youtube.com/@ALNAJAHALDAEM",
+    instagram: "https://www.instagram.com/alnajahaldaem42/",
+    facebook: "https://www.facebook.com/people/Alnajah-Aldaem-Building-Maintenance/61593961962088/",
+    tiktok: "https://www.tiktok.com/@alnajah.aldaem.bu",
+  },
   licenses: [
     {
       emirate: "Sharjah",
@@ -47,7 +61,20 @@ export const siteConfig = {
 } as const;
 
 export function getSiteUrl() {
-  return process.env.SITE_URL?.replace(/\/$/, "") || "http://localhost:3000";
+  const fromEnv = process.env.SITE_URL?.replace(/\/$/, "");
+  if (fromEnv) return fromEnv;
+  if (process.env.NODE_ENV === "production") return productionSiteUrl;
+  return "http://localhost:3000";
+}
+
+/** Locale-aware public brand: company · Fixpoint. */
+export function brandName(locale?: string) {
+  return locale === "ar" ? siteConfig.brandDisplayAr : siteConfig.brandDisplayEn;
+}
+
+/** Company-only name (licenses, legal body copy). */
+export function companyName(locale?: string) {
+  return locale === "ar" ? siteConfig.brandAr : siteConfig.brand;
 }
 
 export function whatsappUrl(prefill?: string) {

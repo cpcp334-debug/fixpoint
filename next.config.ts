@@ -6,6 +6,9 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Dev is opened as both localhost and 127.0.0.1. Without this, Next blocks
+  // fonts and HMR from 127.0.0.1 and the page looks like a connection failure.
+  allowedDevOrigins: ["127.0.0.1", "localhost"],
   // Hide the floating Next.js “N” Dev Tools badge (dev-only clutter in screenshots).
   devIndicators: false,
   serverExternalPackages: ["@prisma/client", "pdfkit", "exceljs"],
@@ -15,14 +18,35 @@ const nextConfig: NextConfig = {
   },
   images: {
     formats: ["image/avif", "image/webp"],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
+  async rewrites() {
+    return [{ source: "/sitemap.xml", destination: "/sitemap-index.xml" }];
   },
   async headers() {
-    return [
+    const headers = [
       {
         source: "/:path*",
         headers: securityHeadersList(process.env),
       },
+      {
+        source: "/media/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+      },
+      {
+        source: "/favicon.:ext(ico|png|jpg|jpeg|webp|svg)",
+        headers: [{ key: "Cache-Control", value: "public, max-age=86400" }],
+      },
     ];
+    // Next already sets hashed static asset caching in production; only reinforce outside next/dev.
+    if (process.env.NODE_ENV === "production") {
+      headers.push({
+        source: "/_next/static/:path*",
+        headers: [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }],
+      });
+    }
+    return headers;
   },
 };
 

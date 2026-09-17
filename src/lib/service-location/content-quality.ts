@@ -328,6 +328,13 @@ export function evaluateContentQuality(input: ContentQualityInput): ContentQuali
         `maxOverlap=${sim.maxOverlap.toFixed(2)}`,
       ),
     );
+
+    const enAlt = Boolean(input.en?.imageAlt?.trim() && input.en.imageAlt.trim().length >= 8);
+    checks.push(check("alt_en", "EN image alt", enAlt ? "pass" : "fail"));
+    if (input.ar) {
+      const arAlt = Boolean(input.ar.imageAlt?.trim() && input.ar.imageAlt.trim().length >= 8);
+      checks.push(check("alt_ar", "AR image alt", arAlt ? "pass" : "fail"));
+    }
   } else {
     // Legacy: still scan claims for visibility, but do not fail overall publishability
     const claims = scanUnsupportedClaims(enBlob);
@@ -354,14 +361,16 @@ export function evaluateContentQuality(input: ContentQualityInput): ContentQuali
 
   const failedHard = checks.filter((c) => c.status === "fail");
   // For EN publishability, ignore AR-only failures
-  const enBlocking = failedHard.filter((c) => !["ar_complete", "title_unique_ar"].includes(c.id));
+  const enBlocking = failedHard.filter((c) => !["ar_complete", "title_unique_ar", "alt_ar"].includes(c.id));
 
   const strictEnExtraOk =
     mode === "LEGACY_COMPAT" ||
     (enComp.complete &&
       geoStatus !== "fail" &&
       aeoStatus !== "fail" &&
-      !failedHard.some((c) => ["claims", "thin", "similarity", "faq", "seo_en", "title_unique_en"].includes(c.id)));
+      !failedHard.some((c) =>
+        ["claims", "thin", "similarity", "faq", "seo_en", "title_unique_en", "alt_en"].includes(c.id),
+      ));
 
   const baseOps =
     coverageOk &&

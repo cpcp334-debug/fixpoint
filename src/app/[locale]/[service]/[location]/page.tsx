@@ -1,25 +1,21 @@
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { isReservedSlug } from "@/config/reserved-slugs";
-import { publicServiceLocationWhere, resolveServiceLocationPage } from "@/lib/catalog";
-import { prisma } from "@/server/db";
+import { resolveServiceLocationPage } from "@/lib/catalog";
 import { buildMetadata } from "@/lib/seo";
 import { getApprovedServiceReviews, summarizeApprovedServiceReviews, toPublicReview } from "@/lib/reviews";
 import { ServiceLocationView } from "@/components/service-location/ServiceLocationView";
 
-/** Bound SSG to published covered pairs only — never cartesian expand. */
+/**
+ * Do not SSG the Service×Location matrix at build time.
+ * Hostinger (cpus:1) OOMs/timeouts when prerendering ~7k pairs × locales (~14k pages).
+ * Empty params → on-demand render; ISR caches for 1h after first hit.
+ */
 export const revalidate = 3600;
+export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  try {
-    const rows = await prisma.serviceLocation.findMany({
-      where: publicServiceLocationWhere,
-      include: { service: true, location: true },
-    });
-    return rows.map((row) => ({ service: row.service.slug, location: row.location.slug }));
-  } catch {
-    return [];
-  }
+  return [];
 }
 
 export async function generateMetadata({

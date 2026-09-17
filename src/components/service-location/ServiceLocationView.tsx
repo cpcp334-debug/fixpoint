@@ -14,6 +14,8 @@ import { CtaRow } from "@/components/public/CtaRow";
 import { CtaBand } from "@/components/public/CtaBand";
 import { ServiceTrustBlock } from "@/components/trust/ServiceTrustBlock";
 import { ButtonLink } from "@/components/ui/Button";
+import { EmiratePlaceDirectory } from "@/components/locations/EmiratePlaceDirectory";
+import { isPublicEmirateSlug } from "@/lib/locations/emirate-directory";
 
 function BulletList({ items }: { items: string[] }) {
   if (!items.length) return null;
@@ -70,7 +72,7 @@ export function ServiceLocationView({
   approvedReviews?: Array<{ authorName: string; stars: number; body: string }>;
 }) {
   const Icon = serviceIcons[model.serviceSlug as keyof typeof serviceIcons];
-  const wa = `Hello ALNAJAH ALDAEM, I need ${model.serviceName} in ${model.locationName}.`;
+  const wa = `Hello Al Najah Al Daem · Fixpoint, I need ${model.serviceName} in ${model.locationName}.`;
   const crumbItems = [
     { href: "/", label: labels.home },
     { href: `/${model.serviceSlug}`, label: model.serviceName },
@@ -107,6 +109,8 @@ export function ServiceLocationView({
     guideSlug: model.diy.guideSlug,
   });
   const structured = structuredBase ? { ...structuredBase, diy: diyBlock } : { diy: diyBlock };
+  const mainBlock = "main" in structured ? structured.main : null;
+  const expertBlock = "expert" in structured ? structured.expert : null;
 
   return (
     <PageShell breadcrumbs={<Breadcrumbs label={labels.breadcrumb} items={crumbItems} />}>
@@ -140,7 +144,7 @@ export function ServiceLocationView({
       <JsonLd data={breadcrumbJsonLd(jsonBreadcrumbs, model.locale)} />
       <JsonLd data={faqJsonLd(faqs)} />
 
-      <PublicHero
+      <PublicHero locale={model.locale}
         kicker={model.locationName}
         title={model.content.h1}
         lead={model.content.intro || undefined}
@@ -188,38 +192,57 @@ export function ServiceLocationView({
           ) : model.content.localInfo ? (
             <ProseCard title={labels.local}>{model.content.localInfo}</ProseCard>
           ) : null}
+          {isPublicEmirateSlug(model.locationSlug) ? (
+            <EmiratePlaceDirectory
+              emirateSlug={model.locationSlug}
+              locale={model.locale}
+              title={model.locale === "ar" ? "المدن والمناطق في هذه الإمارة" : "Cities and areas in this emirate"}
+              lead={
+                model.locale === "ar"
+                  ? "اذكر أحد هذه الأسماء عند طلب الزيارة. المدن أولاً، ثم المناطق الأصغر داخل الإمارة."
+                  : "Use one of these names when you request a visit. Cities are listed first, then the smaller areas inside the emirate."
+              }
+              citiesLabel={model.locale === "ar" ? "المدن" : "Cities"}
+              areasLabel={model.locale === "ar" ? "المناطق والأحياء" : "Areas and communities"}
+              note={
+                model.locale === "ar"
+                  ? "ذكر مدينة أو منطقة هنا لا يعني أن الخدمة متاحة هناك تلقائياً. اذكر المكان وسنؤكد ما إذا كان يمكن ترتيب زيارة."
+                  : "Naming a city or area here does not mean the service is already available there. Tell us the place, and we confirm whether a visit can be arranged."
+              }
+            />
+          ) : null}
           <ProseCard title={labels.overview}>
             <div className="whitespace-pre-line">{model.content.body || model.serviceLongDescription}</div>
           </ProseCard>
         </div>
       </Section>
 
-      {structured?.main ? (
+      {mainBlock ? (
         <Section>
           <div className="grid gap-4">
-            {structured.main.serviceExplanation ? (
+            {mainBlock.serviceExplanation ? (
               <ProseCard title={labels.whatService || labels.overview}>
-                <div className="whitespace-pre-line">{structured.main.serviceExplanation}</div>
+                <div className="whitespace-pre-line">{mainBlock.serviceExplanation}</div>
               </ProseCard>
             ) : null}
-            {structured.main.problems.length ? (
+            {mainBlock.problems.length ? (
               <ProseCard title={labels.problems || "Problems"}>
-                <BulletList items={structured.main.problems} />
+                <BulletList items={mainBlock.problems} />
               </ProseCard>
             ) : null}
-            {structured.main.symptomsUseCases.length ? (
+            {mainBlock.symptomsUseCases.length ? (
               <ProseCard title={labels.symptoms || "Symptoms"}>
-                <BulletList items={structured.main.symptomsUseCases} />
+                <BulletList items={mainBlock.symptomsUseCases} />
               </ProseCard>
             ) : null}
-            {structured.main.process.length ? (
+            {mainBlock.process.length ? (
               <ProseCard title={labels.process || "Process"}>
-                <BulletList items={structured.main.process} />
+                <BulletList items={mainBlock.process} />
               </ProseCard>
             ) : null}
-            {structured.main.professionalRecommendation ? (
+            {mainBlock.professionalRecommendation ? (
               <ProseCard title={labels.whenPro || "Professional help"}>
-                <div className="whitespace-pre-line">{structured.main.professionalRecommendation}</div>
+                <div className="whitespace-pre-line">{mainBlock.professionalRecommendation}</div>
               </ProseCard>
             ) : null}
           </div>
@@ -260,10 +283,10 @@ export function ServiceLocationView({
         </Section>
       ) : null}
 
-      {structured?.expert?.helpSummary ? (
+      {expertBlock?.helpSummary ? (
         <Section>
           <ProseCard title={labels.expert || "Expert guidance"}>
-            <div className="whitespace-pre-line">{structured.expert.helpSummary}</div>
+            <div className="whitespace-pre-line">{expertBlock.helpSummary}</div>
           </ProseCard>
         </Section>
       ) : null}

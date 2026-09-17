@@ -1,4 +1,5 @@
-export { CORPUS, HARD_GATES, CONTENT_ENGINE_VERSION } from "./config/engine.config";
+export { CORPUS, HARD_GATES, CONTENT_ENGINE_VERSION, minWordsForContentType } from "./config/engine.config";
+export type { ContentType } from "./config/engine.config";
 export { FREEZE } from "./config/freeze";
 export { evaluatePublicationGate } from "./config/publication-gate";
 export { runValidationPipeline } from "./validators/pipeline";

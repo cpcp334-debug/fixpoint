@@ -82,11 +82,12 @@ function main() {
   assert(dr.includes("cron") || dr.includes("Cron"), "cron recovery documented");
   assert(dr.includes("Isolated restore drill") || dr.includes("restore drill"), "restore drill documented");
 
-  assert(pkg.scripts["db:migrate"] === "prisma migrate deploy", "db:migrate remains migrate deploy");
+  assert(pkg.scripts["db:migrate"]?.includes("prisma-migrate-safe"), "db:migrate uses prisma-migrate-safe");
   assert(pkg.scripts["db:push:dev"] === "prisma db push", "db:push:dev remains development-only");
   assert(!pkg.scripts["db:push"], "legacy db:push must stay removed");
   assert(pkg.scripts["verify:dr-readiness"]?.includes("dr-readiness-verify"), "verify:dr-readiness script exists");
   assert(!pkg.scripts.build.includes("backup"), "build does not run backups");
+  assert(!pkg.scripts.build.includes("migrate deploy"), "build must not run migrate deploy");
   assert(!pkg.scripts.start?.includes("pg-server"), "start does not start PGlite");
 
   const seedProd = resolveSeedMode({ NODE_ENV: "production" });

@@ -7,7 +7,7 @@ import { emptyDiyProfile } from "@/lib/diy/profile-contract";
 export const RED_BATCH = "A4.2-RED-1" as const;
 
 const FALLBACK =
-  "ALNAJAH ALDAEM can inspect the issue safely and perform the appropriate licensed repair. Do not attempt sealed-system, live electrical, gas, or structural work yourself.";
+  "Al Najah Al Daem · Fixpoint can inspect the issue safely and perform the appropriate licensed repair. Do not attempt sealed-system, live electrical, gas, or structural work yourself.";
 
 function faqs(name: string, overview: string): DiyGuideProfileJson["faq"] {
   return [
@@ -29,7 +29,7 @@ function faqs(name: string, overview: string): DiyGuideProfileJson["faq"] {
     {
       question: "Is emergency help available?",
       answer:
-        "If there is immediate danger (gas, fire, flooding, collapse risk), leave the area and use emergency services first. Then contact ALNAJAH ALDAEM for follow-up repair where appropriate.",
+        "If there is immediate danger (gas, fire, flooding, collapse risk), leave the area and use emergency services first. Then contact Al Najah Al Daem · Fixpoint for follow-up repair where appropriate.",
     },
     {
       question: "What must I never do?",

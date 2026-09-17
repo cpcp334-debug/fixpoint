@@ -18,6 +18,22 @@ export * from "./content-thin";
 export * from "./content-completeness";
 export * from "./content-quality";
 export {
+  countRenderedWords,
+  getRenderedContentText,
+  estimateWorkingCopyWords,
+  wordCountBand,
+  RENDERED_WORD_MIN_PUBLISH,
+  RENDERED_WORD_TARGET,
+  RENDERED_WORD_MAX_SOFT,
+  RENDERED_WORD_TARGET_MAX,
+} from "./rendered-words";
+export { evaluatePublicationEligibility } from "./publication-eligibility";
+export type {
+  PublicationEligibilityInput,
+  PublicationEligibilityResult,
+  PublicationQueueBucket,
+} from "./publication-eligibility";
+export {
   resolveServiceLocationPage,
   resolveServiceLocationPageFresh,
   resolveServiceLocationPreview,

@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useState } from "react";
 import { useTranslations } from "next-intl";
-import { siteConfig } from "@/config/site";
+import { brandName } from "@/config/site";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { AiMark } from "@/components/ui/AiMark";
 import { AiPanel } from "@/components/ai/AiPanel";
@@ -48,7 +48,7 @@ export function AiWidget({ locale }: { locale: string }) {
   }, []);
 
   return (
-    <div className="fixed bottom-5 end-5 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] end-[max(1.25rem,env(safe-area-inset-right))] z-50 flex flex-col items-end gap-3">
       <div
         id="alnajah-ai"
         className={cn(
@@ -59,10 +59,9 @@ export function AiWidget({ locale }: { locale: string }) {
         )}
       >
         <header className="flex items-center gap-2 border-b border-line bg-navy px-3 py-2 text-white">
-          <BrandLogo size={32} />
+          <BrandLogo size={36} />
           <p className="min-w-0 flex-1 truncate text-sm font-semibold">
-            {locale === "ar" ? siteConfig.brandAr : "ALNAJAH"}{" "}
-            <span className="text-gold">AI</span>
+            {brandName(locale)} <span className="text-gold">AI</span>
           </p>
           <button
             type="button"

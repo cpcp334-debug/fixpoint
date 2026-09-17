@@ -1,3 +1,4 @@
+import { brandName } from "@/config/site";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getActiveEmirates } from "@/lib/catalog";
 import { buildMetadata } from "@/lib/seo";
@@ -11,7 +12,7 @@ import { CtaBand } from "@/components/public/CtaBand";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Locations" });
-  return buildMetadata({ locale, title: `${t("title")} | ALNAJAH ALDAEM`, description: t("lead"), path: "/locations" });
+  return buildMetadata({ locale, title: `${t("title")} | ${brandName(locale)}`, description: t("lead"), path: "/locations" });
 }
 
 export default async function LocationsPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -32,7 +33,7 @@ export default async function LocationsPage({ params }: { params: Promise<{ loca
         />
       }
     >
-      <PublicHero title={t("title")} lead={t("lead")} compact={!emirates.length} />
+      <PublicHero locale={locale} title={t("title")} lead={t("lead")} compact={!emirates.length} />
 
       <Section>
         <ul className="grid gap-3 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7">

@@ -1,3 +1,4 @@
+import { brandName } from "@/config/site";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getPublicBookingReceipt } from "@/lib/bookings";
@@ -14,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: "Booking" });
   return buildMetadata({
     locale,
-    title: `${t("receivedTitle")} | ALNAJAH ALDAEM`,
+    title: `${t("receivedTitle")} | ${brandName(locale)}`,
     description: t("receivedLead"),
     path: "/book-a-service/received",
     index: false,
@@ -51,7 +52,7 @@ export default async function BookingReceivedPage({
         />
       }
     >
-      <PublicHero kicker={t("title")} title={t("receivedTitle")} lead={t("receivedLead")} compact />
+      <PublicHero locale={locale} kicker={t("title")} title={t("receivedTitle")} lead={t("receivedLead")} compact />
       <Section>
         <dl className="mx-auto grid max-w-xl gap-3 rounded-xl border border-line bg-white p-5 text-sm">
           <Row label={t("reference")} value={receipt.number} />
@@ -73,7 +74,7 @@ export default async function BookingReceivedPage({
               call: cta("call"),
             }}
             whatsappText={[
-              "Hello ALNAJAH ALDAEM",
+              "Hello Al Najah Al Daem · Fixpoint",
               `Request ${receipt.number}`,
               receipt.serviceName ? `Service: ${receipt.serviceName}` : "",
               `Type: ${receipt.type}`,

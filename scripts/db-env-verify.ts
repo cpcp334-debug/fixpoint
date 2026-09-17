@@ -28,9 +28,9 @@ async function main() {
     scripts: Record<string, string>;
   };
   const readme = readFileSync(join(root, "README.md"), "utf8");
-  const docs = readFileSync(join(root, "docs/production-database.md"), "utf8");
-  const compose = readFileSync(join(root, "docker-compose.yml"), "utf8");
+  const schema = readFileSync(join(root, "prisma/schema.prisma"), "utf8");
   const envExample = readFileSync(join(root, ".env.example"), "utf8");
+  const mysqlDoc = readFileSync(join(root, "deploy/MYSQL-HOSTINGER.md"), "utf8");
 
   assertNeverLogsSecrets(dbEnvSrc, "db-env.ts");
   assertNeverLogsSecrets(instrumentationSrc, "instrumentation.ts");
@@ -40,22 +40,24 @@ async function main() {
   assert(healthSrc.includes("authorizeHealthCheck"), "health has authorizeHealthCheck");
   assert(instrumentationSrc.includes("assertProductionDatabaseConfigured"), "instrumentation asserts DB env");
 
-  assert(pkg.scripts["db:migrate"] === "prisma migrate deploy", "db:migrate remains migrate deploy");
+  assert(schema.includes('provider = "mysql"'), "Prisma provider is mysql");
+  assert(!schema.includes("directUrl"), "MySQL schema has no directUrl");
+  assert(mysqlDoc.includes("mysql://"), "MYSQL-HOSTINGER.md documents mysql URL");
+
+  assert(pkg.scripts["db:migrate"]?.includes("prisma-migrate-safe"), "db:migrate uses prisma-migrate-safe");
+  assert(pkg.scripts["db:export-neon-to-mysql"]?.includes("export-neon-to-mysql"), "ETL script wired");
   assert(pkg.scripts["db:push:dev"] === "prisma db push", "db:push:dev is development push");
   assert(!pkg.scripts["db:push"], "db:push must be renamed away");
   assert(pkg.scripts["verify:db-env"]?.includes("db-env-verify"), "verify:db-env script exists");
   assert(!pkg.scripts.build.includes("db:seed"), "build must not seed");
+  assert(!pkg.scripts.build.includes("migrate deploy"), "build must not run migrate deploy");
   assert(!pkg.scripts.build.includes("pg-server"), "build must not start PGlite");
   assert(pkg.scripts.start === "next start", "start is next start only");
+  assert(pkg.scripts.build === "prisma generate && next build", "build is generate + next build only");
 
-  assert(readme.includes("docs/production-database.md"), "README links production DB docs");
-  assert(docs.includes("prisma migrate deploy"), "docs mention migrate deploy");
-  assert(docs.includes("RPO"), "docs mention RPO");
-  assert(docs.includes("TBD"), "docs mark unset DR targets as TBD");
-  assert(docs.toLowerCase().includes("not configured") || docs.includes("NOT configured"), "docs do not claim backups exist");
-  assert(/development[- ]only|NOT FOR PRODUCTION/i.test(compose), "compose labeled development-only");
-
+  assert(readme.toLowerCase().includes("mysql") || readme.includes("MYSQL-HOSTINGER"), "README mentions MySQL path");
   assert(envExample.includes("REQUIRED PRODUCTION"), ".env.example has REQUIRED PRODUCTION section");
+  assert(envExample.includes("mysql://"), ".env.example documents mysql://");
   assert(envExample.includes("HEALTH_CHECK_SECRET"), ".env.example documents HEALTH_CHECK_SECRET");
   assert(envExample.includes(ALLOW_PRODUCTION_LOCAL_DB_ENV), ".env.example documents local override");
 
@@ -65,71 +67,49 @@ async function main() {
   const empty = checkProductionDatabaseUrl({ NODE_ENV: "production", DATABASE_URL: "   " });
   assert(!empty.ok && empty.code === "missing_database_url", "production blank DATABASE_URL fails");
 
+  const postgresRejected = checkProductionDatabaseUrl({
+    NODE_ENV: "production",
+    DATABASE_URL: "postgresql://app:s3cret@db.example.com:5432/alnajah?sslmode=require",
+  });
+  assert(!postgresRejected.ok && postgresRejected.code === "unsupported_scheme", "production rejects postgresql://");
+
   const pglite = checkProductionDatabaseUrl({
     NODE_ENV: "production",
     DATABASE_URL:
       "postgresql://postgres:postgres@127.0.0.1:5433/postgres?sslmode=disable&pgbouncer=true&connection_limit=1",
   });
-  assert(!pglite.ok && pglite.code === "pglite_port", "production PGlite port fails");
-
-  const pgliteQuery = checkProductionDatabaseUrl({
-    NODE_ENV: "production",
-    DATABASE_URL: "postgresql://u:p@db.example.com:5432/app?pgbouncer=true&connection_limit=1",
-  });
-  assert(!pgliteQuery.ok && pgliteQuery.code === "pglite_query_fingerprint", "PGlite query fingerprint fails on remote host");
+  assert(!pglite.ok && pglite.code === "unsupported_scheme", "production PGlite/postgres scheme fails");
 
   const localhost = checkProductionDatabaseUrl({
     NODE_ENV: "production",
-    DATABASE_URL: "postgresql://alnajah:secret@127.0.0.1:5432/alnajah?sslmode=disable",
+    DATABASE_URL: "mysql://alnajah:secret@127.0.0.1:3306/alnajah",
   });
-  assert(!localhost.ok && localhost.code === "localhost_rejected", "production localhost fails by default");
+  assert(!localhost.ok && localhost.code === "localhost_rejected", "production localhost MySQL fails by default");
 
   const localhostOverride = checkProductionDatabaseUrl({
     NODE_ENV: "production",
     [ALLOW_PRODUCTION_LOCAL_DB_ENV]: "1",
-    DATABASE_URL: "postgresql://alnajah:secret@127.0.0.1:5432/alnajah?sslmode=disable",
+    DATABASE_URL: "mysql://alnajah:secret@127.0.0.1:3306/alnajah",
   });
-  assert(localhostOverride.ok, "ALLOW_PRODUCTION_LOCAL_DB=1 allows localhost real Postgres");
-
-  const overrideStillBlocksPglite = checkProductionDatabaseUrl({
-    NODE_ENV: "production",
-    [ALLOW_PRODUCTION_LOCAL_DB_ENV]: "1",
-    DATABASE_URL:
-      "postgresql://postgres:postgres@127.0.0.1:5433/postgres?sslmode=disable&pgbouncer=true&connection_limit=1",
-  });
-  assert(
-    !overrideStillBlocksPglite.ok && overrideStillBlocksPglite.code === "pglite_port",
-    "override never permits PGlite port",
-  );
-
-  const overrideStillBlocksFingerprint = checkProductionDatabaseUrl({
-    NODE_ENV: "production",
-    [ALLOW_PRODUCTION_LOCAL_DB_ENV]: "1",
-    DATABASE_URL: "postgresql://u:p@localhost:5432/app?pgbouncer=true&connection_limit=1",
-  });
-  assert(
-    !overrideStillBlocksFingerprint.ok && overrideStillBlocksFingerprint.code === "pglite_query_fingerprint",
-    "override never permits PGlite query fingerprint",
-  );
+  assert(localhostOverride.ok, "ALLOW_PRODUCTION_LOCAL_DB=1 allows localhost MySQL");
 
   const remote = checkProductionDatabaseUrl({
     NODE_ENV: "production",
-    DATABASE_URL: "postgresql://app:s3cret@db.example.com:5432/alnajah?sslmode=require",
+    DATABASE_URL: "mysql://app:s3cret@mysql.hostinger.example:3306/alnajah",
   });
-  assert(remote.ok && remote.host === "db.example.com", "remote PostgreSQL URL accepted");
+  assert(remote.ok && remote.host === "mysql.hostinger.example", "remote MySQL URL accepted");
 
-  const remotePgbouncer = checkProductionDatabaseUrl({
-    NODE_ENV: "production",
-    DATABASE_URL: "postgresql://app:s3cret@pool.example.com:6432/alnajah?pgbouncer=true&sslmode=require",
-  });
-  assert(remotePgbouncer.ok, "legitimate remote PgBouncer URL (without connection_limit=1) accepted");
-
-  const devPglite = checkProductionDatabaseUrl({
+  const devMysql = checkProductionDatabaseUrl({
     NODE_ENV: "development",
-    DATABASE_URL:
-      "postgresql://postgres:postgres@127.0.0.1:5433/postgres?sslmode=disable&pgbouncer=true&connection_limit=1",
+    DATABASE_URL: "mysql://alnajah:secret@127.0.0.1:3306/alnajah",
   });
-  assert(devPglite.ok, "development PGlite URL remains allowed");
+  assert(devMysql.ok, "development MySQL URL allowed");
+
+  const parsed = parseDatabaseUrl("mysql://u:p@host/db");
+  assert(parsed.ok, "parse accepts mysql URL");
+  assert(parseDatabaseUrl("postgresql://u:p@host/db").ok, "parse still accepts postgresql for legacy local");
+  assert(hasPgliteQueryFingerprint(new URL("http://x?pgbouncer=true&connection_limit=1").searchParams), "fingerprint helper");
+  assert(productionDatabaseUrlRefusalMessage("missing_database_url").includes("REFUSED"), "refusal message clear");
 
   assert(isNextProductionBuildPhase({ NEXT_PHASE: "phase-production-build" }), "build phase detector works");
   assert(!isNextProductionBuildPhase({}), "non-build phase is false");
@@ -157,11 +137,6 @@ async function main() {
     buildSkipped = false;
   }
   assert(buildSkipped, "assert skips during next production build phase");
-
-  const parsed = parseDatabaseUrl("postgresql://u:p@host/db");
-  assert(parsed.ok, "parse accepts postgresql URL");
-  assert(hasPgliteQueryFingerprint(new URL("http://x?pgbouncer=true&connection_limit=1").searchParams), "fingerprint helper");
-  assert(productionDatabaseUrlRefusalMessage("missing_database_url").includes("REFUSED"), "refusal message clear");
 
   const seedProd = resolveSeedMode({ NODE_ENV: "production" });
   assert(seedProd.mode === "safe-bootstrap" && seedProd.refusedDestructive, "destructive production seed remains blocked");

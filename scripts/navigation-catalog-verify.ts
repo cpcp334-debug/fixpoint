@@ -1,5 +1,5 @@
 /**
- * Navigation integrity for approved A1 catalog (18 / 293 / 311).
+ * Navigation integrity for the approved catalog (18 / 436 / 454).
  */
 import {
   assertNavTreeIntegrity,
@@ -17,8 +17,8 @@ function main() {
   const a1 = assertCatalogA1Counts();
   const nav = assertNavTreeIntegrity();
   assert(nav.parents === 18, `parents ${nav.parents}`);
-  assert(nav.children === 293, `children ${nav.children}`);
-  assert(nav.offerings === 311, `offerings ${nav.offerings}`);
+  assert(nav.children === 436, `children ${nav.children}`);
+  assert(nav.offerings === 454, `offerings ${nav.offerings}`);
   assert(nav.brokenParentLinks.length === 0, `broken parents ${nav.brokenParentLinks.join(",")}`);
   assert(nav.hubs === 7, `hubs ${nav.hubs}`);
 

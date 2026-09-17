@@ -1,0 +1,1403 @@
+# Proposed catalog × Al Majaz 1/2/3 — continuous numbering 1..1290
+# Source: diy-classification-matrix-FINAL.proposal.json
+# Format: N. Service Name — Area — City
+
+=== Cleaning Services (cleaning) ===
+1. Apartment Cleaning — Al Majaz 1 — Sharjah City
+2. Balcony Cleaning — Al Majaz 1 — Sharjah City
+3. Bathroom Cleaning — Al Majaz 1 — Sharjah City
+4. Building Common Area Cleaning — Al Majaz 1 — Sharjah City
+5. Carpet Cleaning — Al Majaz 1 — Sharjah City
+6. Commercial Cleaning — Al Majaz 1 — Sharjah City
+7. Curtain & Blind Cleaning — Al Majaz 1 — Sharjah City
+8. Deep Cleaning — Al Majaz 1 — Sharjah City
+9. Floor Cleaning — Al Majaz 1 — Sharjah City
+10. Glass Cleaning — Al Majaz 1 — Sharjah City
+11. House Cleaning — Al Majaz 1 — Sharjah City
+12. Kitchen Cleaning — Al Majaz 1 — Sharjah City
+13. Mattress Cleaning — Al Majaz 1 — Sharjah City
+14. Move-In Cleaning — Al Majaz 1 — Sharjah City
+15. Move-Out Cleaning — Al Majaz 1 — Sharjah City
+16. Office Cleaning — Al Majaz 1 — Sharjah City
+17. One-Time Cleaning — Al Majaz 1 — Sharjah City
+18. Post-Construction Cleaning — Al Majaz 1 — Sharjah City
+19. Post-Renovation Cleaning — Al Majaz 1 — Sharjah City
+20. Recurring Cleaning — Al Majaz 1 — Sharjah City
+21. Residential Cleaning — Al Majaz 1 — Sharjah City
+22. Sofa & Upholstery Cleaning — Al Majaz 1 — Sharjah City
+23. Staircase Cleaning — Al Majaz 1 — Sharjah City
+24. Villa Cleaning — Al Majaz 1 — Sharjah City
+25. Window Cleaning — Al Majaz 1 — Sharjah City
+
+=== General Building Maintenance (general-maintenance) ===
+26. Apartment Maintenance — Al Majaz 1 — Sharjah City
+27. Cabinet & Hardware Repair — Al Majaz 1 — Sharjah City
+28. Commercial Building Maintenance — Al Majaz 1 — Sharjah City
+29. Common Area Maintenance — Al Majaz 1 — Sharjah City
+30. Corrective Building Maintenance — Al Majaz 1 — Sharjah City
+31. Door Hardware Replacement — Al Majaz 1 — Sharjah City
+32. Door Repair & Adjustment — Al Majaz 1 — Sharjah City
+33. False Ceiling Repair — Al Majaz 1 — Sharjah City
+34. Fixture Replacement — Al Majaz 1 — Sharjah City
+35. Gate Repair — Al Majaz 1 — Sharjah City
+36. General Handyman Service — Al Majaz 1 — Sharjah City
+37. Handrail Repair — Al Majaz 1 — Sharjah City
+38. Lock Repair & Replacement — Al Majaz 1 — Sharjah City
+39. Minor Building Repairs — Al Majaz 1 — Sharjah City
+40. Minor Civil Maintenance — Al Majaz 1 — Sharjah City
+41. Preventive Building Maintenance — Al Majaz 1 — Sharjah City
+42. Property Inspection — Al Majaz 1 — Sharjah City
+43. Residential Building Maintenance — Al Majaz 1 — Sharjah City
+44. Tile Repair — Al Majaz 1 — Sharjah City
+45. Villa Maintenance — Al Majaz 1 — Sharjah City
+
+=== Plumbing Maintenance (plumbing) ===
+46. Bidet Installation — Al Majaz 1 — Sharjah City
+47. Drain Blockage Removal — Al Majaz 1 — Sharjah City
+48. Drain Cleaning — Al Majaz 1 — Sharjah City
+49. Faucet Repair — Al Majaz 1 — Sharjah City
+50. Faucet Replacement — Al Majaz 1 — Sharjah City
+51. Floor Drain Repair — Al Majaz 1 — Sharjah City
+52. Grease Trap Cleaning — Al Majaz 1 — Sharjah City
+53. Hot Water Line Repair — Al Majaz 1 — Sharjah City
+54. Mixer Tap Replacement — Al Majaz 1 — Sharjah City
+55. Pipe Repair — Al Majaz 1 — Sharjah City
+56. Pipe Replacement — Al Majaz 1 — Sharjah City
+57. Plumbing Inspection — Al Majaz 1 — Sharjah City
+58. Running Toilet Repair — Al Majaz 1 — Sharjah City
+59. Shower Mixer Replacement — Al Majaz 1 — Sharjah City
+60. Shower Repair — Al Majaz 1 — Sharjah City
+61. Sink Installation — Al Majaz 1 — Sharjah City
+62. Sink Repair — Al Majaz 1 — Sharjah City
+63. Sump Pump Inspection — Al Majaz 1 — Sharjah City
+64. Toilet Installation — Al Majaz 1 — Sharjah City
+65. Toilet Repair — Al Majaz 1 — Sharjah City
+66. Water Leakage Detection — Al Majaz 1 — Sharjah City
+67. Water Leakage Repair — Al Majaz 1 — Sharjah City
+68. Water Pressure Problem Diagnosis — Al Majaz 1 — Sharjah City
+69. Water Supply Line Repair — Al Majaz 1 — Sharjah City
+
+=== Electrical Maintenance (electrical) ===
+70. AC Isolator Installation — Al Majaz 1 — Sharjah City
+71. Backup Generator Changeover Inspection — Al Majaz 1 — Sharjah City
+72. Breaker Tripping Diagnosis — Al Majaz 1 — Sharjah City
+73. Building Electrical Preventive Maintenance — Al Majaz 1 — Sharjah City
+74. Burning Smell Electrical Investigation — Al Majaz 1 — Sharjah City
+75. Cable Replacement — Al Majaz 1 — Sharjah City
+76. Cable Tray Installation — Al Majaz 1 — Sharjah City
+77. Ceiling Fan Installation — Al Majaz 1 — Sharjah City
+78. Ceiling Fan Repair — Al Majaz 1 — Sharjah City
+79. Ceiling Fan Replacement — Al Majaz 1 — Sharjah City
+80. Ceiling Light Installation — Al Majaz 1 — Sharjah City
+81. Chandelier Installation — Al Majaz 1 — Sharjah City
+82. Circuit Breaker Inspection — Al Majaz 1 — Sharjah City
+83. Circuit Breaker Replacement — Al Majaz 1 — Sharjah City
+84. Commercial Electrical Maintenance — Al Majaz 1 — Sharjah City
+85. Common Area Electrical Maintenance — Al Majaz 1 — Sharjah City
+86. Concealed Wiring Installation — Al Majaz 1 — Sharjah City
+87. Contactor Replacement — Al Majaz 1 — Sharjah City
+88. Cooker Electrical Connection — Al Majaz 1 — Sharjah City
+89. DB Labeling and Circuit Mapping — Al Majaz 1 — Sharjah City
+90. Dedicated Circuit Installation — Al Majaz 1 — Sharjah City
+91. Dimmer Switch Installation — Al Majaz 1 — Sharjah City
+92. Dimmer Switch Repair — Al Majaz 1 — Sharjah City
+93. Distribution Board Inspection — Al Majaz 1 — Sharjah City
+94. Distribution Board Installation — Al Majaz 1 — Sharjah City
+95. Distribution Board Repair — Al Majaz 1 — Sharjah City
+96. Distribution Board Upgrade — Al Majaz 1 — Sharjah City
+97. Doorbell Installation — Al Majaz 1 — Sharjah City
+98. Doorbell Repair — Al Majaz 1 — Sharjah City
+99. Downlight Installation — Al Majaz 1 — Sharjah City
+100. Downlight Replacement — Al Majaz 1 — Sharjah City
+101. Earthing Inspection — Al Majaz 1 — Sharjah City
+102. Earthing Repair — Al Majaz 1 — Sharjah City
+103. Electric Gate Motor Electrical Diagnosis — Al Majaz 1 — Sharjah City
+104. Electrical Appliance Point Installation — Al Majaz 1 — Sharjah City
+105. Electrical Control Panel Inspection — Al Majaz 1 — Sharjah City
+106. Electrical Control Panel Repair — Al Majaz 1 — Sharjah City
+107. Electrical Fault Diagnosis — Al Majaz 1 — Sharjah City
+108. Electrical Inspection — Al Majaz 1 — Sharjah City
+109. Electrical Load Inspection — Al Majaz 1 — Sharjah City
+110. Electrical Overheating Investigation — Al Majaz 1 — Sharjah City
+111. Electrical Safety Inspection — Al Majaz 1 — Sharjah City
+112. Emergency Electrical Fault Repair — Al Majaz 1 — Sharjah City
+113. Emergency Light Inspection — Al Majaz 1 — Sharjah City
+114. Emergency Light Repair — Al Majaz 1 — Sharjah City
+115. Equipotential Bonding Inspection — Al Majaz 1 — Sharjah City
+116. Exhaust Fan Installation — Al Majaz 1 — Sharjah City
+117. Exhaust Fan Repair — Al Majaz 1 — Sharjah City
+118. Exhaust Fan Replacement — Al Majaz 1 — Sharjah City
+119. Garden Electrical Fault Diagnosis — Al Majaz 1 — Sharjah City
+120. Garden Light Installation — Al Majaz 1 — Sharjah City
+121. Ground Fault Diagnosis — Al Majaz 1 — Sharjah City
+122. Intercom Power Supply Repair — Al Majaz 1 — Sharjah City
+123. Isolator Switch Installation — Al Majaz 1 — Sharjah City
+124. Isolator Switch Replacement — Al Majaz 1 — Sharjah City
+125. Junction Box Repair — Al Majaz 1 — Sharjah City
+126. LED Light Installation — Al Majaz 1 — Sharjah City
+127. LED Light Replacement — Al Majaz 1 — Sharjah City
+128. Light Installation — Al Majaz 1 — Sharjah City
+129. Light Repair — Al Majaz 1 — Sharjah City
+130. Light Timer Installation — Al Majaz 1 — Sharjah City
+131. Lobby Lighting Maintenance — Al Majaz 1 — Sharjah City
+132. MCB Installation — Al Majaz 1 — Sharjah City
+133. MCB Replacement — Al Majaz 1 — Sharjah City
+134. MCCB Inspection — Al Majaz 1 — Sharjah City
+135. MCCB Replacement — Al Majaz 1 — Sharjah City
+136. Motion Sensor Installation — Al Majaz 1 — Sharjah City
+137. Motor Starter Repair — Al Majaz 1 — Sharjah City
+138. Neutral Fault Diagnosis — Al Majaz 1 — Sharjah City
+139. Neutral Link Replacement — Al Majaz 1 — Sharjah City
+140. No Power Diagnosis — Al Majaz 1 — Sharjah City
+141. Office Electrical Fault Diagnosis — Al Majaz 1 — Sharjah City
+142. Outdoor Junction Box Repair — Al Majaz 1 — Sharjah City
+143. Outdoor Light Installation — Al Majaz 1 — Sharjah City
+144. Outdoor Light Repair — Al Majaz 1 — Sharjah City
+145. Overload Relay Replacement — Al Majaz 1 — Sharjah City
+146. Parking Area Electrical Maintenance — Al Majaz 1 — Sharjah City
+147. Partial Power Failure Diagnosis — Al Majaz 1 — Sharjah City
+148. Phase Failure Diagnosis — Al Majaz 1 — Sharjah City
+149. Pool Area Electrical Inspection — Al Majaz 1 — Sharjah City
+150. Power Failure Diagnosis — Al Majaz 1 — Sharjah City
+151. Preventive Electrical Maintenance — Al Majaz 1 — Sharjah City
+152. RCBO Installation — Al Majaz 1 — Sharjah City
+153. RCBO Replacement — Al Majaz 1 — Sharjah City
+154. RCCB Installation — Al Majaz 1 — Sharjah City
+155. RCCB Replacement — Al Majaz 1 — Sharjah City
+156. Scheduled Electrical Inspection — Al Majaz 1 — Sharjah City
+157. Sensor Light Installation — Al Majaz 1 — Sharjah City
+158. Shop Electrical Inspection — Al Majaz 1 — Sharjah City
+159. Short-Circuit Diagnosis — Al Majaz 1 — Sharjah City
+160. Site Electrical Safety Check — Al Majaz 1 — Sharjah City
+161. Smart Lighting Setup — Al Majaz 1 — Sharjah City
+162. Smart Switch Installation — Al Majaz 1 — Sharjah City
+163. Smart Switch Replacement — Al Majaz 1 — Sharjah City
+164. Socket Installation — Al Majaz 1 — Sharjah City
+165. Socket Relocation — Al Majaz 1 — Sharjah City
+166. Socket Repair — Al Majaz 1 — Sharjah City
+167. Socket Replacement — Al Majaz 1 — Sharjah City
+168. Sparking Outlet Investigation — Al Majaz 1 — Sharjah City
+169. Staircase Lighting Repair — Al Majaz 1 — Sharjah City
+170. Surface Wiring Installation — Al Majaz 1 — Sharjah City
+171. Surge Protection Device Installation — Al Majaz 1 — Sharjah City
+172. Switch Repair — Al Majaz 1 — Sharjah City
+173. Switch Replacement — Al Majaz 1 — Sharjah City
+174. Temporary Power Setup — Al Majaz 1 — Sharjah City
+175. Three-Phase Supply Inspection — Al Majaz 1 — Sharjah City
+176. Timer Switch Installation — Al Majaz 1 — Sharjah City
+177. Timer Switch Repair — Al Majaz 1 — Sharjah City
+178. Track Lighting Installation — Al Majaz 1 — Sharjah City
+179. Two-Way Switch Installation — Al Majaz 1 — Sharjah City
+180. UPS Electrical Connection Inspection — Al Majaz 1 — Sharjah City
+181. Voltage Problem Diagnosis — Al Majaz 1 — Sharjah City
+182. Wall Fan Installation — Al Majaz 1 — Sharjah City
+183. Wall Fan Repair — Al Majaz 1 — Sharjah City
+184. Wall Light Installation — Al Majaz 1 — Sharjah City
+185. Water Heater Electrical Connection — Al Majaz 1 — Sharjah City
+186. Water Pump Motor Electrical Repair — Al Majaz 1 — Sharjah City
+187. Weatherproof Socket Installation — Al Majaz 1 — Sharjah City
+188. Wiring Inspection — Al Majaz 1 — Sharjah City
+189. Wiring Repair — Al Majaz 1 — Sharjah City
+190. Wiring Replacement — Al Majaz 1 — Sharjah City
+
+=== AC / Air Conditioning Maintenance (ac) ===
+191. AC Capacitor Replacement — Al Majaz 1 — Sharjah City
+192. AC Cleaning — Al Majaz 1 — Sharjah City
+193. AC Cooling Problem Diagnosis — Al Majaz 1 — Sharjah City
+194. AC Drain Cleaning — Al Majaz 1 — Sharjah City
+195. AC Drain Pipe Repair — Al Majaz 1 — Sharjah City
+196. AC Filter Cleaning — Al Majaz 1 — Sharjah City
+197. AC Gas Check — Al Majaz 1 — Sharjah City
+198. AC Gas Recharge — Al Majaz 1 — Sharjah City
+199. AC Inspection — Al Majaz 1 — Sharjah City
+200. AC Installation — Al Majaz 1 — Sharjah City
+201. AC Noise Problem Diagnosis — Al Majaz 1 — Sharjah City
+202. AC PCB Diagnosis — Al Majaz 1 — Sharjah City
+203. AC Preventive Maintenance — Al Majaz 1 — Sharjah City
+204. AC Replacement — Al Majaz 1 — Sharjah City
+205. AC Servicing — Al Majaz 1 — Sharjah City
+206. AC Thermostat Repair — Al Majaz 1 — Sharjah City
+207. AC Water Leakage Repair — Al Majaz 1 — Sharjah City
+208. Cassette AC Maintenance — Al Majaz 1 — Sharjah City
+209. Central AC Maintenance — Al Majaz 1 — Sharjah City
+210. Ducted AC Maintenance — Al Majaz 1 — Sharjah City
+211. Package AC Maintenance — Al Majaz 1 — Sharjah City
+212. Split AC Maintenance — Al Majaz 1 — Sharjah City
+213. Window AC Maintenance — Al Majaz 1 — Sharjah City
+
+=== Painting Services (painting) ===
+214. Anti-Fungal Painting — Al Majaz 1 — Sharjah City
+215. Apartment Painting — Al Majaz 1 — Sharjah City
+216. Bathroom Moisture-Resistant Painting — Al Majaz 1 — Sharjah City
+217. Ceiling Painting — Al Majaz 1 — Sharjah City
+218. Commercial Painting — Al Majaz 1 — Sharjah City
+219. Decorative Painting — Al Majaz 1 — Sharjah City
+220. Door Painting — Al Majaz 1 — Sharjah City
+221. Exterior Painting — Al Majaz 1 — Sharjah City
+222. Gate Painting — Al Majaz 1 — Sharjah City
+223. Interior Painting — Al Majaz 1 — Sharjah City
+224. Metal Painting — Al Majaz 1 — Sharjah City
+225. Office Painting — Al Majaz 1 — Sharjah City
+226. Parking Floor Painting — Al Majaz 1 — Sharjah City
+227. Repainting — Al Majaz 1 — Sharjah City
+228. Residential Painting — Al Majaz 1 — Sharjah City
+229. Texture Painting — Al Majaz 1 — Sharjah City
+230. Touch-Up Painting — Al Majaz 1 — Sharjah City
+231. Villa Painting — Al Majaz 1 — Sharjah City
+232. Wall Painting — Al Majaz 1 — Sharjah City
+233. Wood Painting — Al Majaz 1 — Sharjah City
+
+=== Wall Maintenance & Repair (walls) ===
+234. Cornice Repair — Al Majaz 1 — Sharjah City
+235. Damp Wall Repair — Al Majaz 1 — Sharjah City
+236. Gypsum Wall Repair — Al Majaz 1 — Sharjah City
+237. Mold-Affected Wall Treatment — Al Majaz 1 — Sharjah City
+238. Partition Wall Repair — Al Majaz 1 — Sharjah City
+239. Peeling Paint Repair — Al Majaz 1 — Sharjah City
+240. Plaster Repair — Al Majaz 1 — Sharjah City
+241. Skirting Repair — Al Majaz 1 — Sharjah City
+242. Structural Crack Assessment — Al Majaz 1 — Sharjah City
+243. Surface Preparation — Al Majaz 1 — Sharjah City
+244. Wall Crack Repair — Al Majaz 1 — Sharjah City
+245. Wall Damage Repair — Al Majaz 1 — Sharjah City
+246. Wall Hole Repair — Al Majaz 1 — Sharjah City
+247. Wall Inspection — Al Majaz 1 — Sharjah City
+248. Wall Patching — Al Majaz 1 — Sharjah City
+249. Wall Skimming — Al Majaz 1 — Sharjah City
+250. Wallpaper Removal — Al Majaz 1 — Sharjah City
+
+=== Swimming Pool Cleaning & Maintenance (swimming-pool) ===
+251. Commercial Pool Maintenance — Al Majaz 1 — Sharjah City
+252. Pool Chemical Balancing — Al Majaz 1 — Sharjah City
+253. Pool Cover Repair — Al Majaz 1 — Sharjah City
+254. Pool Drain Cleaning — Al Majaz 1 — Sharjah City
+255. Pool Equipment Inspection — Al Majaz 1 — Sharjah City
+256. Pool Filter Cleaning — Al Majaz 1 — Sharjah City
+257. Pool Filter Maintenance — Al Majaz 1 — Sharjah City
+258. Pool Leak Inspection — Al Majaz 1 — Sharjah City
+259. Pool Lighting Repair — Al Majaz 1 — Sharjah City
+260. Pool Pump Inspection — Al Majaz 1 — Sharjah City
+261. Pool Pump Maintenance — Al Majaz 1 — Sharjah City
+262. Pool Skimming — Al Majaz 1 — Sharjah City
+263. Pool Tile Cleaning — Al Majaz 1 — Sharjah City
+264. Pool Vacuum Cleaning — Al Majaz 1 — Sharjah City
+265. Pool Water Testing — Al Majaz 1 — Sharjah City
+266. Residential Pool Maintenance — Al Majaz 1 — Sharjah City
+267. Swimming Pool Cleaning — Al Majaz 1 — Sharjah City
+268. Swimming Pool Inspection — Al Majaz 1 — Sharjah City
+
+=== Sauna Room Cleaning & Maintenance (sauna) ===
+269. Sauna Bench Cleaning — Al Majaz 1 — Sharjah City
+270. Sauna Deep Cleaning — Al Majaz 1 — Sharjah City
+271. Sauna Disinfection — Al Majaz 1 — Sharjah City
+272. Sauna Door Maintenance — Al Majaz 1 — Sharjah City
+273. Sauna Equipment Inspection — Al Majaz 1 — Sharjah City
+274. Sauna Floor Cleaning — Al Majaz 1 — Sharjah City
+275. Sauna Glass Cleaning — Al Majaz 1 — Sharjah City
+276. Sauna Heater Inspection — Al Majaz 1 — Sharjah City
+277. Sauna Heater Maintenance — Al Majaz 1 — Sharjah City
+278. Sauna Inspection — Al Majaz 1 — Sharjah City
+279. Sauna Preventive Maintenance — Al Majaz 1 — Sharjah City
+280. Sauna Regular Cleaning — Al Majaz 1 — Sharjah City
+281. Sauna Ventilation Inspection — Al Majaz 1 — Sharjah City
+282. Sauna Wall Cleaning — Al Majaz 1 — Sharjah City
+283. Sauna Wood Treatment — Al Majaz 1 — Sharjah City
+
+=== Water Tank Cleaning & Maintenance (water-tank) ===
+284. Commercial Water Tank Cleaning — Al Majaz 1 — Sharjah City
+285. Float Valve Repair — Al Majaz 1 — Sharjah City
+286. Residential Water Tank Cleaning — Al Majaz 1 — Sharjah City
+287. Rooftop Water Tank Cleaning — Al Majaz 1 — Sharjah City
+288. Scheduled Water Tank Maintenance — Al Majaz 1 — Sharjah City
+289. Tank Overflow Repair — Al Majaz 1 — Sharjah City
+290. Tank Pipe Connection Repair — Al Majaz 1 — Sharjah City
+291. Underground Water Tank Cleaning — Al Majaz 1 — Sharjah City
+292. Villa Water Tank Cleaning — Al Majaz 1 — Sharjah City
+293. Water Tank Cleaning — Al Majaz 1 — Sharjah City
+294. Water Tank Cover Repair — Al Majaz 1 — Sharjah City
+295. Water Tank Disinfection — Al Majaz 1 — Sharjah City
+296. Water Tank Inspection — Al Majaz 1 — Sharjah City
+297. Water Tank Leak Inspection — Al Majaz 1 — Sharjah City
+298. Water Tank Pump Inspection — Al Majaz 1 — Sharjah City
+299. Water Tank Valve Repair — Al Majaz 1 — Sharjah City
+
+=== Refrigerator Maintenance / Repair (refrigerator) ===
+300. Refrigerator Cleaning — Al Majaz 1 — Sharjah City
+301. Refrigerator Compressor Inspection — Al Majaz 1 — Sharjah City
+302. Refrigerator Compressor Replacement — Al Majaz 1 — Sharjah City
+303. Refrigerator Cooling Problem — Al Majaz 1 — Sharjah City
+304. Refrigerator Door Hinge Repair — Al Majaz 1 — Sharjah City
+305. Refrigerator Door Seal Replacement — Al Majaz 1 — Sharjah City
+306. Refrigerator Drain Blockage Repair — Al Majaz 1 — Sharjah City
+307. Refrigerator Electrical Fault Diagnosis — Al Majaz 1 — Sharjah City
+308. Refrigerator Fan Motor Repair — Al Majaz 1 — Sharjah City
+309. Refrigerator Freezing Problem — Al Majaz 1 — Sharjah City
+310. Refrigerator Ice Formation Problem — Al Majaz 1 — Sharjah City
+311. Refrigerator Inspection — Al Majaz 1 — Sharjah City
+312. Refrigerator Preventive Maintenance — Al Majaz 1 — Sharjah City
+313. Refrigerator Temperature Control Repair — Al Majaz 1 — Sharjah City
+314. Refrigerator Thermostat Inspection — Al Majaz 1 — Sharjah City
+315. Refrigerator Water Leakage — Al Majaz 1 — Sharjah City
+
+=== Microwave Maintenance / Repair (microwave) ===
+316. Microwave Control Panel Problem — Al Majaz 1 — Sharjah City
+317. Microwave Display Problem — Al Majaz 1 — Sharjah City
+318. Microwave Door Problem — Al Majaz 1 — Sharjah City
+319. Microwave Door Switch Repair — Al Majaz 1 — Sharjah City
+320. Microwave Electrical Diagnosis — Al Majaz 1 — Sharjah City
+321. Microwave Fan Problem — Al Majaz 1 — Sharjah City
+322. Microwave Fuse Replacement — Al Majaz 1 — Sharjah City
+323. Microwave Heating Problem — Al Majaz 1 — Sharjah City
+324. Microwave Inspection — Al Majaz 1 — Sharjah City
+325. Microwave Internal Cleaning — Al Majaz 1 — Sharjah City
+326. Microwave No-Power Diagnosis — Al Majaz 1 — Sharjah City
+327. Microwave Preventive Maintenance — Al Majaz 1 — Sharjah City
+328. Microwave Spark Problem — Al Majaz 1 — Sharjah City
+329. Microwave Turntable Problem — Al Majaz 1 — Sharjah City
+
+=== Washing Machine Maintenance / Repair (washing-machine) ===
+330. Washing Machine Belt Replacement — Al Majaz 1 — Sharjah City
+331. Washing Machine Control Board Diagnosis — Al Majaz 1 — Sharjah City
+332. Washing Machine Door Lock Problem — Al Majaz 1 — Sharjah City
+333. Washing Machine Drainage Problem — Al Majaz 1 — Sharjah City
+334. Washing Machine Drum Problem — Al Majaz 1 — Sharjah City
+335. Washing Machine Excessive Noise — Al Majaz 1 — Sharjah City
+336. Washing Machine Filter Cleaning — Al Majaz 1 — Sharjah City
+337. Washing Machine Inspection — Al Majaz 1 — Sharjah City
+338. Washing Machine Installation — Al Majaz 1 — Sharjah City
+339. Washing Machine Motor Inspection — Al Majaz 1 — Sharjah City
+340. Washing Machine Not Spinning — Al Majaz 1 — Sharjah City
+341. Washing Machine Not Starting — Al Majaz 1 — Sharjah City
+342. Washing Machine Preventive Maintenance — Al Majaz 1 — Sharjah City
+343. Washing Machine Pump Repair — Al Majaz 1 — Sharjah City
+344. Washing Machine Vibration Problem — Al Majaz 1 — Sharjah City
+345. Washing Machine Water Filling Problem — Al Majaz 1 — Sharjah City
+346. Washing Machine Water Leakage — Al Majaz 1 — Sharjah City
+
+=== Water Heater Maintenance / Repair (water-heater) ===
+347. Emergency Water Heater Repair — Al Majaz 1 — Sharjah City
+348. Water Heater Cleaning — Al Majaz 1 — Sharjah City
+349. Water Heater Electrical Fault Diagnosis — Al Majaz 1 — Sharjah City
+350. Water Heater Heating Element Replacement — Al Majaz 1 — Sharjah City
+351. Water Heater Inspection — Al Majaz 1 — Sharjah City
+352. Water Heater Installation — Al Majaz 1 — Sharjah City
+353. Water Heater No Hot Water — Al Majaz 1 — Sharjah City
+354. Water Heater Pressure Problem — Al Majaz 1 — Sharjah City
+355. Water Heater Preventive Maintenance — Al Majaz 1 — Sharjah City
+356. Water Heater Scale Removal — Al Majaz 1 — Sharjah City
+357. Water Heater Slow Heating — Al Majaz 1 — Sharjah City
+358. Water Heater Tank Inspection — Al Majaz 1 — Sharjah City
+359. Water Heater Temperature Problem — Al Majaz 1 — Sharjah City
+360. Water Heater Thermostat Repair — Al Majaz 1 — Sharjah City
+361. Water Heater Valve Replacement — Al Majaz 1 — Sharjah City
+362. Water Heater Water Leakage Repair — Al Majaz 1 — Sharjah City
+
+=== Dishwasher Maintenance / Repair (dishwasher) ===
+363. Dishwasher Control Panel Diagnosis — Al Majaz 1 — Sharjah City
+364. Dishwasher Door Lock Repair — Al Majaz 1 — Sharjah City
+365. Dishwasher Door Seal Replacement — Al Majaz 1 — Sharjah City
+366. Dishwasher Drainage Problem — Al Majaz 1 — Sharjah City
+367. Dishwasher Filter Cleaning — Al Majaz 1 — Sharjah City
+368. Dishwasher Heating Problem — Al Majaz 1 — Sharjah City
+369. Dishwasher Inspection — Al Majaz 1 — Sharjah City
+370. Dishwasher Installation — Al Majaz 1 — Sharjah City
+371. Dishwasher Not Cleaning Properly — Al Majaz 1 — Sharjah City
+372. Dishwasher Not Starting — Al Majaz 1 — Sharjah City
+373. Dishwasher Poor Drying — Al Majaz 1 — Sharjah City
+374. Dishwasher Preventive Maintenance — Al Majaz 1 — Sharjah City
+375. Dishwasher Pump Inspection — Al Majaz 1 — Sharjah City
+376. Dishwasher Spray Arm Cleaning — Al Majaz 1 — Sharjah City
+377. Dishwasher Water Filling Problem — Al Majaz 1 — Sharjah City
+378. Dishwasher Water Leakage — Al Majaz 1 — Sharjah City
+
+=== Gym Cleaning & Maintenance (gym) ===
+379. Cross-Trainer Maintenance — Al Majaz 1 — Sharjah City
+380. Exercise Bike Maintenance — Al Majaz 1 — Sharjah City
+381. Fitness Equipment Inspection — Al Majaz 1 — Sharjah City
+382. Gym Deep Cleaning — Al Majaz 1 — Sharjah City
+383. Gym Disinfection — Al Majaz 1 — Sharjah City
+384. Gym Equipment Cleaning — Al Majaz 1 — Sharjah City
+385. Gym Floor Cleaning — Al Majaz 1 — Sharjah City
+386. Gym Glass Cleaning — Al Majaz 1 — Sharjah City
+387. Gym Mirror Cleaning — Al Majaz 1 — Sharjah City
+388. Gym Regular Cleaning — Al Majaz 1 — Sharjah City
+389. Gym Sanitization — Al Majaz 1 — Sharjah City
+390. Locker Cleaning — Al Majaz 1 — Sharjah City
+391. Preventive Gym Maintenance — Al Majaz 1 — Sharjah City
+392. Shower & Changing Room Cleaning — Al Majaz 1 — Sharjah City
+393. Treadmill Maintenance — Al Majaz 1 — Sharjah City
+394. Weight Equipment Maintenance — Al Majaz 1 — Sharjah City
+
+=== Oven Maintenance / Repair (oven) ===
+395. Gas Oven Inspection — Al Majaz 1 — Sharjah City
+396. Oven Cleaning — Al Majaz 1 — Sharjah City
+397. Oven Control Panel Problem — Al Majaz 1 — Sharjah City
+398. Oven Door Repair — Al Majaz 1 — Sharjah City
+399. Oven Door Seal Replacement — Al Majaz 1 — Sharjah City
+400. Oven Electrical Fault Diagnosis — Al Majaz 1 — Sharjah City
+401. Oven Fan Repair — Al Majaz 1 — Sharjah City
+402. Oven Heating Element Replacement — Al Majaz 1 — Sharjah City
+403. Oven Inspection — Al Majaz 1 — Sharjah City
+404. Oven Installation — Al Majaz 1 — Sharjah City
+405. Oven Not Heating — Al Majaz 1 — Sharjah City
+406. Oven Preventive Maintenance — Al Majaz 1 — Sharjah City
+407. Oven Temperature Problem — Al Majaz 1 — Sharjah City
+408. Oven Thermostat Repair — Al Majaz 1 — Sharjah City
+409. Oven Timer Problem — Al Majaz 1 — Sharjah City
+410. Oven Uneven Heating — Al Majaz 1 — Sharjah City
+
+=== Burner / Cooker Maintenance / Repair (burner-cooker) ===
+411. Cooker Igniter Repair — Al Majaz 1 — Sharjah City
+412. Cooker Knob Replacement — Al Majaz 1 — Sharjah City
+413. Electric Cooker Repair — Al Majaz 1 — Sharjah City
+414. Gas Burner Cleaning — Al Majaz 1 — Sharjah City
+415. Gas Burner Repair — Al Majaz 1 — Sharjah City
+416. Gas Burner Replacement — Al Majaz 1 — Sharjah City
+417. Gas Cooker Cleaning — Al Majaz 1 — Sharjah City
+418. Gas Cooker Ignition Repair — Al Majaz 1 — Sharjah City
+419. Gas Cooker Inspection — Al Majaz 1 — Sharjah City
+420. Gas Cooker Installation — Al Majaz 1 — Sharjah City
+421. Gas Flame Problem Diagnosis — Al Majaz 1 — Sharjah City
+422. Gas Hose Inspection — Al Majaz 1 — Sharjah City
+423. Gas Hose Replacement — Al Majaz 1 — Sharjah City
+424. Gas Leakage Inspection — Al Majaz 1 — Sharjah City
+425. Gas Valve Inspection — Al Majaz 1 — Sharjah City
+426. Gas Valve Replacement — Al Majaz 1 — Sharjah City
+427. Glass Hob Maintenance — Al Majaz 1 — Sharjah City
+428. Hob Cleaning — Al Majaz 1 — Sharjah City
+429. Induction Cooker Inspection — Al Majaz 1 — Sharjah City
+430. Uneven Flame Diagnosis — Al Majaz 1 — Sharjah City
+
+=== Cleaning Services (cleaning) ===
+431. Apartment Cleaning — Al Majaz 2 — Sharjah City
+432. Balcony Cleaning — Al Majaz 2 — Sharjah City
+433. Bathroom Cleaning — Al Majaz 2 — Sharjah City
+434. Building Common Area Cleaning — Al Majaz 2 — Sharjah City
+435. Carpet Cleaning — Al Majaz 2 — Sharjah City
+436. Commercial Cleaning — Al Majaz 2 — Sharjah City
+437. Curtain & Blind Cleaning — Al Majaz 2 — Sharjah City
+438. Deep Cleaning — Al Majaz 2 — Sharjah City
+439. Floor Cleaning — Al Majaz 2 — Sharjah City
+440. Glass Cleaning — Al Majaz 2 — Sharjah City
+441. House Cleaning — Al Majaz 2 — Sharjah City
+442. Kitchen Cleaning — Al Majaz 2 — Sharjah City
+443. Mattress Cleaning — Al Majaz 2 — Sharjah City
+444. Move-In Cleaning — Al Majaz 2 — Sharjah City
+445. Move-Out Cleaning — Al Majaz 2 — Sharjah City
+446. Office Cleaning — Al Majaz 2 — Sharjah City
+447. One-Time Cleaning — Al Majaz 2 — Sharjah City
+448. Post-Construction Cleaning — Al Majaz 2 — Sharjah City
+449. Post-Renovation Cleaning — Al Majaz 2 — Sharjah City
+450. Recurring Cleaning — Al Majaz 2 — Sharjah City
+451. Residential Cleaning — Al Majaz 2 — Sharjah City
+452. Sofa & Upholstery Cleaning — Al Majaz 2 — Sharjah City
+453. Staircase Cleaning — Al Majaz 2 — Sharjah City
+454. Villa Cleaning — Al Majaz 2 — Sharjah City
+455. Window Cleaning — Al Majaz 2 — Sharjah City
+
+=== General Building Maintenance (general-maintenance) ===
+456. Apartment Maintenance — Al Majaz 2 — Sharjah City
+457. Cabinet & Hardware Repair — Al Majaz 2 — Sharjah City
+458. Commercial Building Maintenance — Al Majaz 2 — Sharjah City
+459. Common Area Maintenance — Al Majaz 2 — Sharjah City
+460. Corrective Building Maintenance — Al Majaz 2 — Sharjah City
+461. Door Hardware Replacement — Al Majaz 2 — Sharjah City
+462. Door Repair & Adjustment — Al Majaz 2 — Sharjah City
+463. False Ceiling Repair — Al Majaz 2 — Sharjah City
+464. Fixture Replacement — Al Majaz 2 — Sharjah City
+465. Gate Repair — Al Majaz 2 — Sharjah City
+466. General Handyman Service — Al Majaz 2 — Sharjah City
+467. Handrail Repair — Al Majaz 2 — Sharjah City
+468. Lock Repair & Replacement — Al Majaz 2 — Sharjah City
+469. Minor Building Repairs — Al Majaz 2 — Sharjah City
+470. Minor Civil Maintenance — Al Majaz 2 — Sharjah City
+471. Preventive Building Maintenance — Al Majaz 2 — Sharjah City
+472. Property Inspection — Al Majaz 2 — Sharjah City
+473. Residential Building Maintenance — Al Majaz 2 — Sharjah City
+474. Tile Repair — Al Majaz 2 — Sharjah City
+475. Villa Maintenance — Al Majaz 2 — Sharjah City
+
+=== Plumbing Maintenance (plumbing) ===
+476. Bidet Installation — Al Majaz 2 — Sharjah City
+477. Drain Blockage Removal — Al Majaz 2 — Sharjah City
+478. Drain Cleaning — Al Majaz 2 — Sharjah City
+479. Faucet Repair — Al Majaz 2 — Sharjah City
+480. Faucet Replacement — Al Majaz 2 — Sharjah City
+481. Floor Drain Repair — Al Majaz 2 — Sharjah City
+482. Grease Trap Cleaning — Al Majaz 2 — Sharjah City
+483. Hot Water Line Repair — Al Majaz 2 — Sharjah City
+484. Mixer Tap Replacement — Al Majaz 2 — Sharjah City
+485. Pipe Repair — Al Majaz 2 — Sharjah City
+486. Pipe Replacement — Al Majaz 2 — Sharjah City
+487. Plumbing Inspection — Al Majaz 2 — Sharjah City
+488. Running Toilet Repair — Al Majaz 2 — Sharjah City
+489. Shower Mixer Replacement — Al Majaz 2 — Sharjah City
+490. Shower Repair — Al Majaz 2 — Sharjah City
+491. Sink Installation — Al Majaz 2 — Sharjah City
+492. Sink Repair — Al Majaz 2 — Sharjah City
+493. Sump Pump Inspection — Al Majaz 2 — Sharjah City
+494. Toilet Installation — Al Majaz 2 — Sharjah City
+495. Toilet Repair — Al Majaz 2 — Sharjah City
+496. Water Leakage Detection — Al Majaz 2 — Sharjah City
+497. Water Leakage Repair — Al Majaz 2 — Sharjah City
+498. Water Pressure Problem Diagnosis — Al Majaz 2 — Sharjah City
+499. Water Supply Line Repair — Al Majaz 2 — Sharjah City
+
+=== Electrical Maintenance (electrical) ===
+500. AC Isolator Installation — Al Majaz 2 — Sharjah City
+501. Backup Generator Changeover Inspection — Al Majaz 2 — Sharjah City
+502. Breaker Tripping Diagnosis — Al Majaz 2 — Sharjah City
+503. Building Electrical Preventive Maintenance — Al Majaz 2 — Sharjah City
+504. Burning Smell Electrical Investigation — Al Majaz 2 — Sharjah City
+505. Cable Replacement — Al Majaz 2 — Sharjah City
+506. Cable Tray Installation — Al Majaz 2 — Sharjah City
+507. Ceiling Fan Installation — Al Majaz 2 — Sharjah City
+508. Ceiling Fan Repair — Al Majaz 2 — Sharjah City
+509. Ceiling Fan Replacement — Al Majaz 2 — Sharjah City
+510. Ceiling Light Installation — Al Majaz 2 — Sharjah City
+511. Chandelier Installation — Al Majaz 2 — Sharjah City
+512. Circuit Breaker Inspection — Al Majaz 2 — Sharjah City
+513. Circuit Breaker Replacement — Al Majaz 2 — Sharjah City
+514. Commercial Electrical Maintenance — Al Majaz 2 — Sharjah City
+515. Common Area Electrical Maintenance — Al Majaz 2 — Sharjah City
+516. Concealed Wiring Installation — Al Majaz 2 — Sharjah City
+517. Contactor Replacement — Al Majaz 2 — Sharjah City
+518. Cooker Electrical Connection — Al Majaz 2 — Sharjah City
+519. DB Labeling and Circuit Mapping — Al Majaz 2 — Sharjah City
+520. Dedicated Circuit Installation — Al Majaz 2 — Sharjah City
+521. Dimmer Switch Installation — Al Majaz 2 — Sharjah City
+522. Dimmer Switch Repair — Al Majaz 2 — Sharjah City
+523. Distribution Board Inspection — Al Majaz 2 — Sharjah City
+524. Distribution Board Installation — Al Majaz 2 — Sharjah City
+525. Distribution Board Repair — Al Majaz 2 — Sharjah City
+526. Distribution Board Upgrade — Al Majaz 2 — Sharjah City
+527. Doorbell Installation — Al Majaz 2 — Sharjah City
+528. Doorbell Repair — Al Majaz 2 — Sharjah City
+529. Downlight Installation — Al Majaz 2 — Sharjah City
+530. Downlight Replacement — Al Majaz 2 — Sharjah City
+531. Earthing Inspection — Al Majaz 2 — Sharjah City
+532. Earthing Repair — Al Majaz 2 — Sharjah City
+533. Electric Gate Motor Electrical Diagnosis — Al Majaz 2 — Sharjah City
+534. Electrical Appliance Point Installation — Al Majaz 2 — Sharjah City
+535. Electrical Control Panel Inspection — Al Majaz 2 — Sharjah City
+536. Electrical Control Panel Repair — Al Majaz 2 — Sharjah City
+537. Electrical Fault Diagnosis — Al Majaz 2 — Sharjah City
+538. Electrical Inspection — Al Majaz 2 — Sharjah City
+539. Electrical Load Inspection — Al Majaz 2 — Sharjah City
+540. Electrical Overheating Investigation — Al Majaz 2 — Sharjah City
+541. Electrical Safety Inspection — Al Majaz 2 — Sharjah City
+542. Emergency Electrical Fault Repair — Al Majaz 2 — Sharjah City
+543. Emergency Light Inspection — Al Majaz 2 — Sharjah City
+544. Emergency Light Repair — Al Majaz 2 — Sharjah City
+545. Equipotential Bonding Inspection — Al Majaz 2 — Sharjah City
+546. Exhaust Fan Installation — Al Majaz 2 — Sharjah City
+547. Exhaust Fan Repair — Al Majaz 2 — Sharjah City
+548. Exhaust Fan Replacement — Al Majaz 2 — Sharjah City
+549. Garden Electrical Fault Diagnosis — Al Majaz 2 — Sharjah City
+550. Garden Light Installation — Al Majaz 2 — Sharjah City
+551. Ground Fault Diagnosis — Al Majaz 2 — Sharjah City
+552. Intercom Power Supply Repair — Al Majaz 2 — Sharjah City
+553. Isolator Switch Installation — Al Majaz 2 — Sharjah City
+554. Isolator Switch Replacement — Al Majaz 2 — Sharjah City
+555. Junction Box Repair — Al Majaz 2 — Sharjah City
+556. LED Light Installation — Al Majaz 2 — Sharjah City
+557. LED Light Replacement — Al Majaz 2 — Sharjah City
+558. Light Installation — Al Majaz 2 — Sharjah City
+559. Light Repair — Al Majaz 2 — Sharjah City
+560. Light Timer Installation — Al Majaz 2 — Sharjah City
+561. Lobby Lighting Maintenance — Al Majaz 2 — Sharjah City
+562. MCB Installation — Al Majaz 2 — Sharjah City
+563. MCB Replacement — Al Majaz 2 — Sharjah City
+564. MCCB Inspection — Al Majaz 2 — Sharjah City
+565. MCCB Replacement — Al Majaz 2 — Sharjah City
+566. Motion Sensor Installation — Al Majaz 2 — Sharjah City
+567. Motor Starter Repair — Al Majaz 2 — Sharjah City
+568. Neutral Fault Diagnosis — Al Majaz 2 — Sharjah City
+569. Neutral Link Replacement — Al Majaz 2 — Sharjah City
+570. No Power Diagnosis — Al Majaz 2 — Sharjah City
+571. Office Electrical Fault Diagnosis — Al Majaz 2 — Sharjah City
+572. Outdoor Junction Box Repair — Al Majaz 2 — Sharjah City
+573. Outdoor Light Installation — Al Majaz 2 — Sharjah City
+574. Outdoor Light Repair — Al Majaz 2 — Sharjah City
+575. Overload Relay Replacement — Al Majaz 2 — Sharjah City
+576. Parking Area Electrical Maintenance — Al Majaz 2 — Sharjah City
+577. Partial Power Failure Diagnosis — Al Majaz 2 — Sharjah City
+578. Phase Failure Diagnosis — Al Majaz 2 — Sharjah City
+579. Pool Area Electrical Inspection — Al Majaz 2 — Sharjah City
+580. Power Failure Diagnosis — Al Majaz 2 — Sharjah City
+581. Preventive Electrical Maintenance — Al Majaz 2 — Sharjah City
+582. RCBO Installation — Al Majaz 2 — Sharjah City
+583. RCBO Replacement — Al Majaz 2 — Sharjah City
+584. RCCB Installation — Al Majaz 2 — Sharjah City
+585. RCCB Replacement — Al Majaz 2 — Sharjah City
+586. Scheduled Electrical Inspection — Al Majaz 2 — Sharjah City
+587. Sensor Light Installation — Al Majaz 2 — Sharjah City
+588. Shop Electrical Inspection — Al Majaz 2 — Sharjah City
+589. Short-Circuit Diagnosis — Al Majaz 2 — Sharjah City
+590. Site Electrical Safety Check — Al Majaz 2 — Sharjah City
+591. Smart Lighting Setup — Al Majaz 2 — Sharjah City
+592. Smart Switch Installation — Al Majaz 2 — Sharjah City
+593. Smart Switch Replacement — Al Majaz 2 — Sharjah City
+594. Socket Installation — Al Majaz 2 — Sharjah City
+595. Socket Relocation — Al Majaz 2 — Sharjah City
+596. Socket Repair — Al Majaz 2 — Sharjah City
+597. Socket Replacement — Al Majaz 2 — Sharjah City
+598. Sparking Outlet Investigation — Al Majaz 2 — Sharjah City
+599. Staircase Lighting Repair — Al Majaz 2 — Sharjah City
+600. Surface Wiring Installation — Al Majaz 2 — Sharjah City
+601. Surge Protection Device Installation — Al Majaz 2 — Sharjah City
+602. Switch Repair — Al Majaz 2 — Sharjah City
+603. Switch Replacement — Al Majaz 2 — Sharjah City
+604. Temporary Power Setup — Al Majaz 2 — Sharjah City
+605. Three-Phase Supply Inspection — Al Majaz 2 — Sharjah City
+606. Timer Switch Installation — Al Majaz 2 — Sharjah City
+607. Timer Switch Repair — Al Majaz 2 — Sharjah City
+608. Track Lighting Installation — Al Majaz 2 — Sharjah City
+609. Two-Way Switch Installation — Al Majaz 2 — Sharjah City
+610. UPS Electrical Connection Inspection — Al Majaz 2 — Sharjah City
+611. Voltage Problem Diagnosis — Al Majaz 2 — Sharjah City
+612. Wall Fan Installation — Al Majaz 2 — Sharjah City
+613. Wall Fan Repair — Al Majaz 2 — Sharjah City
+614. Wall Light Installation — Al Majaz 2 — Sharjah City
+615. Water Heater Electrical Connection — Al Majaz 2 — Sharjah City
+616. Water Pump Motor Electrical Repair — Al Majaz 2 — Sharjah City
+617. Weatherproof Socket Installation — Al Majaz 2 — Sharjah City
+618. Wiring Inspection — Al Majaz 2 — Sharjah City
+619. Wiring Repair — Al Majaz 2 — Sharjah City
+620. Wiring Replacement — Al Majaz 2 — Sharjah City
+
+=== AC / Air Conditioning Maintenance (ac) ===
+621. AC Capacitor Replacement — Al Majaz 2 — Sharjah City
+622. AC Cleaning — Al Majaz 2 — Sharjah City
+623. AC Cooling Problem Diagnosis — Al Majaz 2 — Sharjah City
+624. AC Drain Cleaning — Al Majaz 2 — Sharjah City
+625. AC Drain Pipe Repair — Al Majaz 2 — Sharjah City
+626. AC Filter Cleaning — Al Majaz 2 — Sharjah City
+627. AC Gas Check — Al Majaz 2 — Sharjah City
+628. AC Gas Recharge — Al Majaz 2 — Sharjah City
+629. AC Inspection — Al Majaz 2 — Sharjah City
+630. AC Installation — Al Majaz 2 — Sharjah City
+631. AC Noise Problem Diagnosis — Al Majaz 2 — Sharjah City
+632. AC PCB Diagnosis — Al Majaz 2 — Sharjah City
+633. AC Preventive Maintenance — Al Majaz 2 — Sharjah City
+634. AC Replacement — Al Majaz 2 — Sharjah City
+635. AC Servicing — Al Majaz 2 — Sharjah City
+636. AC Thermostat Repair — Al Majaz 2 — Sharjah City
+637. AC Water Leakage Repair — Al Majaz 2 — Sharjah City
+638. Cassette AC Maintenance — Al Majaz 2 — Sharjah City
+639. Central AC Maintenance — Al Majaz 2 — Sharjah City
+640. Ducted AC Maintenance — Al Majaz 2 — Sharjah City
+641. Package AC Maintenance — Al Majaz 2 — Sharjah City
+642. Split AC Maintenance — Al Majaz 2 — Sharjah City
+643. Window AC Maintenance — Al Majaz 2 — Sharjah City
+
+=== Painting Services (painting) ===
+644. Anti-Fungal Painting — Al Majaz 2 — Sharjah City
+645. Apartment Painting — Al Majaz 2 — Sharjah City
+646. Bathroom Moisture-Resistant Painting — Al Majaz 2 — Sharjah City
+647. Ceiling Painting — Al Majaz 2 — Sharjah City
+648. Commercial Painting — Al Majaz 2 — Sharjah City
+649. Decorative Painting — Al Majaz 2 — Sharjah City
+650. Door Painting — Al Majaz 2 — Sharjah City
+651. Exterior Painting — Al Majaz 2 — Sharjah City
+652. Gate Painting — Al Majaz 2 — Sharjah City
+653. Interior Painting — Al Majaz 2 — Sharjah City
+654. Metal Painting — Al Majaz 2 — Sharjah City
+655. Office Painting — Al Majaz 2 — Sharjah City
+656. Parking Floor Painting — Al Majaz 2 — Sharjah City
+657. Repainting — Al Majaz 2 — Sharjah City
+658. Residential Painting — Al Majaz 2 — Sharjah City
+659. Texture Painting — Al Majaz 2 — Sharjah City
+660. Touch-Up Painting — Al Majaz 2 — Sharjah City
+661. Villa Painting — Al Majaz 2 — Sharjah City
+662. Wall Painting — Al Majaz 2 — Sharjah City
+663. Wood Painting — Al Majaz 2 — Sharjah City
+
+=== Wall Maintenance & Repair (walls) ===
+664. Cornice Repair — Al Majaz 2 — Sharjah City
+665. Damp Wall Repair — Al Majaz 2 — Sharjah City
+666. Gypsum Wall Repair — Al Majaz 2 — Sharjah City
+667. Mold-Affected Wall Treatment — Al Majaz 2 — Sharjah City
+668. Partition Wall Repair — Al Majaz 2 — Sharjah City
+669. Peeling Paint Repair — Al Majaz 2 — Sharjah City
+670. Plaster Repair — Al Majaz 2 — Sharjah City
+671. Skirting Repair — Al Majaz 2 — Sharjah City
+672. Structural Crack Assessment — Al Majaz 2 — Sharjah City
+673. Surface Preparation — Al Majaz 2 — Sharjah City
+674. Wall Crack Repair — Al Majaz 2 — Sharjah City
+675. Wall Damage Repair — Al Majaz 2 — Sharjah City
+676. Wall Hole Repair — Al Majaz 2 — Sharjah City
+677. Wall Inspection — Al Majaz 2 — Sharjah City
+678. Wall Patching — Al Majaz 2 — Sharjah City
+679. Wall Skimming — Al Majaz 2 — Sharjah City
+680. Wallpaper Removal — Al Majaz 2 — Sharjah City
+
+=== Swimming Pool Cleaning & Maintenance (swimming-pool) ===
+681. Commercial Pool Maintenance — Al Majaz 2 — Sharjah City
+682. Pool Chemical Balancing — Al Majaz 2 — Sharjah City
+683. Pool Cover Repair — Al Majaz 2 — Sharjah City
+684. Pool Drain Cleaning — Al Majaz 2 — Sharjah City
+685. Pool Equipment Inspection — Al Majaz 2 — Sharjah City
+686. Pool Filter Cleaning — Al Majaz 2 — Sharjah City
+687. Pool Filter Maintenance — Al Majaz 2 — Sharjah City
+688. Pool Leak Inspection — Al Majaz 2 — Sharjah City
+689. Pool Lighting Repair — Al Majaz 2 — Sharjah City
+690. Pool Pump Inspection — Al Majaz 2 — Sharjah City
+691. Pool Pump Maintenance — Al Majaz 2 — Sharjah City
+692. Pool Skimming — Al Majaz 2 — Sharjah City
+693. Pool Tile Cleaning — Al Majaz 2 — Sharjah City
+694. Pool Vacuum Cleaning — Al Majaz 2 — Sharjah City
+695. Pool Water Testing — Al Majaz 2 — Sharjah City
+696. Residential Pool Maintenance — Al Majaz 2 — Sharjah City
+697. Swimming Pool Cleaning — Al Majaz 2 — Sharjah City
+698. Swimming Pool Inspection — Al Majaz 2 — Sharjah City
+
+=== Sauna Room Cleaning & Maintenance (sauna) ===
+699. Sauna Bench Cleaning — Al Majaz 2 — Sharjah City
+700. Sauna Deep Cleaning — Al Majaz 2 — Sharjah City
+701. Sauna Disinfection — Al Majaz 2 — Sharjah City
+702. Sauna Door Maintenance — Al Majaz 2 — Sharjah City
+703. Sauna Equipment Inspection — Al Majaz 2 — Sharjah City
+704. Sauna Floor Cleaning — Al Majaz 2 — Sharjah City
+705. Sauna Glass Cleaning — Al Majaz 2 — Sharjah City
+706. Sauna Heater Inspection — Al Majaz 2 — Sharjah City
+707. Sauna Heater Maintenance — Al Majaz 2 — Sharjah City
+708. Sauna Inspection — Al Majaz 2 — Sharjah City
+709. Sauna Preventive Maintenance — Al Majaz 2 — Sharjah City
+710. Sauna Regular Cleaning — Al Majaz 2 — Sharjah City
+711. Sauna Ventilation Inspection — Al Majaz 2 — Sharjah City
+712. Sauna Wall Cleaning — Al Majaz 2 — Sharjah City
+713. Sauna Wood Treatment — Al Majaz 2 — Sharjah City
+
+=== Water Tank Cleaning & Maintenance (water-tank) ===
+714. Commercial Water Tank Cleaning — Al Majaz 2 — Sharjah City
+715. Float Valve Repair — Al Majaz 2 — Sharjah City
+716. Residential Water Tank Cleaning — Al Majaz 2 — Sharjah City
+717. Rooftop Water Tank Cleaning — Al Majaz 2 — Sharjah City
+718. Scheduled Water Tank Maintenance — Al Majaz 2 — Sharjah City
+719. Tank Overflow Repair — Al Majaz 2 — Sharjah City
+720. Tank Pipe Connection Repair — Al Majaz 2 — Sharjah City
+721. Underground Water Tank Cleaning — Al Majaz 2 — Sharjah City
+722. Villa Water Tank Cleaning — Al Majaz 2 — Sharjah City
+723. Water Tank Cleaning — Al Majaz 2 — Sharjah City
+724. Water Tank Cover Repair — Al Majaz 2 — Sharjah City
+725. Water Tank Disinfection — Al Majaz 2 — Sharjah City
+726. Water Tank Inspection — Al Majaz 2 — Sharjah City
+727. Water Tank Leak Inspection — Al Majaz 2 — Sharjah City
+728. Water Tank Pump Inspection — Al Majaz 2 — Sharjah City
+729. Water Tank Valve Repair — Al Majaz 2 — Sharjah City
+
+=== Refrigerator Maintenance / Repair (refrigerator) ===
+730. Refrigerator Cleaning — Al Majaz 2 — Sharjah City
+731. Refrigerator Compressor Inspection — Al Majaz 2 — Sharjah City
+732. Refrigerator Compressor Replacement — Al Majaz 2 — Sharjah City
+733. Refrigerator Cooling Problem — Al Majaz 2 — Sharjah City
+734. Refrigerator Door Hinge Repair — Al Majaz 2 — Sharjah City
+735. Refrigerator Door Seal Replacement — Al Majaz 2 — Sharjah City
+736. Refrigerator Drain Blockage Repair — Al Majaz 2 — Sharjah City
+737. Refrigerator Electrical Fault Diagnosis — Al Majaz 2 — Sharjah City
+738. Refrigerator Fan Motor Repair — Al Majaz 2 — Sharjah City
+739. Refrigerator Freezing Problem — Al Majaz 2 — Sharjah City
+740. Refrigerator Ice Formation Problem — Al Majaz 2 — Sharjah City
+741. Refrigerator Inspection — Al Majaz 2 — Sharjah City
+742. Refrigerator Preventive Maintenance — Al Majaz 2 — Sharjah City
+743. Refrigerator Temperature Control Repair — Al Majaz 2 — Sharjah City
+744. Refrigerator Thermostat Inspection — Al Majaz 2 — Sharjah City
+745. Refrigerator Water Leakage — Al Majaz 2 — Sharjah City
+
+=== Microwave Maintenance / Repair (microwave) ===
+746. Microwave Control Panel Problem — Al Majaz 2 — Sharjah City
+747. Microwave Display Problem — Al Majaz 2 — Sharjah City
+748. Microwave Door Problem — Al Majaz 2 — Sharjah City
+749. Microwave Door Switch Repair — Al Majaz 2 — Sharjah City
+750. Microwave Electrical Diagnosis — Al Majaz 2 — Sharjah City
+751. Microwave Fan Problem — Al Majaz 2 — Sharjah City
+752. Microwave Fuse Replacement — Al Majaz 2 — Sharjah City
+753. Microwave Heating Problem — Al Majaz 2 — Sharjah City
+754. Microwave Inspection — Al Majaz 2 — Sharjah City
+755. Microwave Internal Cleaning — Al Majaz 2 — Sharjah City
+756. Microwave No-Power Diagnosis — Al Majaz 2 — Sharjah City
+757. Microwave Preventive Maintenance — Al Majaz 2 — Sharjah City
+758. Microwave Spark Problem — Al Majaz 2 — Sharjah City
+759. Microwave Turntable Problem — Al Majaz 2 — Sharjah City
+
+=== Washing Machine Maintenance / Repair (washing-machine) ===
+760. Washing Machine Belt Replacement — Al Majaz 2 — Sharjah City
+761. Washing Machine Control Board Diagnosis — Al Majaz 2 — Sharjah City
+762. Washing Machine Door Lock Problem — Al Majaz 2 — Sharjah City
+763. Washing Machine Drainage Problem — Al Majaz 2 — Sharjah City
+764. Washing Machine Drum Problem — Al Majaz 2 — Sharjah City
+765. Washing Machine Excessive Noise — Al Majaz 2 — Sharjah City
+766. Washing Machine Filter Cleaning — Al Majaz 2 — Sharjah City
+767. Washing Machine Inspection — Al Majaz 2 — Sharjah City
+768. Washing Machine Installation — Al Majaz 2 — Sharjah City
+769. Washing Machine Motor Inspection — Al Majaz 2 — Sharjah City
+770. Washing Machine Not Spinning — Al Majaz 2 — Sharjah City
+771. Washing Machine Not Starting — Al Majaz 2 — Sharjah City
+772. Washing Machine Preventive Maintenance — Al Majaz 2 — Sharjah City
+773. Washing Machine Pump Repair — Al Majaz 2 — Sharjah City
+774. Washing Machine Vibration Problem — Al Majaz 2 — Sharjah City
+775. Washing Machine Water Filling Problem — Al Majaz 2 — Sharjah City
+776. Washing Machine Water Leakage — Al Majaz 2 — Sharjah City
+
+=== Water Heater Maintenance / Repair (water-heater) ===
+777. Emergency Water Heater Repair — Al Majaz 2 — Sharjah City
+778. Water Heater Cleaning — Al Majaz 2 — Sharjah City
+779. Water Heater Electrical Fault Diagnosis — Al Majaz 2 — Sharjah City
+780. Water Heater Heating Element Replacement — Al Majaz 2 — Sharjah City
+781. Water Heater Inspection — Al Majaz 2 — Sharjah City
+782. Water Heater Installation — Al Majaz 2 — Sharjah City
+783. Water Heater No Hot Water — Al Majaz 2 — Sharjah City
+784. Water Heater Pressure Problem — Al Majaz 2 — Sharjah City
+785. Water Heater Preventive Maintenance — Al Majaz 2 — Sharjah City
+786. Water Heater Scale Removal — Al Majaz 2 — Sharjah City
+787. Water Heater Slow Heating — Al Majaz 2 — Sharjah City
+788. Water Heater Tank Inspection — Al Majaz 2 — Sharjah City
+789. Water Heater Temperature Problem — Al Majaz 2 — Sharjah City
+790. Water Heater Thermostat Repair — Al Majaz 2 — Sharjah City
+791. Water Heater Valve Replacement — Al Majaz 2 — Sharjah City
+792. Water Heater Water Leakage Repair — Al Majaz 2 — Sharjah City
+
+=== Dishwasher Maintenance / Repair (dishwasher) ===
+793. Dishwasher Control Panel Diagnosis — Al Majaz 2 — Sharjah City
+794. Dishwasher Door Lock Repair — Al Majaz 2 — Sharjah City
+795. Dishwasher Door Seal Replacement — Al Majaz 2 — Sharjah City
+796. Dishwasher Drainage Problem — Al Majaz 2 — Sharjah City
+797. Dishwasher Filter Cleaning — Al Majaz 2 — Sharjah City
+798. Dishwasher Heating Problem — Al Majaz 2 — Sharjah City
+799. Dishwasher Inspection — Al Majaz 2 — Sharjah City
+800. Dishwasher Installation — Al Majaz 2 — Sharjah City
+801. Dishwasher Not Cleaning Properly — Al Majaz 2 — Sharjah City
+802. Dishwasher Not Starting — Al Majaz 2 — Sharjah City
+803. Dishwasher Poor Drying — Al Majaz 2 — Sharjah City
+804. Dishwasher Preventive Maintenance — Al Majaz 2 — Sharjah City
+805. Dishwasher Pump Inspection — Al Majaz 2 — Sharjah City
+806. Dishwasher Spray Arm Cleaning — Al Majaz 2 — Sharjah City
+807. Dishwasher Water Filling Problem — Al Majaz 2 — Sharjah City
+808. Dishwasher Water Leakage — Al Majaz 2 — Sharjah City
+
+=== Gym Cleaning & Maintenance (gym) ===
+809. Cross-Trainer Maintenance — Al Majaz 2 — Sharjah City
+810. Exercise Bike Maintenance — Al Majaz 2 — Sharjah City
+811. Fitness Equipment Inspection — Al Majaz 2 — Sharjah City
+812. Gym Deep Cleaning — Al Majaz 2 — Sharjah City
+813. Gym Disinfection — Al Majaz 2 — Sharjah City
+814. Gym Equipment Cleaning — Al Majaz 2 — Sharjah City
+815. Gym Floor Cleaning — Al Majaz 2 — Sharjah City
+816. Gym Glass Cleaning — Al Majaz 2 — Sharjah City
+817. Gym Mirror Cleaning — Al Majaz 2 — Sharjah City
+818. Gym Regular Cleaning — Al Majaz 2 — Sharjah City
+819. Gym Sanitization — Al Majaz 2 — Sharjah City
+820. Locker Cleaning — Al Majaz 2 — Sharjah City
+821. Preventive Gym Maintenance — Al Majaz 2 — Sharjah City
+822. Shower & Changing Room Cleaning — Al Majaz 2 — Sharjah City
+823. Treadmill Maintenance — Al Majaz 2 — Sharjah City
+824. Weight Equipment Maintenance — Al Majaz 2 — Sharjah City
+
+=== Oven Maintenance / Repair (oven) ===
+825. Gas Oven Inspection — Al Majaz 2 — Sharjah City
+826. Oven Cleaning — Al Majaz 2 — Sharjah City
+827. Oven Control Panel Problem — Al Majaz 2 — Sharjah City
+828. Oven Door Repair — Al Majaz 2 — Sharjah City
+829. Oven Door Seal Replacement — Al Majaz 2 — Sharjah City
+830. Oven Electrical Fault Diagnosis — Al Majaz 2 — Sharjah City
+831. Oven Fan Repair — Al Majaz 2 — Sharjah City
+832. Oven Heating Element Replacement — Al Majaz 2 — Sharjah City
+833. Oven Inspection — Al Majaz 2 — Sharjah City
+834. Oven Installation — Al Majaz 2 — Sharjah City
+835. Oven Not Heating — Al Majaz 2 — Sharjah City
+836. Oven Preventive Maintenance — Al Majaz 2 — Sharjah City
+837. Oven Temperature Problem — Al Majaz 2 — Sharjah City
+838. Oven Thermostat Repair — Al Majaz 2 — Sharjah City
+839. Oven Timer Problem — Al Majaz 2 — Sharjah City
+840. Oven Uneven Heating — Al Majaz 2 — Sharjah City
+
+=== Burner / Cooker Maintenance / Repair (burner-cooker) ===
+841. Cooker Igniter Repair — Al Majaz 2 — Sharjah City
+842. Cooker Knob Replacement — Al Majaz 2 — Sharjah City
+843. Electric Cooker Repair — Al Majaz 2 — Sharjah City
+844. Gas Burner Cleaning — Al Majaz 2 — Sharjah City
+845. Gas Burner Repair — Al Majaz 2 — Sharjah City
+846. Gas Burner Replacement — Al Majaz 2 — Sharjah City
+847. Gas Cooker Cleaning — Al Majaz 2 — Sharjah City
+848. Gas Cooker Ignition Repair — Al Majaz 2 — Sharjah City
+849. Gas Cooker Inspection — Al Majaz 2 — Sharjah City
+850. Gas Cooker Installation — Al Majaz 2 — Sharjah City
+851. Gas Flame Problem Diagnosis — Al Majaz 2 — Sharjah City
+852. Gas Hose Inspection — Al Majaz 2 — Sharjah City
+853. Gas Hose Replacement — Al Majaz 2 — Sharjah City
+854. Gas Leakage Inspection — Al Majaz 2 — Sharjah City
+855. Gas Valve Inspection — Al Majaz 2 — Sharjah City
+856. Gas Valve Replacement — Al Majaz 2 — Sharjah City
+857. Glass Hob Maintenance — Al Majaz 2 — Sharjah City
+858. Hob Cleaning — Al Majaz 2 — Sharjah City
+859. Induction Cooker Inspection — Al Majaz 2 — Sharjah City
+860. Uneven Flame Diagnosis — Al Majaz 2 — Sharjah City
+
+=== Cleaning Services (cleaning) ===
+861. Apartment Cleaning — Al Majaz 3 — Sharjah City
+862. Balcony Cleaning — Al Majaz 3 — Sharjah City
+863. Bathroom Cleaning — Al Majaz 3 — Sharjah City
+864. Building Common Area Cleaning — Al Majaz 3 — Sharjah City
+865. Carpet Cleaning — Al Majaz 3 — Sharjah City
+866. Commercial Cleaning — Al Majaz 3 — Sharjah City
+867. Curtain & Blind Cleaning — Al Majaz 3 — Sharjah City
+868. Deep Cleaning — Al Majaz 3 — Sharjah City
+869. Floor Cleaning — Al Majaz 3 — Sharjah City
+870. Glass Cleaning — Al Majaz 3 — Sharjah City
+871. House Cleaning — Al Majaz 3 — Sharjah City
+872. Kitchen Cleaning — Al Majaz 3 — Sharjah City
+873. Mattress Cleaning — Al Majaz 3 — Sharjah City
+874. Move-In Cleaning — Al Majaz 3 — Sharjah City
+875. Move-Out Cleaning — Al Majaz 3 — Sharjah City
+876. Office Cleaning — Al Majaz 3 — Sharjah City
+877. One-Time Cleaning — Al Majaz 3 — Sharjah City
+878. Post-Construction Cleaning — Al Majaz 3 — Sharjah City
+879. Post-Renovation Cleaning — Al Majaz 3 — Sharjah City
+880. Recurring Cleaning — Al Majaz 3 — Sharjah City
+881. Residential Cleaning — Al Majaz 3 — Sharjah City
+882. Sofa & Upholstery Cleaning — Al Majaz 3 — Sharjah City
+883. Staircase Cleaning — Al Majaz 3 — Sharjah City
+884. Villa Cleaning — Al Majaz 3 — Sharjah City
+885. Window Cleaning — Al Majaz 3 — Sharjah City
+
+=== General Building Maintenance (general-maintenance) ===
+886. Apartment Maintenance — Al Majaz 3 — Sharjah City
+887. Cabinet & Hardware Repair — Al Majaz 3 — Sharjah City
+888. Commercial Building Maintenance — Al Majaz 3 — Sharjah City
+889. Common Area Maintenance — Al Majaz 3 — Sharjah City
+890. Corrective Building Maintenance — Al Majaz 3 — Sharjah City
+891. Door Hardware Replacement — Al Majaz 3 — Sharjah City
+892. Door Repair & Adjustment — Al Majaz 3 — Sharjah City
+893. False Ceiling Repair — Al Majaz 3 — Sharjah City
+894. Fixture Replacement — Al Majaz 3 — Sharjah City
+895. Gate Repair — Al Majaz 3 — Sharjah City
+896. General Handyman Service — Al Majaz 3 — Sharjah City
+897. Handrail Repair — Al Majaz 3 — Sharjah City
+898. Lock Repair & Replacement — Al Majaz 3 — Sharjah City
+899. Minor Building Repairs — Al Majaz 3 — Sharjah City
+900. Minor Civil Maintenance — Al Majaz 3 — Sharjah City
+901. Preventive Building Maintenance — Al Majaz 3 — Sharjah City
+902. Property Inspection — Al Majaz 3 — Sharjah City
+903. Residential Building Maintenance — Al Majaz 3 — Sharjah City
+904. Tile Repair — Al Majaz 3 — Sharjah City
+905. Villa Maintenance — Al Majaz 3 — Sharjah City
+
+=== Plumbing Maintenance (plumbing) ===
+906. Bidet Installation — Al Majaz 3 — Sharjah City
+907. Drain Blockage Removal — Al Majaz 3 — Sharjah City
+908. Drain Cleaning — Al Majaz 3 — Sharjah City
+909. Faucet Repair — Al Majaz 3 — Sharjah City
+910. Faucet Replacement — Al Majaz 3 — Sharjah City
+911. Floor Drain Repair — Al Majaz 3 — Sharjah City
+912. Grease Trap Cleaning — Al Majaz 3 — Sharjah City
+913. Hot Water Line Repair — Al Majaz 3 — Sharjah City
+914. Mixer Tap Replacement — Al Majaz 3 — Sharjah City
+915. Pipe Repair — Al Majaz 3 — Sharjah City
+916. Pipe Replacement — Al Majaz 3 — Sharjah City
+917. Plumbing Inspection — Al Majaz 3 — Sharjah City
+918. Running Toilet Repair — Al Majaz 3 — Sharjah City
+919. Shower Mixer Replacement — Al Majaz 3 — Sharjah City
+920. Shower Repair — Al Majaz 3 — Sharjah City
+921. Sink Installation — Al Majaz 3 — Sharjah City
+922. Sink Repair — Al Majaz 3 — Sharjah City
+923. Sump Pump Inspection — Al Majaz 3 — Sharjah City
+924. Toilet Installation — Al Majaz 3 — Sharjah City
+925. Toilet Repair — Al Majaz 3 — Sharjah City
+926. Water Leakage Detection — Al Majaz 3 — Sharjah City
+927. Water Leakage Repair — Al Majaz 3 — Sharjah City
+928. Water Pressure Problem Diagnosis — Al Majaz 3 — Sharjah City
+929. Water Supply Line Repair — Al Majaz 3 — Sharjah City
+
+=== Electrical Maintenance (electrical) ===
+930. AC Isolator Installation — Al Majaz 3 — Sharjah City
+931. Backup Generator Changeover Inspection — Al Majaz 3 — Sharjah City
+932. Breaker Tripping Diagnosis — Al Majaz 3 — Sharjah City
+933. Building Electrical Preventive Maintenance — Al Majaz 3 — Sharjah City
+934. Burning Smell Electrical Investigation — Al Majaz 3 — Sharjah City
+935. Cable Replacement — Al Majaz 3 — Sharjah City
+936. Cable Tray Installation — Al Majaz 3 — Sharjah City
+937. Ceiling Fan Installation — Al Majaz 3 — Sharjah City
+938. Ceiling Fan Repair — Al Majaz 3 — Sharjah City
+939. Ceiling Fan Replacement — Al Majaz 3 — Sharjah City
+940. Ceiling Light Installation — Al Majaz 3 — Sharjah City
+941. Chandelier Installation — Al Majaz 3 — Sharjah City
+942. Circuit Breaker Inspection — Al Majaz 3 — Sharjah City
+943. Circuit Breaker Replacement — Al Majaz 3 — Sharjah City
+944. Commercial Electrical Maintenance — Al Majaz 3 — Sharjah City
+945. Common Area Electrical Maintenance — Al Majaz 3 — Sharjah City
+946. Concealed Wiring Installation — Al Majaz 3 — Sharjah City
+947. Contactor Replacement — Al Majaz 3 — Sharjah City
+948. Cooker Electrical Connection — Al Majaz 3 — Sharjah City
+949. DB Labeling and Circuit Mapping — Al Majaz 3 — Sharjah City
+950. Dedicated Circuit Installation — Al Majaz 3 — Sharjah City
+951. Dimmer Switch Installation — Al Majaz 3 — Sharjah City
+952. Dimmer Switch Repair — Al Majaz 3 — Sharjah City
+953. Distribution Board Inspection — Al Majaz 3 — Sharjah City
+954. Distribution Board Installation — Al Majaz 3 — Sharjah City
+955. Distribution Board Repair — Al Majaz 3 — Sharjah City
+956. Distribution Board Upgrade — Al Majaz 3 — Sharjah City
+957. Doorbell Installation — Al Majaz 3 — Sharjah City
+958. Doorbell Repair — Al Majaz 3 — Sharjah City
+959. Downlight Installation — Al Majaz 3 — Sharjah City
+960. Downlight Replacement — Al Majaz 3 — Sharjah City
+961. Earthing Inspection — Al Majaz 3 — Sharjah City
+962. Earthing Repair — Al Majaz 3 — Sharjah City
+963. Electric Gate Motor Electrical Diagnosis — Al Majaz 3 — Sharjah City
+964. Electrical Appliance Point Installation — Al Majaz 3 — Sharjah City
+965. Electrical Control Panel Inspection — Al Majaz 3 — Sharjah City
+966. Electrical Control Panel Repair — Al Majaz 3 — Sharjah City
+967. Electrical Fault Diagnosis — Al Majaz 3 — Sharjah City
+968. Electrical Inspection — Al Majaz 3 — Sharjah City
+969. Electrical Load Inspection — Al Majaz 3 — Sharjah City
+970. Electrical Overheating Investigation — Al Majaz 3 — Sharjah City
+971. Electrical Safety Inspection — Al Majaz 3 — Sharjah City
+972. Emergency Electrical Fault Repair — Al Majaz 3 — Sharjah City
+973. Emergency Light Inspection — Al Majaz 3 — Sharjah City
+974. Emergency Light Repair — Al Majaz 3 — Sharjah City
+975. Equipotential Bonding Inspection — Al Majaz 3 — Sharjah City
+976. Exhaust Fan Installation — Al Majaz 3 — Sharjah City
+977. Exhaust Fan Repair — Al Majaz 3 — Sharjah City
+978. Exhaust Fan Replacement — Al Majaz 3 — Sharjah City
+979. Garden Electrical Fault Diagnosis — Al Majaz 3 — Sharjah City
+980. Garden Light Installation — Al Majaz 3 — Sharjah City
+981. Ground Fault Diagnosis — Al Majaz 3 — Sharjah City
+982. Intercom Power Supply Repair — Al Majaz 3 — Sharjah City
+983. Isolator Switch Installation — Al Majaz 3 — Sharjah City
+984. Isolator Switch Replacement — Al Majaz 3 — Sharjah City
+985. Junction Box Repair — Al Majaz 3 — Sharjah City
+986. LED Light Installation — Al Majaz 3 — Sharjah City
+987. LED Light Replacement — Al Majaz 3 — Sharjah City
+988. Light Installation — Al Majaz 3 — Sharjah City
+989. Light Repair — Al Majaz 3 — Sharjah City
+990. Light Timer Installation — Al Majaz 3 — Sharjah City
+991. Lobby Lighting Maintenance — Al Majaz 3 — Sharjah City
+992. MCB Installation — Al Majaz 3 — Sharjah City
+993. MCB Replacement — Al Majaz 3 — Sharjah City
+994. MCCB Inspection — Al Majaz 3 — Sharjah City
+995. MCCB Replacement — Al Majaz 3 — Sharjah City
+996. Motion Sensor Installation — Al Majaz 3 — Sharjah City
+997. Motor Starter Repair — Al Majaz 3 — Sharjah City
+998. Neutral Fault Diagnosis — Al Majaz 3 — Sharjah City
+999. Neutral Link Replacement — Al Majaz 3 — Sharjah City
+1000. No Power Diagnosis — Al Majaz 3 — Sharjah City
+1001. Office Electrical Fault Diagnosis — Al Majaz 3 — Sharjah City
+1002. Outdoor Junction Box Repair — Al Majaz 3 — Sharjah City
+1003. Outdoor Light Installation — Al Majaz 3 — Sharjah City
+1004. Outdoor Light Repair — Al Majaz 3 — Sharjah City
+1005. Overload Relay Replacement — Al Majaz 3 — Sharjah City
+1006. Parking Area Electrical Maintenance — Al Majaz 3 — Sharjah City
+1007. Partial Power Failure Diagnosis — Al Majaz 3 — Sharjah City
+1008. Phase Failure Diagnosis — Al Majaz 3 — Sharjah City
+1009. Pool Area Electrical Inspection — Al Majaz 3 — Sharjah City
+1010. Power Failure Diagnosis — Al Majaz 3 — Sharjah City
+1011. Preventive Electrical Maintenance — Al Majaz 3 — Sharjah City
+1012. RCBO Installation — Al Majaz 3 — Sharjah City
+1013. RCBO Replacement — Al Majaz 3 — Sharjah City
+1014. RCCB Installation — Al Majaz 3 — Sharjah City
+1015. RCCB Replacement — Al Majaz 3 — Sharjah City
+1016. Scheduled Electrical Inspection — Al Majaz 3 — Sharjah City
+1017. Sensor Light Installation — Al Majaz 3 — Sharjah City
+1018. Shop Electrical Inspection — Al Majaz 3 — Sharjah City
+1019. Short-Circuit Diagnosis — Al Majaz 3 — Sharjah City
+1020. Site Electrical Safety Check — Al Majaz 3 — Sharjah City
+1021. Smart Lighting Setup — Al Majaz 3 — Sharjah City
+1022. Smart Switch Installation — Al Majaz 3 — Sharjah City
+1023. Smart Switch Replacement — Al Majaz 3 — Sharjah City
+1024. Socket Installation — Al Majaz 3 — Sharjah City
+1025. Socket Relocation — Al Majaz 3 — Sharjah City
+1026. Socket Repair — Al Majaz 3 — Sharjah City
+1027. Socket Replacement — Al Majaz 3 — Sharjah City
+1028. Sparking Outlet Investigation — Al Majaz 3 — Sharjah City
+1029. Staircase Lighting Repair — Al Majaz 3 — Sharjah City
+1030. Surface Wiring Installation — Al Majaz 3 — Sharjah City
+1031. Surge Protection Device Installation — Al Majaz 3 — Sharjah City
+1032. Switch Repair — Al Majaz 3 — Sharjah City
+1033. Switch Replacement — Al Majaz 3 — Sharjah City
+1034. Temporary Power Setup — Al Majaz 3 — Sharjah City
+1035. Three-Phase Supply Inspection — Al Majaz 3 — Sharjah City
+1036. Timer Switch Installation — Al Majaz 3 — Sharjah City
+1037. Timer Switch Repair — Al Majaz 3 — Sharjah City
+1038. Track Lighting Installation — Al Majaz 3 — Sharjah City
+1039. Two-Way Switch Installation — Al Majaz 3 — Sharjah City
+1040. UPS Electrical Connection Inspection — Al Majaz 3 — Sharjah City
+1041. Voltage Problem Diagnosis — Al Majaz 3 — Sharjah City
+1042. Wall Fan Installation — Al Majaz 3 — Sharjah City
+1043. Wall Fan Repair — Al Majaz 3 — Sharjah City
+1044. Wall Light Installation — Al Majaz 3 — Sharjah City
+1045. Water Heater Electrical Connection — Al Majaz 3 — Sharjah City
+1046. Water Pump Motor Electrical Repair — Al Majaz 3 — Sharjah City
+1047. Weatherproof Socket Installation — Al Majaz 3 — Sharjah City
+1048. Wiring Inspection — Al Majaz 3 — Sharjah City
+1049. Wiring Repair — Al Majaz 3 — Sharjah City
+1050. Wiring Replacement — Al Majaz 3 — Sharjah City
+
+=== AC / Air Conditioning Maintenance (ac) ===
+1051. AC Capacitor Replacement — Al Majaz 3 — Sharjah City
+1052. AC Cleaning — Al Majaz 3 — Sharjah City
+1053. AC Cooling Problem Diagnosis — Al Majaz 3 — Sharjah City
+1054. AC Drain Cleaning — Al Majaz 3 — Sharjah City
+1055. AC Drain Pipe Repair — Al Majaz 3 — Sharjah City
+1056. AC Filter Cleaning — Al Majaz 3 — Sharjah City
+1057. AC Gas Check — Al Majaz 3 — Sharjah City
+1058. AC Gas Recharge — Al Majaz 3 — Sharjah City
+1059. AC Inspection — Al Majaz 3 — Sharjah City
+1060. AC Installation — Al Majaz 3 — Sharjah City
+1061. AC Noise Problem Diagnosis — Al Majaz 3 — Sharjah City
+1062. AC PCB Diagnosis — Al Majaz 3 — Sharjah City
+1063. AC Preventive Maintenance — Al Majaz 3 — Sharjah City
+1064. AC Replacement — Al Majaz 3 — Sharjah City
+1065. AC Servicing — Al Majaz 3 — Sharjah City
+1066. AC Thermostat Repair — Al Majaz 3 — Sharjah City
+1067. AC Water Leakage Repair — Al Majaz 3 — Sharjah City
+1068. Cassette AC Maintenance — Al Majaz 3 — Sharjah City
+1069. Central AC Maintenance — Al Majaz 3 — Sharjah City
+1070. Ducted AC Maintenance — Al Majaz 3 — Sharjah City
+1071. Package AC Maintenance — Al Majaz 3 — Sharjah City
+1072. Split AC Maintenance — Al Majaz 3 — Sharjah City
+1073. Window AC Maintenance — Al Majaz 3 — Sharjah City
+
+=== Painting Services (painting) ===
+1074. Anti-Fungal Painting — Al Majaz 3 — Sharjah City
+1075. Apartment Painting — Al Majaz 3 — Sharjah City
+1076. Bathroom Moisture-Resistant Painting — Al Majaz 3 — Sharjah City
+1077. Ceiling Painting — Al Majaz 3 — Sharjah City
+1078. Commercial Painting — Al Majaz 3 — Sharjah City
+1079. Decorative Painting — Al Majaz 3 — Sharjah City
+1080. Door Painting — Al Majaz 3 — Sharjah City
+1081. Exterior Painting — Al Majaz 3 — Sharjah City
+1082. Gate Painting — Al Majaz 3 — Sharjah City
+1083. Interior Painting — Al Majaz 3 — Sharjah City
+1084. Metal Painting — Al Majaz 3 — Sharjah City
+1085. Office Painting — Al Majaz 3 — Sharjah City
+1086. Parking Floor Painting — Al Majaz 3 — Sharjah City
+1087. Repainting — Al Majaz 3 — Sharjah City
+1088. Residential Painting — Al Majaz 3 — Sharjah City
+1089. Texture Painting — Al Majaz 3 — Sharjah City
+1090. Touch-Up Painting — Al Majaz 3 — Sharjah City
+1091. Villa Painting — Al Majaz 3 — Sharjah City
+1092. Wall Painting — Al Majaz 3 — Sharjah City
+1093. Wood Painting — Al Majaz 3 — Sharjah City
+
+=== Wall Maintenance & Repair (walls) ===
+1094. Cornice Repair — Al Majaz 3 — Sharjah City
+1095. Damp Wall Repair — Al Majaz 3 — Sharjah City
+1096. Gypsum Wall Repair — Al Majaz 3 — Sharjah City
+1097. Mold-Affected Wall Treatment — Al Majaz 3 — Sharjah City
+1098. Partition Wall Repair — Al Majaz 3 — Sharjah City
+1099. Peeling Paint Repair — Al Majaz 3 — Sharjah City
+1100. Plaster Repair — Al Majaz 3 — Sharjah City
+1101. Skirting Repair — Al Majaz 3 — Sharjah City
+1102. Structural Crack Assessment — Al Majaz 3 — Sharjah City
+1103. Surface Preparation — Al Majaz 3 — Sharjah City
+1104. Wall Crack Repair — Al Majaz 3 — Sharjah City
+1105. Wall Damage Repair — Al Majaz 3 — Sharjah City
+1106. Wall Hole Repair — Al Majaz 3 — Sharjah City
+1107. Wall Inspection — Al Majaz 3 — Sharjah City
+1108. Wall Patching — Al Majaz 3 — Sharjah City
+1109. Wall Skimming — Al Majaz 3 — Sharjah City
+1110. Wallpaper Removal — Al Majaz 3 — Sharjah City
+
+=== Swimming Pool Cleaning & Maintenance (swimming-pool) ===
+1111. Commercial Pool Maintenance — Al Majaz 3 — Sharjah City
+1112. Pool Chemical Balancing — Al Majaz 3 — Sharjah City
+1113. Pool Cover Repair — Al Majaz 3 — Sharjah City
+1114. Pool Drain Cleaning — Al Majaz 3 — Sharjah City
+1115. Pool Equipment Inspection — Al Majaz 3 — Sharjah City
+1116. Pool Filter Cleaning — Al Majaz 3 — Sharjah City
+1117. Pool Filter Maintenance — Al Majaz 3 — Sharjah City
+1118. Pool Leak Inspection — Al Majaz 3 — Sharjah City
+1119. Pool Lighting Repair — Al Majaz 3 — Sharjah City
+1120. Pool Pump Inspection — Al Majaz 3 — Sharjah City
+1121. Pool Pump Maintenance — Al Majaz 3 — Sharjah City
+1122. Pool Skimming — Al Majaz 3 — Sharjah City
+1123. Pool Tile Cleaning — Al Majaz 3 — Sharjah City
+1124. Pool Vacuum Cleaning — Al Majaz 3 — Sharjah City
+1125. Pool Water Testing — Al Majaz 3 — Sharjah City
+1126. Residential Pool Maintenance — Al Majaz 3 — Sharjah City
+1127. Swimming Pool Cleaning — Al Majaz 3 — Sharjah City
+1128. Swimming Pool Inspection — Al Majaz 3 — Sharjah City
+
+=== Sauna Room Cleaning & Maintenance (sauna) ===
+1129. Sauna Bench Cleaning — Al Majaz 3 — Sharjah City
+1130. Sauna Deep Cleaning — Al Majaz 3 — Sharjah City
+1131. Sauna Disinfection — Al Majaz 3 — Sharjah City
+1132. Sauna Door Maintenance — Al Majaz 3 — Sharjah City
+1133. Sauna Equipment Inspection — Al Majaz 3 — Sharjah City
+1134. Sauna Floor Cleaning — Al Majaz 3 — Sharjah City
+1135. Sauna Glass Cleaning — Al Majaz 3 — Sharjah City
+1136. Sauna Heater Inspection — Al Majaz 3 — Sharjah City
+1137. Sauna Heater Maintenance — Al Majaz 3 — Sharjah City
+1138. Sauna Inspection — Al Majaz 3 — Sharjah City
+1139. Sauna Preventive Maintenance — Al Majaz 3 — Sharjah City
+1140. Sauna Regular Cleaning — Al Majaz 3 — Sharjah City
+1141. Sauna Ventilation Inspection — Al Majaz 3 — Sharjah City
+1142. Sauna Wall Cleaning — Al Majaz 3 — Sharjah City
+1143. Sauna Wood Treatment — Al Majaz 3 — Sharjah City
+
+=== Water Tank Cleaning & Maintenance (water-tank) ===
+1144. Commercial Water Tank Cleaning — Al Majaz 3 — Sharjah City
+1145. Float Valve Repair — Al Majaz 3 — Sharjah City
+1146. Residential Water Tank Cleaning — Al Majaz 3 — Sharjah City
+1147. Rooftop Water Tank Cleaning — Al Majaz 3 — Sharjah City
+1148. Scheduled Water Tank Maintenance — Al Majaz 3 — Sharjah City
+1149. Tank Overflow Repair — Al Majaz 3 — Sharjah City
+1150. Tank Pipe Connection Repair — Al Majaz 3 — Sharjah City
+1151. Underground Water Tank Cleaning — Al Majaz 3 — Sharjah City
+1152. Villa Water Tank Cleaning — Al Majaz 3 — Sharjah City
+1153. Water Tank Cleaning — Al Majaz 3 — Sharjah City
+1154. Water Tank Cover Repair — Al Majaz 3 — Sharjah City
+1155. Water Tank Disinfection — Al Majaz 3 — Sharjah City
+1156. Water Tank Inspection — Al Majaz 3 — Sharjah City
+1157. Water Tank Leak Inspection — Al Majaz 3 — Sharjah City
+1158. Water Tank Pump Inspection — Al Majaz 3 — Sharjah City
+1159. Water Tank Valve Repair — Al Majaz 3 — Sharjah City
+
+=== Refrigerator Maintenance / Repair (refrigerator) ===
+1160. Refrigerator Cleaning — Al Majaz 3 — Sharjah City
+1161. Refrigerator Compressor Inspection — Al Majaz 3 — Sharjah City
+1162. Refrigerator Compressor Replacement — Al Majaz 3 — Sharjah City
+1163. Refrigerator Cooling Problem — Al Majaz 3 — Sharjah City
+1164. Refrigerator Door Hinge Repair — Al Majaz 3 — Sharjah City
+1165. Refrigerator Door Seal Replacement — Al Majaz 3 — Sharjah City
+1166. Refrigerator Drain Blockage Repair — Al Majaz 3 — Sharjah City
+1167. Refrigerator Electrical Fault Diagnosis — Al Majaz 3 — Sharjah City
+1168. Refrigerator Fan Motor Repair — Al Majaz 3 — Sharjah City
+1169. Refrigerator Freezing Problem — Al Majaz 3 — Sharjah City
+1170. Refrigerator Ice Formation Problem — Al Majaz 3 — Sharjah City
+1171. Refrigerator Inspection — Al Majaz 3 — Sharjah City
+1172. Refrigerator Preventive Maintenance — Al Majaz 3 — Sharjah City
+1173. Refrigerator Temperature Control Repair — Al Majaz 3 — Sharjah City
+1174. Refrigerator Thermostat Inspection — Al Majaz 3 — Sharjah City
+1175. Refrigerator Water Leakage — Al Majaz 3 — Sharjah City
+
+=== Microwave Maintenance / Repair (microwave) ===
+1176. Microwave Control Panel Problem — Al Majaz 3 — Sharjah City
+1177. Microwave Display Problem — Al Majaz 3 — Sharjah City
+1178. Microwave Door Problem — Al Majaz 3 — Sharjah City
+1179. Microwave Door Switch Repair — Al Majaz 3 — Sharjah City
+1180. Microwave Electrical Diagnosis — Al Majaz 3 — Sharjah City
+1181. Microwave Fan Problem — Al Majaz 3 — Sharjah City
+1182. Microwave Fuse Replacement — Al Majaz 3 — Sharjah City
+1183. Microwave Heating Problem — Al Majaz 3 — Sharjah City
+1184. Microwave Inspection — Al Majaz 3 — Sharjah City
+1185. Microwave Internal Cleaning — Al Majaz 3 — Sharjah City
+1186. Microwave No-Power Diagnosis — Al Majaz 3 — Sharjah City
+1187. Microwave Preventive Maintenance — Al Majaz 3 — Sharjah City
+1188. Microwave Spark Problem — Al Majaz 3 — Sharjah City
+1189. Microwave Turntable Problem — Al Majaz 3 — Sharjah City
+
+=== Washing Machine Maintenance / Repair (washing-machine) ===
+1190. Washing Machine Belt Replacement — Al Majaz 3 — Sharjah City
+1191. Washing Machine Control Board Diagnosis — Al Majaz 3 — Sharjah City
+1192. Washing Machine Door Lock Problem — Al Majaz 3 — Sharjah City
+1193. Washing Machine Drainage Problem — Al Majaz 3 — Sharjah City
+1194. Washing Machine Drum Problem — Al Majaz 3 — Sharjah City
+1195. Washing Machine Excessive Noise — Al Majaz 3 — Sharjah City
+1196. Washing Machine Filter Cleaning — Al Majaz 3 — Sharjah City
+1197. Washing Machine Inspection — Al Majaz 3 — Sharjah City
+1198. Washing Machine Installation — Al Majaz 3 — Sharjah City
+1199. Washing Machine Motor Inspection — Al Majaz 3 — Sharjah City
+1200. Washing Machine Not Spinning — Al Majaz 3 — Sharjah City
+1201. Washing Machine Not Starting — Al Majaz 3 — Sharjah City
+1202. Washing Machine Preventive Maintenance — Al Majaz 3 — Sharjah City
+1203. Washing Machine Pump Repair — Al Majaz 3 — Sharjah City
+1204. Washing Machine Vibration Problem — Al Majaz 3 — Sharjah City
+1205. Washing Machine Water Filling Problem — Al Majaz 3 — Sharjah City
+1206. Washing Machine Water Leakage — Al Majaz 3 — Sharjah City
+
+=== Water Heater Maintenance / Repair (water-heater) ===
+1207. Emergency Water Heater Repair — Al Majaz 3 — Sharjah City
+1208. Water Heater Cleaning — Al Majaz 3 — Sharjah City
+1209. Water Heater Electrical Fault Diagnosis — Al Majaz 3 — Sharjah City
+1210. Water Heater Heating Element Replacement — Al Majaz 3 — Sharjah City
+1211. Water Heater Inspection — Al Majaz 3 — Sharjah City
+1212. Water Heater Installation — Al Majaz 3 — Sharjah City
+1213. Water Heater No Hot Water — Al Majaz 3 — Sharjah City
+1214. Water Heater Pressure Problem — Al Majaz 3 — Sharjah City
+1215. Water Heater Preventive Maintenance — Al Majaz 3 — Sharjah City
+1216. Water Heater Scale Removal — Al Majaz 3 — Sharjah City
+1217. Water Heater Slow Heating — Al Majaz 3 — Sharjah City
+1218. Water Heater Tank Inspection — Al Majaz 3 — Sharjah City
+1219. Water Heater Temperature Problem — Al Majaz 3 — Sharjah City
+1220. Water Heater Thermostat Repair — Al Majaz 3 — Sharjah City
+1221. Water Heater Valve Replacement — Al Majaz 3 — Sharjah City
+1222. Water Heater Water Leakage Repair — Al Majaz 3 — Sharjah City
+
+=== Dishwasher Maintenance / Repair (dishwasher) ===
+1223. Dishwasher Control Panel Diagnosis — Al Majaz 3 — Sharjah City
+1224. Dishwasher Door Lock Repair — Al Majaz 3 — Sharjah City
+1225. Dishwasher Door Seal Replacement — Al Majaz 3 — Sharjah City
+1226. Dishwasher Drainage Problem — Al Majaz 3 — Sharjah City
+1227. Dishwasher Filter Cleaning — Al Majaz 3 — Sharjah City
+1228. Dishwasher Heating Problem — Al Majaz 3 — Sharjah City
+1229. Dishwasher Inspection — Al Majaz 3 — Sharjah City
+1230. Dishwasher Installation — Al Majaz 3 — Sharjah City
+1231. Dishwasher Not Cleaning Properly — Al Majaz 3 — Sharjah City
+1232. Dishwasher Not Starting — Al Majaz 3 — Sharjah City
+1233. Dishwasher Poor Drying — Al Majaz 3 — Sharjah City
+1234. Dishwasher Preventive Maintenance — Al Majaz 3 — Sharjah City
+1235. Dishwasher Pump Inspection — Al Majaz 3 — Sharjah City
+1236. Dishwasher Spray Arm Cleaning — Al Majaz 3 — Sharjah City
+1237. Dishwasher Water Filling Problem — Al Majaz 3 — Sharjah City
+1238. Dishwasher Water Leakage — Al Majaz 3 — Sharjah City
+
+=== Gym Cleaning & Maintenance (gym) ===
+1239. Cross-Trainer Maintenance — Al Majaz 3 — Sharjah City
+1240. Exercise Bike Maintenance — Al Majaz 3 — Sharjah City
+1241. Fitness Equipment Inspection — Al Majaz 3 — Sharjah City
+1242. Gym Deep Cleaning — Al Majaz 3 — Sharjah City
+1243. Gym Disinfection — Al Majaz 3 — Sharjah City
+1244. Gym Equipment Cleaning — Al Majaz 3 — Sharjah City
+1245. Gym Floor Cleaning — Al Majaz 3 — Sharjah City
+1246. Gym Glass Cleaning — Al Majaz 3 — Sharjah City
+1247. Gym Mirror Cleaning — Al Majaz 3 — Sharjah City
+1248. Gym Regular Cleaning — Al Majaz 3 — Sharjah City
+1249. Gym Sanitization — Al Majaz 3 — Sharjah City
+1250. Locker Cleaning — Al Majaz 3 — Sharjah City
+1251. Preventive Gym Maintenance — Al Majaz 3 — Sharjah City
+1252. Shower & Changing Room Cleaning — Al Majaz 3 — Sharjah City
+1253. Treadmill Maintenance — Al Majaz 3 — Sharjah City
+1254. Weight Equipment Maintenance — Al Majaz 3 — Sharjah City
+
+=== Oven Maintenance / Repair (oven) ===
+1255. Gas Oven Inspection — Al Majaz 3 — Sharjah City
+1256. Oven Cleaning — Al Majaz 3 — Sharjah City
+1257. Oven Control Panel Problem — Al Majaz 3 — Sharjah City
+1258. Oven Door Repair — Al Majaz 3 — Sharjah City
+1259. Oven Door Seal Replacement — Al Majaz 3 — Sharjah City
+1260. Oven Electrical Fault Diagnosis — Al Majaz 3 — Sharjah City
+1261. Oven Fan Repair — Al Majaz 3 — Sharjah City
+1262. Oven Heating Element Replacement — Al Majaz 3 — Sharjah City
+1263. Oven Inspection — Al Majaz 3 — Sharjah City
+1264. Oven Installation — Al Majaz 3 — Sharjah City
+1265. Oven Not Heating — Al Majaz 3 — Sharjah City
+1266. Oven Preventive Maintenance — Al Majaz 3 — Sharjah City
+1267. Oven Temperature Problem — Al Majaz 3 — Sharjah City
+1268. Oven Thermostat Repair — Al Majaz 3 — Sharjah City
+1269. Oven Timer Problem — Al Majaz 3 — Sharjah City
+1270. Oven Uneven Heating — Al Majaz 3 — Sharjah City
+
+=== Burner / Cooker Maintenance / Repair (burner-cooker) ===
+1271. Cooker Igniter Repair — Al Majaz 3 — Sharjah City
+1272. Cooker Knob Replacement — Al Majaz 3 — Sharjah City
+1273. Electric Cooker Repair — Al Majaz 3 — Sharjah City
+1274. Gas Burner Cleaning — Al Majaz 3 — Sharjah City
+1275. Gas Burner Repair — Al Majaz 3 — Sharjah City
+1276. Gas Burner Replacement — Al Majaz 3 — Sharjah City
+1277. Gas Cooker Cleaning — Al Majaz 3 — Sharjah City
+1278. Gas Cooker Ignition Repair — Al Majaz 3 — Sharjah City
+1279. Gas Cooker Inspection — Al Majaz 3 — Sharjah City
+1280. Gas Cooker Installation — Al Majaz 3 — Sharjah City
+1281. Gas Flame Problem Diagnosis — Al Majaz 3 — Sharjah City
+1282. Gas Hose Inspection — Al Majaz 3 — Sharjah City
+1283. Gas Hose Replacement — Al Majaz 3 — Sharjah City
+1284. Gas Leakage Inspection — Al Majaz 3 — Sharjah City
+1285. Gas Valve Inspection — Al Majaz 3 — Sharjah City
+1286. Gas Valve Replacement — Al Majaz 3 — Sharjah City
+1287. Glass Hob Maintenance — Al Majaz 3 — Sharjah City
+1288. Hob Cleaning — Al Majaz 3 — Sharjah City
+1289. Induction Cooker Inspection — Al Majaz 3 — Sharjah City
+1290. Uneven Flame Diagnosis — Al Majaz 3 — Sharjah City
+
+GRAND_TOTAL_ROWS=1290

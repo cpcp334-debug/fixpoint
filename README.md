@@ -6,33 +6,27 @@ Next.js App Router site for ALNAJAH ALDAEM (public marketing + internal admin).
 
 ```bash
 npm install
-npm run pg          # local PGlite Postgres on 127.0.0.1:5433
-npm run db:setup    # generate + migrate + seed (destructive catalog wipe — NON-PRODUCTION only)
+# Prefer Docker/local MySQL 8 with DATABASE_URL=mysql://... (see .env.example)
+npx prisma migrate deploy
+npm run db:seed    # NON-PRODUCTION only — destructive catalog wipe
 npm run dev
 ```
 
-Open http://localhost:3000
+`npm run pg` (PGlite Postgres on 127.0.0.1:5433) is **legacy / deprecated** for the Hostinger MySQL path — schema provider is now `mysql`.
 
-Optional: development-only Docker Postgres via `docker-compose.yml` (not for production).
+## Production database (Hostinger MySQL)
 
-## Production database
-
-Use **real PostgreSQL** in production. PGlite is development-only.
-
-- Setup / migrate deploy / health: **[docs/production-database.md](docs/production-database.md)**
-- Backup & disaster recovery (**RPO ≤ 1 hour**, **RTO ≤ 4 hours**; backups still **NOT CONFIGURED**): **[docs/disaster-recovery.md](docs/disaster-recovery.md)**
-- Durable rate limits + trusted proxy: **[docs/rate-limiting.md](docs/rate-limiting.md)**
-- CSP / HSTS + admin download CSRF: **[docs/security-headers-downloads.md](docs/security-headers-downloads.md)**
+Use **Hostinger MySQL** in production. See **[deploy/MYSQL-HOSTINGER.md](deploy/MYSQL-HOSTINGER.md)**.
 
 Quick path:
 
-1. Provision real PostgreSQL and set `DATABASE_URL` (no localhost / no PGlite URL).
-2. `NODE_ENV=production npx prisma migrate deploy`
-3. Optional safe bootstrap: `NODE_ENV=production npm run db:seed`
-4. `npm run build` && `npm start`
-5. Configure external backups / private object storage before launch (see DR doc).
+1. Create MySQL DB on Hostinger; set `DATABASE_URL=mysql://...`
+2. `npx prisma migrate deploy`
+3. One-time Neon → MySQL ETL: `npm run db:export-neon-to-mysql` (needs `NEON_DATABASE_URL`)
+4. `npm run build` && `npm start` (or upload Hostinger zip)
+5. **Do not** run destructive `db:seed` after import
 
-Production startup validates `DATABASE_URL` and refuses PGlite / accidental local DB URLs. `next build` does not require a live production database.
+Production startup validates `DATABASE_URL` and requires `mysql://` (refuses PGlite / accidental local DB URLs). `next build` does not require a live production database.
 
 ## Database seeding (important)
 

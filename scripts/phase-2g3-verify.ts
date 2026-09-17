@@ -355,7 +355,7 @@ async function main() {
   const publicRoute = readFileSync(join(process.cwd(), "src/app/api/ai/chat/route.ts"), "utf8");
   assert(publicRoute.includes("runAlnajahAi") && !publicRoute.includes("runCofounder"), "public chat unchanged");
   const openaiSrc = readFileSync(join(process.cwd(), "src/lib/ai/openai.ts"), "utf8");
-  assert(openaiSrc.includes("You are ALNAJAH AI for ALNAJAH ALDAEM"), "public system prompt unchanged");
+  assert(openaiSrc.includes("You are ALNAJAH AI for Al Najah Al Daem"), "public system prompt unchanged");
   const sitemapSrc = readFileSync(join(process.cwd(), "src/app/sitemap.ts"), "utf8");
   assert(!sitemapSrc.includes("/proposals"), "no public proposal page");
 

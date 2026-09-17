@@ -81,7 +81,6 @@ export function BookingForm({
       <form
         action={onSubmit}
         className="grid gap-6"
-        encType="multipart/form-data"
         noValidate
         onFocusCapture={formStart("BOOKING_START")}
       >

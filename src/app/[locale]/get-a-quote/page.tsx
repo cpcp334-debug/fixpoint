@@ -4,7 +4,7 @@ import { buildMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { Disclaimer } from "@/components/ui/Blocks";
-import { mailUrl, siteConfig, telUrl, whatsappUrl } from "@/config/site";
+import { mailUrl, siteConfig, telUrl, whatsappUrl, brandName } from "@/config/site";
 import { Section } from "@/components/ui/Section";
 import { PageShell } from "@/components/public/PageShell";
 import { PublicHero } from "@/components/public/PublicHero";
@@ -13,7 +13,7 @@ import { CtaBand } from "@/components/public/CtaBand";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Quote" });
-  return buildMetadata({ locale, title: `${t("title")} | ALNAJAH ALDAEM`, description: t("lead"), path: "/get-a-quote" });
+  return buildMetadata({ locale, title: `${t("title")} | ${brandName(locale)}`, description: t("lead"), path: "/get-a-quote" });
 }
 
 export default async function QuotePage({ params }: { params: Promise<{ locale: string }> }) {
@@ -35,7 +35,7 @@ export default async function QuotePage({ params }: { params: Promise<{ locale: 
         />
       }
     >
-      <PublicHero title={t("title")} lead={t("lead")} compact />
+      <PublicHero locale={locale} title={t("title")} lead={t("lead")} compact />
       <Section>
         <Disclaimer>{siteConfig.disclaimers.quote[locale === "ar" ? "ar" : "en"]}</Disclaimer>
         <p className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">

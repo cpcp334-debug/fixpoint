@@ -1,22 +1,32 @@
 import { prisma } from "@/server/db";
 import { needPermission } from "@/lib/admin/guard";
 import { STAFF_ROLES } from "@/lib/admin/rbac";
-import { AdminTable, Field, Forbidden, PageHeader, PrimaryButton, SelectField } from "@/components/admin/Ui";
+import { AdminBulkTable, AdminFlash, Field, Forbidden, PageHeader, PrimaryButton, SelectField } from "@/components/admin/Ui";
 import { createStaffAction, createStaffRecordAction, resetStaffPasswordAction, setStaffActiveAction } from "@/app/admin/actions";
 
-export default async function StaffPage({ searchParams }: { searchParams: Promise<{ error?: string; ok?: string }> }) {
+export default async function StaffPage({ searchParams }: { searchParams: Promise<{ error?: string; ok?: string; q?: string }> }) {
   const auth = await needPermission("staff");
   if (!auth.ok) return <Forbidden />;
-  const { error, ok } = await searchParams;
+  const { error, ok, q } = await searchParams;
+  const where = q?.trim()
+    ? {
+        OR: [
+          { name: { contains: q.trim() } },
+          { email: { contains: q.trim() } },
+        ],
+      }
+    : {};
   const [users, staff] = await Promise.all([
-    prisma.user.findMany({ orderBy: { createdAt: "desc" } }),
+    prisma.user.findMany({ where, orderBy: { createdAt: "desc" } }),
     prisma.staff.findMany({ orderBy: { staffCode: "asc" } }),
   ]);
+  const sp = new URLSearchParams();
+  if (q) sp.set("q", q);
+  const returnTo = `/admin/staff${sp.toString() ? `?${sp}` : ""}`;
   return (
     <div className="space-y-8">
-      <PageHeader title="Staff" note="Login accounts use roles for access control. Staff records are used for booking/work-order assignment. Deactivating a login revokes all sessions immediately." />
-      {error ? <p className="text-sm text-danger">Check email, role, and a password of at least 12 characters.</p> : null}
-      {ok ? <p className="text-sm text-accent">Saved.</p> : null}
+      <PageHeader title="Staff" note="Bulk Publish = activate login. Hide/Soft-remove = deactivate (never the only active super admin). Passwords are never shown." />
+      <AdminFlash ok={ok} error={error} />
       <form action={createStaffAction} className="grid max-w-3xl gap-3 rounded-md border border-line bg-white p-4 sm:grid-cols-2">
         <Field label="Name" name="name" required />
         <Field label="Email" name="email" type="email" required />
@@ -25,14 +35,25 @@ export default async function StaffPage({ searchParams }: { searchParams: Promis
         <SelectField label="Link staff record" name="staffId" options={[{ value: "", label: "None" }, ...staff.map((s) => ({ value: s.id, label: s.staffCode }))]} />
         <PrimaryButton>Create login</PrimaryButton>
       </form>
-      <AdminTable headers={["Name", "Email", "Role", "Active", "Actions"]}>
-        {users.map((user) => (
-          <tr key={user.id} className="border-t border-line">
-            <td className="px-3 py-2">{user.name}</td>
-            <td className="px-3 py-2">{user.email}</td>
-            <td className="px-3 py-2">{user.role}</td>
-            <td className="px-3 py-2">{user.active ? "yes" : "no"}</td>
-            <td className="space-y-2 px-3 py-2">
+      <form className="flex flex-wrap gap-2 text-sm" method="get">
+        <input name="q" defaultValue={q || ""} placeholder="Search name or email" className="min-w-48 rounded-md border border-line px-3 py-2" />
+        <button type="submit" className="rounded-md border border-line px-3 py-2">
+          Search
+        </button>
+      </form>
+      <AdminBulkTable
+        entity="staff"
+        returnTo={returnTo}
+        headers={["Name", "Email", "Role", "Active", "Actions"]}
+        actionLabels={{ publish: "Activate", hide: "Deactivate", archive: "Deactivate (archive)" }}
+        rows={users.map((user) => ({
+          id: user.id,
+          cells: [
+            user.name,
+            user.email,
+            user.role,
+            user.active ? "yes" : "no",
+            <div key="actions" className="space-y-2">
               <form action={resetStaffPasswordAction} className="flex flex-wrap gap-2">
                 <input type="hidden" name="id" value={user.id} />
                 <input name="password" type="password" placeholder="New password" className="rounded-md border border-line px-2 py-1 text-sm" />
@@ -47,10 +68,10 @@ export default async function StaffPage({ searchParams }: { searchParams: Promis
                   {user.active ? "Deactivate" : "Activate"}
                 </button>
               </form>
-            </td>
-          </tr>
-        ))}
-      </AdminTable>
+            </div>,
+          ],
+        }))}
+      />
       <h2 className="text-lg font-semibold">Assignment records</h2>
       <form action={createStaffRecordAction} className="mb-4 flex max-w-xl flex-wrap gap-3 rounded-md border border-line bg-white p-4">
         <input name="staffCode" placeholder="Staff code" required className="rounded-md border border-line px-3 py-2 text-sm" />

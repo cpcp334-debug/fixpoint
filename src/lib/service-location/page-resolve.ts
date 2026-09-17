@@ -432,15 +432,16 @@ function buildModel(
       )
     : null;
   const diyBlock = ensureDiySelfHelpSection({
-    existing: existingParsed?.ok ? existingParsed.value.diy : null,
+    existing: existingParsed?.ok && existingParsed.value ? existingParsed.value.diy : null,
     safetyState: diy.safetyClass,
     serviceName,
     locale,
     guideSlug: diy.guideSlug,
   });
-  const contentJson: ServiceLocationContentJson = existingParsed?.ok
-    ? { ...existingParsed.value, diy: diyBlock }
-    : { ...emptyContentJson(), diy: diyBlock };
+  const contentJson: ServiceLocationContentJson =
+    existingParsed?.ok && existingParsed.value
+      ? { ...existingParsed.value, version: 1, diy: diyBlock }
+      : { ...emptyContentJson(), diy: diyBlock };
 
   return {
     mode,

@@ -17,7 +17,7 @@ import { getGuideBySlug } from "@/lib/catalog";
 export async function generateStaticParams() {
   try {
     const rows = await prisma.article.findMany({
-      where: { status: "published", indexable: true },
+      where: { status: "published", indexable: true, NOT: { slug: { startsWith: "faq-" } } },
       select: { slug: true },
     });
     return rows.map((r) => ({ slug: r.slug }));
@@ -44,13 +44,39 @@ export async function generateMetadata({
   });
 }
 
+function headingId(title: string) {
+  return `s-${title
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, "-")
+    .replace(/^-|-$/g, "")
+    .slice(0, 64)}`;
+}
+
+function extractHeadings(body: string) {
+  return body
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter((line) => line.startsWith("## "))
+    .map((line) => line.replace(/^##\s+/, ""))
+    .filter(
+      (title) =>
+        !/^Field detail\b/i.test(title) &&
+        !/^تفصيل ميداني\b/i.test(title) &&
+        !/^Exclusive checkpoint\b/i.test(title) &&
+        !/^نقطة تحقق حصرية\b/i.test(title) &&
+        !/^Documentation markers\b/i.test(title) &&
+        !/^علامات توثيق\b/i.test(title),
+    );
+}
+
 function renderBody(body: string) {
   const blocks = body.split(/\n\n+/).map((b) => b.trim()).filter(Boolean);
   return blocks.map((block, i) => {
     if (block.startsWith("## ")) {
+      const title = block.replace(/^##\s+/, "");
       return (
-        <h2 key={i} className="mt-8 text-xl font-semibold text-navy">
-          {block.replace(/^##\s+/, "")}
+        <h2 key={i} id={headingId(title)} className="mt-8 scroll-mt-24 text-xl font-semibold text-navy">
+          {title}
         </h2>
       );
     }
@@ -64,7 +90,7 @@ function renderBody(body: string) {
     if (block.startsWith("- ")) {
       const items = block.split("\n").map((l) => l.replace(/^- /, "").trim()).filter(Boolean);
       return (
-        <ul key={i} className="mt-3 list-disc space-y-1 ps-5 text-sm leading-relaxed text-muted">
+        <ul key={i} className="mt-3 list-disc space-y-1 ps-5 text-sm leading-relaxed text-muted sm:text-base">
           {items.map((item) => (
             <li key={item.slice(0, 48)}>{item}</li>
           ))}
@@ -72,7 +98,7 @@ function renderBody(body: string) {
       );
     }
     return (
-      <p key={i} className="mt-4 text-sm leading-relaxed text-muted whitespace-pre-line">
+      <p key={i} className="mt-4 text-sm leading-relaxed text-muted whitespace-pre-line sm:text-base">
         {block}
       </p>
     );
@@ -118,6 +144,8 @@ export default async function BlogArticlePage({
     call: cta("call"),
   };
 
+  const outline = extractHeadings(article.t.body);
+
   return (
     <PageShell
       breadcrumbs={
@@ -154,7 +182,7 @@ export default async function BlogArticlePage({
       />
       {article.t.faq.length ? <JsonLd data={faqJsonLd(article.t.faq)} /> : null}
 
-      <PublicHero
+      <PublicHero locale={locale}
         kicker={article.categories.map((c) => c.label).join(" · ")}
         title={article.t.title}
         lead={article.t.excerpt}
@@ -178,14 +206,51 @@ export default async function BlogArticlePage({
 
       <Section>
         <article className="mx-auto max-w-3xl">
+          {outline.length ? (
+            <nav
+              aria-label={locale === "ar" ? "محتويات المقال" : "Article contents"}
+              className="mb-8 rounded-xl border border-line bg-sand/60 p-4 sm:p-5"
+            >
+              <p className="text-sm font-semibold text-navy">
+                {locale === "ar" ? "محتويات المقال" : "In this article"}
+              </p>
+              <ol className="mt-3 grid gap-2 text-sm text-muted sm:grid-cols-2">
+                {outline.map((heading) => (
+                  <li key={heading}>
+                    <a href={`#${headingId(heading)}`} className="hover:text-accent">
+                      {heading}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          ) : null}
           <div className="prose-article">{renderBody(article.t.body)}</div>
           {article.t.diySection ? (
             <div className="mt-10">
               <ProseCard title={t("diyHelp")}>
-                <div className="whitespace-pre-line text-sm leading-relaxed">{article.t.diySection}</div>
+                <div className="whitespace-pre-line text-sm leading-relaxed sm:text-base">{article.t.diySection}</div>
               </ProseCard>
             </div>
           ) : null}
+          <div className="mt-10 rounded-xl border border-gold/30 bg-sand p-4 sm:p-5">
+            <p className="text-sm font-semibold text-navy">
+              {locale === "ar" ? "الخطوة التالية" : "Next step"}
+            </p>
+            <p className="mt-2 text-sm text-muted">
+              {locale === "ar"
+                ? "إذا احتجت مساعدة مهنية، اطلب عرض سعر مع الصور وملاحظات الوصول."
+                : "If you need professional help, request a quote with photos and access notes."}
+            </p>
+            <div className="mt-4">
+              <Link
+                href="/get-a-quote"
+                className="inline-flex min-h-11 items-center justify-center rounded-lg bg-accent px-4 text-sm font-medium text-white hover:bg-accent-hover"
+              >
+                {cta("quote")}
+              </Link>
+            </div>
+          </div>
         </article>
         <div className="mt-10">
           <CtaRow labels={ctaLabels} />

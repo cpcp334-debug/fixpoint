@@ -1,8 +1,19 @@
 /**
  * Deterministic rendered-text extraction — matches ServiceLocationView visitor copy.
  */
+import { parseFaqJson } from "@/lib/faq";
 import type { ServiceLocationPageModel } from "./page-model";
 import { parseContentJson } from "./content-parse";
+import type { WorkingCopy } from "./types";
+
+/** Hard floor for Service × Location publish / READY_FOR_PUBLISH. */
+export const RENDERED_WORD_MIN_PUBLISH = 800;
+/** Editorial target band start. */
+export const RENDERED_WORD_TARGET = 1000;
+/** Soft upper band for acceptable longform. */
+export const RENDERED_WORD_MAX_SOFT = 1200;
+/** Soft preferred upper (pilot target ~1000–1300). */
+export const RENDERED_WORD_TARGET_MAX = 1300;
 
 export function getRenderedContentText(model: ServiceLocationPageModel): string {
   const parts: string[] = [];
@@ -89,6 +100,62 @@ export function wordCountBand(n: number): "<500" | "500-799" | "800-999" | "1000
   return ">1200";
 }
 
-export const RENDERED_WORD_MIN_PUBLISH = 800;
-export const RENDERED_WORD_TARGET = 1000;
-export const RENDERED_WORD_MAX_SOFT = 1200;
+function countPlainWords(text: string, locale: string) {
+  const t = text.replace(/\s+/g, " ").trim();
+  if (!t) return 0;
+  if (locale === "ar") {
+    const ar = t.match(/[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF]+/g);
+    const latin = t.match(/[A-Za-z0-9]+/g);
+    return (ar?.length || 0) + (latin?.length || 0);
+  }
+  return t.split(/\s+/).filter(Boolean).length;
+}
+
+/**
+ * Approximate visitor word count from a WorkingCopy (eligibility / ops).
+ * Does not count SEO title, meta, or image alt.
+ */
+export function estimateWorkingCopyWords(copy: WorkingCopy | null | undefined, locale = "en"): number {
+  if (!copy) return 0;
+  const parts: string[] = [];
+  const push = (v?: string | null) => {
+    const t = (v || "").trim();
+    if (t) parts.push(t);
+  };
+  push(copy.h1);
+  push(copy.intro);
+  push(copy.geoIntro);
+  push(copy.localInfo);
+  push(copy.body);
+  push(copy.directAnswer);
+  for (const f of parseFaqJson(copy.faq || "")) {
+    push(f.a);
+  }
+  if (copy.contentJson) {
+    const parsed = parseContentJson(
+      typeof copy.contentJson === "string" ? copy.contentJson : JSON.stringify(copy.contentJson),
+    );
+    if (parsed.ok && parsed.value) {
+      const c = parsed.value;
+      push(c.main?.serviceExplanation);
+      for (const x of c.main?.problems ?? []) push(x);
+      for (const x of c.main?.symptomsUseCases ?? []) push(x);
+      for (const x of c.main?.process ?? []) push(x);
+      push(c.main?.professionalRecommendation);
+      for (const x of c.diy?.safeSelfChecks ?? []) push(x);
+      for (const x of c.diy?.whatNotToDo ?? []) push(x);
+      for (const x of c.diy?.safetyNotes ?? []) push(x);
+      push(c.diy?.professionalFallback);
+      if (c.diy?.safetyState === "GREEN" || c.diy?.safetyState === "YELLOW") {
+        for (const x of c.diy?.steps ?? []) push(x);
+      }
+      push(c.aeo?.directAnswer);
+      push(c.geo?.coverageStatement);
+      push(c.expert?.helpSummary);
+      for (const f of c.faq ?? []) {
+        if (f.approvalState === "approved") push(f.answer);
+      }
+    }
+  }
+  return countPlainWords(parts.join("\n"), locale);
+}

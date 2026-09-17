@@ -300,7 +300,7 @@ async function main() {
       locale: "en",
       intro: "Professional cleaning services in Dubai for homes and buildings.",
       localInfo: "Villa and apartment cleaning needs vary by access and finishes.",
-      seoTitle: "Cleaning Services in Dubai | ALNAJAH ALDAEM",
+      seoTitle: "Cleaning Services in Dubai | Al Najah Al Daem",
       metaDescription: "Request cleaning in Dubai. Coverage by enquiry.",
       faq: "[]",
     },

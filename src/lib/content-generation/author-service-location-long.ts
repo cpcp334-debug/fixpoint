@@ -247,8 +247,8 @@ export function buildLongFormSections(input: LongFormInput) {
   ].filter(Boolean);
 
   const expert = isAr
-    ? `فريق النجاح الدائم يساعد على تقييم ${input.serviceName} في ${input.locationName}. اطلب عرض سعر، أو حجزاً إن كان مفعّلاً، أو تواصلاً عبر واتساب/اتصال. ${coverage}`
-    : `ALNAJAH ALDAEM can assess ${input.serviceName} in ${input.locationName}. Request a quote, booking when enabled, or WhatsApp/call contact. ${coverage}`;
+    ? `فريق النجاح الدائم · Fixpoint يساعد على تقييم ${input.serviceName} في ${input.locationName}. اطلب عرض سعر، أو حجزاً إن كان مفعّلاً، أو تواصلاً عبر واتساب/اتصال. ${coverage}`
+    : `Al Najah Al Daem · Fixpoint can assess ${input.serviceName} in ${input.locationName}. Request a quote, booking when enabled, or WhatsApp/call contact. ${coverage}`;
 
   const body = [
     explanationParts.join("\n\n"),

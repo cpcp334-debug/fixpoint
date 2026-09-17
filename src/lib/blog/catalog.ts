@@ -46,7 +46,11 @@ function mapCard(
 
 export const getPublishedBlogArticles = cache(async (locale: string) => {
   const rows = await prisma.article.findMany({
-    where: { status: "published", indexable: true },
+    where: {
+      status: "published",
+      indexable: true,
+      NOT: [{ slug: { startsWith: "faq-" } }],
+    },
     include: { translations: true },
     orderBy: [{ publishedAt: "desc" }, { updatedAt: "desc" }],
   });
@@ -54,6 +58,7 @@ export const getPublishedBlogArticles = cache(async (locale: string) => {
 });
 
 export const getBlogArticleBySlug = cache(async (slug: string, locale: string) => {
+  if (slug.startsWith("faq-")) return null;
   const row = await prisma.article.findFirst({
     where: { slug, status: "published", indexable: true },
     include: { translations: true },

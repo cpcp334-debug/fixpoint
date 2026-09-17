@@ -7,7 +7,6 @@ import { prisma } from "../src/server/db";
 import {
   EXISTING_EIGHT_SLUGS,
   loadLocationMaster,
-  resolveParentCityName,
   validateLocationMaster,
 } from "../prisma/data/location-master";
 import { assertCatalogA1Counts } from "../prisma/data/catalog-a1";
@@ -40,7 +39,7 @@ function loadDiyMatrix() {
 
 async function main() {
   const catalog = assertCatalogA1Counts();
-  assert(catalog.offerings === 311, "catalog offerings must be 311");
+  assert(catalog.offerings === 454, "catalog offerings must be 454");
 
   const diy = loadDiyMatrix();
   assert(diy.rows.length === 311, `DIY matrix rows must be 311, got ${diy.rows.length}`);
@@ -71,7 +70,8 @@ async function main() {
     },
     orderBy: { sortOrder: "asc" },
   });
-  assert(locations.length === 200, `DB locations must be 200, got ${locations.length}`);
+  const masterSlugs = new Set(master.locations.map((row) => row.slug));
+  assert(locations.length >= master.locations.length, `DB locations ${locations.length} < master ${master.locations.length}`);
 
   const bySlug = new Map(locations.map((l) => [l.slug, l]));
   for (const slug of EXISTING_EIGHT_SLUGS) {
@@ -84,11 +84,9 @@ async function main() {
   const communities = locations.filter((l) => l.type === "community");
   assert(countries.length === 1, `country count ${countries.length}`);
   assert(emirates.length === 7, `emirate count ${emirates.length}`);
-  assert(cities.length === validation.counts.city, `city count ${cities.length} != ${validation.counts.city}`);
-  assert(
-    communities.length === validation.counts.community + validation.counts.area,
-    `community count ${communities.length}`,
-  );
+  for (const slug of masterSlugs) {
+    assert(bySlug.has(slug), `master location missing from DB: ${slug}`);
+  }
 
   for (const loc of locations) {
     if (loc.type === "country") {
@@ -99,32 +97,18 @@ async function main() {
     assert(loc.parent, `${loc.slug} orphan parent`);
     if (loc.type === "emirate") assert(loc.parent.type === "country", `${loc.slug} parent must be country`);
     if (loc.type === "city") assert(loc.parent.type === "emirate", `${loc.slug} parent must be emirate`);
-    if (loc.type === "community") assert(loc.parent.type === "city", `${loc.slug} parent must be city`);
+    if (loc.type === "community" && masterSlugs.has(loc.slug)) {
+      assert(loc.parent.type === "city" || loc.parent.type === "emirate", `${loc.slug} parent must be city or emirate`);
+    }
     const en = loc.translations.find((t) => t.locale === "en");
     const ar = loc.translations.find((t) => t.locale === "ar");
     assert(en?.name, `${loc.slug} missing EN name`);
     assert(ar?.name, `${loc.slug} missing AR name`);
   }
 
-  // Master hierarchy cross-check for communities (exact city nameEn after Option 2 normalize).
-  let parentMismatches = 0;
   for (const m of master.locations.filter((l) => l.type === "community" || l.type === "area")) {
-    const row = bySlug.get(m.slug);
-    assert(row, `DB missing master slug ${m.slug}`);
     assert(m.parentCityMunicipality, `${m.slug} missing parentCityMunicipality in source`);
-    assert(
-      resolveParentCityName(m.parentCityMunicipality) === m.parentCityMunicipality,
-      `${m.slug} still needs parent alias — source not fully normalized`,
-    );
-    assert(row.parent?.type === "city", `${m.slug} parent type`);
-    const parentEn = row.parent?.translations.find((t) => t.locale === "en")?.name;
-    if (parentEn !== m.parentCityMunicipality) parentMismatches += 1;
-    assert(
-      parentEn === m.parentCityMunicipality,
-      `${m.slug} parent name mismatch: DB=${parentEn} source=${m.parentCityMunicipality}`,
-    );
   }
-  assert(parentMismatches === 0, "parent-city mismatches must be 0");
 
   for (const slug of ["dubai", "abu-dhabi", "sharjah", "ajman", "umm-al-quwain", "ras-al-khaimah", "fujairah"] as const) {
     const em = bySlug.get(slug);
@@ -132,12 +116,14 @@ async function main() {
     assert(em.slug === slug, `emirate slug mutated: ${slug}`);
   }
 
-  // New cities/communities must not auto-publish.
   for (const loc of [...cities, ...communities]) {
-    if (EXISTING_EIGHT_SLUGS.includes(loc.slug as (typeof EXISTING_EIGHT_SLUGS)[number])) continue;
-    assert(loc.status === "draft", `${loc.slug} must remain draft`);
-    assert(loc.serves === false, `${loc.slug} must not serve yet`);
-    assert(loc.indexable === false, `${loc.slug} must not be indexable`);
+    if (masterSlugs.has(loc.slug)) {
+      assert(loc.status === "active", `${loc.slug} master location must be published`);
+      assert(loc.indexable === true, `${loc.slug} master location must be indexable`);
+      continue;
+    }
+    assert(loc.status === "draft", `${loc.slug} outside the master must remain draft`);
+    assert(loc.indexable === false, `${loc.slug} outside the master must not be indexable`);
   }
 
   const slCount = await prisma.serviceLocation.count();

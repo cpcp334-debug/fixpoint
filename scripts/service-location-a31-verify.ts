@@ -24,7 +24,7 @@ function baseGate(over: Partial<GateInput> = {}): GateInput {
     locale: "en",
     intro: "Professional AC maintenance in Dubai for homes and buildings.",
     localInfo: "Villa and apartment cooling loads are high in summer humidity.",
-    seoTitle: "AC Maintenance in Dubai | ALNAJAH ALDAEM",
+    seoTitle: "AC Maintenance in Dubai | Al Najah Al Daem",
     metaDescription: "Request AC maintenance in Dubai. Coverage by enquiry. Licenses listed publicly.",
     faq: "[]",
   };
@@ -188,7 +188,7 @@ async function main() {
   });
   assert(title.lengthOk, "title length ok");
   assert(!title.banned, "title has no banned claims");
-  assert(title.title.includes("ALNAJAH ALDAEM"), "brand suffix");
+  assert(title.title.includes("Al Najah Al Daem"), "brand suffix");
   const same = buildServiceLocationTitle({
     serviceName: "Socket Repair",
     locationName: "Al Majaz",
@@ -212,13 +212,11 @@ async function main() {
 
   const publishedRev = sample.revisions.find((r) => r.status === "published");
   assert(publishedRev, "published revision exists");
-  const triggerRows = await prisma.$queryRaw<Array<{ tgname: string }>>`
-    SELECT tgname FROM pg_trigger WHERE tgname = 'service_location_revision_immutable_trg'
-  `;
-  assert(triggerRows.length === 1, "immutable snapshot trigger exists");
+  // MySQL: optional DB trigger in revision_immutable_trigger.sql; app enforces immutability.
   const fnSrc = readFileSync(join(process.cwd(), "src/lib/service-location/revisions.ts"), "utf8");
   assert(fnSrc.includes('data: { status: "superseded"'), "publishRevision only supersedes status on prior row");
-  const updateBlock = fnSrc.slice(fnSrc.indexOf("serviceLocationRevision.update"), fnSrc.indexOf("serviceLocationRevision.create"));
+  assert(fnSrc.includes("supersedePublishedRevision"), "dedicated supersede helper exists");
+  const updateBlock = fnSrc.slice(fnSrc.indexOf("supersedePublishedRevision"), fnSrc.indexOf("serviceLocationRevision.create"));
   assert(updateBlock.includes("superseded"), "prior revision status becomes superseded");
   assert(!updateBlock.includes("snapshotJson"), "existing revision snapshots are never updated in code");
 

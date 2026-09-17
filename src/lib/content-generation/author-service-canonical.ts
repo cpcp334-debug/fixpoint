@@ -167,7 +167,7 @@ function faqsFor(input: CanonicalServiceInput, safety: DiySafetyClass) {
             : `Do-it-yourself repair is not recommended for this service class. Request a professional assessment.`,
     },
     {
-      question: `When should I call ALNAJAH ALDAEM for ${n}?`,
+      question: `When should I call Al Najah Al Daem · Fixpoint for ${n}?`,
       answer: `Call when symptoms persist, when access is unsafe, when specialized tools are required, or when you are unsure about the root cause.`,
     },
     {
@@ -201,9 +201,9 @@ function faqsFor(input: CanonicalServiceInput, safety: DiySafetyClass) {
 export function buildCanonicalServiceEn(input: CanonicalServiceInput): CanonicalServiceContent {
   const safety = matrixSafety(input.slug);
   const problems = problemsFor(input.categorySlug, input.nameEn);
-  const shortDescription = `${input.nameEn} helps property owners address ${problems[0]} with professional assessment and the right maintenance response.`;
+  const shortDescription = `${input.nameEn} covers assessment of the reported problem and a recommended next step. Listing it does not mean the service is already available in every area.`;
   const longDescription = [
-    `${input.nameEn} sits under ${input.categoryNameEn} in the ALNAJAH ALDAEM catalog.`,
+    `${input.nameEn} sits under ${input.categoryNameEn} in the Al Najah Al Daem · Fixpoint catalog.`,
     `It is intended for situations involving ${problems.join(", ")}.`,
     `Our team focuses on clear diagnosis, safe work practices, and a practical recommendation — without inventing coverage, prices, or certifications.`,
     safety === "RED" || safety === "REVIEW_REQUIRED"
@@ -234,7 +234,7 @@ export function buildCanonicalServiceEn(input: CanonicalServiceInput): Canonical
     ? `Quotation depends on inspection, access, and scope. No invented fixed prices.`
     : `Quotation depends on scope and site conditions. Request a quote for details.`;
 
-  const professionalFallback = `Need help with ${input.nameEn}? ALNAJAH ALDAEM can inspect the issue and recommend the appropriate maintenance or repair service.`;
+  const professionalFallback = `Need help with ${input.nameEn}? Al Najah Al Daem · Fixpoint can inspect the issue and recommend the appropriate maintenance or repair service.`;
 
   const safetyNotes = [
     `Follow stop conditions in any approved DIY guidance.`,
@@ -244,9 +244,9 @@ export function buildCanonicalServiceEn(input: CanonicalServiceInput): Canonical
       : `Stop immediately if you smell gas, see sparks, flooding, or structural movement.`,
   ].join(" ");
 
-  const seoTitle = `Professional ${input.nameEn} | ALNAJAH ALDAEM`;
-  const metaDescription = `${input.nameEn} under ${input.categoryNameEn}. Request assessment and quotation from ALNAJAH ALDAEM — no invented prices or fake claims.`;
-  const keywords = [input.nameEn, input.categoryNameEn, "UAE maintenance", "ALNAJAH ALDAEM"].join(", ");
+  const seoTitle = `Professional ${input.nameEn} | Al Najah Al Daem · Fixpoint`;
+  const metaDescription = `${input.nameEn} under ${input.categoryNameEn}. Request assessment and quotation from Al Najah Al Daem · Fixpoint — no invented prices or fake claims.`;
+  const keywords = [input.nameEn, input.categoryNameEn, "UAE maintenance", "Al Najah Al Daem · Fixpoint"].join(", ");
   const faqItems = faqsFor(input, safety);
   const faq = JSON.stringify(faqItems);
 

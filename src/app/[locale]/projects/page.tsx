@@ -1,3 +1,4 @@
+import { brandName } from "@/config/site";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -9,7 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const t = await getTranslations({ locale, namespace: "ProjectsPage" });
   return buildMetadata({
     locale,
-    title: `${t("title")} | ALNAJAH ALDAEM`,
+    title: `${t("title")} | ${brandName(locale)}`,
     description: t("empty"),
     path: "/projects",
     index: false,

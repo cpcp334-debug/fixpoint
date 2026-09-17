@@ -1,6 +1,8 @@
+import { brandName } from "@/config/site";
 import { notFound } from "next/navigation";
+import { Link } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { getActiveServices, getEmirateBySlug, getGlobalFaqs } from "@/lib/catalog";
+import { getActiveServices, getEmirateBySlug, getGlobalFaqs, getPublishedLocation } from "@/lib/catalog";
 import { prisma } from "@/server/db";
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -15,11 +17,12 @@ import { PageShell, ProseCard } from "@/components/public/PageShell";
 import { PublicHero, publicCanonical } from "@/components/public/PublicHero";
 import { CtaRow } from "@/components/public/CtaRow";
 import { CtaBand } from "@/components/public/CtaBand";
+import { EmiratePlaceDirectory } from "@/components/locations/EmiratePlaceDirectory";
 
 export async function generateStaticParams() {
   try {
     const rows = await prisma.location.findMany({
-      where: { type: "emirate", status: "active", indexable: true },
+      where: { status: "active", indexable: true, serves: true, type: { in: ["emirate", "city", "community"] } },
       select: { slug: true },
     });
     return rows.map((row) => ({ location: row.slug }));
@@ -34,13 +37,14 @@ export async function generateMetadata({
   params: Promise<{ locale: string; location: string }>;
 }) {
   const { locale, location } = await params;
-  const em = await getEmirateBySlug(location, locale);
-  if (!em) return {};
+  const place = await getPublishedLocation(location, locale);
+  if (!place) return {};
   return buildMetadata({
     locale,
-    title: em.t.seoTitle,
-    description: em.t.metaDescription,
-    path: `/locations/${em.slug}`,
+    title: place.t.seoTitle || `${place.t.name} | ${brandName(locale)}`,
+    description: place.t.metaDescription || place.t.intro,
+    path: `/locations/${place.slug}`,
+    index: place.indexable,
   });
 }
 
@@ -51,6 +55,11 @@ export default async function LocationPage({
 }) {
   const { locale, location } = await params;
   setRequestLocale(locale);
+  const published = await getPublishedLocation(location, locale);
+  if (!published) notFound();
+  if (published.type !== "emirate") {
+    return <PublishedPlacePage locale={locale} place={published} />;
+  }
   const em = await getEmirateBySlug(location, locale);
   if (!em) notFound();
   const t = await getTranslations("Locations");
@@ -69,7 +78,7 @@ export default async function LocationPage({
     whatsapp: cta("whatsapp"),
     call: cta("call"),
   };
-  const wa = `Hello ALNAJAH ALDAEM, I need service in ${em.t.name}.`;
+  const wa = `Hello Al Najah Al Daem · Fixpoint, I need service in ${em.t.name}.`;
 
   return (
     <PageShell
@@ -87,7 +96,7 @@ export default async function LocationPage({
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: em.t.name, path: `/locations/${em.slug}` }], locale)} />
       <JsonLd data={faqJsonLd(faqs)} />
 
-      <PublicHero
+      <PublicHero locale={locale}
         kicker={t("title")}
         title={em.t.name}
         lead={em.t.intro}
@@ -103,6 +112,20 @@ export default async function LocationPage({
           <ProseCard title={t("local")}>{em.t.localServiceInfo}</ProseCard>
           <ProseCard title={t("properties")}>{em.t.propertyTypes}</ProseCard>
           <ProseCard title={t("nearby")}>{em.t.nearbyAreas}</ProseCard>
+          <p className="text-sm">
+            <Link href={`/blog/place-${em.slug}`} className="font-medium text-accent">
+              {locale === "ar" ? `اقرأ دليل الطلب لـ ${em.t.name}` : `Read the request guide for ${em.t.name}`}
+            </Link>
+          </p>
+          <EmiratePlaceDirectory
+            emirateSlug={em.slug}
+            locale={locale}
+            title={t("directoryTitle")}
+            lead={t("directoryLead")}
+            citiesLabel={t("cities")}
+            areasLabel={t("areas")}
+            note={t("directoryNote")}
+          />
         </div>
       </Section>
 
@@ -155,4 +178,100 @@ export default async function LocationPage({
       />
     </PageShell>
   );
+}
+
+async function PublishedPlacePage({
+  locale,
+  place,
+}: {
+  locale: string;
+  place: NonNullable<Awaited<ReturnType<typeof getPublishedLocation>>>;
+}) {
+  const t = await getTranslations("Locations");
+  const nav = await getTranslations("Nav");
+  const cta = await getTranslations("Cta");
+  const home = await getTranslations("Home");
+  const ctaLabels = {
+    quote: cta("quote"),
+    book: cta("book"),
+    inspect: cta("inspect"),
+    whatsapp: cta("whatsapp"),
+    call: cta("call"),
+  };
+  const parent = place.parent;
+  const emirate = place.parent?.type === "emirate" ? place.parent : place.parent?.parent?.type === "emirate" ? place.parent.parent : null;
+  const emirateName = emirate ? pickName(emirate.translations, locale) : "";
+  const parentName = parent ? pickName(parent.translations, locale) : "";
+  const wa = `Hello Al Najah Al Daem · Fixpoint, I need service in ${place.t.name}${emirateName ? `, ${emirateName}` : ""}.`;
+  const crumbs = [
+    { href: "/", label: nav("home") },
+    { href: "/locations", label: t("title") },
+  ];
+  if (emirate) crumbs.push({ href: `/locations/${emirate.slug}`, label: emirateName });
+  if (parent && parent.slug !== emirate?.slug) crumbs.push({ href: `/locations/${parent.slug}`, label: parentName });
+  crumbs.push({ href: `/locations/${place.slug}`, label: place.t.name });
+
+  return (
+    <PageShell
+      breadcrumbs={<Breadcrumbs label={nav("breadcrumb")} items={crumbs} />}
+    >
+      <JsonLd data={breadcrumbJsonLd(crumbs.map((item) => ({ name: item.label, path: item.href })), locale)} />
+      <PublicHero locale={locale}
+        kicker={emirateName || t("title")}
+        title={place.t.name}
+        lead={
+          locale === "ar"
+            ? `${place.t.name} من الأماكن الـ 277 التي نخدمها${emirateName ? ` في ${emirateName}` : ""}. اذكر الخدمة التي تحتاجها واطلب الزيارة.`
+            : `${place.t.name} is one of the 277 places we serve${emirateName ? ` in ${emirateName}` : ""}. Name the service you need and request the visit.`
+        }
+        icon={IconMap}
+        shareUrl={publicCanonical(locale, `/locations/${place.slug}`)}
+        shareLabel={home("share")}
+        copiedLabel={home("copied")}
+        actions={<CtaRow labels={ctaLabels} whatsappText={wa} />}
+      />
+      <Section tone="sand">
+        <p className="max-w-3xl text-sm leading-6 text-muted">{t("directoryNote")}</p>
+        <p className="mt-4 text-sm">
+          <Link href={`/blog/place-${place.slug}`} className="font-medium text-accent">
+            {locale === "ar" ? `اقرأ دليل الطلب لـ ${place.t.name}` : `Read the request guide for ${place.t.name}`}
+          </Link>
+        </p>
+        {parent ? (
+          <p className="mt-2 text-sm">
+            <Link href={`/locations/${parent.slug}`} className="font-medium text-accent">
+              {parentName}
+            </Link>
+          </p>
+        ) : null}
+        {emirate ? (
+          <div className="mt-6">
+            <EmiratePlaceDirectory
+              emirateSlug={emirate.slug}
+              locale={locale}
+              title={t("directoryTitle")}
+              lead={t("directoryLead")}
+              citiesLabel={t("cities")}
+              areasLabel={t("areas")}
+              note={t("directoryNote")}
+            />
+          </div>
+        ) : null}
+      </Section>
+      <CtaBand
+        title={home("ctaTitle")}
+        body={home("ctaBody")}
+        quote={home("ctaQuote")}
+        ai={home("ctaAi")}
+        whatsapp={cta("whatsapp")}
+        whatsappText={wa}
+      />
+    </PageShell>
+  );
+}
+
+function pickName(translations: Array<{ locale: string; name: string }>, locale: string) {
+  const row = translations.find((item) => item.locale === locale) || translations.find((item) => item.locale === "en");
+  if (!row || row.name === "REVIEW_REQUIRED") return translations.find((item) => item.locale === "en")?.name || "";
+  return row.name;
 }

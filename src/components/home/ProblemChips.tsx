@@ -16,7 +16,7 @@ export function ProblemChips({ chips, hint }: { chips: Chip[]; hint: string }) {
             <button
               type="button"
               onClick={() => choose(chip.prompt)}
-              className="min-h-10 rounded-lg border border-line bg-white px-3 text-sm text-navy hover:border-navy/20"
+              className="pass min-h-10 rounded-lg border border-line bg-white px-3 text-sm text-navy hover:border-navy/20"
             >
               {chip.label}
             </button>

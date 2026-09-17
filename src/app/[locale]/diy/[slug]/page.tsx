@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { siteConfig } from "@/config/site";
+import { siteConfig, brandName } from "@/config/site";
 import {
   getApprovedGuideFeedback,
   getApprovedGuideQuestions,
@@ -60,9 +60,10 @@ export async function generateMetadata({
   if (category) {
     return buildMetadata({
       locale,
-      title: category.t.seoTitle || `${category.t.name} | ALNAJAH ALDAEM`,
+      title: category.t.seoTitle || `${category.t.name} | ${brandName(locale)}`,
       description: category.t.metaDescription || category.t.description,
       path: `/diy/${category.slug}`,
+      index: true,
     });
   }
   const guide = await getGuideBySlug(slug, locale);
@@ -73,6 +74,7 @@ export async function generateMetadata({
     description: guide.t.metaDescription,
     path: `/diy/${guide.slug}`,
     ogType: "article",
+    index: true,
   });
 }
 
@@ -132,7 +134,7 @@ async function DiyCategoryView({
           locale,
         )}
       />
-      <PublicHero kicker={t("title")} title={category.t.name} lead={category.t.description} />
+      <PublicHero locale={locale} kicker={t("title")} title={category.t.name} lead={category.t.description} />
       <Section>
         <Disclaimer>{siteConfig.disclaimers.diy[locale === "ar" ? "ar" : "en"]}</Disclaimer>
         <ul className="mt-8 grid gap-4 md:grid-cols-2">
@@ -232,7 +234,7 @@ async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) 
       />
       <JsonLd data={faqJsonLd(faqs)} />
 
-      <PublicHero
+      <PublicHero locale={locale}
         kicker={guide.categoryT?.name || t("title")}
         title={guide.t.title}
         lead={guide.t.problem}

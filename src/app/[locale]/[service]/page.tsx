@@ -6,6 +6,7 @@ import {
   getActiveEmirates,
   getPublishedGuides,
   getRelatedServices,
+  getApprovedCatalogServiceBySlug,
   getServiceBySlug,
 } from "@/lib/catalog";
 import { prisma } from "@/server/db";
@@ -25,6 +26,10 @@ import { PageShell, ProseCard } from "@/components/public/PageShell";
 import { PublicHero, publicCanonical } from "@/components/public/PublicHero";
 import { CtaRow } from "@/components/public/CtaRow";
 import { CtaBand } from "@/components/public/CtaBand";
+import { TopElectricalServices } from "@/components/catalog/TopElectricalServices";
+import { Link } from "@/i18n/routing";
+import { getServiceFaqBySlug } from "@/lib/faq/pages";
+import { serviceFaqSlug } from "@/lib/faq/service-faq";
 
 function intakeChips(raw: string, locale: string) {
   return parseJson<Array<{ en?: string; ar?: string } | string>>(raw, [])
@@ -52,7 +57,7 @@ export async function generateMetadata({
 }) {
   const { locale, service } = await params;
   if (isReservedSlug(service)) return {};
-  const row = await getServiceBySlug(service, locale);
+  const row = (await getServiceBySlug(service, locale)) ?? (await getApprovedCatalogServiceBySlug(service, locale));
   if (!row) return {};
   return buildMetadata({
     locale,
@@ -71,15 +76,27 @@ export default async function ServicePage({
   const { locale, service } = await params;
   setRequestLocale(locale);
   if (isReservedSlug(service)) notFound();
-  const row = await getServiceBySlug(service, locale);
+  const row = (await getServiceBySlug(service, locale)) ?? (await getApprovedCatalogServiceBySlug(service, locale));
   if (!row) notFound();
   const t = await getTranslations("Services");
   const nav = await getTranslations("Nav");
   const cta = await getTranslations("Cta");
   const home = await getTranslations("Home");
   const emirates = await getActiveEmirates(locale);
+  const coveredEmirates = await prisma.serviceLocation.findMany({
+    where: {
+      serviceId: row.id,
+      covered: true,
+      coverageStatus: "published",
+      indexable: true,
+      location: { type: "emirate", status: "active", indexable: true },
+    },
+    select: { location: { select: { slug: true } } },
+  });
+  const coveredEmirateSlugs = new Set(coveredEmirates.map((item) => item.location.slug));
   const related = await getRelatedServices(parseJson<string[]>(row.relatedServiceSlugs, []), locale);
   const faqs = parseFaqJson(row.t.faq);
+  const serviceFaq = await getServiceFaqBySlug(serviceFaqSlug(row.slug), locale);
   const guides = (await getPublishedGuides(locale)).filter((g) => g.serviceId === row.id);
   const [reviewSummary, approvedReviews] = await Promise.all([
     summarizeApprovedServiceReviews({ serviceId: row.id }),
@@ -99,7 +116,7 @@ export default async function ServicePage({
     whatsapp: cta("whatsapp"),
     call: cta("call"),
   };
-  const wa = `Hello ALNAJAH ALDAEM, I need ${row.t.name}.`;
+  const wa = `Hello Al Najah Al Daem · Fixpoint, I need ${row.t.name}.`;
 
   return (
     <PageShell
@@ -128,7 +145,7 @@ export default async function ServicePage({
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: row.t.name, path: `/${row.slug}` }], locale)} />
       <JsonLd data={faqJsonLd(faqs)} />
 
-      <PublicHero
+      <PublicHero locale={locale}
         kicker={t("title")}
         title={row.t.name}
         lead={row.t.shortDescription}
@@ -139,6 +156,21 @@ export default async function ServicePage({
         copiedLabel={home("copied")}
         actions={<CtaRow labels={ctaLabels} whatsappText={wa} />}
       />
+
+      {row.slug === "electrical-maintenance" ? (
+        <Section>
+          <TopElectricalServices
+            locale={locale}
+            title={locale === "ar" ? "خدمات الكهرباء للبدء" : "Electrical services to start with"}
+            lead={
+              locale === "ar"
+                ? "اختر الخدمة الأقرب للعَرَض: فحص، تحديد عطل، مقبس، مفتاح، إنارة، تمديدات، أو لوحة التوزيع."
+                : "Choose the service closest to the symptom: inspection, fault finding, a socket, a switch, a light, wiring, or the distribution board."
+            }
+            cta={home("viewService")}
+          />
+        </Section>
+      ) : null}
 
       {capabilities.length || questions.length ? (
         <Section>
@@ -167,7 +199,7 @@ export default async function ServicePage({
         </div>
       </Section>
 
-      {row.diyAvailable && guides.length ? (
+      {guides.length ? (
         <Section>
           <SectionHeader title={t("diy")} />
           <div className="mt-4">
@@ -209,7 +241,15 @@ export default async function ServicePage({
         </div>
       </Section>
 
-      {faqs.length ? (
+      {serviceFaq ? (
+        <Section tone="sand">
+          <SectionHeader title={t("faq")} />
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted sm:text-base">{serviceFaq.t.excerpt}</p>
+          <Link href={`/faq/${serviceFaq.slug}`} className="mt-4 inline-block text-sm font-semibold text-navy underline">
+            {locale === "ar" ? "افتح صفحة الأسئلة الخاصة بهذه الخدمة" : "Open the FAQ page for this service"}
+          </Link>
+        </Section>
+      ) : faqs.length ? (
         <Section tone="sand">
           <SectionHeader title={t("faq")} />
           <div className="mt-6">
@@ -244,14 +284,19 @@ export default async function ServicePage({
 
       <Section>
         <SectionHeader title={t("areas")} />
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7">
+        <p className="mt-3 text-sm leading-relaxed text-muted">
+          {locale === "ar"
+            ? "نخدم الإمارات السبع و277 مكاناً. اختر الإمارة، ثم اذكر المدينة أو المنطقة في الطلب."
+            : "We serve the seven emirates and 277 places. Choose the emirate, then name the city or area on the request."}
+        </p>
+        <ul className="mt-3 grid gap-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7">
           {emirates.map((em) => (
             <li key={em.slug}>
               <LocationCard
                 slug={em.slug}
                 name={em.t.name}
                 note={`${row.t.name} — ${em.t.name}`}
-                href={`/${row.slug}/${em.slug}`}
+                href={coveredEmirateSlugs.has(em.slug) ? `/${row.slug}/${em.slug}` : `/locations/${em.slug}`}
               />
             </li>
           ))}

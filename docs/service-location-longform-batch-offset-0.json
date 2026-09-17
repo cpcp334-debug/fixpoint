@@ -1,0 +1,20 @@
+{
+  "generatedAt": "2026-09-16T11:48:35.237Z",
+  "batchKey": "sl-overnight-2026-09-16",
+  "offset": 0,
+  "generated": 1000,
+  "pass800plus": 1000,
+  "under800": 0,
+  "bands": {
+    "<500": 0,
+    "500-799": 0,
+    "800-999": 111,
+    "1000-1200": 889,
+    ">1200": 0
+  },
+  "average": 1024,
+  "median": 1028,
+  "arLocales": 500,
+  "failed": 0,
+  "systemicHealthy": true
+}

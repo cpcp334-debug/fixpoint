@@ -113,7 +113,7 @@ async function upsertGuide(args: {
             checkWork: "",
             whenToStop: "Stop if unsafe.",
             professionalFallback:
-              "ALNAJAH ALDAEM can inspect the issue and recommend the appropriate maintenance or repair service.",
+              "Al Najah Al Daem can inspect the issue and recommend the appropriate maintenance or repair service.",
             seoTitle: args.titleEn,
             metaDescription: "Draft DIY profile",
             faq: "[]",

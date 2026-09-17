@@ -229,7 +229,7 @@ export async function runAlnajahAi(opts: {
 
   const wa = whatsappUrl(
     [
-      "Hello ALNAJAH ALDAEM",
+      "Hello Al Najah Al Daem · Fixpoint",
       collected.name ? `Name: ${collected.name}` : "",
       gated.suggestedServiceSlug ? `Service: ${gated.suggestedServiceSlug}` : "",
       collected.emirateSlug ? `Emirate: ${collected.emirateSlug}` : "",

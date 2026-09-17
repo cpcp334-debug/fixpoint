@@ -2,7 +2,7 @@ import ExcelJS from "exceljs";
 
 export async function workbookToBuffer(rows: Array<Record<string, string | number | null | undefined>>, sheetName: string) {
   const wb = new ExcelJS.Workbook();
-  wb.creator = "ALNAJAH ALDAEM";
+  wb.creator = "Al Najah Al Daem · Fixpoint";
   const sheet = wb.addWorksheet(sheetName.slice(0, 31));
   const keys = rows.length ? Object.keys(rows[0]) : ["empty"];
   sheet.addRow(keys);

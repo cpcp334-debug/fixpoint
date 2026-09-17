@@ -1,0 +1,209 @@
+{
+  "auditedAt": "2026-09-11",
+  "status": "NOT READY",
+  "blockers": [
+    {
+      "id": "P0-1",
+      "priority": "P0",
+      "title": "No production environment",
+      "detail": "This workspace is local. No deployment config, domain, HTTPS target, production Postgres, backups, or monitoring was found. Production code refuses PGlite. That does not mean production exists."
+    },
+    {
+      "id": "P0-2",
+      "priority": "P0",
+      "title": "create-product not verified on staging",
+      "detail": "Adding a product is a launch gate. This audit did not exercise /admin/product-form. Do not redeploy live until that works on staging."
+    },
+    {
+      "id": "P0-3",
+      "priority": "P0",
+      "title": "Do not treat listing as coverage",
+      "detail": "49 ServiceLocation rows are covered and public. 63,351 exist and are uncovered. Building 454 x 277 would invent coverage."
+    },
+    {
+      "id": "P1-1",
+      "priority": "P1",
+      "title": "Generated pages are indexable templates",
+      "detail": "454 service blogs, 277 place blogs, 454 FAQ pages, and 454 DIY guides clear the word floor and repeat one composer. That is blocking similarity for production SEO."
+    },
+    {
+      "id": "P1-2",
+      "priority": "P1",
+      "title": "298 RED DIY articles are public",
+      "detail": "RED HowTo is 0. RED observation articles are published and indexable. Decide noindex versus keep-as-stop-guide before the next content phase."
+    },
+    {
+      "id": "P1-3",
+      "priority": "P1",
+      "title": "Only 7 service pages are indexable",
+      "detail": "454 offerings are not 454 public service pages. 453 services are draft. Search cannot use the catalog as public service URLs."
+    },
+    {
+      "id": "P1-4",
+      "priority": "P1",
+      "title": "FAQ pages have no images",
+      "detail": "454 published FAQ articles have heroImage null and empty alt in both locales."
+    },
+    {
+      "id": "P2-1",
+      "priority": "P2",
+      "title": "Faucet DIY Arabic is 846 words",
+      "detail": "how-to-fix-dripping-faucet is the only public DIY under 1000 words. It is above the 800 fail line."
+    },
+    {
+      "id": "P2-2",
+      "priority": "P2",
+      "title": "13 legacy services and 7 missing hubs",
+      "detail": "Legacy drafts are outside the 454. Appliance hubs have no Service row, so /refrigerator and the other 6 hubs are not service pages."
+    },
+    {
+      "id": "P2-3",
+      "priority": "P2",
+      "title": "114 draft locations and stale master note",
+      "detail": "Extra draft locations are not public. The master JSON still says places are not published. Database says 277 are published."
+    },
+    {
+      "id": "P2-4",
+      "priority": "P2",
+      "title": "District hierarchy is flat under the emirate",
+      "detail": "Al Barsha, Umm Suqeim, Al Safa, Al Jurf, Nuaimiya, Rashidiya, Mowaihat, Rawdha, and Helio families are siblings, not parent/child."
+    },
+    {
+      "id": "P2-5",
+      "priority": "P2",
+      "title": "AC parent DIY chip disagrees with red AC guides",
+      "detail": "ac-maintenance is diyAvailable true and yellow. Generated AC guides are red stop-guides."
+    },
+    {
+      "id": "P2-6",
+      "priority": "P2",
+      "title": "Two public Al Rashidiya pages",
+      "detail": "al-rashidiya-dubai and al-rashidiya (Ajman) share an English display name."
+    },
+    {
+      "id": "P3-1",
+      "priority": "P3",
+      "title": "16 electrical same-stem pairs",
+      "detail": "Repair versus replacement versus installation are separate approved jobs. Merge only if the catalog is reopened."
+    },
+    {
+      "id": "P3-2",
+      "priority": "P3",
+      "title": "Eligibility canPublish allows review",
+      "detail": "The publish function still requires approved and CONFIRM_PUBLISH. Tighten the helper so the two cannot drift."
+    }
+  ],
+  "nextFive": [
+    "Do not deploy. Do not expand ServiceLocation. Freeze 454 offerings and 277 public places.",
+    "Stand up staging Postgres and verify /admin/product-form create-product before any production phase.",
+    "Decide indexing for generated blogs, place blogs, FAQ pages, and RED DIY articles. Noindex until uniqueness is real, or accept template risk explicitly.",
+    "Fix the known content defects that are not a catalog rewrite: faucet Arabic under 1000, FAQ images, AC diyAvailable mismatch, hub pages without Service rows.",
+    "Only after staging and create-product pass, review the 49 covered pairs. Do not generate the 125,758 matrix."
+  ],
+  "checklist": [
+    {
+      "task": "Stand up staging Postgres with SSL and backups",
+      "why": "Local database cannot be the production source of truth",
+      "dependency": "None",
+      "files": ["src/server/db-env.ts", ".env.example"],
+      "risk": "Launch on PGlite or a laptop database",
+      "priority": "P0"
+    },
+    {
+      "task": "Verify create-product on /admin/product-form on staging",
+      "why": "A broken create-product makes the site unusable for operations",
+      "dependency": "Staging Postgres",
+      "files": ["src/app/admin/product-form"],
+      "risk": "Redeploy while adding a product fails",
+      "priority": "P0"
+    },
+    {
+      "task": "Keep ServiceLocation.covered at 49 until a real coverage decision",
+      "why": "Existence of 63,400 rows is not coverage",
+      "dependency": "Explicit coverage approval per pair",
+      "files": ["src/lib/service-location/publication-ops.ts", "src/lib/catalog.ts"],
+      "risk": "Invented area coverage",
+      "priority": "P0"
+    },
+    {
+      "task": "Decide indexability of generated blogs, place blogs, FAQ, and RED DIY",
+      "why": "They are public templates",
+      "dependency": "Editorial policy",
+      "files": ["src/app/sitemap.ts", "src/lib/diy/service-guide.ts", "src/lib/faq/service-faq.ts"],
+      "risk": "Search indexes duplicate pages",
+      "priority": "P1"
+    },
+    {
+      "task": "Rewrite generated public copy so it is not name-swap",
+      "why": "Word count passes and uniqueness fails",
+      "dependency": "Indexing decision",
+      "files": ["src/lib/blog/service-offering-article.ts", "src/lib/blog/location-article.ts", "src/lib/diy/service-guide.ts", "src/lib/faq/service-faq.ts"],
+      "risk": "Thin or duplicate results",
+      "priority": "P1"
+    },
+    {
+      "task": "Add images and localized alt to 454 FAQ pages",
+      "why": "Image requirement is 0%",
+      "dependency": "Approved image set, not invented photos of jobs",
+      "files": ["src/app/[locale]/faq/[slug]/page.tsx", "scripts/publish-service-faqs-454.ts"],
+      "risk": "Empty social preview and weak page completeness",
+      "priority": "P1"
+    },
+    {
+      "task": "Raise how-to-fix-dripping-faucet Arabic above 1000 words",
+      "why": "Only public DIY under the 1000 target",
+      "dependency": "None",
+      "files": ["DIY guide how-to-fix-dripping-faucet"],
+      "risk": "One editorial page stays short",
+      "priority": "P2"
+    },
+    {
+      "task": "Clear diyAvailable on ac-maintenance or change AC guide risk with a safety review",
+      "why": "Parent chip disagrees with red stop-guides",
+      "dependency": "Safety review",
+      "files": ["src/lib/diy/service-guide.ts", "prisma/data/diy-safety-alignment-a411.ts"],
+      "risk": "Visitors think AC repair is a DIY job",
+      "priority": "P2"
+    },
+    {
+      "task": "Leave 13 legacy services draft or map them in a future catalog decision",
+      "why": "They are outside the 454",
+      "dependency": "Catalog freeze stays until explicitly reopened",
+      "files": ["prisma/data/catalog-a1.ts"],
+      "risk": "Publishing unapproved services",
+      "priority": "P2"
+    },
+    {
+      "task": "Give 7 appliance hubs a real page or stop linking to missing service URLs",
+      "why": "No Service row for refrigerator, microwave, washing-machine, water-heater, dishwasher, oven, burner-cooker",
+      "dependency": "Catalog decision",
+      "files": ["src/lib/catalog/approved-nav.ts", "src/app/[locale]/faq/[slug]/page.tsx"],
+      "risk": "Broken service links if any page still points at the hub slug",
+      "priority": "P2"
+    },
+    {
+      "task": "Correct the location master file note after verifying it matches the database",
+      "why": "File says not published; database has 277 indexable places",
+      "dependency": "None",
+      "files": ["prisma/data/uae-location-master-200.json"],
+      "risk": "A later import treats public places as draft again",
+      "priority": "P2"
+    },
+    {
+      "task": "Disambiguate public Al Rashidiya labels",
+      "why": "Dubai and Ajman pages share a display name",
+      "dependency": "Do not invent Arabic",
+      "files": ["src/app/[locale]/locations/[location]/page.tsx"],
+      "risk": "Visitor opens the wrong emirate",
+      "priority": "P2"
+    },
+    {
+      "task": "Do not parent district children until a location model change is approved",
+      "why": "Families are siblings under the emirate",
+      "dependency": "Location model decision",
+      "files": ["prisma/data/uae-location-master-200.json"],
+      "risk": "A bulk parent rewrite breaks public URLs",
+      "priority": "P3"
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import { brandName } from "@/config/site";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -7,7 +8,7 @@ import { PageShell } from "@/components/public/PageShell";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Legal" });
-  return buildMetadata({ locale, title: `${t("cancelTitle")} | ALNAJAH ALDAEM`, description: t("cancelTitle"), path: "/cancellation-policy" });
+  return buildMetadata({ locale, title: `${t("cancelTitle")} | ${brandName(locale)}`, description: t("cancelTitle"), path: "/cancellation-policy" });
 }
 
 export default async function CancelPage({ params }: { params: Promise<{ locale: string }> }) {

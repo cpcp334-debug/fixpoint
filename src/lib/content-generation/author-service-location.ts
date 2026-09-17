@@ -228,8 +228,8 @@ export async function composeServiceLocationLocale(
     seoTitle: title,
     metaDescription:
       locale === "ar"
-        ? `${serviceName} في ${locationName}. اطلب تقييمًا من النجاح الدائم.`
-        : `${serviceName} in ${locationName}. Request assessment from ALNAJAH ALDAEM.`,
+        ? `${serviceName} في ${locationName}. اطلب تقييمًا من النجاح الدائم · Fixpoint.`
+        : `${serviceName} in ${locationName}. Request assessment from Al Najah Al Daem · Fixpoint.`,
     faq: JSON.stringify(faqs.map((f) => ({ q: f.question, a: f.answer }))),
     h1: locale === "ar" ? `${serviceName} في ${locationName}` : `${serviceName} in ${locationName}`,
     body: long.body,

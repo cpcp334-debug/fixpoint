@@ -46,7 +46,7 @@ export function ReviewForm({
 
   return (
     <FormShell className="mt-6">
-      <form action={onSubmit} className="grid gap-4" encType="multipart/form-data" onFocusCapture={formStart("REVIEW_START")}>
+      <form action={onSubmit} className="grid gap-4" onFocusCapture={formStart("REVIEW_START")}>
         <div className="hidden">
           <input name="website" tabIndex={-1} autoComplete="off" />
         </div>

@@ -2,18 +2,40 @@ import { cache } from "react";
 import type { Prisma } from "@prisma/client";
 import { prisma } from "@/server/db";
 import { pickI18n } from "@/lib/utils";
+import { isApprovedPublicServiceSlug } from "@/lib/catalog/approved-nav";
 import {
   getServiceLocation as resolvePublicServiceLocation,
   resolveServiceLocationPage,
 } from "@/lib/service-location/page-resolve";
-import { isApprovedPublicServiceSlug } from "@/lib/catalog/approved-nav";
+
+type ServiceWithTranslations = Prisma.ServiceGetPayload<{ include: { translations: true; category: true } }>;
+
+function pickServiceTranslation(row: ServiceWithTranslations, locale: string) {
+  if (locale === "ar") {
+    return row.translations.find((x) => x.locale === "ar") || undefined;
+  }
+  return row.translations.find((x) => x.locale === "en") || pickI18n(row.translations, locale);
+}
+
+/** Public catalog: active + indexable. Hide is draft or indexable off — not a delete, and not coverage. */
+export const publicServiceWhere = {
+  status: "active",
+  indexable: true,
+} satisfies Prisma.ServiceWhereInput;
+
+/** Public place page: active, indexable, and marked as a serving area. Does not create coverage. */
+export const publicLocationWhere = {
+  status: "active",
+  indexable: true,
+  serves: true,
+} satisfies Prisma.LocationWhereInput;
 
 export const publicServiceLocationWhere = {
   indexable: true,
   covered: true,
   coverageStatus: "published",
-  service: { status: "active", indexable: true },
-  location: { status: "active", indexable: true, serves: true },
+  service: publicServiceWhere,
+  location: publicLocationWhere,
 } satisfies Prisma.ServiceLocationWhereInput;
 
 export { resolveServiceLocationPage };
@@ -21,7 +43,7 @@ export const getServiceLocation = resolvePublicServiceLocation;
 
 export const getActiveServices = cache(async (locale: string) => {
   const rows = await prisma.service.findMany({
-    where: { status: "active", indexable: true },
+    where: publicServiceWhere,
     include: { translations: true, category: true },
     orderBy: { slug: "asc" },
   });
@@ -32,30 +54,40 @@ export const getActiveServices = cache(async (locale: string) => {
 });
 
 export const getServiceBySlug = cache(async (slug: string, locale: string) => {
-  const approvedNav = isApprovedPublicServiceSlug(slug);
   const row = await prisma.service.findFirst({
-    where: approvedNav
-      ? { slug, status: { in: ["active", "draft"] } }
-      : { slug, status: "active", indexable: true },
+    where: { slug, ...publicServiceWhere },
     include: { translations: true, category: true },
   });
   if (!row) return null;
-  const t =
-    locale === "ar"
-      ? row.translations.find((x) => x.locale === "ar") || undefined
-      : row.translations.find((x) => x.locale === "en") || pickI18n(row.translations, locale);
+  const t = pickServiceTranslation(row, locale);
   if (!t) return null;
   return {
     ...row,
     t,
-    /** Approved draft catalog pages are reachable but must not be indexed. */
+    publicIndexable: true,
+  };
+});
+
+/** Approved catalog slugs: any status (draft OK). Used for category hubs and noindex service pages. */
+export const getApprovedCatalogServiceBySlug = cache(async (slug: string, locale: string) => {
+  if (!isApprovedPublicServiceSlug(slug)) return null;
+  const row = await prisma.service.findFirst({
+    where: { slug },
+    include: { translations: true, category: true },
+  });
+  if (!row) return null;
+  const t = pickServiceTranslation(row, locale);
+  if (!t) return null;
+  return {
+    ...row,
+    t,
     publicIndexable: row.status === "active" && row.indexable,
   };
 });
 
 export const getActiveEmirates = cache(async (locale: string) => {
   const rows = await prisma.location.findMany({
-    where: { type: "emirate", status: "active", indexable: true, serves: true },
+    where: { type: "emirate", ...publicLocationWhere },
     include: { translations: true },
     orderBy: { sortOrder: "asc" },
   });
@@ -65,9 +97,32 @@ export const getActiveEmirates = cache(async (locale: string) => {
   }));
 });
 
+export async function publishedServingLocationSlugs() {
+  const rows = await prisma.location.findMany({
+    where: publicLocationWhere,
+    select: { slug: true },
+  });
+  return new Set(rows.map((row) => row.slug));
+}
+
+export const getPublishedLocation = cache(async (slug: string, locale: string) => {
+  const row = await prisma.location.findFirst({
+    where: { slug, ...publicLocationWhere, type: { in: ["emirate", "city", "community"] } },
+    include: {
+      translations: true,
+      parent: { include: { translations: true, parent: { include: { translations: true } } } },
+    },
+  });
+  if (!row) return null;
+  const t = pickI18n(row.translations, locale);
+  if (!t) return null;
+  const name = t.name === "REVIEW_REQUIRED" ? pickI18n(row.translations, "en")?.name || row.slug : t.name;
+  return { ...row, t: { ...t, name } };
+});
+
 export const getEmirateBySlug = cache(async (slug: string, locale: string) => {
   const row = await prisma.location.findFirst({
-    where: { slug, type: "emirate", status: "active", indexable: true, serves: true },
+    where: { slug, type: "emirate", ...publicLocationWhere },
     include: { translations: true },
   });
   if (!row) return null;

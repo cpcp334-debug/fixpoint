@@ -348,7 +348,7 @@ function buildEn(args: {
     `Extended materials vocabulary reserved to this ${focus} dossier: ${lex.slice(45, 90).join(", ")}.`,
   ].join(" ");
   const exclusiveAngle = [
-    `This guide is scoped only to ${name} (${focus}) under the ${args.safety} safety class for ALNAJAH ALDAEM educational DIY.`,
+    `This guide is scoped only to ${name} (${focus}) under the ${args.safety} safety class for Al Najah Al Daem educational DIY.`,
     `Readers usually arrive when ${symptoms[0]} appears near ${focus} equipment or finishes.`,
     `Secondary clues often include ${symptoms[1]} and ${symptoms[2]}.`,
     `Do not treat this page as a substitute for diagnosis when ${symptoms[3]} combines with ${symptoms[4]}.`,
@@ -374,7 +374,7 @@ function buildEn(args: {
       { q: `Can I repair ${focus} myself?`, a: `No. Classification is ${args.safety}. Do not perform procedural repair on ${focus}.` },
       { q: `What may I observe safely?`, a: `External sights, sounds, smells, and photos from a stable stance — never live electrical, gas, refrigerant, or structural work.` },
       { q: `Which symptoms mean immediate evacuation?`, a: `Gas odour, smoke, sparking, uncontrolled water, or collapsing finishes near ${name}.` },
-      { q: `What should I prepare for ALNAJAH ALDAEM?`, a: prep.join(" ") },
+      { q: `What should I prepare for Al Najah Al Daem?`, a: prep.join(" ") },
       { q: `Why is DIY blocked for ${focus}?`, a: `Hidden energy sources and irreversible damage risk make ${args.safety} topics professional-only.` },
       { q: `Are limited cleaning tips allowed?`, a: `Only exterior wipe of cold, unpowered, non-gas surfaces if labels allow — still no opening of ${focus} internals.` },
       { q: `What happens after I submit a quote request?`, a: `Share photos and access notes; a technician plans safe isolation and diagnosis for ${name}.` },
@@ -398,14 +398,14 @@ function buildEn(args: {
       safety: `Safety for ${focus}: no live electrical work, no gas valve work, no refrigerant handling, no structural cutting, no confined-space entry. Ventilate if fumes appear and leave when unsure.`,
       checkWork: `There is no DIY repair to verify. Confirm the area stays clear, photos are saved, and the quote request for ${name} includes access notes.`,
       whenToStop: `Stop all DIY interaction with ${focus} immediately. Observation ends when any hazard cue appears or access requires tools beyond a torch and camera.`,
-      professionalFallback: `ALNAJAH ALDAEM handles diagnosis and repair for ${name}. Use /get-a-quote with photos. For imminent danger, emergency services first.`,
+      professionalFallback: `Al Najah Al Daem handles diagnosis and repair for ${name}. Use /get-a-quote with photos. For imminent danger, emergency services first.`,
       tools: JSON.stringify(["torch for external viewing", "phone camera", "notepad", "path cleared for evacuation"]),
       materials: JSON.stringify([]),
       steps: JSON.stringify(steps),
       faq: JSON.stringify(faqs),
       difficulty: "observation only",
       estimatedTime: "10–20 minutes observation, then book professional service",
-      seoTitle: `${args.title} — Safety guidance | ALNAJAH ALDAEM`,
+      seoTitle: `${args.title} — Safety guidance | Al Najah Al Daem`,
       metaDescription: `Safety-only guidance for ${focus}: what to observe, when to evacuate, and how to book professional help. No repair procedures.`,
     });
   }
@@ -450,15 +450,15 @@ function buildEn(args: {
       safety: `YELLOW safety for ${name}: gloves, ventilation, no live panels, no gas work, no force on stuck parts. Keep chemicals away from children.`,
       checkWork: `Confirm ${focus} is left stable, floors dry, and notes/photos ready. Recurring symptoms mean professional service even if a temporary clear happened.`,
       whenToStop: `Stop when heat, odour, sparks, flooding, finish damage, or forced fasteners appear around ${name}.`,
-      professionalFallback: `Book ALNAJAH ALDAEM via /get-a-quote when ${focus} needs diagnosis beyond user controls.`,
+      professionalFallback: `Book Al Najah Al Daem via /get-a-quote when ${focus} needs diagnosis beyond user controls.`,
       tools: JSON.stringify(hints.enTools),
       materials: JSON.stringify(hints.enMats.slice(0, 3)),
       steps: JSON.stringify(steps),
       faq: JSON.stringify(faqs),
       difficulty: "limited",
       estimatedTime: `${20 + (seed % 4) * 5}–${40 + (seed % 5) * 5} minutes`,
-      seoTitle: `${args.title} — Limited troubleshooting | ALNAJAH ALDAEM`,
-      metaDescription: `Limited troubleshooting for ${focus}: safe external checks, stop rules, and when to book ALNAJAH ALDAEM.`,
+      seoTitle: `${args.title} — Limited troubleshooting | Al Najah Al Daem`,
+      metaDescription: `Limited troubleshooting for ${focus}: safe external checks, stop rules, and when to book Al Najah Al Daem.`,
     });
   }
 
@@ -505,14 +505,14 @@ function buildEn(args: {
     safety: `GREEN safety for ${name}: ventilate, gloves, no bleach+acid mixes, no live electrical openings, no gas work, stable footing only.`,
     checkWork: `After ${focus}, inspect under angled light, confirm floors are dry, and verify user parts seat correctly on ${name}.`,
     whenToStop: `Stop ${focus} on swelling finishes, colour bleed, unexpected water, appliance heat, sparking, or covers that will not open by hand.`,
-    professionalFallback: `Book ALNAJAH ALDAEM when ${name} points to systems rather than soil. Use /get-a-quote with photos.`,
+    professionalFallback: `Book Al Najah Al Daem when ${name} points to systems rather than soil. Use /get-a-quote with photos.`,
     tools: JSON.stringify(hints.enTools),
     materials: JSON.stringify(hints.enMats),
     steps: JSON.stringify(steps),
     faq: JSON.stringify(faqs),
     difficulty: seed % 2 === 0 ? "easy" : "moderate",
     estimatedTime: `${25 + (seed % 5) * 5}–${45 + (seed % 4) * 10} minutes`,
-    seoTitle: `${args.title} | ALNAJAH ALDAEM DIY`,
+    seoTitle: `${args.title} | Al Najah Al Daem DIY`,
     metaDescription: `Useful ${focus} DIY for ${name}: safe sequence, stop rules, UAE context, and when to book inspection.`,
   });
 }
@@ -545,7 +545,7 @@ function buildAr(args: {
     `مفردات مواد حصرية لملف ${focus}: ${lex.slice(45, 90).join("، ")}.`,
   ].join(" ");
   const dossier = [
-    `هذا الدليل مخصص لـ${name} (${focus}) ضمن تصنيف ${args.safety} لمحتوى ALNAJAH ALDAEM التعليمي.`,
+    `هذا الدليل مخصص لـ${name} (${focus}) ضمن تصنيف ${args.safety} لمحتوى Al Najah Al Daem التعليمي.`,
     `غالباً يصل الزائر عند ظهور ${symptoms[0]} قرب ${focus}.`,
     `علامات إضافية شائعة: ${symptoms[1]} و${symptoms[2]}.`,
     ...uae,
@@ -592,14 +592,14 @@ function buildAr(args: {
       safety: `سلامة ${focus}: ممنوع العمل على الكهرباء الحية والغاز والتبريد والقطع الإنشائي والأماكن الضيقة. هوِّئ المكان عند الأبخرة وغادر عند الشك.`,
       checkWork: `لا يوجد إصلاح منزلي للتحقق منه. تأكد أن المنطقة آمنة والصور محفوظة وطلب ${name} يتضمن ملاحظات الوصول.`,
       whenToStop: `أوقف أي تعامل منزلي مع ${focus} فوراً. تنتهي الملاحظة عند أي مؤشر خطر أو حاجة لأدوات تتجاوز المصباح والكاميرا.`,
-      professionalFallback: `ALNAJAH ALDAEM يتولى التشخيص والإصلاح لـ${name}. استخدم /get-a-quote. للخطر الفوري ابدأ بالطوارئ.`,
+      professionalFallback: `Al Najah Al Daem يتولى التشخيص والإصلاح لـ${name}. استخدم /get-a-quote. للخطر الفوري ابدأ بالطوارئ.`,
       tools: JSON.stringify(["مصباح للمعاينة الخارجية", "كاميرا هاتف", "دفتر ملاحظات", "ممر إخلاء"]),
       materials: JSON.stringify([]),
       steps: JSON.stringify(steps),
       faq: JSON.stringify(faqs),
       difficulty: "ملاحظة فقط",
       estimatedTime: "١٠–٢٠ دقيقة ملاحظة ثم حجز خدمة مهنية",
-      seoTitle: `${args.title} — إرشاد سلامة | ALNAJAH ALDAEM`,
+      seoTitle: `${args.title} — إرشاد سلامة | Al Najah Al Daem`,
       metaDescription: `إرشاد سلامة فقط لـ${focus}: ماذا تراقب ومتى تخلي وكيف تحجز مساعدة مهنية. بلا إجراءات إصلاح.`,
     });
   }
@@ -635,15 +635,15 @@ function buildAr(args: {
       safety: `سلامة صفراء لـ${name}: قفازات وتهوية ومنع اللوحات الحية والغاز ومنع القوة على الأجزاء العالقة.`,
       checkWork: `تأكد أن ${focus} مستقر والأرضيات جافة والملاحظات جاهزة. العوارض المتكررة تعني خدمة مهنية.`,
       whenToStop: `توقف عند الحرارة أو الرائحة أو الشرر أو الفيضان أو تلف التشطيب حول ${name}.`,
-      professionalFallback: `احجز ALNAJAH ALDAEM عبر /get-a-quote عندما يحتاج ${focus} تشخيصاً يتجاوز تحكم المستخدم.`,
+      professionalFallback: `احجز Al Najah Al Daem عبر /get-a-quote عندما يحتاج ${focus} تشخيصاً يتجاوز تحكم المستخدم.`,
       tools: JSON.stringify(hints.arTools),
       materials: JSON.stringify(hints.arMats.slice(0, 3)),
       steps: JSON.stringify(steps),
       faq: JSON.stringify(faqs),
       difficulty: "محدود",
       estimatedTime: `${20 + (seed % 4) * 5}–${40 + (seed % 5) * 5} دقيقة`,
-      seoTitle: `${args.title} — استكشاف أعطال محدود | ALNAJAH ALDAEM`,
-      metaDescription: `استكشاف أعطال محدود لـ${focus}: فحوص خارجية آمنة وقواعد توقف ومتى تحجز ALNAJAH ALDAEM.`,
+      seoTitle: `${args.title} — استكشاف أعطال محدود | Al Najah Al Daem`,
+      metaDescription: `استكشاف أعطال محدود لـ${focus}: فحوص خارجية آمنة وقواعد توقف ومتى تحجز Al Najah Al Daem.`,
     });
   }
 
@@ -688,14 +688,14 @@ function buildAr(args: {
     safety: `سلامة خضراء لـ${name}: تهوية وقفازات ومنع خلط مبيض وأحماض ومنع فتح كهرباء حية أو أعمال غاز.`,
     checkWork: `بعد ${focus} افحص بضوء مائل وتأكد من جفاف الأرضيات وثبات أجزاء المستخدم على ${name}.`,
     whenToStop: `توقف عند تورم التشطيب أو نزف اللون أو ماء مفاجئ أو حرارة جهاز أو شرر أو أغطية لا تُفتح باليد حول ${focus}.`,
-    professionalFallback: `احجز ALNAJAH ALDAEM عندما يشير ${name} إلى أنظمة لا إلى أوساخ. استخدم /get-a-quote مع الصور.`,
+    professionalFallback: `احجز Al Najah Al Daem عندما يشير ${name} إلى أنظمة لا إلى أوساخ. استخدم /get-a-quote مع الصور.`,
     tools: JSON.stringify(hints.arTools),
     materials: JSON.stringify(hints.arMats),
     steps: JSON.stringify(steps),
     faq: JSON.stringify(faqs),
     difficulty: seed % 2 === 0 ? "سهل" : "متوسط",
     estimatedTime: `${25 + (seed % 5) * 5}–${45 + (seed % 4) * 10} دقيقة`,
-    seoTitle: `${args.title} | ALNAJAH ALDAEM DIY`,
+    seoTitle: `${args.title} | Al Najah Al Daem DIY`,
     metaDescription: `دليل DIY مفيد لـ${focus} و${name}: تسلسل آمن وقواعد توقف وسياق الإمارات ومتى تحجز معاينة.`,
   });
 }

@@ -10,7 +10,7 @@ import { emptyDiyProfile } from "@/lib/diy/profile-contract";
 import { YELLOW_REMAINING_BATCH } from "@/lib/diy/yellow-remaining";
 
 const FALLBACK =
-  "ALNAJAH ALDAEM can inspect the issue and recommend the appropriate maintenance or repair service.";
+  "Al Najah Al Daem · Fixpoint can inspect the issue and recommend the appropriate maintenance or repair service.";
 
 function faqs(pairs: Array<[string, string]>) {
   return pairs.slice(0, 8).map(([question, answer]) => ({ question, answer }));

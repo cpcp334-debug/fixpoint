@@ -50,8 +50,14 @@ export function ReviewList({
           {review.title ? <p className="mt-2 font-medium">{review.title}</p> : null}
           <p className="mt-2 text-muted">{review.body}</p>
           {review.photoUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={review.photoUrl} alt="" className="mt-3 max-h-48 rounded-md border border-line" />
+            // eslint-disable-next-line @next/next/no-img-element -- user-uploaded review photo URLs vary
+            <img
+              src={review.photoUrl}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="mt-3 max-h-48 w-full rounded-md border border-line object-cover"
+            />
           ) : null}
           {review.adminResponse ? (
             <p className="mt-3 rounded-[12px] bg-sand px-3 py-2 text-sm text-muted">

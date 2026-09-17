@@ -47,7 +47,7 @@ export function FaqList({
   return (
     <dl className="grid gap-3">
       {normalized.map((item) => (
-        <div key={item.q} className="rounded-xl border border-line bg-white p-5">
+        <div key={item.q} className="pass rounded-xl border border-line bg-white p-5">
           <dt className="font-semibold text-navy">{item.q}</dt>
           <dd className="mt-2 text-sm leading-relaxed text-muted">{item.a}</dd>
         </div>

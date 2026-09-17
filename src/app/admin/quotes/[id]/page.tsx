@@ -22,7 +22,7 @@ export default async function QuoteDetailPage({ params }: { params: Promise<{ id
     <div>
       <PageHeader
         title={row.quoteNumber}
-        note="PDF uses the ALNAJAH ALDAEM template and only the fields saved here plus approved public business details."
+        note="PDF uses the Al Najah Al Daem · Fixpoint template and only the fields saved here plus approved public business details."
         actions={
           csrf.ok ? (
             <AdminDownloadForm

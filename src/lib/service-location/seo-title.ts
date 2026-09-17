@@ -1,4 +1,5 @@
 import { createHash } from "node:crypto";
+import { siteConfig } from "@/config/site";
 import { SEO_TITLE_MODIFIERS, type SeoTitleModifier } from "./types";
 
 const BANNED = /\b(best|#1|number one|certified|licensed|award[- ]winning)\b/i;
@@ -26,8 +27,8 @@ export function buildServiceLocationTitle(args: {
   const modifier = args.locale === "en" ? stableModifier(args.serviceId, args.locationId, args.locale) : null;
   const parent =
     args.parentName && args.parentName !== args.locationName ? `, ${args.parentName}` : "";
-  const brandEn = "ALNAJAH ALDAEM";
-  const brandAr = "النجاح الدائم";
+  const brandEn = siteConfig.brandDisplayEn;
+  const brandAr = siteConfig.brandDisplayAr;
   let title =
     args.locale === "ar"
       ? `${args.serviceName} في ${args.locationName}${parent} | ${brandAr}`

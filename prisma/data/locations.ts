@@ -21,7 +21,7 @@ export const locationTree = {
       propertiesAr:
         "يشمل المخزون الشائع شقق الأبراج وشقق الفندقية والفلل والمباني متعددة الاستخدام. غالباً ما تأتي طلبات تنظيف المناطق المشتركة وصيانة المباني من فرق المرافق ومن السكان.",
       local:
-        "ALNAJAH ALDAEM can receive cleaning and maintenance enquiries for Dubai. This page does not claim a Dubai trade license. Public licenses currently listed are Sharjah (internal building cleaning, 925212) and Ajman (building maintenance, 132954).",
+        "Al Najah Al Daem · Fixpoint can receive cleaning and maintenance enquiries for Dubai. This page does not claim a Dubai trade license. Public licenses currently listed are Sharjah (internal building cleaning, 925212) and Ajman (building maintenance, 132954).",
       localAr:
         "يمكن للنجاح الدائم استلام طلبات التنظيف والصيانة في دبي. هذه الصفحة لا تدّعي وجود رخصة تجارية في دبي. الرخص المعروضة للعامة حالياً هي الشارقة (تنظيف المباني الداخلي 925212) وعجمان (صيانة المباني 132954).",
       nearby:

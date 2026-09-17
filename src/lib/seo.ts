@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getSiteUrl } from "@/config/site";
+import { brandName, getSiteUrl, siteConfig } from "@/config/site";
 
 export function buildMetadata(opts: {
   locale: string;
@@ -33,7 +33,7 @@ export function buildMetadata(opts: {
       title: opts.title,
       description: opts.description,
       url: canonical,
-      siteName: "ALNAJAH ALDAEM",
+      siteName: brandName(opts.locale),
       locale: opts.locale === "ar" ? "ar_AE" : "en_AE",
       type: opts.ogType ?? "website",
     },
@@ -52,10 +52,11 @@ export function organizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "ALNAJAH ALDAEM",
+    name: siteConfig.brandDisplayEn,
+    alternateName: [siteConfig.brandDisplayAr, siteConfig.domainBrand],
     url: site,
-    email: "alnajahaldaem42@gmail.com",
-    telephone: "+971543447959",
+    email: siteConfig.email,
+    telephone: siteConfig.phoneE164,
     areaServed: "AE",
     description:
       "Cleaning and building maintenance services in the United Arab Emirates.",
@@ -67,10 +68,11 @@ export function localBusinessJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "ALNAJAH ALDAEM",
+    name: siteConfig.brandDisplayEn,
+    alternateName: [siteConfig.brandDisplayAr, siteConfig.domainBrand],
     url: site,
-    telephone: "+971543447959",
-    email: "alnajahaldaem42@gmail.com",
+    telephone: siteConfig.phoneE164,
+    email: siteConfig.email,
     address: {
       "@type": "PostalAddress",
       addressCountry: "AE",
@@ -126,7 +128,7 @@ export function serviceJsonLd(opts: {
     "@type": "Service",
     name: opts.name,
     description: opts.description,
-    provider: { "@type": "Organization", name: "ALNAJAH ALDAEM" },
+    provider: { "@type": "Organization", name: siteConfig.brandDisplayEn },
     areaServed: "AE",
     url: `${site}/${opts.locale}${opts.path}`,
   };
@@ -164,7 +166,7 @@ export function reviewAggregateJsonLd(opts: {
   return {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "ALNAJAH ALDAEM",
+    name: siteConfig.brandDisplayEn,
     url: `${site}/${opts.locale}${opts.path}`,
     aggregateRating: {
       "@type": "AggregateRating",
@@ -220,7 +222,7 @@ export function blogPostingJsonLd(opts: {
     image: opts.image ? `${site}${opts.image}` : undefined,
     datePublished: opts.datePublished || undefined,
     dateModified: opts.dateModified || undefined,
-    author: { "@type": "Organization", name: "ALNAJAH ALDAEM" },
-    publisher: { "@type": "Organization", name: "ALNAJAH ALDAEM", url: site },
+    author: { "@type": "Organization", name: siteConfig.brandDisplayEn },
+    publisher: { "@type": "Organization", name: siteConfig.brandDisplayEn, url: site },
   };
 }

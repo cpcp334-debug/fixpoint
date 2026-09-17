@@ -33,7 +33,7 @@ export async function renderBrandedPdf(doc: BrandedDoc): Promise<Buffer> {
   });
 
   pdf.rect(0, 0, 595, 72).fill("#0b1f3a");
-  pdf.fillColor("#ffffff").fontSize(16).text("ALNAJAH ALDAEM", 50, 22);
+  pdf.fillColor("#ffffff").fontSize(16).text("Al Najah Al Daem · Fixpoint", 50, 22);
   pdf.fontSize(9).fillColor("#b8923a").text("Professional Cleaning & Building Maintenance Services", 50, 44);
 
   pdf.fillColor("#1a2332").fontSize(14).text(doc.kind === "quotation" ? "QUOTATION" : "INVOICE", 50, 90);
@@ -48,7 +48,7 @@ export async function renderBrandedPdf(doc: BrandedDoc): Promise<Buffer> {
     { width: 280 },
   );
 
-  pdf.fillColor("#1a2332").text("ALNAJAH ALDAEM", 340, 140, { width: 205 });
+  pdf.fillColor("#1a2332").text("Al Najah Al Daem · Fixpoint", 340, 140, { width: 205 });
   pdf.fillColor("#5c6778").text(
     [
       siteConfig.phoneDisplay,
@@ -138,7 +138,7 @@ export async function renderListPdf(title: string, headers: string[], rows: stri
     pdf.on("end", () => resolve(Buffer.concat(chunks)));
   });
   pdf.rect(0, 0, pdf.page.width, 56).fill("#0b1f3a");
-  pdf.fillColor("#ffffff").fontSize(14).text("ALNAJAH ALDAEM", 40, 18);
+  pdf.fillColor("#ffffff").fontSize(14).text("Al Najah Al Daem · Fixpoint", 40, 18);
   pdf.fontSize(9).fillColor("#b8923a").text(title, 40, 36);
   pdf.fillColor("#1a2332").fontSize(8);
   let y = 72;

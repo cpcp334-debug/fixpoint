@@ -1,0 +1,67 @@
+{
+  "pilot": true,
+  "published": false,
+  "indexed": false,
+  "pair": "residential-cleaning/abu-dhabi-city",
+  "skippedPublished": null,
+  "lifecycle": "draft",
+  "qualityStatus": "ready_for_review",
+  "covered": false,
+  "indexable": false,
+  "composedWords": {
+    "en": {
+      "words": 1533,
+      "hints": [
+        "longform_est_words:996",
+        "uncovered_noindex"
+      ]
+    },
+    "ar": {
+      "words": 1394,
+      "hints": [
+        "longform_est_words:961",
+        "uncovered_noindex",
+        "arabic_msa_draft"
+      ]
+    }
+  },
+  "previewRendered": {
+    "en": {
+      "words": 1069,
+      "band": "1000-1200"
+    },
+    "ar": {
+      "words": 1027,
+      "band": "1000-1200"
+    }
+  },
+  "canPublish": false,
+  "canIndexEn": false,
+  "canIndexAr": false,
+  "primaryBucket": "NOT_ELIGIBLE",
+  "blockReasons": [
+    "NOT_ELIGIBLE",
+    "COVERAGE_MISSING",
+    "REVIEW_REQUIRED"
+  ],
+  "checks": {
+    "serviceValid": true,
+    "locationValid": true,
+    "covered": false,
+    "enOk": true,
+    "arOk": true,
+    "seoOk": true,
+    "geoOk": true,
+    "aeoOk": true,
+    "diyOk": true,
+    "imageOk": true,
+    "webpOk": true,
+    "enAltOk": true,
+    "arAltOk": true,
+    "ctaOk": true,
+    "claimsOk": true,
+    "enWordsOk": true,
+    "arWordsOk": true,
+    "qualityPublishable": false
+  }
+}

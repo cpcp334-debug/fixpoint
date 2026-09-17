@@ -1,3 +1,4 @@
+import { brandName } from "@/config/site";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -8,7 +9,7 @@ import { AnalyticsOptOut } from "@/components/analytics/AnalyticsOptOut";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Legal" });
-  return buildMetadata({ locale, title: `${t("cookieTitle")} | ALNAJAH ALDAEM`, description: t("cookieTitle"), path: "/cookie-policy" });
+  return buildMetadata({ locale, title: `${t("cookieTitle")} | ${brandName(locale)}`, description: t("cookieTitle"), path: "/cookie-policy" });
 }
 
 export default async function CookiePage({ params }: { params: Promise<{ locale: string }> }) {

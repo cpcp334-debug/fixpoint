@@ -41,10 +41,18 @@ body {
 body {
   font-family: var(--font-sans), "Segoe UI", sans-serif;
   line-height: 1.55;
+  /* Dropped weight 600 — map semibold to available 700 file for fewer font downloads. */
+  --font-weight-semibold: 700;
 }
 
 html[dir="rtl"] body {
   font-family: var(--font-arabic), var(--font-sans), sans-serif;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
 }
 
 :focus-visible {
@@ -66,6 +74,16 @@ html[dir="rtl"] body {
   top: 12px;
 }
 
+.pass {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.pass:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 26, 51, 0.08);
+  border-color: var(--accent);
+}
+
 .hero-atmosphere {
   background:
     radial-gradient(ellipse 80% 60% at 85% 20%, rgba(197, 160, 89, 0.22), transparent 55%),
@@ -77,4 +95,13 @@ html[dir="rtl"] body {
   html {
     scroll-behavior: auto;
   }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
+

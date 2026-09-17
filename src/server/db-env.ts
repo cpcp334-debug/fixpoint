@@ -1,6 +1,9 @@
 /**
  * Production DATABASE_URL safety.
  * Never log DATABASE_URL or credentials — only stable rejection codes / safe messages.
+ *
+ * Production target: Hostinger MySQL (`mysql://`). Local PGlite / Postgres URLs
+ * remain allowed only in non-production for legacy `npm run pg`.
  */
 
 export const ALLOW_PRODUCTION_LOCAL_DB_ENV = "ALLOW_PRODUCTION_LOCAL_DB";
@@ -54,7 +57,11 @@ export function parseDatabaseUrl(raw: string): { ok: true; url: URL } | { ok: fa
     return { ok: false, code: "missing_database_url", message: "DATABASE_URL is missing or empty." };
   }
   let normalized = trimmed;
-  if (normalized.startsWith("postgresql://")) {
+  if (normalized.startsWith("mysql://")) {
+    normalized = `http://${normalized.slice("mysql://".length)}`;
+  } else if (normalized.startsWith("mysqls://")) {
+    normalized = `http://${normalized.slice("mysqls://".length)}`;
+  } else if (normalized.startsWith("postgresql://")) {
     normalized = `http://${normalized.slice("postgresql://".length)}`;
   } else if (normalized.startsWith("postgres://")) {
     normalized = `http://${normalized.slice("postgres://".length)}`;
@@ -62,7 +69,7 @@ export function parseDatabaseUrl(raw: string): { ok: true; url: URL } | { ok: fa
     return {
       ok: false,
       code: "unsupported_scheme",
-      message: "DATABASE_URL must use the postgresql:// or postgres:// scheme.",
+      message: "DATABASE_URL must use mysql:// (production) or postgresql:// / postgres:// (legacy local).",
     };
   }
   try {
@@ -85,11 +92,12 @@ export function productionDatabaseUrlRefusalMessage(code: DbEnvRejectionCode) {
     "REFUSED: Production database configuration is invalid.",
     `Reason code: ${code}`,
     "",
-    "Production requires NODE_ENV=production and a real PostgreSQL DATABASE_URL.",
+    "Production requires NODE_ENV=production and a real MySQL DATABASE_URL (Hostinger).",
     "PGlite and local development databases must not be used accidentally.",
     "",
     "Rejected patterns include:",
     "  - missing DATABASE_URL",
+    "  - unsupported scheme (use mysql:// for production)",
     "  - localhost / 127.0.0.1 / ::1 (unless ALLOW_PRODUCTION_LOCAL_DB=1)",
     "  - PGlite default port 5433 (never allowed in production)",
     "  - PGlite query fingerprint pgbouncer=true&connection_limit=1 (never allowed in production)",
@@ -103,7 +111,7 @@ export function productionDatabaseUrlRefusalMessage(code: DbEnvRejectionCode) {
 
 /**
  * Validate DATABASE_URL for production use.
- * Non-production environments always pass (PGlite / local Postgres allowed).
+ * Non-production environments always pass (local MySQL / legacy PGlite allowed).
  */
 export function checkProductionDatabaseUrl(env: EnvLike = process.env): DbEnvCheckResult {
   if (!isProduction(env)) {
@@ -113,10 +121,11 @@ export function checkProductionDatabaseUrl(env: EnvLike = process.env): DbEnvChe
     }
     const parsed = parseDatabaseUrl(raw);
     if (!parsed.ok) return { ok: true, host: "", port: "" };
+    const defaultPort = raw.trim().startsWith("mysql") ? "3306" : "5432";
     return {
       ok: true,
       host: parsed.url.hostname,
-      port: parsed.url.port || "5432",
+      port: parsed.url.port || defaultPort,
     };
   }
 
@@ -126,6 +135,15 @@ export function checkProductionDatabaseUrl(env: EnvLike = process.env): DbEnvChe
       ok: false,
       code: "missing_database_url",
       message: productionDatabaseUrlRefusalMessage("missing_database_url"),
+    };
+  }
+
+  const trimmed = raw.trim();
+  if (!trimmed.startsWith("mysql://") && !trimmed.startsWith("mysqls://")) {
+    return {
+      ok: false,
+      code: "unsupported_scheme",
+      message: productionDatabaseUrlRefusalMessage("unsupported_scheme"),
     };
   }
 
@@ -139,7 +157,7 @@ export function checkProductionDatabaseUrl(env: EnvLike = process.env): DbEnvChe
   }
 
   const { url } = parsed;
-  const port = url.port || "5432";
+  const port = url.port || "3306";
 
   if (port === "5433") {
     return {

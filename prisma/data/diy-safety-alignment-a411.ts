@@ -3,6 +3,7 @@
  * Applied by prisma/data/services.ts after catalog assembly.
  * reason: diy_matrix_authoritative
  */
+import { ELECTRICAL_CHILD_NAMES } from "./electrical-children-160";
 export type DiySafetyAlignmentA411 = {
   riskLevel: "green" | "yellow" | "red";
   diyAvailable: boolean;
@@ -121,6 +122,23 @@ export const DIY_SAFETY_ALIGNMENTS_A411: Record<string, DiySafetyAlignmentA411> 
   "wiring-replacement": { riskLevel: "red", diyAvailable: false },
 };
 
+function electricalSlug(name: string) {
+  return name
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/\//g, " ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+/** Every approved electrical child is professional-only. Never a DIY topic. */
+const ELECTRICAL_RED: Record<string, { riskLevel: "red"; diyAvailable: false }> = {};
+for (const name of ELECTRICAL_CHILD_NAMES) {
+  ELECTRICAL_RED[electricalSlug(name)] = { riskLevel: "red", diyAvailable: false };
+}
+
+Object.assign(DIY_SAFETY_ALIGNMENTS_A411, ELECTRICAL_RED);
+
 export const DIY_SAFETY_A411_HELD = ["painting-services"] as const;
 
 export const DIY_SAFETY_A411_UNRESOLVED_MISSING_HUBS = [
@@ -132,3 +150,4 @@ export const DIY_SAFETY_A411_UNRESOLVED_MISSING_HUBS = [
   "washing-machine",
   "water-heater",
 ] as const;
+

@@ -343,7 +343,7 @@ async function main() {
 
   writeFileSync(join(process.cwd(), "docs/final-completion-status.json"), JSON.stringify(report, null, 2) + "\n");
 
-  const md = `# Final completion status — ALNAJAH ALDAEM
+  const md = `# Final completion status — Al Najah Al Daem
 
 Generated: ${report.generatedAt}
 

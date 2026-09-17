@@ -175,7 +175,7 @@ async function main() {
   assert(publicRoute.includes("runAlnajahAi"), "public chat route unchanged");
   assert(!publicRoute.includes("runCofounder"), "public chat route does not call Co-Founder");
   const openaiSrc = readFileSync(join(process.cwd(), "src/lib/ai/openai.ts"), "utf8");
-  assert(openaiSrc.includes("You are ALNAJAH AI for ALNAJAH ALDAEM"), "public system prompt unchanged");
+  assert(openaiSrc.includes("You are ALNAJAH AI for Al Najah Al Daem"), "public system prompt unchanged");
 
   console.log("Phase 2G.1 verification passed.");
 }

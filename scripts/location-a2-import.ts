@@ -22,7 +22,7 @@ function meta(text: string) {
 
 function introFor(loc: MasterLocation, locale: "en" | "ar") {
   if (locale === "en") {
-    return `${loc.nameEn} is a catalog location record for ALNAJAH ALDAEM service planning. This entry does not claim service coverage, licensing, or booking availability.`;
+    return `${loc.nameEn} is a catalog location record for Al Najah Al Daem service planning. This entry does not claim service coverage, licensing, or booking availability.`;
   }
   return `${loc.nameAr === "REVIEW_REQUIRED" ? loc.nameEn : loc.nameAr} سجل موقع في كتالوج النجاح الدائم للتخطيط. هذا السجل لا يدّعي تغطية الخدمة أو الترخيص أو توفر الحجز.`;
 }
@@ -36,7 +36,7 @@ async function upsertTranslation(
   const intro = introFor(loc, locale);
   const seoTitle =
     locale === "en"
-      ? `${loc.nameEn} | ALNAJAH ALDAEM`.slice(0, 60)
+      ? `${loc.nameEn} | Al Najah Al Daem`.slice(0, 60)
       : `${name} | النجاح الدائم`.slice(0, 60);
   const metaDescription = meta(intro);
   await prisma.locationI18n.upsert({
@@ -61,6 +61,11 @@ async function upsertTranslation(
 }
 
 async function main() {
+  if (process.env.LOCATION_MASTER_IMPORT !== "1") {
+    throw new Error(
+      "Location master import is not approved. The 277-location file was updated; database import is a separate step.",
+    );
+  }
   const beforeSl = await prisma.serviceLocation.count();
   const beforeLocations = await prisma.location.count();
   const master = loadLocationMaster();
@@ -185,7 +190,7 @@ async function main() {
             locale: "en",
             name: loc.nameEn,
             intro: introFor(loc, "en"),
-            seoTitle: `${loc.nameEn} | ALNAJAH ALDAEM`.slice(0, 60),
+            seoTitle: `${loc.nameEn} | Al Najah Al Daem`.slice(0, 60),
             metaDescription: meta(introFor(loc, "en")),
           },
           {
@@ -228,6 +233,13 @@ async function main() {
 
   for (const community of communities) {
     const parentName = resolveParentCityName(community.parentCityMunicipality);
+    const emirate = bySlug.get(community.emirateSlug!);
+    if (!emirate) throw new Error(`Missing emirate for ${community.slug}`);
+    const emirateMaster = master.locations.find((row) => row.slug === community.emirateSlug);
+    if (emirateMaster?.nameEn === parentName) {
+      await upsertNew(community, emirate.id, community.id);
+      continue;
+    }
     const parent = cityByEmName.get(`${community.emirateSlug}|${parentName}`);
     if (!parent) {
       throw new Error(
@@ -270,11 +282,14 @@ async function main() {
   if (afterSl !== beforeSl) {
     throw new Error(`ServiceLocation changed during A2 import: before=${beforeSl} after=${afterSl}`);
   }
-  if (afterSl !== 49) {
-    throw new Error(`ServiceLocation must remain 49 after A2, got ${afterSl}`);
+  const afterAll = await prisma.location.findMany({ select: { slug: true, status: true, serves: true, indexable: true } });
+  const afterSet = new Set(afterAll.map((row) => row.slug));
+  const missingMaster = master.locations.filter((row) => !afterSet.has(row.slug)).map((row) => row.slug);
+  if (missingMaster.length) {
+    throw new Error(`Master locations still missing after import: ${missingMaster.slice(0, 8).join(", ")}`);
   }
-  if (total !== 200) {
-    throw new Error(`Location total must be 200 after A2, got ${total}`);
+  if (total !== beforeLocations + createdCount) {
+    throw new Error(`Location total unexpected: before=${beforeLocations} created=${createdCount} after=${total}`);
   }
 
   console.log(

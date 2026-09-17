@@ -36,7 +36,7 @@ function svgFor(topic: (typeof TOPICS)[0]) {
   <circle cx="280" cy="700" r="220" fill="${light}" opacity="0.08"/>
   <rect x="120" y="160" width="720" height="520" rx="28" fill="rgba(255,255,255,0.06)" stroke="${light}" stroke-opacity="0.25"/>
   <text x="160" y="260" fill="${light}" font-family="Georgia, serif" font-size="54" font-weight="600">${topic.label}</text>
-  <text x="160" y="330" fill="${light}" opacity="0.75" font-family="Segoe UI, sans-serif" font-size="28">ALNAJAH ALDAEM · Building maintenance</text>
+  <text x="160" y="330" fill="${light}" opacity="0.75" font-family="Segoe UI, sans-serif" font-size="28">Al Najah Al Daem · Building maintenance</text>
   <text x="160" y="420" fill="${accent}" font-family="Segoe UI, sans-serif" font-size="22">Educational visual · Not a staged job photo</text>
   <g transform="translate(980 420)" fill="none" stroke="${light}" stroke-width="10" stroke-linecap="round">
     ${

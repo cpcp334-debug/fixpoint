@@ -15,8 +15,15 @@ const TARGET = Number(process.env.SL_LONG_BATCH || "500");
 const OFFSET = Number(process.env.SL_LONG_OFFSET || "0");
 
 async function main() {
-  const drafts = await prisma.serviceLocation.findMany({
-    where: { coverageStatus: { not: "published" } },
+  // Prefer unpublished pairs still missing EN shell so we advance the corpus.
+  const emptyFirst = await prisma.serviceLocation.findMany({
+    where: {
+      coverageStatus: { not: "published" },
+      OR: [
+        { translations: { none: { locale: "en" } } },
+        { translations: { some: { locale: "en", OR: [{ h1: "" }, { intro: "" }] } } },
+      ],
+    },
     orderBy: [{ serviceId: "asc" }, { locationId: "asc" }],
     skip: Math.floor(OFFSET / 2),
     take: Math.ceil(TARGET / 2),
@@ -26,6 +33,20 @@ async function main() {
       location: { select: { slug: true } },
     },
   });
+  const drafts =
+    emptyFirst.length > 0
+      ? emptyFirst
+      : await prisma.serviceLocation.findMany({
+          where: { coverageStatus: { not: "published" } },
+          orderBy: [{ serviceId: "asc" }, { locationId: "asc" }],
+          skip: Math.floor(OFFSET / 2),
+          take: Math.ceil(TARGET / 2),
+          select: {
+            id: true,
+            service: { select: { slug: true } },
+            location: { select: { slug: true } },
+          },
+        });
 
   const locales: Array<{ slId: string; serviceSlug: string; locationSlug: string; locale: "en" | "ar" }> = [];
   for (const row of drafts) {

@@ -4,7 +4,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
   const { error, ok } = await searchParams;
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-4">
-      <p className="text-xs uppercase tracking-[0.18em] text-gold">ALNAJAH ALDAEM</p>
+      <p className="text-xs uppercase tracking-[0.18em] text-gold">Al Najah Al Daem · Fixpoint</p>
       <h1 className="mt-2 text-2xl font-semibold">Staff login</h1>
       <p className="mt-2 text-sm text-muted">Authorized staff only. This page is not a customer portal.</p>
       {ok === "password" ? (

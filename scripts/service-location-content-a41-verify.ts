@@ -109,7 +109,7 @@ function completeContent(over: Partial<ServiceLocationContentJson> = {}): Servic
   const diy = buildDiyContentBlocks({
     safetyState: "GREEN",
     guideSlug: "how-to-clean-ac-filter",
-    professionalFallback: "Request ALNAJAH ALDAEM if the filter is inaccessible or the unit is unsafe.",
+    professionalFallback: "Request Al Najah Al Daem if the filter is inaccessible or the unit is unsafe.",
     safeSelfChecks: ["Power off before opening accessible filter slots."],
     tools: ["Soft brush", "Vacuum"],
     steps: ["Remove accessible filter", "Clean gently", "Refit securely"],
@@ -127,7 +127,7 @@ function completeContent(over: Partial<ServiceLocationContentJson> = {}): Servic
     professionalRecommendation: "Use a professional when access is restricted or contamination is severe.",
   });
   const expert = buildExpertCta({
-    helpSummary: "ALNAJAH ALDAEM can inspect access, clean filters safely, and advise on maintenance.",
+    helpSummary: "Al Najah Al Daem can inspect access, clean filters safely, and advise on maintenance.",
     ops: {
       bookingEnabled: true,
       amcAvailable: false,
@@ -169,8 +169,8 @@ function completeEnCopy(content: ServiceLocationContentJson): WorkingCopy {
     intro:
       "AC Filter Cleaning in Dubai Marina helps restore airflow in apartments and villas with accessible indoor units.",
     localInfo: "Dubai Marina residences often have compact plant rooms and shared risers that affect access.",
-    seoTitle: "Trusted AC Filter Cleaning in Dubai Marina | ALNAJAH ALDAEM",
-    metaDescription: "Request AC filter cleaning in Dubai Marina. Coverage by enquiry with ALNAJAH ALDAEM.",
+    seoTitle: "Trusted AC Filter Cleaning in Dubai Marina | Al Najah Al Daem",
+    metaDescription: "Request AC filter cleaning in Dubai Marina. Coverage by enquiry with Al Najah Al Daem.",
     faq: "[]",
     h1: "AC Filter Cleaning in Dubai Marina",
     body: "Service details follow approved content sections.",

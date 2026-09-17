@@ -3,7 +3,7 @@ import { getActiveEmirates, getActiveServices } from "@/lib/catalog";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { LeadForm } from "@/components/forms/LeadForm";
-import { mailUrl, siteConfig, telUrl, whatsappUrl } from "@/config/site";
+import { mailUrl, productionSiteUrl, siteConfig, telUrl, whatsappUrl, brandName } from "@/config/site";
 import { ButtonLink } from "@/components/ui/Button";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { PageShell } from "@/components/public/PageShell";
@@ -13,7 +13,7 @@ import { CtaBand } from "@/components/public/CtaBand";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Contact" });
-  return buildMetadata({ locale, title: `${t("title")} | ALNAJAH ALDAEM`, description: t("lead"), path: "/contact" });
+  return buildMetadata({ locale, title: `${t("title")} | ${brandName(locale)}`, description: t("lead"), path: "/contact" });
 }
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -23,6 +23,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
   const nav = await getTranslations("Nav");
   const home = await getTranslations("Home");
   const cta = await getTranslations("Cta");
+  const footer = await getTranslations("Footer");
   const services = await getActiveServices(locale);
   const locations = await getActiveEmirates(locale);
 
@@ -35,12 +36,16 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         />
       }
     >
-      <PublicHero
+      <PublicHero locale={locale}
+        kicker={brandName(locale)}
         title={t("title")}
         lead={t("lead")}
         compact
         actions={
           <div className="flex flex-wrap gap-3">
+            <ButtonLink href={productionSiteUrl} variant="secondary" external>
+              {siteConfig.domainBrand} · fixpoint.ae
+            </ButtonLink>
             <ButtonLink href={telUrl()} external>
               {siteConfig.phoneDisplay}
             </ButtonLink>
@@ -49,6 +54,21 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             </ButtonLink>
             <ButtonLink href={mailUrl()} variant="ghost" external>
               {siteConfig.email}
+            </ButtonLink>
+            <ButtonLink href={siteConfig.mapsUrl} variant="ghost" external>
+              {footer("maps")}
+            </ButtonLink>
+            <ButtonLink href={siteConfig.social.youtube} variant="ghost" external>
+              {footer("youtube")}
+            </ButtonLink>
+            <ButtonLink href={siteConfig.social.instagram} variant="ghost" external>
+              {footer("instagram")}
+            </ButtonLink>
+            <ButtonLink href={siteConfig.social.facebook} variant="ghost" external>
+              {footer("facebook")}
+            </ButtonLink>
+            <ButtonLink href={siteConfig.social.tiktok} variant="ghost" external>
+              {footer("tiktok")}
             </ButtonLink>
           </div>
         }

@@ -6,7 +6,7 @@ import type { DiyGuideProfileJson, DiyProfileStep } from "@/lib/diy/profile-cont
 import { emptyDiyProfile } from "@/lib/diy/profile-contract";
 
 const FALLBACK =
-  "ALNAJAH ALDAEM can inspect the issue and recommend the appropriate maintenance or repair service.";
+  "Al Najah Al Daem · Fixpoint can inspect the issue and recommend the appropriate maintenance or repair service.";
 
 function faqs(pairs: Array<[string, string]>) {
   return pairs.slice(0, 8).map(([question, answer]) => ({ question, answer }));

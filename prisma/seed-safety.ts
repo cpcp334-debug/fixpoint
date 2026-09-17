@@ -1,5 +1,5 @@
 /**
- * Production seed safety for ALNAJAH ALDAEM.
+ * Production seed safety for Al Najah Al Daem · Fixpoint.
  * Destructive wipe (deleteMany of operational / catalog rows) is refused in
  * NODE_ENV=production unless an explicit emergency override is set.
  */

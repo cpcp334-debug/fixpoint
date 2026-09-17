@@ -1,0 +1,362 @@
+[
+  {
+    "slug": "abu-dhabi-dust-and-ac-filter-habits",
+    "enW": 987,
+    "arW": 998,
+    "enPass": false,
+    "arPass": false,
+    "both": false
+  },
+  {
+    "slug": "ac-noise-changes-what-homeowners-should-note",
+    "enW": 1504,
+    "arW": 1019,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "ac-not-cooling-evenly-across-rooms",
+    "enW": 1030,
+    "arW": 1020,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "ajman-coastal-corrosion-and-fixture-care",
+    "enW": 984,
+    "arW": 1001,
+    "enPass": false,
+    "arPass": true,
+    "both": false
+  },
+  {
+    "slug": "allergy-friendly-cleaning-habits-for-uae-homes",
+    "enW": 1489,
+    "arW": 1004,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "appliance-filter-habits-that-prevent-callouts",
+    "enW": 999,
+    "arW": 987,
+    "enPass": false,
+    "arPass": false,
+    "both": false
+  },
+  {
+    "slug": "bathroom-drain-odours-what-they-usually-mean",
+    "enW": 976,
+    "arW": 1020,
+    "enPass": false,
+    "arPass": true,
+    "both": false
+  },
+  {
+    "slug": "bathroom-mould-on-grout-vs-hidden-moisture",
+    "enW": 1475,
+    "arW": 989,
+    "enPass": true,
+    "arPass": false,
+    "both": false
+  },
+  {
+    "slug": "before-you-travel-home-shutdown-checklist",
+    "enW": 1501,
+    "arW": 1015,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "choosing-between-diy-and-booking-a-technician",
+    "enW": 1475,
+    "arW": 1019,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "common-area-issues-landlords-should-track",
+    "enW": 1503,
+    "arW": 990,
+    "enPass": true,
+    "arPass": false,
+    "both": false
+  },
+  {
+    "slug": "condensate-drips-and-indoor-unit-warning-signs",
+    "enW": 976,
+    "arW": 1019,
+    "enPass": false,
+    "arPass": true,
+    "both": false
+  },
+  {
+    "slug": "damp-patches-behind-furniture-what-to-inspect",
+    "enW": 1474,
+    "arW": 1018,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "diy-mistakes-that-turn-small-jobs-into-hazards",
+    "enW": 1475,
+    "arW": 987,
+    "enPass": true,
+    "arPass": false,
+    "both": false
+  },
+  {
+    "slug": "door-and-hardware-wear-in-high-use-buildings",
+    "enW": 994,
+    "arW": 988,
+    "enPass": false,
+    "arPass": false,
+    "both": false
+  },
+  {
+    "slug": "dubai-villa-summer-maintenance-focus",
+    "enW": 1483,
+    "arW": 1001,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "frequent-breaker-trips-common-household-causes",
+    "enW": 1475,
+    "arW": 1022,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "hairline-wall-cracks-cosmetic-or-structural-signal",
+    "enW": 1475,
+    "arW": 987,
+    "enPass": true,
+    "arPass": false,
+    "both": false
+  },
+  {
+    "slug": "hard-water-stains-vs-pipe-problems-uae",
+    "enW": 963,
+    "arW": 1009,
+    "enPass": false,
+    "arPass": true,
+    "both": false
+  },
+  {
+    "slug": "how-often-to-service-split-ac-in-coastal-emirates",
+    "enW": 1494,
+    "arW": 1006,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "how-to-photograph-a-fault-for-a-faster-quote",
+    "enW": 1472,
+    "arW": 1017,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "humidity-control-tips-for-closed-apartments",
+    "enW": 999,
+    "arW": 1015,
+    "enPass": false,
+    "arPass": true,
+    "both": false
+  },
+  {
+    "slug": "kitchen-grease-films-on-cabinets-and-extractors",
+    "enW": 969,
+    "arW": 1018,
+    "enPass": false,
+    "arPass": true,
+    "both": false
+  },
+  {
+    "slug": "led-flicker-in-apartments-power-vs-fixture",
+    "enW": 1473,
+    "arW": 987,
+    "enPass": true,
+    "arPass": false,
+    "both": false
+  },
+  {
+    "slug": "monthly-home-maintenance-checklist-uae",
+    "enW": 1489,
+    "arW": 1001,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "outdoor-lighting-faults-after-sandstorms",
+    "enW": 1491,
+    "arW": 1003,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "paint-peeling-in-humid-bathrooms-causes",
+    "enW": 969,
+    "arW": 988,
+    "enPass": false,
+    "arPass": false,
+    "both": false
+  },
+  {
+    "slug": "post-renovation-dust-what-to-clean-first",
+    "enW": 999,
+    "arW": 987,
+    "enPass": false,
+    "arPass": false,
+    "both": false
+  },
+  {
+    "slug": "ppe-and-ventilation-basics-for-home-tasks",
+    "enW": 1501,
+    "arW": 1017,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "preparing-villa-plumbing-for-peak-summer",
+    "enW": 1014,
+    "arW": 1001,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "preventive-building-maintenance-for-apartments",
+    "enW": 1503,
+    "arW": 1015,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "rooftop-access-safety-for-homeowners",
+    "enW": 1505,
+    "arW": 1021,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "safe-checks-before-calling-an-electrician",
+    "enW": 1504,
+    "arW": 1016,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "seasonal-building-checks-before-summer-heat",
+    "enW": 1488,
+    "arW": 1003,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "sharjah-apartment-maintenance-priorities",
+    "enW": 982,
+    "arW": 1001,
+    "enPass": false,
+    "arPass": true,
+    "both": false
+  },
+  {
+    "slug": "signs-your-home-has-a-hidden-water-leak",
+    "enW": 978,
+    "arW": 991,
+    "enPass": false,
+    "arPass": false,
+    "both": false
+  },
+  {
+    "slug": "stop-rules-every-homeowner-should-memorise",
+    "enW": 1475,
+    "arW": 994,
+    "enPass": true,
+    "arPass": false,
+    "both": false
+  },
+  {
+    "slug": "storing-cleaning-chemicals-safely-in-heat",
+    "enW": 1490,
+    "arW": 1004,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "touch-up-paint-matching-in-strong-uae-sunlight",
+    "enW": 991,
+    "arW": 1005,
+    "enPass": false,
+    "arPass": true,
+    "both": false
+  },
+  {
+    "slug": "uae-hard-water-and-fixture-longevity",
+    "enW": 1488,
+    "arW": 1006,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  },
+  {
+    "slug": "villa-deep-clean-checklist-before-guests",
+    "enW": 997,
+    "arW": 1018,
+    "enPass": false,
+    "arPass": true,
+    "both": false
+  },
+  {
+    "slug": "warm-sockets-and-when-to-stop-using-them",
+    "enW": 979,
+    "arW": 1022,
+    "enPass": false,
+    "arPass": true,
+    "both": false
+  },
+  {
+    "slug": "when-a-dripping-tap-means-more-than-a-washer",
+    "enW": 974,
+    "arW": 994,
+    "enPass": false,
+    "arPass": false,
+    "both": false
+  },
+  {
+    "slug": "when-wall-repairs-should-precede-repainting",
+    "enW": 1003,
+    "arW": 988,
+    "enPass": true,
+    "arPass": false,
+    "both": false
+  },
+  {
+    "slug": "why-ac-filters-clog-faster-in-uae-dust-season",
+    "enW": 1495,
+    "arW": 1007,
+    "enPass": true,
+    "arPass": true,
+    "both": true
+  }
+]

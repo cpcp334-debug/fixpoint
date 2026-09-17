@@ -1,13 +1,13 @@
 import { prisma } from "@/server/db";
 import { needPermission } from "@/lib/admin/guard";
-import { AdminTable, Forbidden, PageHeader } from "@/components/admin/Ui";
+import { AdminBulkTable, AdminFlash, Forbidden, PageHeader } from "@/components/admin/Ui";
 import { evaluateRow, listServicePages, readinessLabels, servicePageDashboard, type ServicePageFilters } from "@/lib/admin/service-pages";
 import Link from "next/link";
 
 export default async function ServicePagesAdminPage({
   searchParams,
 }: {
-  searchParams: Promise<ServicePageFilters>;
+  searchParams: Promise<ServicePageFilters & { ok?: string; error?: string; q?: string }>;
 }) {
   const auth = await needPermission("services");
   if (!auth.ok) return <Forbidden />;
@@ -56,11 +56,18 @@ export default async function ServicePagesAdminPage({
     ["Image alt", dash.imageReady],
   ] as const;
 
+  const sp = new URLSearchParams();
+  for (const key of ["service", "location", "emirate", "status", "coverage", "quality", "parent", "q"] as const) {
+    const value = filters[key];
+    if (value) sp.set(key, value);
+  }
+  const returnTo = `/admin/service-pages${sp.toString() ? `?${sp}` : ""}`;
+
   return (
     <div>
       <PageHeader
         title="Service pages"
-        note="Publication readiness dashboard. Coverage ≠ catalog. New pages stay draft/noindex until coverage + gates."
+        note="Bulk Publish only for covered rows (lifecycle published + indexable). Hide = noindex. Soft-remove = archived. Does not create coverage matrix rows."
         actions={
           <div className="flex gap-3 text-sm">
             <Link className="text-navy" href="/admin/service-pages/coverage">
@@ -72,6 +79,7 @@ export default async function ServicePagesAdminPage({
           </div>
         }
       />
+      <AdminFlash ok={filters.ok} error={filters.error} />
       <p className="mb-3 text-xs text-muted">Table capped at 100 rows — use filters or Coverage/Queue tools for scale.</p>
       <div className="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-5">
         {cards.map(([label, value]) => (
@@ -162,34 +170,34 @@ export default async function ServicePagesAdminPage({
           </button>
         </div>
       </form>
-      <AdminTable
+      <AdminBulkTable
+        entity="service_pages"
+        returnTo={returnTo}
         headers={["Service", "Location", "EN", "AR", "SEO", "GEO", "AEO", "DIY", "Img", "Quality", "Ready", ""]}
-      >
-        {rows.map((row) => {
+        rows={rows.map((row) => {
           const evald = evaluateRow(row);
           const ready = readinessLabels(evald.quality, evald.gates);
-          return (
-            <tr key={row.id} className="border-t border-line text-xs">
-              <td className="px-3 py-2">{evald.serviceEn?.name || row.service.slug}</td>
-              <td className="px-3 py-2">{evald.locationEn?.name || row.location.slug}</td>
-              <td className="px-3 py-2">{ready.en}</td>
-              <td className="px-3 py-2">{ready.ar}</td>
-              <td className="px-3 py-2">{ready.seo}</td>
-              <td className="px-3 py-2">{ready.geo}</td>
-              <td className="px-3 py-2">{ready.aeo}</td>
-              <td className="px-3 py-2">{ready.diy}</td>
-              <td className="px-3 py-2">{ready.image}</td>
-              <td className="px-3 py-2">{ready.quality}</td>
-              <td className="px-3 py-2">{ready.overall}</td>
-              <td className="px-3 py-2">
-                <Link className="text-navy" href={`/admin/service-pages/${row.id}`}>
-                  Preview
-                </Link>
-              </td>
-            </tr>
-          );
+          return {
+            id: row.id,
+            cells: [
+              evald.serviceEn?.name || row.service.slug,
+              evald.locationEn?.name || row.location.slug,
+              ready.en,
+              ready.ar,
+              ready.seo,
+              ready.geo,
+              ready.aeo,
+              ready.diy,
+              ready.image,
+              ready.quality,
+              ready.overall,
+              <Link key="preview" className="text-navy" href={`/admin/service-pages/${row.id}`}>
+                Preview
+              </Link>,
+            ],
+          };
         })}
-      </AdminTable>
+      />
     </div>
   );
 }
