@@ -197,17 +197,22 @@ export async function getApprovedServiceReviews(opts: {
 }
 
 export async function summarizeApprovedServiceReviews(opts: { serviceId?: string; locationId?: string }) {
-  const where = {
-    type: "service" as const,
-    status: "APPROVED" as const,
-    serviceId: opts.serviceId,
-    locationId: opts.locationId,
-  };
-  const [count, agg] = await Promise.all([
-    prisma.review.count({ where }),
-    prisma.review.aggregate({ where, _avg: { stars: true } }),
-  ]);
-  return { count, average: count ? agg._avg.stars : null };
+  try {
+    const where = {
+      type: "service" as const,
+      status: "APPROVED" as const,
+      serviceId: opts.serviceId,
+      locationId: opts.locationId,
+    };
+    const [count, agg] = await Promise.all([
+      prisma.review.count({ where }),
+      prisma.review.aggregate({ where, _avg: { stars: true } }),
+    ]);
+    return { count, average: count ? agg._avg.stars : null };
+  } catch {
+    // Missing tables during Hostinger first deploy / empty MySQL
+    return { count: 0, average: null };
+  }
 }
 
 export function canShowVerifiedBadge(review: {

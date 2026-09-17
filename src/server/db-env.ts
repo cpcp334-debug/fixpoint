@@ -35,11 +35,6 @@ export function allowsProductionLocalDb(env: EnvLike = process.env) {
   return env[ALLOW_PRODUCTION_LOCAL_DB_ENV] === "1";
 }
 
-function isLoopbackHost(host: string) {
-  const h = host.trim().toLowerCase().replace(/^\[|\]$/g, "");
-  return h === "localhost" || h === "127.0.0.1" || h === "::1" || h === "0:0:0:0:0:0:0:1";
-}
-
 /**
  * Local PGlite (npm run pg) uses port 5433 and the query pair
  * pgbouncer=true + connection_limit=1. Real remote PgBouncer may use
@@ -98,12 +93,11 @@ export function productionDatabaseUrlRefusalMessage(code: DbEnvRejectionCode) {
     "Rejected patterns include:",
     "  - missing DATABASE_URL",
     "  - unsupported scheme (use mysql:// for production)",
-    "  - localhost / 127.0.0.1 / ::1 (unless ALLOW_PRODUCTION_LOCAL_DB=1)",
     "  - PGlite default port 5433 (never allowed in production)",
     "  - PGlite query fingerprint pgbouncer=true&connection_limit=1 (never allowed in production)",
     "",
-    "ALLOW_PRODUCTION_LOCAL_DB=1 only relaxes the localhost host check.",
-    "It never permits PGlite fingerprints.",
+    "Hostinger same-server MySQL may use localhost — that is allowed for mysql://.",
+    "ALLOW_PRODUCTION_LOCAL_DB=1 is retained for local smoke tests; it is not required for Hostinger localhost MySQL.",
     "Do not log or print DATABASE_URL when debugging — check reason codes only.",
   ];
   return lines.join("\n");
@@ -175,14 +169,8 @@ export function checkProductionDatabaseUrl(env: EnvLike = process.env): DbEnvChe
     };
   }
 
-  if (isLoopbackHost(url.hostname) && !allowsProductionLocalDb(env)) {
-    return {
-      ok: false,
-      code: "localhost_rejected",
-      message: productionDatabaseUrlRefusalMessage("localhost_rejected"),
-    };
-  }
-
+  // Hostinger Web Apps use mysql://…@localhost (same-server). Allowed.
+  // Accidental PGlite is still blocked via scheme / port 5433 / query fingerprint.
   return { ok: true, host: url.hostname, port };
 }
 

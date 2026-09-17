@@ -11,6 +11,9 @@
  *   - Never runs seed / never truncates Neon
  *   - Does not log connection strings
  *
+ *   - Skips tables listed in MYSQL_IMPORT_SKIP (comma-separated)
+ *   - MYSQL_IMPORT_PRIORITY=1 skips ServiceLocation* (huge corpus) for a fast site bootstrap
+ *
  * Usage:
  *   npm run db:export-neon-to-mysql
  */
@@ -95,6 +98,27 @@ const TABLE_ORDER = [
   "SiteShellDocument",
 ] as const;
 
+const PRIORITY_SKIP = new Set([
+  "ServiceLocation",
+  "ServiceLocationI18n",
+  "ServiceLocationRevision",
+]);
+
+function skipTables(): Set<string> {
+  const set = new Set<string>();
+  if (process.env.MYSQL_IMPORT_PRIORITY === "1") {
+    for (const t of PRIORITY_SKIP) set.add(t);
+  }
+  const raw = process.env.MYSQL_IMPORT_SKIP?.trim();
+  if (raw) {
+    for (const part of raw.split(",")) {
+      const name = part.trim();
+      if (name) set.add(name);
+    }
+  }
+  return set;
+}
+
 function requireEnv(name: string): string {
   const v = process.env[name]?.trim();
   if (!v) {
@@ -160,9 +184,19 @@ async function main() {
 
     await mysqlConn.query("SET FOREIGN_KEY_CHECKS=0");
 
+    const skipped = skipTables();
+    if (skipped.size) {
+      console.log(`Skipping tables: ${[...skipped].join(", ")}`);
+    }
+
     const summary: Record<string, number> = {};
 
     for (const table of TABLE_ORDER) {
+      if (skipped.has(table)) {
+        summary[table] = -1;
+        console.log(`${table}: skipped`);
+        continue;
+      }
       const countRes = await pgClient.query(`SELECT COUNT(*)::int AS c FROM ${sqlIdentPg(table)}`);
       const total = Number(countRes.rows[0]?.c ?? 0);
       if (total === 0) {

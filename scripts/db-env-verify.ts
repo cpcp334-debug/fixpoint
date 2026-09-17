@@ -50,10 +50,11 @@ async function main() {
   assert(!pkg.scripts["db:push"], "db:push must be renamed away");
   assert(pkg.scripts["verify:db-env"]?.includes("db-env-verify"), "verify:db-env script exists");
   assert(!pkg.scripts.build.includes("db:seed"), "build must not seed");
-  assert(!pkg.scripts.build.includes("migrate deploy"), "build must not run migrate deploy");
+  assert(pkg.scripts.build.includes("prisma-migrate-safe"), "build runs migrate-safe before next build");
+  assert(pkg.scripts.build.includes("next build"), "build ends with next build");
   assert(!pkg.scripts.build.includes("pg-server"), "build must not start PGlite");
   assert(pkg.scripts.start === "next start", "start is next start only");
-  assert(pkg.scripts.build === "prisma generate && next build", "build is generate + next build only");
+  assert(pkg.scripts.postdeploy?.includes("postdeploy-mysql-import"), "postdeploy can opt-in ETL");
 
   assert(readme.toLowerCase().includes("mysql") || readme.includes("MYSQL-HOSTINGER"), "README mentions MySQL path");
   assert(envExample.includes("REQUIRED PRODUCTION"), ".env.example has REQUIRED PRODUCTION section");
@@ -84,14 +85,14 @@ async function main() {
     NODE_ENV: "production",
     DATABASE_URL: "mysql://alnajah:secret@127.0.0.1:3306/alnajah",
   });
-  assert(!localhost.ok && localhost.code === "localhost_rejected", "production localhost MySQL fails by default");
+  assert(localhost.ok && localhost.host === "127.0.0.1", "production Hostinger localhost MySQL allowed");
 
   const localhostOverride = checkProductionDatabaseUrl({
     NODE_ENV: "production",
     [ALLOW_PRODUCTION_LOCAL_DB_ENV]: "1",
     DATABASE_URL: "mysql://alnajah:secret@127.0.0.1:3306/alnajah",
   });
-  assert(localhostOverride.ok, "ALLOW_PRODUCTION_LOCAL_DB=1 allows localhost MySQL");
+  assert(localhostOverride.ok, "ALLOW_PRODUCTION_LOCAL_DB=1 still allows localhost MySQL");
 
   const remote = checkProductionDatabaseUrl({
     NODE_ENV: "production",

@@ -41,17 +41,28 @@ export const publicServiceLocationWhere = {
 export { resolveServiceLocationPage };
 export const getServiceLocation = resolvePublicServiceLocation;
 
-export const getActiveServices = cache(async (locale: string) => {
-  const rows = await prisma.service.findMany({
-    where: publicServiceWhere,
-    include: { translations: true, category: true },
-    orderBy: { slug: "asc" },
-  });
-  return rows.map((row) => ({
-    ...row,
-    t: pickI18n(row.translations, locale)!,
-  }));
-});
+/** Empty catalog when MySQL schema/data is not ready yet (Hostinger first deploy). */
+async function safeList<T>(fn: () => Promise<T[]>, fallback: T[] = []): Promise<T[]> {
+  try {
+    return await fn();
+  } catch {
+    return fallback;
+  }
+}
+
+export const getActiveServices = cache(async (locale: string) =>
+  safeList(async () => {
+    const rows = await prisma.service.findMany({
+      where: publicServiceWhere,
+      include: { translations: true, category: true },
+      orderBy: { slug: "asc" },
+    });
+    return rows.map((row) => ({
+      ...row,
+      t: pickI18n(row.translations, locale)!,
+    }));
+  }),
+);
 
 export const getServiceBySlug = cache(async (slug: string, locale: string) => {
   const row = await prisma.service.findFirst({
@@ -85,24 +96,30 @@ export const getApprovedCatalogServiceBySlug = cache(async (slug: string, locale
   };
 });
 
-export const getActiveEmirates = cache(async (locale: string) => {
-  const rows = await prisma.location.findMany({
-    where: { type: "emirate", ...publicLocationWhere },
-    include: { translations: true },
-    orderBy: { sortOrder: "asc" },
-  });
-  return rows.map((row) => ({
-    ...row,
-    t: pickI18n(row.translations, locale)!,
-  }));
-});
+export const getActiveEmirates = cache(async (locale: string) =>
+  safeList(async () => {
+    const rows = await prisma.location.findMany({
+      where: { type: "emirate", ...publicLocationWhere },
+      include: { translations: true },
+      orderBy: { sortOrder: "asc" },
+    });
+    return rows.map((row) => ({
+      ...row,
+      t: pickI18n(row.translations, locale)!,
+    }));
+  }),
+);
 
 export async function publishedServingLocationSlugs() {
-  const rows = await prisma.location.findMany({
-    where: publicLocationWhere,
-    select: { slug: true },
-  });
-  return new Set(rows.map((row) => row.slug));
+  try {
+    const rows = await prisma.location.findMany({
+      where: publicLocationWhere,
+      select: { slug: true },
+    });
+    return new Set(rows.map((row) => row.slug));
+  } catch {
+    return new Set<string>();
+  }
 }
 
 export const getPublishedLocation = cache(async (slug: string, locale: string) => {
@@ -129,41 +146,45 @@ export const getEmirateBySlug = cache(async (slug: string, locale: string) => {
   return { ...row, t: pickI18n(row.translations, locale)! };
 });
 
-export const getPublishedGuides = cache(async (locale: string) => {
-  const rows = await prisma.diyGuide.findMany({
-    where: { status: "published", indexable: true },
-    include: { translations: true, service: true, category: { include: { translations: true } } },
-    orderBy: { slug: "asc" },
-  });
-  return rows.map((row) => ({
-    ...row,
-    t: pickI18n(row.translations, locale)!,
-    categoryT: pickI18n(row.category.translations, locale),
-  }));
-});
+export const getPublishedGuides = cache(async (locale: string) =>
+  safeList(async () => {
+    const rows = await prisma.diyGuide.findMany({
+      where: { status: "published", indexable: true },
+      include: { translations: true, service: true, category: { include: { translations: true } } },
+      orderBy: { slug: "asc" },
+    });
+    return rows.map((row) => ({
+      ...row,
+      t: pickI18n(row.translations, locale)!,
+      categoryT: pickI18n(row.category.translations, locale),
+    }));
+  }),
+);
 
-export const getPublishedDiyCategories = cache(async (locale: string) => {
-  const rows = await prisma.diyCategory.findMany({
-    where: { status: "published", indexable: true },
-    include: {
-      translations: true,
-      guides: {
-        where: { status: "published", indexable: true },
-        include: { translations: true },
-        orderBy: { slug: "asc" },
+export const getPublishedDiyCategories = cache(async (locale: string) =>
+  safeList(async () => {
+    const rows = await prisma.diyCategory.findMany({
+      where: { status: "published", indexable: true },
+      include: {
+        translations: true,
+        guides: {
+          where: { status: "published", indexable: true },
+          include: { translations: true },
+          orderBy: { slug: "asc" },
+        },
       },
-    },
-    orderBy: { sortOrder: "asc" },
-  });
-  return rows.map((row) => ({
-    ...row,
-    t: pickI18n(row.translations, locale)!,
-    publishedGuides: row.guides.map((guide) => ({
-      ...guide,
-      t: pickI18n(guide.translations, locale)!,
-    })),
-  }));
-});
+      orderBy: { sortOrder: "asc" },
+    });
+    return rows.map((row) => ({
+      ...row,
+      t: pickI18n(row.translations, locale)!,
+      publishedGuides: row.guides.map((guide) => ({
+        ...guide,
+        t: pickI18n(guide.translations, locale)!,
+      })),
+    }));
+  }),
+);
 
 export const getDiyCategoryBySlug = cache(async (slug: string, locale: string) => {
   const row = await prisma.diyCategory.findFirst({
@@ -222,23 +243,27 @@ export const getApprovedGuideFeedback = cache(async (guideId: string) => {
   });
 });
 
-export const getGlobalFaqs = cache(async (locale: string) => {
-  const rows = await prisma.faq.findMany({
-    where: { status: "published", serviceId: null, locationId: null },
-    include: { translations: true },
-    orderBy: { sortOrder: "asc" },
-  });
-  return rows
-    .map((row) => pickI18n(row.translations, locale))
-    .filter(Boolean)
-    .map((t) => ({ q: t!.question, a: t!.answer }));
-});
+export const getGlobalFaqs = cache(async (locale: string) =>
+  safeList(async () => {
+    const rows = await prisma.faq.findMany({
+      where: { status: "published", serviceId: null, locationId: null },
+      include: { translations: true },
+      orderBy: { sortOrder: "asc" },
+    });
+    return rows
+      .map((row) => pickI18n(row.translations, locale))
+      .filter(Boolean)
+      .map((t) => ({ q: t!.question, a: t!.answer }));
+  }),
+);
 
 export const getRelatedServices = cache(async (slugs: string[], locale: string) => {
   if (!slugs.length) return [];
-  const rows = await prisma.service.findMany({
-    where: { slug: { in: slugs }, status: "active", indexable: true },
-    include: { translations: true },
+  return safeList(async () => {
+    const rows = await prisma.service.findMany({
+      where: { slug: { in: slugs }, status: "active", indexable: true },
+      include: { translations: true },
+    });
+    return rows.map((row) => ({ ...row, t: pickI18n(row.translations, locale)! }));
   });
-  return rows.map((row) => ({ ...row, t: pickI18n(row.translations, locale)! }));
 });
