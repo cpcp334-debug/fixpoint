@@ -120,7 +120,23 @@ ADMIN_PASSWORD=...
 AUTOMATION_CRON_SECRET=...
 HEALTH_CHECK_SECRET=...
 DOWNLOAD_CSRF_SECRET=...
+OPENAI_API_KEY=sk-...
+OPENAI_MODEL=gpt-4o-mini
 ```
+
+### Public AI chat (required for Fixpoint AI widget)
+
+Without `OPENAI_API_KEY`, `/api/ai/chat` returns the failsafe reply:
+“The assistant is not configured or cannot complete an automated assessment right now…”
+
+| Variable | Required? | Where to get it |
+|----------|-----------|-----------------|
+| `OPENAI_API_KEY` | **Yes** for live AI assessments | [platform.openai.com/api-keys](https://platform.openai.com/api-keys) → Create new secret key (`sk-…`) |
+| `OPENAI_MODEL` | Optional | Defaults to `gpt-4o-mini` if unset |
+
+**Hostinger steps:** Web App → Environment Variables → add `OPENAI_API_KEY` = your `sk-…` value → **Redeploy** (env changes apply on the next deploy/restart).
+
+Do **not** commit the key. Do **not** use `NEXT_PUBLIC_OPENAI_API_KEY` (server-only).
 
 **Remove** any old `DIRECT_URL` / Neon `postgresql://` vars from the Web App (except temporary `NEON_DATABASE_URL` for ETL).
 

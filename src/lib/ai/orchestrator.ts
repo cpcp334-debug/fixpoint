@@ -2,6 +2,7 @@ import { prisma } from "@/server/db";
 import { whatsappUrl } from "@/config/site";
 import { loadAiContext } from "@/lib/ai/context";
 import { createConversation, getAuthorizedConversation } from "@/lib/ai/conversations";
+import { isOpenAiConfigured } from "@/lib/ai/env";
 import { failsafeProvider } from "@/lib/ai/failsafe";
 import { logAiEvent } from "@/lib/ai/log";
 import { openaiProvider } from "@/lib/ai/openai";
@@ -85,11 +86,13 @@ export async function runAlnajahAi(opts: {
   const conversation = await prisma.aiConversation.findUniqueOrThrow({ where: { id: conversationId } });
   const storedPhotoIds = parseJson<string[]>(conversation.photoIds, []);
   const requested = [...new Set([...(opts.photoIds || []), ...storedPhotoIds])].slice(0, 5);
-  const images = process.env.OPENAI_API_KEY ? await loadConversationImages(conversationId, requested) : [];
+  const openaiReady = isOpenAiConfigured();
+  const images = openaiReady ? await loadConversationImages(conversationId, requested) : [];
 
-  const provider = process.env.OPENAI_API_KEY ? openaiProvider : failsafeProvider;
+  const provider = openaiReady ? openaiProvider : failsafeProvider;
   let rawText = "{}";
   let providerName: "openai" | "failsafe" = "failsafe";
+  let providerError: string | undefined = openaiReady ? undefined : "missing_openai_api_key";
   try {
     const raw = await provider.complete({
       locale: opts.locale,
@@ -102,6 +105,9 @@ export async function runAlnajahAi(opts: {
     });
     rawText = raw.text;
     providerName = raw.provider;
+    if (openaiReady && providerName === "failsafe") {
+      providerError = "openai_unavailable";
+    }
   } catch {
     const raw = await failsafeProvider.complete({
       locale: opts.locale,
@@ -114,6 +120,7 @@ export async function runAlnajahAi(opts: {
     });
     rawText = raw.text;
     providerName = "failsafe";
+    providerError = "openai_unavailable";
   }
 
   let parsedJson: unknown;
@@ -262,7 +269,7 @@ export async function runAlnajahAi(opts: {
     leadCreated,
     photoCount: requested.length,
     durationMs: Date.now() - started,
-    error: parsed.success ? undefined : "malformed",
+    error: parsed.success ? providerError : providerError || "malformed",
   });
 
   try {

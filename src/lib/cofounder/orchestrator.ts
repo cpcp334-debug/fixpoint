@@ -1,6 +1,7 @@
 import { prisma } from "@/server/db";
 import type { StaffSession } from "@/lib/admin/auth";
 import { appendStaffMessages, clipUserMessage, createStaffConversation, loadStaffConversation } from "@/lib/cofounder/conversations";
+import { openAiApiKey } from "@/lib/ai/env";
 import { cofounderFailsafeReply } from "@/lib/cofounder/failsafe";
 import { auditMetaForTool } from "@/lib/cofounder/privacy";
 import { toolsForSession } from "@/lib/cofounder/rbac";
@@ -154,7 +155,7 @@ export async function runCofounder(opts: {
     })
     .catch(() => undefined);
 
-  const key = process.env.OPENAI_API_KEY;
+  const key = openAiApiKey();
   if (!key) {
     const reply = cofounderFailsafeReply();
     await appendStaffMessages(conversationId, opts.staff.id, [userMsg, { role: "assistant", content: reply }]);

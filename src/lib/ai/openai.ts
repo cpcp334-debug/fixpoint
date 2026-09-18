@@ -1,4 +1,5 @@
 import type { AiProvider, ProviderInput, ProviderRaw } from "@/lib/ai/provider";
+import { openAiApiKey } from "@/lib/ai/env";
 import { failsafeProvider } from "@/lib/ai/failsafe";
 import { buildCatalogLines } from "@/lib/ai/suggest";
 
@@ -48,7 +49,7 @@ Return JSON only:
 
 export const openaiProvider: AiProvider = {
   async complete(input: ProviderInput): Promise<ProviderRaw> {
-    const key = process.env.OPENAI_API_KEY;
+    const key = openAiApiKey();
     if (!key) return failsafeProvider.complete(input);
 
     const { serviceLines, guideLines, emirateLines } = buildCatalogLines(

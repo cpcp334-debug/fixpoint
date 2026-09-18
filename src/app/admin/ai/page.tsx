@@ -1,4 +1,5 @@
 import { needSession } from "@/lib/admin/guard";
+import { isOpenAiConfigured } from "@/lib/ai/env";
 import { canUseCoFounder } from "@/lib/cofounder/rbac";
 import { getPriorityActions } from "@/lib/cofounder/priority";
 import { getCofounderDailyUsage } from "@/lib/cofounder/limits";
@@ -26,7 +27,7 @@ export default async function AdminAiPage({ searchParams }: { searchParams: Prom
         role={session.role}
         priorityActions={priorityActions}
         usage={{ used: usage.used, limit: usage.limit, remaining: usage.remaining, timezone: usage.timezone }}
-        modelConfigured={Boolean(process.env.OPENAI_API_KEY)}
+        modelConfigured={isOpenAiConfigured()}
       />
     </div>
   );
