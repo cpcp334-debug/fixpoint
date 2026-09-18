@@ -9,7 +9,7 @@ import { EmptyState, Section, SectionHeader } from "@/components/ui/Section";
 import { PageShell } from "@/components/public/PageShell";
 import { CtaBand } from "@/components/public/CtaBand";
 import { listPageHref, PrevNextPagination } from "@/components/ui/PrevNextPagination";
-import { getPublishedBlogArticles } from "@/lib/blog/catalog";
+import { getPublishedBlogArticlesPage } from "@/lib/blog/catalog";
 import { BLOG_CATEGORIES } from "@/lib/blog/categories";
 import { getPublishedGuides } from "@/lib/catalog";
 import { prisma } from "@/server/db";
@@ -20,13 +20,13 @@ export const revalidate = 300;
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Blog" });
-  const articles = await getPublishedBlogArticles(locale);
+  const { total } = await getPublishedBlogArticlesPage(locale, { skip: 0, take: 1 });
   return buildMetadata({
     locale,
     title: `${t("title")} | ${brandName(locale)}`,
     description: t("lead"),
     path: "/blog",
-    index: articles.length > 0,
+    index: total > 0,
   });
 }
 
@@ -51,21 +51,31 @@ export default async function BlogIndexPage({
   const home = await getTranslations("Home");
   const cta = await getTranslations("Cta");
 
-  let articles = await getPublishedBlogArticles(locale);
   const category = sp.category?.trim();
-  const q = sp.q?.trim().toLowerCase();
-  if (category) articles = articles.filter((a) => a.categories.some((c) => c.slug === category));
-  if (q) {
-    articles = articles.filter(
-      (a) => a.title.toLowerCase().includes(q) || a.excerpt.toLowerCase().includes(q),
-    );
-  }
-
+  const q = sp.q?.trim();
   const pageSize = 12;
-  const totalPages = Math.max(1, Math.ceil(articles.length / pageSize));
-  const page = Math.min(totalPages, Math.max(1, Number(sp.page || "1") || 1));
-  const pageItems = articles.slice((page - 1) * pageSize, page * pageSize);
-  const featured = articles.slice(0, 3);
+  // First page count comes with take:1 metadata path; here fetch total via page query
+  const pageHint = Math.max(1, Number(sp.page || "1") || 1);
+  const first = await getPublishedBlogArticlesPage(locale, {
+    skip: 0,
+    take: pageSize,
+    category,
+    q,
+  });
+  const totalPages = Math.max(1, Math.ceil(first.total / pageSize));
+  const page = Math.min(totalPages, pageHint);
+  const pagePack =
+    page === 1
+      ? first
+      : await getPublishedBlogArticlesPage(locale, {
+          skip: (page - 1) * pageSize,
+          take: pageSize,
+          category,
+          q,
+        });
+  const pageItems = pagePack.items;
+  const total = pagePack.total;
+  const featured = (page === 1 ? pageItems : first.items).slice(0, 3);
 
   const guides = (await getPublishedGuides(locale)).slice(0, 6);
   const services = await prisma.service.findMany({
@@ -139,7 +149,7 @@ export default async function BlogIndexPage({
         </ul>
       </Section>
 
-      {!articles.length ? (
+      {!total ? (
         <Section>
           <EmptyState body={t("empty")} />
         </Section>

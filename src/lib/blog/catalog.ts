@@ -44,17 +44,67 @@ function mapCard(
   };
 }
 
+const blogWhere = {
+  status: "published" as const,
+  indexable: true,
+  NOT: [{ slug: { startsWith: "faq-" } }],
+};
+
+/** Paginated list — required once service×estate×city corpus is large. */
+export const getPublishedBlogArticlesPage = cache(
+  async (locale: string, opts?: { skip?: number; take?: number; category?: string; q?: string }) => {
+    const skip = Math.max(0, opts?.skip ?? 0);
+    const take = Math.min(100, Math.max(1, opts?.take ?? 12));
+    const category = opts?.category?.trim();
+    const q = opts?.q?.trim();
+
+    const where: Parameters<typeof prisma.article.findMany>[0] extends { where?: infer W } | undefined
+      ? W
+      : never = {
+      ...blogWhere,
+      ...(category
+        ? { categorySlugs: { contains: category } }
+        : {}),
+      ...(q
+        ? {
+            translations: {
+              some: {
+                locale,
+                OR: [
+                  { title: { contains: q } },
+                  { excerpt: { contains: q } },
+                ],
+              },
+            },
+          }
+        : {}),
+    };
+
+    const [rows, total] = await Promise.all([
+      prisma.article.findMany({
+        where,
+        include: {
+          translations: {
+            where: { locale },
+            select: { locale: true, title: true, excerpt: true, imageAlt: true },
+          },
+        },
+        orderBy: [{ publishedAt: "desc" }, { updatedAt: "desc" }],
+        skip,
+        take,
+      }),
+      prisma.article.count({ where }),
+    ]);
+
+    const items = rows.map((r) => mapCard(r, locale)).filter(Boolean) as BlogArticleCard[];
+    return { items, total };
+  },
+);
+
+/** @deprecated Prefer getPublishedBlogArticlesPage — caps to 500 to avoid OOM. */
 export const getPublishedBlogArticles = cache(async (locale: string) => {
-  const rows = await prisma.article.findMany({
-    where: {
-      status: "published",
-      indexable: true,
-      NOT: [{ slug: { startsWith: "faq-" } }],
-    },
-    include: { translations: true },
-    orderBy: [{ publishedAt: "desc" }, { updatedAt: "desc" }],
-  });
-  return rows.map((r) => mapCard(r, locale)).filter(Boolean) as BlogArticleCard[];
+  const { items } = await getPublishedBlogArticlesPage(locale, { skip: 0, take: 500 });
+  return items;
 });
 
 export const getBlogArticleBySlug = cache(async (slug: string, locale: string) => {

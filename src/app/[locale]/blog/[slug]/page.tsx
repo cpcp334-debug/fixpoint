@@ -14,16 +14,9 @@ import { getBlogArticleBySlug, getPublishedBlogArticles } from "@/lib/blog/catal
 import { prisma } from "@/server/db";
 import { getGuideBySlug } from "@/lib/catalog";
 
-export async function generateStaticParams() {
-  try {
-    const rows = await prisma.article.findMany({
-      where: { status: "published", indexable: true, NOT: { slug: { startsWith: "faq-" } } },
-      select: { slug: true },
-    });
-    return rows.map((r) => ({ slug: r.slug }));
-  } catch {
-    return [];
-  }
+/** Avoid SSG of 100k+ service×estate×city blog pages (Hostinger OOM). */
+export function generateStaticParams() {
+  return [];
 }
 
 export async function generateMetadata({

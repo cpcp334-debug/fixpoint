@@ -55,7 +55,7 @@
     "verify:quote-fk": "tsx scripts/quote-fk-verify.ts",
     "db:matrix:materialize": "tsx scripts/service-location-matrix-materialize.ts",
     "db:sl-publish-bulk": "tsx scripts/publish-service-locations-bulk.ts",
-    "db:sl-overnight": "tsx scripts/overnight-sl-corpus.ts",
+    "db:blog-sec-publish": "tsx scripts/publish-service-estate-city-blogs.ts",
     "verify:matrix": "tsx scripts/service-location-matrix-verify.ts",
     "verify:population": "tsx scripts/service-location-population-report.ts",
     "verify:master-final-status": "tsx scripts/master-final-status-report.ts",
