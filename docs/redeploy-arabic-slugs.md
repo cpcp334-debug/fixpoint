@@ -11,8 +11,12 @@
 2. Confirm slug maps exist: `scripts/_slug-maps.json`.
 3. Let Phase 3 run (or resume):  
    `npx tsx scripts/phase3-recompose-sec-ar.ts --batch=50 --skip-gates`  
-   Cursor: `scripts/_phase3-sec-recompose-cursor.json`.
+   Cursor: `scripts/_phase3-sec-recompose-cursor.json`.  
+   Script selects remaining `REVIEW_REQUIRED` AR rows (resume-safe). Avoid interactive transactions (Hostinger 5s timeout).
 4. Smoke `/ar/services`, `/ar/locations/دبي`, one Arabic blog slug after a few batches.
+
+## Progress check
+`npx tsx scripts/audit-ar-quality.ts` — watch `titleHasReviewRequired` fall from ~113k toward 0.
 
 ## Redeploy
 Push this branch, then Redeploy on Hostinger (or your usual pipeline).  
