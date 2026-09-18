@@ -130,8 +130,21 @@ export function evaluateBlogPublicationGates(input: BlogGateInput): BlogGateResu
   const aeo = hasAeoSignals(input.en.body, "en") && hasAeoSignals(input.ar.body, "ar");
   if (!aeo) failures.push("aeo");
 
-  const geo = hasGeoSignals(input.slug, input.en.body, input.en.seoTitle);
+  const geo = hasGeoSignals(input.slug, `${input.en.body}\n${input.ar.body}`, `${input.en.seoTitle}\n${input.ar.seoTitle}`);
   if (!geo) failures.push("geo");
+
+  // Arabic quality: no REVIEW_REQUIRED / Latin placeholders; require Arabic script in AR fields.
+  const arBlob = `${input.ar.title}\n${input.ar.body}\n${input.ar.diySection}\n${input.ar.seoTitle}`;
+  if (/REVIEW_REQUIRED/i.test(arBlob)) failures.push("ar_review_required");
+  if (!/[\u0600-\u06FF]/.test(input.ar.title)) failures.push("ar_title_not_arabic");
+  if (!/[\u0600-\u06FF]/.test(input.ar.body)) failures.push("ar_body_not_arabic");
+  if (/[A-Za-z]{4,}/.test(input.ar.title) && !/Fixpoint|DIY|LED|AC\b/.test(input.ar.title)) {
+    // allow brand/tech tokens; block obvious English place/service names in AR title
+    if (/\b(in|the|and|cleaning|repair|dubai|sharjah)\b/i.test(input.ar.title)) {
+      failures.push("ar_title_latin_words");
+    }
+  }
+  if (!/[\u0600-\u06FF]/.test(input.slug)) failures.push("slug_not_arabic");
 
   const claimBlob = [
     input.en.title,

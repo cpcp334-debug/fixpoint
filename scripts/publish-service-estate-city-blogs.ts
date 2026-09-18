@@ -42,6 +42,12 @@ function nameOf(
   return (row?.name || row?.title || fallback).trim() || fallback;
 }
 
+const AR = /[\u0600-\u06FF]/;
+function isUsableArName(name: string) {
+  if (!name || name === "REVIEW_REQUIRED" || name.startsWith("REVIEW_REQUIRED")) return false;
+  return AR.test(name);
+}
+
 async function loadPairs(): Promise<Pair[]> {
   const [services, communities] = await Promise.all([
     prisma.service.findMany({
@@ -89,15 +95,26 @@ async function loadPairs(): Promise<Pair[]> {
   }
 
   let skippedNoPlace = 0;
+  let skippedBadAr = 0;
   const pairs: Pair[] = [];
   for (const s of services) {
     const serviceNameEn = nameOf(s.translations, "en", s.slug);
     const serviceNameAr = nameOf(s.translations, "ar", serviceNameEn);
+    if (!isUsableArName(serviceNameAr)) {
+      skippedBadAr += 1;
+      continue;
+    }
     const categorySlug = s.category?.slug || "general-maintenance";
     for (const c of communities) {
       const place = placeOf(c.parentId);
       if (!place) {
         skippedNoPlace += 1;
+        continue;
+      }
+      const estateNameAr = nameOf(c.translations, "ar", c.slug);
+      const cityNameAr = nameOf(place.translations, "ar", place.slug);
+      if (!isUsableArName(estateNameAr) || !isUsableArName(cityNameAr)) {
+        skippedBadAr += 1;
         continue;
       }
       pairs.push({
@@ -107,10 +124,10 @@ async function loadPairs(): Promise<Pair[]> {
         categorySlug,
         estateSlug: c.slug,
         estateNameEn: nameOf(c.translations, "en", c.slug),
-        estateNameAr: nameOf(c.translations, "ar", c.slug),
+        estateNameAr,
         citySlug: place.slug,
         cityNameEn: nameOf(place.translations, "en", place.slug),
-        cityNameAr: nameOf(place.translations, "ar", place.slug),
+        cityNameAr,
       });
     }
   }
@@ -120,6 +137,7 @@ async function loadPairs(): Promise<Pair[]> {
       services: services.length,
       communities: communities.length,
       skippedNoPlace,
+      skippedBadAr,
       pairs: pairs.length,
     }),
   );

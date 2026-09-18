@@ -3,6 +3,7 @@
  * Title/slug pattern: {service} + {estate} + {city}
  */
 import { topicWebpForServiceSlug } from "@/lib/media/topic-webp";
+import { buildArabicSecSlug } from "@/lib/slug/arabic-slug";
 
 export type SecInput = {
   serviceSlug: string;
@@ -52,11 +53,14 @@ function words(text: string) {
   return text.replace(/\s+/g, " ").trim().split(/\s+/).filter(Boolean).length;
 }
 
-/** Stable unique slug under MySQL unique VARCHAR(191). */
-export function buildSecSlug(serviceSlug: string, estateSlug: string, citySlug: string) {
-  const base = `${serviceSlug}-${estateSlug}-${citySlug}`.toLowerCase().replace(/[^a-z0-9-]+/g, "-").replace(/-+/g, "-");
+/**
+ * Primary public SEC slug is Arabic Unicode: {خدمة}-{منطقة}-{مدينة}.
+ * Latin legacy URLs are intentionally not redirected (404).
+ */
+export function buildSecSlug(serviceNameAr: string, estateNameAr: string, cityNameAr: string) {
+  const base = buildArabicSecSlug(serviceNameAr, estateNameAr, cityNameAr);
   if (base.length <= 180) return base;
-  const h = hash(`${serviceSlug}|${estateSlug}|${citySlug}`).toString(36);
+  const h = hash(`${serviceNameAr}|${estateNameAr}|${cityNameAr}`).toString(36);
   return `${base.slice(0, 170)}-${h}`;
 }
 
@@ -81,16 +85,17 @@ function padToWords(body: string, min: number, extra: string) {
 }
 
 export function composeServiceEstateCityArticle(input: SecInput): SecArticle {
-  const slug = buildSecSlug(input.serviceSlug, input.estateSlug, input.citySlug);
+  const slug = buildSecSlug(input.serviceNameAr, input.estateNameAr, input.cityNameAr);
   const enTitle = `${input.serviceNameEn} in ${input.estateNameEn}, ${input.cityNameEn}`;
   const arTitle = `${input.serviceNameAr} في ${input.estateNameAr}، ${input.cityNameAr}`;
+  const climateSeed = hash(`${input.serviceSlug}|${input.estateSlug}|${input.citySlug}`);
   const climate = [
     "coastal humidity",
     "summer heat",
     "fine dust on finishes",
     "closed apartment air",
-  ][hash(slug) % 4]!;
-  const climateAr = ["رطوبة ساحلية", "حرّ الصيف", "غبار ناعم على الأسطح", "هواء شقق مغلقة"][hash(slug) % 4]!;
+  ][climateSeed % 4]!;
+  const climateAr = ["رطوبة ساحلية", "حرّ الصيف", "غبار ناعم على الأسطح", "هواء شقق مغلقة"][climateSeed % 4]!;
 
   const enBodyCore = [
     `## What is this?`,
