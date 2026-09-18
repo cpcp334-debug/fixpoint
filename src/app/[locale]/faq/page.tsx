@@ -16,6 +16,8 @@ import { APPROVED_CATEGORIES } from "../../../../prisma/data/catalog-a1";
 /** Rebuild after MySQL import / publish — avoid empty SSG baked at first Hostinger build. */
 export const revalidate = 300;
 
+const FAQ_PAGE_SIZE = 6;
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "FaqPage" });
@@ -27,7 +29,7 @@ export default async function FaqRoute({
   searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ q?: string; page?: string }>;
+  searchParams: Promise<{ q?: string; page?: string; category?: string }>;
 }) {
   const { locale } = await params;
   const sp = await searchParams;
@@ -43,6 +45,7 @@ export default async function FaqRoute({
   );
 
   const q = sp.q?.trim().toLowerCase() || "";
+  const categoryFilter = sp.category?.trim() || "";
   type FlatItem = { slug: string; title: string; excerpt: string; categorySlug: string; categoryName: string };
   const flat: FlatItem[] = pages.map((page) => {
     const categorySlug = page.categorySlug || "other";
@@ -55,7 +58,7 @@ export default async function FaqRoute({
     };
   });
 
-  const filtered = q
+  let filtered = q
     ? flat.filter(
         (item) =>
           item.title.toLowerCase().includes(q) ||
@@ -64,10 +67,15 @@ export default async function FaqRoute({
       )
     : flat;
 
-  const pageSize = 12;
-  const totalPages = Math.max(1, Math.ceil(filtered.length / pageSize));
+  if (categoryFilter) {
+    filtered = filtered.filter((item) => item.categorySlug === categoryFilter);
+  }
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / FAQ_PAGE_SIZE));
   const page = Math.min(totalPages, Math.max(1, Number(sp.page || "1") || 1));
-  const pageItems = filtered.slice((page - 1) * pageSize, page * pageSize);
+  const pageItems = filtered.slice((page - 1) * FAQ_PAGE_SIZE, page * FAQ_PAGE_SIZE);
+  const qParam = sp.q?.trim() || undefined;
+  const categoryParam = categoryFilter || undefined;
 
   const grouped = new Map<string, { slug: string; name: string; items: Array<{ slug: string; title: string; excerpt: string }> }>();
   for (const item of pageItems) {
@@ -81,12 +89,22 @@ export default async function FaqRoute({
   }
   const groups = [...grouped.values()];
 
+  const heroTitle = categoryParam
+    ? names.get(categoryParam) || categoryParam
+    : t("title");
+
   return (
     <PageShell
       breadcrumbs={
         <Breadcrumbs
           label={nav("breadcrumb")}
-          items={[{ href: "/", label: nav("home") }, { href: "/faq", label: t("title") }]}
+          items={[
+            { href: "/", label: nav("home") },
+            { href: "/faq", label: t("title") },
+            ...(categoryParam
+              ? [{ href: `/faq?category=${encodeURIComponent(categoryParam)}`, label: heroTitle }]
+              : []),
+          ]}
         />
       }
     >
@@ -98,7 +116,7 @@ export default async function FaqRoute({
           locale,
         })}
       />
-      <PublicHero locale={locale} kicker={t("title")} title={t("title")} lead={t("lead")} compact />
+      <PublicHero locale={locale} kicker={t("title")} title={heroTitle} lead={t("lead")} compact />
       <Section>
         <FaqDirectory
           groups={groups}
@@ -107,12 +125,17 @@ export default async function FaqRoute({
           openLabel={t("open")}
           query={sp.q?.trim() || ""}
           filterLabel={pager("filter")}
+          hiddenFields={categoryParam ? { category: categoryParam } : undefined}
         />
         <PrevNextPagination
           currentPage={page}
           totalPages={totalPages}
-          previousHref={page > 1 ? listPageHref("/faq", page - 1, { q: sp.q?.trim() }) : null}
-          nextHref={page < totalPages ? listPageHref("/faq", page + 1, { q: sp.q?.trim() }) : null}
+          previousHref={
+            page > 1 ? listPageHref("/faq", page - 1, { q: qParam, category: categoryParam }) : null
+          }
+          nextHref={
+            page < totalPages ? listPageHref("/faq", page + 1, { q: qParam, category: categoryParam }) : null
+          }
           previousLabel={pager("previous")}
           nextLabel={pager("next")}
           pageOfLabel={pager("pageOf", { current: page, total: totalPages })}

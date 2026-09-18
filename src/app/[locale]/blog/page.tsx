@@ -53,7 +53,7 @@ export default async function BlogIndexPage({
 
   const category = sp.category?.trim();
   const q = sp.q?.trim();
-  const pageSize = 12;
+  const pageSize = 6;
   // First page count comes with take:1 metadata path; here fetch total via page query
   const pageHint = Math.max(1, Number(sp.page || "1") || 1);
   const first = await getPublishedBlogArticlesPage(locale, {

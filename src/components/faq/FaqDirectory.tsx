@@ -10,6 +10,7 @@ export function FaqDirectory({
   openLabel,
   query = "",
   filterLabel,
+  hiddenFields,
 }: {
   groups: Group[];
   searchPlaceholder: string;
@@ -18,10 +19,17 @@ export function FaqDirectory({
   /** Current search query (server-driven via ?q=). */
   query?: string;
   filterLabel: string;
+  /** Preserve list params (e.g. category) when submitting search. */
+  hiddenFields?: Record<string, string>;
 }) {
   return (
     <div>
       <form method="get" className="flex max-w-lg flex-wrap gap-3">
+        {hiddenFields
+          ? Object.entries(hiddenFields).map(([name, value]) => (
+              <input key={name} type="hidden" name={name} value={value} />
+            ))
+          : null}
         <label className="min-w-[12rem] flex-1">
           <span className="sr-only">{searchPlaceholder}</span>
           <input
@@ -40,7 +48,11 @@ export function FaqDirectory({
         <div className="mt-8 grid gap-8">
           {groups.map((group) => (
             <section key={group.slug}>
-              <h2 className="text-lg font-semibold text-navy">{group.name}</h2>
+              <h2 className="text-lg font-semibold text-navy">
+                <Link href={`/faq?category=${encodeURIComponent(group.slug)}`} className="hover:underline">
+                  {group.name}
+                </Link>
+              </h2>
               <ul className="mt-3 grid gap-3">
                 {group.items.map((item) => (
                   <li key={item.slug} className="rounded-xl border border-line bg-white p-4">
