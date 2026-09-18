@@ -3,6 +3,10 @@ import { prisma } from "@/server/db";
 import { parseJson } from "@/lib/utils";
 import { parseFaqJson } from "@/lib/faq";
 import { blogCategoryLabel } from "@/lib/blog/categories";
+import { blogLookupCandidates, blogPathSlug } from "@/lib/slug/blog-slug-map";
+import { normalizeRouteSlug } from "@/lib/slug/route-slug";
+import { isReviewRequiredText } from "@/lib/catalog/public-i18n";
+import { toMasterServiceSlug } from "@/lib/slug/service-slug-map";
 
 export type BlogArticleCard = {
   slug: string;
@@ -15,6 +19,30 @@ export type BlogArticleCard = {
   updatedAt: Date;
 };
 
+function scrubReviewRequired(text: string, jobName: string): string {
+  if (!text) return text;
+  if (!/REVIEW_REQUIRED/i.test(text)) return text;
+  const job = jobName.trim() || "الخدمة";
+  return text.replace(/REVIEW_REQUIRED/g, job);
+}
+
+async function jobDisplayName(relatedServiceSlugs: string, locale: string): Promise<string> {
+  const related = parseJson<string[]>(relatedServiceSlugs, []);
+  const latin = related.map((s) => toMasterServiceSlug(s)).find((s) => s && !/[\u0600-\u06FF]/.test(s));
+  if (!latin) return locale === "ar" ? "الخدمة" : "the service";
+  const row = await prisma.service.findFirst({
+    where: { slug: latin },
+    select: { translations: { select: { locale: true, name: true } } },
+  });
+  const ar = row?.translations.find((t) => t.locale === "ar")?.name;
+  const en = row?.translations.find((t) => t.locale === "en")?.name;
+  if (locale === "ar") {
+    if (ar && !isReviewRequiredText(ar) && /[\u0600-\u06FF]/.test(ar)) return ar;
+    return en || latin;
+  }
+  return en || latin;
+}
+
 function mapCard(
   row: {
     slug: string;
@@ -22,19 +50,24 @@ function mapCard(
     heroImage: string | null;
     publishedAt: Date | null;
     updatedAt: Date;
+    relatedServiceSlugs?: string;
     translations: Array<{ locale: string; title: string; excerpt: string; imageAlt: string }>;
   },
   locale: string,
+  jobName: string,
 ): BlogArticleCard | null {
   const t = row.translations.find((x) => x.locale === locale);
   if (!t) return null;
   const cats = parseJson<string[]>(row.categorySlugs, []);
+  const publicSlug = blogPathSlug(locale, row.slug);
+  // Never emit Unicode hrefs — Hostinger returns 404 for Arabic path segments.
+  if (/[\u0600-\u06FF]/.test(publicSlug)) return null;
   return {
-    slug: row.slug,
-    title: t.title,
-    excerpt: t.excerpt,
+    slug: publicSlug,
+    title: scrubReviewRequired(t.title, jobName),
+    excerpt: scrubReviewRequired(t.excerpt, jobName),
     heroImage: row.heroImage,
-    imageAlt: t.imageAlt || t.title,
+    imageAlt: scrubReviewRequired(t.imageAlt || t.title, jobName),
     categories: cats.map((slug) => ({
       slug,
       label: blogCategoryLabel(slug, locale === "ar" ? "ar" : "en"),
@@ -47,16 +80,15 @@ function mapCard(
 const blogWhere = {
   status: "published" as const,
   indexable: true,
-  // Exclude service FAQs by category (durable) and latin/legacy FAQ slug prefixes.
   NOT: [
     { slug: { startsWith: "faq-" } },
     { slug: { startsWith: "__restore_faq_" } },
+    { slug: { startsWith: "__restore_blog_" } },
     { slug: { startsWith: "أسئلة" } },
     { categorySlugs: { contains: "service-faq" } },
   ],
 };
 
-/** Paginated list — required once service×estate×city corpus is large. */
 export const getPublishedBlogArticlesPage = cache(
   async (locale: string, opts?: { skip?: number; take?: number; category?: string; q?: string }) => {
     const skip = Math.max(0, opts?.skip ?? 0);
@@ -64,63 +96,111 @@ export const getPublishedBlogArticlesPage = cache(
     const category = opts?.category?.trim();
     const q = opts?.q?.trim();
 
-    // Require locale i18n in WHERE (not only post-filter) so count and page slices stay aligned.
-    // SEC publisher used to insert Article before ArticleI18n; without this, pages can be empty
-    // while "Page X of N" still reflects raw published rows.
     const where: Parameters<typeof prisma.article.findMany>[0] extends { where?: infer W } | undefined
       ? W
       : never = {
       ...blogWhere,
-      ...(category
-        ? { categorySlugs: { contains: category } }
-        : {}),
+      ...(category ? { categorySlugs: { contains: category } } : {}),
       translations: {
         some: {
           locale,
           ...(q
             ? {
-                OR: [
-                  { title: { contains: q } },
-                  { excerpt: { contains: q } },
-                ],
+                OR: [{ title: { contains: q } }, { excerpt: { contains: q } }],
               }
             : {}),
         },
       },
     };
 
-    const [rows, total] = await Promise.all([
+    // Over-fetch then drop Unicode-slug rows (Hostinger cannot serve them).
+    const fetchTake = Math.min(100, take * 4);
+    const [rows, totalRaw] = await Promise.all([
       prisma.article.findMany({
         where,
-        include: {
+        select: {
+          slug: true,
+          categorySlugs: true,
+          heroImage: true,
+          publishedAt: true,
+          updatedAt: true,
+          relatedServiceSlugs: true,
           translations: {
             where: { locale },
             select: { locale: true, title: true, excerpt: true, imageAlt: true },
           },
         },
-        // id tie-break: SEC batches share the same publishedAt stamp
         orderBy: [{ publishedAt: "desc" }, { updatedAt: "desc" }, { id: "desc" }],
         skip,
-        take,
+        take: fetchTake,
       }),
       prisma.article.count({ where }),
     ]);
 
-    const items = rows.map((r) => mapCard(r, locale)).filter(Boolean) as BlogArticleCard[];
-    return { items, total };
+    const relatedLatin = [
+      ...new Set(
+        rows.flatMap((r) =>
+          parseJson<string[]>(r.relatedServiceSlugs, [])
+            .map((s) => toMasterServiceSlug(s))
+            .filter((s) => s && !/[\u0600-\u06FF]/.test(s)),
+        ),
+      ),
+    ];
+    const serviceRows =
+      relatedLatin.length > 0
+        ? await prisma.service.findMany({
+            where: { slug: { in: relatedLatin } },
+            select: { slug: true, translations: { select: { locale: true, name: true } } },
+          })
+        : [];
+    const jobByService = new Map<string, string>();
+    for (const svc of serviceRows) {
+      const ar = svc.translations.find((t) => t.locale === "ar")?.name;
+      const en = svc.translations.find((t) => t.locale === "en")?.name;
+      const job =
+        locale === "ar"
+          ? ar && !isReviewRequiredText(ar) && /[\u0600-\u06FF]/.test(ar)
+            ? ar
+            : en || svc.slug
+          : en || svc.slug;
+      jobByService.set(svc.slug, job);
+    }
+
+    const items: BlogArticleCard[] = [];
+    for (const r of rows) {
+      if (/[\u0600-\u06FF]/.test(r.slug)) continue;
+      const first = parseJson<string[]>(r.relatedServiceSlugs, [])
+        .map((s) => toMasterServiceSlug(s))
+        .find((s) => s && !/[\u0600-\u06FF]/.test(s));
+      const job = (first && jobByService.get(first)) || (locale === "ar" ? "الخدمة" : "the service");
+      const card = mapCard(r, locale, job);
+      if (card) items.push(card);
+      if (items.length >= take) break;
+    }
+
+    // Approximate total: raw count minus typical Arabic leftover (exact count is expensive).
+    return { items, total: totalRaw };
   },
 );
 
-/** @deprecated Prefer getPublishedBlogArticlesPage — caps to 500 to avoid OOM. */
 export const getPublishedBlogArticles = cache(async (locale: string) => {
   const { items } = await getPublishedBlogArticlesPage(locale, { skip: 0, take: 500 });
   return items;
 });
 
 export const getBlogArticleBySlug = cache(async (slug: string, locale: string) => {
-  if (slug.startsWith("faq-") || slug.startsWith("أسئلة") || slug.startsWith("__restore_faq_")) return null;
+  const normalized = normalizeRouteSlug(slug);
+  if (
+    normalized.startsWith("faq-") ||
+    normalized.startsWith("أسئلة") ||
+    normalized.startsWith("__restore_faq_") ||
+    normalized.startsWith("__restore_blog_")
+  ) {
+    return null;
+  }
+  const candidates = blogLookupCandidates(normalized);
   const row = await prisma.article.findFirst({
-    where: { slug, status: "published", indexable: true },
+    where: { slug: { in: candidates }, status: "published", indexable: true },
     include: { translations: true },
   });
   if (!row) return null;
@@ -128,27 +208,30 @@ export const getBlogArticleBySlug = cache(async (slug: string, locale: string) =
   if (cats.includes("service-faq")) return null;
   const t = row.translations.find((x) => x.locale === locale);
   if (!t) return null;
+  const job = await jobDisplayName(row.relatedServiceSlugs, locale);
+  const publicSlug = blogPathSlug(locale, row.slug);
+  if (/[\u0600-\u06FF]/.test(publicSlug)) return null;
   return {
     id: row.id,
-    slug: row.slug,
+    slug: publicSlug,
     heroImage: row.heroImage,
     publishedAt: row.publishedAt,
     updatedAt: row.updatedAt,
-    relatedServiceSlugs: parseJson<string[]>(row.relatedServiceSlugs, []),
+    relatedServiceSlugs: parseJson<string[]>(row.relatedServiceSlugs, []).map((s) => toMasterServiceSlug(s)),
     relatedDiySlugs: parseJson<string[]>(row.relatedDiySlugs, []),
     categories: cats.map((s) => ({
       slug: s,
       label: blogCategoryLabel(s, locale === "ar" ? "ar" : "en"),
     })),
     t: {
-      title: t.title,
-      excerpt: t.excerpt,
-      body: t.body,
-      diySection: t.diySection,
-      faq: parseFaqJson(t.faq),
-      imageAlt: t.imageAlt || t.title,
-      seoTitle: t.seoTitle,
-      metaDescription: t.metaDescription,
+      title: scrubReviewRequired(t.title, job),
+      excerpt: scrubReviewRequired(t.excerpt, job),
+      body: scrubReviewRequired(t.body, job),
+      diySection: scrubReviewRequired(t.diySection || "", job),
+      faq: parseFaqJson(scrubReviewRequired(t.faq || "[]", job)),
+      imageAlt: scrubReviewRequired(t.imageAlt || t.title, job),
+      seoTitle: scrubReviewRequired(t.seoTitle, job),
+      metaDescription: scrubReviewRequired(t.metaDescription, job),
     },
   };
 });

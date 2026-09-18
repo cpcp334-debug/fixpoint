@@ -54,10 +54,18 @@ function words(text: string) {
 }
 
 /**
- * Primary public SEC slug is Arabic Unicode: {خدمة}-{منطقة}-{مدينة}.
- * Latin legacy URLs are intentionally not redirected (404).
+ * Primary SEC slug is Latin: {service}-{estate}-{city}.
+ * Hostinger cannot serve Unicode paths; Arabic forms live in _slug-maps.json → article.
  */
-export function buildSecSlug(serviceNameAr: string, estateNameAr: string, cityNameAr: string) {
+export function buildSecSlug(serviceSlug: string, estateSlug: string, citySlug: string) {
+  const base = `${serviceSlug}-${estateSlug}-${citySlug}`.replace(/-+/g, "-").replace(/^-|-$/g, "");
+  if (base.length <= 180) return base;
+  const h = hash(`${serviceSlug}|${estateSlug}|${citySlug}`).toString(36);
+  return `${base.slice(0, 170)}-${h}`;
+}
+
+/** Kept for map tooling / soft recovery. */
+export function buildSecSlugArabic(serviceNameAr: string, estateNameAr: string, cityNameAr: string) {
   const base = buildArabicSecSlug(serviceNameAr, estateNameAr, cityNameAr);
   if (base.length <= 180) return base;
   const h = hash(`${serviceNameAr}|${estateNameAr}|${cityNameAr}`).toString(36);
@@ -85,7 +93,7 @@ function padToWords(body: string, min: number, extra: string) {
 }
 
 export function composeServiceEstateCityArticle(input: SecInput): SecArticle {
-  const slug = buildSecSlug(input.serviceNameAr, input.estateNameAr, input.cityNameAr);
+  const slug = buildSecSlug(input.serviceSlug, input.estateSlug, input.citySlug);
   const enTitle = `${input.serviceNameEn} in ${input.estateNameEn}, ${input.cityNameEn}`;
   const arTitle = `${input.serviceNameAr} في ${input.estateNameAr}، ${input.cityNameAr}`;
   const climateSeed = hash(`${input.serviceSlug}|${input.estateSlug}|${input.citySlug}`);
