@@ -154,6 +154,7 @@ export const getPublishedGuides = cache(async (locale: string) =>
       where: { status: "published", indexable: true },
       select: {
         slug: true,
+        serviceId: true,
         riskLevel: true,
         difficulty: true,
         estimatedTime: true,
