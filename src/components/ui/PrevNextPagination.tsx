@@ -74,6 +74,7 @@ export function listPageHref(
   path: string,
   page: number,
   extras?: Record<string, string | undefined>,
+  options?: { pageParam?: string },
 ): string {
   const qs = new URLSearchParams();
   if (extras) {
@@ -81,7 +82,8 @@ export function listPageHref(
       if (value) qs.set(key, value);
     }
   }
-  if (page > 1) qs.set("page", String(page));
+  const pageParam = options?.pageParam ?? "page";
+  if (page > 1) qs.set(pageParam, String(page));
   const query = qs.toString();
   return query ? `${path}?${query}` : path;
 }

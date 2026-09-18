@@ -13,6 +13,7 @@ import { CategoryChildGrid } from "@/components/catalog/CategoryChildGrid";
 import { listPageHref, PrevNextPagination } from "@/components/ui/PrevNextPagination";
 
 const CATEGORY_PAGE_SIZE = 6;
+const FULL_LIST_PAGE_SIZE = 6;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -25,7 +26,7 @@ export default async function ServicesPage({
   searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ page?: string }>;
+  searchParams: Promise<{ page?: string; catPage?: string; q?: string }>;
 }) {
   const { locale } = await params;
   const sp = await searchParams;
@@ -36,9 +37,9 @@ export default async function ServicesPage({
   const cta = await getTranslations("Cta");
   const pager = await getTranslations("Pagination");
   const categories = buildVisitorNavTree();
-  const totalPages = Math.max(1, Math.ceil(categories.length / CATEGORY_PAGE_SIZE));
-  const page = Math.min(totalPages, Math.max(1, Number(sp.page || "1") || 1));
-  const pageCategories = categories.slice((page - 1) * CATEGORY_PAGE_SIZE, page * CATEGORY_PAGE_SIZE);
+  const catTotalPages = Math.max(1, Math.ceil(categories.length / CATEGORY_PAGE_SIZE));
+  const catPage = Math.min(catTotalPages, Math.max(1, Number(sp.catPage || "1") || 1));
+  const pageCategories = categories.slice((catPage - 1) * CATEGORY_PAGE_SIZE, catPage * CATEGORY_PAGE_SIZE);
   const allChildren = (
     await Promise.all(
       categories.flatMap((cat) =>
@@ -56,6 +57,25 @@ export default async function ServicesPage({
       ),
     )
   ).filter((item): item is { slug: string; href: string; name: string; description: string } => Boolean(item?.name));
+
+  const q = sp.q?.trim().toLowerCase() || "";
+  const qParam = sp.q?.trim() || undefined;
+  const filteredChildren = q
+    ? allChildren.filter(
+        (item) =>
+          item.name.toLowerCase().includes(q) ||
+          item.slug.toLowerCase().includes(q) ||
+          item.description.toLowerCase().includes(q),
+      )
+    : allChildren;
+
+  const listTotalPages = Math.max(1, Math.ceil(filteredChildren.length / FULL_LIST_PAGE_SIZE));
+  const listPage = Math.min(listTotalPages, Math.max(1, Number(sp.page || "1") || 1));
+  const pageChildren = filteredChildren.slice(
+    (listPage - 1) * FULL_LIST_PAGE_SIZE,
+    listPage * FULL_LIST_PAGE_SIZE,
+  );
+  const catPageParam = catPage > 1 ? String(catPage) : undefined;
 
   return (
     <PageShell
@@ -78,13 +98,21 @@ export default async function ServicesPage({
           ))}
         </ul>
         <PrevNextPagination
-          currentPage={page}
-          totalPages={totalPages}
-          previousHref={page > 1 ? listPageHref("/services", page - 1) : null}
-          nextHref={page < totalPages ? listPageHref("/services", page + 1) : null}
+          currentPage={catPage}
+          totalPages={catTotalPages}
+          previousHref={
+            catPage > 1
+              ? listPageHref("/services", catPage - 1, { q: qParam, page: listPage > 1 ? String(listPage) : undefined }, { pageParam: "catPage" })
+              : null
+          }
+          nextHref={
+            catPage < catTotalPages
+              ? listPageHref("/services", catPage + 1, { q: qParam, page: listPage > 1 ? String(listPage) : undefined }, { pageParam: "catPage" })
+              : null
+          }
           previousLabel={pager("previous")}
           nextLabel={pager("next")}
-          pageOfLabel={pager("pageOf", { current: page, total: totalPages })}
+          pageOfLabel={pager("pageOf", { current: catPage, total: catTotalPages })}
         />
       </Section>
 
@@ -92,12 +120,30 @@ export default async function ServicesPage({
         <SectionHeader title={t("fullListTitle")} lead={t("fullListLead", { count: allChildren.length })} />
         <div className="mt-6">
           <CategoryChildGrid
-            items={allChildren}
+            items={pageChildren}
             searchPlaceholder={t("fullListSearch")}
             emptyLabel={t("fullListEmpty")}
             cta={home("viewService")}
+            query={sp.q?.trim() || ""}
+            filterLabel={pager("filter")}
+            hiddenFields={catPageParam ? { catPage: catPageParam } : undefined}
           />
         </div>
+        <PrevNextPagination
+          currentPage={listPage}
+          totalPages={listTotalPages}
+          previousHref={
+            listPage > 1 ? listPageHref("/services", listPage - 1, { q: qParam, catPage: catPageParam }) : null
+          }
+          nextHref={
+            listPage < listTotalPages
+              ? listPageHref("/services", listPage + 1, { q: qParam, catPage: catPageParam })
+              : null
+          }
+          previousLabel={pager("previous")}
+          nextLabel={pager("next")}
+          pageOfLabel={pager("pageOf", { current: listPage, total: listTotalPages })}
+        />
       </Section>
 
       <CtaBand

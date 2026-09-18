@@ -14,6 +14,9 @@ import { CtaBand } from "@/components/public/CtaBand";
 import { CategoryChildGrid } from "@/components/catalog/CategoryChildGrid";
 import { TopElectricalServices } from "@/components/catalog/TopElectricalServices";
 import { TOP_ELECTRICAL_SLUGS } from "../../../../../prisma/data/electrical-service-copy";
+import { listPageHref, PrevNextPagination } from "@/components/ui/PrevNextPagination";
+
+const CHILD_PAGE_SIZE = 6;
 
 export async function generateStaticParams() {
   return buildApprovedNavTree().map((c) => ({ category: c.slug }));
@@ -38,10 +41,13 @@ export async function generateMetadata({
 
 export default async function CategoryPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string; category: string }>;
+  searchParams: Promise<{ page?: string; q?: string }>;
 }) {
   const { locale, category } = await params;
+  const sp = await searchParams;
   setRequestLocale(locale);
   const cat = getNavCategory(category);
   if (!cat) notFound();
@@ -50,6 +56,7 @@ export default async function CategoryPage({
   const nav = await getTranslations("Nav");
   const home = await getTranslations("Home");
   const cta = await getTranslations("Cta");
+  const pager = await getTranslations("Pagination");
   const loc = getNavCategoryLocalized(cat, locale);
 
   const anchorPublished = cat.anchorSlug ? Boolean(await getServiceBySlug(cat.anchorSlug, locale)) : false;
@@ -77,6 +84,33 @@ export default async function CategoryPage({
       };
     }),
   );
+
+  const sortedChildren =
+    cat.slug === "electrical"
+      ? [...childrenWithNames].sort((a, b) => {
+          const rank = (slug: string) => {
+            const i = TOP_ELECTRICAL_SLUGS.indexOf(slug as (typeof TOP_ELECTRICAL_SLUGS)[number]);
+            return i === -1 ? 100 : i;
+          };
+          return rank(a.slug) - rank(b.slug);
+        })
+      : childrenWithNames;
+
+  const q = sp.q?.trim().toLowerCase() || "";
+  const qParam = sp.q?.trim() || undefined;
+  const filtered = q
+    ? sortedChildren.filter(
+        (item) =>
+          item.name.toLowerCase().includes(q) ||
+          item.slug.toLowerCase().includes(q) ||
+          item.description.toLowerCase().includes(q),
+      )
+    : sortedChildren;
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / CHILD_PAGE_SIZE));
+  const page = Math.min(totalPages, Math.max(1, Number(sp.page || "1") || 1));
+  const pageItems = filtered.slice((page - 1) * CHILD_PAGE_SIZE, page * CHILD_PAGE_SIZE);
+  const categoryPath = `/services/${cat.slug}`;
 
   const aeo = [
     {
@@ -152,22 +186,23 @@ export default async function CategoryPage({
         <SectionHeader title={t("childrenTitle")} lead={t("childrenLead", { count: childrenWithNames.length })} />
         <div className="mt-6">
           <CategoryChildGrid
-            items={
-              cat.slug === "electrical"
-                ? [...childrenWithNames].sort((a, b) => {
-                    const rank = (slug: string) => {
-                      const i = TOP_ELECTRICAL_SLUGS.indexOf(slug as (typeof TOP_ELECTRICAL_SLUGS)[number]);
-                      return i === -1 ? 100 : i;
-                    };
-                    return rank(a.slug) - rank(b.slug);
-                  })
-                : childrenWithNames
-            }
+            items={pageItems}
             searchPlaceholder={t("searchPlaceholder")}
             emptyLabel={t("searchEmpty")}
             cta={home("viewService")}
+            query={sp.q?.trim() || ""}
+            filterLabel={pager("filter")}
           />
         </div>
+        <PrevNextPagination
+          currentPage={page}
+          totalPages={totalPages}
+          previousHref={page > 1 ? listPageHref(categoryPath, page - 1, { q: qParam }) : null}
+          nextHref={page < totalPages ? listPageHref(categoryPath, page + 1, { q: qParam }) : null}
+          previousLabel={pager("previous")}
+          nextLabel={pager("next")}
+          pageOfLabel={pager("pageOf", { current: page, total: totalPages })}
+        />
       </Section>
 
       <Section>
