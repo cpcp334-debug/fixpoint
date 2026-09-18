@@ -10,6 +10,9 @@ import { PageShell } from "@/components/public/PageShell";
 import { PublicHero } from "@/components/public/PublicHero";
 import { CtaBand } from "@/components/public/CtaBand";
 import { CategoryChildGrid } from "@/components/catalog/CategoryChildGrid";
+import { listPageHref, PrevNextPagination } from "@/components/ui/PrevNextPagination";
+
+const CATEGORY_PAGE_SIZE = 6;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -17,14 +20,25 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return buildMetadata({ locale, title: `${t("title")} | ${brandName(locale)}`, description: t("lead"), path: "/services" });
 }
 
-export default async function ServicesPage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function ServicesPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ page?: string }>;
+}) {
   const { locale } = await params;
+  const sp = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations("Services");
   const nav = await getTranslations("Nav");
   const home = await getTranslations("Home");
   const cta = await getTranslations("Cta");
+  const pager = await getTranslations("Pagination");
   const categories = buildVisitorNavTree();
+  const totalPages = Math.max(1, Math.ceil(categories.length / CATEGORY_PAGE_SIZE));
+  const page = Math.min(totalPages, Math.max(1, Number(sp.page || "1") || 1));
+  const pageCategories = categories.slice((page - 1) * CATEGORY_PAGE_SIZE, page * CATEGORY_PAGE_SIZE);
   const allChildren = (
     await Promise.all(
       categories.flatMap((cat) =>
@@ -57,12 +71,21 @@ export default async function ServicesPage({ params }: { params: Promise<{ local
       <Section>
         <SectionHeader title={home("mainServicesTitle")} lead={home("mainServicesLead")} />
         <ul className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {categories.map((cat) => (
+          {pageCategories.map((cat) => (
             <li key={cat.slug} className="flex h-full">
               <MainCategoryCard category={cat} locale={locale} />
             </li>
           ))}
         </ul>
+        <PrevNextPagination
+          currentPage={page}
+          totalPages={totalPages}
+          previousHref={page > 1 ? listPageHref("/services", page - 1) : null}
+          nextHref={page < totalPages ? listPageHref("/services", page + 1) : null}
+          previousLabel={pager("previous")}
+          nextLabel={pager("next")}
+          pageOfLabel={pager("pageOf", { current: page, total: totalPages })}
+        />
       </Section>
 
       <Section tone="sand">

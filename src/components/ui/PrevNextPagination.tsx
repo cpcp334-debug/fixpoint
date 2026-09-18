@@ -20,7 +20,7 @@ const btnDisabled = "cursor-not-allowed border-line/60 bg-sand/60 text-muted";
 
 /**
  * Single-line list pager: Previous | Page X of Y | Next.
- * Used on public blog / FAQ indexes (not DIY).
+ * Used on public blog / FAQ / DIY / Services indexes.
  */
 export function PrevNextPagination({
   currentPage,

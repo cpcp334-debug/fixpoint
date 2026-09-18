@@ -13,9 +13,12 @@ import { CtaBand } from "@/components/public/CtaBand";
 import { DiyGuideGrid } from "@/components/diy/DiyGuideGrid";
 import { ButtonLink } from "@/components/ui/Button";
 import { IconArrow } from "@/components/ui/Icon";
+import { listPageHref, PrevNextPagination } from "@/components/ui/PrevNextPagination";
 
 /** Rebuild after MySQL import / publish — avoid empty SSG baked at first Hostinger build. */
 export const revalidate = 300;
+
+const GUIDE_PAGE_SIZE = 6;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -35,13 +38,21 @@ function guideSortRank(risk: string) {
   return 2;
 }
 
-export default async function DiyIndexPage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function DiyIndexPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<{ page?: string; q?: string }>;
+}) {
   const { locale } = await params;
+  const sp = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations("Diy");
   const nav = await getTranslations("Nav");
   const home = await getTranslations("Home");
   const cta = await getTranslations("Cta");
+  const pager = await getTranslations("Pagination");
 
   const [categories, guides] = await Promise.all([
     getPublishedDiyCategories(locale),
@@ -57,6 +68,22 @@ export default async function DiyIndexPage({ params }: { params: Promise<{ local
     time: guide.t.estimatedTime || guide.estimatedTime,
     summary: guide.t.quickAnswer,
   }));
+
+  const q = sp.q?.trim().toLowerCase() || "";
+  const filtered = q
+    ? gridItems.filter(
+        (item) =>
+          item.title.toLowerCase().includes(q) ||
+          item.slug.toLowerCase().includes(q) ||
+          (item.category?.toLowerCase().includes(q) ?? false) ||
+          item.summary.toLowerCase().includes(q),
+      )
+    : gridItems;
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / GUIDE_PAGE_SIZE));
+  const page = Math.min(totalPages, Math.max(1, Number(sp.page || "1") || 1));
+  const pageItems = filtered.slice((page - 1) * GUIDE_PAGE_SIZE, page * GUIDE_PAGE_SIZE);
+  const qParam = sp.q?.trim() || undefined;
 
   const statsLabel = t("stats", { guides: guides.length, categories: categories.length });
 
@@ -119,12 +146,23 @@ export default async function DiyIndexPage({ params }: { params: Promise<{ local
           />
           <div className="mt-6">
             <DiyGuideGrid
-              items={gridItems}
+              items={pageItems}
               searchPlaceholder={t("searchPlaceholder")}
               emptyLabel={t("searchEmpty")}
               cta={home("readGuide")}
+              query={sp.q?.trim() || ""}
+              filterLabel={pager("filter")}
             />
           </div>
+          <PrevNextPagination
+            currentPage={page}
+            totalPages={totalPages}
+            previousHref={page > 1 ? listPageHref("/diy", page - 1, { q: qParam }) : null}
+            nextHref={page < totalPages ? listPageHref("/diy", page + 1, { q: qParam }) : null}
+            previousLabel={pager("previous")}
+            nextLabel={pager("next")}
+            pageOfLabel={pager("pageOf", { current: page, total: totalPages })}
+          />
         </Section>
       ) : (
         <Section tone="sand">
