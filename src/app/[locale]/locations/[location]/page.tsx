@@ -19,6 +19,10 @@ import { CtaRow } from "@/components/public/CtaRow";
 import { CtaBand } from "@/components/public/CtaBand";
 import { EmiratePlaceDirectory } from "@/components/locations/EmiratePlaceDirectory";
 
+/** Avoid year-long sticky notFound() after slug migrations. */
+export const dynamic = "force-dynamic";
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   try {
     const rows = await prisma.location.findMany({

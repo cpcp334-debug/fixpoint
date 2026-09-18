@@ -19,7 +19,9 @@
 `npx tsx scripts/audit-ar-quality.ts` — watch `titleHasReviewRequired` fall from ~113k toward 0.
 
 ## Redeploy
-Push this branch, then Redeploy on Hostinger (or your usual pipeline).  
+Push this branch, then Redeploy on Hostinger (or your usual pipeline).
+Location detail pages use `force-dynamic` so prerendered `notFound()` cannot stick for a year after slug changes.
+Smoke: `/ar/locations`, `/ar/locations/أبوظبي`, `/ar/locations/دبي`.  
 `postdeploy` already runs migrate + import hooks — no redirect migration.
 
 ## Rollback note

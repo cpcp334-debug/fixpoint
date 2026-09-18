@@ -3,6 +3,7 @@ import type { Prisma } from "@prisma/client";
 import { prisma } from "@/server/db";
 import { pickI18n } from "@/lib/utils";
 import { isApprovedPublicServiceSlug } from "@/lib/catalog/approved-nav";
+import { publicSlugLookupCandidates } from "@/lib/slug/route-slug";
 import {
   getServiceLocation as resolvePublicServiceLocation,
   resolveServiceLocationPage,
@@ -125,8 +126,9 @@ export async function publishedServingLocationSlugs() {
 }
 
 export const getPublishedLocation = cache(async (slug: string, locale: string) => {
+  const candidates = publicSlugLookupCandidates(slug);
   const row = await prisma.location.findFirst({
-    where: { slug, ...publicLocationWhere, type: { in: ["emirate", "city", "community"] } },
+    where: { slug: { in: candidates }, ...publicLocationWhere, type: { in: ["emirate", "city", "community"] } },
     include: {
       translations: true,
       parent: { include: { translations: true, parent: { include: { translations: true } } } },
@@ -140,8 +142,9 @@ export const getPublishedLocation = cache(async (slug: string, locale: string) =
 });
 
 export const getEmirateBySlug = cache(async (slug: string, locale: string) => {
+  const candidates = publicSlugLookupCandidates(slug);
   const row = await prisma.location.findFirst({
-    where: { slug, type: "emirate", ...publicLocationWhere },
+    where: { slug: { in: candidates }, type: "emirate", ...publicLocationWhere },
     include: { translations: true },
   });
   if (!row) return null;

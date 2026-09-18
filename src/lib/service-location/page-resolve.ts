@@ -1,4 +1,5 @@
 import { cache } from "react";
+import { publicSlugLookupCandidates } from "@/lib/slug/route-slug";
 import type { Prisma } from "@prisma/client";
 import { getSiteUrl } from "@/config/site";
 import { prisma } from "@/server/db";
@@ -129,8 +130,8 @@ export function isCoverageEligible(row: {
 async function loadBySlugs(serviceSlug: string, locationSlug: string) {
   return prisma.serviceLocation.findFirst({
     where: {
-      service: { slug: serviceSlug },
-      location: { slug: locationSlug },
+      service: { slug: { in: publicSlugLookupCandidates(serviceSlug) } },
+      location: { slug: { in: publicSlugLookupCandidates(locationSlug) } },
     },
     include: resolveInclude,
   });
