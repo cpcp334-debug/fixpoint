@@ -14,6 +14,13 @@ const sans = IBM_Plex_Sans({
 export const metadata = {
   title: "Staff login | Al Najah Al Daem · Fixpoint",
   robots: { index: false, follow: false },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", type: "image/png" }],
+  },
 };
 
 export const viewport: Viewport = {

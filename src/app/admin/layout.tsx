@@ -20,6 +20,13 @@ export const dynamic = "force-dynamic";
 export const metadata = {
   title: "Admin | Al Najah Al Daem · Fixpoint",
   robots: { index: false, follow: false },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", type: "image/png" }],
+  },
 };
 
 export const viewport: Viewport = {

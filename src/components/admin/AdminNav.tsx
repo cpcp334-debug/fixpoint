@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { can, exportAllowed, roleLabel, type AdminPermission, canViewTasks } from "@/lib/admin/rbac";
@@ -9,6 +10,8 @@ import type { StaffSession } from "@/lib/admin/auth";
 import { canViewAnalytics } from "@/lib/insights/rbac";
 import { canUseCoFounder } from "@/lib/cofounder/rbac";
 import { cn } from "@/lib/utils";
+
+const ADMIN_MARK = "/media/logo-icon.png";
 
 const LINKS: Array<{ href: string; label: string; permission: AdminPermission }> = [
   { href: "/admin", label: "Dashboard", permission: "dashboard" },
@@ -67,9 +70,12 @@ export function AdminNav({ session }: { session: StaffSession }) {
 
   const navBody = (
     <>
-      <div className="border-b border-white/10 px-4 py-4">
-        <p className="text-xs uppercase tracking-widest text-gold">Staff</p>
-        <p className="font-semibold">Al Najah Al Daem · Fixpoint</p>
+      <div className="flex items-center gap-3 border-b border-white/10 px-4 py-4">
+        <Image src={ADMIN_MARK} alt="" width={36} height={36} className="h-9 w-9 shrink-0 rounded-md object-cover" />
+        <div className="min-w-0">
+          <p className="text-xs uppercase tracking-widest text-gold">Staff</p>
+          <p className="font-semibold leading-snug">Al Najah Al Daem · Fixpoint</p>
+        </div>
       </div>
       <nav className="flex-1 overflow-y-auto px-2 py-3 text-sm">
         {items.map((link) => (
@@ -100,9 +106,12 @@ export function AdminNav({ session }: { session: StaffSession }) {
   return (
     <>
       <div className="sticky top-0 z-30 flex items-center justify-between border-b border-line bg-navy px-4 py-3 text-white lg:hidden">
-        <div>
-          <p className="text-[10px] uppercase tracking-widest text-gold">Staff</p>
-          <p className="text-sm font-semibold">Al Najah Al Daem · Fixpoint</p>
+        <div className="flex min-w-0 items-center gap-2.5">
+          <Image src={ADMIN_MARK} alt="" width={32} height={32} className="h-8 w-8 shrink-0 rounded-md object-cover" />
+          <div className="min-w-0">
+            <p className="text-[10px] uppercase tracking-widest text-gold">Staff</p>
+            <p className="truncate text-sm font-semibold">Al Najah Al Daem · Fixpoint</p>
+          </div>
         </div>
         <button
           type="button"
