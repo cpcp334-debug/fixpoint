@@ -108,14 +108,27 @@ async function main() {
   }
   const locationNames = [...locationByEnName.keys()].sort((a, b) => b.length - a.length);
 
-  // Only Arabic-slug non-FAQ blogs
-  const arabicIds = await prisma.$queryRawUnsafe<Array<{ id: string }>>(
-    `SELECT id FROM Article
-     WHERE slug REGEXP '[؀-ۿ]'
-       AND categorySlugs NOT LIKE '%service-faq%'
-     ORDER BY id ASC`,
-  );
-  const targetIds = limit ? arabicIds.slice(0, limit).map((r) => r.id) : arabicIds.map((r) => r.id);
+  // JS Unicode detection — MySQL REGEXP on Arabic ranges is unreliable across collations.
+  const arabicIds: string[] = [];
+  let scanCursor: string | undefined;
+  for (;;) {
+    const scanBatch = await prisma.article.findMany({
+      where: {
+        ...(scanCursor ? { id: { gt: scanCursor } } : {}),
+        NOT: [{ categorySlugs: { contains: "service-faq" } }],
+      },
+      take: 2000,
+      orderBy: { id: "asc" },
+      select: { id: true, slug: true },
+    });
+    if (!scanBatch.length) break;
+    for (const row of scanBatch) {
+      if (AR.test(row.slug)) arabicIds.push(row.id);
+    }
+    scanCursor = scanBatch[scanBatch.length - 1]!.id;
+    if (scanBatch.length < 2000) break;
+  }
+  const targetIds = limit ? arabicIds.slice(0, limit) : arabicIds;
   console.log(JSON.stringify({ arabicCount: arabicIds.length, targeting: targetIds.length, dryRun, batch }));
 
   const takenRows = await prisma.article.findMany({ select: { slug: true } });
@@ -280,15 +293,28 @@ async function main() {
     writeFileSync(MAP_PATH, JSON.stringify(maps, null, 2), "utf8");
   }
 
-  const arLeft = dryRun
-    ? null
-    : Number(
-        (
-          await prisma.$queryRawUnsafe<Array<{ c: bigint }>>(
-            `SELECT COUNT(*) AS c FROM Article WHERE slug REGEXP '[؀-ۿ]' AND categorySlugs NOT LIKE '%service-faq%'`,
-          )
-        )[0]?.c ?? 0,
-      );
+  let arLeft: number | null = null;
+  if (!dryRun) {
+    arLeft = 0;
+    let leftCursor: string | undefined;
+    for (;;) {
+      const leftBatch = await prisma.article.findMany({
+        where: {
+          ...(leftCursor ? { id: { gt: leftCursor } } : {}),
+          NOT: [{ categorySlugs: { contains: "service-faq" } }],
+        },
+        take: 2000,
+        orderBy: { id: "asc" },
+        select: { id: true, slug: true },
+      });
+      if (!leftBatch.length) break;
+      for (const row of leftBatch) {
+        if (AR.test(row.slug)) arLeft += 1;
+      }
+      leftCursor = leftBatch[leftBatch.length - 1]!.id;
+      if (leftBatch.length < 2000) break;
+    }
+  }
 
   const stuckTemp = dryRun
     ? null

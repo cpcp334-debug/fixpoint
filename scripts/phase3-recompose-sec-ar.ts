@@ -135,15 +135,12 @@ async function main() {
   while (true) {
     if (limit && processed >= limit) break;
     const take = limit ? Math.min(batch, limit - processed) : batch;
+    // Scan by id only (Hostinger cannot afford LIKE '%REVIEW_REQUIRED%' joins at this scale).
+    // Skip already-fixed rows in JS; resume via cursor file.
     const rows = await prisma.article.findMany({
-      where: {
-        ...(cursor ? { id: { gt: cursor } } : {}),
-        translations: {
-          some: { locale: "ar", OR: [{ title: { contains: "REVIEW_REQUIRED" } }, { body: { contains: "REVIEW_REQUIRED" } }] },
-        },
-      },
+      where: cursor ? { id: { gt: cursor } } : undefined,
       orderBy: { id: "asc" },
-      take,
+      take: Math.max(take * 3, 150), // over-fetch; many rows may already be clean
       select: {
         id: true,
         slug: true,
@@ -156,9 +153,34 @@ async function main() {
     });
     if (!rows.length) break;
 
-    for (const row of rows) {
+    const dirty = rows.filter((row) => {
+      if (row.categorySlugs.includes("service-faq") || row.slug.startsWith("faq-") || row.slug.startsWith("أسئلة-")) {
+        return false;
+      }
+      const arRow = row.translations.find((t) => t.locale === "ar");
+      if (!arRow) return false;
+      // Keep Latin primary slugs; only recompose when AR copy still has REVIEW_REQUIRED.
+      return arRow.title.includes("REVIEW_REQUIRED") || arRow.body.includes("REVIEW_REQUIRED");
+    });
+
+    // Advance cursor even across clean stretches
+    cursor = rows[rows.length - 1]!.id;
+    if (!dirty.length) {
+      if (!dryRun) {
+        writeFileSync(
+          CURSOR_PATH,
+          JSON.stringify({ id: cursor, processed, updated, skipped, gateFail, at: new Date().toISOString(), note: "clean_stretch" }),
+          "utf8",
+        );
+      }
+      console.log(JSON.stringify({ phase: "skip_clean", scanned: rows.length, cursor, processed, updated }));
+      continue;
+    }
+
+    for (const row of dirty.slice(0, take)) {
       processed += 1;
-      cursor = row.id;
+      // keep cursor at furthest scanned id (set above); also bump if we process mid-batch
+      if (row.id > cursor) cursor = row.id;
 
       if (row.categorySlugs.includes("service-faq") || row.slug.startsWith("faq-")) {
         skipped += 1;

@@ -24,6 +24,7 @@ npx tsx scripts/restore-latin-faq-slugs.ts
 npx tsx scripts/finish-faq-latin-restore.ts
 npx tsx scripts/restore-latin-article-slugs.ts --dry-run --limit=20
 npx tsx scripts/restore-latin-article-slugs.ts --batch=250
+npx tsx scripts/finish-article-latin-restore.ts
 ```
 
 ## Smoke after Redeploy
