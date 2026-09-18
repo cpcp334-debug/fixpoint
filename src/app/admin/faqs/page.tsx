@@ -23,7 +23,7 @@ export default async function FaqsAdminPage({
   if (!auth.ok) return <Forbidden />;
   const query = await searchParams;
   const FAQ_ARTICLE_WHERE: Prisma.ArticleWhereInput = {
-    slug: { startsWith: "faq-" },
+    OR: [{ slug: { startsWith: "faq-" } }, { categorySlugs: { contains: "service-faq" } }],
   };
   const where: Prisma.ArticleWhereInput = { ...FAQ_ARTICLE_WHERE };
   if (query.status && (STATUSES as string[]).includes(query.status)) {

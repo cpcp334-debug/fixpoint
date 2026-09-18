@@ -74,7 +74,7 @@ async function staticAndCatalogEntries(site: string): Promise<MetadataRoute.Site
     }),
     prisma.article.findMany({
       where: { status: "published", indexable: true },
-      select: { slug: true, updatedAt: true, publishedAt: true },
+      select: { slug: true, updatedAt: true, publishedAt: true, categorySlugs: true },
     }),
   ]);
 
@@ -92,7 +92,11 @@ async function staticAndCatalogEntries(site: string): Promise<MetadataRoute.Site
       entries.push({ url: `${site}/${locale}/diy/${category.slug}`, lastModified: category.updatedAt });
     }
     for (const article of articles) {
-      const path = article.slug.startsWith("faq-") ? `/faq/${article.slug}` : `/blog/${article.slug}`;
+      const isFaq =
+        article.slug.startsWith("faq-") ||
+        article.slug.startsWith("أسئلة") ||
+        (article.categorySlugs || "").includes("service-faq");
+      const path = isFaq ? `/faq/${article.slug}` : `/blog/${article.slug}`;
       entries.push({
         url: `${site}/${locale}${path}`,
         lastModified: article.publishedAt ?? article.updatedAt,

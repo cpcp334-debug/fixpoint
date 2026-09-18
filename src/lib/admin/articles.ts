@@ -1,7 +1,7 @@
 import { SERVICE_FAQ_CATEGORY, SERVICE_FAQ_SLUG_PREFIX } from "@/lib/faq/service-faq";
 
 export function isFaqArticleSlug(slug: string) {
-  return slug.startsWith(SERVICE_FAQ_SLUG_PREFIX);
+  return slug.startsWith(SERVICE_FAQ_SLUG_PREFIX) || slug.startsWith("أسئلة");
 }
 
 export function adminArticleBasePath(slug: string) {

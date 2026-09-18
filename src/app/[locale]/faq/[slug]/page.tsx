@@ -10,16 +10,19 @@ import { Section, SectionHeader } from "@/components/ui/Section";
 import { PageShell } from "@/components/public/PageShell";
 import { PublicHero } from "@/components/public/PublicHero";
 import { CtaBand } from "@/components/public/CtaBand";
-import { getServiceFaqBySlug } from "@/lib/faq/pages";
-import { isServiceFaqSlug } from "@/lib/faq/service-faq";
+import { getServiceFaqBySlug, publishedServiceFaqWhere } from "@/lib/faq/pages";
+import { serviceHref } from "@/lib/slug/locale-slug";
 
 export async function generateStaticParams() {
   try {
     const rows = await prisma.article.findMany({
-      where: { status: "published", indexable: true, slug: { startsWith: "faq-" } },
+      where: publishedServiceFaqWhere,
       select: { slug: true },
     });
-    return rows.filter((row) => isServiceFaqSlug(row.slug)).map((row) => ({ slug: row.slug }));
+    // Hostinger: public FAQ paths stay Latin (`faq-*`) for both locales.
+    return rows
+      .filter((row) => row.slug.startsWith("faq-"))
+      .map((row) => ({ slug: row.slug }));
   } catch {
     return [];
   }
@@ -114,7 +117,7 @@ export default async function ServiceFaqPage({
         </div>
         <div className="mt-8 flex flex-wrap gap-4 text-sm font-semibold">
           {serviceSlug ? (
-            <Link href={`/${serviceSlug}`} className="text-navy underline">
+            <Link href={serviceHref(locale, serviceSlug)} className="text-navy underline">
               {t("openService")}
             </Link>
           ) : null}

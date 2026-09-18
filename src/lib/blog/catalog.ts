@@ -47,7 +47,13 @@ function mapCard(
 const blogWhere = {
   status: "published" as const,
   indexable: true,
-  NOT: [{ slug: { startsWith: "faq-" } }],
+  // Exclude service FAQs by category (durable) and latin/legacy FAQ slug prefixes.
+  NOT: [
+    { slug: { startsWith: "faq-" } },
+    { slug: { startsWith: "__restore_faq_" } },
+    { slug: { startsWith: "أسئلة" } },
+    { categorySlugs: { contains: "service-faq" } },
+  ],
 };
 
 /** Paginated list — required once service×estate×city corpus is large. */
@@ -112,15 +118,16 @@ export const getPublishedBlogArticles = cache(async (locale: string) => {
 });
 
 export const getBlogArticleBySlug = cache(async (slug: string, locale: string) => {
-  if (slug.startsWith("faq-")) return null;
+  if (slug.startsWith("faq-") || slug.startsWith("أسئلة") || slug.startsWith("__restore_faq_")) return null;
   const row = await prisma.article.findFirst({
     where: { slug, status: "published", indexable: true },
     include: { translations: true },
   });
   if (!row) return null;
+  const cats = parseJson<string[]>(row.categorySlugs, []);
+  if (cats.includes("service-faq")) return null;
   const t = row.translations.find((x) => x.locale === locale);
   if (!t) return null;
-  const cats = parseJson<string[]>(row.categorySlugs, []);
   return {
     id: row.id,
     slug: row.slug,

@@ -26,6 +26,6 @@ export function revalidatePublicDiy(slug: string) {
 }
 
 export function revalidatePublicArticle(slug: string) {
-  const kind = slug.startsWith("faq-") ? "faq" : "blog";
+  const kind = slug.startsWith("faq-") || slug.startsWith("أسئلة") ? "faq" : "blog";
   paths(LOCALES.flatMap((locale) => [`/${locale}/${kind}/${slug}`, `/${locale}/${kind}`]));
 }

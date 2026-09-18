@@ -15,7 +15,7 @@ import type { ContentStatus, Prisma } from "@prisma/client";
 const STATUSES: ContentStatus[] = ["draft", "review", "published", "archived"];
 
 const BLOG_ARTICLE_WHERE: Prisma.ArticleWhereInput = {
-  NOT: [{ slug: { startsWith: "faq-" } }],
+  NOT: [{ OR: [{ slug: { startsWith: "faq-" } }, { categorySlugs: { contains: "service-faq" } }] }],
 };
 
 const PER_PAGE_OPTIONS = [50, 100] as const;

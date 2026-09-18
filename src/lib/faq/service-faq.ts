@@ -50,7 +50,8 @@ export function serviceFaqSlug(serviceSlug: string) {
 }
 
 export function isServiceFaqSlug(slug: string) {
-  return slug.startsWith(SERVICE_FAQ_SLUG_PREFIX);
+  // Latin primary (`faq-*`) or legacy Arabic Phase-2 form (`أسئلة-*`).
+  return slug.startsWith(SERVICE_FAQ_SLUG_PREFIX) || slug.startsWith("أسئلة");
 }
 
 export function composeServiceFaq(input: ServiceFaqInput) {
