@@ -1,4 +1,5 @@
 import { Link } from "@/i18n/routing";
+import { brandName } from "@/config/site";
 import type { ServiceLocationPageModel } from "@/lib/service-location/page-model";
 import { parseContentJson } from "@/lib/service-location/content-parse";
 import { ensureDiySelfHelpSection } from "@/lib/service-location/content-builders";
@@ -72,7 +73,7 @@ export function ServiceLocationView({
   approvedReviews?: Array<{ authorName: string; stars: number; body: string }>;
 }) {
   const Icon = serviceIcons[model.serviceSlug as keyof typeof serviceIcons];
-  const wa = `Hello Al Najah Al Daem · Fixpoint, I need ${model.serviceName} in ${model.locationName}.`;
+  const wa = `Hello ${brandName("en")}, I need ${model.serviceName} in ${model.locationName}.`;
   const crumbItems = [
     { href: "/", label: labels.home },
     { href: `/${model.serviceSlug}`, label: model.serviceName },

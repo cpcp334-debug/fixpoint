@@ -1,28 +1,20 @@
-# Redeploy — Arabic primary slugs (Option 3, no redirects)
+# Redeploy — locale-specific slugs (EN Latin / AR Arabic)
+
+## Policy (updated)
+- **`/en`** → Latin slugs only  
+- **`/ar`** → Arabic slugs only  
+- Not Option 3 (Arabic-everywhere). See `docs/redeploy-locale-slugs.md`.
 
 ## What changed
-- **Service / location / category / DIY** display names and **primary slugs** are Arabic Unicode.
-- **SEC blogs** are being recomposed to Arabic titles/bodies/slugs (`scripts/phase3-recompose-sec-ar.ts`, resume-safe).
-- **Latin URLs intentionally 404** — no 301 redirects / no redirect table / no middleware remaps (product decision).
-- Publisher gates reject `REVIEW_REQUIRED`, non-Arabic AR titles/bodies, and non-Arabic slugs.
+- DB primary `slug` restored to **Latin** via `scripts/restore-latin-primary-slugs.ts` + `scripts/_slug-maps.json`.
+- Link builders / resolvers are locale-aware (`src/lib/slug/locale-slug.ts`).
+- Soft Service×Location pages when matrix empty; AR chrome brand **فكس بوينت**; public AR copy never shows `REVIEW_REQUIRED`.
 
-## Before Redeploy
-1. Confirm Phase 1 names: `npx tsx scripts/audit-ar-quality.ts` → services/locations should be ~0 `REVIEW_REQUIRED` / latin.
-2. Confirm slug maps exist: `scripts/_slug-maps.json`.
-3. Let Phase 3 run (or resume):  
-   `npx tsx scripts/phase3-recompose-sec-ar.ts --batch=50 --skip-gates`  
-   Cursor: `scripts/_phase3-sec-recompose-cursor.json`.  
-   Script selects remaining `REVIEW_REQUIRED` AR rows (resume-safe). Avoid interactive transactions (Hostinger 5s timeout).
-4. Smoke `/ar/services`, `/ar/locations/دبي`, one Arabic blog slug after a few batches.
-
-## Progress check
-`npx tsx scripts/audit-ar-quality.ts` — watch `titleHasReviewRequired` fall from ~113k toward 0.
+## Smoke
+- `/en/services` (~436), `/ar/services`
+- `/en/drain-blockage-removal`, `/ar/إزالة-الصرف`
+- `/en/locations/abu-dhabi`, `/ar/locations/أبوظبي`
+- Soft SL: `/ar/أبوظبي/إزالة-الصرف`
 
 ## Redeploy
-Push this branch, then Redeploy on Hostinger (or your usual pipeline).
-Location detail pages use `force-dynamic` so prerendered `notFound()` cannot stick for a year after slug changes.
-Smoke: `/ar/locations`, `/ar/locations/أبوظبي`, `/ar/locations/دبي`.  
-`postdeploy` already runs migrate + import hooks — no redirect migration.
-
-## Rollback note
-Restoring Latin slugs requires a DB restore or re-import from a backup. There is no automatic Latin→Arabic redirect layer.
+Push `main`, then Redeploy on Hostinger. Report the commit hash as the Redeploy hash.

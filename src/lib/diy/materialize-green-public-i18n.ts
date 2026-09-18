@@ -96,7 +96,7 @@ export function materializeGreenArI18n(
   const quickAnswer = `نعم — يمكن تنفيذ خطوات محدودة وآمنة لـ${name} عندما يكون الوصول آمناً ويمكن العزل عند الحاجة، مع التوقف عند أول علامة خطر.`;
   const problem = `دليل DIY آمن لـ${name}. الهدف تنظيف/صيانة منخفضة الخطورة دون أعمال كهرباء حية أو غاز أو أنظمة مغلقة. ${focusHint}`;
   const fallback =
-    "هل تحتاج مساعدة؟ يمكن لفريق النجاح الدائم · Fixpoint فحص المشكلة والتوصية بخدمة الصيانة أو الإصلاح المناسبة.";
+    "هل تحتاج مساعدة؟ يمكن لفريق النجاح الدائم · فكس بوينت فحص المشكلة والتوصية بخدمة الصيانة أو الإصلاح المناسبة.";
   const faq = [
     { q: `ما هو ${name}؟`, a: problem },
     { q: "هل يمكنني القيام بذلك بنفسي؟", a: quickAnswer },
@@ -122,7 +122,7 @@ export function materializeGreenArI18n(
     checkWork: "يجب أن تبدو الأسطح أنظف وبلا بقايا زلقة، دون تلف ظاهر للتشطيب.",
     whenToStop,
     professionalFallback: fallback,
-    seoTitle: `${title} | DIY | النجاح الدائم · Fixpoint`,
+    seoTitle: `${title} | DIY | النجاح الدائم · فكس بوينت`,
     metaDescription: clip(problem, 155),
     faq: JSON.stringify(faq),
   };

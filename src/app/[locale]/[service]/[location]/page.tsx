@@ -10,7 +10,9 @@ import { ServiceLocationView } from "@/components/service-location/ServiceLocati
  * Do not SSG the Service×Location matrix at build time.
  * Hostinger (cpus:1) OOMs/timeouts when prerendering ~7k pairs × locales (~14k pages).
  * Empty params → on-demand render; ISR caches for 1h after first hit.
+ * force-dynamic avoids sticky notFound() after slug / soft-pair fixes.
  */
+export const dynamic = "force-dynamic";
 export const revalidate = 3600;
 export const dynamicParams = true;
 

@@ -521,7 +521,7 @@ export function buildBlogSeoPackage(input: {
   const enTitle = `${spec.powerEn} ${spec.topicEn} in ${spec.placeEn}, ${spec.emirateEn}`;
   const arTitle = `${spec.powerAr}: ${spec.topicAr} في ${spec.placeAr}، ${spec.emirateAr}`;
   const enSeoTitle = `${enTitle} | Al Najah Al Daem · Fixpoint`;
-  const arSeoTitle = `${arTitle} | النجاح الدائم · Fixpoint`;
+  const arSeoTitle = `${arTitle} | النجاح الدائم · فكس بوينت`;
   const enMeta = `${spec.powerEn} guidance on ${spec.topicEn.toLowerCase()} for readers in ${spec.placeEn}, ${spec.emirateEn}. Learn safe checks, stop rules, when to book help, and how to prepare a clear quote request.`;
   const arMeta = `إرشاد ${spec.powerAr} حول ${spec.topicAr} للقرّاء في ${spec.placeAr}، ${spec.emirateAr}. تعرّف على الفحوصات الآمنة وقواعد التوقّف ومتى تطلب المساعدة وكيف تجهّز طلب عرض سعر واضح.`;
 

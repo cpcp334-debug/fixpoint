@@ -3,7 +3,7 @@ import { getActiveEmirates, getActiveServices } from "@/lib/catalog";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { LeadForm } from "@/components/forms/LeadForm";
-import { mailUrl, productionSiteUrl, siteConfig, telUrl, whatsappUrl, brandName } from "@/config/site";
+import { mailUrl, productionSiteUrl, siteConfig, telUrl, whatsappUrl, brandName, domainBrandName } from "@/config/site";
 import { ButtonLink } from "@/components/ui/Button";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { PageShell } from "@/components/public/PageShell";
@@ -44,7 +44,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         actions={
           <div className="flex flex-wrap gap-3">
             <ButtonLink href={productionSiteUrl} variant="secondary" external>
-              {siteConfig.domainBrand} · fixpoint.ae
+              {domainBrandName(locale)} · fixpoint.ae
             </ButtonLink>
             <ButtonLink href={telUrl()} external>
               {siteConfig.phoneDisplay}

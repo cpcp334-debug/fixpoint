@@ -221,7 +221,7 @@ function buildAr(input: ServiceFaqInput, nameAr: string, danger: boolean): Servi
     excerpt: direct,
     body,
     faq,
-    seoTitle: `أسئلة ${job} | النجاح الدائم · Fixpoint`.slice(0, 70),
+    seoTitle: `أسئلة ${job} | النجاح الدائم · فكس بوينت`.slice(0, 70),
     metaDescription: danger
       ? `إجابات عن ${job} في الإمارات. ماذا تسجّل، ومتى تتوقف، وكيف تطلب نظرة. لا خطوات إصلاح ولا ادعاء تغطية.`
       : `إجابات عن ${job} في الإمارات. ماذا تجهّز، ومتى تتوقف، وكيف تطلب بقية العمل.`,

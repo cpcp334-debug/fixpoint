@@ -59,3 +59,13 @@ export function publicSlugLookupCandidates(raw: string): string[] {
   for (const variant of alifPrefixVariants(cleaned)) push(variant);
   return out;
 }
+
+/** Merge base candidates with an optional mapped public (Arabic) slug. */
+export function mergeSlugLookupCandidates(raw: string, mappedPublic?: string | null): string[] {
+  const out = publicSlugLookupCandidates(raw);
+  if (!mappedPublic || mappedPublic === raw) return out;
+  for (const c of publicSlugLookupCandidates(mappedPublic)) {
+    if (!out.includes(c)) out.push(c);
+  }
+  return out;
+}

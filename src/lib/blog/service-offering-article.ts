@@ -401,7 +401,7 @@ function buildAr(opts: {
     },
   ]);
 
-  const brandAr = "النجاح الدائم · Fixpoint";
+  const brandAr = "النجاح الدائم · فكس بوينت";
   let arSeo = `${opts.arTitle} | ${brandAr}`;
   if (arSeo.length > 80) {
     arSeo = `${job.slice(0, Math.max(8, 80 - ` | ${brandAr}`.length))} | ${brandAr}`.slice(0, 80);

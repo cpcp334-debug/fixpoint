@@ -1,6 +1,7 @@
 import { Link } from "@/i18n/routing";
 import { TOP_ELECTRICAL_SLUGS } from "../../../prisma/data/electrical-service-copy";
 import { getApprovedCatalogServiceBySlug } from "@/lib/catalog";
+import { serviceHref } from "@/lib/slug/locale-slug";
 
 export async function TopElectricalServices({
   locale,
@@ -18,10 +19,15 @@ export async function TopElectricalServices({
       TOP_ELECTRICAL_SLUGS.map(async (slug) => {
         const service = await getApprovedCatalogServiceBySlug(slug, locale);
         if (!service) return null;
-        return { slug, name: service.t.name, description: service.t.shortDescription };
+        return {
+          slug: service.slug,
+          href: serviceHref(locale, service.slug),
+          name: service.t.name,
+          description: service.t.shortDescription,
+        };
       }),
     )
-  ).filter(Boolean) as Array<{ slug: string; name: string; description: string }>;
+  ).filter(Boolean) as Array<{ slug: string; href: string; name: string; description: string }>;
 
   if (!items.length) return null;
 
@@ -33,7 +39,7 @@ export async function TopElectricalServices({
         {items.map((item) => (
           <li key={item.slug}>
             <Link
-              href={`/${item.slug}`}
+              href={item.href}
               className="pass block h-full rounded-xl border border-line bg-white p-4 hover:border-accent"
             >
               <span className="font-medium text-navy">{item.name}</span>

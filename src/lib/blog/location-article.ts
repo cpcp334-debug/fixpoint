@@ -317,7 +317,7 @@ function buildAr(opts: {
     diySection: diy,
     faq,
     imageAlt: `دليل طلب خدمة في ${place}، ${em}`,
-    seoTitle: `${opts.arTitle} | النجاح الدائم · Fixpoint`.slice(0, 80),
+    seoTitle: `${opts.arTitle} | النجاح الدائم · فكس بوينت`.slice(0, 80),
     metaDescription: `اطلب تنظيفاً أو صيانة في ${place}، ${em}. ماذا ترسل، وماذا لا تفترض، وكيف تُؤكد الزيارة من غير سعر منشور.`.slice(0, 160),
   };
 }

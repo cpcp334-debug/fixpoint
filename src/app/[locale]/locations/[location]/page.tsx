@@ -18,6 +18,7 @@ import { PublicHero, publicCanonical } from "@/components/public/PublicHero";
 import { CtaRow } from "@/components/public/CtaRow";
 import { CtaBand } from "@/components/public/CtaBand";
 import { EmiratePlaceDirectory } from "@/components/locations/EmiratePlaceDirectory";
+import { serviceLocationHref, locationPageHref } from "@/lib/slug/locale-slug";
 
 /** Avoid year-long sticky notFound() after slug migrations. */
 export const dynamic = "force-dynamic";
@@ -143,7 +144,7 @@ export default async function LocationPage({
               name={service.t.name}
               description={service.t.shortDescription}
               cta={home("viewService")}
-              href={`/${service.slug}/${em.slug}`}
+              href={serviceLocationHref(locale, service.slug, em.slug)}
               diyLabel={service.diyAvailable ? home("chipDiy") : undefined}
               amcLabel={service.amcAvailable ? home("chipAmc") : undefined}
               emergencyLabel={service.emergencyAvailable ? home("chipEmergency") : undefined}

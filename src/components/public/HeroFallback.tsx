@@ -1,7 +1,12 @@
 import Image from "next/image";
+import { brandName } from "@/config/site";
 
 /** Composed brand graphic when no published hero image exists. */
-export function HeroFallback() {
+export function HeroFallback({ locale }: { locale?: string }) {
+  const alt =
+    locale === "ar"
+      ? `${brandName("ar")} صيانة المباني`
+      : `${brandName("en")} Building Maintenance`;
   return (
     <div className="relative flex h-full w-full items-center justify-center bg-gradient-to-br from-navy via-navy to-navy-deep">
       <div
@@ -13,7 +18,7 @@ export function HeroFallback() {
       />
       <Image
         src="/media/logo.jpg"
-        alt="Al Najah Al Daem · Fixpoint Building Maintenance"
+        alt={alt}
         width={320}
         height={320}
         sizes="(max-width: 640px) 70vw, 280px"

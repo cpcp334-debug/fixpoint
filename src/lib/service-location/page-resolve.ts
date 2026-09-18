@@ -1,9 +1,10 @@
-import { cache } from "react";
-import { publicSlugLookupCandidates } from "@/lib/slug/route-slug";
+import { locationLookupCandidates, serviceLookupCandidates, serviceHref, serviceLocationHref } from "@/lib/slug/locale-slug";
+import { toMasterServiceSlug } from "@/lib/slug/service-slug-map";
 import type { Prisma } from "@prisma/client";
-import { getSiteUrl } from "@/config/site";
+import { brandName, getSiteUrl } from "@/config/site";
 import { prisma } from "@/server/db";
 import { parseJson, pickI18n } from "@/lib/utils";
+import { isReviewRequiredText, sanitizePublicServiceI18n } from "@/lib/catalog/public-i18n";
 import { arabicConfidenceForSlug } from "@/lib/service-location/arabic";
 import { isLegacyCompatRow } from "@/lib/service-location/content-completeness";
 import { isPubliclyEligible } from "@/lib/service-location/coverage";
@@ -18,11 +19,12 @@ import {
   type LocationBreadcrumb,
   type ServiceLocationPageModel,
 } from "@/lib/service-location/page-model";
-import type { WorkingCopy } from "@/lib/service-location/types";
+import type { GateResult, WorkingCopy } from "@/lib/service-location/types";
 import { parseContentJson } from "@/lib/service-location/content-parse";
 import { ensureDiySelfHelpSection } from "@/lib/service-location/content-builders";
 import { emptyContentJson, type ServiceLocationContentJson } from "@/lib/service-location/content-contract";
 import { parseFaqJson } from "@/lib/faq";
+import { cache } from "react";
 
 const RELATED_LIMIT = 6;
 
@@ -130,11 +132,286 @@ export function isCoverageEligible(row: {
 async function loadBySlugs(serviceSlug: string, locationSlug: string) {
   return prisma.serviceLocation.findFirst({
     where: {
-      service: { slug: { in: publicSlugLookupCandidates(serviceSlug) } },
-      location: { slug: { in: publicSlugLookupCandidates(locationSlug) } },
+      service: { slug: { in: serviceLookupCandidates(serviceSlug) } },
+      location: { slug: { in: locationLookupCandidates(locationSlug) } },
     },
     include: resolveInclude,
   });
+}
+
+const softServiceInclude = {
+  translations: true,
+  category: { include: { translations: true } },
+  primaryDiyGuide: { include: { translations: true } },
+  diyGuides: {
+    where: { status: "published" as const, indexable: true },
+    include: { translations: true },
+    take: 3,
+  },
+} satisfies Prisma.ServiceInclude;
+
+const softLocationInclude = {
+  translations: true,
+  parent: {
+    include: {
+      translations: true,
+      parent: { include: { translations: true, parent: { include: { translations: true } } } },
+    },
+  },
+} satisfies Prisma.LocationInclude;
+
+async function loadPublicServiceForSoft(slug: string) {
+  return prisma.service.findFirst({
+    where: {
+      slug: { in: serviceLookupCandidates(slug) },
+      status: "active",
+      indexable: true,
+    },
+    include: softServiceInclude,
+  });
+}
+
+async function loadPublicLocationForSoft(slug: string) {
+  return prisma.location.findFirst({
+    where: {
+      slug: { in: locationLookupCandidates(slug) },
+      status: "active",
+      indexable: true,
+      serves: true,
+      type: { in: ["emirate", "city", "community"] },
+    },
+    include: softLocationInclude,
+  });
+}
+
+function softGateResult(): GateResult {
+  return {
+    eligible: true,
+    coveredOps: false,
+    qualityStatus: "incomplete",
+    failures: [{ code: "soft_pair", message: "Rendered from Service+Location without ServiceLocation row" }],
+    indexableEn: false,
+    indexableAr: false,
+    pairIndexable: false,
+  };
+}
+
+function softLocationChain(
+  location: Prisma.LocationGetPayload<{ include: typeof softLocationInclude }>,
+  locale: string,
+): LocationBreadcrumb[] {
+  const chain: LocationBreadcrumb[] = [];
+  let cur: typeof location | null | undefined = location;
+  while (cur) {
+    const name = pickI18n(cur.translations, locale)?.name || cur.slug;
+    chain.push({
+      slug: cur.slug,
+      type: cur.type,
+      name: isReviewRequiredText(name) ? cur.slug : name,
+    });
+    cur = cur.parent as typeof location | null | undefined;
+  }
+  return chain.reverse();
+}
+
+/**
+ * When MySQL has no ServiceLocation matrix rows, still render a public Service×Location page
+ * from the Service + Location pair. Accepts either URL order (service/location or location/service).
+ * Soft pages are always noindex.
+ */
+async function softResolveFromServiceAndLocation(
+  slugA: string,
+  slugB: string,
+  locale: "en" | "ar",
+): Promise<ServiceLocationPageModel | null> {
+  let service = await loadPublicServiceForSoft(slugA);
+  let location = await loadPublicLocationForSoft(slugB);
+  if (!service || !location) {
+    service = await loadPublicServiceForSoft(slugB);
+    location = await loadPublicLocationForSoft(slugA);
+  }
+  if (!service || !location) return null;
+
+  const rawServiceT = pickI18n(service.translations, locale);
+  if (!rawServiceT) return null;
+  if (locale === "ar") {
+    const arName = service.translations.find((t) => t.locale === "ar");
+    const arLoc = location.translations.find((t) => t.locale === "ar");
+    if (!arName || !arLoc) return null;
+  }
+
+  const serviceT = sanitizePublicServiceI18n(service, locale, rawServiceT);
+  const locationT = pickI18n(location.translations, locale);
+  const locationNameRaw = locationT?.name || location.slug;
+  const locationName = isReviewRequiredText(locationNameRaw)
+    ? pickI18n(location.translations, "en")?.name || location.slug
+    : locationNameRaw;
+  const serviceName = serviceT.name || service.slug;
+  const serviceShort = serviceT.shortDescription || "";
+  const serviceLong = serviceT.longDescription || "";
+  const whenProfessional = serviceT.whenProfessional || "";
+  const locationIntro =
+    locationT && !isReviewRequiredText(locationT.intro)
+      ? locationT.intro
+      : locale === "ar"
+        ? `يمكن طلب تقييم لـ ${serviceName} في ${locationName}. ذكر الصفحة لا يعني تغطية مؤكدة أو ترخيصاً محلياً.`
+        : `${serviceName} enquiries can be assessed for ${locationName}. Listing this page does not confirm coverage or a local license.`;
+
+  const primary = service.primaryDiyGuide;
+  const publishedGuide =
+    primary && primary.status === "published" && primary.indexable
+      ? primary
+      : service.diyGuides[0] ?? null;
+  const guideT = publishedGuide ? pickI18n(publishedGuide.translations, locale) : null;
+  const diyBase = resolveDiyInheritance({
+    serviceRiskLevel: service.riskLevel,
+    serviceDiyAvailable: service.diyAvailable,
+    diyRestricted: false,
+    serviceSlug: service.slug,
+    guide: publishedGuide
+      ? {
+          id: publishedGuide.id,
+          slug: publishedGuide.slug,
+          riskLevel: publishedGuide.riskLevel,
+          status: publishedGuide.status,
+        }
+      : primary
+        ? { id: primary.id, slug: primary.slug, riskLevel: primary.riskLevel, status: primary.status }
+        : null,
+  });
+  const diy = {
+    ...diyBase,
+    title: guideT?.title ?? pickI18n(primary?.translations || [], locale)?.title,
+    quickAnswer: guideT?.quickAnswer ?? pickI18n(primary?.translations || [], locale)?.quickAnswer,
+    whenToStop: guideT?.whenToStop ?? pickI18n(primary?.translations || [], locale)?.whenToStop,
+    guideHref: diyBase.visible && publishedGuide ? `/diy/${publishedGuide.slug}` : null,
+    guideSlug: primary?.slug ?? publishedGuide?.slug ?? diyBase.guideSlug,
+  };
+
+  const ops = resolveEffectiveOps({
+    bookingEnabledOverride: null,
+    amcAvailableOverride: null,
+    emergencyAvailableOverride: null,
+    diyRestricted: false,
+    serviceBookingEnabled: service.bookingEnabled,
+    serviceAmcAvailable: service.amcAvailable,
+    serviceEmergencyAvailable: service.emergencyAvailable,
+    serviceDiyAvailable: service.diyAvailable,
+    serviceRiskLevel: service.riskLevel,
+  });
+
+  const h1 =
+    locale === "ar" ? `${serviceName} — ${locationName}` : `${serviceName} — ${locationName}`;
+  const brand = brandName(locale);
+  const seoTitle = `${h1} | ${brand}`.slice(0, 70);
+  const metaDescription = (serviceShort || locationIntro).slice(0, 160);
+  const body =
+    locale === "ar"
+      ? `${serviceLong || serviceShort}\n\n${locationIntro}`
+      : `${serviceLong || serviceShort}\n\n${locationIntro}`;
+  const directAnswer =
+    locale === "ar"
+      ? `${serviceName} في ${locationName}: اطلب تقييمًا من ${brand} دون افتراض سعر أو تغطية.`
+      : `${serviceName} in ${locationName}: request an assessment from ${brand} — no invented price or coverage claim.`;
+
+  const image = resolveImageInheritance({
+    heroImageOverride: null,
+    serviceHeroImage: service.heroImage,
+    imageAlt: locale === "ar" ? `${serviceName} في ${locationName}` : `${serviceName} in ${locationName}`,
+    serviceName,
+    locationName,
+    locale,
+  });
+
+  const diyBlock = ensureDiySelfHelpSection({
+    existing: null,
+    safetyState: diy.safetyClass,
+    serviceName,
+    locale,
+    guideSlug: diy.guideSlug,
+  });
+  const contentJson: ServiceLocationContentJson = { ...emptyContentJson(), diy: diyBlock };
+  const path = serviceLocationHref(locale, service.slug, location.slug);
+  const chain = softLocationChain(location, locale);
+  const gates = softGateResult();
+
+  return {
+    mode: "public",
+    locale,
+    serviceSlug: service.slug,
+    locationSlug: location.slug,
+    path,
+    serviceId: service.id,
+    locationId: location.id,
+    serviceName,
+    locationName,
+    serviceLongDescription: serviceLong,
+    serviceShortDescription: serviceShort,
+    whenProfessional,
+    content: {
+      locale,
+      intro: locationIntro,
+      localInfo: locationT && !isReviewRequiredText(locationT.localServiceInfo) ? locationT.localServiceInfo : "",
+      seoTitle,
+      metaDescription,
+      faq: "[]",
+      h1,
+      body,
+      directAnswer,
+      geoIntro: locationIntro,
+      imageAlt: image.alt,
+      faqs: [],
+      contentJson,
+    },
+    revisionNumber: null,
+    revisionStatus: null,
+    breadcrumbs: chain,
+    hierarchyLabels: hierarchyLabels(chain),
+    ops,
+    diy,
+    image: { ...image, width: 1200, height: 630 },
+    gates,
+    localeIndexable: false,
+    aeo: buildAeoBlocks({
+      locale,
+      serviceName,
+      locationName,
+      serviceShort,
+      whenProfessional,
+      diy,
+      ops,
+      coveredPublished: false,
+    }),
+    relatedServices: [],
+    relatedLocations: [],
+    hreflang: {},
+    seoTitle,
+    metaDescription,
+  };
+}
+
+async function resolveServiceLocationPageImpl(args: {
+  serviceSlug: string;
+  locationSlug: string;
+  locale: string;
+  mode?: ResolveMode;
+}): Promise<ServiceLocationPageModel | null> {
+  const locale = asLocale(args.locale);
+  const mode = args.mode ?? "public";
+
+  // Canonical order: /[service]/[location]
+  let row = await loadBySlugs(args.serviceSlug, args.locationSlug);
+  // Also accept /[location]/[service] (common AR path order) without redirects.
+  if (!row) {
+    row = await loadBySlugs(args.locationSlug, args.serviceSlug);
+  }
+  if (row) {
+    const related = mode === "public" ? await relatedFor(row, locale) : { services: [], locations: [] };
+    return buildModel(row, locale, mode, related);
+  }
+
+  if (mode !== "public") return null;
+  return softResolveFromServiceAndLocation(args.serviceSlug, args.locationSlug, locale);
 }
 
 async function loadById(id: string) {
@@ -149,17 +426,18 @@ async function relatedFor(
   locale: "en" | "ar",
 ): Promise<{ services: ServiceLocationPageModel["relatedServices"]; locations: ServiceLocationPageModel["relatedLocations"] }> {
   const relatedSlugs = parseJson<string[]>(row.service.relatedServiceSlugs, []).slice(0, RELATED_LIMIT);
+  const relatedLookup = [...new Set(relatedSlugs.flatMap((s) => [s, toMasterServiceSlug(s)]))];
   const relatedServices =
-    relatedSlugs.length === 0
+    relatedLookup.length === 0
       ? []
       : (
           await prisma.service.findMany({
-            where: { slug: { in: relatedSlugs }, status: "active", indexable: true },
+            where: { slug: { in: relatedLookup }, status: "active", indexable: true },
             include: { translations: true },
             take: RELATED_LIMIT,
           })
         ).map((svc) => ({
-          href: `/${svc.slug}`,
+          href: serviceHref(locale, svc.slug),
           label: pickI18n(svc.translations, locale)?.name || svc.slug,
         }));
 
@@ -197,7 +475,7 @@ async function relatedFor(
   });
 
   const relatedLocations = locationRows.map((item) => ({
-    href: `/${row.service.slug}/${item.location.slug}`,
+    href: serviceLocationHref(locale, row.service.slug, item.location.slug),
     label: pickI18n(item.location.translations, locale)?.name || item.location.slug,
   }));
 
@@ -400,12 +678,14 @@ function buildModel(
 
   const chain = locationChain(row, locale);
   const site = getSiteUrl();
-  const path = `/${row.service.slug}/${row.location.slug}`;
+  const pathEn = serviceLocationHref("en", row.service.slug, row.location.slug);
+  const pathAr = serviceLocationHref("ar", row.service.slug, row.location.slug);
+  const path = locale === "ar" ? pathAr : pathEn;
   const enIndexable = gates.indexableEn;
   const arIndexable = gates.indexableAr;
   const hreflang: { en?: string; ar?: string } = {};
-  if (enIndexable) hreflang.en = `${site}/en${path}`;
-  if (arIndexable) hreflang.ar = `${site}/ar${path}`;
+  if (enIndexable) hreflang.en = `${site}/en${pathEn}`;
+  if (arIndexable) hreflang.ar = `${site}/ar${pathAr}`;
 
   const serviceShort =
     (locale === "ar"
@@ -483,20 +763,6 @@ function buildModel(
     seoTitle: previewContent.seoTitle || h1,
     metaDescription: previewContent.metaDescription || serviceShort,
   };
-}
-
-async function resolveServiceLocationPageImpl(args: {
-  serviceSlug: string;
-  locationSlug: string;
-  locale: string;
-  mode?: ResolveMode;
-}): Promise<ServiceLocationPageModel | null> {
-  const locale = asLocale(args.locale);
-  const mode = args.mode ?? "public";
-  const row = await loadBySlugs(args.serviceSlug, args.locationSlug);
-  if (!row) return null;
-  const related = mode === "public" ? await relatedFor(row, locale) : { services: [], locations: [] };
-  return buildModel(row, locale, mode, related);
 }
 
 /** Public resolver (React cache). Prefer this in RSC. */

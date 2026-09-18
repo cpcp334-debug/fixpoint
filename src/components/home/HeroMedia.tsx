@@ -4,9 +4,9 @@ import { useState } from "react";
 import Image from "next/image";
 import { HeroFallback } from "@/components/public/HeroFallback";
 
-export function HeroMedia({ hasPhoto }: { hasPhoto: boolean }) {
+export function HeroMedia({ hasPhoto, locale }: { hasPhoto: boolean; locale?: string }) {
   const [failed, setFailed] = useState(false);
-  if (!hasPhoto || failed) return <HeroFallback />;
+  if (!hasPhoto || failed) return <HeroFallback locale={locale} />;
   return (
     <Image
       src="/media/hero.jpg"

@@ -30,6 +30,7 @@ import { TopElectricalServices } from "@/components/catalog/TopElectricalService
 import { Link } from "@/i18n/routing";
 import { getServiceFaqBySlug } from "@/lib/faq/pages";
 import { serviceFaqSlug } from "@/lib/faq/service-faq";
+import { serviceHref, serviceLocationHref, locationPageHref, servicePathSlug } from "@/lib/slug/locale-slug";
 
 function intakeChips(raw: string, locale: string) {
   return parseJson<Array<{ en?: string; ar?: string } | string>>(raw, [])
@@ -63,7 +64,7 @@ export async function generateMetadata({
     locale,
     title: row.t.seoTitle,
     description: row.t.metaDescription,
-    path: `/${row.slug}`,
+    path: `/${servicePathSlug(locale, row.slug)}`,
     index: row.publicIndexable,
   });
 }
@@ -117,6 +118,7 @@ export default async function ServicePage({
     call: cta("call"),
   };
   const wa = `Hello Al Najah Al Daem · Fixpoint, I need ${row.t.name}.`;
+  const publicPath = `/${servicePathSlug(locale, row.slug)}`;
 
   return (
     <PageShell
@@ -126,23 +128,23 @@ export default async function ServicePage({
           items={[
             { href: "/", label: nav("home") },
             { href: "/services", label: t("title") },
-            { href: `/${row.slug}`, label: row.t.name },
+            { href: publicPath, label: row.t.name },
           ]}
         />
       }
     >
-      <JsonLd data={serviceJsonLd({ name: row.t.name, description: row.t.shortDescription, path: `/${row.slug}`, locale })} />
+      <JsonLd data={serviceJsonLd({ name: row.t.name, description: row.t.shortDescription, path: publicPath, locale })} />
       <JsonLd
         data={reviewAggregateJsonLd({
           name: row.t.name,
-          path: `/${row.slug}`,
+          path: publicPath,
           locale,
           average: reviewSummary.average || 0,
           count: reviewSummary.count,
           reviews: approvedReviews.map((item) => toPublicReview(item, locale)),
         })}
       />
-      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: row.t.name, path: `/${row.slug}` }], locale)} />
+      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: row.t.name, path: publicPath }], locale)} />
       <JsonLd data={faqJsonLd(faqs)} />
 
       <PublicHero locale={locale}
@@ -151,7 +153,7 @@ export default async function ServicePage({
         lead={row.t.shortDescription}
         icon={Icon}
         heroImage={row.heroImage}
-        shareUrl={publicCanonical(locale, `/${row.slug}`)}
+        shareUrl={publicCanonical(locale, publicPath)}
         shareLabel={home("share")}
         copiedLabel={home("copied")}
         actions={<CtaRow labels={ctaLabels} whatsappText={wa} />}
@@ -296,7 +298,11 @@ export default async function ServicePage({
                 slug={em.slug}
                 name={em.t.name}
                 note={`${row.t.name} — ${em.t.name}`}
-                href={coveredEmirateSlugs.has(em.slug) ? `/${row.slug}/${em.slug}` : `/locations/${em.slug}`}
+                href={
+                  coveredEmirateSlugs.has(em.slug)
+                    ? serviceLocationHref(locale, row.slug, em.slug)
+                    : locationPageHref(locale, em.slug)
+                }
               />
             </li>
           ))}

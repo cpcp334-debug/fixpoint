@@ -99,7 +99,7 @@ export function PublicHero({
                 priority={false}
               />
             ) : (
-              <HeroFallback />
+              <HeroFallback locale={locale} />
             )}
           </div>
         )}

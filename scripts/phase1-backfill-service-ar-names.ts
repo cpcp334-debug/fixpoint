@@ -47,7 +47,15 @@ async function main() {
 
   let candidates = rows.filter((row) => {
     const ar = row.translations.find((t) => t.locale === "ar");
-    return needsArName(ar?.name);
+    if (needsArName(ar?.name)) return true;
+    // Also backfill body fields still stuck on REVIEW_REQUIRED after name-only Phase 1.
+    if (!ar) return false;
+    return (
+      ar.shortDescription === "REVIEW_REQUIRED" ||
+      ar.longDescription === "REVIEW_REQUIRED" ||
+      (ar.shortDescription || "").includes("REVIEW_REQUIRED") ||
+      (ar.longDescription || "").includes("REVIEW_REQUIRED")
+    );
   });
   if (limit > 0) candidates = candidates.slice(0, limit);
 
@@ -89,23 +97,32 @@ async function main() {
       continue;
     }
 
-    const data: Record<string, string> = {
-      name: copy.nameAr,
-      seoTitle: `${copy.nameAr} | النجاح الدائم · Fixpoint`.slice(0, 60),
-    };
-    if (fullArShell) {
-      data.shortDescription = copy.shortAr;
-      data.longDescription = copy.longAr;
-      data.whoItIsFor = copy.whoAr;
-      data.whatWeDo = copy.whatAr;
-      data.whenProfessional = copy.whenAr;
-      data.process = copy.processAr;
-      data.pricingInfo = copy.priceAr;
-      data.professionalFallback = copy.safetyAr;
-      data.safetyNotes = copy.safetyAr;
+    const data: Record<string, string> = {};
+    if (needsArName(ar.name)) {
+      data.name = copy.nameAr;
+      data.seoTitle = `${copy.nameAr} | النجاح الدائم · فكس بوينت`.slice(0, 60);
+    } else if (!AR.test(ar.seoTitle || "") || (ar.seoTitle || "").includes("Fixpoint") || (ar.seoTitle || "").includes("REVIEW_REQUIRED")) {
+      data.seoTitle = `${ar.name} | النجاح الدائم · فكس بوينت`.slice(0, 60);
+    }
+    // Always fill AR body fields when still REVIEW_REQUIRED (or when --full-ar-shell).
+    const needShort = fullArShell || ar.shortDescription === "REVIEW_REQUIRED" || (ar.shortDescription || "").includes("REVIEW_REQUIRED");
+    const needLong = fullArShell || ar.longDescription === "REVIEW_REQUIRED" || (ar.longDescription || "").includes("REVIEW_REQUIRED");
+    if (needShort) data.shortDescription = copy.shortAr;
+    if (needLong) data.longDescription = copy.longAr;
+    if (fullArShell || ar.whoItIsFor === "REVIEW_REQUIRED") data.whoItIsFor = copy.whoAr;
+    if (fullArShell || ar.whatWeDo === "REVIEW_REQUIRED") data.whatWeDo = copy.whatAr;
+    if (fullArShell || ar.whenProfessional === "REVIEW_REQUIRED") data.whenProfessional = copy.whenAr;
+    if (fullArShell || ar.process === "REVIEW_REQUIRED") data.process = copy.processAr;
+    if (fullArShell || ar.pricingInfo === "REVIEW_REQUIRED") data.pricingInfo = copy.priceAr;
+    if (fullArShell || ar.professionalFallback === "REVIEW_REQUIRED") data.professionalFallback = copy.safetyAr;
+    if (fullArShell || ar.safetyNotes === "REVIEW_REQUIRED") data.safetyNotes = copy.safetyAr;
+    if (fullArShell || !AR.test(ar.metaDescription || "") || (ar.metaDescription || "").includes("REVIEW_REQUIRED")) {
       data.metaDescription = copy.shortAr.slice(0, 155);
-    } else if (!AR.test(ar.metaDescription || "") || ar.metaDescription.includes("REVIEW_REQUIRED")) {
-      data.metaDescription = copy.shortAr.slice(0, 155);
+    }
+
+    if (Object.keys(data).length === 0) {
+      skipped += 1;
+      continue;
     }
 
     await prisma.serviceI18n.update({

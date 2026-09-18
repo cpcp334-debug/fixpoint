@@ -32,7 +32,7 @@ function defaultsFor(section: SiteShellSection) {
         },
       },
       ar: {
-        brandLabel: "النجاح الدائم · Fixpoint",
+        brandLabel: "النجاح الدائم · فكس بوينت",
         quoteLabel: arMessages.Nav.quote,
         aiLabel: arMessages.Nav.ai,
         showAi: true,

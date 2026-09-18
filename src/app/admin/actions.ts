@@ -507,7 +507,7 @@ export async function createServiceAction(formData: FormData) {
             shortDescription: shortAr,
             longDescription: shortAr,
             professionalFallback: "",
-            seoTitle: `${nameAr} | النجاح الدائم · Fixpoint`.slice(0, 60),
+            seoTitle: `${nameAr} | النجاح الدائم · فكس بوينت`.slice(0, 60),
             metaDescription: (shortAr || nameAr).slice(0, 155),
           },
         ],

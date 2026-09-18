@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
-import { brandName, mailUrl, productionSiteUrl, siteConfig, telUrl, whatsappUrl } from "@/config/site";
+import { brandName, domainBrandName, mailUrl, productionSiteUrl, siteConfig, telUrl, whatsappUrl } from "@/config/site";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
 import { getPublishedSiteShell, type FooterShell } from "@/lib/site-shell";
@@ -29,7 +29,7 @@ export async function Footer({ locale }: { locale: string }) {
             {shell?.companyBlurb?.trim() ? <p className="mt-1 text-sm text-white/75">{shell.companyBlurb}</p> : null}
             <p className="mt-1 text-sm text-white/75">
               <a href={productionSiteUrl} className={linkClass} target="_blank" rel="noopener noreferrer">
-                {siteConfig.domainBrand} · fixpoint.ae
+                {domainBrandName(locale)} · fixpoint.ae
               </a>
             </p>
             <ul className={listClass}>

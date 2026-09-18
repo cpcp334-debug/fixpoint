@@ -2,6 +2,7 @@ import { brandName } from "@/config/site";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildVisitorNavTree, getNavCategoryLocalized } from "@/lib/catalog/approved-nav";
 import { getServiceBySlug } from "@/lib/catalog";
+import { serviceHref } from "@/lib/slug/locale-slug";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { Section, SectionHeader } from "@/components/ui/Section";
@@ -48,8 +49,8 @@ export default async function ServicesPage({
           if (!svc) return null;
           const loc = getNavCategoryLocalized(cat, locale);
           return {
-            slug: child.slug,
-            href: child.href,
+            slug: svc.slug,
+            href: serviceHref(locale, svc.slug),
             name: svc.t.name || child.nameEn,
             description: svc.t.shortDescription || loc.description,
           };

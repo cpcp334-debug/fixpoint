@@ -43,7 +43,9 @@ export function ServiceCard({
         <Icon className="h-4 w-4" />
       </span>
       <h3 className={cn("font-semibold tracking-tight text-navy", compact ? "mt-2 text-sm" : "mt-4 text-lg")}>{name}</h3>
-      <p className={cn("text-muted", compact ? "mt-1 text-xs leading-snug" : "mt-2 flex-1 text-sm leading-relaxed")}>{description}</p>
+      {description && description !== "REVIEW_REQUIRED" ? (
+        <p className={cn("text-muted", compact ? "mt-1 text-xs leading-snug" : "mt-2 flex-1 text-sm leading-relaxed")}>{description}</p>
+      ) : null}
       {benefit ? <p className={cn("text-ink", compact ? "mt-1 text-xs leading-snug" : "mt-3 text-sm")}>{benefit}</p> : null}
       {chips.length ? (
         <div className={cn("flex flex-wrap", compact ? "mt-2 gap-1" : "mt-4 gap-2")}>

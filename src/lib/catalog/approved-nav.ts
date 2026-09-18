@@ -1,6 +1,7 @@
 /**
  * Approved navigation tree — 18 parents + 436 children.
  * Category-only hubs have no parent Service row; children link directly.
+ * Child `slug` is always the Latin master slug; build locale hrefs with serviceHref().
  */
 import {
   APPROVED_CATEGORIES,
@@ -11,6 +12,8 @@ import {
   childSlug,
   type ApprovedCategorySeed,
 } from "../../../prisma/data/catalog-a1";
+import { toMasterServiceSlug, toPublicServiceSlug } from "@/lib/slug/service-slug-map";
+import { serviceHref } from "@/lib/slug/locale-slug";
 
 const CATEGORY_ONLY_HUBS = new Set([
   "refrigerator",
@@ -106,6 +109,7 @@ export function buildApprovedNavTree(): NavCategory[] {
           nameEn: c.nameEn,
           categorySlug: c.categorySlug,
           sortOrder: c.sortOrder,
+          /** Default href uses Latin; callers should prefer serviceHref(locale, slug). */
           href: `/${slug}`,
         } satisfies NavChild;
       });
@@ -152,14 +156,30 @@ export function getNavCategoryLocalized(cat: NavCategory, locale: string) {
 /** All approved child + anchor slugs that may resolve as public service pages (draft allowed, noindex). */
 export function approvedPublicServiceSlugs(): Set<string> {
   const set = new Set<string>();
-  for (const c of APPROVED_CHILDREN) set.add(childSlug(c));
-  for (const a of ACTIVE_CATEGORY_ANCHORS) set.add(a.slug);
-  for (const a of DRAFT_CATEGORY_ANCHORS) set.add(a.slug);
+  for (const c of APPROVED_CHILDREN) {
+    const master = childSlug(c);
+    set.add(master);
+    set.add(toPublicServiceSlug(master));
+  }
+  for (const a of ACTIVE_CATEGORY_ANCHORS) {
+    set.add(a.slug);
+    set.add(toPublicServiceSlug(a.slug));
+  }
+  for (const a of DRAFT_CATEGORY_ANCHORS) {
+    set.add(a.slug);
+    set.add(toPublicServiceSlug(a.slug));
+  }
   return set;
 }
 
 export function isApprovedPublicServiceSlug(slug: string): boolean {
-  return approvedPublicServiceSlugs().has(slug);
+  if (approvedPublicServiceSlugs().has(slug)) return true;
+  return approvedPublicServiceSlugs().has(toMasterServiceSlug(slug));
+}
+
+/** Locale-aware child link for approved nav. */
+export function navChildHref(locale: string, childSlugValue: string) {
+  return serviceHref(locale, childSlugValue);
 }
 
 export function assertNavTreeIntegrity(): {

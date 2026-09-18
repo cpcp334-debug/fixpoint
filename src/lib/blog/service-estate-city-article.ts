@@ -258,7 +258,7 @@ export function composeServiceEstateCityArticle(input: SecInput): SecArticle {
       : `${input.serviceNameEn.slice(0, 28)} in ${input.estateNameEn.slice(0, 16)} | ${BRAND_EN}`.slice(0, 70);
   const enSeoFinal = enSeo.includes("Fixpoint") ? enSeo : `${input.serviceNameEn.slice(0, 40)} | ${BRAND_EN}`.slice(0, 70);
 
-  const arSeo = `${arTitle} | النجاح الدائم · Fixpoint`.slice(0, 90);
+  const arSeo = `${arTitle} | النجاح الدائم · فكس بوينت`.slice(0, 90);
   const enMeta =
     `${input.serviceNameEn} in ${input.estateNameEn}, ${input.cityNameEn}: signs, what not to touch, what to photograph, and how to request the job without assuming a price.`.slice(
       0,

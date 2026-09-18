@@ -15,6 +15,7 @@ import { CategoryChildGrid } from "@/components/catalog/CategoryChildGrid";
 import { TopElectricalServices } from "@/components/catalog/TopElectricalServices";
 import { TOP_ELECTRICAL_SLUGS } from "../../../../../prisma/data/electrical-service-copy";
 import { listPageHref, PrevNextPagination } from "@/components/ui/PrevNextPagination";
+import { serviceHref } from "@/lib/slug/locale-slug";
 
 const CHILD_PAGE_SIZE = 6;
 
@@ -66,19 +67,14 @@ export default async function CategoryPage({
       let name = child.nameEn;
       let description = locale === "ar" ? cat.descriptionAr : cat.descriptionEn;
       if (svc) {
-        if (locale === "ar") {
-          const arName = svc.translations?.find((x) => x.locale === "ar")?.name;
-          const arDesc = svc.translations?.find((x) => x.locale === "ar")?.shortDescription;
-          name = arName && /[\u0600-\u06FF]/.test(arName) ? arName : t("serviceFallback", { slug: child.slug });
-          description = arDesc && /[\u0600-\u06FF]/.test(arDesc) ? arDesc : cat.descriptionAr;
-        } else {
-          name = svc.t.name || child.nameEn;
-          description = svc.t.shortDescription || cat.descriptionEn;
-        }
+        name = svc.t.name || child.nameEn;
+        description = svc.t.shortDescription || (locale === "ar" ? cat.descriptionAr : cat.descriptionEn);
+      } else if (locale === "ar") {
+        name = t("serviceFallback", { slug: child.slug });
       }
       return {
-        slug: child.slug,
-        href: child.href,
+        slug: svc?.slug || child.slug,
+        href: serviceHref(locale, svc?.slug || child.slug),
         name,
         description,
       };

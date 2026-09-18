@@ -1,4 +1,4 @@
-import { brandName, siteConfig, telUrl, whatsappUrl, getSiteUrl, productionSiteUrl } from "@/config/site";
+import { brandName, domainBrandName, siteConfig, telUrl, whatsappUrl, getSiteUrl, productionSiteUrl } from "@/config/site";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
 import { ShareButton } from "@/components/ui/ShareButton";
@@ -51,7 +51,7 @@ export function Hero({
           </div>
           <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/70">
             <a href={productionSiteUrl} className="hover:text-gold" target="_blank" rel="noopener noreferrer">
-              {siteConfig.domainBrand} · fixpoint.ae
+              {domainBrandName(locale)} · fixpoint.ae
             </a>
             <a href={whatsappUrl()} className="hover:text-gold">
               {copy.whatsapp}
@@ -68,6 +68,7 @@ export function Hero({
           <BrandLogo
             size={260}
             priority
+            locale={locale}
             className="relative z-[1] max-h-[85%] max-w-[85%] drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
           />
         </div>

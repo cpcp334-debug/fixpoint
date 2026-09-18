@@ -1,11 +1,12 @@
 /**
  * Visitor directory for an emirate. Reads the approved location master.
  * Does not publish child pages and does not claim coverage.
- * Public hrefs use Arabic primary slugs (Phase 2); master JSON stays Latin-keyed.
+ * Hrefs are locale-aware: Latin on /en, Arabic on /ar.
  */
 import { cache } from "react";
 import { loadLocationMaster, type MasterLocation } from "../../../prisma/data/location-master";
-import { isKnownEmirateSlug, toMasterLocationSlug, toPublicLocationSlug } from "@/lib/slug/location-slug-map";
+import { isKnownEmirateSlug, toMasterLocationSlug } from "@/lib/slug/location-slug-map";
+import { locationPathSlug } from "@/lib/slug/locale-slug";
 
 export type DirectoryPlace = {
   slug: string;
@@ -58,10 +59,10 @@ export function getHomeLocationGroups(locale: string) {
     const emirate = master.locations.find((row) => row.slug === latinSlug && row.type === "emirate");
     const places = master.locations
       .filter((row) => row.emirateSlug === latinSlug && row.type !== "emirate")
-      .map((row) => ({ slug: toPublicLocationSlug(row.slug), name: visitorName(row, locale) }))
+      .map((row) => ({ slug: locationPathSlug(locale, row.slug), name: visitorName(row, locale) }))
       .sort(byName);
     const name = emirate ? visitorName(emirate, locale) : latinSlug;
-    const publicSlug = toPublicLocationSlug(latinSlug);
+    const publicSlug = locationPathSlug(locale, latinSlug);
     return {
       slug: publicSlug,
       name,
@@ -83,9 +84,9 @@ export const getEmirateDirectory = cache((emirateSlug: string, locale: string): 
   for (const row of master.locations) {
     if (row.emirateSlug !== latinKey) continue;
     if (row.type === "city") {
-      cities.push({ slug: toPublicLocationSlug(row.slug), name: visitorName(row, locale), type: "city" });
+      cities.push({ slug: locationPathSlug(locale, row.slug), name: visitorName(row, locale), type: "city" });
     } else if (row.type === "community" || row.type === "area") {
-      areas.push({ slug: toPublicLocationSlug(row.slug), name: visitorName(row, locale), type: "community" });
+      areas.push({ slug: locationPathSlug(locale, row.slug), name: visitorName(row, locale), type: "community" });
     }
   }
   cities.sort(byName);

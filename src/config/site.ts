@@ -9,9 +9,11 @@ export const siteConfig = {
   brand: "Al Najah Al Daem",
   brandAr: "النجاح الدائم",
   domainBrand: "Fixpoint",
+  /** Arabic display for the Fixpoint domain brand (not the domain itself). */
+  domainBrandAr: "فكس بوينت",
   /** Public display: company + Fixpoint together. */
   brandDisplayEn: "Al Najah Al Daem · Fixpoint",
-  brandDisplayAr: "النجاح الدائم · Fixpoint",
+  brandDisplayAr: "النجاح الدائم · فكس بوينت",
   positioning: {
     en: "Cleaning & Building Maintenance Services",
     ar: "خدمات التنظيف وصيانة المباني",
@@ -67,9 +69,22 @@ export function getSiteUrl() {
   return "http://localhost:3000";
 }
 
-/** Locale-aware public brand: company · Fixpoint. */
+/** Locale-aware public brand: company · Fixpoint / فكس بوينت. */
 export function brandName(locale?: string) {
   return locale === "ar" ? siteConfig.brandDisplayAr : siteConfig.brandDisplayEn;
+}
+
+/** Locale-aware short domain brand (Fixpoint / فكس بوينت). Domain host stays fixpoint.ae. */
+export function domainBrandName(locale?: string) {
+  return locale === "ar" ? siteConfig.domainBrandAr : siteConfig.domainBrand;
+}
+
+/**
+ * Replace Latin "Fixpoint" brand tokens in Arabic UI/CMS copy.
+ * Does not touch lowercase domain hosts (fixpoint.ae).
+ */
+export function arabicizeFixpointBrand(text: string) {
+  return text.replace(/Fixpoint/g, siteConfig.domainBrandAr);
 }
 
 /** Company-only name (licenses, legal body copy). */

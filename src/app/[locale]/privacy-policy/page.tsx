@@ -30,7 +30,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
         <h1 className="text-[2rem] font-semibold text-navy">{t("privacyTitle")}</h1>
         {ar ? (
           <div className="mt-4 max-w-3xl space-y-4 text-muted">
-            <p>تجمع النجاح الدائم · Fixpoint بيانات التواصل التي ترسلها عبر النماذج (الاسم والهاتف والبريد والرسالة وموقع الخدمة) للرد على الطلبات. لا نبيع بياناتك.</p>
+            <p>تجمع النجاح الدائم · فكس بوينت بيانات التواصل التي ترسلها عبر النماذج (الاسم والهاتف والبريد والرسالة وموقع الخدمة) للرد على الطلبات. لا نبيع بياناتك.</p>
             <p>لا نطلب أرقام جوازات أو هوية إماراتية عبر هذا الموقع العام. المساعد الذكي يستخدم فقط معلومات الخدمات العامة المفعّلة.</p>
             <p>{t("privacyAnalytics")}</p>
             <p>للتواصل: {siteConfig.email} — {siteConfig.phoneDisplay}.</p>

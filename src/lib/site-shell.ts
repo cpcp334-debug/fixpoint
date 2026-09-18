@@ -3,6 +3,7 @@
  * Public site uses published documents; falls back to next-intl messages + siteConfig.
  */
 import { cache } from "react";
+import { arabicizeFixpointBrand } from "@/config/site";
 import { prisma } from "@/server/db";
 import { parseJson } from "@/lib/utils";
 
@@ -57,7 +58,7 @@ export const getPublishedSiteShell = cache(async (section: SiteShellSection, loc
   try {
     const row = await prisma.siteShellDocument.findUnique({ where: { section } });
     if (!row || row.status !== "published") return null;
-    const raw = locale === "ar" ? row.payloadAr : row.payloadEn;
+    const raw = locale === "ar" ? arabicizeFixpointBrand(row.payloadAr) : row.payloadEn;
     const parsed = parseJson<SiteShellPayload>(raw, emptyShell(section));
     return parsed;
   } catch {

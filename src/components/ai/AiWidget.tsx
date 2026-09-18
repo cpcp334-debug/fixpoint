@@ -59,7 +59,7 @@ export function AiWidget({ locale }: { locale: string }) {
         )}
       >
         <header className="flex items-center gap-2 border-b border-line bg-navy px-3 py-2 text-white">
-          <BrandLogo size={36} />
+          <BrandLogo size={36} locale={locale} />
           <p className="min-w-0 flex-1 truncate text-sm font-semibold">
             {brandName(locale)} <span className="text-gold">AI</span>
           </p>

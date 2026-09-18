@@ -3,19 +3,29 @@ import type { Prisma } from "@prisma/client";
 import { prisma } from "@/server/db";
 import { pickI18n } from "@/lib/utils";
 import { isApprovedPublicServiceSlug } from "@/lib/catalog/approved-nav";
-import { publicSlugLookupCandidates } from "@/lib/slug/route-slug";
+import { sanitizePublicServiceI18n } from "@/lib/catalog/public-i18n";
+import { locationLookupCandidates, serviceLookupCandidates } from "@/lib/slug/locale-slug";
 import {
   getServiceLocation as resolvePublicServiceLocation,
   resolveServiceLocationPage,
 } from "@/lib/service-location/page-resolve";
 
-type ServiceWithTranslations = Prisma.ServiceGetPayload<{ include: { translations: true; category: true } }>;
+type ServiceWithTranslations = Prisma.ServiceGetPayload<{
+  include: { translations: true; category: { include: { translations: true } } };
+}>;
 
 function pickServiceTranslation(row: ServiceWithTranslations, locale: string) {
   if (locale === "ar") {
     return row.translations.find((x) => x.locale === "ar") || undefined;
   }
   return row.translations.find((x) => x.locale === "en") || pickI18n(row.translations, locale);
+}
+
+function mapPublicService(row: ServiceWithTranslations, locale: string) {
+  const raw = pickServiceTranslation(row, locale);
+  if (!raw) return null;
+  const t = sanitizePublicServiceI18n(row, locale, raw);
+  return { ...row, t };
 }
 
 /** Public catalog: active + indexable. Hide is draft or indexable off — not a delete, and not coverage. */
@@ -57,44 +67,43 @@ export const getActiveServices = cache(async (locale: string) =>
   safeList(async () => {
     const rows = await prisma.service.findMany({
       where: publicServiceWhere,
-      include: { translations: true, category: true },
+      include: { translations: true, category: { include: { translations: true } } },
       orderBy: { slug: "asc" },
     });
-    return rows.map((row) => ({
-      ...row,
-      t: pickI18n(row.translations, locale)!,
-    }));
+    return rows
+      .map((row) => mapPublicService(row, locale))
+      .filter((row): row is NonNullable<typeof row> => Boolean(row));
   }),
 );
 
 export const getServiceBySlug = cache(async (slug: string, locale: string) => {
+  const candidates = serviceLookupCandidates(slug);
   const row = await prisma.service.findFirst({
-    where: { slug, ...publicServiceWhere },
-    include: { translations: true, category: true },
+    where: { slug: { in: candidates }, ...publicServiceWhere },
+    include: { translations: true, category: { include: { translations: true } } },
   });
   if (!row) return null;
-  const t = pickServiceTranslation(row, locale);
-  if (!t) return null;
+  const mapped = mapPublicService(row, locale);
+  if (!mapped) return null;
   return {
-    ...row,
-    t,
+    ...mapped,
     publicIndexable: true,
   };
 });
 
 /** Approved catalog slugs: any status (draft OK). Used for category hubs and noindex service pages. */
 export const getApprovedCatalogServiceBySlug = cache(async (slug: string, locale: string) => {
-  if (!isApprovedPublicServiceSlug(slug)) return null;
+  const candidates = serviceLookupCandidates(slug);
   const row = await prisma.service.findFirst({
-    where: { slug },
-    include: { translations: true, category: true },
+    where: { slug: { in: candidates } },
+    include: { translations: true, category: { include: { translations: true } } },
   });
   if (!row) return null;
-  const t = pickServiceTranslation(row, locale);
-  if (!t) return null;
+  if (!isApprovedPublicServiceSlug(slug) && !isApprovedPublicServiceSlug(row.slug)) return null;
+  const mapped = mapPublicService(row, locale);
+  if (!mapped) return null;
   return {
-    ...row,
-    t,
+    ...mapped,
     publicIndexable: row.status === "active" && row.indexable,
   };
 });
@@ -126,7 +135,7 @@ export async function publishedServingLocationSlugs() {
 }
 
 export const getPublishedLocation = cache(async (slug: string, locale: string) => {
-  const candidates = publicSlugLookupCandidates(slug);
+  const candidates = locationLookupCandidates(slug);
   const row = await prisma.location.findFirst({
     where: { slug: { in: candidates }, ...publicLocationWhere, type: { in: ["emirate", "city", "community"] } },
     include: {
@@ -142,7 +151,7 @@ export const getPublishedLocation = cache(async (slug: string, locale: string) =
 });
 
 export const getEmirateBySlug = cache(async (slug: string, locale: string) => {
-  const candidates = publicSlugLookupCandidates(slug);
+  const candidates = locationLookupCandidates(slug);
   const row = await prisma.location.findFirst({
     where: { slug: { in: candidates }, type: "emirate", ...publicLocationWhere },
     include: { translations: true },
