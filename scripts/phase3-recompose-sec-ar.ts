@@ -35,6 +35,7 @@ function parseArgs(argv: string[]) {
   let dryRun = false;
   let limit = 0;
   let batch = 100;
+  let concurrency = 8;
   let cursor = "";
   let skipGates = false;
   for (const a of argv) {
@@ -42,9 +43,10 @@ function parseArgs(argv: string[]) {
     else if (a === "--skip-gates") skipGates = true;
     else if (a.startsWith("--limit=")) limit = Math.max(0, Number(a.slice(8)) || 0);
     else if (a.startsWith("--batch=")) batch = Math.max(1, Number(a.slice(8)) || 100);
+    else if (a.startsWith("--concurrency=")) concurrency = Math.max(1, Math.min(32, Number(a.slice(14)) || 8));
     else if (a.startsWith("--cursor=")) cursor = a.slice(9);
   }
-  return { dryRun, limit, batch, cursor, skipGates };
+  return { dryRun, limit, batch, cursor, skipGates, concurrency };
 }
 
 function parseSecParts(slug: string, serviceOlds: string[], locationOlds: string[]) {
@@ -136,10 +138,9 @@ async function main() {
     const rows = await prisma.article.findMany({
       where: {
         ...(cursor ? { id: { gt: cursor } } : {}),
-        OR: [
-          { categorySlugs: { contains: "service-location" } },
-          { AND: [{ NOT: { slug: { startsWith: "faq-" } } }, { NOT: { categorySlugs: { contains: "service-faq" } } }] },
-        ],
+        translations: {
+          some: { locale: "ar", OR: [{ title: { contains: "REVIEW_REQUIRED" } }, { body: { contains: "REVIEW_REQUIRED" } }] },
+        },
       },
       orderBy: { id: "asc" },
       take,
@@ -257,51 +258,33 @@ async function main() {
       samples.push({ from: row.slug, to: composed.slug, titleAr: composed.ar.title });
 
       if (!dryRun) {
-        try {
-          await prisma.$transaction(async (tx) => {
-            await tx.article.update({
-              where: { id: row.id },
-              data: {
-                slug: composed.slug,
-                categorySlugs: JSON.stringify(composed.categorySlugs),
-                relatedServiceSlugs: JSON.stringify(composed.relatedServiceSlugs),
-                relatedDiySlugs: remapJsonSlugArray(row.relatedDiySlugs, maps.diyGuide),
-                heroImage: composed.heroImage || row.heroImage,
-              },
-            });
-            for (const locale of ["en", "ar"] as const) {
-              const fields = composed[locale];
-              await tx.articleI18n.upsert({
-                where: { articleId_locale: { articleId: row.id, locale } },
-                create: { articleId: row.id, locale, ...fields },
-                update: { ...fields },
-              });
-            }
+        const writeOnce = async (slug: string) => {
+          await prisma.article.update({
+            where: { id: row.id },
+            data: {
+              slug,
+              categorySlugs: JSON.stringify(composed.categorySlugs),
+              relatedServiceSlugs: JSON.stringify(composed.relatedServiceSlugs),
+              relatedDiySlugs: remapJsonSlugArray(row.relatedDiySlugs, maps.diyGuide),
+              heroImage: composed.heroImage || row.heroImage,
+            },
           });
+          for (const locale of ["en", "ar"] as const) {
+            const fields = composed[locale];
+            await prisma.articleI18n.upsert({
+              where: { articleId_locale: { articleId: row.id, locale } },
+              create: { articleId: row.id, locale, ...fields },
+              update: { ...fields },
+            });
+          }
+        };
+        try {
+          await writeOnce(composed.slug);
           updated += 1;
         } catch (e) {
-          // slug collision — suffix
           const alt = `${composed.slug}-${row.id.slice(-5)}`;
           try {
-            await prisma.$transaction(async (tx) => {
-              await tx.article.update({
-                where: { id: row.id },
-                data: {
-                  slug: alt,
-                  categorySlugs: JSON.stringify(composed.categorySlugs),
-                  relatedServiceSlugs: JSON.stringify(composed.relatedServiceSlugs),
-                  heroImage: composed.heroImage || row.heroImage,
-                },
-              });
-              for (const locale of ["en", "ar"] as const) {
-                const fields = composed[locale];
-                await tx.articleI18n.upsert({
-                  where: { articleId_locale: { articleId: row.id, locale } },
-                  create: { articleId: row.id, locale, ...fields },
-                  update: { ...fields },
-                });
-              }
-            });
+            await writeOnce(alt);
             updated += 1;
           } catch (e2) {
             skipped += 1;
