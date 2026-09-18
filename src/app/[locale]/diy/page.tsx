@@ -14,6 +14,9 @@ import { DiyGuideGrid } from "@/components/diy/DiyGuideGrid";
 import { ButtonLink } from "@/components/ui/Button";
 import { IconArrow } from "@/components/ui/Icon";
 
+/** Rebuild after MySQL import / publish — avoid empty SSG baked at first Hostinger build. */
+export const revalidate = 300;
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Diy" });

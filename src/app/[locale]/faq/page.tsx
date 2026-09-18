@@ -12,6 +12,9 @@ import { QuestionForm } from "@/components/forms/QuestionForm";
 import { getPublishedServiceFaqs } from "@/lib/faq/pages";
 import { APPROVED_CATEGORIES } from "../../../../prisma/data/catalog-a1";
 
+/** Rebuild after MySQL import / publish — avoid empty SSG baked at first Hostinger build. */
+export const revalidate = 300;
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "FaqPage" });

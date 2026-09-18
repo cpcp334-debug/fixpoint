@@ -13,6 +13,9 @@ import { BLOG_CATEGORIES } from "@/lib/blog/categories";
 import { getPublishedGuides } from "@/lib/catalog";
 import { prisma } from "@/server/db";
 
+/** Rebuild after MySQL import / publish — avoid empty SSG baked at first Hostinger build. */
+export const revalidate = 300;
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Blog" });

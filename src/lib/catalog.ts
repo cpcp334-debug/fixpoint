@@ -45,7 +45,9 @@ export const getServiceLocation = resolvePublicServiceLocation;
 async function safeList<T>(fn: () => Promise<T[]>, fallback: T[] = []): Promise<T[]> {
   try {
     return await fn();
-  } catch {
+  } catch (err) {
+    // Soft-fail keeps first deploys from crashing; log so empty DIY/FAQ lists are diagnosable.
+    console.error("[catalog.safeList]", err instanceof Error ? err.message : err);
     return fallback;
   }
 }
@@ -150,7 +152,14 @@ export const getPublishedGuides = cache(async (locale: string) =>
   safeList(async () => {
     const rows = await prisma.diyGuide.findMany({
       where: { status: "published", indexable: true },
-      include: { translations: true, service: true, category: { include: { translations: true } } },
+      select: {
+        slug: true,
+        riskLevel: true,
+        difficulty: true,
+        estimatedTime: true,
+        translations: true,
+        category: { select: { translations: true } },
+      },
       orderBy: { slug: "asc" },
     });
     return rows.map((row) => ({
