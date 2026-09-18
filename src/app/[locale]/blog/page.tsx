@@ -8,6 +8,7 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { EmptyState, Section, SectionHeader } from "@/components/ui/Section";
 import { PageShell } from "@/components/public/PageShell";
 import { CtaBand } from "@/components/public/CtaBand";
+import { listPageHref, PrevNextPagination } from "@/components/ui/PrevNextPagination";
 import { getPublishedBlogArticles } from "@/lib/blog/catalog";
 import { BLOG_CATEGORIES } from "@/lib/blog/categories";
 import { getPublishedGuides } from "@/lib/catalog";
@@ -46,6 +47,7 @@ export default async function BlogIndexPage({
   setRequestLocale(locale);
   const t = await getTranslations("Blog");
   const nav = await getTranslations("Nav");
+  const pager = await getTranslations("Pagination");
   const home = await getTranslations("Home");
   const cta = await getTranslations("Cta");
 
@@ -60,8 +62,8 @@ export default async function BlogIndexPage({
   }
 
   const pageSize = 12;
-  const page = Math.max(1, Number(sp.page || "1") || 1);
   const totalPages = Math.max(1, Math.ceil(articles.length / pageSize));
+  const page = Math.min(totalPages, Math.max(1, Number(sp.page || "1") || 1));
   const pageItems = articles.slice((page - 1) * pageSize, page * pageSize);
   const featured = articles.slice(0, 3);
 
@@ -196,25 +198,23 @@ export default async function BlogIndexPage({
                 </li>
               ))}
             </ul>
-            {totalPages > 1 ? (
-              <div className="mt-8 flex flex-wrap gap-2">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => {
-                  const qs = new URLSearchParams();
-                  if (category) qs.set("category", category);
-                  if (q) qs.set("q", q);
-                  qs.set("page", String(p));
-                  return (
-                    <Link
-                      key={p}
-                      href={`/blog?${qs.toString()}`}
-                      className={`rounded-md border px-3 py-1 text-sm ${p === page ? "border-navy bg-navy text-white" : "border-line bg-white"}`}
-                    >
-                      {p}
-                    </Link>
-                  );
-                })}
-              </div>
-            ) : null}
+            <PrevNextPagination
+              currentPage={page}
+              totalPages={totalPages}
+              previousHref={
+                page > 1
+                  ? listPageHref("/blog", page - 1, { category, q: sp.q?.trim() })
+                  : null
+              }
+              nextHref={
+                page < totalPages
+                  ? listPageHref("/blog", page + 1, { category, q: sp.q?.trim() })
+                  : null
+              }
+              previousLabel={pager("previous")}
+              nextLabel={pager("next")}
+              pageOfLabel={pager("pageOf", { current: page, total: totalPages })}
+            />
           </Section>
         </>
       )}

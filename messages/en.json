@@ -23,6 +23,12 @@
     "language": "Language",
     "breadcrumb": "Breadcrumb"
   },
+  "Pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "pageOf": "Page {current} of {total}",
+    "filter": "Filter"
+  },
   "Footer": {
     "company": "Company",
     "services": "Services",

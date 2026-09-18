@@ -1,6 +1,3 @@
-"use client";
-
-import { useMemo, useState } from "react";
 import { Link } from "@/i18n/routing";
 
 type Item = { slug: string; title: string; excerpt: string };
@@ -11,44 +8,39 @@ export function FaqDirectory({
   searchPlaceholder,
   emptyLabel,
   openLabel,
+  query = "",
+  filterLabel,
 }: {
   groups: Group[];
   searchPlaceholder: string;
   emptyLabel: string;
   openLabel: string;
+  /** Current search query (server-driven via ?q=). */
+  query?: string;
+  filterLabel: string;
 }) {
-  const [query, setQuery] = useState("");
-  const needle = query.trim().toLowerCase();
-  const filtered = useMemo(() => {
-    if (!needle) return groups;
-    return groups
-      .map((group) => ({
-        ...group,
-        items: group.items.filter(
-          (item) => item.title.toLowerCase().includes(needle) || group.name.toLowerCase().includes(needle),
-        ),
-      }))
-      .filter((group) => group.items.length > 0);
-  }, [groups, needle]);
-
   return (
     <div>
-      <label className="block max-w-md">
-        <span className="sr-only">{searchPlaceholder}</span>
-        <input
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder={searchPlaceholder}
-          className="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm text-navy"
-        />
-      </label>
-      {filtered.length ? (
+      <form method="get" className="flex max-w-lg flex-wrap gap-3">
+        <label className="min-w-[12rem] flex-1">
+          <span className="sr-only">{searchPlaceholder}</span>
+          <input
+            type="search"
+            name="q"
+            defaultValue={query}
+            placeholder={searchPlaceholder}
+            className="w-full rounded-xl border border-line bg-white px-4 py-3 text-sm text-navy"
+          />
+        </label>
+        <button type="submit" className="rounded-xl bg-navy px-4 py-3 text-sm font-medium text-white">
+          {filterLabel}
+        </button>
+      </form>
+      {groups.length ? (
         <div className="mt-8 grid gap-8">
-          {filtered.map((group) => (
+          {groups.map((group) => (
             <section key={group.slug}>
-              <h2 className="text-lg font-semibold text-navy">
-                {group.name} <span className="text-sm font-normal text-muted">({group.items.length})</span>
-              </h2>
+              <h2 className="text-lg font-semibold text-navy">{group.name}</h2>
               <ul className="mt-3 grid gap-3">
                 {group.items.map((item) => (
                   <li key={item.slug} className="rounded-xl border border-line bg-white p-4">

@@ -23,6 +23,12 @@
     "language": "اللغة",
     "breadcrumb": "مسار التنقل"
   },
+  "Pagination": {
+    "previous": "السابق",
+    "next": "التالي",
+    "pageOf": "صفحة {current} من {total}",
+    "filter": "تصفية"
+  },
   "Footer": {
     "company": "الشركة",
     "services": "الخدمات",
