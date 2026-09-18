@@ -18,14 +18,50 @@ const BLOG_ARTICLE_WHERE: Prisma.ArticleWhereInput = {
   NOT: [{ slug: { startsWith: "faq-" } }],
 };
 
+const PER_PAGE_OPTIONS = [50, 100] as const;
+type PerPage = (typeof PER_PAGE_OPTIONS)[number];
+
+function parsePerPage(raw?: string): PerPage {
+  return raw === "100" ? 100 : 50;
+}
+
+function parsePage(raw: string | undefined, totalPages: number): number {
+  const n = Math.floor(Number(raw));
+  if (!Number.isFinite(n) || n < 1) return 1;
+  return Math.min(n, Math.max(1, totalPages));
+}
+
+function blogsListHref(opts: {
+  q?: string;
+  status?: string;
+  page?: number;
+  perPage: PerPage;
+}): string {
+  const sp = new URLSearchParams();
+  if (opts.q?.trim()) sp.set("q", opts.q.trim());
+  if (opts.status) sp.set("status", opts.status);
+  if (opts.perPage !== 50) sp.set("perPage", String(opts.perPage));
+  if (opts.page && opts.page > 1) sp.set("page", String(opts.page));
+  const qs = sp.toString();
+  return `/admin/blogs${qs ? `?${qs}` : ""}`;
+}
+
 export default async function BlogsAdminPage({
   searchParams,
 }: {
-  searchParams: Promise<{ status?: string; q?: string; ok?: string; error?: string }>;
+  searchParams: Promise<{
+    status?: string;
+    q?: string;
+    ok?: string;
+    error?: string;
+    page?: string;
+    perPage?: string;
+  }>;
 }) {
   const auth = await needPermission("diy");
   if (!auth.ok) return <Forbidden />;
   const query = await searchParams;
+  const perPage = parsePerPage(query.perPage);
   const where: Prisma.ArticleWhereInput = { ...BLOG_ARTICLE_WHERE };
   if (query.status && (STATUSES as string[]).includes(query.status)) {
     where.status = query.status as ContentStatus;
@@ -41,23 +77,31 @@ export default async function BlogsAdminPage({
       },
     ];
   }
-  const [totalBlogs, matchingCount, publicBlogs, rows] = await Promise.all([
+
+  const [totalBlogs, matchingCount, publicBlogs] = await Promise.all([
     prisma.article.count({ where: BLOG_ARTICLE_WHERE }),
     prisma.article.count({ where }),
     prisma.article.count({
       where: { ...BLOG_ARTICLE_WHERE, status: "published", indexable: true },
     }),
-    prisma.article.findMany({
-      where,
-      include: { translations: { where: { locale: "en" }, take: 1 } },
-      orderBy: [{ updatedAt: "desc" }],
-      take: 500,
-    }),
   ]);
-  const sp = new URLSearchParams();
-  if (query.q) sp.set("q", query.q);
-  if (query.status) sp.set("status", query.status);
-  const returnTo = `/admin/blogs${sp.toString() ? `?${sp}` : ""}`;
+
+  const totalPages = Math.max(1, Math.ceil(matchingCount / perPage));
+  const page = parsePage(query.page, totalPages);
+  const skip = (page - 1) * perPage;
+
+  const rows = await prisma.article.findMany({
+    where,
+    include: { translations: { where: { locale: "en" }, take: 1 } },
+    orderBy: [{ updatedAt: "desc" }],
+    skip,
+    take: perPage,
+  });
+
+  const filterBase = { q: query.q, status: query.status, perPage };
+  const returnTo = blogsListHref({ ...filterBase, page });
+  const rangeFrom = matchingCount === 0 ? 0 : skip + 1;
+  const rangeTo = matchingCount === 0 ? 0 : skip + rows.length;
 
   return (
     <div>
@@ -89,6 +133,13 @@ export default async function BlogsAdminPage({
             </option>
           ))}
         </select>
+        <select name="perPage" defaultValue={String(perPage)} className="rounded-md border border-line px-3 py-2">
+          {PER_PAGE_OPTIONS.map((n) => (
+            <option key={n} value={n}>
+              {n} per page
+            </option>
+          ))}
+        </select>
         <button type="submit" className="rounded-md border border-line px-3 py-2">
           Filter
         </button>
@@ -103,6 +154,8 @@ export default async function BlogsAdminPage({
         total={totalBlogs}
         matching={matchingCount}
         showing={rows.length}
+        rangeFrom={rangeFrom || undefined}
+        rangeTo={rangeTo || undefined}
         stats={[{ label: "public (published + indexable)", value: publicBlogs }]}
       />
       <AdminBulkTable
@@ -127,8 +180,27 @@ export default async function BlogsAdminPage({
         }))}
         emptyNote="No blogs match."
       />
-      {matchingCount > rows.length ? (
-        <p className="mt-3 text-sm text-muted">Table shows the first {rows.length} matches. Narrow with search or status.</p>
+      {matchingCount > 0 ? (
+        <nav className="mt-3 flex flex-wrap items-center gap-3 text-sm text-muted" aria-label="Blogs pagination">
+          <span>
+            Page <span className="font-semibold text-navy">{page}</span> of{" "}
+            <span className="font-semibold text-navy">{totalPages.toLocaleString()}</span>
+          </span>
+          {page > 1 ? (
+            <Link className="text-navy" href={blogsListHref({ ...filterBase, page: page - 1 })}>
+              Previous
+            </Link>
+          ) : (
+            <span className="opacity-40">Previous</span>
+          )}
+          {page < totalPages ? (
+            <Link className="text-navy" href={blogsListHref({ ...filterBase, page: page + 1 })}>
+              Next
+            </Link>
+          ) : (
+            <span className="opacity-40">Next</span>
+          )}
+        </nav>
       ) : null}
     </div>
   );

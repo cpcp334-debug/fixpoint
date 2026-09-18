@@ -10,13 +10,21 @@ export function AdminListSummary({
   matching,
   showing,
   stats = [],
+  rangeFrom,
+  rangeTo,
 }: {
   noun: string;
   total: number;
   matching: number;
   showing: number;
   stats?: AdminListStat[];
+  /** When set with rangeTo, show "showing A–B" instead of "showing first N". */
+  rangeFrom?: number;
+  rangeTo?: number;
 }) {
+  const hasRange =
+    typeof rangeFrom === "number" && typeof rangeTo === "number" && matching > 0 && rangeTo >= rangeFrom;
+
   return (
     <p className="mb-3 text-sm text-muted">
       <span className="font-semibold text-navy">{total.toLocaleString()}</span> {noun} total
@@ -32,7 +40,15 @@ export function AdminListSummary({
           · <span className="font-semibold text-navy">{stat.value.toLocaleString()}</span> {stat.label}
         </span>
       ))}
-      {matching > showing ? (
+      {hasRange ? (
+        <>
+          {" "}
+          · showing{" "}
+          <span className="font-semibold text-navy">
+            {rangeFrom.toLocaleString()}–{rangeTo.toLocaleString()}
+          </span>
+        </>
+      ) : matching > showing ? (
         <>
           {" "}
           · showing first <span className="font-semibold text-navy">{showing.toLocaleString()}</span>
