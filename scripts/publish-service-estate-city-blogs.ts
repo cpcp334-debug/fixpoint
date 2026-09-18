@@ -262,24 +262,29 @@ async function main() {
     }));
 
     try {
-      await prisma.article.createMany({ data: articleRows, skipDuplicates: true });
-      const inserted = await prisma.article.findMany({
-        where: { slug: { in: articleRows.map((r) => r.slug) } },
-        select: { id: true, slug: true },
+      // Atomic Article + ArticleI18n so the public blog index never sees published
+      // rows without locale translations (empty "Latest articles" + huge page count).
+      const insertedCount = await prisma.$transaction(async (tx) => {
+        await tx.article.createMany({ data: articleRows, skipDuplicates: true });
+        const inserted = await tx.article.findMany({
+          where: { slug: { in: articleRows.map((r) => r.slug) } },
+          select: { id: true, slug: true },
+        });
+        const bySlug = new Map(inserted.map((r) => [r.slug, r.id]));
+        const i18nRows = composed.flatMap((a) => {
+          const articleId = bySlug.get(a.slug);
+          if (!articleId) return [];
+          return [
+            { id: createId(), articleId, locale: "en", ...a.en },
+            { id: createId(), articleId, locale: "ar", ...a.ar },
+          ];
+        });
+        if (i18nRows.length) {
+          await tx.articleI18n.createMany({ data: i18nRows, skipDuplicates: true });
+        }
+        return inserted.length;
       });
-      const bySlug = new Map(inserted.map((r) => [r.slug, r.id]));
-      const i18nRows = composed.flatMap((a) => {
-        const articleId = bySlug.get(a.slug);
-        if (!articleId) return [];
-        return [
-          { id: createId(), articleId, locale: "en", ...a.en },
-          { id: createId(), articleId, locale: "ar", ...a.ar },
-        ];
-      });
-      if (i18nRows.length) {
-        await prisma.articleI18n.createMany({ data: i18nRows, skipDuplicates: true });
-      }
-      created += inserted.length;
+      created += insertedCount;
       console.log(JSON.stringify({ phase: "batch", from: i, to: i + chunk.length, created, failed }));
     } catch (e) {
       failed += chunk.length;

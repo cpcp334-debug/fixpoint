@@ -58,6 +58,9 @@ export const getPublishedBlogArticlesPage = cache(
     const category = opts?.category?.trim();
     const q = opts?.q?.trim();
 
+    // Require locale i18n in WHERE (not only post-filter) so count and page slices stay aligned.
+    // SEC publisher used to insert Article before ArticleI18n; without this, pages can be empty
+    // while "Page X of N" still reflects raw published rows.
     const where: Parameters<typeof prisma.article.findMany>[0] extends { where?: infer W } | undefined
       ? W
       : never = {
@@ -65,19 +68,19 @@ export const getPublishedBlogArticlesPage = cache(
       ...(category
         ? { categorySlugs: { contains: category } }
         : {}),
-      ...(q
-        ? {
-            translations: {
-              some: {
-                locale,
+      translations: {
+        some: {
+          locale,
+          ...(q
+            ? {
                 OR: [
                   { title: { contains: q } },
                   { excerpt: { contains: q } },
                 ],
-              },
-            },
-          }
-        : {}),
+              }
+            : {}),
+        },
+      },
     };
 
     const [rows, total] = await Promise.all([
@@ -89,7 +92,8 @@ export const getPublishedBlogArticlesPage = cache(
             select: { locale: true, title: true, excerpt: true, imageAlt: true },
           },
         },
-        orderBy: [{ publishedAt: "desc" }, { updatedAt: "desc" }],
+        // id tie-break: SEC batches share the same publishedAt stamp
+        orderBy: [{ publishedAt: "desc" }, { updatedAt: "desc" }, { id: "desc" }],
         skip,
         take,
       }),

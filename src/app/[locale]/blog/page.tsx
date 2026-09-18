@@ -187,27 +187,33 @@ export default async function BlogIndexPage({
 
           <Section>
             <SectionHeader title={t("latest")} />
-            <ul className="mt-8 grid gap-6 md:grid-cols-2">
-              {pageItems.map((a) => (
-                <li key={`latest-${a.slug}`} className="flex gap-4 rounded-xl border border-line bg-white p-4">
-                  {a.heroImage ? (
-                    <div className="relative hidden h-24 w-32 shrink-0 overflow-hidden rounded-md sm:block">
-                      <Image src={a.heroImage} alt={a.imageAlt} fill className="object-cover" sizes="128px" />
+            {pageItems.length ? (
+              <ul className="mt-8 grid gap-6 md:grid-cols-2">
+                {pageItems.map((a) => (
+                  <li key={`latest-${a.slug}`} className="flex gap-4 rounded-xl border border-line bg-white p-4">
+                    {a.heroImage ? (
+                      <div className="relative hidden h-24 w-32 shrink-0 overflow-hidden rounded-md sm:block">
+                        <Image src={a.heroImage} alt={a.imageAlt} fill className="object-cover" sizes="128px" />
+                      </div>
+                    ) : null}
+                    <div>
+                      <p className="text-xs text-muted">{a.categories.map((c) => c.label).join(" · ")}</p>
+                      <h2 className="mt-1 font-semibold text-navy">
+                        <Link href={`/blog/${a.slug}`}>{a.title}</Link>
+                      </h2>
+                      <p className="mt-2 text-sm text-muted line-clamp-2">{a.excerpt}</p>
+                      <Link href={`/blog/${a.slug}`} className="mt-2 inline-block text-sm text-accent">
+                        {t("readFull")}
+                      </Link>
                     </div>
-                  ) : null}
-                  <div>
-                    <p className="text-xs text-muted">{a.categories.map((c) => c.label).join(" · ")}</p>
-                    <h2 className="mt-1 font-semibold text-navy">
-                      <Link href={`/blog/${a.slug}`}>{a.title}</Link>
-                    </h2>
-                    <p className="mt-2 text-sm text-muted line-clamp-2">{a.excerpt}</p>
-                    <Link href={`/blog/${a.slug}`} className="mt-2 inline-block text-sm text-accent">
-                      {t("readFull")}
-                    </Link>
-                  </div>
-                </li>
-              ))}
-            </ul>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <div className="mt-8">
+                <EmptyState body={t("empty")} />
+              </div>
+            )}
             <PrevNextPagination
               currentPage={page}
               totalPages={totalPages}
