@@ -1,20 +1,23 @@
 /**
  * Locale-aware public path slugs.
- * Policy: /en → Latin (master) slugs; /ar → Arabic slugs from scripts/_slug-maps.json.
- * DB primary `slug` should be Latin after restore; Arabic lives in the map (and AR URLs).
+ * Policy: /en → Latin (master) slugs; /ar → Arabic slugs from scripts/_slug-maps.json
+ * (percent-encoded path segments so Hostinger receives ASCII-safe URLs).
+ * DB primary `slug` stays Latin; never overwrite with Arabic.
  */
 import { toMasterServiceSlug, toPublicServiceSlug } from "@/lib/slug/service-slug-map";
 import { toMasterLocationSlug, toPublicLocationSlug } from "@/lib/slug/location-slug-map";
-import { publicSlugLookupCandidates } from "@/lib/slug/route-slug";
+import { encodePathSegment, normalizeRouteSlug, publicSlugLookupCandidates } from "@/lib/slug/route-slug";
 
 export function servicePathSlug(locale: string, anySlug: string): string {
-  const latin = toMasterServiceSlug(anySlug);
-  return locale === "ar" ? toPublicServiceSlug(latin) : latin;
+  const latin = toMasterServiceSlug(normalizeRouteSlug(anySlug));
+  if (locale !== "ar") return latin;
+  return encodePathSegment(toPublicServiceSlug(latin));
 }
 
 export function locationPathSlug(locale: string, anySlug: string): string {
-  const latin = toMasterLocationSlug(anySlug);
-  return locale === "ar" ? toPublicLocationSlug(latin) : latin;
+  const latin = toMasterLocationSlug(normalizeRouteSlug(anySlug));
+  if (locale !== "ar") return latin;
+  return encodePathSegment(toPublicLocationSlug(latin));
 }
 
 export function serviceHref(locale: string, anySlug: string, suffix = ""): string {

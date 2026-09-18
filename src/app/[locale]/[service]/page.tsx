@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { isReservedSlug } from "@/config/reserved-slugs";
-import { siteConfig } from "@/config/site";
+import { brandName, siteConfig } from "@/config/site";
 import {
   getActiveEmirates,
   getPublishedGuides,
@@ -117,7 +117,10 @@ export default async function ServicePage({
     whatsapp: cta("whatsapp"),
     call: cta("call"),
   };
-  const wa = `Hello Al Najah Al Daem · Fixpoint, I need ${row.t.name}.`;
+  const wa =
+    locale === "ar"
+      ? `مرحباً ${brandName("ar")}، أحتاج ${row.t.name}.`
+      : `Hello ${brandName("en")}, I need ${row.t.name}.`;
   const publicPath = `/${servicePathSlug(locale, row.slug)}`;
 
   return (

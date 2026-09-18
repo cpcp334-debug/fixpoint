@@ -1,5 +1,6 @@
 import { locationLookupCandidates, serviceLookupCandidates, serviceHref, serviceLocationHref } from "@/lib/slug/locale-slug";
 import { toMasterServiceSlug } from "@/lib/slug/service-slug-map";
+import { diyPathSlug } from "@/lib/slug/diy-slug-map";
 import type { Prisma } from "@prisma/client";
 import { brandName, getSiteUrl } from "@/config/site";
 import { prisma } from "@/server/db";
@@ -284,7 +285,7 @@ async function softResolveFromServiceAndLocation(
     title: guideT?.title ?? pickI18n(primary?.translations || [], locale)?.title,
     quickAnswer: guideT?.quickAnswer ?? pickI18n(primary?.translations || [], locale)?.quickAnswer,
     whenToStop: guideT?.whenToStop ?? pickI18n(primary?.translations || [], locale)?.whenToStop,
-    guideHref: diyBase.visible && publishedGuide ? `/diy/${publishedGuide.slug}` : null,
+    guideHref: diyBase.visible && publishedGuide ? `/diy/${diyPathSlug(locale, publishedGuide.slug)}` : null,
     guideSlug: primary?.slug ?? publishedGuide?.slug ?? diyBase.guideSlug,
   };
 
@@ -565,7 +566,7 @@ function buildModel(
     title: guideT?.title ?? pickI18n(primary?.translations || [], locale)?.title,
     quickAnswer: guideT?.quickAnswer ?? pickI18n(primary?.translations || [], locale)?.quickAnswer,
     whenToStop: guideT?.whenToStop ?? pickI18n(primary?.translations || [], locale)?.whenToStop,
-    guideHref: diyBase.visible && publishedGuide ? `/diy/${publishedGuide.slug}` : null,
+    guideHref: diyBase.visible && publishedGuide ? `/diy/${diyPathSlug(locale, publishedGuide.slug)}` : null,
     guideSlug: primary?.slug ?? publishedGuide?.slug ?? diyBase.guideSlug,
   };
   const contentMode = isLegacyCompatRow(row) ? "LEGACY_COMPAT" : "STRICT_NEW_CONTENT";

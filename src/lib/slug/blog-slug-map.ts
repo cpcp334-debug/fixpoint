@@ -1,11 +1,11 @@
 /**
- * Maps Latin blog article slugs to Arabic public forms (soft recovery).
- * DB primary `slug` is Latin after restore-latin-article-slugs; Hostinger cannot serve Unicode paths,
- * so public hrefs stay Latin for both locales. Lookup still accepts Arabic URL params.
+ * Maps Latin blog article slugs to Arabic public forms.
+ * DB primary `slug` is Latin; Arabic forms in _slug-maps.json → article.
+ * /en → Latin; /ar → percent-encoded Arabic (Hostinger ASCII-safe).
  */
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { publicSlugLookupCandidates } from "@/lib/slug/route-slug";
+import { encodePathSegment, normalizeRouteSlug, publicSlugLookupCandidates } from "@/lib/slug/route-slug";
 
 let cachedForward: Record<string, string> | null = null;
 let cachedReverse: Record<string, string> | null = null;
@@ -33,25 +33,29 @@ function loadMaps() {
 /** Latin master blog slug → mapped Arabic form (identity if unknown). */
 export function toPublicBlogSlug(slug: string): string {
   loadMaps();
-  return cachedForward![slug] ?? slug;
+  const decoded = normalizeRouteSlug(slug);
+  return cachedForward![decoded] ?? cachedForward![slug] ?? decoded;
 }
 
 /** Public Arabic blog slug → Latin master. */
 export function toMasterBlogSlug(slug: string): string {
   loadMaps();
-  if (!/[\u0600-\u06FF]/.test(slug)) return slug;
-  return cachedReverse![slug] ?? slug;
+  const decoded = normalizeRouteSlug(slug);
+  if (!/[\u0600-\u06FF]/.test(decoded)) return decoded;
+  return cachedReverse![decoded] ?? decoded;
 }
 
 /**
  * Public href slug for blogs.
- * Hostinger/nginx returns 404 for Unicode paths — always emit Latin for both locales.
+ * EN: Latin. AR: Arabic percent-encoded for Hostinger ASCII-safe paths.
  */
-export function blogPathSlug(_locale: string, anySlug: string): string {
-  return toMasterBlogSlug(anySlug);
+export function blogPathSlug(locale: string, anySlug: string): string {
+  const latin = toMasterBlogSlug(anySlug);
+  if (locale !== "ar") return latin;
+  return encodePathSegment(toPublicBlogSlug(latin));
 }
 
-/** Candidates for DB lookup: URL param may be Latin or Arabic. */
+/** Candidates for DB lookup: URL param may be Latin, Arabic, or percent-encoded. */
 export function blogLookupCandidates(urlSlug: string): string[] {
   const latin = toMasterBlogSlug(urlSlug);
   const arabic = toPublicBlogSlug(latin);

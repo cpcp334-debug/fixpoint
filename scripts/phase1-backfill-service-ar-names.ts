@@ -19,7 +19,7 @@ const CATEGORY_AR: Record<string, string> = Object.fromEntries(
 
 function needsArName(name: string | null | undefined) {
   if (!name) return true;
-  if (name === "REVIEW_REQUIRED" || name.startsWith("REVIEW_REQUIRED")) return true;
+  if (name === "REVIEW_REQUIRED" || name.includes("REVIEW_REQUIRED")) return true;
   return !AR.test(name);
 }
 

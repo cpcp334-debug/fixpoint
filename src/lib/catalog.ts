@@ -4,7 +4,9 @@ import { prisma } from "@/server/db";
 import { pickI18n } from "@/lib/utils";
 import { isApprovedPublicServiceSlug } from "@/lib/catalog/approved-nav";
 import { sanitizePublicServiceI18n } from "@/lib/catalog/public-i18n";
-import { locationLookupCandidates, serviceLookupCandidates } from "@/lib/slug/locale-slug";
+import { locationLookupCandidates, serviceLookupCandidates, servicePathSlug } from "@/lib/slug/locale-slug";
+import { diyLookupCandidates, diyPathSlug } from "@/lib/slug/diy-slug-map";
+import { toMasterServiceSlug } from "@/lib/slug/service-slug-map";
 import {
   getServiceLocation as resolvePublicServiceLocation,
   resolveServiceLocationPage,
@@ -177,6 +179,7 @@ export const getPublishedGuides = cache(async (locale: string) =>
     });
     return rows.map((row) => ({
       ...row,
+      slug: diyPathSlug(locale, row.slug),
       t: pickI18n(row.translations, locale)!,
       categoryT: pickI18n(row.category.translations, locale),
     }));
@@ -199,9 +202,11 @@ export const getPublishedDiyCategories = cache(async (locale: string) =>
     });
     return rows.map((row) => ({
       ...row,
+      slug: diyPathSlug(locale, row.slug),
       t: pickI18n(row.translations, locale)!,
       publishedGuides: row.guides.map((guide) => ({
         ...guide,
+        slug: diyPathSlug(locale, guide.slug),
         t: pickI18n(guide.translations, locale)!,
       })),
     }));
@@ -209,8 +214,9 @@ export const getPublishedDiyCategories = cache(async (locale: string) =>
 );
 
 export const getDiyCategoryBySlug = cache(async (slug: string, locale: string) => {
+  const candidates = diyLookupCandidates(slug);
   const row = await prisma.diyCategory.findFirst({
-    where: { slug, status: "published", indexable: true },
+    where: { slug: { in: candidates }, status: "published", indexable: true },
     include: {
       translations: true,
       guides: {
@@ -223,17 +229,20 @@ export const getDiyCategoryBySlug = cache(async (slug: string, locale: string) =
   if (!row) return null;
   return {
     ...row,
+    slug: diyPathSlug(locale, row.slug),
     t: pickI18n(row.translations, locale)!,
     publishedGuides: row.guides.map((guide) => ({
       ...guide,
+      slug: diyPathSlug(locale, guide.slug),
       t: pickI18n(guide.translations, locale)!,
     })),
   };
 });
 
 export const getGuideBySlug = cache(async (slug: string, locale: string) => {
+  const candidates = diyLookupCandidates(slug);
   const row = await prisma.diyGuide.findFirst({
-    where: { slug, status: "published", indexable: true },
+    where: { slug: { in: candidates }, status: "published", indexable: true },
     include: {
       translations: true,
       service: { include: { translations: true } },
@@ -243,6 +252,7 @@ export const getGuideBySlug = cache(async (slug: string, locale: string) => {
   if (!row) return null;
   return {
     ...row,
+    slug: diyPathSlug(locale, row.slug),
     t: pickI18n(row.translations, locale)!,
     serviceT: row.service ? pickI18n(row.service.translations, locale) : null,
     categoryT: pickI18n(row.category.translations, locale),
@@ -282,10 +292,17 @@ export const getGlobalFaqs = cache(async (locale: string) =>
 export const getRelatedServices = cache(async (slugs: string[], locale: string) => {
   if (!slugs.length) return [];
   return safeList(async () => {
+    const masters = [...new Set(slugs.map((s) => toMasterServiceSlug(s)).filter(Boolean))];
     const rows = await prisma.service.findMany({
-      where: { slug: { in: slugs }, status: "active", indexable: true },
-      include: { translations: true },
+      where: { slug: { in: masters }, status: "active", indexable: true },
+      include: { translations: true, category: { include: { translations: true } } },
     });
-    return rows.map((row) => ({ ...row, t: pickI18n(row.translations, locale)! }));
+    return rows
+      .map((row) => {
+        const mapped = mapPublicService(row, locale);
+        if (!mapped) return null;
+        return { ...mapped, slug: servicePathSlug(locale, row.slug) };
+      })
+      .filter((row): row is NonNullable<typeof row> => Boolean(row));
   });
 });

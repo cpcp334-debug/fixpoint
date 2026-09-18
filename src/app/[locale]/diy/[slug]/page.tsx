@@ -32,6 +32,7 @@ import { CtaRow } from "@/components/public/CtaRow";
 import { CtaBand } from "@/components/public/CtaBand";
 import { topicWebpForDiyCategory, altForTopic } from "@/lib/media/topic-webp";
 import { listPageHref, PrevNextPagination } from "@/components/ui/PrevNextPagination";
+import { diyCategoryPathSlug, diyPathSlug } from "@/lib/slug/diy-slug-map";
 
 const DIY_CATEGORY_PAGE_SIZE = 6;
 
@@ -199,9 +200,11 @@ async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) 
   const materials = parseJson<string[]>(guide.t.materials, []);
   const steps = parseJson<string[]>(guide.t.steps, []);
   const faqs = parseFaqJson(guide.t.faq);
+  const categoryPublicSlug = diyCategoryPathSlug(locale, guide.categorySlug);
   const relatedSlugs = parseJson<string[]>(guide.relatedSlugs, []);
   const published = await getPublishedGuides(locale);
-  const relatedGuides = published.filter((row) => relatedSlugs.includes(row.slug) && row.slug !== guide.slug);
+  const relatedPublic = new Set(relatedSlugs.map((s) => diyPathSlug(locale, s)));
+  const relatedGuides = published.filter((row) => relatedPublic.has(row.slug) && row.slug !== guide.slug);
   const [questions, feedback] = await Promise.all([
     getApprovedGuideQuestions(guide.id),
     getApprovedGuideFeedback(guide.id),
@@ -226,7 +229,7 @@ async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) 
             { href: "/", label: nav("home") },
             { href: "/diy", label: t("title") },
             ...(guide.categoryT
-              ? [{ href: `/diy/${guide.categorySlug}`, label: guide.categoryT.name }]
+              ? [{ href: `/diy/${categoryPublicSlug}`, label: guide.categoryT.name }]
               : []),
             { href: `/diy/${guide.slug}`, label: guide.t.title },
           ]}
@@ -248,7 +251,7 @@ async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) 
             { name: "Home", path: "/" },
             { name: "DIY", path: "/diy" },
             ...(guide.categoryT
-              ? [{ name: guide.categoryT.name, path: `/diy/${guide.categorySlug}` }]
+              ? [{ name: guide.categoryT.name, path: `/diy/${categoryPublicSlug}` }]
               : []),
             { name: guide.t.title, path: `/diy/${guide.slug}` },
           ],

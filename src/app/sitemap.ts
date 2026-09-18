@@ -2,6 +2,10 @@ import type { MetadataRoute } from "next";
 import { getSiteUrl } from "@/config/site";
 import { publicServiceLocationWhere } from "@/lib/catalog";
 import { prisma } from "@/server/db";
+import { servicePathSlug, locationPathSlug } from "@/lib/slug/locale-slug";
+import { diyGuidePathSlug, diyCategoryPathSlug } from "@/lib/slug/diy-slug-map";
+import { blogPathSlug } from "@/lib/slug/blog-slug-map";
+import { faqPathSlug } from "@/lib/slug/faq-slug-map";
 
 /** Fixed shard count for service×location URLs (scales toward ~124k locale URLs). */
 export const SITEMAP_PAIR_SHARDS = 32;
@@ -80,23 +84,36 @@ async function staticAndCatalogEntries(site: string): Promise<MetadataRoute.Site
 
   for (const locale of locales) {
     for (const service of services) {
-      entries.push({ url: `${site}/${locale}/${service.slug}`, lastModified: service.updatedAt });
+      entries.push({
+        url: `${site}/${locale}/${servicePathSlug(locale, service.slug)}`,
+        lastModified: service.updatedAt,
+      });
     }
     for (const location of locations) {
-      entries.push({ url: `${site}/${locale}/locations/${location.slug}`, lastModified: location.updatedAt });
+      entries.push({
+        url: `${site}/${locale}/locations/${locationPathSlug(locale, location.slug)}`,
+        lastModified: location.updatedAt,
+      });
     }
     for (const guide of guides) {
-      entries.push({ url: `${site}/${locale}/diy/${guide.slug}`, lastModified: guide.updatedAt });
+      entries.push({
+        url: `${site}/${locale}/diy/${diyGuidePathSlug(locale, guide.slug)}`,
+        lastModified: guide.updatedAt,
+      });
     }
     for (const category of categories) {
-      entries.push({ url: `${site}/${locale}/diy/${category.slug}`, lastModified: category.updatedAt });
+      entries.push({
+        url: `${site}/${locale}/diy/${diyCategoryPathSlug(locale, category.slug)}`,
+        lastModified: category.updatedAt,
+      });
     }
     for (const article of articles) {
       const isFaq =
         article.slug.startsWith("faq-") ||
         article.slug.startsWith("أسئلة") ||
         (article.categorySlugs || "").includes("service-faq");
-      const path = isFaq ? `/faq/${article.slug}` : `/blog/${article.slug}`;
+      const segment = isFaq ? faqPathSlug(locale, article.slug) : blogPathSlug(locale, article.slug);
+      const path = isFaq ? `/faq/${segment}` : `/blog/${segment}`;
       entries.push({
         url: `${site}/${locale}${path}`,
         lastModified: article.publishedAt ?? article.updatedAt,
@@ -134,7 +151,7 @@ export default async function sitemap(props: {
     if (pairShardId(pair.service.slug, pair.location.slug) !== shard) continue;
     for (const locale of locales) {
       entries.push({
-        url: `${site}/${locale}/${pair.service.slug}/${pair.location.slug}`,
+        url: `${site}/${locale}/${servicePathSlug(locale, pair.service.slug)}/${locationPathSlug(locale, pair.location.slug)}`,
         lastModified: pair.updatedAt,
       });
     }

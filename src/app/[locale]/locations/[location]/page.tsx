@@ -18,7 +18,7 @@ import { PublicHero, publicCanonical } from "@/components/public/PublicHero";
 import { CtaRow } from "@/components/public/CtaRow";
 import { CtaBand } from "@/components/public/CtaBand";
 import { EmiratePlaceDirectory } from "@/components/locations/EmiratePlaceDirectory";
-import { serviceLocationHref, locationPageHref } from "@/lib/slug/locale-slug";
+import { serviceLocationHref, locationPageHref, locationPathSlug } from "@/lib/slug/locale-slug";
 
 /** Avoid year-long sticky notFound() after slug migrations. */
 export const dynamic = "force-dynamic";
@@ -48,7 +48,7 @@ export async function generateMetadata({
     locale,
     title: place.t.seoTitle || `${place.t.name} | ${brandName(locale)}`,
     description: place.t.metaDescription || place.t.intro,
-    path: `/locations/${place.slug}`,
+    path: locationPageHref(locale, place.slug),
     index: place.indexable,
   });
 }
@@ -83,7 +83,11 @@ export default async function LocationPage({
     whatsapp: cta("whatsapp"),
     call: cta("call"),
   };
-  const wa = `Hello Al Najah Al Daem · Fixpoint, I need service in ${em.t.name}.`;
+  const wa =
+    locale === "ar"
+      ? `مرحباً ${brandName("ar")}، أحتاج خدمة في ${em.t.name}.`
+      : `Hello ${brandName("en")}, I need service in ${em.t.name}.`;
+  const publicLoc = locationPathSlug(locale, em.slug);
 
   return (
     <PageShell
@@ -93,12 +97,12 @@ export default async function LocationPage({
           items={[
             { href: "/", label: nav("home") },
             { href: "/locations", label: t("title") },
-            { href: `/locations/${em.slug}`, label: em.t.name },
+            { href: `/locations/${publicLoc}`, label: em.t.name },
           ]}
         />
       }
     >
-      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: em.t.name, path: `/locations/${em.slug}` }], locale)} />
+      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: em.t.name, path: `/locations/${publicLoc}` }], locale)} />
       <JsonLd data={faqJsonLd(faqs)} />
 
       <PublicHero locale={locale}
@@ -106,7 +110,7 @@ export default async function LocationPage({
         title={em.t.name}
         lead={em.t.intro}
         icon={IconMap}
-        shareUrl={publicCanonical(locale, `/locations/${em.slug}`)}
+        shareUrl={publicCanonical(locale, `/locations/${publicLoc}`)}
         shareLabel={home("share")}
         copiedLabel={home("copied")}
         actions={<CtaRow labels={ctaLabels} whatsappText={wa} />}
@@ -207,14 +211,17 @@ async function PublishedPlacePage({
   const emirate = place.parent?.type === "emirate" ? place.parent : place.parent?.parent?.type === "emirate" ? place.parent.parent : null;
   const emirateName = emirate ? pickName(emirate.translations, locale) : "";
   const parentName = parent ? pickName(parent.translations, locale) : "";
-  const wa = `Hello Al Najah Al Daem · Fixpoint, I need service in ${place.t.name}${emirateName ? `, ${emirateName}` : ""}.`;
+  const wa =
+    locale === "ar"
+      ? `مرحباً ${brandName("ar")}، أحتاج خدمة في ${place.t.name}${emirateName ? `، ${emirateName}` : ""}.`
+      : `Hello ${brandName("en")}, I need service in ${place.t.name}${emirateName ? `, ${emirateName}` : ""}.`;
   const crumbs = [
     { href: "/", label: nav("home") },
     { href: "/locations", label: t("title") },
   ];
-  if (emirate) crumbs.push({ href: `/locations/${emirate.slug}`, label: emirateName });
-  if (parent && parent.slug !== emirate?.slug) crumbs.push({ href: `/locations/${parent.slug}`, label: parentName });
-  crumbs.push({ href: `/locations/${place.slug}`, label: place.t.name });
+  if (emirate) crumbs.push({ href: locationPageHref(locale, emirate.slug), label: emirateName });
+  if (parent && parent.slug !== emirate?.slug) crumbs.push({ href: locationPageHref(locale, parent.slug), label: parentName });
+  crumbs.push({ href: locationPageHref(locale, place.slug), label: place.t.name });
 
   return (
     <PageShell
@@ -230,7 +237,7 @@ async function PublishedPlacePage({
             : `${place.t.name} is one of the 277 places we serve${emirateName ? ` in ${emirateName}` : ""}. Name the service you need and request the visit.`
         }
         icon={IconMap}
-        shareUrl={publicCanonical(locale, `/locations/${place.slug}`)}
+        shareUrl={publicCanonical(locale, locationPageHref(locale, place.slug))}
         shareLabel={home("share")}
         copiedLabel={home("copied")}
         actions={<CtaRow labels={ctaLabels} whatsappText={wa} />}
@@ -244,7 +251,7 @@ async function PublishedPlacePage({
         </p>
         {parent ? (
           <p className="mt-2 text-sm">
-            <Link href={`/locations/${parent.slug}`} className="font-medium text-accent">
+            <Link href={locationPageHref(locale, parent.slug)} className="font-medium text-accent">
               {parentName}
             </Link>
           </p>

@@ -59,9 +59,8 @@ function mapCard(
   const t = row.translations.find((x) => x.locale === locale);
   if (!t) return null;
   const cats = parseJson<string[]>(row.categorySlugs, []);
+  // EN Latin; AR percent-encoded Arabic (ASCII-safe for Hostinger).
   const publicSlug = blogPathSlug(locale, row.slug);
-  // Never emit Unicode hrefs — Hostinger returns 404 for Arabic path segments.
-  if (/[\u0600-\u06FF]/.test(publicSlug)) return null;
   return {
     slug: publicSlug,
     title: scrubReviewRequired(t.title, jobName),
@@ -113,8 +112,6 @@ export const getPublishedBlogArticlesPage = cache(
       },
     };
 
-    // Over-fetch then drop Unicode-slug rows (Hostinger cannot serve them).
-    const fetchTake = Math.min(100, take * 4);
     const [rows, totalRaw] = await Promise.all([
       prisma.article.findMany({
         where,
@@ -132,7 +129,7 @@ export const getPublishedBlogArticlesPage = cache(
         },
         orderBy: [{ publishedAt: "desc" }, { updatedAt: "desc" }, { id: "desc" }],
         skip,
-        take: fetchTake,
+        take,
       }),
       prisma.article.count({ where }),
     ]);
@@ -168,6 +165,7 @@ export const getPublishedBlogArticlesPage = cache(
 
     const items: BlogArticleCard[] = [];
     for (const r of rows) {
+      // Skip leftover Arabic primary slugs (should be Latin after restore).
       if (/[\u0600-\u06FF]/.test(r.slug)) continue;
       const first = parseJson<string[]>(r.relatedServiceSlugs, [])
         .map((s) => toMasterServiceSlug(s))
@@ -175,10 +173,8 @@ export const getPublishedBlogArticlesPage = cache(
       const job = (first && jobByService.get(first)) || (locale === "ar" ? "الخدمة" : "the service");
       const card = mapCard(r, locale, job);
       if (card) items.push(card);
-      if (items.length >= take) break;
     }
 
-    // Approximate total: raw count minus typical Arabic leftover (exact count is expensive).
     return { items, total: totalRaw };
   },
 );
@@ -210,7 +206,6 @@ export const getBlogArticleBySlug = cache(async (slug: string, locale: string) =
   if (!t) return null;
   const job = await jobDisplayName(row.relatedServiceSlugs, locale);
   const publicSlug = blogPathSlug(locale, row.slug);
-  if (/[\u0600-\u06FF]/.test(publicSlug)) return null;
   return {
     id: row.id,
     slug: publicSlug,

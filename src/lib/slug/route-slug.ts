@@ -16,6 +16,29 @@ export function normalizeRouteSlug(raw: string): string {
   return s.normalize("NFC").replace(/\/+$/g, "");
 }
 
+/**
+ * Percent-encode a path segment when it contains non-ASCII (e.g. Arabic).
+ * Hostinger/nginx often 404s raw Unicode path bytes; ASCII percent-encoding is safe.
+ * Latin/ASCII slugs are returned unchanged. Already-encoded ASCII is left as-is.
+ */
+export function encodePathSegment(segment: string): string {
+  const s = String(segment || "").trim();
+  if (!s) return s;
+  // Already percent-encoded ASCII (no raw non-ASCII left)
+  if (!/[^\x00-\x7F]/.test(s) && /%[0-9A-Fa-f]{2}/.test(s)) return s;
+  if (!/[^\x00-\x7F]/.test(s)) return s;
+  return encodeURIComponent(s.normalize("NFC"));
+}
+
+/** Encode each path segment (split on `/`) for public hrefs / canonicals. */
+export function encodePublicPath(path: string): string {
+  if (!path) return path;
+  const leading = path.startsWith("/") ? "/" : "";
+  const bare = path.replace(/^\/+/, "").replace(/\/+$/g, "");
+  if (!bare) return leading || "/";
+  return leading + bare.split("/").map((seg) => encodePathSegment(seg)).join("/");
+}
+
 /** Alif / hamza spelling variants for the first character only. */
 function alifPrefixVariants(slug: string): string[] {
   if (!slug) return [];

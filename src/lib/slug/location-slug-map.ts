@@ -1,9 +1,10 @@
 /**
- * Maps research-master Latin location slugs to public Arabic primary slugs.
- * Master JSON still uses Latin keys; DB/public URLs use Arabic after Phase 2.
+ * Maps research-master Latin location slugs to public Arabic forms.
+ * DB primary `slug` stays Latin; Arabic lives in scripts/_slug-maps.json.
  */
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { normalizeRouteSlug } from "@/lib/slug/route-slug";
 
 let cachedForward: Record<string, string> | null = null;
 let cachedReverse: Record<string, string> | null = null;
@@ -41,13 +42,16 @@ function loadMaps() {
 /** Latin master slug to public Arabic slug (identity if already Arabic / unknown). */
 export function toPublicLocationSlug(slug: string): string {
   loadMaps();
-  return cachedForward![slug] ?? slug;
+  const decoded = normalizeRouteSlug(slug);
+  return cachedForward![decoded] ?? cachedForward![slug] ?? decoded;
 }
 
 /** Public Arabic slug to Latin master slug for research-master lookups. */
 export function toMasterLocationSlug(slug: string): string {
   loadMaps();
-  return cachedReverse![slug] ?? slug;
+  const decoded = normalizeRouteSlug(slug);
+  if (!/[\u0600-\u06FF]/.test(decoded)) return decoded;
+  return cachedReverse![decoded] ?? decoded;
 }
 
 export function isKnownEmirateSlug(slug: string): boolean {

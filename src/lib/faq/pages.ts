@@ -3,7 +3,7 @@ import { prisma } from "@/server/db";
 import { parseJson } from "@/lib/utils";
 import { parseFaqJson } from "@/lib/faq";
 import { SERVICE_FAQ_CATEGORY } from "@/lib/faq/service-faq";
-import { faqLookupCandidates, toMasterFaqSlug } from "@/lib/slug/faq-slug-map";
+import { faqLookupCandidates, faqPathSlug, toMasterFaqSlug } from "@/lib/slug/faq-slug-map";
 
 function pickCategory(categorySlugs: string) {
   return parseJson<string[]>(categorySlugs, []).find((slug) => slug !== SERVICE_FAQ_CATEGORY) || "";
@@ -31,8 +31,8 @@ export const getPublishedServiceFaqs = cache(async (locale: string) => {
     .map((row) => {
       const t = row.translations.find((item) => item.locale === locale) || row.translations.find((item) => item.locale === "en");
       if (!t) return null;
-      // Hostinger cannot serve Unicode paths — public FAQ hrefs stay Latin for both locales.
-      const publicSlug = row.slug.startsWith("faq-") ? row.slug : toMasterFaqSlug(row.slug);
+      const master = row.slug.startsWith("faq-") ? row.slug : toMasterFaqSlug(row.slug);
+      const publicSlug = faqPathSlug(locale, master);
       return {
         slug: publicSlug,
         categorySlug: pickCategory(row.categorySlugs),
@@ -59,7 +59,8 @@ export const getServiceFaqBySlug = cache(async (slug: string, locale: string) =>
   if (row.slug.startsWith("__restore_faq_")) return null;
   const t = row.translations.find((item) => item.locale === locale) || row.translations.find((item) => item.locale === "en");
   if (!t) return null;
-  const publicSlug = row.slug.startsWith("faq-") ? row.slug : toMasterFaqSlug(row.slug);
+  const master = row.slug.startsWith("faq-") ? row.slug : toMasterFaqSlug(row.slug);
+  const publicSlug = faqPathSlug(locale, master);
   return {
     slug: publicSlug,
     categorySlug: pickCategory(row.categorySlugs),

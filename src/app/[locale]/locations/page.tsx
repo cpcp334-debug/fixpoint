@@ -8,6 +8,7 @@ import { LocationCard } from "@/components/home/Cards";
 import { PageShell } from "@/components/public/PageShell";
 import { PublicHero } from "@/components/public/PublicHero";
 import { CtaBand } from "@/components/public/CtaBand";
+import { locationPageHref, locationPathSlug } from "@/lib/slug/locale-slug";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -37,11 +38,19 @@ export default async function LocationsPage({ params }: { params: Promise<{ loca
 
       <Section>
         <ul className="grid gap-3 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7">
-          {emirates.map((em) => (
-            <li key={em.slug}>
-              <LocationCard slug={em.slug} name={em.t.name} note={home("areaEnquiry")} />
-            </li>
-          ))}
+          {emirates.map((em) => {
+            const publicSlug = locationPathSlug(locale, em.slug);
+            return (
+              <li key={em.slug}>
+                <LocationCard
+                  slug={publicSlug}
+                  name={em.t.name}
+                  note={home("areaEnquiry")}
+                  href={locationPageHref(locale, em.slug)}
+                />
+              </li>
+            );
+          })}
         </ul>
       </Section>
 
