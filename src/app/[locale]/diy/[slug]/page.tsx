@@ -31,6 +31,9 @@ import { PublicHero, publicCanonical } from "@/components/public/PublicHero";
 import { CtaRow } from "@/components/public/CtaRow";
 import { CtaBand } from "@/components/public/CtaBand";
 import { topicWebpForDiyCategory, altForTopic } from "@/lib/media/topic-webp";
+import { listPageHref, PrevNextPagination } from "@/components/ui/PrevNextPagination";
+
+const DIY_CATEGORY_PAGE_SIZE = 6;
 
 export async function generateStaticParams() {
   try {
@@ -80,13 +83,16 @@ export async function generateMetadata({
 
 export default async function DiySegmentPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string; slug: string }>;
+  searchParams: Promise<{ page?: string }>;
 }) {
   const { locale, slug } = await params;
+  const sp = await searchParams;
   setRequestLocale(locale);
   const category = await getDiyCategoryBySlug(slug, locale);
-  if (category) return <DiyCategoryView locale={locale} category={category} />;
+  if (category) return <DiyCategoryView locale={locale} category={category} pageHint={sp.page} />;
   const guide = await getGuideBySlug(slug, locale);
   if (guide) return <DiyGuideView locale={locale} slug={slug} />;
   notFound();
@@ -95,14 +101,22 @@ export default async function DiySegmentPage({
 async function DiyCategoryView({
   locale,
   category,
+  pageHint,
 }: {
   locale: string;
   category: NonNullable<Awaited<ReturnType<typeof getDiyCategoryBySlug>>>;
+  pageHint?: string;
 }) {
   const t = await getTranslations("Diy");
   const nav = await getTranslations("Nav");
   const home = await getTranslations("Home");
   const cta = await getTranslations("Cta");
+  const pager = await getTranslations("Pagination");
+  const guides = category.publishedGuides;
+  const totalPages = Math.max(1, Math.ceil(guides.length / DIY_CATEGORY_PAGE_SIZE));
+  const page = Math.min(totalPages, Math.max(1, Number(pageHint || "1") || 1));
+  const pageGuides = guides.slice((page - 1) * DIY_CATEGORY_PAGE_SIZE, page * DIY_CATEGORY_PAGE_SIZE);
+  const categoryPath = `/diy/${category.slug}`;
   return (
     <PageShell
       breadcrumbs={
@@ -111,7 +125,7 @@ async function DiyCategoryView({
           items={[
             { href: "/", label: nav("home") },
             { href: "/diy", label: t("title") },
-            { href: `/diy/${category.slug}`, label: category.t.name },
+            { href: categoryPath, label: category.t.name },
           ]}
         />
       }
@@ -120,7 +134,7 @@ async function DiyCategoryView({
         data={collectionPageJsonLd({
           name: category.t.name,
           description: category.t.description,
-          path: `/diy/${category.slug}`,
+          path: categoryPath,
           locale,
         })}
       />
@@ -129,7 +143,7 @@ async function DiyCategoryView({
           [
             { name: "Home", path: "/" },
             { name: "DIY", path: "/diy" },
-            { name: category.t.name, path: `/diy/${category.slug}` },
+            { name: category.t.name, path: categoryPath },
           ],
           locale,
         )}
@@ -138,7 +152,7 @@ async function DiyCategoryView({
       <Section>
         <Disclaimer>{siteConfig.disclaimers.diy[locale === "ar" ? "ar" : "en"]}</Disclaimer>
         <ul className="mt-8 grid gap-4 md:grid-cols-2">
-          {category.publishedGuides.map((guide) => (
+          {pageGuides.map((guide) => (
             <li key={guide.slug}>
               <DiyCard
                 slug={guide.slug}
@@ -152,6 +166,15 @@ async function DiyCategoryView({
             </li>
           ))}
         </ul>
+        <PrevNextPagination
+          currentPage={page}
+          totalPages={totalPages}
+          previousHref={page > 1 ? listPageHref(categoryPath, page - 1) : null}
+          nextHref={page < totalPages ? listPageHref(categoryPath, page + 1) : null}
+          previousLabel={pager("previous")}
+          nextLabel={pager("next")}
+          pageOfLabel={pager("pageOf", { current: page, total: totalPages })}
+        />
       </Section>
       <CtaBand
         title={home("ctaTitle")}
