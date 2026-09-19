@@ -24,6 +24,7 @@ export type LocationHubGateResult = {
     geo: boolean;
     claims: boolean;
     swapTemplate: boolean;
+    thinGeoAr: boolean;
     safety: boolean;
   };
 };
@@ -34,6 +35,10 @@ const DANGEROUS_DIY_RE =
   /\b(open the panel|rewire|bypass the breaker|mix bleach with|DIY gas|DIY electrical panel)\b/i;
 const SWAP_RE =
   /LOCATION_NAME_HERE|EMIRATE_NAME_HERE|\{\{place\}\}|\{\{emirate\}\}|Exclusive editorial lexicon|مفردات تحريرية حصرية/i;
+
+/** Thin GEO composer fingerprints — independent AR must not match these skeletons. */
+const THIN_GEO_AR_RE =
+  /هي صفحة فكس بوينت للمكان|الطلب المفيد لـ .+ له أربعة أجزاء|فائدة تسمية .+ أولاً مقارنة الردود|مركز صيانة لفكس بوينت في .+، الإمارات\. سمِّ المكان ونوع المبنى/;
 
 function hasAeo(body: string, locale: "en" | "ar") {
   if (locale === "ar") {
@@ -116,6 +121,9 @@ export function evaluateLocationHubGates(pkg: LocationHubPackage): LocationHubGa
   const swapTemplate = !SWAP_RE.test(blob);
   if (!swapTemplate) failures.push("swap_template");
 
+  const thinGeoAr = !THIN_GEO_AR_RE.test(pkg.ar.localServiceInfo + "\n" + pkg.ar.intro);
+  if (!thinGeoAr) failures.push("thin_geo_ar_fingerprint");
+
   const safety = !DANGEROUS_DIY_RE.test(blob);
   if (!safety) failures.push("dangerous_diy");
 
@@ -142,6 +150,7 @@ export function evaluateLocationHubGates(pkg: LocationHubPackage): LocationHubGa
       geo,
       claims,
       swapTemplate,
+      thinGeoAr,
       safety,
     },
   };

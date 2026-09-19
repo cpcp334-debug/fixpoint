@@ -17,6 +17,7 @@ import { PublicHero, publicCanonical } from "@/components/public/PublicHero";
 import { CtaRow } from "@/components/public/CtaRow";
 import { CtaBand } from "@/components/public/CtaBand";
 import { EmiratePlaceDirectory } from "@/components/locations/EmiratePlaceDirectory";
+import { ArPublicSlugNormalize } from "@/components/public/ArPublicSlugNormalize";
 import { serviceLocationHref, locationPageHref, locationPathSlug } from "@/lib/slug/locale-slug";
 import { renderArticleBody } from "@/components/content/ArticleBody";
 
@@ -123,6 +124,7 @@ export default async function LocationPage({
         />
       }
     >
+      <ArPublicSlugNormalize locale={locale} preferredSegment={publicLoc} />
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: em.t.name, path: `/locations/${publicLoc}` }], locale)} />
       <JsonLd data={faqJsonLd(faqs)} />
 
@@ -255,11 +257,13 @@ async function PublishedPlacePage({
   const faqItems = normalizeFaqItems([...faqs, ...global]);
   const media = hubCoverAndAlt(place.slug, locale, place.t.name, emirateName);
   const hasHubBody = (place.t.localServiceInfo || "").includes("## ");
+  const publicLoc = locationPathSlug(locale, place.slug);
 
   return (
     <PageShell
       breadcrumbs={<Breadcrumbs label={nav("breadcrumb")} items={crumbs} />}
     >
+      <ArPublicSlugNormalize locale={locale} preferredSegment={publicLoc} />
       <JsonLd data={breadcrumbJsonLd(crumbs.map((item) => ({ name: item.label, path: item.href })), locale)} />
       {faqs.length ? <JsonLd data={faqJsonLd(faqs)} /> : null}
       <PublicHero locale={locale}

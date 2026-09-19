@@ -1,0 +1,190 @@
+{
+  "dryRun": false,
+  "total": 278,
+  "changed": 7,
+  "samples": [
+    {
+      "slug": "downtown-dubai",
+      "from": "برج-خليفة",
+      "to": "وسط-مدينة-دبي",
+      "nameAr": "وسط مدينة دبي"
+    },
+    {
+      "slug": "dubai-festival-city",
+      "from": "دبي-فستيفال-سيتي",
+      "to": "مدينة-دبي-للمهرجانات",
+      "nameAr": "مدينة دبي للمهرجانات"
+    },
+    {
+      "slug": "dubai-silicon-oasis",
+      "from": "واحة-دبي-للسيليكون",
+      "to": "واحة-دبي-التقنية",
+      "nameAr": "واحة دبي التقنية"
+    },
+    {
+      "slug": "discovery-gardens",
+      "from": "حدائق-ديسكفري",
+      "to": "حدائق-الاكتشاف",
+      "nameAr": "حدائق الاكتشاف"
+    },
+    {
+      "slug": "town-square-dubai",
+      "from": "تاون-سكوير",
+      "to": "ساحة-المدينة-دبي",
+      "nameAr": "ساحة المدينة دبي"
+    },
+    {
+      "slug": "city-walk",
+      "from": "سيتي-ووك",
+      "to": "ممشى-المدينة",
+      "nameAr": "ممشى المدينة"
+    },
+    {
+      "slug": "motor-city",
+      "from": "موتور-سيتي",
+      "to": "مدينة-المحركات",
+      "nameAr": "مدينة المحركات"
+    }
+  ],
+  "overridesApplied": [
+    {
+      "latin": "downtown-dubai",
+      "ar": "وسط-مدينة-دبي",
+      "name": "وسط مدينة دبي"
+    },
+    {
+      "latin": "dubai-festival-city",
+      "ar": "مدينة-دبي-للمهرجانات",
+      "name": "مدينة دبي للمهرجانات"
+    },
+    {
+      "latin": "dubai-silicon-oasis",
+      "ar": "واحة-دبي-التقنية",
+      "name": "واحة دبي التقنية"
+    },
+    {
+      "latin": "discovery-gardens",
+      "ar": "حدائق-الاكتشاف",
+      "name": "حدائق الاكتشاف"
+    },
+    {
+      "latin": "town-square-dubai",
+      "ar": "ساحة-المدينة-دبي",
+      "name": "ساحة المدينة دبي"
+    },
+    {
+      "latin": "city-walk",
+      "ar": "ممشى-المدينة",
+      "name": "ممشى المدينة"
+    },
+    {
+      "latin": "motor-city",
+      "ar": "مدينة-المحركات",
+      "name": "مدينة المحركات"
+    },
+    {
+      "latin": "business-bay-dubai",
+      "ar": "الخليج-التجاري",
+      "name": "الخليج التجاري"
+    },
+    {
+      "latin": "dubai-investment-park",
+      "ar": "مجمع-دبي-للاستثمار",
+      "name": "مجمع دبي للاستثمار"
+    },
+    {
+      "latin": "international-city",
+      "ar": "المدينة-العالمية",
+      "name": "المدينة العالمية"
+    },
+    {
+      "latin": "dubai-production-city",
+      "ar": "مدينة-دبي-للإنتاج",
+      "name": "مدينة دبي للإنتاج"
+    },
+    {
+      "latin": "dubai-sports-city",
+      "ar": "مدينة-دبي-الرياضية",
+      "name": "مدينة دبي الرياضية"
+    },
+    {
+      "latin": "jumeirah-village-circle",
+      "ar": "قرية-جميرا-الدائرية",
+      "name": "قرية جميرا الدائرية"
+    },
+    {
+      "latin": "jumeirah-village-triangle",
+      "ar": "قرية-جميرا-المثلثة",
+      "name": "قرية جميرا المثلثة"
+    },
+    {
+      "latin": "arabian-ranches",
+      "ar": "المرابع-العربية",
+      "name": "المرابع العربية"
+    },
+    {
+      "latin": "arabian-ranches-2",
+      "ar": "المرابع-العربية-2",
+      "name": "المرابع العربية 2"
+    },
+    {
+      "latin": "the-springs",
+      "ar": "الينابيع",
+      "name": "الينابيع"
+    },
+    {
+      "latin": "the-meadows",
+      "ar": "المروج",
+      "name": "المروج"
+    },
+    {
+      "latin": "the-lakes",
+      "ar": "البحيرات",
+      "name": "البحيرات"
+    },
+    {
+      "latin": "emirates-hills",
+      "ar": "تلال-الإمارات",
+      "name": "تلال الإمارات"
+    },
+    {
+      "latin": "jumeirah-park",
+      "ar": "حديقة-جميرا",
+      "name": "حديقة جميرا"
+    },
+    {
+      "latin": "the-gardens",
+      "ar": "الحدائق",
+      "name": "الحدائق"
+    },
+    {
+      "latin": "al-furjan",
+      "ar": "الفرجان",
+      "name": "الفرجان"
+    },
+    {
+      "latin": "remraam",
+      "ar": "رمرام",
+      "name": "رمرام"
+    },
+    {
+      "latin": "dubai-hills-estate",
+      "ar": "تلال-دبي",
+      "name": "تلال دبي"
+    },
+    {
+      "latin": "meydan",
+      "ar": "ميدان",
+      "name": "ميدان"
+    },
+    {
+      "latin": "nad-al-sheba",
+      "ar": "ند-الشبا",
+      "name": "ند الشبا"
+    },
+    {
+      "latin": "silicon-oasis",
+      "name": "واحة دبي التقنية"
+    }
+  ]
+}
