@@ -12,7 +12,10 @@ function wantsAiNow() {
   return window.location.hash === "#alnajah-ai";
 }
 
-/** Mount AI after first paint / idle so it does not compete with LCP on mobile. */
+/**
+ * Mount AI after LCP window: intent first, then long idle.
+ * Avoid competing with hero/fonts on mobile PageSpeed.
+ */
 export function DeferredAiWidget({ locale }: { locale: string }) {
   const [ready, setReady] = useState(false);
 
@@ -44,16 +47,26 @@ export function DeferredAiWidget({ locale }: { locale: string }) {
     window.addEventListener("alnajah-ai-open", enable);
     document.addEventListener("click", onAiIntent);
 
-    if (typeof window.requestIdleCallback === "function") {
-      idleId = window.requestIdleCallback(enable, { timeout: 2500 });
+    const scheduleIdle = () => {
+      if (typeof window.requestIdleCallback === "function") {
+        idleId = window.requestIdleCallback(enable, { timeout: 6000 });
+      } else {
+        timeoutId = setTimeout(enable, 4500);
+      }
+    };
+
+    // Wait for load so AI chunk does not share the LCP bandwidth budget.
+    if (document.readyState === "complete") {
+      scheduleIdle();
     } else {
-      timeoutId = setTimeout(enable, 1800);
+      window.addEventListener("load", scheduleIdle, { once: true });
     }
 
     return () => {
       cancelled = true;
       window.removeEventListener("alnajah-ai-prefill", enable);
       window.removeEventListener("alnajah-ai-open", enable);
+      window.removeEventListener("load", scheduleIdle);
       document.removeEventListener("click", onAiIntent);
       if (idleId !== undefined && typeof window.cancelIdleCallback === "function") {
         window.cancelIdleCallback(idleId);

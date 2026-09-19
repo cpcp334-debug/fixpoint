@@ -15,18 +15,21 @@ import "../globals.css";
 
 const sans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "700"],
   variable: "--font-sans",
   display: "swap",
   preload: true,
+  adjustFontFallback: true,
 });
 
+/** Arabic is loaded only on /ar — never preload on EN (mobile LCP). */
 const arabic = IBM_Plex_Sans_Arabic({
   subsets: ["arabic"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "700"],
   variable: "--font-arabic",
   display: "swap",
-  preload: true,
+  preload: false,
+  adjustFontFallback: true,
 });
 
 export const viewport: Viewport = {
@@ -52,8 +55,10 @@ export default async function LocaleLayout({
   const dir = locale === "ar" ? "rtl" : "ltr";
   const headerShell = (await getPublishedSiteShell("header", locale)) as HeaderShell | null;
 
+  const fontClass = locale === "ar" ? `${sans.variable} ${arabic.variable}` : sans.variable;
+
   return (
-    <html lang={locale} dir={dir} className={`${sans.variable} ${arabic.variable}`}>
+    <html lang={locale} dir={dir} className={fontClass}>
       <body className="min-h-full bg-white text-ink antialiased">
         <NextIntlClientProvider>
           <Header locale={locale} shell={headerShell} />

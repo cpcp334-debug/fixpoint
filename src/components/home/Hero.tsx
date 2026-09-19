@@ -66,7 +66,7 @@ export function Hero({
           <div className="absolute inset-[10%] rounded-[2rem] border border-gold/20" />
           <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-gold/15 via-transparent to-transparent blur-2xl" />
           <BrandLogo
-            size={260}
+            size={220}
             priority
             locale={locale}
             className="relative z-[1] max-h-[85%] max-w-[85%] drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)]"

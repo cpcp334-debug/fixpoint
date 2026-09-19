@@ -14,6 +14,9 @@ export function HeroMedia({ hasPhoto, locale }: { hasPhoto: boolean; locale?: st
       fill
       sizes="(max-width: 768px) 100vw, 50vw"
       className="object-cover"
+      priority
+      fetchPriority="high"
+      quality={70}
       onError={() => setFailed(true)}
     />
   );

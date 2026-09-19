@@ -43,7 +43,7 @@ export function Header({ locale, shell }: { locale: string; shell?: HeaderShell 
       </a>
       <Container className="flex h-14 items-center gap-3 sm:h-16 sm:gap-4">
         <Link href="/" className="flex min-w-0 shrink items-center gap-2" aria-label={brand}>
-          <BrandLogo size={52} priority locale={locale} />
+          <BrandLogo size={52} locale={locale} />
           <span className="max-w-[9.5rem] text-start text-[11px] font-semibold leading-tight text-navy xs:max-w-[12rem] sm:max-w-[14rem] sm:text-sm">
             {brand}
           </span>

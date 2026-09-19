@@ -96,11 +96,14 @@ export function PublicHero({
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 560px"
                 className="object-cover"
-                priority={false}
+                priority
+                fetchPriority="high"
+                quality={70}
               />
             ) : (
               <HeroFallback locale={locale} />
             )}
+
           </div>
         )}
       </Container>
