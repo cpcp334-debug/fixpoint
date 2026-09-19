@@ -2,7 +2,7 @@ import { cache } from "react";
 import { prisma } from "@/server/db";
 import { parseJson } from "@/lib/utils";
 import { parseFaqJson } from "@/lib/faq";
-import { blogCategoryLabel } from "@/lib/blog/categories";
+import { blogCategoryLabel, isPublicBlogCategorySlug } from "@/lib/blog/categories";
 import { blogLookupCandidates, blogPathSlug } from "@/lib/slug/blog-slug-map";
 import { normalizeRouteSlug } from "@/lib/slug/route-slug";
 import { isReviewRequiredText } from "@/lib/catalog/public-i18n";
@@ -67,10 +67,12 @@ function mapCard(
     excerpt: scrubReviewRequired(t.excerpt, jobName),
     heroImage: row.heroImage,
     imageAlt: scrubReviewRequired(t.imageAlt || t.title, jobName),
-    categories: cats.map((slug) => ({
-      slug,
-      label: blogCategoryLabel(slug, locale === "ar" ? "ar" : "en"),
-    })),
+    categories: cats
+      .filter((slug) => isPublicBlogCategorySlug(slug))
+      .map((slug) => ({
+        slug,
+        label: blogCategoryLabel(slug, locale === "ar" ? "ar" : "en"),
+      })),
     publishedAt: row.publishedAt,
     updatedAt: row.updatedAt,
   };
@@ -214,10 +216,12 @@ export const getBlogArticleBySlug = cache(async (slug: string, locale: string) =
     updatedAt: row.updatedAt,
     relatedServiceSlugs: parseJson<string[]>(row.relatedServiceSlugs, []).map((s) => toMasterServiceSlug(s)),
     relatedDiySlugs: parseJson<string[]>(row.relatedDiySlugs, []),
-    categories: cats.map((s) => ({
-      slug: s,
-      label: blogCategoryLabel(s, locale === "ar" ? "ar" : "en"),
-    })),
+    categories: cats
+      .filter((s) => isPublicBlogCategorySlug(s))
+      .map((s) => ({
+        slug: s,
+        label: blogCategoryLabel(s, locale === "ar" ? "ar" : "en"),
+      })),
     t: {
       title: scrubReviewRequired(t.title, job),
       excerpt: scrubReviewRequired(t.excerpt, job),

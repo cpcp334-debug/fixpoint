@@ -1,5 +1,6 @@
 /**
  * Blog category registry — editorial Blog only (not DIY categories).
+ * System tags (service-location, service-faq) are labeled for safety but hidden from public kickers.
  */
 export const BLOG_CATEGORIES = [
   { slug: "plumbing", en: "Plumbing", ar: "السباكة" },
@@ -11,7 +12,13 @@ export const BLOG_CATEGORIES = [
   { slug: "home-maintenance", en: "Home Maintenance", ar: "صيانة المنزل" },
   { slug: "diy-safety", en: "DIY & Safety", ar: "الأعمال المنزلية والسلامة" },
   { slug: "uae-local-guides", en: "UAE Local Guides", ar: "أدلة محلية للإمارات" },
+  { slug: "service-location", en: "Local service guide", ar: "دليل خدمة محلي" },
+  { slug: "service-faq", en: "Service FAQ", ar: "أسئلة الخدمة" },
+  { slug: "general-maintenance", en: "General Maintenance", ar: "الصيانة العامة" },
 ] as const;
+
+/** Internal corpus tags — do not show as public category chips / hero kickers. */
+export const BLOG_SYSTEM_CATEGORY_SLUGS = new Set(["service-location", "service-faq"]);
 
 export type BlogCategorySlug = (typeof BLOG_CATEGORIES)[number]["slug"];
 
@@ -19,6 +26,10 @@ export function blogCategoryLabel(slug: string, locale: "en" | "ar") {
   const row = BLOG_CATEGORIES.find((c) => c.slug === slug);
   if (!row) return slug;
   return locale === "ar" ? row.ar : row.en;
+}
+
+export function isPublicBlogCategorySlug(slug: string) {
+  return !BLOG_SYSTEM_CATEGORY_SLUGS.has(slug);
 }
 
 export function blogHeroForCategory(slug: string): string {

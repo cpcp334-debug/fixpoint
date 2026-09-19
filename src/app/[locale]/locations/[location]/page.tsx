@@ -18,6 +18,7 @@ import { CtaRow } from "@/components/public/CtaRow";
 import { CtaBand } from "@/components/public/CtaBand";
 import { EmiratePlaceDirectory } from "@/components/locations/EmiratePlaceDirectory";
 import { serviceLocationHref, locationPageHref, locationPathSlug } from "@/lib/slug/locale-slug";
+import { blogPathSlug } from "@/lib/slug/blog-slug-map";
 
 /**
  * Avoid year-long sticky notFound() after slug migrations.
@@ -117,7 +118,7 @@ export default async function LocationPage({
           <ProseCard title={t("properties")}>{em.t.propertyTypes}</ProseCard>
           <ProseCard title={t("nearby")}>{em.t.nearbyAreas}</ProseCard>
           <p className="text-sm">
-            <Link href={`/blog/place-${em.slug}`} className="font-medium text-accent">
+            <Link href={`/blog/${blogPathSlug(locale, `place-${em.slug}`)}`} className="font-medium text-accent">
               {locale === "ar" ? `اقرأ دليل الطلب لـ ${em.t.name}` : `Read the request guide for ${em.t.name}`}
             </Link>
           </p>
@@ -240,7 +241,7 @@ async function PublishedPlacePage({
       <Section tone="sand">
         <p className="max-w-3xl text-sm leading-6 text-muted">{t("directoryNote")}</p>
         <p className="mt-4 text-sm">
-          <Link href={`/blog/place-${place.slug}`} className="font-medium text-accent">
+          <Link href={`/blog/${blogPathSlug(locale, `place-${place.slug}`)}`} className="font-medium text-accent">
             {locale === "ar" ? `اقرأ دليل الطلب لـ ${place.t.name}` : `Read the request guide for ${place.t.name}`}
           </Link>
         </p>

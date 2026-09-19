@@ -11,6 +11,7 @@ import { AiMark } from "@/components/ui/AiMark";
 import { IconClose, IconMenu } from "@/components/ui/Icon";
 import { cn } from "@/lib/utils";
 import type { HeaderShell } from "@/lib/site-shell";
+import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 
 const links = [
   { href: "/services", key: "services" },
@@ -26,7 +27,6 @@ export function Header({ locale, shell }: { locale: string; shell?: HeaderShell 
   const t = useTranslations("Nav");
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const other = locale === "ar" ? "en" : "ar";
   const skip = locale === "ar" ? "تخطي إلى المحتوى" : "Skip to content";
   const aiHref = `/${locale}#alnajah-ai`;
   const brand = shell?.brandLabel?.trim() || brandName(locale);
@@ -75,13 +75,10 @@ export function Header({ locale, shell }: { locale: string; shell?: HeaderShell 
               <span>AI</span>
             </a>
           ) : null}
-          <Link
-            href={pathname}
-            locale={other}
+          <LocaleSwitcher
+            locale={locale}
             className="rounded-full px-3 py-2 text-sm text-muted hover:bg-sand hover:text-navy"
-          >
-            {other === "ar" ? "العربية" : "EN"}
-          </Link>
+          />
           {showQuote ? (
             <ButtonLink href="/get-a-quote" className="rounded-full">
               {quoteLabel}
@@ -130,9 +127,13 @@ export function Header({ locale, shell }: { locale: string; shell?: HeaderShell 
                 {aiLabel}
               </a>
             ) : null}
-            <Link href={pathname} locale={other} className="min-h-11 rounded-lg px-3 py-3 text-base text-navy" onClick={() => setOpen(false)}>
-              {other === "ar" ? "العربية" : "English"}
-            </Link>
+            <LocaleSwitcher
+              locale={locale}
+              className="min-h-11 rounded-lg px-3 py-3 text-base text-navy"
+              enLabel="English"
+              arLabel="العربية"
+              onNavigate={() => setOpen(false)}
+            />
             <a href={whatsappUrl()} className="min-h-11 rounded-lg px-3 py-3 text-base text-navy">
               {t("whatsapp")}
             </a>

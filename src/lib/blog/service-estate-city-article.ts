@@ -19,7 +19,10 @@ export type SecInput = {
 };
 
 export type SecArticle = {
+  /** Latin primary slug (DB). */
   slug: string;
+  /** Arabic public slug for /ar (stored in _slug-maps.json → article). */
+  slugAr: string;
   categorySlugs: string[];
   heroImage: string;
   relatedServiceSlugs: string[];
@@ -94,6 +97,7 @@ function padToWords(body: string, min: number, extra: string) {
 
 export function composeServiceEstateCityArticle(input: SecInput): SecArticle {
   const slug = buildSecSlug(input.serviceSlug, input.estateSlug, input.citySlug);
+  const slugAr = buildSecSlugArabic(input.serviceNameAr, input.estateNameAr, input.cityNameAr);
   const enTitle = `${input.serviceNameEn} in ${input.estateNameEn}, ${input.cityNameEn}`;
   const arTitle = `${input.serviceNameAr} في ${input.estateNameAr}، ${input.cityNameAr}`;
   const climateSeed = hash(`${input.serviceSlug}|${input.estateSlug}|${input.citySlug}`);
@@ -280,6 +284,7 @@ export function composeServiceEstateCityArticle(input: SecInput): SecArticle {
 
   return {
     slug,
+    slugAr,
     categorySlugs: [blogCategory(input.categorySlug || "general-maintenance"), "uae-local-guides", "service-location"],
     heroImage: topicWebpForServiceSlug(input.serviceSlug) || "/media/topics/general.webp",
     relatedServiceSlugs: [input.serviceSlug],

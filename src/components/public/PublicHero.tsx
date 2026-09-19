@@ -12,14 +12,26 @@ export function publicCanonical(locale: string, path: string) {
   return `${getSiteUrl()}/${locale}${path === "/" ? "" : path}`;
 }
 
-function resolvePublishedHeroImage(heroImage?: string | null) {
+function resolvePublishedHeroImage(heroImage?: string | null, locale?: string) {
   if (!heroImage) return null;
   const normalized = heroImage.trim();
   if (!normalized) return null;
   if (normalized === "/media/hero.jpg" || normalized.endsWith("/media/hero.jpg")) return null;
   if (!normalized.startsWith("/") || normalized.startsWith("//")) return null;
-  const file = path.join(process.cwd(), "public", normalized.replace(/^\//, "").replace(/\//g, path.sep));
-  return existsSync(file) ? normalized : null;
+  const publicRoot = path.join(process.cwd(), "public");
+  const fileFor = (webPath: string) =>
+    path.join(publicRoot, webPath.replace(/^\//, "").replace(/\//g, path.sep));
+
+  // Prefer locale-specific topic covers when present (English labels baked into EN assets).
+  if (locale === "ar") {
+    const arTopic = normalized.match(/^\/media\/topics\/([a-z0-9-]+)\.webp$/i);
+    if (arTopic) {
+      const arPath = `/media/topics/${arTopic[1]}-ar.webp`;
+      if (existsSync(fileFor(arPath))) return arPath;
+    }
+  }
+
+  return existsSync(fileFor(normalized)) ? normalized : null;
 }
 
 export function PublicHero({
@@ -51,7 +63,7 @@ export function PublicHero({
   imageAlt?: string;
   compact?: boolean;
 }) {
-  const publishedImage = resolvePublishedHeroImage(heroImage);
+  const publishedImage = resolvePublishedHeroImage(heroImage, locale);
   const brand = locale ? brandName(locale) : null;
   const extraKicker = kicker && kicker !== title && kicker !== brand ? kicker : null;
 

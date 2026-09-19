@@ -4,18 +4,19 @@
 - **`/en`** → Latin slugs only  
 - **`/ar`** → Arabic slugs, **percent-encoded** path segments (Hostinger ASCII-safe)  
 - No 301 redirects. Soft recovery via slug maps + decodeURIComponent/NFC lookup.
+- DB primary `slug` stays **Latin**. Never run Phase 3 primary-slug overwrite.
 
-## What changed
-- DB primary `slug` is **Latin** (services, locations, FAQ, articles, DIY).
-- Arabic forms in `scripts/_slug-maps.json`; builders encode on `/ar`.
-- Soft Service×Location pages when matrix empty; AR chrome brand **فكس بوينت**; public AR copy never shows `REVIEW_REQUIRED`.
+## What changed (this pass)
+- Filled missing `scripts/_slug-maps.json` → `article` entries (~10k) from AR titles.
+- SEC blog publish now writes Arabic maps (`slugAr`) without touching DB slugs.
+- Language switcher remaps EN↔AR via `/api/locale-path`.
+- Hide system blog tags (`service-location`) from public kickers; AR topic cover variants (`*-ar.webp`).
 
 ## Smoke
-- `/en/services` (~436), `/ar/services`
-- `/en/drain-blockage-removal`, `/ar/{encoded-إزالة-الصرف}`
-- `/en/locations/abu-dhabi`, `/ar/locations/{encoded-أبوظبي}`
-- `/en/blog/{latin}`, `/ar/blog/{encoded-arabic}`
-- Soft SL: `/ar/{encoded-loc}/{encoded-svc}`
+- `/en/blog/electrical-cable-repair-south-ajman-ajman`
+- `/ar/blog/%D8%A5%D8%B5%D9%84%D8%A7%D8%AD-%D8%A7%D9%84%D9%83%D9%87%D8%B1%D8%A8%D8%A7%D8%A1-%D8%A7%D9%84%D9%83%D8%A7%D8%A8%D9%84-%D8%AC%D9%86%D9%88%D8%A8-%D8%B9%D8%AC%D9%85%D8%A7%D9%86-%D8%B9%D8%AC%D9%85%D8%A7%D9%86`
+  (browser shows Arabic; wire path is percent-encoded)
+- Latin `/ar/blog/electrical-cable-repair-south-ajman-ajman` still **loads** (no 301)
 
 ## Redeploy
 Push `main`, then Redeploy on Hostinger. Report the commit hash as the Redeploy hash.

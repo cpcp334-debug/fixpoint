@@ -12,9 +12,33 @@
  */
 import "./load-env-mysql";
 import { randomBytes } from "node:crypto";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { join } from "node:path";
 import { prisma } from "../src/server/db";
 import { composeServiceEstateCityArticle } from "../src/lib/blog/service-estate-city-article";
 import { evaluateBlogPublicationGates } from "../src/lib/blog/publication-gates";
+import { ensureUniqueSlug } from "../src/lib/slug/arabic-slug";
+
+const MAP_PATH = join(process.cwd(), "scripts/_slug-maps.json");
+const AR = /[\u0600-\u06FF]/;
+
+function writeArticleSlugMaps(entries: Array<{ latin: string; arabic: string }>) {
+  if (!entries.length || !existsSync(MAP_PATH)) return 0;
+  const maps = JSON.parse(readFileSync(MAP_PATH, "utf8")) as { article?: Record<string, string> };
+  const article = { ...(maps.article || {}) };
+  const taken = new Set(Object.values(article).filter((v) => AR.test(v)));
+  let wrote = 0;
+  for (const { latin, arabic } of entries) {
+    if (!latin || AR.test(latin) || !arabic || !AR.test(arabic)) continue;
+    if (article[latin] && AR.test(article[latin]) && article[latin] !== latin) continue;
+    const unique = ensureUniqueSlug(arabic, taken, latin.slice(-12));
+    article[latin] = unique;
+    wrote += 1;
+  }
+  maps.article = article;
+  writeFileSync(MAP_PATH, JSON.stringify(maps, null, 2) + "\n", "utf8");
+  return wrote;
+}
 
 function createId() {
   return `c${randomBytes(12).toString("hex")}`;
@@ -42,10 +66,10 @@ function nameOf(
   return (row?.name || row?.title || fallback).trim() || fallback;
 }
 
-const AR = /[\u0600-\u06FF]/;
+const AR_NAME = /[\u0600-\u06FF]/;
 function isUsableArName(name: string) {
   if (!name || name === "REVIEW_REQUIRED" || name.startsWith("REVIEW_REQUIRED")) return false;
-  return AR.test(name);
+  return AR_NAME.test(name);
 }
 
 async function loadPairs(): Promise<Pair[]> {
@@ -303,7 +327,8 @@ async function main() {
         return inserted.length;
       });
       created += insertedCount;
-      console.log(JSON.stringify({ phase: "batch", from: i, to: i + chunk.length, created, failed }));
+      const mapWrote = writeArticleSlugMaps(composed.map((a) => ({ latin: a.slug, arabic: a.slugAr })));
+      console.log(JSON.stringify({ phase: "batch", from: i, to: i + chunk.length, created, failed, mapWrote }));
     } catch (e) {
       failed += chunk.length;
       failures.push(`batch_${i}:${String(e).slice(0, 200)}`);
