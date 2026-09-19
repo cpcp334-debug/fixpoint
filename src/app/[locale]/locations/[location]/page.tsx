@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { Link } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getActiveServices, getEmirateBySlug, getGlobalFaqs, getPublishedLocation } from "@/lib/catalog";
-import { prisma } from "@/server/db";
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -20,20 +19,16 @@ import { CtaBand } from "@/components/public/CtaBand";
 import { EmiratePlaceDirectory } from "@/components/locations/EmiratePlaceDirectory";
 import { serviceLocationHref, locationPageHref, locationPathSlug } from "@/lib/slug/locale-slug";
 
-/** Avoid year-long sticky notFound() after slug migrations. */
+/**
+ * Avoid year-long sticky notFound() after slug migrations.
+ * Empty params: do not SSG every community at build (Hostinger OOM / long MySQL window).
+ * dual-slug still works via locationLookupCandidates + dynamicParams.
+ */
 export const dynamic = "force-dynamic";
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
-  try {
-    const rows = await prisma.location.findMany({
-      where: { status: "active", indexable: true, serves: true, type: { in: ["emirate", "city", "community"] } },
-      select: { slug: true },
-    });
-    return rows.map((row) => ({ location: row.slug }));
-  } catch {
-    return [];
-  }
+  return [];
 }
 
 export async function generateMetadata({

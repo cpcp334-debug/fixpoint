@@ -7,6 +7,13 @@ import { diyGuidePathSlug, diyCategoryPathSlug } from "@/lib/slug/diy-slug-map";
 import { blogPathSlug } from "@/lib/slug/blog-slug-map";
 import { faqPathSlug } from "@/lib/slug/faq-slug-map";
 
+/**
+ * Serve sitemaps on demand so Hostinger `next build` does not prerender
+ * 32 DB-heavy shards (P1001 / MySQL blips mid-SSG must not fail deploy).
+ */
+export const dynamic = "force-dynamic";
+export const revalidate = 3600;
+
 /** Fixed shard count for service×location URLs (scales toward ~124k locale URLs). */
 export const SITEMAP_PAIR_SHARDS = 32;
 
@@ -26,6 +33,44 @@ export function pairShardId(serviceSlug: string, locationSlug: string, shards = 
 
 export async function generateSitemaps() {
   return Array.from({ length: SITEMAP_PAIR_SHARDS }, (_, id) => ({ id }));
+}
+
+function isTransientDbError(err: unknown): boolean {
+  const code =
+    err && typeof err === "object" && "code" in err ? String((err as { code?: unknown }).code) : "";
+  const message = err instanceof Error ? err.message : String(err ?? "");
+  return (
+    code === "P1001" ||
+    code === "P1002" ||
+    code === "P1017" ||
+    /Can't reach database server/i.test(message) ||
+    /Server has closed the connection/i.test(message) ||
+    /Connection (?:reset|refused|timed out|terminated)/i.test(message) ||
+    /Timed out fetching a new connection/i.test(message)
+  );
+}
+
+/** One retry on transient MySQL/Prisma connection errors, then soft-fail. */
+async function withDbRetry<T>(label: string, fn: () => Promise<T>, fallback: T): Promise<T> {
+  try {
+    return await fn();
+  } catch (err) {
+    if (!isTransientDbError(err)) {
+      console.error(`[sitemap] ${label} failed:`, err instanceof Error ? err.message : err);
+      return fallback;
+    }
+    console.warn(`[sitemap] ${label} transient DB error; retrying once…`);
+    try {
+      await new Promise((r) => setTimeout(r, 500));
+      return await fn();
+    } catch (retryErr) {
+      console.error(
+        `[sitemap] ${label} soft-fail after retry:`,
+        retryErr instanceof Error ? retryErr.message : retryErr,
+      );
+      return fallback;
+    }
+  }
 }
 
 async function staticAndCatalogEntries(site: string): Promise<MetadataRoute.Sitemap> {
@@ -60,26 +105,56 @@ async function staticAndCatalogEntries(site: string): Promise<MetadataRoute.Site
   }
 
   const [services, locations, guides, categories, articles] = await Promise.all([
-    prisma.service.findMany({
-      where: { status: "active", indexable: true },
-      select: { slug: true, updatedAt: true },
-    }),
-    prisma.location.findMany({
-      where: { status: "active", indexable: true, serves: true, type: { in: ["emirate", "city", "community"] } },
-      select: { slug: true, updatedAt: true },
-    }),
-    prisma.diyGuide.findMany({
-      where: { status: "published", indexable: true },
-      select: { slug: true, updatedAt: true },
-    }),
-    prisma.diyCategory.findMany({
-      where: { status: "published", indexable: true },
-      select: { slug: true, updatedAt: true },
-    }),
-    prisma.article.findMany({
-      where: { status: "published", indexable: true },
-      select: { slug: true, updatedAt: true, publishedAt: true, categorySlugs: true },
-    }),
+    withDbRetry(
+      "service.findMany",
+      () =>
+        prisma.service.findMany({
+          where: { status: "active", indexable: true },
+          select: { slug: true, updatedAt: true },
+        }),
+      [] as { slug: string; updatedAt: Date }[],
+    ),
+    withDbRetry(
+      "location.findMany",
+      () =>
+        prisma.location.findMany({
+          where: {
+            status: "active",
+            indexable: true,
+            serves: true,
+            type: { in: ["emirate", "city", "community"] },
+          },
+          select: { slug: true, updatedAt: true },
+        }),
+      [] as { slug: string; updatedAt: Date }[],
+    ),
+    withDbRetry(
+      "diyGuide.findMany",
+      () =>
+        prisma.diyGuide.findMany({
+          where: { status: "published", indexable: true },
+          select: { slug: true, updatedAt: true },
+        }),
+      [] as { slug: string; updatedAt: Date }[],
+    ),
+    withDbRetry(
+      "diyCategory.findMany",
+      () =>
+        prisma.diyCategory.findMany({
+          where: { status: "published", indexable: true },
+          select: { slug: true, updatedAt: true },
+        }),
+      [] as { slug: string; updatedAt: Date }[],
+    ),
+    withDbRetry(
+      "article.findMany",
+      () =>
+        prisma.article.findMany({
+          where: { status: "published", indexable: true },
+          select: { slug: true, updatedAt: true, publishedAt: true, categorySlugs: true },
+        }),
+      [] as { slug: string; updatedAt: Date; publishedAt: Date | null; categorySlugs: string | null }[],
+    ),
   ]);
 
   for (const locale of locales) {
@@ -134,28 +209,45 @@ export default async function sitemap(props: {
   }
 
   const site = getSiteUrl();
-  // Static + service + emirate + diy catalog only on shard 0 (avoid duplicate URLs across shards).
-  const entries: MetadataRoute.Sitemap = shard === 0 ? await staticAndCatalogEntries(site) : [];
 
-  const pairs = await prisma.serviceLocation.findMany({
-    where: publicServiceLocationWhere,
-    select: {
-      updatedAt: true,
-      service: { select: { slug: true } },
-      location: { select: { slug: true } },
-    },
-  });
+  try {
+    // Static + service + emirate + diy catalog only on shard 0 (avoid duplicate URLs across shards).
+    const entries: MetadataRoute.Sitemap =
+      shard === 0 ? await staticAndCatalogEntries(site) : [];
 
-  const locales = ["en", "ar"] as const;
-  for (const pair of pairs) {
-    if (pairShardId(pair.service.slug, pair.location.slug) !== shard) continue;
-    for (const locale of locales) {
-      entries.push({
-        url: `${site}/${locale}/${servicePathSlug(locale, pair.service.slug)}/${locationPathSlug(locale, pair.location.slug)}`,
-        lastModified: pair.updatedAt,
-      });
+    const pairs = await withDbRetry(
+      "serviceLocation.findMany",
+      () =>
+        prisma.serviceLocation.findMany({
+          where: publicServiceLocationWhere,
+          select: {
+            updatedAt: true,
+            service: { select: { slug: true } },
+            location: { select: { slug: true } },
+          },
+        }),
+      [],
+    );
+
+    const locales = ["en", "ar"] as const;
+    for (const pair of pairs) {
+      if (pairShardId(pair.service.slug, pair.location.slug) !== shard) continue;
+      for (const locale of locales) {
+        entries.push({
+          url: `${site}/${locale}/${servicePathSlug(locale, pair.service.slug)}/${locationPathSlug(locale, pair.location.slug)}`,
+          lastModified: pair.updatedAt,
+        });
+      }
     }
-  }
 
-  return entries;
+    return entries;
+  } catch (err) {
+    // Last-resort soft-fail: never crash Hostinger build / request over sitemap.
+    console.error("[sitemap] soft-fail:", err instanceof Error ? err.message : err);
+    if (shard !== 0) return [];
+    return [
+      { url: `${site}/en`, changeFrequency: "weekly", priority: 1 },
+      { url: `${site}/ar`, changeFrequency: "weekly", priority: 1 },
+    ];
+  }
 }

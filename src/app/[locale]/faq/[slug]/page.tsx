@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
-import { prisma } from "@/server/db";
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -10,22 +9,17 @@ import { Section, SectionHeader } from "@/components/ui/Section";
 import { PageShell } from "@/components/public/PageShell";
 import { PublicHero } from "@/components/public/PublicHero";
 import { CtaBand } from "@/components/public/CtaBand";
-import { getServiceFaqBySlug, publishedServiceFaqWhere } from "@/lib/faq/pages";
+import { getServiceFaqBySlug } from "@/lib/faq/pages";
 import { serviceHref } from "@/lib/slug/locale-slug";
 
+/**
+ * Avoid SSG of every FAQ article at build. Latin faq-* paths work for both locales
+ * via faqLookupCandidates; dynamicParams keeps dual-slug on-demand.
+ */
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
-  try {
-    const rows = await prisma.article.findMany({
-      where: publishedServiceFaqWhere,
-      select: { slug: true },
-    });
-    // Hostinger: public FAQ paths stay Latin (`faq-*`) for both locales.
-    return rows
-      .filter((row) => row.slug.startsWith("faq-"))
-      .map((row) => ({ slug: row.slug }));
-  } catch {
-    return [];
-  }
+  return [];
 }
 
 export async function generateMetadata({

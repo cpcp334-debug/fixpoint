@@ -8,7 +8,6 @@ import {
   getGuideBySlug,
   getPublishedGuides,
 } from "@/lib/catalog";
-import { prisma } from "@/server/db";
 import {
   breadcrumbJsonLd,
   buildMetadata,
@@ -36,22 +35,14 @@ import { diyCategoryPathSlug, diyPathSlug } from "@/lib/slug/diy-slug-map";
 
 const DIY_CATEGORY_PAGE_SIZE = 6;
 
+/**
+ * Avoid SSG of all DIY guides/categories at build (Hostinger MySQL window).
+ * dual-slug via diyLookupCandidates + dynamicParams.
+ */
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
-  try {
-    const [guides, categories] = await Promise.all([
-      prisma.diyGuide.findMany({
-        where: { status: "published", indexable: true },
-        select: { slug: true },
-      }),
-      prisma.diyCategory.findMany({
-        where: { status: "published", indexable: true },
-        select: { slug: true },
-      }),
-    ]);
-    return [...categories, ...guides].map((row) => ({ slug: row.slug }));
-  } catch {
-    return [];
-  }
+  return [];
 }
 
 export async function generateMetadata({

@@ -39,16 +39,14 @@ function intakeChips(raw: string, locale: string) {
     .map((label) => ({ label, prompt: label }));
 }
 
+/**
+ * Avoid SSG of hundreds of service pages × locales at Hostinger build
+ * (long MySQL window). dual-slug via serviceLookupCandidates + dynamicParams.
+ */
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
-  try {
-    const rows = await prisma.service.findMany({
-      where: { status: "active", indexable: true },
-      select: { slug: true },
-    });
-    return rows.map((row) => ({ service: row.slug }));
-  } catch {
-    return [];
-  }
+  return [];
 }
 
 export async function generateMetadata({
