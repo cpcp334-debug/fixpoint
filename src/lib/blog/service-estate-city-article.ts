@@ -85,11 +85,22 @@ function blogCategory(categorySlug: string) {
   return "home-maintenance";
 }
 
+/**
+ * Pad body to min words. Append `extra` (with ## headings) once only —
+ * repeating heading blocks duplicated the TOC (e.g. 5× "أسئلة قبل الحجز").
+ * Further padding uses prose-only slices without ## headings.
+ */
 function padToWords(body: string, min: number, extra: string) {
-  let out = body;
+  const proseOnly = extra
+    .split(/\n\n+/)
+    .map((b) => b.trim())
+    .filter((b) => b && !b.startsWith("## "))
+    .join("\n\n");
+  let out = body.trim();
+  if (extra.trim()) out = `${out}\n\n${extra.trim()}`;
   let n = 0;
-  while (words(out) < min && n < 6) {
-    out = `${out}\n\n${extra}`;
+  while (words(out) < min && n < 6 && proseOnly) {
+    out = `${out}\n\n${proseOnly}`;
     n += 1;
   }
   return out;

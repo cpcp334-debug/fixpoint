@@ -8,6 +8,7 @@ import { FaqList } from "@/components/ui/Blocks";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { PageShell, ProseCard } from "@/components/public/PageShell";
 import { PublicHero, publicCanonical } from "@/components/public/PublicHero";
+import { ArPublicSlugNormalize } from "@/components/public/ArPublicSlugNormalize";
 import { CtaRow } from "@/components/public/CtaRow";
 import { CtaBand } from "@/components/public/CtaBand";
 import { getBlogArticleBySlug, getPublishedBlogArticles } from "@/lib/blog/catalog";
@@ -46,24 +47,53 @@ function headingId(title: string) {
 }
 
 function extractHeadings(body: string) {
+  const seen = new Set<string>();
   return body
     .split(/\n+/)
     .map((line) => line.trim())
     .filter((line) => line.startsWith("## "))
     .map((line) => line.replace(/^##\s+/, ""))
-    .filter(
-      (title) =>
-        !/^Field detail\b/i.test(title) &&
-        !/^تفصيل ميداني\b/i.test(title) &&
-        !/^Exclusive checkpoint\b/i.test(title) &&
-        !/^نقطة تحقق حصرية\b/i.test(title) &&
-        !/^Documentation markers\b/i.test(title) &&
-        !/^علامات توثيق\b/i.test(title),
-    );
+    .filter((title) => {
+      if (
+        /^Field detail\b/i.test(title) ||
+        /^تفصيل ميداني\b/i.test(title) ||
+        /^Exclusive checkpoint\b/i.test(title) ||
+        /^نقطة تحقق حصرية\b/i.test(title) ||
+        /^Documentation markers\b/i.test(title) ||
+        /^علامات توثيق\b/i.test(title)
+      ) {
+        return false;
+      }
+      // padToWords historically repeated heading blocks — keep TOC unique.
+      if (seen.has(title)) return false;
+      seen.add(title);
+      return true;
+    });
 }
 
 function renderBody(body: string) {
-  const blocks = body.split(/\n\n+/).map((b) => b.trim()).filter(Boolean);
+  // Collapse historically padded duplicate ## sections (padToWords bug):
+  // when a heading title repeats, drop that heading and its following blocks
+  // until the next unique ## heading.
+  const rawBlocks = body.split(/\n\n+/).map((b) => b.trim()).filter(Boolean);
+  const seenH2 = new Set<string>();
+  const blocks: string[] = [];
+  let skippingDupSection = false;
+  for (const block of rawBlocks) {
+    if (block.startsWith("## ")) {
+      const title = block.replace(/^##\s+/, "").trim();
+      if (seenH2.has(title)) {
+        skippingDupSection = true;
+        continue;
+      }
+      seenH2.add(title);
+      skippingDupSection = false;
+      blocks.push(block);
+      continue;
+    }
+    if (skippingDupSection) continue;
+    blocks.push(block);
+  }
   return blocks.map((block, i) => {
     if (block.startsWith("## ")) {
       const title = block.replace(/^##\s+/, "");
@@ -152,6 +182,7 @@ export default async function BlogArticlePage({
         />
       }
     >
+      <ArPublicSlugNormalize locale={locale} preferredSegment={article.slug} />
       <JsonLd
         data={blogPostingJsonLd({
           title: article.t.title,
