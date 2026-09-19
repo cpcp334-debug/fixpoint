@@ -11,6 +11,7 @@ import {
   getServiceLocation as resolvePublicServiceLocation,
   resolveServiceLocationPage,
 } from "@/lib/service-location/page-resolve";
+import { masterVisitorName } from "@/lib/locations/emirate-directory";
 
 type ServiceWithTranslations = Prisma.ServiceGetPayload<{
   include: { translations: true; category: { include: { translations: true } } };
@@ -148,7 +149,15 @@ export const getPublishedLocation = cache(async (slug: string, locale: string) =
   if (!row) return null;
   const t = pickI18n(row.translations, locale);
   if (!t) return null;
-  const name = t.name === "REVIEW_REQUIRED" ? pickI18n(row.translations, "en")?.name || row.slug : t.name;
+  const arName = row.translations.find((item) => item.locale === "ar")?.name;
+  const enName = row.translations.find((item) => item.locale === "en")?.name;
+  let name = t.name;
+  if (locale === "ar") {
+    const arOk = arName && arName !== "REVIEW_REQUIRED" && /[\u0600-\u06FF]/.test(arName);
+    name = arOk ? arName! : masterVisitorName(row.slug, "ar") || enName || row.slug;
+  } else if (name === "REVIEW_REQUIRED") {
+    name = enName || row.slug;
+  }
   return { ...row, t: { ...t, name } };
 });
 

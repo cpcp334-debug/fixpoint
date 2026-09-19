@@ -20,6 +20,8 @@ import { EmiratePlaceDirectory } from "@/components/locations/EmiratePlaceDirect
 import { ArPublicSlugNormalize } from "@/components/public/ArPublicSlugNormalize";
 import { serviceLocationHref, locationPageHref, locationPathSlug } from "@/lib/slug/locale-slug";
 import { renderArticleBody } from "@/components/content/ArticleBody";
+import { publishedPlacesUnderCity } from "@/lib/locations/public-filter";
+import { masterVisitorName } from "@/lib/locations/emirate-directory";
 
 /**
  * Avoid year-long sticky notFound() after slug migrations.
@@ -237,8 +239,8 @@ async function PublishedPlacePage({
   };
   const parent = place.parent;
   const emirate = place.parent?.type === "emirate" ? place.parent : place.parent?.parent?.type === "emirate" ? place.parent.parent : null;
-  const emirateName = emirate ? pickName(emirate.translations, locale) : "";
-  const parentName = parent ? pickName(parent.translations, locale) : "";
+  const emirateName = emirate ? pickName(emirate.translations, locale, emirate.slug) : "";
+  const parentName = parent ? pickName(parent.translations, locale, parent.slug) : "";
   const wa =
     locale === "ar"
       ? `مرحباً ${brandName("ar")}، أحتاج خدمة في ${place.t.name}${emirateName ? `، ${emirateName}` : ""}.`
@@ -258,6 +260,10 @@ async function PublishedPlacePage({
   const media = hubCoverAndAlt(place.slug, locale, place.t.name, emirateName);
   const hasHubBody = (place.t.localServiceInfo || "").includes("## ");
   const publicLoc = locationPathSlug(locale, place.slug);
+  const childPlaces =
+    place.type === "city" || place.type === "community"
+      ? await publishedPlacesUnderCity(place.slug, locale)
+      : [];
 
   return (
     <PageShell
@@ -299,13 +305,42 @@ async function PublishedPlacePage({
           </div>
         ) : null}
         {parent ? (
-          <p className="mt-4 text-sm">
+          <p className="mt-4 text-sm text-muted">
+            {t("parentArea")}{" "}
             <Link href={locationPageHref(locale, parent.slug)} className="font-medium text-accent">
               {parentName}
             </Link>
           </p>
         ) : null}
-        {emirate ? (
+        {childPlaces.length ? (
+          <div className="mt-6">
+            <EmiratePlaceDirectory
+              emirateSlug={emirate?.slug || place.slug}
+              locale={locale}
+              title={t("childrenTitle")}
+              lead={t("childrenLead")}
+              citiesLabel={t("cities")}
+              areasLabel={t("estates")}
+              note={t("underThisArea")}
+              overrideAreas={childPlaces}
+              hideCities
+            />
+          </div>
+        ) : null}
+        {emirate && place.type !== "city" ? (
+          <div className="mt-6">
+            <EmiratePlaceDirectory
+              emirateSlug={emirate.slug}
+              locale={locale}
+              title={t("directoryTitle")}
+              lead={t("directoryLead")}
+              citiesLabel={t("cities")}
+              areasLabel={t("areas")}
+              note={t("directoryNote")}
+            />
+          </div>
+        ) : null}
+        {emirate && place.type === "city" && !childPlaces.length ? (
           <div className="mt-6">
             <EmiratePlaceDirectory
               emirateSlug={emirate.slug}
@@ -339,8 +374,16 @@ async function PublishedPlacePage({
   );
 }
 
-function pickName(translations: Array<{ locale: string; name: string }>, locale: string) {
+function pickName(translations: Array<{ locale: string; name: string }>, locale: string, latinSlug?: string) {
   const row = translations.find((item) => item.locale === locale) || translations.find((item) => item.locale === "en");
+  if (locale === "ar") {
+    const ar = translations.find((item) => item.locale === "ar");
+    if (ar?.name && ar.name !== "REVIEW_REQUIRED" && /[\u0600-\u06FF]/.test(ar.name)) return ar.name;
+    if (latinSlug) {
+      const fromMaster = masterVisitorName(latinSlug, "ar");
+      if (fromMaster) return fromMaster;
+    }
+  }
   if (!row || row.name === "REVIEW_REQUIRED") return translations.find((item) => item.locale === "en")?.name || "";
   return row.name;
 }

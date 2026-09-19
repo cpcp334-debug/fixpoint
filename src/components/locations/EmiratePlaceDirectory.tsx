@@ -1,5 +1,6 @@
 import { Link } from "@/i18n/routing";
 import { publishedEmirateDirectory } from "@/lib/locations/public-filter";
+import type { DirectoryPlace } from "@/lib/locations/emirate-directory";
 
 function PlaceList({ title, places }: { title: string; places: Array<{ slug: string; name: string }> }) {
   if (!places.length) return null;
@@ -32,6 +33,8 @@ export async function EmiratePlaceDirectory({
   citiesLabel,
   areasLabel,
   note,
+  overrideAreas,
+  hideCities,
 }: {
   emirateSlug: string;
   locale: string;
@@ -40,8 +43,14 @@ export async function EmiratePlaceDirectory({
   citiesLabel: string;
   areasLabel: string;
   note: string;
+  /** When set, skip the full emirate fetch and list these areas/estates only. */
+  overrideAreas?: DirectoryPlace[];
+  hideCities?: boolean;
 }) {
-  const directory = await publishedEmirateDirectory(emirateSlug, locale);
+  const directory =
+    overrideAreas != null
+      ? { cities: [] as DirectoryPlace[], areas: overrideAreas, total: overrideAreas.length }
+      : await publishedEmirateDirectory(emirateSlug, locale);
   if (!directory.total) return null;
 
   return (
@@ -49,7 +58,7 @@ export async function EmiratePlaceDirectory({
       <h2 className="text-xl font-semibold text-navy">{title}</h2>
       <p className="mt-2 max-w-3xl text-sm leading-6 text-muted">{lead}</p>
       <div className="mt-5 grid gap-6">
-        <PlaceList title={citiesLabel} places={directory.cities} />
+        {hideCities ? null : <PlaceList title={citiesLabel} places={directory.cities} />}
         <PlaceList title={areasLabel} places={directory.areas} />
       </div>
       <p className="mt-5 max-w-3xl text-sm leading-6 text-muted">{note}</p>

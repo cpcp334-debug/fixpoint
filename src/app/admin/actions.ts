@@ -539,8 +539,18 @@ export async function updateLocationAction(formData: FormData) {
   const ar = existing.translations.find((row) => row.locale === "ar");
   const nameEn = str(formData, "nameEn") || en?.name || existing.slug;
   const introEn = str(formData, "introEn");
+  const localServiceInfoEn = str(formData, "localServiceInfoEn");
+  const propertyTypesEn = str(formData, "propertyTypesEn");
+  const nearbyAreasEn = str(formData, "nearbyAreasEn");
+  const seoTitleEn = str(formData, "seoTitleEn") || nameEn;
+  const metaDescriptionEn = str(formData, "metaDescriptionEn") || introEn || nameEn;
   const nameAr = str(formData, "nameAr");
   const introAr = str(formData, "introAr");
+  const localServiceInfoAr = str(formData, "localServiceInfoAr");
+  const propertyTypesAr = str(formData, "propertyTypesAr");
+  const nearbyAreasAr = str(formData, "nearbyAreasAr");
+  const seoTitleAr = str(formData, "seoTitleAr") || nameAr;
+  const metaDescriptionAr = str(formData, "metaDescriptionAr") || introAr || nameAr;
   await prisma.location.update({
     where: { id },
     data: {
@@ -552,7 +562,15 @@ export async function updateLocationAction(formData: FormData) {
   if (en) {
     await prisma.locationI18n.update({
       where: { id: en.id },
-      data: { name: nameEn, intro: introEn },
+      data: {
+        name: nameEn,
+        intro: introEn,
+        localServiceInfo: localServiceInfoEn,
+        propertyTypes: propertyTypesEn,
+        nearbyAreas: nearbyAreasEn,
+        seoTitle: seoTitleEn,
+        metaDescription: metaDescriptionEn,
+      },
     });
   } else {
     await prisma.locationI18n.create({
@@ -561,15 +579,26 @@ export async function updateLocationAction(formData: FormData) {
         locale: "en",
         name: nameEn,
         intro: introEn,
-        seoTitle: nameEn,
-        metaDescription: introEn || nameEn,
+        localServiceInfo: localServiceInfoEn,
+        propertyTypes: propertyTypesEn,
+        nearbyAreas: nearbyAreasEn,
+        seoTitle: seoTitleEn,
+        metaDescription: metaDescriptionEn,
       },
     });
   }
   if (ar) {
     await prisma.locationI18n.update({
       where: { id: ar.id },
-      data: { name: nameAr, intro: introAr },
+      data: {
+        name: nameAr,
+        intro: introAr,
+        localServiceInfo: localServiceInfoAr,
+        propertyTypes: propertyTypesAr,
+        nearbyAreas: nearbyAreasAr,
+        seoTitle: seoTitleAr,
+        metaDescription: metaDescriptionAr,
+      },
     });
   } else {
     await prisma.locationI18n.create({
@@ -578,8 +607,11 @@ export async function updateLocationAction(formData: FormData) {
         locale: "ar",
         name: nameAr,
         intro: introAr,
-        seoTitle: nameAr,
-        metaDescription: introAr || nameAr,
+        localServiceInfo: localServiceInfoAr,
+        propertyTypes: propertyTypesAr,
+        nearbyAreas: nearbyAreasAr,
+        seoTitle: seoTitleAr,
+        metaDescription: metaDescriptionAr,
       },
     });
   }
