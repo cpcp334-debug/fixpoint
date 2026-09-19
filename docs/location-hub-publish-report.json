@@ -2,11 +2,11 @@
   "dryRun": false,
   "openaiKeyPresent": false,
   "openaiUsed": false,
-  "targets": 5,
-  "published": 5,
+  "targets": 277,
+  "published": 277,
   "failed": 0,
-  "minEn": 1304,
-  "minAr": 936,
+  "minEn": 1265,
+  "minAr": 918,
   "sampleFailures": [],
   "pilotSlugs": [
     "dubai-marina",
@@ -15,5 +15,13 @@
     "al-nuaimiya",
     "dibba-al-fujairah"
   ],
-  "note": "BLOCKER: OPENAI_API_KEY missing — used deterministic GEO-aware composer. Add key to .env.mysql for independent LLM AR refinement."
+  "sync": {
+    "beforeInMaster": 270,
+    "afterInMaster": 278,
+    "arabicPrimaryRestoredToLatin": 8,
+    "activeServing": 277,
+    "leftoverOutsideMaster": 0
+  },
+  "redeployHash": "dc15224",
+  "note": "BLOCKER: OPENAI_API_KEY missing — used deterministic GEO-aware composer for all 277. Add key to .env.mysql and re-run with LOCATION_HUB_USE_OPENAI=1 for independent LLM AR refinement."
 }
