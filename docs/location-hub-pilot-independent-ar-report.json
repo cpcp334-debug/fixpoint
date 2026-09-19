@@ -1,0 +1,55 @@
+{
+  "dryRun": false,
+  "openaiUsed": false,
+  "note": "Agent-authored independent MSA Arabic pilots; EN preserved; OpenAI not called.",
+  "published": 5,
+  "passed": 5,
+  "failed": 0,
+  "results": [
+    {
+      "slug": "dubai-marina",
+      "arWords": 1241,
+      "enWords": 1334,
+      "pass": true,
+      "failures": [],
+      "url": "https://fixpoint.ae/ar/locations/dubai-marina",
+      "updated": true
+    },
+    {
+      "slug": "musaffah",
+      "arWords": 1162,
+      "enWords": 1322,
+      "pass": true,
+      "failures": [],
+      "url": "https://fixpoint.ae/ar/locations/musaffah",
+      "updated": true
+    },
+    {
+      "slug": "al-sajaa",
+      "arWords": 1042,
+      "enWords": 1343,
+      "pass": true,
+      "failures": [],
+      "url": "https://fixpoint.ae/ar/locations/al-sajaa",
+      "updated": true
+    },
+    {
+      "slug": "al-nuaimiya",
+      "arWords": 1034,
+      "enWords": 1306,
+      "pass": true,
+      "failures": [],
+      "url": "https://fixpoint.ae/ar/locations/al-nuaimiya",
+      "updated": true
+    },
+    {
+      "slug": "dibba-al-fujairah",
+      "arWords": 1074,
+      "enWords": 1304,
+      "pass": true,
+      "failures": [],
+      "url": "https://fixpoint.ae/ar/locations/dibba-al-fujairah",
+      "updated": true
+    }
+  ]
+}

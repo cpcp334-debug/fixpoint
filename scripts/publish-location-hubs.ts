@@ -12,6 +12,10 @@
  *
  * Prefer `.env.mysql` for Hostinger (loaded first).
  *
+ * Independent MSA Arabic (not EN mirror): for pilots use
+ *   npx tsx scripts/publish-pilot-independent-ar.ts
+ * which loads src/lib/locations/pilot-independent-ar.ts and keeps EN untouched.
+ *
  * Usage:
  *   npx tsx scripts/publish-location-hubs.ts --pilot
  *   npx tsx scripts/publish-location-hubs.ts --limit=50
