@@ -144,6 +144,15 @@ export default async function DiyIndexPage({
             title={t("fullListTitle")}
             lead={t("fullListLead", { count: guides.length })}
           />
+          <PrevNextPagination
+            currentPage={page}
+            totalPages={totalPages}
+            previousHref={page > 1 ? listPageHref("/diy", page - 1, { q: qParam }) : null}
+            nextHref={page < totalPages ? listPageHref("/diy", page + 1, { q: qParam }) : null}
+            previousLabel={pager("previous")}
+            nextLabel={pager("next")}
+            pageOfLabel={pager("pageOf", { current: page, total: totalPages })}
+          />
           <div className="mt-6">
             <DiyGuideGrid
               items={pageItems}

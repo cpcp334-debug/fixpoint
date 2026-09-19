@@ -187,6 +187,23 @@ export default async function BlogIndexPage({
 
           <Section>
             <SectionHeader title={t("latest")} />
+            <PrevNextPagination
+              currentPage={page}
+              totalPages={totalPages}
+              previousHref={
+                page > 1
+                  ? listPageHref("/blog", page - 1, { category, q: sp.q?.trim() })
+                  : null
+              }
+              nextHref={
+                page < totalPages
+                  ? listPageHref("/blog", page + 1, { category, q: sp.q?.trim() })
+                  : null
+              }
+              previousLabel={pager("previous")}
+              nextLabel={pager("next")}
+              pageOfLabel={pager("pageOf", { current: page, total: totalPages })}
+            />
             {pageItems.length ? (
               <ul className="mt-8 grid gap-6 md:grid-cols-2">
                 {pageItems.map((a) => (

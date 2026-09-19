@@ -180,6 +180,15 @@ export default async function CategoryPage({
 
       <Section tone="sand">
         <SectionHeader title={t("childrenTitle")} lead={t("childrenLead", { count: childrenWithNames.length })} />
+        <PrevNextPagination
+          currentPage={page}
+          totalPages={totalPages}
+          previousHref={page > 1 ? listPageHref(categoryPath, page - 1, { q: qParam }) : null}
+          nextHref={page < totalPages ? listPageHref(categoryPath, page + 1, { q: qParam }) : null}
+          previousLabel={pager("previous")}
+          nextLabel={pager("next")}
+          pageOfLabel={pager("pageOf", { current: page, total: totalPages })}
+        />
         <div className="mt-6">
           <CategoryChildGrid
             items={pageItems}

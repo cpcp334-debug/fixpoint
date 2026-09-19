@@ -91,6 +91,23 @@ export default async function ServicesPage({
 
       <Section>
         <SectionHeader title={home("mainServicesTitle")} lead={home("mainServicesLead")} />
+        <PrevNextPagination
+          currentPage={catPage}
+          totalPages={catTotalPages}
+          previousHref={
+            catPage > 1
+              ? listPageHref("/services", catPage - 1, { q: qParam, page: listPage > 1 ? String(listPage) : undefined }, { pageParam: "catPage" })
+              : null
+          }
+          nextHref={
+            catPage < catTotalPages
+              ? listPageHref("/services", catPage + 1, { q: qParam, page: listPage > 1 ? String(listPage) : undefined }, { pageParam: "catPage" })
+              : null
+          }
+          previousLabel={pager("previous")}
+          nextLabel={pager("next")}
+          pageOfLabel={pager("pageOf", { current: catPage, total: catTotalPages })}
+        />
         <ul className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {pageCategories.map((cat) => (
             <li key={cat.slug} className="flex h-full">
@@ -119,6 +136,21 @@ export default async function ServicesPage({
 
       <Section tone="sand">
         <SectionHeader title={t("fullListTitle")} lead={t("fullListLead", { count: allChildren.length })} />
+        <PrevNextPagination
+          currentPage={listPage}
+          totalPages={listTotalPages}
+          previousHref={
+            listPage > 1 ? listPageHref("/services", listPage - 1, { q: qParam, catPage: catPageParam }) : null
+          }
+          nextHref={
+            listPage < listTotalPages
+              ? listPageHref("/services", listPage + 1, { q: qParam, catPage: catPageParam })
+              : null
+          }
+          previousLabel={pager("previous")}
+          nextLabel={pager("next")}
+          pageOfLabel={pager("pageOf", { current: listPage, total: listTotalPages })}
+        />
         <div className="mt-6">
           <CategoryChildGrid
             items={pageChildren}

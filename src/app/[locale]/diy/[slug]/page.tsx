@@ -143,6 +143,15 @@ async function DiyCategoryView({
       <PublicHero locale={locale} kicker={t("title")} title={category.t.name} lead={category.t.description} />
       <Section>
         <Disclaimer>{siteConfig.disclaimers.diy[locale === "ar" ? "ar" : "en"]}</Disclaimer>
+        <PrevNextPagination
+          currentPage={page}
+          totalPages={totalPages}
+          previousHref={page > 1 ? listPageHref(categoryPath, page - 1) : null}
+          nextHref={page < totalPages ? listPageHref(categoryPath, page + 1) : null}
+          previousLabel={pager("previous")}
+          nextLabel={pager("next")}
+          pageOfLabel={pager("pageOf", { current: page, total: totalPages })}
+        />
         <ul className="mt-8 grid gap-4 md:grid-cols-2">
           {pageGuides.map((guide) => (
             <li key={guide.slug}>

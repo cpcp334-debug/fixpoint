@@ -118,6 +118,19 @@ export default async function FaqRoute({
       />
       <PublicHero locale={locale} kicker={t("title")} title={heroTitle} lead={t("lead")} compact />
       <Section>
+        <PrevNextPagination
+          currentPage={page}
+          totalPages={totalPages}
+          previousHref={
+            page > 1 ? listPageHref("/faq", page - 1, { q: qParam, category: categoryParam }) : null
+          }
+          nextHref={
+            page < totalPages ? listPageHref("/faq", page + 1, { q: qParam, category: categoryParam }) : null
+          }
+          previousLabel={pager("previous")}
+          nextLabel={pager("next")}
+          pageOfLabel={pager("pageOf", { current: page, total: totalPages })}
+        />
         <FaqDirectory
           groups={groups}
           searchPlaceholder={t("search")}
