@@ -1,4 +1,4 @@
-import { brandName } from "@/config/site";
+import { brandName, getSiteUrl } from "@/config/site";
 import { notFound } from "next/navigation";
 import { Link } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -18,7 +18,7 @@ import { CtaRow } from "@/components/public/CtaRow";
 import { CtaBand } from "@/components/public/CtaBand";
 import { EmiratePlaceDirectory } from "@/components/locations/EmiratePlaceDirectory";
 import { serviceLocationHref, locationPageHref, locationPathSlug } from "@/lib/slug/locale-slug";
-import { blogPathSlug } from "@/lib/slug/blog-slug-map";
+import { renderArticleBody } from "@/components/content/ArticleBody";
 
 /**
  * Avoid year-long sticky notFound() after slug migrations.
@@ -32,6 +32,24 @@ export async function generateStaticParams() {
   return [];
 }
 
+function hubCoverAndAlt(slug: string, locale: string, name: string, emirateName: string) {
+  const s = slug.toLowerCase();
+  let cover = "/media/topics/general.webp";
+  if (/industrial|musaffah|sajaa|quoz|warsan/.test(s)) cover = "/media/topics/electrical.webp";
+  else if (/marina|island|palm|beach|harbour|harbor|aqah|creek/.test(s)) cover = "/media/topics/pool.webp";
+  else if (/hills|ranch|gardens|village|estate/.test(s)) cover = "/media/topics/cleaning.webp";
+  else if (s.includes("abu-dhabi") || s.includes("khalifa") || s.includes("saadiyat")) cover = "/media/topics/ac.webp";
+  else if (s.includes("fujairah") || s.includes("dibba")) cover = "/media/topics/plumbing.webp";
+  else if (s.includes("sharjah") || s.includes("sajaa")) cover = "/media/topics/walls.webp";
+  return {
+    cover,
+    alt:
+      locale === "ar"
+        ? `صورة توضيحية لمنطقة خدمة الصيانة في ${name}${emirateName ? `، ${emirateName}` : ""}`
+        : `Maintenance service area illustration for ${name}${emirateName ? `, ${emirateName}` : ""}`,
+  };
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -40,12 +58,19 @@ export async function generateMetadata({
   const { locale, location } = await params;
   const place = await getPublishedLocation(location, locale);
   if (!place) return {};
+  const site = getSiteUrl();
+  const enPath = locationPageHref("en", place.slug);
+  const arPath = locationPageHref("ar", place.slug);
   return buildMetadata({
     locale,
     title: place.t.seoTitle || `${place.t.name} | ${brandName(locale)}`,
     description: place.t.metaDescription || place.t.intro,
     path: locationPageHref(locale, place.slug),
     index: place.indexable,
+    languages: {
+      en: `${site}/en${enPath}`,
+      ar: `${site}/ar${arPath}`,
+    },
   });
 }
 
@@ -110,18 +135,23 @@ export default async function LocationPage({
         shareLabel={home("share")}
         copiedLabel={home("copied")}
         actions={<CtaRow labels={ctaLabels} whatsappText={wa} />}
+        {...(() => {
+          const media = hubCoverAndAlt(em.slug, locale, em.t.name, em.t.name);
+          return { heroImage: media.cover, imageAlt: media.alt };
+        })()}
       />
 
       <Section tone="sand">
         <div className="grid gap-4">
-          <ProseCard title={t("local")}>{em.t.localServiceInfo}</ProseCard>
-          <ProseCard title={t("properties")}>{em.t.propertyTypes}</ProseCard>
-          <ProseCard title={t("nearby")}>{em.t.nearbyAreas}</ProseCard>
-          <p className="text-sm">
-            <Link href={`/blog/${blogPathSlug(locale, `place-${em.slug}`)}`} className="font-medium text-accent">
-              {locale === "ar" ? `اقرأ دليل الطلب لـ ${em.t.name}` : `Read the request guide for ${em.t.name}`}
-            </Link>
-          </p>
+          {em.t.localServiceInfo?.includes("## ") ? (
+            <div className="prose-article rounded-xl border border-line bg-white p-5 sm:p-8">
+              {renderArticleBody(em.t.localServiceInfo)}
+            </div>
+          ) : (
+            <ProseCard title={t("local")}>{em.t.localServiceInfo}</ProseCard>
+          )}
+          {em.t.propertyTypes ? <ProseCard title={t("properties")}>{em.t.propertyTypes}</ProseCard> : null}
+          {em.t.nearbyAreas ? <ProseCard title={t("nearby")}>{em.t.nearbyAreas}</ProseCard> : null}
           <EmiratePlaceDirectory
             emirateSlug={em.slug}
             locale={locale}
@@ -219,34 +249,53 @@ async function PublishedPlacePage({
   if (parent && parent.slug !== emirate?.slug) crumbs.push({ href: locationPageHref(locale, parent.slug), label: parentName });
   crumbs.push({ href: locationPageHref(locale, place.slug), label: place.t.name });
 
+  const servicesT = await getTranslations("Services");
+  const faqs = parseFaqJson(place.t.faq);
+  const global = await getGlobalFaqs(locale);
+  const faqItems = normalizeFaqItems([...faqs, ...global]);
+  const media = hubCoverAndAlt(place.slug, locale, place.t.name, emirateName);
+  const hasHubBody = (place.t.localServiceInfo || "").includes("## ");
+
   return (
     <PageShell
       breadcrumbs={<Breadcrumbs label={nav("breadcrumb")} items={crumbs} />}
     >
       <JsonLd data={breadcrumbJsonLd(crumbs.map((item) => ({ name: item.label, path: item.href })), locale)} />
+      {faqs.length ? <JsonLd data={faqJsonLd(faqs)} /> : null}
       <PublicHero locale={locale}
         kicker={emirateName || t("title")}
         title={place.t.name}
-        lead={
-          locale === "ar"
-            ? `${place.t.name} من الأماكن الـ 277 التي نخدمها${emirateName ? ` في ${emirateName}` : ""}. اذكر الخدمة التي تحتاجها واطلب الزيارة.`
-            : `${place.t.name} is one of the 277 places we serve${emirateName ? ` in ${emirateName}` : ""}. Name the service you need and request the visit.`
-        }
+        lead={place.t.intro || (locale === "ar"
+          ? `${place.t.name} من الأماكن الـ 277 التي نخدمها${emirateName ? ` في ${emirateName}` : ""}.`
+          : `${place.t.name} is one of the 277 places we serve${emirateName ? ` in ${emirateName}` : ""}.`)}
         icon={IconMap}
         shareUrl={publicCanonical(locale, locationPageHref(locale, place.slug))}
         shareLabel={home("share")}
         copiedLabel={home("copied")}
         actions={<CtaRow labels={ctaLabels} whatsappText={wa} />}
+        heroImage={media.cover}
+        imageAlt={media.alt}
       />
       <Section tone="sand">
-        <p className="max-w-3xl text-sm leading-6 text-muted">{t("directoryNote")}</p>
-        <p className="mt-4 text-sm">
-          <Link href={`/blog/${blogPathSlug(locale, `place-${place.slug}`)}`} className="font-medium text-accent">
-            {locale === "ar" ? `اقرأ دليل الطلب لـ ${place.t.name}` : `Read the request guide for ${place.t.name}`}
-          </Link>
-        </p>
+        {hasHubBody ? (
+          <div className="prose-article max-w-3xl rounded-xl border border-line bg-white p-5 sm:p-8">
+            {renderArticleBody(place.t.localServiceInfo)}
+          </div>
+        ) : (
+          <p className="max-w-3xl text-sm leading-6 text-muted">{t("directoryNote")}</p>
+        )}
+        {place.t.propertyTypes ? (
+          <div className="mt-6 max-w-3xl">
+            <ProseCard title={t("properties")}>{place.t.propertyTypes}</ProseCard>
+          </div>
+        ) : null}
+        {place.t.nearbyAreas ? (
+          <div className="mt-4 max-w-3xl">
+            <ProseCard title={t("nearby")}>{place.t.nearbyAreas}</ProseCard>
+          </div>
+        ) : null}
         {parent ? (
-          <p className="mt-2 text-sm">
+          <p className="mt-4 text-sm">
             <Link href={locationPageHref(locale, parent.slug)} className="font-medium text-accent">
               {parentName}
             </Link>
@@ -266,6 +315,14 @@ async function PublishedPlacePage({
           </div>
         ) : null}
       </Section>
+      {faqItems.length ? (
+        <Section>
+          <SectionHeader title={servicesT("faq")} />
+          <div className="mt-6">
+            <FaqList items={faqItems} />
+          </div>
+        </Section>
+      ) : null}
       <CtaBand
         title={home("ctaTitle")}
         body={home("ctaBody")}
