@@ -110,7 +110,7 @@ export function PublicHero({
                 className="object-cover"
                 priority
                 fetchPriority="high"
-                quality={65}
+                quality={60}
               />
             ) : (
               <HeroFallback locale={locale} />

@@ -16,7 +16,7 @@ export function HeroMedia({ hasPhoto, locale }: { hasPhoto: boolean; locale?: st
       className="object-cover"
       priority
       fetchPriority="high"
-      quality={70}
+      quality={60}
       onError={() => setFailed(true)}
     />
   );

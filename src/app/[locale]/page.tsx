@@ -1,28 +1,23 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
-import { siteConfig } from "@/config/site";
-import { getActiveServices, getGlobalFaqs, getPublishedGuides } from "@/lib/catalog";
+import { getActiveServices, getGlobalFaqs } from "@/lib/catalog";
 import { buildVisitorNavTree } from "@/lib/catalog/approved-nav";
-import { summarizeApprovedServiceReviews } from "@/lib/reviews";
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd, localBusinessJsonLd, organizationJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FaqList } from "@/components/ui/Blocks";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { Hero } from "@/components/home/Hero";
-import { DiyCard, ProblemCard } from "@/components/home/Cards";
+import { ProblemCard } from "@/components/home/Cards";
 import { HelpServices } from "@/components/home/HelpServices";
 import { MainCategoryCard } from "@/components/catalog/MainCategoryCard";
-import { TopElectricalServices } from "@/components/catalog/TopElectricalServices";
 import { ProblemChips } from "@/components/home/ProblemChips";
 import { HomePlaces } from "@/components/home/HomePlaces";
 import { publishedHomeLocationGroups } from "@/lib/locations/public-filter";
 import { CtaBand } from "@/components/public/CtaBand";
-import { ButtonLink } from "@/components/ui/Button";
 import { getPublishedSiteShell, type HomeShell } from "@/lib/site-shell";
 import {
   IconBolt,
   IconBrush,
-  IconCheck,
   IconDroplet,
   IconMap,
   IconPipe,
@@ -56,6 +51,10 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   });
 }
 
+/**
+ * Lean homepage for mobile PSI: keep hero + primary discovery,
+ * defer deep catalogs (DIY, electrical strip, credentials) to their hubs.
+ */
 export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -63,28 +62,18 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const cta = await getTranslations("Cta");
   const nav = await getTranslations("Nav");
   const services = await getActiveServices(locale);
-  const guides = await getPublishedGuides(locale);
-  const homeGuides = [...guides]
-    .sort((a, b) => {
-      const rank = (risk: string) => (risk === "green" ? 0 : risk === "yellow" ? 1 : 2);
-      return rank(a.riskLevel) - rank(b.riskLevel);
-    })
-    .slice(0, 4);
   const faqs = await getGlobalFaqs(locale);
-  const reviewStats = await summarizeApprovedServiceReviews({});
   const homeShell = (await getPublishedSiteShell("home", locale)) as HomeShell | null;
   const mainCategories = buildVisitorNavTree();
   const featured = FEATURED.map((slug) => services.find((s) => s.slug === slug)).filter(Boolean) as typeof services;
   const rest = services.filter((s) => !FEATURED.includes(s.slug));
-  const cleaning = featured.filter((s) => s.slug === "cleaning-services");
-  const maintenance = featured.filter((s) => s.slug === "building-maintenance");
   const chips = [
-    { label: t("chipAc"), prompt: t("promptAc") },
-    { label: t("chipLeak"), prompt: t("promptLeak") },
-    { label: t("chipPaint"), prompt: t("promptPaint") },
-    { label: t("chipSink"), prompt: t("promptSink") },
-    { label: t("chipWall"), prompt: t("promptWall") },
-    { label: t("chipClean"), prompt: t("promptClean") },
+    { label: t("chipAc"), href: "/ac-maintenance" },
+    { label: t("chipLeak"), href: "/plumbing-maintenance" },
+    { label: t("chipPaint"), href: "/painting-services" },
+    { label: t("chipSink"), href: "/plumbing-maintenance" },
+    { label: t("chipWall"), href: "/wall-maintenance" },
+    { label: t("chipClean"), href: "/cleaning-services" },
   ];
   const problems = [
     { title: t("problemCooling"), href: "/ac-maintenance", icon: IconWind, tone: "cool" as const },
@@ -95,18 +84,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     { title: t("problemPlumbing"), href: "/plumbing-maintenance", icon: IconPipe, tone: "pipe" as const },
     { title: t("problemCleaning"), href: "/cleaning-services", icon: IconSparkClean, tone: "clean" as const },
   ];
-  const whyItems = [
-    { n: 1 as const, icon: IconCheck, surface: "bg-sand border-gold/25", badge: "bg-navy text-gold" },
-    { n: 2 as const, icon: IconSparkle, surface: "bg-[#f3efe6] border-gold/30", badge: "bg-navy text-gold" },
-    { n: 3 as const, icon: IconUsers, surface: "bg-sand-2 border-line", badge: "bg-navy text-gold" },
-  ];
 
   return (
     <div>
       <JsonLd data={organizationJsonLd()} />
       <JsonLd data={localBusinessJsonLd()} />
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }], locale)} />
-      <JsonLd data={faqJsonLd(faqs.slice(0, 8))} />
+      <JsonLd data={faqJsonLd(faqs.slice(0, 4))} />
 
       <Hero
         locale={locale}
@@ -117,8 +101,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
           quote: homeShell?.ctaQuote?.trim() || t("ctaQuote"),
           ai: homeShell?.ctaAi?.trim() || t("ctaAi"),
           whatsapp: nav("whatsapp"),
-          share: t("share"),
-          copied: t("copied"),
         }}
       />
 
@@ -153,7 +135,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <ul className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {mainCategories.map((cat) => (
             <li key={cat.slug} className="flex h-full">
-              <MainCategoryCard category={cat} locale={locale} />
+              <MainCategoryCard category={cat} locale={locale} compact />
             </li>
           ))}
         </ul>
@@ -165,7 +147,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       </Section>
 
       {services.length ? (
-        <Section className="!py-3 sm:!py-4">
+        <Section className="home-defer !py-3 sm:!py-4">
           <SectionHeader
             title={homeShell?.helpTitle?.trim() || t("helpTitle")}
             lead={homeShell?.helpLead?.trim() || t("helpLead")}
@@ -174,7 +156,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             items={[...featured, ...rest].slice(0, 4).map((service) => ({
               slug: service.slug,
               name: service.t.name,
-              description: service.t.shortDescription,
+              description: "",
               benefit: serviceBenefit(service, t),
               diyLabel: service.diyAvailable ? t("chipDiy") : undefined,
               amcLabel: service.amcAvailable ? t("chipAmc") : undefined,
@@ -194,20 +176,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </Section>
       ) : null}
 
-      <Section className="!py-3 sm:!py-4">
-        <TopElectricalServices
-          locale={locale}
-          title={locale === "ar" ? "خدمات الكهرباء للبدء" : "Electrical services to start with"}
-          lead={
-            locale === "ar"
-              ? "إذا كان العطل كهربائياً، ابدأ بالخدمة الأقرب: فحص، تحديد عطل، مقبس، مفتاح، إنارة، تمديدات، أو لوحة التوزيع."
-              : "If the fault is electrical, start with the closest service: inspection, fault finding, a socket, a switch, a light, wiring, or the distribution board."
-          }
-          cta={t("viewService")}
-        />
-      </Section>
-
-      <Section className="!py-3 sm:!py-4">
+      <Section className="home-defer !py-3 sm:!py-4">
         <SectionHeader title={t("problemTitle")} lead={t("problemLead")} />
         <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
           {problems.map((problem) => (
@@ -216,63 +185,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </Section>
 
-      {guides.length ? (
-        <Section tone="sand" className="!py-3 sm:!py-4">
-          <SectionHeader title={t("diyTitle")} lead={t("diyLead")} />
-          <ul className="mt-3 grid gap-2 md:grid-cols-2">
-            {homeGuides.map((guide) => (
-              <li key={guide.slug}>
-                <DiyCard
-                  slug={guide.slug}
-                  title={guide.t.title}
-                  category={guide.categoryT?.name}
-                  difficulty={guide.t.difficulty || guide.difficulty}
-                  time={guide.t.estimatedTime || guide.estimatedTime}
-                  summary={guide.t.quickAnswer}
-                  cta={t("readGuide")}
-                />
-              </li>
-            ))}
-          </ul>
-          {guides.length > 4 ? (
-            <div className="mt-3">
-              <ButtonLink href="/diy" variant="secondary">
-                {t("diyMore")}
-              </ButtonLink>
-            </div>
-          ) : null}
-        </Section>
-      ) : null}
-
-      <Section className="!py-3 sm:!py-4">
-        <SectionHeader title={t("whyTitle")} />
-        <ul className="mt-3 grid gap-2 sm:grid-cols-3">
-          {whyItems.map((item) => (
-            <li
-              key={item.n}
-              className={`pass rounded-xl border p-3 transition-colors hover:border-accent/40 ${item.surface}`}
-            >
-              <span className={`inline-flex h-10 w-10 items-center justify-center rounded-xl shadow-sm ${item.badge}`}>
-                <item.icon className="h-4 w-4" />
-              </span>
-              <h3 className="mt-2 font-semibold tracking-tight text-navy">{t(`why${item.n}Title`)}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{t(`why${item.n}Body`)}</p>
-            </li>
-          ))}
-        </ul>
-        <ol className="mt-4 grid gap-2 border-t border-line pt-4 sm:grid-cols-2 lg:grid-cols-5">
-          {[1, 2, 3, 4, 5].map((n) => (
-            <li key={n} className="pass rounded-xl border border-[#bfdbfe]/70 bg-[#f8fbff] p-3">
-              <p className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-accent text-xs font-bold text-white">
-                {String(n).padStart(2, "0")}
-              </p>
-              <p className="mt-3 text-sm font-semibold leading-snug text-navy">{t(`how${n}`)}</p>
-            </li>
-          ))}
-        </ol>
-      </Section>
-
-      <Section tone="sand" id="locations" className="!py-3 sm:!py-4">
+      <Section tone="sand" id="locations" className="home-defer !py-3 sm:!py-4">
         <SectionHeader title={t("areasTitle")} lead={t("areasLead")} />
         <div className="mt-3">
           <HomePlaces
@@ -280,7 +193,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
               slug: g.slug,
               name: g.name,
               count: g.count,
-              // Omit place rows from homepage HTML/RSC (mobile weight); directories on /locations.
               places: [],
             }))}
             searchPlaceholder={t("placeSearch")}
@@ -292,42 +204,40 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
       </Section>
 
-      <Section className="!py-3 sm:!py-4">
-        <SectionHeader title={t("credentialsTitle")} />
-        <ul className="mt-3 grid gap-2 md:grid-cols-2">
-          {siteConfig.licenses.map((lic) => (
-            <li key={lic.licenseNo} className="pass rounded-xl border border-line p-3">
-              <p className="font-semibold text-navy">{locale === "ar" ? lic.emirateAr : lic.emirate}</p>
-              <p className="mt-1 text-sm text-muted">{lic.activity}</p>
-              <p className="mt-2 text-sm tabular-nums">{lic.licenseNo}</p>
+      <Section className="home-defer !py-3 sm:!py-4">
+        <SectionHeader title={t("whyTitle")} />
+        <ul className="mt-3 grid gap-2 sm:grid-cols-3">
+          {[1, 2, 3].map((n) => (
+            <li key={n} className="pass rounded-xl border border-line bg-sand/50 p-3">
+              <h3 className="font-semibold tracking-tight text-navy">{t(`why${n}Title`)}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted">{t(`why${n}Body`)}</p>
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-sm">
+        <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+          <Link href="/diy" className="font-medium text-accent">
+            {t("diyTitle")}
+          </Link>
           <Link href="/about" className="font-medium text-accent">
             {t("credentialsLink")}
+          </Link>
+          <Link href="/reviews" className="font-medium text-accent">
+            {t("reviewsTitle")}
           </Link>
         </p>
       </Section>
 
-      {reviewStats.count && reviewStats.average != null ? (
-        <Section tone="sand" className="!py-3 sm:!py-4">
-          <SectionHeader title={t("reviewsTitle")} />
-          <p className="mt-4 text-muted">{t("reviewsBasedOn", { count: reviewStats.count })}</p>
-          <p className="mt-3">
-            <Link href="/reviews" className="font-medium text-accent">
-              {t("reviewsTitle")}
-            </Link>
-          </p>
-        </Section>
-      ) : null}
-
       {faqs.length ? (
-        <Section className="!py-3 sm:!py-4">
+        <Section className="home-defer !py-3 sm:!py-4">
           <SectionHeader title={t("qaTitle")} lead={t("qaLead")} />
           <div className="mt-6">
-            <FaqList items={faqs} />
+            <FaqList items={faqs.slice(0, 4)} />
           </div>
+          <p className="mt-3 text-sm">
+            <Link href="/faq" className="font-medium text-accent">
+              {t("qaTitle")}
+            </Link>
+          </p>
         </Section>
       ) : null}
 

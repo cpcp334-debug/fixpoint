@@ -14,9 +14,10 @@ export async function TopElectricalServices({
   lead: string;
   cta: string;
 }) {
+  const limit = 4;
   const items = (
     await Promise.all(
-      TOP_ELECTRICAL_SLUGS.map(async (slug) => {
+      TOP_ELECTRICAL_SLUGS.slice(0, limit).map(async (slug) => {
         const service = await getApprovedCatalogServiceBySlug(slug, locale);
         if (!service) return null;
         return {
@@ -43,12 +44,17 @@ export async function TopElectricalServices({
               className="pass block h-full rounded-xl border border-line bg-white p-4 hover:border-accent"
             >
               <span className="font-medium text-navy">{item.name}</span>
-              <span className="mt-1 block text-sm leading-6 text-muted">{item.description}</span>
+              <span className="mt-1 block text-sm leading-6 text-muted line-clamp-2">{item.description}</span>
               <span className="mt-3 inline-block text-sm font-medium text-accent">{cta}</span>
             </Link>
           </li>
         ))}
       </ul>
+      <p className="mt-3 text-sm">
+        <Link href="/services/electrical" className="font-medium text-accent">
+          {cta}
+        </Link>
+      </p>
     </section>
   );
 }

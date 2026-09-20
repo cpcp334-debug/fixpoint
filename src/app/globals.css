@@ -39,14 +39,20 @@ body {
 }
 
 body {
-  font-family: var(--font-sans), "Segoe UI", sans-serif;
+  /* EN: system stack only (no webfont on /en). Faster mobile FCP/LCP. */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Tahoma, sans-serif;
   line-height: 1.55;
-  /* Dropped weight 600 — map semibold to available 700 file for fewer font downloads. */
   --font-weight-semibold: 700;
 }
 
 html[dir="rtl"] body {
-  font-family: var(--font-arabic), var(--font-sans), sans-serif;
+  font-family: var(--font-arabic), system-ui, "Segoe UI", Tahoma, sans-serif;
+}
+
+/* Below-fold homepage blocks: skip layout/paint until near viewport. */
+.home-defer {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 720px;
 }
 
 img,
@@ -93,10 +99,16 @@ video {
 }
 
 .hero-atmosphere {
-  background:
-    radial-gradient(ellipse 80% 60% at 85% 20%, rgba(197, 160, 89, 0.22), transparent 55%),
-    radial-gradient(ellipse 55% 45% at 10% 90%, rgba(197, 160, 89, 0.12), transparent 50%),
-    linear-gradient(145deg, #000d1a 0%, #001a33 45%, #0a2744 100%);
+  background: linear-gradient(145deg, #000d1a 0%, #001a33 45%, #0a2744 100%);
+}
+
+@media (min-width: 1024px) {
+  .hero-atmosphere {
+    background:
+      radial-gradient(ellipse 80% 60% at 85% 20%, rgba(197, 160, 89, 0.22), transparent 55%),
+      radial-gradient(ellipse 55% 45% at 10% 90%, rgba(197, 160, 89, 0.12), transparent 50%),
+      linear-gradient(145deg, #000d1a 0%, #001a33 45%, #0a2744 100%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

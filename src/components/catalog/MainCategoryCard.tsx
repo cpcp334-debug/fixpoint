@@ -21,13 +21,16 @@ export function MainCategoryCard({
   category,
   locale,
   exploreLabel,
+  compact,
 }: {
   category: NavCategory;
   locale: string;
   exploreLabel?: string;
+  /** Homepage: name + CTA only (cuts RSC/HTML on mobile). */
+  compact?: boolean;
 }) {
   const loc = getNavCategoryLocalized(category, locale);
-  const description = cardDescription(loc.description);
+  const description = compact ? "" : cardDescription(loc.description);
   const Icon = categoryIcons[category.slug as keyof typeof categoryIcons] ?? IconBuilding;
 
   return (
@@ -42,9 +45,11 @@ export function MainCategoryCard({
         </span>
       </span>
       <h3 className="mt-3 line-clamp-2 min-h-12 text-base font-semibold tracking-tight text-navy">{loc.name}</h3>
-      <p className="mt-1 line-clamp-2 min-h-10 text-sm leading-snug text-muted">{description}</p>
-      <p className="mt-auto pt-3 text-xs font-medium text-muted">{loc.childCountLabel}</p>
-      <span className="mt-1.5 inline-flex items-center gap-1 text-sm font-medium text-accent">
+      {description ? (
+        <p className="mt-1 line-clamp-2 min-h-10 text-sm leading-snug text-muted">{description}</p>
+      ) : null}
+      {!compact ? <p className="mt-auto pt-3 text-xs font-medium text-muted">{loc.childCountLabel}</p> : null}
+      <span className={`inline-flex items-center gap-1 text-sm font-medium text-accent ${compact ? "mt-auto pt-3" : "mt-1.5"}`}>
         {exploreLabel || loc.exploreLabel}
         <IconArrow className="h-4 w-4 rtl:rotate-180" aria-hidden />
       </span>

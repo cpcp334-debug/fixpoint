@@ -42,7 +42,8 @@ export function BrandLogo({
       width={width}
       height={size}
       decoding={priority ? "sync" : "async"}
-      fetchPriority={priority ? "high" : "auto"}
+      fetchPriority={priority ? "high" : "low"}
+      loading={priority ? "eager" : "lazy"}
       className={cn("h-auto w-auto max-h-full object-contain", className)}
       style={{ height: size, width: "auto" }}
     />

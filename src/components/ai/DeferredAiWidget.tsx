@@ -13,8 +13,8 @@ function wantsAiNow() {
 }
 
 /**
- * Mount AI after LCP window: intent first, then long idle.
- * Avoid competing with hero/fonts on mobile PageSpeed.
+ * Mount AI only on explicit intent — never on idle/timer.
+ * Keeps the AI chunk off mobile LCP / TBT for PageSpeed.
  */
 export function DeferredAiWidget({ locale }: { locale: string }) {
   const [ready, setReady] = useState(false);
@@ -25,9 +25,6 @@ export function DeferredAiWidget({ locale }: { locale: string }) {
       return;
     }
 
-    let idleId: number | undefined;
-    let delayId: ReturnType<typeof setTimeout> | undefined;
-    let fallbackId: ReturnType<typeof setTimeout> | undefined;
     let cancelled = false;
 
     const enable = () => {
@@ -48,35 +45,11 @@ export function DeferredAiWidget({ locale }: { locale: string }) {
     window.addEventListener("alnajah-ai-open", enable);
     document.addEventListener("click", onAiIntent);
 
-    const scheduleIdle = () => {
-      // Extra delay after load: keep AI off mobile LCP / main-thread budget.
-      delayId = setTimeout(() => {
-        if (typeof window.requestIdleCallback === "function") {
-          idleId = window.requestIdleCallback(enable, { timeout: 12000 });
-        } else {
-          fallbackId = setTimeout(enable, 8000);
-        }
-      }, 2500);
-    };
-
-    // Wait for load so AI chunk does not share the LCP bandwidth budget.
-    if (document.readyState === "complete") {
-      scheduleIdle();
-    } else {
-      window.addEventListener("load", scheduleIdle, { once: true });
-    }
-
     return () => {
       cancelled = true;
       window.removeEventListener("alnajah-ai-prefill", enable);
       window.removeEventListener("alnajah-ai-open", enable);
-      window.removeEventListener("load", scheduleIdle);
       document.removeEventListener("click", onAiIntent);
-      if (idleId !== undefined && typeof window.cancelIdleCallback === "function") {
-        window.cancelIdleCallback(idleId);
-      }
-      if (delayId !== undefined) clearTimeout(delayId);
-      if (fallbackId !== undefined) clearTimeout(fallbackId);
     };
   }, []);
 

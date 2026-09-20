@@ -1,7 +1,6 @@
-import { brandName, domainBrandName, siteConfig, telUrl, whatsappUrl, getSiteUrl, productionSiteUrl } from "@/config/site";
+import { brandName, domainBrandName, siteConfig, telUrl, whatsappUrl, productionSiteUrl } from "@/config/site";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
-import { ShareButton } from "@/components/ui/ShareButton";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 
 export function Hero({
@@ -16,23 +15,12 @@ export function Hero({
     quote: string;
     ai: string;
     whatsapp: string;
-    share: string;
-    copied: string;
   };
 }) {
-  const canonical = `${getSiteUrl()}/${locale}`;
   const brand = brandName(locale);
 
   return (
     <section className="hero-atmosphere relative overflow-hidden text-white">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.07]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(212,175,55,0.45) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,55,0.45) 1px, transparent 1px)",
-          backgroundSize: "48px 48px",
-        }}
-      />
       <Container className="relative grid items-center gap-4 py-5 sm:py-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-6 lg:py-6">
         <div>
           <p className="text-sm font-semibold tracking-wide text-gold">{brand}</p>
@@ -59,15 +47,14 @@ export function Hero({
             <a href={telUrl()} className="hover:text-gold">
               {siteConfig.phoneDisplay}
             </a>
-            <ShareButton url={canonical} label={copy.share} copiedLabel={copy.copied} tone="inverse" />
           </div>
         </div>
-        <div className="relative mx-auto flex aspect-square w-full max-w-[16rem] items-center justify-center sm:max-w-[20rem] lg:max-w-[22rem]">
+        {/* Desktop-only mark: avoids competing with header logo + H1 for mobile LCP. */}
+        <div className="relative mx-auto hidden aspect-square w-full max-w-[22rem] items-center justify-center lg:flex">
           <div className="absolute inset-[10%] rounded-[2rem] border border-gold/20" />
           <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-gold/15 via-transparent to-transparent blur-2xl" />
           <BrandLogo
             size={168}
-            priority
             locale={locale}
             className="relative z-[1] max-h-[85%] max-w-[85%] drop-shadow-[0_18px_40px_rgba(0,0,0,0.45)]"
           />

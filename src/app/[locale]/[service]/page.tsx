@@ -20,7 +20,7 @@ import { ServiceTrustBlock } from "@/components/trust/ServiceTrustBlock";
 import { getApprovedServiceReviews, summarizeApprovedServiceReviews, toPublicReview } from "@/lib/reviews";
 import { EmptyState, Section, SectionHeader } from "@/components/ui/Section";
 import { DiyCard, LocationCard, ServiceCard } from "@/components/home/Cards";
-import { ProblemChips } from "@/components/home/ProblemChips";
+import { AiPromptChips } from "@/components/home/AiPromptChips";
 import { serviceIcons } from "@/components/ui/Icon";
 import { PageShell, ProseCard } from "@/components/public/PageShell";
 import { PublicHero, publicCanonical } from "@/components/public/PublicHero";
@@ -188,7 +188,7 @@ export default async function ServicePage({
           ) : null}
           {questions.length ? (
             <div className={capabilities.length ? "mt-8" : undefined}>
-              <ProblemChips chips={questions} hint={t("intakeTitle")} />
+              <AiPromptChips chips={questions} hint={t("intakeTitle")} />
             </div>
           ) : null}
         </Section>

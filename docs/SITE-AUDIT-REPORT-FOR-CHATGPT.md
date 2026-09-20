@@ -12,7 +12,7 @@
 
 Fixpoint is a bilingual (EN/AR) Next.js App Router site for **Al Najah Al Daem · Fixpoint** — cleaning and building maintenance across the UAE. The public surface is large: static hubs, ~277 location hubs, services, DIY, FAQ, and a very large **service×estate×city (SEC) blog** corpus (~119k+ published article rows → ~240k locale URLs).
 
-**Performance (pre this deploy):** Hostinger Page Speed showed **Mobile ~84** (was ~80) and **Desktop ~98**. Goal: push mobile toward **90+**.
+**Performance (pre this deploy):** Hostinger Page Speed showed **Mobile ~88** (was 80 → 84 → 88) and **Desktop ~98**. Goal: push mobile toward **90+** on `https://fixpoint.ae/en`.
 
 **Critical GSC finding (pre-fix):** `/sitemap/0.xml` was returning on the order of **~242,000 `<loc>` URLs / ~50MB** — over Google’s **50,000 URL / 50MB** per-sitemap limits. Pair shards were often empty or useless while shard 0 swallowed the entire article catalog. **This release shards articles across 64 files and keeps shard 0 for small catalogs only.**
 
@@ -31,9 +31,9 @@ Fixpoint is a bilingual (EN/AR) Next.js App Router site for **Al Najah Al Daem �
 | ORM / DB | Prisma → **Hostinger MySQL** (`provider = "mysql"`) |
 | Hosting | Hostinger Web App (Node). Deploy via git push **or** `npm run zip:hostinger` → `deploy/out/alnajah-aldaem-hostinger.zip` |
 | Images | `public/media/**` WebP/JPEG; `next/image` on content heroes; **brand LCP logo now plain `<img>` WebP** |
-| AI | Public widget → `/api/ai/chat` → OpenAI when `OPENAI_API_KEY` set; else failsafe copy |
-| Analytics | First-party `/api/t` (deferred idle) |
-| Fonts | `Plus_Jakarta_Sans` (EN); `IBM_Plex_Sans_Arabic` only on `/ar`, not preloaded on EN |
+| AI | Public widget → `/api/ai/chat` → OpenAI when `OPENAI_API_KEY` set; else failsafe copy. **Mount is interaction-only** (never idle). |
+| Analytics | First-party `/api/t` (first gesture or 15s fallback — off LCP path) |
+| Fonts | **EN: system UI stack (zero webfont bytes)**; `IBM_Plex_Sans_Arabic` only on `/ar`, not preloaded |
 
 **Required production env (see `deploy/HOSTINGER.md`, `deploy/AI-CHAT.md`):**
 
@@ -56,50 +56,64 @@ Remove any Neon `postgresql://` / `DIRECT_URL` leftovers on Hostinger.
 
 ## 3. Mobile & desktop performance
 
-### 3.1 Live baseline (Hostinger Page Speed UI, 2026-09-20)
+### 3.1 Live baseline (Hostinger Page Speed UI)
 
 | Device | Score | Notes |
 |--------|------:|-------|
-| Mobile | **84** | Improved from 80; still under 90 |
+| Mobile | **~88** | Was 80 → 84 → 88; still chasing 90+ |
 | Desktop | **98** | Healthy |
 
-### 3.2 Root causes found on live `/en` HTML (pre-fix)
+**Re-test URL (required):** `https://fixpoint.ae/en` — **not** bare `/` (apex redirect / Hostinger CDN path can under-report).
 
-| Signal | Observation | Impact |
-|--------|-------------|--------|
-| Document weight | HTML ~**386 KB** | Mobile TTFB/parse |
-| RSC flight payload | ~**303 KB** of `self.__next_f.push` | Dominant cost |
-| Largest RSC chunk | ~**168 KB** (Image/module + page tree) | LCP contention |
-| HomePlaces | Client component received **all ~277 place rows** as props | Serialized into RSC even when collapsed |
-| HelpServices | Client expand held **full service list** in props | Extra hydration JS |
-| BrandLogo via `next/image` | Srcsets listed up to **w=1920** for a ~168–220px mark | Bandwidth + HTML noise |
-| AI + analytics | Already deferred (e0ee30d); still competed if idle fired early | Main-thread |
-| Sticky header | `backdrop-blur-md` on all viewports | Mobile paint cost |
-| Missing `og:image` | `twitter:card=summary_large_image` but empty image | Social/SEO polish |
+### 3.2 Remaining opportunities (live `/en` HTML audit, pre–wave-3 deploy)
 
-### 3.3 What was fixed in this pass (builds on `e0ee30d`)
+Lab PSI API was quota-exhausted; headless Lighthouse got **403** from Hostinger WAF. Local curl of production HTML:
 
-1. **HomePlaces → server, emirates only** — no nested place lists on homepage HTML/RSC; directories live on `/locations`.
-2. **HelpServices → server** — homepage passes only **4** cards; “more” → `/services`.
-3. **BrandLogo → plain `<img>` sized WebP** (`logo-128/280/512.webp`) — kills optimizer srcset bloat on LCP.
-4. **Hero LCP mark** sized down to **168px** (uses `logo-280.webp`).
-5. **AI defer** longer (load + 2.5s + idle up to 12s); intent (`#alnajah-ai`) still instant.
-6. **Analytics defer** longer (load + 2s + idle).
-7. **Header blur** only from `sm:` up.
-8. **Hover motion** gated to fine pointers; reduced-motion respected.
-9. **PublicHero** image quality **65**.
-10. **FAQ JSON-LD** capped to **8** items on home.
+| Signal | Observation | Est. savings if fixed |
+|--------|-------------|------------------------|
+| HTML | ~**225 KB** (down from ~386 KB after wave 2) | Further cut below-fold |
+| RSC flight | ~**144 KB** string payload | Trim home sections / descriptions |
+| Fonts | **2× woff2 preloads** (Plus Jakarta 400+700) | ~80–120 KB + main-thread → **removed on EN** |
+| LCP images | **Dual preload** `logo-128.webp` + `logo-280.webp` | Competing LCP candidates → hero mark desktop-only |
+| AI / analytics | Idle timers still scheduled | JS after LCP window → **interaction-only** |
+| Below-fold | Electrical×8, DIY, credentials, how×5, full FAQs | Parse/layout cost → **omitted / linked out** |
 
-### 3.4 Expected outcome
+### 3.3 Wave 2 fixes (commit `5aeb996`, builds on `e0ee30d`)
 
-After Redeploy, re-run Hostinger / PSI **Mobile** on `https://fixpoint.ae/en`. Expect HTML/RSC weight drop and better LCP/TBT. Desktop should remain high. **90+ is likely but not guaranteed** (Hostinger TTFB, MySQL, third-party variance).
+1. **HomePlaces → server, emirates only** — no nested place lists on homepage HTML/RSC.
+2. **HelpServices → server** — homepage passes only **4** cards.
+3. **BrandLogo → plain `<img>` sized WebP** — kills optimizer srcset bloat.
+4. **Hero LCP mark** sized down; AI/analytics longer idle; header blur `sm:+`.
+5. **FAQ JSON-LD** capped; **OG/x-default**; sitemap **64** shards.
 
-### 3.5 Residual performance risks (P1)
+### 3.4 Wave 3 fixes (this commit — push toward 90+)
 
-- Homepage still fetches full active service/FAQ lists server-side (TTFB).
-- Large below-fold sections (electrical strip, why/how, credentials).
-- Content templates with heavy heroes on deep URLs.
-- `next-intl` messages blob in RSC (~20KB+).
+1. **AI widget: interaction only** — no idle/timer mount; `#alnajah-ai` / events only.
+2. **Analytics: gesture or 15s** — off critical path for lab runs.
+3. **EN system fonts** — drop Plus Jakarta webfont entirely on public locale layout.
+4. **Hero LCP minimum** — remove grid pattern + mobile hero mark; header `logo-128.webp` is sole eager brand image; H1 text LCP-friendly.
+5. **Homepage lean** — drop electrical strip / DIY / credentials / reviews blocks; compact category cards; FAQ×4; `content-visibility` on below-fold.
+6. **Problem chips** — server Links (no homepage client island); AI prompt chips only on service pages.
+7. **PublicHero / HeroMedia** quality **60**.
+
+### 3.5 Expected outcome + Hostinger ceiling
+
+After Redeploy, re-run **Mobile** on `https://fixpoint.ae/en`. App-side budget is now aggressive (no EN webfont, no idle AI, lean HTML).
+
+**Hostinger / CDN may still cap the score below 90** even when the app is maxed:
+- TTFB / origin cold starts on Web App
+- Apex `/` → `/en` redirect when testers hit bare domain
+- WAF/CDN variance (headless tools often **403**)
+- Shared hosting main-thread noise unrelated to our JS
+
+If Mobile stays **88–89** with green LCP/TBT after this Redeploy, treat further gains as **hosting/CDN**, not missing app work.
+
+### 3.6 Residual performance risks (P1)
+
+- Homepage still fetches active services + FAQs server-side (TTFB/MySQL).
+- `Header` remains a client island (mobile nav).
+- `next-intl` messages still in RSC.
+- Deep templates with heavy heroes on non-home URLs.
 
 ---
 
@@ -310,7 +324,8 @@ Continue periodic `_tmp-dual-slug-probe` / slug-policy audits; do not commit sec
 | `4100b10` | Sitemap soft-fail + Hostinger SSG shrink |
 | `18c6f5b` / `fd6d849` / `84b0545` | Arabic percent-encoded slugs |
 | `dc15224` … `4b63054` | Location hubs / AR estate directory |
-| **`5aeb996`** | Sitemap 64-shard + mobile RSC/LCP + OG/x-default + this audit report |
+| **`5aeb996`** | Sitemap 64-shard + mobile RSC/LCP + OG/x-default + audit report |
+| **(this push)** | Wave 3 mobile PSI: interaction-only AI, EN system fonts, lean home |
 
 After push, the **Redeploy hash is the new `origin/main` HEAD**. Upload zip if not using Git deploy: `npm run zip:hostinger` → `deploy/out/alnajah-aldaem-hostinger.zip`.
 
