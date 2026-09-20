@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { Viewport } from "next";
+import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -8,10 +9,15 @@ import { IBM_Plex_Sans_Arabic } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Tracker } from "@/components/analytics/Tracker";
 import { DeferredAiWidget } from "@/components/ai/DeferredAiWidget";
 import { getPublishedSiteShell, type HeaderShell } from "@/lib/site-shell";
 import "../globals.css";
+
+/** Analytics chunk stays off the initial home graph until after hydration. */
+const Tracker = dynamic(
+  () => import("@/components/analytics/Tracker").then((m) => ({ default: m.Tracker })),
+  { ssr: false },
+);
 
 /**
  * EN uses system UI fonts (zero webfont bytes on /en mobile LCP).
@@ -51,6 +57,10 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} dir={dir} className={locale === "ar" ? arabic.variable : undefined}>
+      <head>
+        {/* Sole LCP image preload — header mark; no competing font/image preloads on EN. */}
+        <link rel="preload" as="image" href="/media/logo-128.webp" type="image/webp" fetchPriority="high" />
+      </head>
       <body className="min-h-full bg-white text-ink antialiased">
         <NextIntlClientProvider>
           <Header locale={locale} shell={headerShell} />

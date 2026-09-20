@@ -1,17 +1,13 @@
-"use client";
-
-import { useState } from "react";
-import { Link, usePathname } from "@/i18n/routing";
-import { useTranslations } from "next-intl";
-import { brandName, siteConfig, telUrl, whatsappUrl } from "@/config/site";
+import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/routing";
+import { brandName } from "@/config/site";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { AiMark } from "@/components/ui/AiMark";
-import { IconClose, IconMenu } from "@/components/ui/Icon";
-import { cn } from "@/lib/utils";
-import type { HeaderShell } from "@/lib/site-shell";
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
+import { HeaderMobile } from "@/components/layout/HeaderMobile";
+import type { HeaderShell } from "@/lib/site-shell";
 
 const links = [
   { href: "/services", key: "services" },
@@ -23,10 +19,9 @@ const links = [
   { href: "/contact", key: "contact" },
 ] as const;
 
-export function Header({ locale, shell }: { locale: string; shell?: HeaderShell | null }) {
-  const t = useTranslations("Nav");
-  const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+/** Server header — keeps the mobile menu island tiny for home PSI. */
+export async function Header({ locale, shell }: { locale: string; shell?: HeaderShell | null }) {
+  const t = await getTranslations("Nav");
   const skip = locale === "ar" ? "تخطي إلى المحتوى" : "Skip to content";
   const aiHref = `/${locale}#alnajah-ai`;
   const brand = shell?.brandLabel?.trim() || brandName(locale);
@@ -36,8 +31,13 @@ export function Header({ locale, shell }: { locale: string; shell?: HeaderShell 
   const showQuote = shell?.showQuote !== false;
   const navLabel = (key: (typeof links)[number]["key"]) => shell?.nav?.[key]?.trim() || t(key);
 
+  const linkItems = links.map((link) => ({
+    href: link.href,
+    label: navLabel(link.key),
+  }));
+
   return (
-    <header className="sticky top-0 z-40 border-b border-line/70 bg-white/95 sm:backdrop-blur-md">
+    <header className="relative sticky top-0 z-40 border-b border-line/70 bg-white/95 sm:backdrop-blur-md">
       <a className="skip-link" href="#main">
         {skip}
       </a>
@@ -51,16 +51,13 @@ export function Header({ locale, shell }: { locale: string; shell?: HeaderShell 
         </Link>
 
         <nav className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 text-sm lg:flex" aria-label="Main">
-          {links.map((link) => (
+          {linkItems.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={cn(
-                "rounded-full px-3 py-1.5 text-muted transition-colors hover:bg-sand hover:text-navy",
-                pathname === link.href && "bg-sand font-medium text-navy",
-              )}
+              className="rounded-full px-3 py-1.5 text-muted transition-colors hover:bg-sand hover:text-navy"
             >
-              {navLabel(link.key)}
+              {link.label}
             </Link>
           ))}
         </nav>
@@ -87,63 +84,20 @@ export function Header({ locale, shell }: { locale: string; shell?: HeaderShell 
           ) : null}
         </div>
 
-        <div className="ms-auto flex items-center gap-2 lg:hidden">
-          {showAi ? (
-            <a href={aiHref} aria-label={aiLabel} className="inline-flex rounded-full" onClick={() => setOpen(false)}>
-              <AiMark id="header-ai-mark-mobile" size={34} />
-            </a>
-          ) : null}
-          {showQuote ? (
-            <ButtonLink href="/get-a-quote" className="min-h-11 rounded-full px-3 text-sm">
-              {quoteLabel}
-            </ButtonLink>
-          ) : null}
-          <button
-            type="button"
-            className="inline-flex min-h-11 w-11 items-center justify-center rounded-full border border-line text-navy"
-            aria-expanded={open}
-            aria-controls="mobile-nav"
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? <IconClose className="h-4 w-4" /> : <IconMenu className="h-4 w-4" />}
-            <span className="sr-only">{open ? t("close") : t("menu")}</span>
-          </button>
-        </div>
+        <HeaderMobile
+          locale={locale}
+          links={linkItems}
+          aiHref={aiHref}
+          aiLabel={aiLabel}
+          quoteLabel={quoteLabel}
+          showAi={showAi}
+          showQuote={showQuote}
+          menuLabel={t("menu")}
+          closeLabel={t("close")}
+          whatsappLabel={t("whatsapp")}
+          callLabel={t("call")}
+        />
       </Container>
-      {open ? (
-        <nav id="mobile-nav" className="border-t border-line bg-white px-4 py-3 lg:hidden">
-          <div className="mx-auto flex max-w-6xl flex-col gap-0.5">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="min-h-11 rounded-lg px-3 py-3 text-base text-navy hover:bg-sand"
-                onClick={() => setOpen(false)}
-              >
-                {navLabel(link.key)}
-              </Link>
-            ))}
-            {showAi ? (
-              <a href={aiHref} className="min-h-11 rounded-lg px-3 py-3 text-base text-navy hover:bg-sand" onClick={() => setOpen(false)}>
-                {aiLabel}
-              </a>
-            ) : null}
-            <LocaleSwitcher
-              locale={locale}
-              className="min-h-11 rounded-lg px-3 py-3 text-base text-navy"
-              enLabel="English"
-              arLabel="العربية"
-              onNavigate={() => setOpen(false)}
-            />
-            <a href={whatsappUrl()} className="min-h-11 rounded-lg px-3 py-3 text-base text-navy">
-              {t("whatsapp")}
-            </a>
-            <a href={telUrl()} className="min-h-11 rounded-lg px-3 py-3 text-base text-navy">
-              {t("call")} · {siteConfig.phoneDisplay}
-            </a>
-          </div>
-        </nav>
-      ) : null}
     </header>
   );
 }

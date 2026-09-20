@@ -15,6 +15,8 @@ const nextConfig: NextConfig = {
   experimental: {
     cpus: 1,
     workerThreads: false,
+    // Tree-shake heavy barrels (fewer unused bytes on the public critical path).
+    optimizePackageImports: ["next-intl"],
   },
   images: {
     formats: ["image/avif", "image/webp"],

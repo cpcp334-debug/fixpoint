@@ -98,15 +98,14 @@ Lab PSI API was quota-exhausted; headless Lighthouse got **403** from Hostinger 
 
 ### 3.5 Expected outcome + Hostinger ceiling
 
-After Redeploy, re-run **Mobile** on `https://fixpoint.ae/en`. App-side budget is now aggressive (no EN webfont, no idle AI, lean HTML).
+After Redeploy, re-run **Mobile** on `https://fixpoint.ae` (**apex**, not only `/en`). Apex `/` is now an **internal rewrite** to EN home (zero `Location` redirect).
 
 **Hostinger / CDN may still cap the score below 90** even when the app is maxed:
-- TTFB / origin cold starts on Web App
-- Apex `/` → `/en` redirect when testers hit bare domain
+- TTFB / origin cold starts on Web App (document request latency)
 - WAF/CDN variance (headless tools often **403**)
 - Shared hosting main-thread noise unrelated to our JS
 
-If Mobile stays **88–89** with green LCP/TBT after this Redeploy, treat further gains as **hosting/CDN**, not missing app work.
+If Mobile stays **~87–89** with **0 redirects** and green TBT/CLS after this Redeploy, treat further gains as **hosting/CDN TTFB**, not missing app redirects.
 
 ### 3.6 Residual performance risks (P1)
 
@@ -326,6 +325,7 @@ Continue periodic `_tmp-dual-slug-probe` / slug-policy audits; do not commit sec
 | `dc15224` … `4b63054` | Location hubs / AR estate directory |
 | **`5aeb996`** | Sitemap 64-shard + mobile RSC/LCP + OG/x-default + audit report |
 | **`26e6f6a`** | Wave 3 mobile PSI: interaction-only AI, EN system fonts, lean home |
+| **`(this push)`** | Apex `/` rewrite (0 redirects), logo preload, server header, modern browserslist |
 
 After push, the **Redeploy hash is the new `origin/main` HEAD**. Upload zip if not using Git deploy: `npm run zip:hostinger` → `deploy/out/alnajah-aldaem-hostinger.zip`.
 

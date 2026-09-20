@@ -28,6 +28,9 @@ import {
   IconWind,
 } from "@/components/ui/Icon";
 
+/** Keep home ISR-friendly for Hostinger TTFB after the apex rewrite lands. */
+export const revalidate = 3600;
+
 const FEATURED = ["cleaning-services", "building-maintenance"];
 
 function serviceBenefit(
