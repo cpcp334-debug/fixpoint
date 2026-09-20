@@ -326,7 +326,7 @@ Continue periodic `_tmp-dual-slug-probe` / slug-policy audits; do not commit sec
 | **`5aeb996`** | Sitemap 64-shard + mobile RSC/LCP + OG/x-default + audit report |
 | **`26e6f6a`** | Wave 3 mobile PSI: interaction-only AI, EN system fonts, lean home |
 | **`fb455ca`** | Apex / rewrite (0 redirects), logo preload, server header, modern browserslist |
-| **`(this push)`** | PSI redirects hardening (www→apex, matcher /), no public webfonts, lean home RSC, media cache headers, Hostinger panel tips |
+| **`526554c`** | PSI redirects hardening (www→apex, matcher /), no public webfonts, lean home RSC, media cache headers, Hostinger panel tips |
 
 After push, the **Redeploy hash is the new `origin/main` HEAD**. Upload zip if not using Git deploy: `npm run zip:hostinger` → `deploy/out/alnajah-aldaem-hostinger.zip`.
 
