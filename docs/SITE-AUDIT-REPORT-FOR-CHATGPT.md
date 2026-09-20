@@ -310,7 +310,7 @@ Continue periodic `_tmp-dual-slug-probe` / slug-policy audits; do not commit sec
 | `4100b10` | Sitemap soft-fail + Hostinger SSG shrink |
 | `18c6f5b` / `fd6d849` / `84b0545` | Arabic percent-encoded slugs |
 | `dc15224` … `4b63054` | Location hubs / AR estate directory |
-| **`THIS_COMMIT`** | Sitemap 64-shard + mobile RSC/LCP + OG/x-default (see git log after push) |
+| **`5aeb996`** | Sitemap 64-shard + mobile RSC/LCP + OG/x-default + this audit report |
 
 After push, the **Redeploy hash is the new `origin/main` HEAD**. Upload zip if not using Git deploy: `npm run zip:hostinger` → `deploy/out/alnajah-aldaem-hostinger.zip`.
 
