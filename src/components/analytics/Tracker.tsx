@@ -11,7 +11,8 @@ export function Tracker() {
 
   useEffect(() => {
     let idleId: number | undefined;
-    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    let delayId: ReturnType<typeof setTimeout> | undefined;
+    let fallbackId: ReturnType<typeof setTimeout> | undefined;
     let cancelled = false;
 
     const start = () => {
@@ -19,11 +20,13 @@ export function Tracker() {
     };
 
     const schedule = () => {
-      if (typeof window.requestIdleCallback === "function") {
-        idleId = window.requestIdleCallback(start, { timeout: 4500 });
-      } else {
-        timeoutId = setTimeout(start, 3000);
-      }
+      delayId = setTimeout(() => {
+        if (typeof window.requestIdleCallback === "function") {
+          idleId = window.requestIdleCallback(start, { timeout: 8000 });
+        } else {
+          fallbackId = setTimeout(start, 5000);
+        }
+      }, 2000);
     };
 
     if (document.readyState === "complete") schedule();
@@ -35,7 +38,8 @@ export function Tracker() {
       if (idleId !== undefined && typeof window.cancelIdleCallback === "function") {
         window.cancelIdleCallback(idleId);
       }
-      if (timeoutId !== undefined) clearTimeout(timeoutId);
+      if (delayId !== undefined) clearTimeout(delayId);
+      if (fallbackId !== undefined) clearTimeout(fallbackId);
     };
   }, []);
 

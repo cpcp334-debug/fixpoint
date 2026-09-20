@@ -78,10 +78,18 @@ video {
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
-.pass:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 26, 51, 0.08);
-  border-color: var(--accent);
+@media (hover: hover) and (pointer: fine) {
+  .pass:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 26, 51, 0.08);
+    border-color: var(--accent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pass {
+    transition: none;
+  }
 }
 
 .hero-atmosphere {

@@ -106,7 +106,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <JsonLd data={organizationJsonLd()} />
       <JsonLd data={localBusinessJsonLd()} />
       <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }], locale)} />
-      <JsonLd data={faqJsonLd(faqs)} />
+      <JsonLd data={faqJsonLd(faqs.slice(0, 8))} />
 
       <Hero
         locale={locale}
@@ -171,7 +171,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             lead={homeShell?.helpLead?.trim() || t("helpLead")}
           />
           <HelpServices
-            items={[...featured, ...rest].map((service) => ({
+            items={[...featured, ...rest].slice(0, 4).map((service) => ({
               slug: service.slug,
               name: service.t.name,
               description: service.t.shortDescription,
@@ -184,6 +184,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             moreLabel={t("helpSeeMore")}
             lessLabel={t("helpSeeLess")}
           />
+          {[...featured, ...rest].length > 4 ? (
+            <p className="mt-3 text-sm">
+              <Link href="/services" className="font-medium text-accent">
+                {t("browseAllServices")}
+              </Link>
+            </p>
+          ) : null}
         </Section>
       ) : null}
 
@@ -269,7 +276,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         <SectionHeader title={t("areasTitle")} lead={t("areasLead")} />
         <div className="mt-3">
           <HomePlaces
-            groups={await publishedHomeLocationGroups(locale)}
+            groups={(await publishedHomeLocationGroups(locale)).map((g) => ({
+              slug: g.slug,
+              name: g.name,
+              count: g.count,
+              // Omit place rows from homepage HTML/RSC (mobile weight); directories on /locations.
+              places: [],
+            }))}
             searchPlaceholder={t("placeSearch")}
             emptyLabel={t("placeEmpty")}
             openLabel={t("openEmirate")}

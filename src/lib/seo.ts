@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { brandName, getSiteUrl, siteConfig } from "@/config/site";
 
+const DEFAULT_OG_IMAGE = "/media/logo-512.webp";
+
 export function buildMetadata(opts: {
   locale: string;
   title: string;
@@ -8,18 +10,28 @@ export function buildMetadata(opts: {
   path: string;
   index?: boolean;
   ogType?: "website" | "article";
+  /** Absolute or site-relative image; defaults to brand mark. */
+  image?: string | null;
   /** When set, only these locale alternates are emitted (hreflang). */
   languages?: Record<string, string>;
 }): Metadata {
   const site = getSiteUrl();
   const canonical = `${site}/${opts.locale}${opts.path === "/" ? "" : opts.path}`;
   const index = opts.index !== false;
-  const languages =
-    opts.languages ??
-    ({
-      en: `${site}/en${opts.path === "/" ? "" : opts.path}`,
-      ar: `${site}/ar${opts.path === "/" ? "" : opts.path}`,
-    } satisfies Record<string, string>);
+  const languages = {
+    ...(opts.languages ??
+      ({
+        en: `${site}/en${opts.path === "/" ? "" : opts.path}`,
+        ar: `${site}/ar${opts.path === "/" ? "" : opts.path}`,
+      } satisfies Record<string, string>)),
+  };
+  if (!languages["x-default"] && languages.en) {
+    languages["x-default"] = languages.en;
+  }
+
+  const imagePath = opts.image?.trim() || DEFAULT_OG_IMAGE;
+  const imageUrl = imagePath.startsWith("http") ? imagePath : `${site}${imagePath.startsWith("/") ? "" : "/"}${imagePath}`;
+  const ogImages = [{ url: imageUrl, width: 512, height: 512, alt: brandName(opts.locale) }];
 
   return {
     title: opts.title,
@@ -36,11 +48,13 @@ export function buildMetadata(opts: {
       siteName: brandName(opts.locale),
       locale: opts.locale === "ar" ? "ar_AE" : "en_AE",
       type: opts.ogType ?? "website",
+      images: ogImages,
     },
     twitter: {
       card: "summary_large_image",
       title: opts.title,
       description: opts.description,
+      images: [imageUrl],
     },
   };
 }

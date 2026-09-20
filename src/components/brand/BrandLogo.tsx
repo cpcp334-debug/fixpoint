@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { brandName } from "@/config/site";
 import { cn } from "@/lib/utils";
 
@@ -11,6 +10,10 @@ function logoSrcForSize(size: number) {
   return "/media/logo-512.webp";
 }
 
+/**
+ * Brand mark via plain <img> — avoids next/image srcset bloat on the LCP path
+ * (live /en was emitting logo srcsets up to w=1920 in HTML/RSC).
+ */
 export function BrandLogo({
   size = 44,
   className,
@@ -24,22 +27,22 @@ export function BrandLogo({
   /** When `ar`, alt uses Arabic brand (فكس بوينت). */
   locale?: string;
 }) {
-  // Source art is roughly square/portrait wordmark — keep contain, never crop.
   const width = Math.round(size * 1.05);
+  const src = logoSrcForSize(size);
   const alt =
     locale === "ar"
       ? `${brandName("ar")} — صيانة المباني`
       : `${brandName("en")} — Building Maintenance`;
+
   return (
-    <Image
-      src={logoSrcForSize(size)}
+    // eslint-disable-next-line @next/next/no-img-element -- intentional LCP: no optimizer srcset
+    <img
+      src={src}
       alt={alt}
       width={width}
       height={size}
-      priority={priority}
+      decoding={priority ? "sync" : "async"}
       fetchPriority={priority ? "high" : "auto"}
-      quality={70}
-      sizes={`${Math.max(width, size)}px`}
       className={cn("h-auto w-auto max-h-full object-contain", className)}
       style={{ height: size, width: "auto" }}
     />

@@ -1,7 +1,7 @@
 import { getSiteUrl } from "@/config/site";
 
 /** Keep in sync with SITEMAP_PAIR_SHARDS in sitemap.ts. */
-const SITEMAP_PAIR_SHARDS = 32;
+const SITEMAP_PAIR_SHARDS = 64;
 
 export function GET() {
   const site = getSiteUrl().replace(/\/$/, "");

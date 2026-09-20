@@ -132,25 +132,45 @@ async function main() {
   let gateFail = 0;
   const samples: Array<{ from: string; to: string; titleAr: string }> = [];
 
+  async function withDbRetry<T>(label: string, fn: () => Promise<T>, attempts = 6): Promise<T> {
+    let last: unknown;
+    for (let i = 1; i <= attempts; i++) {
+      try {
+        return await fn();
+      } catch (e) {
+        last = e;
+        const msg = String(e);
+        const transient = /P1001|Can't reach database|timed out|ECONNRESET|ETIMEDOUT|Server has gone away/i.test(msg);
+        if (!transient || i === attempts) throw e;
+        const waitMs = Math.min(60_000, 2000 * i * i);
+        console.error(JSON.stringify({ phase: "db_retry", label, attempt: i, waitMs, error: msg.slice(0, 160) }));
+        await new Promise((r) => setTimeout(r, waitMs));
+      }
+    }
+    throw last;
+  }
+
   while (true) {
     if (limit && processed >= limit) break;
     const take = limit ? Math.min(batch, limit - processed) : batch;
     // Scan by id only (Hostinger cannot afford LIKE '%REVIEW_REQUIRED%' joins at this scale).
     // Skip already-fixed rows in JS; resume via cursor file.
-    const rows = await prisma.article.findMany({
-      where: cursor ? { id: { gt: cursor } } : undefined,
-      orderBy: { id: "asc" },
-      take: Math.max(take * 3, 150), // over-fetch; many rows may already be clean
-      select: {
-        id: true,
-        slug: true,
-        categorySlugs: true,
-        relatedServiceSlugs: true,
-        relatedDiySlugs: true,
-        heroImage: true,
-        translations: true,
-      },
-    });
+    const rows = await withDbRetry("findMany", () =>
+      prisma.article.findMany({
+        where: cursor ? { id: { gt: cursor } } : undefined,
+        orderBy: { id: "asc" },
+        take: Math.max(take * 3, 150), // over-fetch; many rows may already be clean
+        select: {
+          id: true,
+          slug: true,
+          categorySlugs: true,
+          relatedServiceSlugs: true,
+          relatedDiySlugs: true,
+          heroImage: true,
+          translations: true,
+        },
+      }),
+    );
     if (!rows.length) break;
 
     const dirty = rows.filter((row) => {
@@ -281,23 +301,27 @@ async function main() {
 
       if (!dryRun) {
         const writeOnce = async (slug: string) => {
-          await prisma.article.update({
-            where: { id: row.id },
-            data: {
-              slug,
-              categorySlugs: JSON.stringify(composed.categorySlugs),
-              relatedServiceSlugs: JSON.stringify(composed.relatedServiceSlugs),
-              relatedDiySlugs: remapJsonSlugArray(row.relatedDiySlugs, maps.diyGuide),
-              heroImage: composed.heroImage || row.heroImage,
-            },
-          });
+          await withDbRetry("article.update", () =>
+            prisma.article.update({
+              where: { id: row.id },
+              data: {
+                slug,
+                categorySlugs: JSON.stringify(composed.categorySlugs),
+                relatedServiceSlugs: JSON.stringify(composed.relatedServiceSlugs),
+                relatedDiySlugs: remapJsonSlugArray(row.relatedDiySlugs, maps.diyGuide),
+                heroImage: composed.heroImage || row.heroImage,
+              },
+            }),
+          );
           for (const locale of ["en", "ar"] as const) {
             const fields = composed[locale];
-            await prisma.articleI18n.upsert({
-              where: { articleId_locale: { articleId: row.id, locale } },
-              create: { articleId: row.id, locale, ...fields },
-              update: { ...fields },
-            });
+            await withDbRetry(`articleI18n.${locale}`, () =>
+              prisma.articleI18n.upsert({
+                where: { articleId_locale: { articleId: row.id, locale } },
+                create: { articleId: row.id, locale, ...fields },
+                update: { ...fields },
+              }),
+            );
           }
         };
         try {

@@ -1,7 +1,5 @@
-"use client";
-
-import { useState } from "react";
 import { ServiceCard } from "@/components/home/Cards";
+import { ButtonLink } from "@/components/ui/Button";
 
 const INITIAL_VISIBLE = 4;
 
@@ -15,6 +13,10 @@ type Item = {
   emergencyLabel?: string;
 };
 
+/**
+ * Server-rendered service strip. Only the first N items are in HTML;
+ * "see more" goes to /services (avoids hydrating the full catalog as client props).
+ */
 export function HelpServices({
   items,
   cta,
@@ -26,8 +28,8 @@ export function HelpServices({
   moreLabel: string;
   lessLabel: string;
 }) {
-  const [open, setOpen] = useState(false);
-  const visible = open ? items : items.slice(0, INITIAL_VISIBLE);
+  void lessLabel;
+  const visible = items.slice(0, INITIAL_VISIBLE);
   const hidden = Math.max(0, items.length - INITIAL_VISIBLE);
 
   return (
@@ -50,14 +52,11 @@ export function HelpServices({
         ))}
       </ul>
       {hidden ? (
-        <button
-          type="button"
-          className="mt-3 text-sm font-medium text-accent hover:underline"
-          aria-expanded={open}
-          onClick={() => setOpen((current) => !current)}
-        >
-          {open ? lessLabel : moreLabel}
-        </button>
+        <div className="mt-3">
+          <ButtonLink href="/services" variant="secondary">
+            {moreLabel}
+          </ButtonLink>
+        </div>
       ) : null}
     </>
   );

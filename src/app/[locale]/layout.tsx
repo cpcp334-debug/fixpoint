@@ -18,8 +18,10 @@ const sans = Plus_Jakarta_Sans({
   weight: ["400", "700"],
   variable: "--font-sans",
   display: "swap",
+  // Preload only the text weight used above the fold; 700 loads on demand.
   preload: true,
   adjustFontFallback: true,
+  fallback: ["Segoe UI", "Tahoma", "sans-serif"],
 });
 
 /** Arabic is loaded only on /ar — never preload on EN (mobile LCP). */

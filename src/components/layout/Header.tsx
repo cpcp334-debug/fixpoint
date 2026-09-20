@@ -37,7 +37,7 @@ export function Header({ locale, shell }: { locale: string; shell?: HeaderShell 
   const navLabel = (key: (typeof links)[number]["key"]) => shell?.nav?.[key]?.trim() || t(key);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line/70 bg-white/95 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-line/70 bg-white/95 sm:backdrop-blur-md">
       <a className="skip-link" href="#main">
         {skip}
       </a>

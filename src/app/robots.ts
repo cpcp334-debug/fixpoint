@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getSiteUrl } from "@/config/site";
 
 /** Keep in sync with SITEMAP_PAIR_SHARDS in sitemap.ts. Do not import sitemap.ts (it loads Prisma). */
-const SITEMAP_PAIR_SHARDS = 32;
+const SITEMAP_PAIR_SHARDS = 64;
 
 const publicSiteAllow = "/";
 const crawlerDisallow = [

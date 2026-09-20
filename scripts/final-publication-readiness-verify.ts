@@ -129,7 +129,7 @@ async function main() {
   assert(publicCount === 49, "public where = 49");
 
   // Sitemap shard constant
-  assert(SITEMAP_PAIR_SHARDS === 32, "32 shards");
+  assert(SITEMAP_PAIR_SHARDS === 64, "64 shards");
 
   // Uncovered remain noindex
   const badIndex = await prisma.serviceLocation.count({

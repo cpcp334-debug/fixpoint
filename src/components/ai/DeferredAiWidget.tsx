@@ -26,7 +26,8 @@ export function DeferredAiWidget({ locale }: { locale: string }) {
     }
 
     let idleId: number | undefined;
-    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    let delayId: ReturnType<typeof setTimeout> | undefined;
+    let fallbackId: ReturnType<typeof setTimeout> | undefined;
     let cancelled = false;
 
     const enable = () => {
@@ -48,11 +49,14 @@ export function DeferredAiWidget({ locale }: { locale: string }) {
     document.addEventListener("click", onAiIntent);
 
     const scheduleIdle = () => {
-      if (typeof window.requestIdleCallback === "function") {
-        idleId = window.requestIdleCallback(enable, { timeout: 6000 });
-      } else {
-        timeoutId = setTimeout(enable, 4500);
-      }
+      // Extra delay after load: keep AI off mobile LCP / main-thread budget.
+      delayId = setTimeout(() => {
+        if (typeof window.requestIdleCallback === "function") {
+          idleId = window.requestIdleCallback(enable, { timeout: 12000 });
+        } else {
+          fallbackId = setTimeout(enable, 8000);
+        }
+      }, 2500);
     };
 
     // Wait for load so AI chunk does not share the LCP bandwidth budget.
@@ -71,7 +75,8 @@ export function DeferredAiWidget({ locale }: { locale: string }) {
       if (idleId !== undefined && typeof window.cancelIdleCallback === "function") {
         window.cancelIdleCallback(idleId);
       }
-      if (timeoutId !== undefined) clearTimeout(timeoutId);
+      if (delayId !== undefined) clearTimeout(delayId);
+      if (fallbackId !== undefined) clearTimeout(fallbackId);
     };
   }, []);
 
