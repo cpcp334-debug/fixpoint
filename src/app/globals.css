@@ -46,7 +46,8 @@ body {
 }
 
 html[dir="rtl"] body {
-  font-family: var(--font-arabic), system-ui, "Segoe UI", Tahoma, sans-serif;
+  /* System Arabic-capable stack — no webfont request on /ar critical path. */
+  font-family: "Segoe UI", Tahoma, "Noto Naskh Arabic", "Arabic Typesetting", system-ui, sans-serif;
 }
 
 /* Below-fold homepage blocks: skip layout/paint until near viewport. */

@@ -12,7 +12,7 @@
 
 Fixpoint is a bilingual (EN/AR) Next.js App Router site for **Al Najah Al Daem · Fixpoint** — cleaning and building maintenance across the UAE. The public surface is large: static hubs, ~277 location hubs, services, DIY, FAQ, and a very large **service×estate×city (SEC) blog** corpus (~119k+ published article rows → ~240k locale URLs).
 
-**Performance (pre this deploy):** Hostinger Page Speed showed **Mobile ~88** (was 80 → 84 → 88) and **Desktop ~98**. Goal: push mobile toward **90+** on `https://fixpoint.ae/en`.
+**Performance (live pre this Redeploy):** Hostinger Mobile diagnostics still show score **0** on document latency, render-blocking, dependency tree, and multiple redirects — **`da86e24` / `fb455ca` apex rewrite was NOT live** (`https://fixpoint.ae/` still **307** → `/en`). This release strengthens apex rewrite + www→apex, removes public webfonts, shrinks home RSC, and documents Hostinger panel/CDN ceiling.
 
 **Critical GSC finding (pre-fix):** `/sitemap/0.xml` was returning on the order of **~242,000 `<loc>` URLs / ~50MB** — over Google’s **50,000 URL / 50MB** per-sitemap limits. Pair shards were often empty or useless while shard 0 swallowed the entire article catalog. **This release shards articles across 64 files and keeps shard 0 for small catalogs only.**
 
@@ -325,7 +325,8 @@ Continue periodic `_tmp-dual-slug-probe` / slug-policy audits; do not commit sec
 | `dc15224` … `4b63054` | Location hubs / AR estate directory |
 | **`5aeb996`** | Sitemap 64-shard + mobile RSC/LCP + OG/x-default + audit report |
 | **`26e6f6a`** | Wave 3 mobile PSI: interaction-only AI, EN system fonts, lean home |
-| **`fb455ca`** | Apex `/` rewrite (0 redirects), logo preload, server header, modern browserslist |
+| **`fb455ca`** | Apex / rewrite (0 redirects), logo preload, server header, modern browserslist |
+| **`(this push)`** | PSI redirects hardening (www→apex, matcher /), no public webfonts, lean home RSC, media cache headers, Hostinger panel tips |
 
 After push, the **Redeploy hash is the new `origin/main` HEAD**. Upload zip if not using Git deploy: `npm run zip:hostinger` → `deploy/out/alnajah-aldaem-hostinger.zip`.
 

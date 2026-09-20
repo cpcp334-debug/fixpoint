@@ -58,3 +58,27 @@ OPENAI_MODEL=gpt-4o-mini
 5. Verify `https://fixpoint.ae/en`, `/faq`, `/blog`, `/diy`, `/admin`.
 
 Legacy Postgres dump docs (`HOSTINGER-DB-MIGRATE.md`, `*.dump` / `*.sql`) are obsolete for this MySQL path — do not import Postgres dumps into MySQL.
+
+## Performance / redirects (PageSpeed Mobile)
+
+Hostinger diagnostics often score **0** on redirects + document latency even when the Next app is lean.
+
+### Panel settings (do these once)
+
+1. **Force HTTPS** — enable in Hostinger Websites → fixpoint.ae → SSL / HTTPS.
+2. **www → non-www (apex)** — redirect `www.fixpoint.ae` → `https://fixpoint.ae` at the panel/DNS level when available. The app middleware also 301s www→apex as a backup; panel-level is one fewer hop for `http://www`.
+3. **Do not** add a panel rule that sends `/` → `/en` (the app **rewrites** apex `/` to EN with **zero** `Location` header).
+4. Prefer the Node app region closest to UAE visitors (or enable Hostinger CDN / edge cache for static).
+
+### What the app already does
+
+| Request | Expected |
+|---------|----------|
+| `https://fixpoint.ae/` | **200** HTML (internal rewrite → EN) — no `Location` |
+| `https://fixpoint.ae/en` | **200** |
+| `https://www.fixpoint.ae/*` | **301** → `https://fixpoint.ae/*` |
+| `http://*` | **301** → HTTPS (panel / hcdn) |
+
+### Honest ceiling
+
+`x-hcdn-upstream-rt` ~250ms on HTML is **Hostinger TTFB**. Gzip/brotli for `/_next/static` is on; long `Cache-Control` for `/_next/static` and `/media/*` is set in `next.config.ts`. If Mobile still fails **Document request latency** after Redeploy with **0 redirects** on apex, treat further gains as CDN/region — not missing app redirects.

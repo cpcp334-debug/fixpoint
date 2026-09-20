@@ -22,6 +22,11 @@ export function LocaleSwitcher({
   const [otherPath, setOtherPath] = useState(pathname);
 
   useEffect(() => {
+    // Home needs no dual-slug remap — skip network on the PSI critical path.
+    if (pathname === "/" || pathname === "") {
+      setOtherPath("/");
+      return;
+    }
     let cancelled = false;
     const q = new URLSearchParams({ path: pathname, locale: other });
     fetch(`/api/locale-path?${q.toString()}`)

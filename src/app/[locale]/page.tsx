@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
-import { getActiveServices, getGlobalFaqs } from "@/lib/catalog";
+import { getRelatedServices, getGlobalFaqs } from "@/lib/catalog";
+import { toMasterServiceSlug } from "@/lib/slug/service-slug-map";
 import { buildVisitorNavTree } from "@/lib/catalog/approved-nav";
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd, localBusinessJsonLd, organizationJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -31,7 +32,8 @@ import {
 /** Keep home ISR-friendly for Hostinger TTFB after the apex rewrite lands. */
 export const revalidate = 3600;
 
-const FEATURED = ["cleaning-services", "building-maintenance"];
+/** Only these four rows hit the DB/RSC payload — not the full catalog. */
+const HOME_SERVICE_SLUGS = ["cleaning-services", "building-maintenance", "ac-maintenance", "plumbing-maintenance"];
 
 function serviceBenefit(
   service: { diyAvailable: boolean; amcAvailable: boolean; inspectionRequired: boolean },
@@ -64,12 +66,15 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
   const t = await getTranslations("Home");
   const cta = await getTranslations("Cta");
   const nav = await getTranslations("Nav");
-  const services = await getActiveServices(locale);
-  const faqs = await getGlobalFaqs(locale);
+  const related = await getRelatedServices(HOME_SERVICE_SLUGS, locale);
+  const services = HOME_SERVICE_SLUGS.map((want) => {
+    const master = toMasterServiceSlug(want);
+    return related.find((s) => toMasterServiceSlug(s.slug) === master);
+  }).filter(Boolean) as typeof related;
+  const faqs = await getGlobalFaqs(locale, 4);
   const homeShell = (await getPublishedSiteShell("home", locale)) as HomeShell | null;
-  const mainCategories = buildVisitorNavTree();
-  const featured = FEATURED.map((slug) => services.find((s) => s.slug === slug)).filter(Boolean) as typeof services;
-  const rest = services.filter((s) => !FEATURED.includes(s.slug));
+  // Drop children arrays from RSC payload (compact cards only need names/hrefs).
+  const mainCategories = buildVisitorNavTree().map((cat) => ({ ...cat, children: [] as typeof cat.children }));
   const chips = [
     { label: t("chipAc"), href: "/ac-maintenance" },
     { label: t("chipLeak"), href: "/plumbing-maintenance" },
@@ -156,7 +161,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             lead={homeShell?.helpLead?.trim() || t("helpLead")}
           />
           <HelpServices
-            items={[...featured, ...rest].slice(0, 4).map((service) => ({
+            items={services.slice(0, 4).map((service) => ({
               slug: service.slug,
               name: service.t.name,
               description: "",
@@ -169,7 +174,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             moreLabel={t("helpSeeMore")}
             lessLabel={t("helpSeeLess")}
           />
-          {[...featured, ...rest].length > 4 ? (
+          {services.length > 4 ? (
             <p className="mt-3 text-sm">
               <Link href="/services" className="font-medium text-accent">
                 {t("browseAllServices")}

@@ -5,7 +5,6 @@ import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
-import { IBM_Plex_Sans_Arabic } from "next/font/google";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -20,17 +19,11 @@ const Tracker = dynamic(
 );
 
 /**
- * EN uses system UI fonts (zero webfont bytes on /en mobile LCP).
- * Arabic loads IBM Plex without preload so it never blocks EN.
+ * No next/font on the public locale shell.
+ * EN: system UI stack only (zero webfont bytes / preloads on mobile LCP).
+ * AR: system Arabic-capable stack via globals.css — avoids Google font CSS
+ * and render-blocking woff2 on every locale (shared layout module).
  */
-const arabic = IBM_Plex_Sans_Arabic({
-  subsets: ["arabic"],
-  weight: ["400", "700"],
-  variable: "--font-arabic",
-  display: "swap",
-  preload: false,
-  adjustFontFallback: true,
-});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -56,10 +49,16 @@ export default async function LocaleLayout({
   const headerShell = (await getPublishedSiteShell("header", locale)) as HeaderShell | null;
 
   return (
-    <html lang={locale} dir={dir} className={locale === "ar" ? arabic.variable : undefined}>
+    <html lang={locale} dir={dir}>
       <head>
-        {/* Sole LCP image preload — header mark; no competing font/image preloads on EN. */}
+        {/* Sole LCP image preload — header mark; no font/CSS preloads. */}
         <link rel="preload" as="image" href="/media/logo-128.webp" type="image/webp" fetchPriority="high" />
+        {/* Critical above-fold paint without waiting on the full Tailwind chunk chain. */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `html,body{margin:0;background:#fff;color:#0b1726}body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Tahoma,sans-serif;line-height:1.55}html[dir=rtl] body{font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic","Arabic Typesetting",sans-serif}.hero-atmosphere{background:linear-gradient(145deg,#000d1a 0%,#001a33 45%,#0a2744 100%);color:#fff}`,
+          }}
+        />
       </head>
       <body className="min-h-full bg-white text-ink antialiased">
         <NextIntlClientProvider>

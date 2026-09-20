@@ -1,3 +1,4 @@
+import dynamic from "next/dynamic";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { brandName } from "@/config/site";
@@ -5,9 +6,16 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { AiMark } from "@/components/ui/AiMark";
-import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
-import { HeaderMobile } from "@/components/layout/HeaderMobile";
+import { LocaleSwitchLink } from "@/components/layout/LocaleSwitchLink";
 import type { HeaderShell } from "@/lib/site-shell";
+
+const HeaderMobile = dynamic(
+  () => import("@/components/layout/HeaderMobile").then((m) => ({ default: m.HeaderMobile })),
+  {
+    ssr: false,
+    loading: () => <div className="ms-auto h-11 w-28 shrink-0 lg:hidden" aria-hidden />,
+  },
+);
 
 const links = [
   { href: "/services", key: "services" },
@@ -19,7 +27,7 @@ const links = [
   { href: "/contact", key: "contact" },
 ] as const;
 
-/** Server header — keeps the mobile menu island tiny for home PSI. */
+/** Server header — mobile menu island is dynamic/ssr:false for home PSI. */
 export async function Header({ locale, shell }: { locale: string; shell?: HeaderShell | null }) {
   const t = await getTranslations("Nav");
   const skip = locale === "ar" ? "تخطي إلى المحتوى" : "Skip to content";
@@ -73,7 +81,7 @@ export async function Header({ locale, shell }: { locale: string; shell?: Header
               <span>AI</span>
             </a>
           ) : null}
-          <LocaleSwitcher
+          <LocaleSwitchLink
             locale={locale}
             className="rounded-full px-3 py-2 text-sm text-muted hover:bg-sand hover:text-navy"
           />

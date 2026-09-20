@@ -284,12 +284,13 @@ export const getApprovedGuideFeedback = cache(async (guideId: string) => {
   });
 });
 
-export const getGlobalFaqs = cache(async (locale: string) =>
+export const getGlobalFaqs = cache(async (locale: string, take?: number) =>
   safeList(async () => {
     const rows = await prisma.faq.findMany({
       where: { status: "published", serviceId: null, locationId: null },
       include: { translations: true },
       orderBy: { sortOrder: "asc" },
+      ...(typeof take === "number" && take > 0 ? { take } : {}),
     });
     return rows
       .map((row) => pickI18n(row.translations, locale))
