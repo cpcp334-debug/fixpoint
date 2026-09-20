@@ -325,7 +325,7 @@ Continue periodic `_tmp-dual-slug-probe` / slug-policy audits; do not commit sec
 | `18c6f5b` / `fd6d849` / `84b0545` | Arabic percent-encoded slugs |
 | `dc15224` … `4b63054` | Location hubs / AR estate directory |
 | **`5aeb996`** | Sitemap 64-shard + mobile RSC/LCP + OG/x-default + audit report |
-| **(this push)** | Wave 3 mobile PSI: interaction-only AI, EN system fonts, lean home |
+| **`26e6f6a`** | Wave 3 mobile PSI: interaction-only AI, EN system fonts, lean home |
 
 After push, the **Redeploy hash is the new `origin/main` HEAD**. Upload zip if not using Git deploy: `npm run zip:hostinger` → `deploy/out/alnajah-aldaem-hostinger.zip`.
 
