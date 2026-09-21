@@ -173,7 +173,7 @@ export async function createLead(input: LeadInput, ip: string) {
       });
       locName = lt?.name || null;
     }
-    void notifyStaffAlert({
+    const mail = await notifyStaffAlert({
       kind: data.source === "quote" ? "quote" : "contact",
       id: lead.id,
       name: data.name,
@@ -185,6 +185,20 @@ export async function createLead(input: LeadInput, ip: string) {
       requirement: data.requirement,
       locale,
     });
+    if (!mail.sent) {
+      try {
+        await prisma.auditLog.create({
+          data: {
+            action: "lead.alert_email_failed",
+            entity: "Lead",
+            entityId: lead.id,
+            meta: JSON.stringify({ reason: mail.reason || "unknown" }),
+          },
+        });
+      } catch {
+        // ignore
+      }
+    }
   }
 
   return { ok: true as const, id: lead.id };

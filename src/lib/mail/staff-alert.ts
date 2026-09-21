@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Staff alert email for new quote / booking / contact leads.
  * Supports Resend (preferred) or SMTP (e.g. Gmail / Hostinger).
  * Never throws to callers — lead/booking writes must succeed even if mail fails.
@@ -20,36 +20,42 @@ export type StaffAlertPayload = {
   bookingNumber?: string | null;
 };
 
+function env(name: string) {
+  const raw = process.env[name];
+  if (!raw) return "";
+  const trimmed = raw.trim();
+  if (
+    (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+    (trimmed.startsWith("'") && trimmed.endsWith("'"))
+  ) {
+    return trimmed.slice(1, -1).trim();
+  }
+  return trimmed;
+}
+
 function staffAlertTo() {
-  return (
-    process.env.STAFF_ALERT_EMAIL?.trim() ||
-    process.env.ADMIN_EMAIL?.trim() ||
-    "alnajahaldaem42@gmail.com"
-  );
+  return env("STAFF_ALERT_EMAIL") || env("ADMIN_EMAIL") || "alnajahaldaem42@gmail.com";
 }
 
 function mailFrom() {
-  return process.env.MAIL_FROM?.trim() || process.env.SMTP_USER?.trim() || "";
+  return env("MAIL_FROM") || env("SMTP_USER") || "";
 }
 
 function provider(): "resend" | "smtp" | null {
-  const explicit = (process.env.AUTOMATION_EMAIL_PROVIDER || "").trim().toLowerCase();
+  const explicit = env("AUTOMATION_EMAIL_PROVIDER").toLowerCase();
   if (explicit === "resend" || explicit === "smtp") return explicit;
-  if (process.env.RESEND_API_KEY?.trim()) return "resend";
-  if (process.env.SMTP_HOST?.trim() && process.env.SMTP_USER?.trim() && process.env.SMTP_PASS?.trim()) {
-    return "smtp";
-  }
+  if (env("RESEND_API_KEY")) return "resend";
+  if (env("SMTP_HOST") && env("SMTP_USER") && env("SMTP_PASS")) return "smtp";
   return null;
 }
 
 function siteBase() {
-  const raw = process.env.SITE_URL?.trim() || "https://fixpoint.ae";
+  const raw = env("SITE_URL") || "https://fixpoint.ae";
   return raw.replace(/\/$/, "");
 }
 
 function buildSubject(p: StaffAlertPayload) {
-  const kind =
-    p.kind === "quote" ? "Quote" : p.kind === "booking" ? "Booking" : "Contact";
+  const kind = p.kind === "quote" ? "Quote" : p.kind === "booking" ? "Booking" : "Contact";
   const who = p.name.slice(0, 40);
   return `[Fixpoint] New ${kind}: ${who}`;
 }
@@ -81,7 +87,7 @@ function buildText(p: StaffAlertPayload) {
 }
 
 async function sendViaResend(opts: { to: string; from: string; subject: string; text: string }) {
-  const key = process.env.RESEND_API_KEY?.trim();
+  const key = env("RESEND_API_KEY");
   if (!key) throw new Error("RESEND_API_KEY missing");
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -103,12 +109,12 @@ async function sendViaResend(opts: { to: string; from: string; subject: string; 
 }
 
 async function sendViaSmtp(opts: { to: string; from: string; subject: string; text: string }) {
-  const host = process.env.SMTP_HOST?.trim();
-  const user = process.env.SMTP_USER?.trim();
-  const pass = process.env.SMTP_PASS?.trim();
+  const host = env("SMTP_HOST");
+  const user = env("SMTP_USER");
+  const pass = env("SMTP_PASS");
   if (!host || !user || !pass) throw new Error("SMTP env incomplete");
-  const port = Number(process.env.SMTP_PORT || "465");
-  const secure = process.env.SMTP_SECURE !== "0" && port === 465;
+  const port = Number(env("SMTP_PORT") || "465");
+  const secure = env("SMTP_SECURE") !== "0" && port === 465;
 
   const nodemailer = await import("nodemailer");
   const transporter = nodemailer.createTransport({
@@ -125,7 +131,7 @@ async function sendViaSmtp(opts: { to: string; from: string; subject: string; te
   });
 }
 
-/** Fire-and-forget safe: never throws. */
+/** Never throws to callers. */
 export async function notifyStaffAlert(payload: StaffAlertPayload): Promise<{ sent: boolean; reason?: string }> {
   try {
     const mode = provider();
@@ -140,7 +146,8 @@ export async function notifyStaffAlert(payload: StaffAlertPayload): Promise<{ se
     if (mode === "resend") await sendViaResend({ to, from, subject, text });
     else await sendViaSmtp({ to, from, subject, text });
     return { sent: true };
-  } catch {
-    return { sent: false, reason: "send_failed" };
+  } catch (error) {
+    const reason = error instanceof Error ? error.message.slice(0, 180) : "send_failed";
+    return { sent: false, reason };
   }
 }

@@ -392,7 +392,7 @@ export async function createPublicBooking(input: PublicBookingInput, ip: string,
     occurrenceKey: "requested",
   });
 
-  void notifyStaffAlert({
+  await notifyStaffAlert({
     kind: "booking",
     id: leadId || booking.id,
     name: data.name,
