@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { unstable_cache } from "next/cache";
 import { getSiteUrl } from "@/config/site";
 import { publicServiceLocationWhere } from "@/lib/catalog";
 import { prisma } from "@/server/db";
@@ -14,6 +15,9 @@ import { faqPathSlug } from "@/lib/slug/faq-slug-map";
  * Google limits: 50,000 URLs and 50MB per sitemap file.
  * Articles (~119k SEC × 2 locales) MUST be spread across shards — never dump the
  * full catalog into shard 0 (live regression: ~242k URLs / ~50MB in one file).
+ *
+ * Hostinger OOM risk: Googlebot often fetches many shards at once. Each request
+ * must NOT hold the full article/pair tables in memory — cursor batches + cache.
  */
 export const dynamic = "force-dynamic";
 export const revalidate = 3600;
@@ -23,6 +27,9 @@ export const SITEMAP_PAIR_SHARDS = 64;
 
 /** Soft ceiling under Google's 50k limit (headroom for lastModified noise). */
 const MAX_URLS_PER_SHARD = 45_000;
+
+const ARTICLE_BATCH = 1500;
+const PAIR_BATCH = 1500;
 
 /**
  * Stable non-crypto hash → bucket in [0, shards).
@@ -81,6 +88,14 @@ async function withDbRetry<T>(label: string, fn: () => Promise<T>, fallback: T):
       return fallback;
     }
   }
+}
+
+function softFailShard(site: string, shard: number): MetadataRoute.Sitemap {
+  if (shard !== 0) return [];
+  return [
+    { url: `${site}/en`, changeFrequency: "weekly", priority: 1 },
+    { url: `${site}/ar`, changeFrequency: "weekly", priority: 1 },
+  ];
 }
 
 /** Static routes + small catalogs only (safe on shard 0). */
@@ -189,115 +204,141 @@ async function staticAndSmallCatalogEntries(site: string): Promise<MetadataRoute
   return entries;
 }
 
-/** Blog + FAQ article URLs for one shard only (EN + AR). */
+/** Blog + FAQ article URLs for one shard — cursor batches (no full-table RAM). */
 async function articleEntriesForShard(site: string, shard: number): Promise<MetadataRoute.Sitemap> {
-  const articles = await withDbRetry(
-    "article.findMany",
-    () =>
-      prisma.article.findMany({
-        where: { status: "published", indexable: true },
-        select: { slug: true, updatedAt: true, publishedAt: true, categorySlugs: true },
-      }),
-    [] as { slug: string; updatedAt: Date; publishedAt: Date | null; categorySlugs: string | null }[],
-  );
-
   const locales = ["en", "ar"] as const;
   const entries: MetadataRoute.Sitemap = [];
-  for (const article of articles) {
-    if (articleShardId(article.slug) !== shard) continue;
-    const isFaq =
-      article.slug.startsWith("faq-") ||
-      article.slug.startsWith("أسئلة") ||
-      (article.categorySlugs || "").includes("service-faq");
-    for (const locale of locales) {
-      const segment = isFaq ? faqPathSlug(locale, article.slug) : blogPathSlug(locale, article.slug);
-      const path = isFaq ? `/faq/${segment}` : `/blog/${segment}`;
-      entries.push({
-        url: `${site}/${locale}${path}`,
-        lastModified: article.publishedAt ?? article.updatedAt,
-      });
+  let cursor: string | undefined;
+
+  for (;;) {
+    const batch = await withDbRetry(
+      "article.findMany.batch",
+      () =>
+        prisma.article.findMany({
+          where: { status: "published", indexable: true },
+          select: { id: true, slug: true, updatedAt: true, publishedAt: true },
+          orderBy: { id: "asc" },
+          take: ARTICLE_BATCH,
+          ...(cursor ? { skip: 1, cursor: { id: cursor } } : {}),
+        }),
+      [] as { id: string; slug: string; updatedAt: Date; publishedAt: Date | null }[],
+    );
+    if (!batch.length) break;
+
+    for (const article of batch) {
+      if (articleShardId(article.slug) !== shard) continue;
+      const isFaq = article.slug.startsWith("faq-") || article.slug.startsWith("أسئلة");
+      for (const locale of locales) {
+        const segment = isFaq ? faqPathSlug(locale, article.slug) : blogPathSlug(locale, article.slug);
+        const path = isFaq ? `/faq/${segment}` : `/blog/${segment}`;
+        entries.push({
+          url: `${site}/${locale}${path}`,
+          lastModified: article.publishedAt ?? article.updatedAt,
+        });
+      }
     }
+
+    cursor = batch[batch.length - 1]?.id;
+    if (batch.length < ARTICLE_BATCH) break;
+    if (entries.length >= MAX_URLS_PER_SHARD) break;
   }
+
   return entries;
 }
 
-/**
- * Service×location pairs for one shard.
- * Prefer id-range paging when the published set is large; fall back to full select + filter.
- */
+/** Service×location pairs for one shard — cursor batches. */
 async function pairEntriesForShard(site: string, shard: number): Promise<MetadataRoute.Sitemap> {
-  const pairs = await withDbRetry(
-    "serviceLocation.findMany",
-    () =>
-      prisma.serviceLocation.findMany({
-        where: publicServiceLocationWhere,
-        select: {
-          updatedAt: true,
-          service: { select: { slug: true } },
-          location: { select: { slug: true } },
-        },
-      }),
-    [] as {
-      updatedAt: Date;
-      service: { slug: string };
-      location: { slug: string };
-    }[],
-  );
-
   const locales = ["en", "ar"] as const;
   const entries: MetadataRoute.Sitemap = [];
-  for (const pair of pairs) {
-    if (pairShardId(`${pair.service.slug}/${pair.location.slug}`) !== shard) continue;
-    for (const locale of locales) {
-      entries.push({
-        url: `${site}/${locale}/${servicePathSlug(locale, pair.service.slug)}/${locationPathSlug(locale, pair.location.slug)}`,
-        lastModified: pair.updatedAt,
-      });
+  let cursor: string | undefined;
+
+  for (;;) {
+    const batch = await withDbRetry(
+      "serviceLocation.findMany.batch",
+      () =>
+        prisma.serviceLocation.findMany({
+          where: publicServiceLocationWhere,
+          select: {
+            id: true,
+            updatedAt: true,
+            service: { select: { slug: true } },
+            location: { select: { slug: true } },
+          },
+          orderBy: { id: "asc" },
+          take: PAIR_BATCH,
+          ...(cursor ? { skip: 1, cursor: { id: cursor } } : {}),
+        }),
+      [] as {
+        id: string;
+        updatedAt: Date;
+        service: { slug: string };
+        location: { slug: string };
+      }[],
+    );
+    if (!batch.length) break;
+
+    for (const pair of batch) {
+      if (pairShardId(`${pair.service.slug}/${pair.location.slug}`) !== shard) continue;
+      for (const locale of locales) {
+        entries.push({
+          url: `${site}/${locale}/${servicePathSlug(locale, pair.service.slug)}/${locationPathSlug(locale, pair.location.slug)}`,
+          lastModified: pair.updatedAt,
+        });
+      }
     }
+
+    cursor = batch[batch.length - 1]?.id;
+    if (batch.length < PAIR_BATCH) break;
+    if (entries.length >= MAX_URLS_PER_SHARD) break;
   }
+
   return entries;
 }
+
+async function buildShardEntries(site: string, shard: number): Promise<MetadataRoute.Sitemap> {
+  const entries: MetadataRoute.Sitemap = [];
+
+  if (shard === 0) {
+    entries.push(...(await staticAndSmallCatalogEntries(site)));
+  }
+
+  entries.push(...(await articleEntriesForShard(site, shard)));
+  if (entries.length < MAX_URLS_PER_SHARD) {
+    entries.push(...(await pairEntriesForShard(site, shard)));
+  }
+
+  if (entries.length > MAX_URLS_PER_SHARD) {
+    console.error(
+      `[sitemap] shard ${shard} truncated from ${entries.length} to ${MAX_URLS_PER_SHARD} (Google 50k cap)`,
+    );
+    return entries.slice(0, MAX_URLS_PER_SHARD);
+  }
+
+  return entries;
+}
+
+/** Cache built shards so concurrent Googlebot fetches do not re-scan the DB 64×. */
+const getCachedShardEntries = unstable_cache(
+  async (site: string, shard: number) => buildShardEntries(site, shard),
+  ["sitemap-shard-v3"],
+  { revalidate: 3600 },
+);
 
 export default async function sitemap(props: {
-  id: Promise<string>;
+  id: Promise<string> | string;
 }): Promise<MetadataRoute.Sitemap> {
-  const idRaw = await props.id;
+  const idRaw = await Promise.resolve(props.id);
   const shard = Number(idRaw);
+  const site = getSiteUrl();
+
   if (!Number.isInteger(shard) || shard < 0 || shard >= SITEMAP_PAIR_SHARDS) {
     return [];
   }
 
-  const site = getSiteUrl();
-
   try {
-    const entries: MetadataRoute.Sitemap = [];
-
-    // Tiny static + service/location/DIY catalogs only on shard 0 (not blogs).
-    if (shard === 0) {
-      entries.push(...(await staticAndSmallCatalogEntries(site)));
-    }
-
-    // Spread articles across all shards so no file exceeds Google's 50k URL cap.
-    entries.push(...(await articleEntriesForShard(site, shard)));
-
-    // Service×location pairs (also hash-sharded).
-    entries.push(...(await pairEntriesForShard(site, shard)));
-
-    if (entries.length > MAX_URLS_PER_SHARD) {
-      console.error(
-        `[sitemap] shard ${shard} truncated from ${entries.length} to ${MAX_URLS_PER_SHARD} (Google 50k cap)`,
-      );
-      return entries.slice(0, MAX_URLS_PER_SHARD);
-    }
-
-    return entries;
+    return await getCachedShardEntries(site, shard);
   } catch (err) {
-    // Last-resort soft-fail: never crash Hostinger build / request over sitemap.
     console.error("[sitemap] soft-fail:", err instanceof Error ? err.message : err);
-    if (shard !== 0) return [];
-    return [
-      { url: `${site}/en`, changeFrequency: "weekly", priority: 1 },
-      { url: `${site}/ar`, changeFrequency: "weekly", priority: 1 },
-    ];
+    return softFailShard(site, shard);
   }
 }
