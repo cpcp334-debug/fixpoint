@@ -9,6 +9,11 @@ import { scoreLeadSafe } from "@/lib/quality/run";
 import { emitDomainEventSafe } from "@/lib/automation/emit";
 import { attributionToColumns, sanitizeAttribution } from "@/lib/attribution/shared";
 import { notifyStaffAlert } from "@/lib/mail/staff-alert";
+import {
+  formatServicesLine,
+  prependServicesToRequirement,
+  resolveServiceSelection,
+} from "@/lib/forms/service-selection";
 import { assertTechnicianAssignmentAllowed } from "@/lib/automation/assign";
 import { loadSubjectFacts } from "@/lib/automation/subject";
 import { mkdir, writeFile } from "node:fs/promises";
@@ -31,6 +36,8 @@ export const publicBookingSchema = z.object({
   whatsapp: z.string().trim().min(8).max(20).optional(),
   email: z.string().trim().max(200).optional(),
   serviceSlug: z.string().trim().max(80).optional(),
+  serviceSlugs: z.array(z.string().trim().min(1).max(80)).max(20).optional(),
+  serviceOther: z.string().trim().max(200).optional(),
   locationSlug: z.string().trim().max(80).optional(),
   city: z.string().trim().min(2).max(120).optional(),
   area: z.string().trim().min(2).max(120).optional(),
@@ -173,17 +180,23 @@ export async function createPublicBooking(input: PublicBookingInput, ip: string,
   if (!limited.ok) return { ok: false as const, error: "rateLimit" as const };
 
   const data = parsed.data;
+  const selection = resolveServiceSelection({
+    serviceSlug: data.serviceSlug,
+    serviceSlugs: data.serviceSlugs,
+    serviceOther: data.serviceOther,
+  });
   const attrCols = attributionToColumns(sanitizeAttribution(data.attribution));
   if (data.type === "recurring_cleaning" && !data.frequency) {
     return { ok: false as const, error: "invalid" as const };
   }
 
-  const service = data.serviceSlug
+  const locale = data.locale === "ar" ? "ar" : "en";
+  const service = selection.primarySlug
     ? await prisma.service.findFirst({
-        where: { slug: data.serviceSlug, status: "active", indexable: true, bookingEnabled: true },
+        where: { slug: selection.primarySlug, status: "active", indexable: true, bookingEnabled: true },
       })
     : null;
-  if (data.serviceSlug && !service) return { ok: false as const, error: "invalid" as const };
+  if (selection.primarySlug && !service) return { ok: false as const, error: "invalid" as const };
   if (service && !serviceAllowsBookingType(service, data.type)) {
     return { ok: false as const, error: "invalid" as const };
   }
@@ -195,11 +208,23 @@ export async function createPublicBooking(input: PublicBookingInput, ip: string,
     : null;
   if (data.locationSlug && !location) return { ok: false as const, error: "invalid" as const };
 
+  const svcNames: string[] = [];
+  for (const slug of selection.slugs) {
+    const row = await prisma.service.findFirst({
+      where: { slug, status: "active" },
+      include: { translations: true },
+    });
+    const name = row ? pickI18n(row.translations, locale)?.name : null;
+    svcNames.push(name || slug);
+  }
+  const servicesLine = formatServicesLine(svcNames, selection.other);
+  const requirement = prependServicesToRequirement(data.requirement, servicesLine);
+
   const dup = await prisma.booking.findFirst({
     where: {
       phone: data.phone,
       type: data.type,
-      requirement: data.requirement,
+      requirement,
       createdAt: { gt: new Date(Date.now() - 2 * 60 * 1000) },
     },
   });
@@ -257,7 +282,7 @@ export async function createPublicBooking(input: PublicBookingInput, ip: string,
         propertyType: data.propertyType || null,
         city: data.city,
         area: data.area,
-        requirement: data.requirement,
+        requirement,
         urgency: data.type === "emergency" ? "urgent" : "normal",
         status: "NEW",
         locale: data.locale || "en",
@@ -289,7 +314,7 @@ export async function createPublicBooking(input: PublicBookingInput, ip: string,
           preferredTime: data.preferredTime || existing.preferredTime,
           frequency: data.frequency || existing.frequency,
           amcReference: data.amcReference || existing.amcReference,
-          requirement: data.requirement,
+          requirement,
           photos: JSON.stringify(photoKeys.length ? photoKeys : parseJson<string[]>(existing.photos, [])),
         },
       });
@@ -337,7 +362,7 @@ export async function createPublicBooking(input: PublicBookingInput, ip: string,
       preferredTime: data.preferredTime || null,
       frequency: data.frequency,
       amcReference: data.amcReference,
-      requirement: data.requirement,
+          requirement,
       photos: JSON.stringify(photoKeys),
       status: "requested",
       locale: data.locale || "en",
@@ -398,10 +423,10 @@ export async function createPublicBooking(input: PublicBookingInput, ip: string,
     name: data.name,
     phone: data.phone,
     email,
-    serviceLabel: service?.slug || data.serviceSlug || null,
+    serviceLabel: servicesLine || service?.slug || selection.primarySlug || null,
     locationLabel: location?.slug || data.locationSlug || null,
     cityArea: [data.city, data.area].filter(Boolean).join(" · ") || null,
-    requirement: data.requirement,
+    requirement,
     locale: data.locale || "en",
     bookingNumber: booking.number,
   });

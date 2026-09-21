@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";
 import { Button } from "@/components/ui/Button";
 import { FormGroup, FormShell, fieldControlClass, fieldLabelClass } from "@/components/public/FormShell";
+import { ServiceModeField } from "@/components/forms/ServiceModeField";
 import { formStart } from "@/lib/analytics/client";
 import { getAttributionForSubmit } from "@/lib/attribution/client";
 import { pushDataLayer } from "@/lib/analytics/datalayer";
@@ -59,6 +60,12 @@ export function LeadForm({
     setStatus("idle");
     try {
       const attribution = getAttributionForSubmit();
+      const serviceSlugs = formData
+        .getAll("serviceSlugs")
+        .map((v) => String(v || "").trim())
+        .filter(Boolean);
+      const serviceOther = String(formData.get("serviceOther") || "").trim() || undefined;
+      const serviceSlug = String(formData.get("serviceSlug") || "").trim() || serviceSlugs[0] || undefined;
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -66,7 +73,9 @@ export function LeadForm({
           name: String(formData.get("name") || ""),
           phone: String(formData.get("phone") || ""),
           email: String(formData.get("email") || ""),
-          serviceSlug: String(formData.get("serviceSlug") || "") || undefined,
+          serviceSlug,
+          serviceSlugs: serviceSlugs.length ? serviceSlugs : undefined,
+          serviceOther,
           locationSlug: String(formData.get("locationSlug") || "") || undefined,
           propertyType: String(formData.get("propertyType") || "") || undefined,
           city: String(formData.get("cityArea") || "").trim() || undefined,
@@ -137,12 +146,18 @@ export function LeadForm({
           <Field id="email" name="email" label={t("email")} type="email" error={fieldErrors.email} />
         </FormGroup>
         <FormGroup legend={t("groupJob")}>
-          <Select
-            id="serviceSlug"
-            name="serviceSlug"
-            label={t("service")}
-            defaultValue={defaultService}
-            options={[{ value: "", label: t("select") }, ...services.map((s) => ({ value: s.slug, label: s.name }))]}
+          <ServiceModeField
+            idPrefix={`${mode}-lead`}
+            services={services}
+            defaultSlug={defaultService}
+            error={fieldErrors.serviceSlug || fieldErrors.serviceOther}
+            labels={{
+              service: t("service"),
+              chooseOur: t("serviceChooseOur"),
+              writeOwn: t("serviceWriteOwn"),
+              writePlaceholder: t("serviceWritePlaceholder"),
+              pickOne: t("servicePickOne"),
+            }}
           />
           <Select
             id="locationSlug"

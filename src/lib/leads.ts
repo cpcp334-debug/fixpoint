@@ -8,6 +8,11 @@ import { emitDomainEventSafe } from "@/lib/automation/emit";
 import { attributionToColumns, sanitizeAttribution } from "@/lib/attribution/shared";
 import { pickI18n } from "@/lib/utils";
 import { notifyStaffAlert } from "@/lib/mail/staff-alert";
+import {
+  formatServicesLine,
+  prependServicesToRequirement,
+  resolveServiceSelection,
+} from "@/lib/forms/service-selection";
 
 export const leadSchema = z.object({
   name: z.string().trim().min(2).max(120),
@@ -15,6 +20,8 @@ export const leadSchema = z.object({
   email: z.string().trim().max(200).optional(),
   whatsapp: z.string().trim().min(8).max(20).optional(),
   serviceSlug: z.string().optional(),
+  serviceSlugs: z.array(z.string().trim().min(1).max(80)).max(20).optional(),
+  serviceOther: z.string().trim().max(200).optional(),
   locationSlug: z.string().optional(),
   propertyType: z.string().optional(),
   city: z
@@ -64,6 +71,11 @@ export async function createLead(input: LeadInput, ip: string) {
   }
 
   const data = parsed.data;
+  const selection = resolveServiceSelection({
+    serviceSlug: data.serviceSlug,
+    serviceSlugs: data.serviceSlugs,
+    serviceOther: data.serviceOther,
+  });
   if (data.source === "booking") {
     return createPublicBooking(
       {
@@ -72,7 +84,9 @@ export async function createLead(input: LeadInput, ip: string) {
         phone: data.phone,
         whatsapp: data.whatsapp,
         email: data.email,
-        serviceSlug: data.serviceSlug,
+        serviceSlug: selection.primarySlug,
+        serviceSlugs: selection.slugs.length ? selection.slugs : undefined,
+        serviceOther: selection.other,
         locationSlug: data.locationSlug,
         city: data.city,
         area: data.area,
@@ -100,12 +114,25 @@ export async function createLead(input: LeadInput, ip: string) {
     return { ok: true as const, duplicate: true, id: recent.id };
   }
 
-  const service = data.serviceSlug
-    ? await prisma.service.findFirst({ where: { slug: data.serviceSlug, status: "active" } })
+  const locale = data.locale === "ar" ? "ar" : "en";
+  const service = selection.primarySlug
+    ? await prisma.service.findFirst({ where: { slug: selection.primarySlug, status: "active" } })
     : null;
   const location = data.locationSlug
     ? await prisma.location.findFirst({ where: { slug: data.locationSlug, status: "active" } })
     : null;
+
+  const svcNames: string[] = [];
+  for (const slug of selection.slugs) {
+    const row = await prisma.service.findFirst({
+      where: { slug, status: "active" },
+      include: { translations: true },
+    });
+    const name = row ? pickI18n(row.translations, locale)?.name : null;
+    svcNames.push(name || slug);
+  }
+  const servicesLine = formatServicesLine(svcNames, selection.other);
+  const requirement = prependServicesToRequirement(data.requirement, servicesLine);
 
   const attrCols = attributionToColumns(sanitizeAttribution(data.attribution));
 
@@ -120,7 +147,7 @@ export async function createLead(input: LeadInput, ip: string) {
       locationId: location?.id,
       propertyType: data.propertyType || null,
       city: data.city || null,
-      requirement: data.requirement,
+      requirement,
       urgency: data.urgency || "normal",
       status: data.source === "quote" ? "QUOTATION" : "NEW",
       locale: data.locale || "en",
@@ -138,7 +165,7 @@ export async function createLead(input: LeadInput, ip: string) {
       action: "lead.create",
       entity: "Lead",
       entityId: lead.id,
-      meta: JSON.stringify({ source: data.source, ip }),
+      meta: JSON.stringify({ source: data.source, ip, services: selection.slugs, serviceOther: selection.other || null }),
     },
   });
 
@@ -158,15 +185,7 @@ export async function createLead(input: LeadInput, ip: string) {
   });
 
   if (data.source === "quote" || data.source === "contact") {
-    const locale = data.locale === "ar" ? "ar" : "en";
-    let svcName: string | null = null;
     let locName: string | null = null;
-    if (service?.id) {
-      const st = await prisma.serviceI18n.findFirst({
-        where: { serviceId: service.id, locale },
-      });
-      svcName = st?.name || null;
-    }
     if (location?.id) {
       const lt = await prisma.locationI18n.findFirst({
         where: { locationId: location.id, locale },
@@ -179,10 +198,10 @@ export async function createLead(input: LeadInput, ip: string) {
       name: data.name,
       phone: data.phone,
       email: data.email,
-      serviceLabel: svcName || data.serviceSlug || null,
+      serviceLabel: servicesLine || selection.primarySlug || null,
       locationLabel: locName || data.locationSlug || null,
       cityArea: [data.city, data.area].filter(Boolean).join(" · ") || null,
-      requirement: data.requirement,
+      requirement,
       locale,
     });
     if (!mail.sent) {

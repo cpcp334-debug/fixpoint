@@ -25,6 +25,15 @@ export async function POST(request: Request) {
         whatsapp: str(form, "whatsapp"),
         email: str(form, "email"),
         serviceSlug: str(form, "serviceSlug"),
+        serviceSlugs: (() => {
+          const slugs = form
+            .getAll("serviceSlugs")
+            .map((v) => String(v || "").trim())
+            .filter(Boolean)
+            .slice(0, 20);
+          return slugs.length ? slugs : undefined;
+        })(),
+        serviceOther: str(form, "serviceOther"),
         locationSlug: str(form, "locationSlug"),
         city: str(form, "city"),
         area: str(form, "area"),

@@ -6,6 +6,7 @@ import { useRouter } from "@/i18n/routing";
 import type { PublicBookingType } from "@/lib/bookings";
 import { Button } from "@/components/ui/Button";
 import { FormGroup, FormShell, fieldControlClass, fieldLabelClass } from "@/components/public/FormShell";
+import { ServiceModeField } from "@/components/forms/ServiceModeField";
 import { formStart } from "@/lib/analytics/client";
 import { getAttributionForSubmit } from "@/lib/attribution/client";
 
@@ -122,11 +123,17 @@ export function BookingForm({
           <Field id="bk-email" name="email" label={labels.email} type="email" />
         </FormGroup>
         <FormGroup legend={t("groupJob")}>
-          <Select
-            id="bk-service"
-            name="serviceSlug"
-            label={labels.service}
-            options={[{ value: "", label: labels.select }, ...services.map((s) => ({ value: s.slug, label: s.name }))]}
+          <ServiceModeField
+            idPrefix={`bk-${type}`}
+            services={services}
+            error={fieldErrors.serviceSlug || fieldErrors.serviceOther}
+            labels={{
+              service: labels.service,
+              chooseOur: t("serviceChooseOur"),
+              writeOwn: t("serviceWriteOwn"),
+              writePlaceholder: t("serviceWritePlaceholder"),
+              pickOne: t("servicePickOne"),
+            }}
           />
           <Select
             id="bk-emirate"
