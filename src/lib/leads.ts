@@ -7,6 +7,7 @@ import { scoreLeadSafe } from "@/lib/quality/run";
 import { emitDomainEventSafe } from "@/lib/automation/emit";
 import { attributionToColumns, sanitizeAttribution } from "@/lib/attribution/shared";
 import { pickI18n } from "@/lib/utils";
+import { notifyStaffAlert } from "@/lib/mail/staff-alert";
 
 export const leadSchema = z.object({
   name: z.string().trim().min(2).max(120),
@@ -16,8 +17,18 @@ export const leadSchema = z.object({
   serviceSlug: z.string().optional(),
   locationSlug: z.string().optional(),
   propertyType: z.string().optional(),
-  city: z.string().trim().min(2).max(120).optional(),
-  area: z.string().trim().min(2).max(120).optional(),
+  city: z
+    .string()
+    .trim()
+    .max(120)
+    .optional()
+    .transform((v) => (v && v.length >= 1 ? v : undefined)),
+  area: z
+    .string()
+    .trim()
+    .max(120)
+    .optional()
+    .transform((v) => (v && v.length >= 1 ? v : undefined)),
   requirement: z.string().trim().min(8).max(4000),
   urgency: z.enum(["normal", "urgent"]).optional(),
   preferredDate: z.string().optional(),
@@ -145,6 +156,36 @@ export async function createLead(input: LeadInput, ip: string) {
     subjectId: lead.id,
     occurrenceKey: "new",
   });
+
+  if (data.source === "quote" || data.source === "contact") {
+    const locale = data.locale === "ar" ? "ar" : "en";
+    let svcName: string | null = null;
+    let locName: string | null = null;
+    if (service?.id) {
+      const st = await prisma.serviceI18n.findFirst({
+        where: { serviceId: service.id, locale },
+      });
+      svcName = st?.name || null;
+    }
+    if (location?.id) {
+      const lt = await prisma.locationI18n.findFirst({
+        where: { locationId: location.id, locale },
+      });
+      locName = lt?.name || null;
+    }
+    void notifyStaffAlert({
+      kind: data.source === "quote" ? "quote" : "contact",
+      id: lead.id,
+      name: data.name,
+      phone: data.phone,
+      email: data.email,
+      serviceLabel: svcName || data.serviceSlug || null,
+      locationLabel: locName || data.locationSlug || null,
+      cityArea: [data.city, data.area].filter(Boolean).join(" · ") || null,
+      requirement: data.requirement,
+      locale,
+    });
+  }
 
   return { ok: true as const, id: lead.id };
 }

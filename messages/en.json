@@ -285,6 +285,7 @@
     "email": "Email",
     "service": "Service",
     "location": "Emirate",
+    "cityArea": "City / area",
     "property": "Property type",
     "message": "Requirement",
     "urgency": "Urgency",

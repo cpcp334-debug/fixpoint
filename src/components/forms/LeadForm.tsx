@@ -69,6 +69,7 @@ export function LeadForm({
           serviceSlug: String(formData.get("serviceSlug") || "") || undefined,
           locationSlug: String(formData.get("locationSlug") || "") || undefined,
           propertyType: String(formData.get("propertyType") || "") || undefined,
+          city: String(formData.get("cityArea") || "").trim() || undefined,
           requirement: String(formData.get("requirement") || ""),
           urgency: (formData.get("urgency") as "normal" | "urgent") || "normal",
           preferredDate: String(formData.get("preferredDate") || "") || undefined,
@@ -150,6 +151,7 @@ export function LeadForm({
             defaultValue={defaultLocation}
             options={[{ value: "", label: t("select") }, ...locations.map((s) => ({ value: s.slug, label: s.name }))]}
           />
+          <Field id="cityArea" name="cityArea" label={t("cityArea")} />
           {mode !== "contact" ? (
             <Select
               id="propertyType"

@@ -106,6 +106,7 @@
     "mysql2": "^3.24.4",
     "next": "16.3.4",
     "next-intl": "^4.14.2",
+    "nodemailer": "^10.0.10",
     "openai": "^7.10.0",
     "pdfkit": "^0.20.2",
     "pg": "^8.23.0",
@@ -119,6 +120,7 @@
     "zod": "^4.5.4"
   },
   "devDependencies": {
+    "@types/nodemailer": "^8.0.2",
     "eslint": "^9",
     "eslint-config-next": "16.3.4"
   }

@@ -8,6 +8,7 @@ import { stampVisitor, trackServer } from "@/lib/analytics/server";
 import { scoreLeadSafe } from "@/lib/quality/run";
 import { emitDomainEventSafe } from "@/lib/automation/emit";
 import { attributionToColumns, sanitizeAttribution } from "@/lib/attribution/shared";
+import { notifyStaffAlert } from "@/lib/mail/staff-alert";
 import { assertTechnicianAssignmentAllowed } from "@/lib/automation/assign";
 import { loadSubjectFacts } from "@/lib/automation/subject";
 import { mkdir, writeFile } from "node:fs/promises";
@@ -389,6 +390,20 @@ export async function createPublicBooking(input: PublicBookingInput, ip: string,
     trigger: "BOOKING_REQUESTED",
     subjectId: booking.id,
     occurrenceKey: "requested",
+  });
+
+  void notifyStaffAlert({
+    kind: "booking",
+    id: leadId || booking.id,
+    name: data.name,
+    phone: data.phone,
+    email,
+    serviceLabel: service?.slug || data.serviceSlug || null,
+    locationLabel: location?.slug || data.locationSlug || null,
+    cityArea: [data.city, data.area].filter(Boolean).join(" · ") || null,
+    requirement: data.requirement,
+    locale: data.locale || "en",
+    bookingNumber: booking.number,
   });
 
   return { ok: true as const, id: booking.id, number: booking.number };
