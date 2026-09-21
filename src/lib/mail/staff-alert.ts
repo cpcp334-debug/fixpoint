@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Staff alert email for new quote / booking / contact leads.
  * Supports Resend (preferred) or SMTP (e.g. Gmail / Hostinger).
  * Never throws to callers — lead/booking writes must succeed even if mail fails.
@@ -150,4 +150,22 @@ export async function notifyStaffAlert(payload: StaffAlertPayload): Promise<{ se
     const reason = error instanceof Error ? error.message.slice(0, 180) : "send_failed";
     return { sent: false, reason };
   }
+}
+
+export function diagnoseStaffMailConfig() {
+  const mode = (process.env.AUTOMATION_EMAIL_PROVIDER || "").trim().toLowerCase() ||
+    (process.env.RESEND_API_KEY ? "resend" : process.env.SMTP_HOST ? "smtp" : "none");
+  const key = (process.env.RESEND_API_KEY || "").trim();
+  const from = (process.env.MAIL_FROM || "").trim();
+  const to = (process.env.STAFF_ALERT_EMAIL || process.env.ADMIN_EMAIL || "").trim();
+  return {
+    providerSetting: (process.env.AUTOMATION_EMAIL_PROVIDER || "").trim() || "(empty)",
+    resolvedProvider: mode,
+    hasResendKey: Boolean(key),
+    resendKeyPrefix: key ? `${key.slice(0, 5)}…` : "(missing)",
+    hasMailFrom: Boolean(from),
+    mailFromPreview: from ? from.replace(/<[^>]+>/g, "<…>") : "(missing)",
+    hasStaffTo: Boolean(to || true),
+    staffToPreview: (to || "alnajahaldaem42@gmail.com").replace(/(.{3}).+(@.+)/, "$1…$2"),
+  };
 }

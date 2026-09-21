@@ -1,6 +1,7 @@
 export function AdminFlash({ ok, error }: { ok?: string; error?: string; n?: string }) {
   if (!ok && !error) return null;
   if (error) {
+    const decoded = decodeURIComponent(error);
     const message =
       error === "bulk_empty"
         ? "Select at least one row."
@@ -22,7 +23,9 @@ export function AdminFlash({ ok, error }: { ok?: string; error?: string; n?: str
                         ? "Country and emirate masters cannot be permanently deleted."
                         : error === "not_found"
                           ? "Record not found."
-                          : decodeURIComponent(error);
+                          : decoded.startsWith("mail_")
+                            ? `Staff email failed: ${decoded.slice(5) || "unknown"}`
+                            : decoded;
     return <p className="mb-4 rounded-md border border-line bg-white px-3 py-2 text-sm text-danger">{message}</p>;
   }
   const label =
@@ -40,6 +43,8 @@ export function AdminFlash({ ok, error }: { ok?: string; error?: string; n?: str
                 ? "Website content saved."
                 : ok === "site_published"
                   ? "Website content published."
-                  : "Saved.";
+                  : ok === "mail_sent"
+                    ? "Test staff email sent. Check inbox and Resend → Emails."
+                    : "Saved.";
   return <p className="mb-4 rounded-md border border-line bg-white px-3 py-2 text-sm text-accent">{label}</p>;
 }

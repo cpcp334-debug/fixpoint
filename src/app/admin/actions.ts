@@ -25,6 +25,7 @@ import { respondToReview, setQuestionModeration, setReviewModeration, verifyServ
 import { parseAudienceList, createInternalSop, updateInternalSop, setInternalSopStatus } from "@/lib/knowledge/sops";
 import { SOP_AUDIENCES } from "@/lib/knowledge/types";
 import { createAmcContract, updateAmcContract } from "@/lib/admin/amc";
+import { diagnoseStaffMailConfig, notifyStaffAlert } from "@/lib/mail/staff-alert";
 import {
   revalidatePublicArticle,
   revalidatePublicDiy,
@@ -182,6 +183,34 @@ export async function createLeadAction(formData: FormData) {
   await adminAudit({ actor: session.email, action: "lead.create", entity: "Lead", entityId: row.id });
   revalidatePath("/admin/leads");
   redirect(`/admin/leads/${row.id}?ok=created`);
+}
+
+
+export async function testStaffAlertEmailAction() {
+  const session = await actor("leads");
+  const diag = diagnoseStaffMailConfig();
+  const result = await notifyStaffAlert({
+    kind: "quote",
+    id: "admin-test",
+    name: "Admin Test",
+    phone: "0500000000",
+    email: session.email,
+    serviceLabel: "Email connectivity test",
+    locationLabel: "—",
+    cityArea: null,
+    requirement: "This is a manual admin test of staff alert email. If you received this, Resend/SMTP is working.",
+    locale: "en",
+  });
+  await adminAudit({
+    actor: session.email,
+    action: result.sent ? "mail.test_ok" : "mail.test_failed",
+    entity: "Lead",
+    entityId: "admin-test",
+    meta: { ...diag, reason: result.reason || null },
+  });
+  if (result.sent) redirect("/admin/leads?ok=mail_sent");
+  const reason = encodeURIComponent((result.reason || diag.resolvedProvider || "failed").slice(0, 120));
+  redirect(`/admin/leads?error=mail_${reason}`);
 }
 
 export async function assignLeadAction(formData: FormData) {

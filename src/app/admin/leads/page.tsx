@@ -1,7 +1,7 @@
 import { prisma } from "@/server/db";
 import { needPermission } from "@/lib/admin/guard";
 import { AdminBulkTable, AdminFlash, AdminListSummary, Field, Forbidden, PageHeader, PrimaryButton } from "@/components/admin/Ui";
-import { createLeadAction } from "@/app/admin/actions";
+import { createLeadAction, testStaffAlertEmailAction } from "@/app/admin/actions";
 import { pickI18n } from "@/lib/utils";
 import { createdAtRange, resolveWindow } from "@/lib/insights/dates";
 import { CRM_QUALIFIED } from "@/lib/insights/query";
@@ -92,6 +92,15 @@ export default async function LeadsPage({
         }
       />
       <AdminFlash ok={query.ok} error={query.error} />
+      <form action={testStaffAlertEmailAction} className="mb-4">
+        <button
+          type="submit"
+          className="rounded-md border border-line bg-white px-3 py-2 text-sm text-navy"
+        >
+          Test staff email
+        </button>
+        <span className="ml-2 text-xs text-ink/60">Sends one alert to STAFF_ALERT_EMAIL via Resend/SMTP</span>
+      </form>
       <form action={createLeadAction} className="mb-6 grid max-w-3xl gap-3 rounded-md border border-line bg-white p-4 sm:grid-cols-2">
         <Field label="Name" name="name" required />
         <Field label="Phone" name="phone" required />
