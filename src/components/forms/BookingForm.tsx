@@ -54,10 +54,30 @@ export function BookingForm({
 }) {
   const router = useRouter();
   const t = useTranslations("Quote");
-  const [status, setStatus] = useState<"idle" | "error" | "rateLimit">("idle");
+  const err = useTranslations("Errors");
+  const [status, setStatus] = useState<"idle" | "error" | "rateLimit" | "incomplete">("idle");
   const [pending, setPending] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+
+  function validate(formData: FormData) {
+    const next: Record<string, string> = {};
+    const name = String(formData.get("name") || "").trim();
+    const phone = String(formData.get("phone") || "").trim();
+    const requirement = String(formData.get("requirement") || "").trim();
+    if (name.length < 2) next.name = err("nameRequired");
+    if (phone.replace(/\D/g, "").length < 8) next.phone = err("phoneRequired");
+    if (requirement.length < 8) next.requirement = err("requirementRequired");
+    return next;
+  }
 
   async function onSubmit(formData: FormData) {
+    const clientErrors = validate(formData);
+    setFieldErrors(clientErrors);
+    if (Object.keys(clientErrors).length) {
+      setStatus("incomplete");
+      return;
+    }
+
     formData.set("type", type);
     formData.set("locale", locale);
     const attribution = getAttributionForSubmit();
@@ -68,6 +88,7 @@ export function BookingForm({
       const res = await fetch("/api/bookings", { method: "POST", body: formData });
       const result = await res.json();
       if (!result.ok || !result.number) {
+        setFieldErrors(result.fieldErrors || {});
         setStatus(result.error === "rateLimit" ? "rateLimit" : "error");
         return;
       }
@@ -95,8 +116,8 @@ export function BookingForm({
           <p className="rounded-[12px] bg-white px-4 py-3 text-sm text-navy">{labels.emergencyNote}</p>
         ) : null}
         <FormGroup legend={t("groupContact")}>
-          <Field id="bk-name" name="name" label={labels.name} required />
-          <Field id="bk-phone" name="phone" label={labels.phone} type="tel" required />
+          <Field id="bk-name" name="name" label={labels.name} required error={fieldErrors.name} />
+          <Field id="bk-phone" name="phone" label={labels.phone} type="tel" required error={fieldErrors.phone} />
           <Field id="bk-whatsapp" name="whatsapp" label={labels.whatsapp} type="tel" />
           <Field id="bk-email" name="email" label={labels.email} type="email" />
         </FormGroup>
@@ -150,8 +171,12 @@ export function BookingForm({
               name="requirement"
               required
               rows={5}
+              aria-invalid={Boolean(fieldErrors.requirement)}
               className={`${fieldControlClass} min-h-[8rem] py-2`}
             />
+            {fieldErrors.requirement ? (
+              <p className="mt-1 text-sm text-danger">{fieldErrors.requirement}</p>
+            ) : null}
           </div>
           <div>
             <label htmlFor="bk-photos" className={fieldLabelClass}>
@@ -174,6 +199,11 @@ export function BookingForm({
         <Button type="submit" disabled={pending}>
           {pending ? "..." : labels.submit}
         </Button>
+        {status === "incomplete" ? (
+          <p role="alert" className="text-sm text-danger">
+            {err("formIncomplete")}
+          </p>
+        ) : null}
         {status === "error" ? <p role="alert" className="text-sm text-danger">{labels.error}</p> : null}
         {status === "rateLimit" ? <p role="alert" className="text-sm text-danger">{labels.rateLimit}</p> : null}
       </form>
@@ -187,19 +217,29 @@ function Field({
   label,
   type = "text",
   required,
+  error,
 }: {
   id: string;
   name: string;
   label: string;
   type?: string;
   required?: boolean;
+  error?: string;
 }) {
   return (
     <div>
       <label htmlFor={id} className={fieldLabelClass}>
         {label}
       </label>
-      <input id={id} name={name} type={type} required={required} className={fieldControlClass} />
+      <input
+        id={id}
+        name={name}
+        type={type}
+        required={required}
+        aria-invalid={Boolean(error)}
+        className={fieldControlClass}
+      />
+      {error ? <p className="mt-1 text-sm text-danger">{error}</p> : null}
     </div>
   );
 }

@@ -31,7 +31,7 @@ export function LeadForm({
   const c = useTranslations("Contact");
   const err = useTranslations("Errors");
   const router = useRouter();
-  const [status, setStatus] = useState<"idle" | "ok" | "error" | "rateLimit">("idle");
+  const [status, setStatus] = useState<"idle" | "ok" | "error" | "rateLimit" | "incomplete">("idle");
   const [pending, setPending] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
@@ -40,9 +40,9 @@ export function LeadForm({
     const name = String(formData.get("name") || "").trim();
     const phone = String(formData.get("phone") || "").trim();
     const requirement = String(formData.get("requirement") || "").trim();
-    if (name.length < 2) next.name = err("required");
-    if (phone.length < 8) next.phone = err("required");
-    if (requirement.length < 8) next.requirement = err("required");
+    if (name.length < 2) next.name = err("nameRequired");
+    if (phone.replace(/\D/g, "").length < 8) next.phone = err("phoneRequired");
+    if (requirement.length < 8) next.requirement = err("requirementRequired");
     return next;
   }
 
@@ -50,7 +50,8 @@ export function LeadForm({
     const clientErrors = validate(formData);
     setFieldErrors(clientErrors);
     if (Object.keys(clientErrors).length) {
-      setStatus("error");
+      // Field warnings only — do not show the generic "could not send" server error.
+      setStatus("incomplete");
       return;
     }
 
@@ -201,6 +202,11 @@ export function LeadForm({
           {pending ? "..." : submitLabel}
         </Button>
         {status === "ok" ? <p role="status" className="text-sm text-accent">{success}</p> : null}
+        {status === "incomplete" ? (
+          <p role="alert" className="text-sm text-danger">
+            {err("formIncomplete")}
+          </p>
+        ) : null}
         {status === "error" ? <p role="alert" className="text-sm text-danger">{t("error")}</p> : null}
         {status === "rateLimit" ? <p role="alert" className="text-sm text-danger">{err("rateLimit")}</p> : null}
       </form>

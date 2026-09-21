@@ -478,6 +478,10 @@
   "Errors": {
     "required": "This field is required.",
     "invalid": "Please check this field.",
+    "nameRequired": "Please enter your name.",
+    "phoneRequired": "Please enter a valid phone or WhatsApp number (at least 8 digits).",
+    "requirementRequired": "Please describe what you need (at least 8 characters).",
+    "fixIncomplete": "Please fix the highlighted fields below.",
     "rateLimit": "Please wait a few minutes before sending another request."
   }
 }
