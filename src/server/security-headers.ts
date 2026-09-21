@@ -7,6 +7,7 @@ export type HeaderEnv = {
   NODE_ENV?: string;
   SITE_URL?: string;
   NEXT_PUBLIC_GA_ID?: string;
+  NEXT_PUBLIC_GTM_ID?: string;
 };
 
 export function isProductionEnv(env: HeaderEnv = process.env) {
@@ -38,13 +39,45 @@ export function hstsHeaderValue() {
   return "max-age=31536000; includeSubDomains";
 }
 
-function optionalAnalyticsHosts(env: HeaderEnv) {
+function googleMeasurementConfigured(env: HeaderEnv) {
   const ga = (env.NEXT_PUBLIC_GA_ID || "").trim();
-  if (!ga) return { script: [] as string[], connect: [] as string[], img: [] as string[] };
+  const gtm = (env.NEXT_PUBLIC_GTM_ID || "").trim();
+  return Boolean(ga || gtm);
+}
+
+/** Hosts required when GTM and/or GA4 measurement is enabled via env. */
+function optionalAnalyticsHosts(env: HeaderEnv) {
+  if (!googleMeasurementConfigured(env)) {
+    return {
+      script: [] as string[],
+      connect: [] as string[],
+      img: [] as string[],
+      frame: [] as string[],
+    };
+  }
   return {
-    script: ["https://www.googletagmanager.com", "https://www.google-analytics.com"],
-    connect: ["https://www.google-analytics.com", "https://analytics.google.com", "https://www.googletagmanager.com"],
-    img: ["https://www.google-analytics.com", "https://www.googletagmanager.com"],
+    script: [
+      "https://www.googletagmanager.com",
+      "https://www.google-analytics.com",
+      "https://www.googleadservices.com",
+      "https://www.google.com",
+    ],
+    connect: [
+      "https://www.google-analytics.com",
+      "https://analytics.google.com",
+      "https://www.googletagmanager.com",
+      "https://www.google.com",
+      "https://www.googleadservices.com",
+      "https://stats.g.doubleclick.net",
+    ],
+    img: [
+      "https://www.google-analytics.com",
+      "https://www.googletagmanager.com",
+      "https://www.google.com",
+      "https://www.googleadservices.com",
+      "https://googleads.g.doubleclick.net",
+    ],
+    frame: ["https://www.googletagmanager.com"],
   };
 }
 
@@ -56,6 +89,7 @@ export function buildContentSecurityPolicy(env: HeaderEnv = process.env) {
   const imgSrc = ["'self'", "data:", "blob:", ...analytics.img];
   const connectSrc = ["'self'", ...analytics.connect];
   const fontSrc = ["'self'"];
+  const frameSrc = ["'self'", ...analytics.frame];
 
   return [
     "default-src 'self'",
@@ -68,6 +102,7 @@ export function buildContentSecurityPolicy(env: HeaderEnv = process.env) {
     `img-src ${imgSrc.join(" ")}`,
     `font-src ${fontSrc.join(" ")}`,
     `connect-src ${connectSrc.join(" ")}`,
+    `frame-src ${frameSrc.join(" ")}`,
   ].join("; ");
 }
 

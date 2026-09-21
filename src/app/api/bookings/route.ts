@@ -37,6 +37,15 @@ export async function POST(request: Request) {
         locale: str(form, "locale") || "en",
         source: "booking",
         website: String(form.get("website") || ""),
+        attribution: (() => {
+          const raw = String(form.get("attribution") || "").trim();
+          if (!raw) return undefined;
+          try {
+            return JSON.parse(raw) as Record<string, unknown>;
+          } catch {
+            return undefined;
+          }
+        })(),
       };
       const parsed = publicBookingSchema.safeParse(raw);
       if (!parsed.success) return NextResponse.json({ ok: false, error: "invalid" }, { status: 400 });

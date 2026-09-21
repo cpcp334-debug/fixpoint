@@ -301,7 +301,12 @@
     "other": "Other",
     "groupContact": "Contact",
     "groupJob": "The job",
-    "groupSchedule": "Scheduling"
+    "groupSchedule": "Scheduling",
+    "receivedTitle": "Quote request received",
+    "receivedLead": "Thank you. Our team will review your request and contact you using the details you provided.",
+    "reference": "Request reference",
+    "notSpecified": "Not specified",
+    "returnHome": "Return to website"
   },
   "Booking": {
     "title": "Book a service",
@@ -432,10 +437,10 @@
     "cancelTitle": "Cancellation policy",
     "cookieTitle": "Cookie policy",
     "cookieBody": "This site uses essential cookies to run pages and remember language.",
-    "cookieAnalytics": "A first-party analytics cookie (alnajah_vid / alnajah_sid) measures page views and form activity so we can improve the service. It does not identify you until you submit a form. We do not use Google Analytics or other third-party trackers. Events are kept for 13 months.",
+    "cookieAnalytics": "A first-party analytics cookie (alnajah_vid / alnajah_sid) measures page views and form activity so we can improve the service. It does not identify you until you submit a form. When Google Tag Manager is enabled on this site, Google may also set measurement cookies used for Google Analytics 4 and Google Ads conversion measurement (for example to understand which ads led to a quote or booking request). We do not sell personal data. First-party visit events are kept for up to 13 months. You can turn off first-party visitor analytics below.",
     "cookieOptOut": "Turn off visitor analytics",
     "cookieOptOutDone": "Visitor analytics is off on this browser. Existing anonymous identifiers were cleared.",
-    "privacyAnalytics": "We also store anonymous first-party visit events (page, service, and form activity) for up to 13 months. These are not sold, are not advertising profiles, and do not include your name, phone, email, or AI message text. You can opt out on the cookie policy page."
+    "privacyAnalytics": "We also store anonymous first-party visit events (page, service, and form activity) for up to 13 months. These are not sold and do not include your name, phone, email, or AI message text. When Google measurement tags are enabled, Google Analytics 4 and Google Ads may process technical data (such as page URLs, device/browser signals, and ad click identifiers like gclid when present) to measure site use and advertising conversions. Campaign parameters and click IDs may be stored with a successful quote or booking so we can attribute paid traffic. You can opt out of first-party visitor analytics on the cookie policy page."
   },
   "Ai": {
     "title": "ALNAJAH AI",

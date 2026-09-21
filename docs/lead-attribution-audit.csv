@@ -1,0 +1,17 @@
+stage,system,field_or_signal,present,evidence,gap_for_ads
+Ad click,Google Ads,gclid/gbraid/wbraid in URL,possible_from_google,Not observed in site storage,Site does not read or persist click IDs
+Landing,Next.js,path + locale,yes,AnalyticsEvent.path / locale,No campaign params
+Session,first-party cookies,alnajah_vid / alnajah_sid,yes,cookie policy + ingest,Not linked to Google
+UTM,URL params,utm_source/medium/campaign/term/content,no,admin analytics note + privacy scrubber,Unknown / not captured
+Referrer,document.referrer,referrer,no,journey privacy blocks,Not stored
+Form start,AnalyticsEvent,QUOTE_START etc,yes,client.ts,Not a lead
+Lead create,Lead model,source quote|contact|ai|booking,yes,prisma Lead + /api/leads,source is form channel not campaign
+Lead create,Lead model,visitorId,optional,stampVisitor,Requires cookies already set
+Lead create,Lead model,utm/gclid columns,no,schema.prisma Lead,Cannot offline-import to Google
+Booking create,Booking model,number + visitorId,yes,BookingForm redirect,Thank-you usable once tagged
+Lead quality,LeadScore,score/class/quarantine,yes,schema + scoreLeadSafe,Useful secondary/offline later
+Ops notify,AdminNotification / automation,NEW_LEAD,partial,in_app always; email/whatsapp need providers,Local AUTOMATION_*_PROVIDER ABSENT
+Quote ops,Quote model,leadId link,yes,schema,Manual/ops — not auto from public form price
+Invoice/Payment,Payment.status,unconfigured default,yes,schema Payment,ROAS not ready
+Revenue → Ads,offline conversion / value,gclid + value,no,—,Broken chain
+Privacy gate,Legal copy,third-party trackers forbidden,yes,messages en.json cookieAnalytics,Must update before Google tags

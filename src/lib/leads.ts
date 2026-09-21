@@ -5,6 +5,8 @@ import { createPublicBooking } from "@/lib/bookings";
 import { stampVisitor, trackServer } from "@/lib/analytics/server";
 import { scoreLeadSafe } from "@/lib/quality/run";
 import { emitDomainEventSafe } from "@/lib/automation/emit";
+import { attributionToColumns, sanitizeAttribution } from "@/lib/attribution/shared";
+import { pickI18n } from "@/lib/utils";
 
 export const leadSchema = z.object({
   name: z.string().trim().min(2).max(120),
@@ -25,6 +27,7 @@ export const leadSchema = z.object({
   website: z.string().optional(),
   photoIds: z.array(z.string().min(1).max(40)).max(5).optional(),
   aiSummary: z.string().max(2000).optional(),
+  attribution: z.record(z.string(), z.unknown()).optional(),
 });
 
 export type LeadInput = z.infer<typeof leadSchema>;
@@ -93,6 +96,8 @@ export async function createLead(input: LeadInput, ip: string) {
     ? await prisma.location.findFirst({ where: { slug: data.locationSlug, status: "active" } })
     : null;
 
+  const attrCols = attributionToColumns(sanitizeAttribution(data.attribution));
+
   const lead = await prisma.lead.create({
     data: {
       source: data.source,
@@ -113,6 +118,7 @@ export async function createLead(input: LeadInput, ip: string) {
       ...(data.area ? { area: data.area } : {}),
       ...(data.photoIds?.length ? { photos: JSON.stringify(data.photoIds) } : {}),
       ...(data.aiSummary ? { aiSummary: data.aiSummary } : {}),
+      ...attrCols,
     },
   });
 
@@ -141,6 +147,24 @@ export async function createLead(input: LeadInput, ip: string) {
   });
 
   return { ok: true as const, id: lead.id };
+}
+
+/** Public quote thank-you lookup — no PII returned. */
+export async function getPublicQuoteReceipt(id: string, locale: string) {
+  const row = await prisma.lead.findUnique({
+    where: { id },
+    include: {
+      service: { include: { translations: true } },
+      location: { include: { translations: true } },
+    },
+  });
+  if (!row || row.source !== "quote") return null;
+  return {
+    id: row.id,
+    serviceName: row.service ? pickI18n(row.service.translations, locale)?.name : undefined,
+    emirateName: row.location ? pickI18n(row.location.translations, locale)?.name : undefined,
+    locale: row.locale,
+  };
 }
 
 export async function updateAiLead(id: string, input: Partial<LeadInput>) {
@@ -176,3 +200,4 @@ export async function updateAiLead(id: string, input: Partial<LeadInput>) {
   });
   return { ok: true as const, id };
 }
+

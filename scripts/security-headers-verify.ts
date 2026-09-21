@@ -54,6 +54,12 @@ async function main() {
 
   const cspWithGa = buildContentSecurityPolicy({ NODE_ENV: "production", NEXT_PUBLIC_GA_ID: "G-TEST" });
   assert(cspWithGa.includes("googletagmanager.com"), "GA hosts only when configured");
+  const cspWithGtm = buildContentSecurityPolicy({ NODE_ENV: "production", NEXT_PUBLIC_GTM_ID: "GTM-TEST" });
+  assert(cspWithGtm.includes("googletagmanager.com"), "GTM hosts when GTM configured");
+  assert(cspWithGtm.includes("frame-src"), "GTM CSP includes frame-src");
+  assert(cspWithGtm.includes("googleadservices.com"), "Ads hosts for GTM conversions");
+  const cspBare = buildContentSecurityPolicy({ NODE_ENV: "production" });
+  assert(!cspBare.includes("googletagmanager.com"), "no Google hosts without env");
 
   // HSTS
   assert(shouldSendHsts({ NODE_ENV: "production", SITE_URL: "https://example.com" }), "HSTS prod https");

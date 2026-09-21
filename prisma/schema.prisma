@@ -663,6 +663,15 @@ model Lead {
   preferredDate   String?
   preferredTime   String?
   locale          String     @default("en")
+  utmSource       String?
+  utmMedium       String?
+  utmCampaign     String?
+  utmTerm         String?
+  utmContent      String?
+  gclid           String?
+  gbraid          String?
+  wbraid          String?
+  landingPath     String?    @db.Text
   visitorId       String?
   createdAt       DateTime   @default(now())
   updatedAt       DateTime   @updatedAt
@@ -680,6 +689,8 @@ model Lead {
   @@index([status])
   @@index([serviceId])
   @@index([locationId])
+  @@index([gclid])
+  @@index([utmSource])
 }
 
 model LeadScore {
@@ -1000,6 +1011,15 @@ model Booking {
   status           BookingStatus  @default(requested)
   notes String @default("") @db.Text
   locale           String         @default("en")
+  utmSource        String?
+  utmMedium        String?
+  utmCampaign      String?
+  utmTerm          String?
+  utmContent       String?
+  gclid            String?
+  gbraid           String?
+  wbraid           String?
+  landingPath      String?        @db.Text
   visitorId        String?
   createdAt        DateTime       @default(now())
   updatedAt        DateTime       @updatedAt
@@ -1018,6 +1038,8 @@ model Booking {
   invoices         Invoice[]
 
   @@index([visitorId])
+  @@index([gclid])
+  @@index([utmSource])
   @@index([leadId])
   @@index([customerId])
   @@index([technicianId])
@@ -1279,6 +1301,15 @@ model Visitor {
   lastSeenAt DateTime         @default(now())
   locale     String?
   optedOut   Boolean          @default(false)
+  utmSource  String?
+  utmMedium  String?
+  utmCampaign String?
+  utmTerm    String?
+  utmContent String?
+  gclid      String?
+  gbraid     String?
+  wbraid     String?
+  landingPath String?         @db.Text
   customerId String?
   sessions   VisitSession[]
   events     AnalyticsEvent[]
@@ -1692,3 +1723,4 @@ model SiteShellDocument {
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
 }
+

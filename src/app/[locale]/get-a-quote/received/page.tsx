@@ -1,7 +1,7 @@
 import { brandName } from "@/config/site";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { getPublicBookingReceipt } from "@/lib/bookings";
+import { getPublicQuoteReceipt } from "@/lib/leads";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { ButtonLink } from "@/components/ui/Button";
@@ -13,17 +13,17 @@ import { ConversionDataLayer } from "@/components/analytics/ConversionDataLayer"
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "Booking" });
+  const t = await getTranslations({ locale, namespace: "Quote" });
   return buildMetadata({
     locale,
     title: `${t("receivedTitle")} | ${brandName(locale)}`,
     description: t("receivedLead"),
-    path: "/book-a-service/received",
+    path: "/get-a-quote/received",
     index: false,
   });
 }
 
-export default async function BookingReceivedPage({
+export default async function QuoteReceivedPage({
   params,
   searchParams,
 }: {
@@ -34,9 +34,9 @@ export default async function BookingReceivedPage({
   const { ref } = await searchParams;
   setRequestLocale(locale);
   if (!ref) notFound();
-  const receipt = await getPublicBookingReceipt(ref, locale);
+  const receipt = await getPublicQuoteReceipt(ref, locale);
   if (!receipt) notFound();
-  const t = await getTranslations("Booking");
+  const t = await getTranslations("Quote");
   const nav = await getTranslations("Nav");
   const cta = await getTranslations("Cta");
 
@@ -47,24 +47,28 @@ export default async function BookingReceivedPage({
           label={nav("breadcrumb")}
           items={[
             { href: "/", label: nav("home") },
-            { href: "/book-a-service", label: t("title") },
-            { href: "/book-a-service/received", label: t("receivedTitle") },
+            { href: "/get-a-quote", label: t("title") },
+            { href: "/get-a-quote/received", label: t("receivedTitle") },
           ]}
         />
       }
     >
-      <ConversionDataLayer event="booking_submit_success" refId={receipt.number} locale={locale} />
+      <ConversionDataLayer event="quote_submit_success" refId={receipt.id} locale={locale} />
       <PublicHero locale={locale} kicker={t("title")} title={t("receivedTitle")} lead={t("receivedLead")} compact />
       <Section>
         <dl className="mx-auto grid max-w-xl gap-3 rounded-xl border border-line bg-white p-5 text-sm">
-          <Row label={t("reference")} value={receipt.number} />
-          <Row label={t("serviceLabel")} value={receipt.serviceName || t("notSpecified")} />
-          <Row label={t("typeLabel")} value={t(`type_${receipt.type}`)} />
-          <Row label={t("emirate")} value={receipt.emirateName || t("notSpecified")} />
-          <Row label={t("city")} value={receipt.city || t("notSpecified")} />
-          <Row label={t("area")} value={receipt.area || t("notSpecified")} />
-          <Row label={t("date")} value={receipt.preferredDate || t("notSpecified")} />
-          <Row label={t("time")} value={receipt.preferredTime || t("notSpecified")} />
+          <div className="grid gap-1 sm:grid-cols-3">
+            <dt className="text-muted">{t("reference")}</dt>
+            <dd className="font-medium text-navy sm:col-span-2">{receipt.id.slice(0, 12)}…</dd>
+          </div>
+          <div className="grid gap-1 sm:grid-cols-3">
+            <dt className="text-muted">{t("service")}</dt>
+            <dd className="font-medium text-navy sm:col-span-2">{receipt.serviceName || t("notSpecified")}</dd>
+          </div>
+          <div className="grid gap-1 sm:grid-cols-3">
+            <dt className="text-muted">{t("location")}</dt>
+            <dd className="font-medium text-navy sm:col-span-2">{receipt.emirateName || t("notSpecified")}</dd>
+          </div>
         </dl>
         <div className="mx-auto mt-8 max-w-xl">
           <CtaRow
@@ -77,10 +81,8 @@ export default async function BookingReceivedPage({
             }}
             whatsappText={[
               "Hello Al Najah Al Daem · Fixpoint",
-              `Request ${receipt.number}`,
+              "Quote request received",
               receipt.serviceName ? `Service: ${receipt.serviceName}` : "",
-              `Type: ${receipt.type}`,
-              "This is a booking request. The preferred time is not an appointment.",
             ]
               .filter(Boolean)
               .join(". ")}
@@ -93,14 +95,5 @@ export default async function BookingReceivedPage({
         </div>
       </Section>
     </PageShell>
-  );
-}
-
-function Row({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="grid gap-1 sm:grid-cols-3">
-      <dt className="text-muted">{label}</dt>
-      <dd className="font-medium text-navy sm:col-span-2">{value}</dd>
-    </div>
   );
 }

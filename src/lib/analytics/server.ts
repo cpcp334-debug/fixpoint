@@ -6,6 +6,12 @@ import {
   sanitizePath,
   type AnalyticsEventName,
 } from "@/lib/analytics/types";
+import {
+  attributionToColumns,
+  mergeFirstTouch,
+  sanitizeAttribution,
+} from "@/lib/attribution/shared";
+import type { AttributionPayload } from "@/lib/attribution/types";
 
 export type VisitorContext = { visitorId: string; sessionId: string };
 
@@ -117,4 +123,47 @@ export async function trackServer(
 export async function pruneExpiredAnalytics() {
   const cutoff = new Date(Date.now() - 397 * 24 * 60 * 60 * 1000);
   await prisma.analyticsEvent.deleteMany({ where: { createdAt: { lt: cutoff } } });
+}
+
+/** First-touch only: fill blank Visitor attribution fields from sanitized payload. */
+export async function stampVisitorAttribution(raw: unknown) {
+  try {
+    const incoming = sanitizeAttribution(raw);
+    if (!incoming) return null;
+    const ctx = await peekVisitor();
+    if (!ctx) return null;
+    const row = await prisma.visitor.findUnique({
+      where: { id: ctx.visitorId },
+      select: {
+        utmSource: true,
+        utmMedium: true,
+        utmCampaign: true,
+        utmTerm: true,
+        utmContent: true,
+        gclid: true,
+        gbraid: true,
+        wbraid: true,
+        landingPath: true,
+      },
+    });
+    if (!row) return null;
+    const existing: AttributionPayload = {
+      ...(row.utmSource ? { utm_source: row.utmSource } : {}),
+      ...(row.utmMedium ? { utm_medium: row.utmMedium } : {}),
+      ...(row.utmCampaign ? { utm_campaign: row.utmCampaign } : {}),
+      ...(row.utmTerm ? { utm_term: row.utmTerm } : {}),
+      ...(row.utmContent ? { utm_content: row.utmContent } : {}),
+      ...(row.gclid ? { gclid: row.gclid } : {}),
+      ...(row.gbraid ? { gbraid: row.gbraid } : {}),
+      ...(row.wbraid ? { wbraid: row.wbraid } : {}),
+      ...(row.landingPath ? { landing_path: row.landingPath } : {}),
+    };
+    const merged = mergeFirstTouch(existing, incoming);
+    if (!merged) return null;
+    const cols = attributionToColumns(merged);
+    await prisma.visitor.update({ where: { id: ctx.visitorId }, data: cols });
+    return ctx;
+  } catch {
+    return null;
+  }
 }

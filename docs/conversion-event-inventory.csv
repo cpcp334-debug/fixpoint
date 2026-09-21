@@ -1,0 +1,29 @@
+event_name,layer,source_file_or_live,fires_when,creates_crm_record,suggested_ads_role,notes
+PAGE_VIEW,first_party_client,src/lib/analytics/types.ts + Tracker,path change after analytics start,no,micro,Deferred gesture/15s
+SERVICE_VIEW,first_party_client,viewsForPath,service slug path,no,micro,
+LOCATION_VIEW,first_party_client,viewsForPath,location path,no,micro,
+SERVICE_LOCATION_VIEW,first_party_client,viewsForPath,service/location path,no,micro,
+DIY_VIEW,first_party_client,viewsForPath,diy path,no,micro,Do not Ads-optimize
+WHATSAPP_CLICK,first_party_client,client.ts click capture,wa.me click,no,micro_not_lead,WhatsApp click ≠ lead
+PHONE_CLICK,first_party_client,client.ts,tel: click,no,micro_not_call,Not a verified call
+EMAIL_CLICK,first_party_client,client.ts,mailto click,no,micro,
+SHARE,first_party_client,ShareButton,share,no,micro,
+QUOTE_START,first_party_client,LeadForm onFocusCapture,quote form focus once/session,no,micro_not_submit,Quote button/focus ≠ lead
+BOOKING_START,first_party_client,BookingForm/LeadForm,booking form focus,no,micro_not_submit,
+CONTACT_START,first_party_client,LeadForm contact,contact form focus,no,micro,
+SERVICE_LOCATION_QUOTE_START,first_party_client,types,SL quote start,no,micro,
+SERVICE_LOCATION_BOOKING_START,first_party_client,types,SL booking start,no,micro,
+SERVICE_LOCATION_WHATSAPP,first_party_client,types,SL WhatsApp,no,micro_not_lead,
+SERVICE_LOCATION_CALL,first_party_client,types,SL call click,no,micro_not_call,
+REVIEW_START / QUESTION_START,first_party_client,forms,focus,no,ignore_for_ads,
+QUOTE_SUBMIT,first_party_server,lib/leads.ts,Lead create source=quote,yes Lead,PRIMARY_CANDIDATE,No Google tag; inline success
+BOOKING_SUBMIT,first_party_server,lib/bookings.ts,public booking create,yes Booking,PRIMARY_CANDIDATE,Redirect to /received?ref=
+CONTACT_SUBMIT,first_party_server,lib/leads.ts,Lead source=contact,yes Lead,SECONDARY,Inline success
+AI_OPEN / AI_MESSAGE / AI_*,first_party_server,AI paths,chat usage,maybe ai lead,micro_unreliable,AI may be unconfigured
+PHOTO_UPLOAD,first_party_server,uploads,photo,no,micro,
+REVIEW_SUBMIT / QUESTION_SUBMIT,first_party_server,trust APIs,submit,yes trust rows,ignore_for_ads,
+gtag/GTM/GA4/AW conversion,google,LIVE ABSENT,n/a,n/a,NOT_INSTALLED,Blocker for Ads
+honeypot_ignored,server,lib/leads.ts website field,bot fill,no,MUST_NOT_CONVERT,Returns ok:true ignored
+lead_duplicate_short_circuit,server,lib/leads.ts,same phone+requirement <2m,no new row,DECIDE,Returns ok duplicate
+Google Ads page-load thank-you (quote),google,MISSING URL,n/a,n/a,NEEDED_OR_EVENT,"/get-a-quote/received absent"
+Google Ads page-load thank-you (booking),google,code+live pattern,/book-a-service/received?ref=,yes Booking,READY_FOR_TAG_AFTER_INSTALL,404 without ref

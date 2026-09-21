@@ -2,9 +2,12 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/routing";
 import { Button } from "@/components/ui/Button";
 import { FormGroup, FormShell, fieldControlClass, fieldLabelClass } from "@/components/public/FormShell";
 import { formStart } from "@/lib/analytics/client";
+import { getAttributionForSubmit } from "@/lib/attribution/client";
+import { pushDataLayer } from "@/lib/analytics/datalayer";
 
 type Mode = "quote" | "booking" | "contact";
 
@@ -27,6 +30,7 @@ export function LeadForm({
   const b = useTranslations("Booking");
   const c = useTranslations("Contact");
   const err = useTranslations("Errors");
+  const router = useRouter();
   const [status, setStatus] = useState<"idle" | "ok" | "error" | "rateLimit">("idle");
   const [pending, setPending] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
@@ -53,6 +57,7 @@ export function LeadForm({
     setPending(true);
     setStatus("idle");
     try {
+      const attribution = getAttributionForSubmit();
       const res = await fetch("/api/leads", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -70,6 +75,7 @@ export function LeadForm({
           locale,
           source: mode === "booking" ? "booking" : mode === "contact" ? "contact" : "quote",
           website: String(formData.get("website") || ""),
+          ...(attribution ? { attribution } : {}),
         }),
       });
       const result = await res.json();
@@ -78,7 +84,26 @@ export function LeadForm({
         setStatus(result.error === "rateLimit" ? "rateLimit" : "error");
         return;
       }
+      // Honeypot / ignored — never convert.
+      if (result.ignored) {
+        setFieldErrors({});
+        setStatus("ok");
+        return;
+      }
       setFieldErrors({});
+
+      if (mode === "quote" && result.id && !result.duplicate) {
+        router.push(`/get-a-quote/received?ref=${encodeURIComponent(result.id)}`);
+        return;
+      }
+
+      if (mode === "contact" && result.id && !result.duplicate) {
+        pushDataLayer("contact_submit_success", {
+          conversion_ref: String(result.id).slice(0, 80),
+          locale: locale === "ar" ? "ar" : "en",
+        });
+      }
+
       setStatus("ok");
     } catch {
       setStatus("error");

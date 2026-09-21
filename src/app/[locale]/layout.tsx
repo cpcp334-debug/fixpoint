@@ -1,6 +1,5 @@
 import type { ReactNode } from "react";
 import type { Viewport } from "next";
-import dynamic from "next/dynamic";
 import { notFound } from "next/navigation";
 import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
@@ -9,14 +8,11 @@ import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { DeferredAiWidget } from "@/components/ai/DeferredAiWidget";
+import { GoogleTagManager } from "@/components/analytics/GoogleTagManager";
+import { DeferredPublicAnalytics } from "@/components/analytics/DeferredPublicAnalytics";
+import { readGtmId } from "@/lib/analytics/gtm";
 import { getPublishedSiteShell, type HeaderShell } from "@/lib/site-shell";
 import "../globals.css";
-
-/** Analytics chunk stays off the initial home graph until after hydration. */
-const Tracker = dynamic(
-  () => import("@/components/analytics/Tracker").then((m) => ({ default: m.Tracker })),
-  { ssr: false },
-);
 
 /**
  * No next/font on the public locale shell.
@@ -47,6 +43,7 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const dir = locale === "ar" ? "rtl" : "ltr";
   const headerShell = (await getPublishedSiteShell("header", locale)) as HeaderShell | null;
+  const gtmId = readGtmId();
 
   return (
     <html lang={locale} dir={dir}>
@@ -61,12 +58,13 @@ export default async function LocaleLayout({
         />
       </head>
       <body className="min-h-full bg-white text-ink antialiased">
+        {gtmId ? <GoogleTagManager gtmId={gtmId} /> : null}
         <NextIntlClientProvider>
           <Header locale={locale} shell={headerShell} />
           <main id="main">{children}</main>
           <Footer locale={locale} />
           <DeferredAiWidget locale={locale} />
-          <Tracker />
+          <DeferredPublicAnalytics />
         </NextIntlClientProvider>
       </body>
     </html>

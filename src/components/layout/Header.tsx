@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { brandName } from "@/config/site";
@@ -7,15 +6,8 @@ import { Container } from "@/components/ui/Section";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { AiMark } from "@/components/ui/AiMark";
 import { LocaleSwitchLink } from "@/components/layout/LocaleSwitchLink";
+import { DeferredHeaderMobile } from "@/components/layout/DeferredHeaderMobile";
 import type { HeaderShell } from "@/lib/site-shell";
-
-const HeaderMobile = dynamic(
-  () => import("@/components/layout/HeaderMobile").then((m) => ({ default: m.HeaderMobile })),
-  {
-    ssr: false,
-    loading: () => <div className="ms-auto h-11 w-28 shrink-0 lg:hidden" aria-hidden />,
-  },
-);
 
 const links = [
   { href: "/services", key: "services" },
@@ -92,7 +84,7 @@ export async function Header({ locale, shell }: { locale: string; shell?: Header
           ) : null}
         </div>
 
-        <HeaderMobile
+        <DeferredHeaderMobile
           locale={locale}
           links={linkItems}
           aiHref={aiHref}

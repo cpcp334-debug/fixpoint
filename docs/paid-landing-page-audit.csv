@@ -1,0 +1,27 @@
+url,locale,type,http_status,approx_bytes,sample_ms,h1,has_quote_cta,has_whatsapp,has_tel,has_google_tags,paid_fit,notes
+https://fixpoint.ae/en,en,home,200,183618,971,Fixpoint home (brand),yes,yes,yes,no,weak_brand,"Apex / still 307; prefer /en"
+https://fixpoint.ae/ar,ar,home,200,197174,678,AR home,yes,yes,yes,no,weak_brand,RTL
+https://fixpoint.ae/en/get-a-quote,en,quote,200,134364,560,Get a free quote,yes,yes,yes,no,best_default,"Inline success only; honeypot present"
+https://fixpoint.ae/ar/get-a-quote,ar,quote,200,151355,872,AR quote title,yes,yes,yes,no,best_default,RTL quote form
+https://fixpoint.ae/en/book-a-service,en,booking,200,138696,646,Book a service,yes,yes,yes,no,strong,"Thank-you at /received?ref="
+https://fixpoint.ae/ar/book-a-service,ar,booking,200,155943,890,AR book title,yes,yes,yes,no,strong,RTL
+https://fixpoint.ae/en/contact,en,contact,200,138011,564,Contact,yes,yes,yes,no,secondary,Inline success
+https://fixpoint.ae/en/services,en,services_hub,200,112429,851,Services,yes,yes,yes,no,directory,Category links
+https://fixpoint.ae/en/services/electrical,en,service_category,200,102268,1119,Electrical Maintenance,yes,yes,yes,no,good_search_lp,
+https://fixpoint.ae/en/services/plumbing,en,service_category,200,93865,560,Plumbing Maintenance,yes,yes,yes,no,good_search_lp,
+https://fixpoint.ae/en/services/ac,en,service_category,200,93146,1079,AC / Air Conditioning Maintenance,yes,yes,yes,no,good_search_lp,
+https://fixpoint.ae/en/services/painting,en,service_category,200,,,Painting (hub),yes,yes,yes,no,good_search_lp,Linked from services
+https://fixpoint.ae/en/services/walls,en,service_category,200,,,Walls (hub),yes,yes,yes,no,good_search_lp,Linked from services
+https://fixpoint.ae/en/services/general-maintenance,en,service_category,200,,,General maintenance,yes,yes,yes,no,good_search_lp,Linked from services
+https://fixpoint.ae/en/electrical-inspection,en,service_page,200,99344,880,Electrical Inspection,yes,yes,yes,no,good_high_intent,
+https://fixpoint.ae/en/socket-repair,en,service_page,200,98688,1070,Socket Repair,yes,yes,yes,no,good_high_intent,
+https://fixpoint.ae/en/electrical-maintenance/dubai,en,service_location,200,154612,,Electrical Maintenance - Dubai,yes,yes,yes,no,best_geo_match,"Only if ServiceLocation.covered=true"
+https://fixpoint.ae/en/locations,en,locations_index,200,69205,478,Locations,yes,yes,yes,no,weak,Directory
+https://fixpoint.ae/en/locations/dubai,en,emirate_hub,200,1414663,3932,Dubai,yes,yes,yes,no,do_not_use,"~1.4MB HTML — poor Ads UX"
+https://fixpoint.ae/en/locations/sharjah,en,emirate_hub,200,1404972,4160,Sharjah,yes,yes,yes,no,do_not_use,~1.4MB
+https://fixpoint.ae/,en,apex,307,3,,"",,,,no,avoid_until_rewrite,"307 → /en (code wants rewrite)"
+https://fixpoint.ae/en/privacy-policy,en,legal,200,57925,415,Privacy policy,yes,yes,yes,no,not_lp,Mentions first-party only
+https://fixpoint.ae/en/cookie-policy,en,legal,200,58072,1483,Cookie policy,yes,yes,yes,no,not_lp,"States no Google Analytics"
+https://fixpoint.ae/en/book,en,missing,404,,,,,no,no,no,no,do_not_use,404
+https://fixpoint.ae/en/thank-you,en,missing,404,,,,,no,no,no,no,do_not_use,No generic thank-you
+blog_corpus_~119k_urls,en/ar,seo_blog,n/a,,,,,n/a,n/a,n/a,no,do_not_advertise,"Do not use as Ads LPs"

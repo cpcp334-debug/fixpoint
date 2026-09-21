@@ -1,0 +1,103 @@
+{
+  "audit": "conversion-tracking",
+  "date": "2026-09-20",
+  "domain": "https://fixpoint.ae",
+  "verdict": {
+    "googleAdsConversionTracking": "NOT_READY",
+    "firstPartyFunnel": "PARTIAL",
+    "crmLeadPersistence": "READY",
+    "budgetSafetyMeasurement": "NOT_READY"
+  },
+  "tags": {
+    "gtm": false,
+    "gtag": false,
+    "ga4": false,
+    "googleAdsAw": false,
+    "metaPixel": false,
+    "codeInjector": false,
+    "cspAllowlistIfGaId": true,
+    "firstPartyApiT": true
+  },
+  "legal": {
+    "cookieForbidsGoogleAnalytics": true,
+    "privacyNotAdvertisingProfiles": true,
+    "optOutFirstPartyOnly": true
+  },
+  "events": {
+    "client": [
+      "PAGE_VIEW",
+      "SERVICE_VIEW",
+      "LOCATION_VIEW",
+      "SERVICE_LOCATION_VIEW",
+      "DIY_VIEW",
+      "WHATSAPP_CLICK",
+      "PHONE_CLICK",
+      "EMAIL_CLICK",
+      "SHARE",
+      "QUOTE_START",
+      "BOOKING_START",
+      "SERVICE_LOCATION_QUOTE_START",
+      "SERVICE_LOCATION_BOOKING_START",
+      "SERVICE_LOCATION_WHATSAPP",
+      "SERVICE_LOCATION_CALL",
+      "REVIEW_START",
+      "QUESTION_START",
+      "CONTACT_START"
+    ],
+    "server": [
+      "AI_OPEN",
+      "AI_MESSAGE",
+      "AI_SERVICE_SUGGESTION",
+      "AI_HANDOVER",
+      "PHOTO_UPLOAD",
+      "QUOTE_SUBMIT",
+      "BOOKING_SUBMIT",
+      "CONTACT_SUBMIT",
+      "REVIEW_SUBMIT",
+      "QUESTION_SUBMIT"
+    ]
+  },
+  "primaryConversionCandidates": [
+    {
+      "id": "quote_lead",
+      "trigger": "POST /api/leads source=quote ok && !ignored",
+      "successUx": "inline",
+      "adsReady": false
+    },
+    {
+      "id": "booking_request",
+      "trigger": "GET /book-a-service/received?ref= valid receipt",
+      "successUx": "dedicated_noindex",
+      "adsReady": false
+    }
+  ],
+  "notConversions": [
+    "WHATSAPP_CLICK",
+    "PHONE_CLICK",
+    "QUOTE_START",
+    "BOOKING_START",
+    "PAGE_VIEW",
+    "AI_OPEN"
+  ],
+  "attribution": {
+    "utm": false,
+    "gclid": false,
+    "gbraid": false,
+    "wbraid": false,
+    "referrerStored": false,
+    "leadSourceIsFormChannelOnly": true,
+    "visitorIdStampOnLead": true
+  },
+  "spamControls": {
+    "honeypot": true,
+    "rateLimit": "5 per 10 minutes per IP",
+    "duplicateWindowSeconds": 120,
+    "captcha": false
+  },
+  "duplicateRisks": [
+    "submit_event_plus_thank_you",
+    "whatsapp_plus_form",
+    "honeypot_ok_ignored",
+    "admin_journey_conversion_includes_AI_OPEN"
+  ]
+}

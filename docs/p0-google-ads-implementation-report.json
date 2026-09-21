@@ -1,0 +1,120 @@
+{
+  "title": "P0 Google Ads Conversion Implementation",
+  "date": "2026-09-20",
+  "domain": "https://fixpoint.ae",
+  "deployed": false,
+  "campaigns_created": false,
+  "ad_spend": false,
+  "invented_ids": false,
+  "phase0_stop": false,
+  "phase0_inventory": {
+    "live_google_tags": "absent_per_audits_2026-09-20",
+    "code_gtm_injector_pre": false,
+    "local_gtm_ga_aw_env": "absent",
+    "api_t": "intact",
+    "attribution_fields_pre": false,
+    "quote_thank_you_pre": false,
+    "booking_thank_you_pre": true,
+    "legal_forbade_ga": true
+  },
+  "gtm": {
+    "central_layer": true,
+    "component": "src/components/analytics/GoogleTagManager.tsx",
+    "env_var": "NEXT_PUBLIC_GTM_ID",
+    "hardcoded_gtag": false
+  },
+  "datalayer_events": {
+    "primary": ["quote_submit_success", "booking_submit_success"],
+    "secondary": ["contact_submit_success"],
+    "pii_in_events": false
+  },
+  "attribution": {
+    "params": ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "gbraid", "wbraid", "landing_path"],
+    "first_touch": true,
+    "persisted_on": ["Lead", "Booking"],
+    "visitor_columns_added": true,
+    "visitor_stamp_p0": false,
+    "migration": "prisma/migrations/20260920210000_p0_attribution"
+  },
+  "conversion_boundaries": {
+    "quote": {
+      "path": "/[locale]/get-a-quote/received",
+      "noindex": true,
+      "in_sitemap": false,
+      "fire_on": "server_confirmed_new_lead_only"
+    },
+    "booking": {
+      "path": "/[locale]/book-a-service/received",
+      "noindex": true,
+      "event": "booking_submit_success"
+    },
+    "contact": {
+      "mode": "inline_secondary",
+      "event": "contact_submit_success"
+    }
+  },
+  "micro_via_api_t_not_ads_primary": [
+    "PHONE_CLICK",
+    "WHATSAPP_CLICK",
+    "EMAIL_CLICK",
+    "QUOTE_START",
+    "BOOKING_START"
+  ],
+  "enhanced_conversions": {
+    "enabled": false,
+    "architecture_documented": true
+  },
+  "csp": {
+    "gated_by": ["NEXT_PUBLIC_GTM_ID", "NEXT_PUBLIC_GA_ID"],
+    "google_hosts_when_configured": true
+  },
+  "legal_wording_updated": {
+    "en": ["cookieAnalytics", "privacyAnalytics"],
+    "ar": ["cookieAnalytics", "privacyAnalytics"],
+    "first_party_optout_preserved": true
+  },
+  "hostinger_env_names_only": [
+    "NEXT_PUBLIC_GTM_ID",
+    "NEXT_PUBLIC_GA_ID"
+  ],
+  "verification": {
+    "attribution_code_path": "CODE_VERIFIED",
+    "live_tag_assistant": "GOOGLE_UI_NOT_VERIFIED",
+    "prod_form_submissions": "not_run"
+  },
+  "gates": {
+    "gtm_code_path": "PASS",
+    "no_duplicate_gtag": "PASS",
+    "legal_copy": "PASS",
+    "attribution_lead_booking": "PASS_PENDING_MIGRATE",
+    "quote_boundary": "PASS",
+    "booking_boundary": "PASS",
+    "contact_secondary": "PASS",
+    "api_t_micro_intact": "PASS",
+    "enhanced_off": "PASS",
+    "csp": "PASS",
+    "no_auto_deploy": "PASS",
+    "live_tag_assistant": "BLOCKED",
+    "ads_spend_ready": "NOT_READY",
+    "typecheck": "PASS",
+    "lint_p0_files": "PASS",
+    "lint_repo_full": "FAIL_PREEXISTING",
+    "build": "PASS",
+    "security_headers_verify": "PASS"
+  },
+  "verification_notes": {
+    "typecheck": "npx tsc --noEmit PASS",
+    "lint_p0": "eslint on P0-touched files --max-warnings 0 PASS",
+    "lint_full": "npm run lint FAIL with pre-existing errors unrelated to P0",
+    "build": "npx next build EXIT 0; dynamic(ssr:false) moved into client wrappers for Next 16"
+  },
+  "remaining_hostinger_blockers": [
+    "Create GTM + GA4 + Ads conversion actions in Google UI (real IDs)",
+    "Set NEXT_PUBLIC_GTM_ID on Hostinger",
+    "Redeploy web app",
+    "Apply migration 20260920210000_p0_attribution",
+    "Verify Tag Assistant on quote/booking received EN+AR",
+    "Only then micro Search pilot"
+  ],
+  "report_md": "docs/p0-google-ads-implementation-report.md"
+}

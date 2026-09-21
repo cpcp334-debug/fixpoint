@@ -7,6 +7,7 @@ import { pickI18n, parseJson } from "@/lib/utils";
 import { stampVisitor, trackServer } from "@/lib/analytics/server";
 import { scoreLeadSafe } from "@/lib/quality/run";
 import { emitDomainEventSafe } from "@/lib/automation/emit";
+import { attributionToColumns, sanitizeAttribution } from "@/lib/attribution/shared";
 import { assertTechnicianAssignmentAllowed } from "@/lib/automation/assign";
 import { loadSubjectFacts } from "@/lib/automation/subject";
 import { mkdir, writeFile } from "node:fs/promises";
@@ -44,6 +45,7 @@ export const publicBookingSchema = z.object({
   conversationId: z.string().trim().max(40).optional(),
   photoIds: z.array(z.string().min(1).max(40)).max(5).optional(),
   website: z.string().optional(),
+  attribution: z.record(z.string(), z.unknown()).optional(),
 });
 
 export type PublicBookingInput = z.infer<typeof publicBookingSchema>;
@@ -82,11 +84,11 @@ export function parseBookingTypeParam(raw?: string | null): PublicBookingType {
 export function detectBookingIntent(text: string, collectedType?: PublicBookingType): PublicBookingType | undefined {
   if (collectedType) return collectedType;
   const t = text.toLowerCase();
-  if (/\b(emergency|urgent leak|water on (the )?electrics|غاز|طوارئ|تسريب طارئ)\b/i.test(t)) return "emergency";
-  if (/\b(site inspection|inspect(ion)?|معاينة)\b/i.test(t)) return "site_inspection";
-  if (/\b(recurring|weekly clean|monthly clean|تنظيف دوري)\b/i.test(t)) return "recurring_cleaning";
-  if (/\b(amc|annual maintenance|عقد صيانة)\b/i.test(t)) return "amc_visit";
-  if (/\b(book (a )?(service|technician|visit)|schedule a visit|احجز|موعد)\b/i.test(t)) return "standard";
+  if (/\b(emergency|urgent leak|water on (the )?electrics|ØºØ§Ø²|Ø·ÙˆØ§Ø±Ø¦|ØªØ³Ø±ÙŠØ¨ Ø·Ø§Ø±Ø¦)\b/i.test(t)) return "emergency";
+  if (/\b(site inspection|inspect(ion)?|Ù…Ø¹Ø§ÙŠÙ†Ø©)\b/i.test(t)) return "site_inspection";
+  if (/\b(recurring|weekly clean|monthly clean|ØªÙ†Ø¸ÙŠÙ Ø¯ÙˆØ±ÙŠ)\b/i.test(t)) return "recurring_cleaning";
+  if (/\b(amc|annual maintenance|Ø¹Ù‚Ø¯ ØµÙŠØ§Ù†Ø©)\b/i.test(t)) return "amc_visit";
+  if (/\b(book (a )?(service|technician|visit)|schedule a visit|Ø§Ø­Ø¬Ø²|Ù…ÙˆØ¹Ø¯)\b/i.test(t)) return "standard";
   return undefined;
 }
 
@@ -170,6 +172,7 @@ export async function createPublicBooking(input: PublicBookingInput, ip: string,
   if (!limited.ok) return { ok: false as const, error: "rateLimit" as const };
 
   const data = parsed.data;
+  const attrCols = attributionToColumns(sanitizeAttribution(data.attribution));
   if (data.type === "recurring_cleaning" && !data.frequency) {
     return { ok: false as const, error: "invalid" as const };
   }
@@ -260,6 +263,7 @@ export async function createPublicBooking(input: PublicBookingInput, ip: string,
         photos: JSON.stringify(photoKeys),
         preferredDate: data.preferredDate,
         preferredTime: data.preferredTime,
+        ...attrCols,
       },
     });
     leadId = lead.id;
@@ -336,6 +340,7 @@ export async function createPublicBooking(input: PublicBookingInput, ip: string,
       photos: JSON.stringify(photoKeys),
       status: "requested",
       locale: data.locale || "en",
+      ...attrCols,
     },
   });
 
@@ -493,3 +498,4 @@ export async function assignBookingStaff(
 }
 
 export type { BookingType };
+

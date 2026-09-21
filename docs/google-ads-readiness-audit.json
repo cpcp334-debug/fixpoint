@@ -1,0 +1,124 @@
+{
+  "audit": "google-ads-readiness",
+  "domain": "https://fixpoint.ae",
+  "workspace": "alnajah-aldaem",
+  "date": "2026-09-20",
+  "mode": "read-only",
+  "codeHead": "0f9db4b",
+  "verdicts": {
+    "overall": "NOT_READY",
+    "landingUx": "PARTIALLY_READY",
+    "measurement": "NOT_READY",
+    "budgetSafetyMeasurement": "NOT_READY",
+    "startMeaningfulSpend": "NO_ONLY_AFTER_SPECIFIC_FIXES"
+  },
+  "topBlockers": [
+    "No GTM/gtag/GA4/AW tags on live HTML",
+    "No Google tag injector in code (NEXT_PUBLIC_GA_ID only affects CSP)",
+    "Cookie/privacy policy forbids Google Analytics and third-party trackers",
+    "UTM/gclid/gbraid/wbraid not captured",
+    "Quote success is inline (no thank-you URL); booking thank-you untagged",
+    "WhatsApp/phone clicks must not be primary conversions"
+  ],
+  "liveVsCode": {
+    "apexRewriteZeroRedirect": { "code": true, "live": false, "liveEvidence": "307 Location /en" },
+    "sitemap64Shards": { "code": true, "live": true },
+    "sitemap0Oversize242k": { "historical": true, "live": false, "liveLocCountApprox": 6042 },
+    "ogImageDefault": { "live": "https://fixpoint.ae/media/logo-512.webp" },
+    "plusJakartaRemoved": { "live": true },
+    "woff2PreloadStillPresent": { "live": true, "countHint": 1 }
+  },
+  "liveAccess": {
+    "/": { "status": 307, "location": "/en" },
+    "/en": { "status": 200 },
+    "/ar": { "status": 200 },
+    "www./": { "status": 307, "location": "/en" },
+    "/en/get-a-quote": { "status": 200 },
+    "/en/book-a-service": { "status": 200 },
+    "/en/contact": { "status": 200 },
+    "/en/book": { "status": 404 },
+    "/en/thank-you": { "status": 404 }
+  },
+  "googleTags": {
+    "livePresent": false,
+    "codeInjectorPresent": false,
+    "env": {
+      "NEXT_PUBLIC_GA_ID": "ABSENT_LOCAL",
+      "GTM_ID": "ABSENT",
+      "GA4_MEASUREMENT_ID": "ABSENT",
+      "AW_CONVERSION_ID": "ABSENT"
+    },
+    "cookiePolicyForbidsThirdParty": true
+  },
+  "firstPartyAnalytics": {
+    "endpoint": "/api/t",
+    "deferredUntilGestureOr15s": true,
+    "utmCaptured": false,
+    "optOut": "/api/t/optout"
+  },
+  "conversionDesign": {
+    "primary": ["quote_lead_create", "booking_received"],
+    "secondary": ["contact_lead_create"],
+    "microOnly": ["QUOTE_START", "BOOKING_START", "WHATSAPP_CLICK", "PHONE_CLICK", "PAGE_VIEW"]
+  },
+  "canStartAds": {
+    "A_siteCommercial": true,
+    "B_canRequestQuote": true,
+    "C_enArPagesUp": true,
+    "D_adsConversionInstalled": false,
+    "E_adToLeadAttribution": false,
+    "F_privacyCompatibleWithTags": false,
+    "G_acceptableSearchLPs": true,
+    "H_spendMeaningfulBudgetNow": false
+  },
+  "doNotAdvertiseYet": [
+    "119k SEO blog corpus",
+    "DIY as primary LPs",
+    "uncovered ServiceLocation pages",
+    "emirate mega-hubs (~1.4MB)",
+    "apex / until rewrite live",
+    "AI as guaranteed channel",
+    "WhatsApp-only without verification",
+    "unsupported price/same-day claims"
+  ],
+  "priorityMatrix": {
+    "P0": [
+      "Install GTM/gtag + GA4 + Ads conversion on verified submit",
+      "Update cookie/privacy before third-party tags",
+      "Persist gclid/gbraid/wbraid + UTM on Lead/Booking",
+      "Quote thank-you URL or confirmed success event"
+    ],
+    "P1": [
+      "Hostinger env + Redeploy; verify apex rewrite",
+      "Offline conversions via LeadScore",
+      "NEW_LEAD email provider"
+    ],
+    "P2": ["CAPTCHA if spam", "Avoid heavy location hubs"],
+    "P3": ["Enhanced conversions / consent mode if needed"]
+  },
+  "nextSteps": [
+    "Choose GTM vs gtag",
+    "Draft legal amendments",
+    "Quote received URL or dataLayer event",
+    "Store click IDs + UTMs server-side",
+    "Configure GA4 + Ads conversion actions",
+    "Set Hostinger env and Redeploy",
+    "Verify with Tag Assistant",
+    "Allowlist covered Service×Location URLs",
+    "Exclude blog/DIY/hubs from Ads",
+    "Micro Search pilot only after verification"
+  ],
+  "db": {
+    "productionQuery": "unavailable_local_non_mysql",
+    "schemaModels": ["Lead", "LeadScore", "Booking", "Quote", "Invoice", "Payment", "Visitor", "AnalyticsEvent", "ServiceLocation"]
+  },
+  "reports": [
+    "docs/google-ads-readiness-audit.md",
+    "docs/google-ads-readiness-audit.json",
+    "docs/conversion-tracking-audit.md",
+    "docs/conversion-tracking-audit.json",
+    "docs/paid-landing-page-audit.csv",
+    "docs/conversion-event-inventory.csv",
+    "docs/lead-attribution-audit.csv"
+  ]
+}

@@ -7,6 +7,7 @@ import type { PublicBookingType } from "@/lib/bookings";
 import { Button } from "@/components/ui/Button";
 import { FormGroup, FormShell, fieldControlClass, fieldLabelClass } from "@/components/public/FormShell";
 import { formStart } from "@/lib/analytics/client";
+import { getAttributionForSubmit } from "@/lib/attribution/client";
 
 export function BookingForm({
   locale,
@@ -59,6 +60,8 @@ export function BookingForm({
   async function onSubmit(formData: FormData) {
     formData.set("type", type);
     formData.set("locale", locale);
+    const attribution = getAttributionForSubmit();
+    if (attribution) formData.set("attribution", JSON.stringify(attribution));
     setPending(true);
     setStatus("idle");
     try {
