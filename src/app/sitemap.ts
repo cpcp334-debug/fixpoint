@@ -22,7 +22,7 @@ import { faqPathSlug } from "@/lib/slug/faq-slug-map";
 export const dynamic = "force-dynamic";
 export const revalidate = 3600;
 
-/** Shard count for article + service×location URLs. Keep in sync with robots.ts. */
+/** Shard count for article + service×location URLs. Keep in sync with sitemap-index route. */
 export const SITEMAP_PAIR_SHARDS = 64;
 
 /** Soft ceiling under Google's 50k limit (headroom for lastModified noise). */

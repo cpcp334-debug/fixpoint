@@ -1,26 +1,26 @@
 import type { MetadataRoute } from "next";
 import { getSiteUrl } from "@/config/site";
 
-/** Keep in sync with SITEMAP_PAIR_SHARDS in sitemap.ts. Do not import sitemap.ts (it loads Prisma). */
-const SITEMAP_PAIR_SHARDS = 64;
-
-const publicSiteAllow = "/";
-const crawlerDisallow = [
-  "/admin",
-  "/login",
-  "/account",
-  "/api/",
-  "/api/reviews",
-  "/api/questions",
-  "/api/trust",
-  "/api/ai",
-];
-
+/**
+ * Advertise ONE sitemap index in robots.txt.
+ * Listing all 64 `/sitemap/{id}.xml` shards caused Googlebot to fetch many
+ * shards in parallel (Hostinger OOM / intermittent 500 → GSC "Couldn't fetch").
+ * Children are discovered from the index after a successful index fetch.
+ */
 export default function robots(): MetadataRoute.Robots {
-  const site = getSiteUrl();
+  const site = getSiteUrl().replace(/\/$/, "");
   const rule = {
-    allow: publicSiteAllow,
-    disallow: crawlerDisallow,
+    allow: "/",
+    disallow: [
+      "/admin",
+      "/login",
+      "/account",
+      "/api/",
+      "/api/reviews",
+      "/api/questions",
+      "/api/trust",
+      "/api/ai",
+    ],
   };
   return {
     rules: [
@@ -29,7 +29,7 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: "Bingbot", ...rule },
       { userAgent: "OAI-SearchBot", ...rule },
     ],
-    // generateSitemaps serves /sitemap/{id}.xml. /sitemap.xml is not a live index in this app.
-    sitemap: Array.from({ length: SITEMAP_PAIR_SHARDS }, (_, id) => `${site}/sitemap/${id}.xml`),
+    // Prefer index URL (also available as /sitemap.xml via rewrite).
+    sitemap: `${site}/sitemap-index.xml`,
   };
 }

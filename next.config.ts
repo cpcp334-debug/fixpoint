@@ -36,10 +36,25 @@ const nextConfig: NextConfig = {
   },
   async headers() {
     const longCache = [{ key: "Cache-Control", value: "public, max-age=31536000, immutable" }];
+    const sitemapCache = [
+      { key: "Cache-Control", value: "public, s-maxage=3600, stale-while-revalidate=86400" },
+    ];
     const headers = [
       {
         source: "/:path*",
         headers: securityHeadersList(process.env),
+      },
+      {
+        source: "/sitemap-index.xml",
+        headers: sitemapCache,
+      },
+      {
+        source: "/sitemap.xml",
+        headers: sitemapCache,
+      },
+      {
+        source: "/sitemap/:path*",
+        headers: sitemapCache,
       },
       {
         source: "/media/:path*",
