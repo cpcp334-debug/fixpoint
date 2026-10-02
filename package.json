@@ -14,7 +14,7 @@
     "db:bootstrap-staff": "tsx scripts/_bootstrap-staff-now.ts",
     "pg": "node scripts/pg-server.mjs",
     "postinstall": "prisma generate",
-    "build": "tsx scripts/prisma-migrate-safe.ts && prisma generate && next build",
+    "build": "tsx scripts/prisma-migrate-safe.ts && prisma generate && next build --webpack",
     "start": "next start",
     "postdeploy": "tsx scripts/prisma-migrate-safe.ts && tsx scripts/postdeploy-mysql-import.ts",
     "typecheck": "prisma generate && tsc --noEmit",
