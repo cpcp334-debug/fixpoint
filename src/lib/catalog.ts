@@ -222,6 +222,27 @@ export const getPublishedDiyCategories = cache(async (locale: string) =>
   }),
 );
 
+const diyGuideInclude = {
+  translations: true,
+  service: { include: { translations: true } },
+  category: { include: { translations: true } },
+} as const;
+
+function diySlugCandidates(slug: string) {
+  const out: string[] = [];
+  const push = (value: string) => {
+    const v = value.trim();
+    if (v && !out.includes(v)) out.push(v);
+  };
+  for (const candidate of diyLookupCandidates(slug)) {
+    push(candidate);
+    const bare = candidate.replace(/^diy-/, "");
+    push(bare);
+    push(`diy-${bare}`);
+  }
+  return out;
+}
+
 export const getDiyCategoryBySlug = cache(async (slug: string, locale: string) => {
   const candidates = diyLookupCandidates(slug);
   const row = await prisma.diyCategory.findFirst({
@@ -230,42 +251,84 @@ export const getDiyCategoryBySlug = cache(async (slug: string, locale: string) =
       translations: true,
       guides: {
         where: { status: "published", indexable: true },
-        include: { translations: true, service: { include: { translations: true } } },
+        include: { translations: true },
         orderBy: { slug: "asc" },
       },
     },
   });
-  if (!row) return null;
+  const t = row ? pickI18n(row.translations, locale) : undefined;
+  if (!row || !t) return null;
   return {
     ...row,
     slug: diyPathSlug(locale, row.slug),
-    t: pickI18n(row.translations, locale)!,
-    publishedGuides: row.guides.map((guide) => ({
-      ...guide,
-      slug: diyPathSlug(locale, guide.slug),
-      t: pickI18n(guide.translations, locale)!,
-    })),
+    t,
+    publishedGuides: row.guides.flatMap((guide) => {
+      const guideT = pickI18n(guide.translations, locale);
+      if (!guideT) return [];
+      return [{ ...guide, slug: diyPathSlug(locale, guide.slug), t: guideT }];
+    }),
   };
 });
 
 export const getGuideBySlug = cache(async (slug: string, locale: string) => {
-  const candidates = diyLookupCandidates(slug);
-  const row = await prisma.diyGuide.findFirst({
+  const candidates = diySlugCandidates(slug);
+  const include = diyGuideInclude;
+  let row = await prisma.diyGuide.findFirst({
     where: { slug: { in: candidates }, status: "published", indexable: true },
-    include: {
-      translations: true,
-      service: { include: { translations: true } },
-      category: { include: { translations: true } },
-    },
+    include,
   });
-  if (!row) return null;
+  if (!row) {
+    row = await prisma.diyGuide.findFirst({
+      where: {
+        status: "published",
+        indexable: true,
+        service: { slug: { in: candidates } },
+      },
+      include,
+      orderBy: [{ isPrimary: "desc" }, { slug: "asc" }],
+    });
+  }
+  const t = row ? pickI18n(row.translations, locale) : undefined;
+  if (!row || !t) return null;
   return {
     ...row,
     slug: diyPathSlug(locale, row.slug),
-    t: pickI18n(row.translations, locale)!,
+    t,
     serviceT: row.service ? pickI18n(row.service.translations, locale) : null,
     categoryT: pickI18n(row.category.translations, locale),
   };
+});
+
+/** Related cards only. Loading every published guide OOMs the Hostinger process. */
+export const getPublishedGuidesBySlugs = cache(async (slugs: string[], locale: string) => {
+  const wanted = [...new Set(slugs.map((slug) => slug.trim()).filter(Boolean))];
+  if (!wanted.length) return [];
+  return safeList(async () => {
+    const rows = await prisma.diyGuide.findMany({
+      where: { slug: { in: wanted }, status: "published", indexable: true },
+      select: {
+        slug: true,
+        serviceId: true,
+        riskLevel: true,
+        difficulty: true,
+        estimatedTime: true,
+        translations: true,
+        category: { select: { translations: true } },
+      },
+    });
+    return rows.flatMap((row) => {
+      const t = pickI18n(row.translations, locale);
+      if (!t) return [];
+      return [
+        {
+          ...row,
+          slug: diyPathSlug(locale, row.slug),
+          t,
+          categoryT: pickI18n(row.category.translations, locale),
+        },
+      ];
+    });
+  });
 });
 
 export const getApprovedGuideQuestions = cache(async (guideId: string) => {

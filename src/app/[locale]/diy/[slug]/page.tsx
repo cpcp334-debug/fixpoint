@@ -6,7 +6,7 @@ import {
   getApprovedGuideQuestions,
   getDiyCategoryBySlug,
   getGuideBySlug,
-  getPublishedGuides,
+  getPublishedGuidesBySlugs,
 } from "@/lib/catalog";
 import {
   breadcrumbJsonLd,
@@ -15,7 +15,6 @@ import {
   faqJsonLd,
   howToJsonLd,
 } from "@/lib/seo";
-import { parseJson } from "@/lib/utils";
 import { parseFaqJson } from "@/lib/faq";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -31,14 +30,26 @@ import { CtaRow } from "@/components/public/CtaRow";
 import { CtaBand } from "@/components/public/CtaBand";
 import { topicWebpForDiyCategory, altForTopic } from "@/lib/media/topic-webp";
 import { listPageHref, PrevNextPagination } from "@/components/ui/PrevNextPagination";
-import { diyCategoryPathSlug, diyPathSlug } from "@/lib/slug/diy-slug-map";
+import { diyCategoryPathSlug } from "@/lib/slug/diy-slug-map";
 
 const DIY_CATEGORY_PAGE_SIZE = 6;
+
+function textList(value: string | null | undefined): string[] {
+  if (!value) return [];
+  try {
+    const parsed = JSON.parse(value) as unknown;
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter((item): item is string => typeof item === "string" && item.length > 0);
+  } catch {
+    return [];
+  }
+}
 
 /**
  * Avoid SSG of all DIY guides/categories at build (Hostinger MySQL window).
  * dual-slug via diyLookupCandidates + dynamicParams.
  */
+export const dynamic = "force-dynamic";
 export const dynamicParams = true;
 
 export async function generateStaticParams() {
@@ -52,7 +63,7 @@ export async function generateMetadata({
 }) {
   const { locale, slug } = await params;
   const category = await getDiyCategoryBySlug(slug, locale);
-  if (category) {
+  if (category?.t) {
     return buildMetadata({
       locale,
       title: category.t.seoTitle || `${category.t.name} | ${brandName(locale)}`,
@@ -62,7 +73,7 @@ export async function generateMetadata({
     });
   }
   const guide = await getGuideBySlug(slug, locale);
-  if (!guide) return {};
+  if (!guide?.t) return {};
   return buildMetadata({
     locale,
     title: guide.t.seoTitle,
@@ -196,15 +207,15 @@ async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) 
   const nav = await getTranslations("Nav");
   const cta = await getTranslations("Cta");
   const home = await getTranslations("Home");
-  const tools = parseJson<string[]>(guide.t.tools, []);
-  const materials = parseJson<string[]>(guide.t.materials, []);
-  const steps = parseJson<string[]>(guide.t.steps, []);
+  const tools = textList(guide.t.tools);
+  const materials = textList(guide.t.materials);
+  const steps = textList(guide.t.steps);
   const faqs = parseFaqJson(guide.t.faq);
   const categoryPublicSlug = diyCategoryPathSlug(locale, guide.categorySlug);
-  const relatedSlugs = parseJson<string[]>(guide.relatedSlugs, []);
-  const published = await getPublishedGuides(locale);
-  const relatedPublic = new Set(relatedSlugs.map((s) => diyPathSlug(locale, s)));
-  const relatedGuides = published.filter((row) => relatedPublic.has(row.slug) && row.slug !== guide.slug);
+  const relatedSlugs = textList(guide.relatedSlugs);
+  const relatedGuides = (await getPublishedGuidesBySlugs(relatedSlugs, locale)).filter(
+    (row) => row.slug !== guide.slug,
+  );
   const [questions, feedback] = await Promise.all([
     getApprovedGuideQuestions(guide.id),
     getApprovedGuideFeedback(guide.id),
