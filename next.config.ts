@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
   outputFileTracingIncludes: {
-    '/*': ['./scripts/_slug-maps.json', './prisma/data/uae-location-master-200.json', './prisma/data/uae-place-names-ar.json'],
+    '/*': ['./scripts/_slug-maps.json', './prisma/data/uae-location-master-200.json', './prisma/data/uae-place-names-ar.json', './docs/diy-classification-matrix-311.json'],
   },
   // Dev is opened as both localhost and 127.0.0.1. Without this, Next blocks
   // fonts and HMR from 127.0.0.1 and the page looks like a connection failure.
