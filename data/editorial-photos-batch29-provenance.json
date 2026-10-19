@@ -1,0 +1,42 @@
+[
+  {
+    "key": "service-electrical-safety-inspection",
+    "kind": "service",
+    "slug": "electrical-safety-inspection",
+    "output": "/media/editorial/photos-20261019/service-electrical-safety-inspection.webp",
+    "prompt": "Generate one original photorealistic editorial cover, landscape 3:2. An orderly fictional UAE apartment entrance, intact closed white electrical distribution cupboard on a pale blue wall, a closed unmarked assessment folder on a wooden bench at a distance. Quiet professional property-review context, no technical approval claims. No people, hands, brands, text, labels, logos, watermarks, badges, active electrical work or unsafe demonstrations. Realistic materials, restrained navy and warm neutral tones. This will be labelled an AI illustration, not actual customer premises.",
+    "reviewedAt": "2026-10-19T21:25:31.613Z",
+    "review": "Individually visually reviewed: Closed apartment cupboard with separate folder; no technical work or approval claim.",
+    "originalFile": "exec-2b875242-b192-4084-a8c4-37f9770f4746.png"
+  },
+  {
+    "key": "service-electrical-smoke-damage-inspection",
+    "kind": "service",
+    "slug": "electrical-smoke-damage-inspection",
+    "output": "/media/editorial/photos-20261019/service-electrical-smoke-damage-inspection.webp",
+    "prompt": "Generate one original photorealistic editorial cover, landscape 3:2. A fictional vacant UAE office corridor with an intact closed grey electrical cabinet and a small closed inspection case on a separate table, subtle old soot discoloration on distant ceiling corner, no active smoke or flames. A later assessment planning scene, not emergency response or a real project. No people, hands, brands, text, labels, logos, watermarks, badges, active electrical work or unsafe demonstrations. Realistic materials, restrained navy and warm neutral tones. This will be labelled an AI illustration, not actual customer premises.",
+    "reviewedAt": "2026-10-19T21:25:31.623Z",
+    "review": "Individually visually reviewed: Closed cabinet and old ceiling discoloration; no active fire or unsafe work; conceptual later assessment.",
+    "originalFile": "exec-753671b2-2ff6-4e0c-9877-035c2566ab32.png"
+  },
+  {
+    "key": "service-electrical-testing-and-diagnosis",
+    "kind": "service",
+    "slug": "electrical-testing-and-diagnosis",
+    "output": "/media/editorial/photos-20261019/service-electrical-testing-and-diagnosis.webp",
+    "prompt": "Generate one original photorealistic editorial cover, landscape 3:2. A fictional commercial electrical room viewed from the doorway, intact closed navy-grey switchgear cabinets, a closed diagnostic carrying case on a freestanding trolley in foreground, no exposed conductors, no instrument readings, no work in progress. No people, hands, brands, text, labels, logos, watermarks, badges, active electrical work or unsafe demonstrations. Realistic materials, restrained navy and warm neutral tones. This will be labelled an AI illustration, not actual customer premises.",
+    "reviewedAt": "2026-10-19T21:25:31.628Z",
+    "review": "Individually visually reviewed: Closed switchgear and carrying case; no exposed conductors, measurements or testing procedure.",
+    "originalFile": "exec-384b923f-b8c7-4ab4-877b-bbeb77bf2f30.png"
+  },
+  {
+    "key": "service-emergency-electrical-fault-inspection",
+    "kind": "service",
+    "slug": "emergency-electrical-fault-inspection",
+    "output": "/media/editorial/photos-20261019/service-emergency-electrical-fault-inspection.webp",
+    "prompt": "Generate one original photorealistic editorial cover, landscape 3:2. A fictional quiet UAE shop after closing, intact closed electrical cabinet on side wall, empty counter with a plain closed appointment folder, soft dusk window light, no live emergency, no sparks smoke or flames, no response-time promises. No people, hands, brands, text, labels, logos, watermarks, badges, active electrical work or unsafe demonstrations. Realistic materials, restrained navy and warm neutral tones. This will be labelled an AI illustration, not actual customer premises.",
+    "reviewedAt": "2026-10-19T21:25:31.632Z",
+    "review": "Individually visually reviewed: Quiet shop, closed cupboard and folder at dusk; no emergency response or time promise.",
+    "originalFile": "exec-5d3bc0c4-ec11-40a0-8cc6-8203019cbda2.png"
+  }
+]
