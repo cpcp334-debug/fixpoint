@@ -1,0 +1,42 @@
+[
+  {
+    "key": "service-emergency-light-installation",
+    "kind": "service",
+    "slug": "emergency-light-installation",
+    "output": "/media/editorial/photos-20261019/service-emergency-light-installation.webp",
+    "prompt": "One original photorealistic editorial cover, landscape 3:2. An intact wall-mounted twin-head emergency light in a fictional plain commercial corridor, no illuminated text or exit sign, closed unmarked product carton on a separate desk, daylight. Planning a professional installation, no active wiring or claims of compliance. No people, hands, brands, labels, readable text, logos, watermarks, exposed electrical conductors, unsafe demonstration or client-project claims. Believable scale, distinct composition. Will be displayed as an illustrative image.",
+    "reviewedAt": "2026-10-19T21:35:51.380Z",
+    "review": "Individually visually reviewed: Intact twin-head emergency light and closed carton; no installation or compliance demonstration.",
+    "originalFile": "exec-084f7bd5-cde8-467a-8502-7635e5403483.png"
+  },
+  {
+    "key": "service-exhaust-fan-installation",
+    "kind": "service",
+    "slug": "exhaust-fan-installation",
+    "output": "/media/editorial/photos-20261019/service-exhaust-fan-installation.webp",
+    "prompt": "One original photorealistic editorial cover, landscape 3:2. A fictional newly finished utility room with an intact circular wall exhaust grille high on a pale stone wall and a closed fan-product carton on the floor away from access, no tools, ducts opened or active work. Daylit, clean practical setting. No people, hands, brands, labels, readable text, logos, watermarks, exposed electrical conductors, unsafe demonstration or client-project claims. Believable scale, distinct composition. Will be displayed as an illustrative image.",
+    "reviewedAt": "2026-10-19T21:35:51.385Z",
+    "review": "Individually visually reviewed: Closed circular ventilation grille in a utility room and sealed carton; no opened fittings or electrical work.",
+    "originalFile": "exec-61486876-a9bc-4f4f-b761-f918f8d9bc21.png"
+  },
+  {
+    "key": "service-exhaust-fan-repair",
+    "kind": "service",
+    "slug": "exhaust-fan-repair",
+    "output": "/media/editorial/photos-20261019/service-exhaust-fan-repair.webp",
+    "prompt": "One original photorealistic editorial cover, landscape 3:2. Close architectural view of an intact square exhaust grille in a fictional UAE bathroom ceiling, all covers closed, dry stone surfaces, a small closed service folder on a vanity shelf well away from the fitting. No people, tools, steam or open equipment. No people, hands, brands, labels, readable text, logos, watermarks, exposed electrical conductors, unsafe demonstration or client-project claims. Believable scale, distinct composition. Will be displayed as an illustrative image.",
+    "reviewedAt": "2026-10-19T21:35:51.385Z",
+    "review": "Individually visually reviewed: Intact ceiling ventilation cover in bathroom with a separate closed folder; no active repair or exposed components.",
+    "originalFile": "exec-68c732e5-56aa-4bd0-99de-b23fb9b6c67c.png"
+  },
+  {
+    "key": "service-exhaust-fan-replacement",
+    "kind": "service",
+    "slug": "exhaust-fan-replacement",
+    "output": "/media/editorial/photos-20261019/service-exhaust-fan-replacement.webp",
+    "prompt": "One original photorealistic editorial cover, landscape 3:2. A fictional modest commercial pantry with an intact older wall exhaust grille and a closed plain replacement-product carton on a wooden counter below at a distance. No food, open housings, detached parts or installation process, gentle morning light. No people, hands, brands, labels, readable text, logos, watermarks, exposed electrical conductors, unsafe demonstration or client-project claims. Believable scale, distinct composition. Will be displayed as an illustrative image.",
+    "reviewedAt": "2026-10-19T21:35:51.385Z",
+    "review": "Individually visually reviewed: Older intact wall grille and sealed carton in pantry; conceptual replacement planning, no opened housing.",
+    "originalFile": "exec-46daa0d9-7aca-46ee-a8ac-2d609e6966d2.png"
+  }
+]
