@@ -1,0 +1,124 @@
+[
+  {
+    "key": "service-distribution-board-replacement",
+    "kind": "service",
+    "slug": "distribution-board-replacement",
+    "output": "/media/editorial/photos-20261019/service-distribution-board-replacement.webp",
+    "prompt": "Create an original photorealistic editorial cover, landscape 3:2. Fictional UAE property illustration, not an actual client project or branch. Relevant service context but not a technical diagram or installation specification. All electrical equipment must be intact, enclosed and closed. No people, hands, active work, exposed conductors, sparks, smoke, flames, text, brands, watermarks, logos, documents with writing or fabricated credentials. Natural high-quality architectural photography. A modern fully closed white distribution board on a cool blue-grey hallway wall, freshly neat surrounding wall finish, closed flat plain document folder on console below. Wide architectural composition. No removed old board or work in progress.",
+    "reviewedAt": "2026-10-19T19:59:18.737Z",
+    "review": "Individually visually reviewed: Closed white board on blue-grey hallway wall, separate closed folder; no replacement work shown.",
+    "originalFile": "exec-f8b87b07-bcfd-4dc4-a132-52f6ec2d0e1d.png"
+  },
+  {
+    "key": "service-distribution-board-rewiring",
+    "kind": "service",
+    "slug": "distribution-board-rewiring",
+    "output": "/media/editorial/photos-20261019/service-distribution-board-rewiring.webp",
+    "prompt": "Create an original photorealistic editorial cover, landscape 3:2. Fictional UAE property illustration, not an actual client project or branch. Relevant service context but not a technical diagram or installation specification. All electrical equipment must be intact, enclosed and closed. No people, hands, active work, exposed conductors, sparks, smoke, flames, text, brands, watermarks, logos, documents with writing or fabricated credentials. Natural high-quality architectural photography. A fully enclosed dark-grey distribution cabinet in a clean utility corridor, several enclosed surface conduit runs entering from above and sides, orderly but plausible arrangement, concrete floor and empty access space. Oblique medium perspective. No visible wires or conductors.",
+    "reviewedAt": "2026-10-19T19:59:18.741Z",
+    "review": "Individually visually reviewed: Closed dark cabinet in utility corridor with enclosed conduit, no visible conductors.",
+    "originalFile": "exec-998ce074-11e0-4af1-bb55-7b9d436a573d.png"
+  },
+  {
+    "key": "service-double-socket-installation",
+    "kind": "service",
+    "slug": "double-socket-installation",
+    "output": "/media/editorial/photos-20261019/service-double-socket-installation.webp",
+    "prompt": "Create an original photorealistic editorial cover, landscape 3:2. Fictional UAE property illustration, not an actual client project or branch. Relevant service context but not a technical diagram or installation specification. All electrical equipment must be intact, enclosed and closed. No people, hands, active work, exposed conductors, sparks, smoke, flames, text, brands, watermarks, logos, documents with writing or fabricated credentials. Natural high-quality architectural photography. Close architectural detail of an intact unbranded UK-style double switched wall socket on a pale plaster living-room wall, both apertures empty, no objects inserted, low timber shelf nearby, warm daylight. No socket opened or tools.",
+    "reviewedAt": "2026-10-19T19:59:18.749Z",
+    "review": "Individually visually reviewed: Corrected double socket now has two three-aperture groups and two rockers; intact face, no inserted objects or active fitting.",
+    "editSourceFile": "exec-e2fcf361-b6b5-4458-8976-6fa4544d766f.png",
+    "editReason": "Original socket illustration had missing upper earth apertures; selected revised image reviewed with all six apertures present.",
+    "originalFile": "exec-86799516-571e-4802-8828-95d00a149d5e.png"
+  },
+  {
+    "key": "service-downlight-installation",
+    "kind": "service",
+    "slug": "downlight-installation",
+    "output": "/media/editorial/photos-20261019/service-downlight-installation.webp",
+    "prompt": "Create an original photorealistic editorial cover, landscape 3:2. Fictional UAE property illustration, not an actual client project or branch. Relevant service context but not a technical diagram or installation specification. All electrical equipment must be intact, enclosed and closed. No people, hands, active work, exposed conductors, sparks, smoke, flames, text, brands, watermarks, logos, documents with writing or fabricated credentials. Natural high-quality architectural photography. A bright modest contemporary living room with six evenly spaced recessed downlights in a plain white ceiling, all fixtures intact, linen sofa and oak sideboard, daylight. Wide upward architectural angle. No ladders, tools or fitting work.",
+    "reviewedAt": "2026-10-19T19:59:18.753Z",
+    "review": "Individually visually reviewed: Six intact recessed downlights in bright living room, no installation work or ladders.",
+    "originalFile": "exec-771b7412-737f-468e-863c-ab7381dd5c1c.png"
+  },
+  {
+    "key": "service-earth-leakage-protection-testing",
+    "kind": "service",
+    "slug": "earth-leakage-protection-testing",
+    "output": "/media/editorial/photos-20261019/service-earth-leakage-protection-testing.webp",
+    "prompt": "Create an original photorealistic editorial cover, landscape 3:2. Fictional UAE property illustration, not an actual client project or branch. Relevant service context but not a technical diagram or installation specification. All electrical equipment must be intact, enclosed and closed. No people, hands, active work, exposed conductors, sparks, smoke, flames, text, brands, watermarks, logos, documents with writing or fabricated credentials. Natural high-quality architectural photography. Closed portable instrument case and blank closed inspection notebook on a trolley outside a closed electrical enclosure in a light commercial utility room. Enclosure door completely shut, no readable results, no probes, no technical schematic. Cool daylight.",
+    "reviewedAt": "2026-10-19T19:59:18.755Z",
+    "review": "Individually visually reviewed: Closed case and notebook on trolley outside closed electrical cabinet; no tests, results or probes.",
+    "originalFile": "exec-45978606-9632-425d-abd2-d4bfbcceafdc.png"
+  },
+  {
+    "key": "service-earth-pit-inspection",
+    "kind": "service",
+    "slug": "earth-pit-inspection",
+    "output": "/media/editorial/photos-20261019/service-earth-pit-inspection.webp",
+    "prompt": "Create an original photorealistic editorial cover, landscape 3:2. Fictional UAE property illustration, not an actual client project or branch. Relevant service context but not a technical diagram or installation specification. All electrical equipment must be intact, enclosed and closed. No people, hands, active work, exposed conductors, sparks, smoke, flames, text, brands, watermarks, logos, documents with writing or fabricated credentials. Natural high-quality architectural photography. A closed square unmarked inspection access cover flush with pale exterior paving beside a modest boundary wall and small gravel planting strip, fictional UAE villa exterior in soft morning light. Lid fully shut. No open pit, no rod or technical detail, no person.",
+    "reviewedAt": "2026-10-19T19:59:18.760Z",
+    "review": "Individually visually reviewed: Closed flush access cover on paved villa path; no open pit, technical detail or client claim.",
+    "originalFile": "exec-6c141bb2-7e64-41f1-9dcf-89238e7c6b65.png"
+  },
+  {
+    "key": "service-earthing-cable-replacement",
+    "kind": "service",
+    "slug": "earthing-cable-replacement",
+    "output": "/media/editorial/photos-20261019/service-earthing-cable-replacement.webp",
+    "prompt": "Create an original photorealistic editorial cover, landscape 3:2. Fictional UAE property illustration, not an actual client project or branch. Relevant service context but not a technical diagram or installation specification. All electrical equipment must be intact, enclosed and closed. No people, hands, active work, exposed conductors, sparks, smoke, flames, text, brands, watermarks, logos, documents with writing or fabricated credentials. Natural high-quality architectural photography. Fictional building service wall with a single intact closed protective conduit descending to a closed unmarked flush access box at ground level, gravel edge and stone wall, late afternoon side light. No visible wire, no color-coded conductor, no active replacement or excavation.",
+    "reviewedAt": "2026-10-19T19:59:18.763Z",
+    "review": "Individually visually reviewed: Closed conduit and access box at ground level; no visible conductor or excavation.",
+    "originalFile": "exec-226295da-6958-4715-8327-1349b92409c7.png"
+  },
+  {
+    "key": "service-earthing-repair",
+    "kind": "service",
+    "slug": "earthing-repair",
+    "output": "/media/editorial/photos-20261019/service-earthing-repair.webp",
+    "prompt": "Create an original photorealistic editorial cover, landscape 3:2. Fictional UAE property illustration, not an actual client project or branch. Relevant service context but not a technical diagram or installation specification. All electrical equipment must be intact, enclosed and closed. No people, hands, active work, exposed conductors, sparks, smoke, flames, text, brands, watermarks, logos, documents with writing or fabricated credentials. Natural high-quality architectural photography. A clean locked exterior utility cabinet against cream masonry, closed inspection hatch on paving to the side, empty safe access area, subtle plant shadows. Wide horizontal composition distinct from close access-cover image. No internal system shown or claimed verified.",
+    "reviewedAt": "2026-10-19T19:59:18.766Z",
+    "review": "Individually visually reviewed: Closed exterior cabinet and access hatch, empty access area; fictional illustration without repair demonstration.",
+    "originalFile": "exec-1b7da455-2b83-4ebd-9820-84fc6b4338d3.png"
+  },
+  {
+    "key": "service-earthing-testing",
+    "kind": "service",
+    "slug": "earthing-testing",
+    "output": "/media/editorial/photos-20261019/service-earthing-testing.webp",
+    "prompt": "Create an original photorealistic editorial cover, landscape 3:2. Fictional UAE property illustration, not an actual client project or branch. Relevant service context but not a technical diagram or installation specification. All electrical equipment must be intact, enclosed and closed. No people, hands, active work, exposed conductors, sparks, smoke, flames, text, brands, watermarks, logos, documents with writing or fabricated credentials. Natural high-quality architectural photography. A quiet neutral consultation desk with a closed rugged instrument case, closed olive folder and unmarked pencil holder; through doorway a closed utility cabinet seen out of focus. Fictional service-planning setting. No test result, numbers, probes or open equipment.",
+    "reviewedAt": "2026-10-19T19:59:18.768Z",
+    "review": "Individually visually reviewed: Closed case and olive folder on consultation desk with distant closed cabinet; no readings or test instructions.",
+    "originalFile": "exec-284d4bee-4ccc-433d-81c5-f40b1b53d1f8.png"
+  },
+  {
+    "key": "service-electrical-burning-smell-diagnosis",
+    "kind": "service",
+    "slug": "electrical-burning-smell-diagnosis",
+    "output": "/media/editorial/photos-20261019/service-electrical-burning-smell-diagnosis.webp",
+    "prompt": "Create an original photorealistic editorial cover, landscape 3:2. Fictional UAE property illustration, not an actual client project or branch. Relevant service context but not a technical diagram or installation specification. All electrical equipment must be intact, enclosed and closed. No people, hands, active work, exposed conductors, sparks, smoke, flames, text, brands, watermarks, logos, documents with writing or fabricated credentials. Natural high-quality architectural photography. A quiet fictional apartment room with an intact closed unbranded white wall socket visible at safe distance and plain unplugged table lamp on a side table. No smoke flames burn marks people or touching. Calm wide shot illustrating a location for professional assessment, not evidence of a real fault.",
+    "reviewedAt": "2026-10-19T19:59:18.771Z",
+    "review": "Individually visually reviewed: Quiet apartment with intact distant socket and lamp; no smoke, damage, touching or diagnosis asserted.",
+    "originalFile": "exec-be62942e-69ad-49f2-8d37-aaedd6dbcd59.png"
+  },
+  {
+    "key": "service-electrical-cable-repair",
+    "kind": "service",
+    "slug": "electrical-cable-repair",
+    "output": "/media/editorial/photos-20261019/service-electrical-cable-repair.webp",
+    "prompt": "Create an original photorealistic editorial cover, landscape 3:2. Fictional UAE property illustration, not an actual client project or branch. Relevant service context but not a technical diagram or installation specification. All electrical equipment must be intact, enclosed and closed. No people, hands, active work, exposed conductors, sparks, smoke, flames, text, brands, watermarks, logos, documents with writing or fabricated credentials. Natural high-quality architectural photography. An intact enclosed cable trunking route along a light industrial corridor wall with closed junction boxes, no exposed wires, no tape repairs or tools, no worker. Gentle daylight, clean realistic surfaces, strong horizontal composition.",
+    "reviewedAt": "2026-10-19T19:59:18.773Z",
+    "review": "Individually visually reviewed: Enclosed trunking and closed junction boxes along industrial corridor; no exposed cable or active repairs.",
+    "originalFile": "exec-bf6bf644-c7f5-4c90-bcad-5708e7731041.png"
+  },
+  {
+    "key": "service-electrical-control-panel-inspection",
+    "kind": "service",
+    "slug": "electrical-control-panel-inspection",
+    "output": "/media/editorial/photos-20261019/service-electrical-control-panel-inspection.webp",
+    "prompt": "Create an original photorealistic editorial cover, landscape 3:2. Fictional UAE property illustration, not an actual client project or branch. Relevant service context but not a technical diagram or installation specification. All electrical equipment must be intact, enclosed and closed. No people, hands, active work, exposed conductors, sparks, smoke, flames, text, brands, watermarks, logos, documents with writing or fabricated credentials. Natural high-quality architectural photography. A locked intact muted blue industrial control cabinet door with simple unmarked inactive indicator lenses and closed handle, clean mechanical-room background, closed plain folder resting on independent stool. No readable controls or labels, no open door, no tests or results.",
+    "reviewedAt": "2026-10-19T19:59:18.775Z",
+    "review": "Individually visually reviewed: Closed blue control cabinet and independent stool with folder in plant room; no identifiable labels or live work.",
+    "originalFile": "exec-ae7fd866-fdc4-4418-a02b-59669860ca0f.png"
+  }
+]
