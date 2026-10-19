@@ -1,0 +1,44 @@
+[
+  {
+    "key": "service-mccb-replacement",
+    "kind": "service",
+    "slug": "mccb-replacement",
+    "output": "/media/editorial/photos-20261019/service-mccb-replacement.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional industrial administrative workbench with one unbranded enclosed molded-case circuit breaker in plain protective packaging, terminals completely covered by packaging and no printed ratings. Closed cabinet blurred beyond, realistic professional product photography and navy/grey materials. No people, tools, exposed conductors, installation, wiring diagrams, labels or brand marks. Illustrative component selection for specialist review, not an actual customer part, product specification or instruction.",
+    "reviewedAt": "2026-10-19T23:16:27.136Z",
+    "review": "Individually visually reviewed: Packaged enclosed generic molded-case breaker, no printed ratings or visible connections; no real product specification.",
+    "originalFile": "exec-707e9b9a-af72-43d0-82e1-f3e9e508caf4.png"
+  },
+  {
+    "key": "service-motion-sensor-installation",
+    "kind": "service",
+    "slug": "motion-sensor-installation",
+    "output": "/media/editorial/photos-20261019/service-motion-sensor-installation.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional UAE office entrance, one simple intact unbranded ceiling presence sensor above a clean corridor leading to reception, daylight and realistic ceiling details, finished interior. No people, active installation, ladders, loose wires, tools, text, branding or claims of actual customer work. Distinct architectural composition illustrating a possible sensor setting, not a technical layout or installation tutorial.\nTargeted edit: Edit only the small round ceiling device near the top center of this fictional office image: make it unmistakably a ceiling-mounted PIR occupancy/motion sensor with a clearly visible hemispherical translucent faceted Fresnel lens and a plain white circular surround. No smoke-detector vent slots, printed labels, logos, text or indicator display. Keep the entire office architecture, light, composition and all other image details unchanged. Retain realistic editorial photographic style. This is a conceptual sensor setting, not a technical installation layout or actual customer work.",
+    "reviewedAt": "2026-10-19T23:16:27.136Z",
+    "review": "Individually visually reviewed: Corrected ceiling PIR sensor has visible faceted dome; image individually reviewed after edit, no smoke-detector vents or installation action.",
+    "editSource": "exec-c8dc022e-e895-4a82-8356-b15364ce0f7d.png",
+    "editReason": "Original ceiling detector visually ambiguous with a smoke alarm; replaced only device with visible PIR dome, original retained.",
+    "originalFile": "exec-5eb10bdb-91e8-4549-a244-baa4276199e7.png"
+  },
+  {
+    "key": "service-motion-sensor-light-installation",
+    "kind": "service",
+    "slug": "motion-sensor-light-installation",
+    "output": "/media/editorial/photos-20261019/service-motion-sensor-light-installation.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional UAE villa side entrance at blue hour with a single enclosed wall light incorporating a small discreet motion sensor, warm light on pale plaster and safe clear stone path, modest restrained planting. No people, hands, tools, exposed wires, diagrams, text or logos. Realistic materials and perspective; conceptual finished lighting scene not a real completed project or specification.",
+    "reviewedAt": "2026-10-19T23:16:27.137Z",
+    "review": "Individually visually reviewed: Intact sensor wall light in fictional villa entrance, no loose wires or work activity.",
+    "originalFile": "exec-633a0164-b0e2-4e95-8ebe-016e0301c74a.png"
+  },
+  {
+    "key": "service-motor-wiring-repair",
+    "kind": "service",
+    "slug": "motor-wiring-repair",
+    "output": "/media/editorial/photos-20261019/service-motor-wiring-repair.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional tidy industrial service room with intact enclosed electric motor and pump assembly set well in background behind a closed access barrier, plain closed maintenance folder on an administrative desk outside work area. Closed terminal housings, enclosed cable conduit, no visible connections. Natural warehouse light, realistic scale. No people, active repairs, exposed wires, open housings, tools in use, text, labels or logos. Conceptual specialist-assessment illustration, not proof of safe machinery or a technical design.",
+    "reviewedAt": "2026-10-19T23:16:27.137Z",
+    "review": "Individually visually reviewed: Enclosed motor/pump and terminal housing behind closed barrier, no visible connections or active work; conceptual setting only.",
+    "originalFile": "exec-0ece7003-6721-427b-8469-fc10fd14ba4f.png"
+  }
+]
