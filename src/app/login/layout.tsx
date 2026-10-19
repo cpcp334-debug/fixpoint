@@ -1,15 +1,8 @@
 import type { ReactNode } from "react";
 import type { Viewport } from "next";
-import { IBM_Plex_Sans } from "next/font/google";
 import "../globals.css";
 
-const sans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-sans",
-  display: "swap",
-  preload: true,
-});
+// Use the existing global system-font stack; no build-time font download.
 
 export const metadata = {
   title: "Staff login | Al Najah Al Daem · Fixpoint",
@@ -31,7 +24,7 @@ export const viewport: Viewport = {
 
 export default function LoginLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={sans.variable}>
+    <html lang="en">
       <body className="min-h-full bg-sand text-ink antialiased">{children}</body>
     </html>
   );

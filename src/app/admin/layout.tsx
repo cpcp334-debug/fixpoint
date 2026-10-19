@@ -2,19 +2,12 @@ import { InstallApps } from "@/components/home/InstallApps";
 import type { ReactNode } from "react";
 import type { Viewport } from "next";
 import { redirect } from "next/navigation";
-import { IBM_Plex_Sans } from "next/font/google";
 import { getStaffSession } from "@/lib/admin/auth";
 import { AdminNav } from "@/components/admin/Ui";
 import { logoutAction } from "@/app/admin/actions";
 import "../globals.css";
 
-const sans = IBM_Plex_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-sans",
-  display: "swap",
-  preload: true,
-});
+// Use the existing global system-font stack; no build-time font download.
 
 export const dynamic = "force-dynamic";
 
@@ -41,7 +34,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
   const session = await getStaffSession();
   if (!session) redirect("/login");
   return (
-    <html lang="en" className={sans.variable}>
+    <html lang="en">
       <body className="min-h-full bg-sand text-ink antialiased">
         <div className="flex min-h-screen flex-col lg:flex-row">
           <AdminNav session={session} />
