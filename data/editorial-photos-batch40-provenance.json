@@ -1,0 +1,42 @@
+[
+  {
+    "key": "service-lighting-circuit-repair",
+    "kind": "service",
+    "slug": "lighting-circuit-repair",
+    "output": "/media/editorial/photos-20261019/service-lighting-circuit-repair.webp",
+    "prompt": "Original photorealistic editorial website cover horizontal3:2. Fictional UAE office corridor in soft daylight with intact recessed ceiling light fittings and a closed distribution cupboard well behind a plain reception table. Calm realistic geometry, pale plaster and subtle navy furnishings. No people, active repairs, tools, loose wires, removed covers, readable text, logos, sparks or diagnostic claims. Conceptual scene for professional assessment of a lighting circuit, never a real customer project.",
+    "reviewedAt": "2026-10-19T22:51:06.825Z",
+    "review": "Individually visually reviewed: Closed cupboard and intact office ceiling lighting, no testing or active repairs; fictional scene.",
+    "originalFile": "exec-bc746155-f7a6-4452-af9c-5e9240a78c73.png"
+  },
+  {
+    "key": "service-lighting-control-repair",
+    "kind": "service",
+    "slug": "lighting-control-repair",
+    "output": "/media/editorial/photos-20261019/service-lighting-control-repair.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2, close architectural view of a plain intact unbranded wall-mounted lighting control panel with simple nontext buttons in a fictional contemporary UAE meeting room, softly blurred ceiling lights and table behind. Closed enclosure only, realistic hardware proportion, natural daylight. No hands, open panels, wires, tools, readable screen values, brands or certification claims. Conceptual illustration, not a repair tutorial or real installed customer system.",
+    "reviewedAt": "2026-10-19T22:51:06.828Z",
+    "review": "Individually visually reviewed: Closed plain lighting-control buttons and intact meeting room lights; no exposed wiring or text.",
+    "originalFile": "exec-1ddee3aa-fd9d-401c-8bd6-12450d13565b.png"
+  },
+  {
+    "key": "service-lighting-timer-installation",
+    "kind": "service",
+    "slug": "lighting-timer-installation",
+    "output": "/media/editorial/photos-20261019/service-lighting-timer-installation.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2, a new unbranded enclosed DIN-style timer unit resting in a plain protective box on a clean planning desk, closed appointment notebook nearby and fictional courtyard lighting softly visible through a window. Realistic simple product photography, enclosed terminal cover and blank dark display. No cables, exposed terminals, numbers or text, people, tools, wiring diagrams, brands or active installation. Illustrative selection/planning scene, not a technical specification or customer work.",
+    "reviewedAt": "2026-10-19T22:51:06.828Z",
+    "review": "Individually visually reviewed: Enclosed timer in protective box, blank display and covered terminal area; background plan is architectural, no readable wiring instructions.",
+    "originalFile": "exec-1ad29658-d164-4981-8e81-c9a7c73c2ad9.png"
+  },
+  {
+    "key": "service-loose-connection-repair",
+    "kind": "service",
+    "slug": "loose-connection-repair",
+    "output": "/media/editorial/photos-20261019/service-loose-connection-repair.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2, fictional tidy UAE utility hallway with intact closed flush electrical cupboard and a plain closed inspection folder on a small foreground table. Side light, realistic stone floor and quiet restrained navy accent wall. No people, hands, exposed wires, loose or damaged parts, open panels, tools, sparks, smoke, text or logos. Illustrate arranging professional inspection for a suspected connection issue without depicting a fault or instructional repair. Not an actual customer property.",
+    "reviewedAt": "2026-10-19T22:51:06.828Z",
+    "review": "Individually visually reviewed: Intact closed utility cupboard and closed folder; no depicted fault, exposed parts or real-customer claim.",
+    "originalFile": "exec-67280d15-a828-493a-9110-d20b58be13f7.png"
+  }
+]
