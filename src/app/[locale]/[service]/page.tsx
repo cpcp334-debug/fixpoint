@@ -154,6 +154,7 @@ export default async function ServicePage({
         lead={row.t.shortDescription}
         icon={Icon}
         heroImage={row.heroImage}
+        imageAlt={row.imageAlt}
         shareUrl={publicCanonical(locale, publicPath)}
         shareLabel={home("share")}
         copiedLabel={home("copied")}

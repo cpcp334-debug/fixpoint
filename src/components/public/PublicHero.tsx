@@ -64,6 +64,7 @@ export function PublicHero({
   compact?: boolean;
 }) {
   const publishedImage = resolvePublishedHeroImage(heroImage, locale);
+  const illustration = publishedImage?.startsWith("/media/editorial/");
   const brand = locale ? brandName(locale) : null;
   const extraKicker = kicker && kicker !== title && kicker !== brand ? kicker : null;
 
@@ -104,7 +105,7 @@ export function PublicHero({
             {publishedImage ? (
               <Image
                 src={publishedImage}
-                alt={imageAlt}
+                alt={imageAlt || title}
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 560px"
                 className="object-cover"
@@ -115,7 +116,7 @@ export function PublicHero({
             ) : (
               <HeroFallback locale={locale} />
             )}
-
+            {illustration ? <span className="absolute bottom-3 start-3 rounded-md bg-white/90 px-3 py-1 text-xs text-navy">{locale === "ar" ? "رسم توضيحي للخدمة" : "Service illustration"}</span> : null}
           </div>
         )}
       </Container>

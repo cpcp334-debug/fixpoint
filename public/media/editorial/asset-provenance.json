@@ -1,0 +1,27 @@
+{
+  "createdAt": "2026-10-19",
+  "kind": "Original code-drawn service illustrations",
+  "notPhotos": true,
+  "notEvidenceOfJobsOrBranches": true,
+  "assets": [
+    "electrical",
+    "plumbing",
+    "ac",
+    "cleaning",
+    "painting",
+    "walls",
+    "swimming-pool",
+    "sauna",
+    "water-tank",
+    "refrigerator",
+    "microwave",
+    "washing-machine",
+    "water-heater",
+    "dishwasher",
+    "gym",
+    "oven",
+    "burner-cooker",
+    "general-maintenance",
+    "location"
+  ]
+}

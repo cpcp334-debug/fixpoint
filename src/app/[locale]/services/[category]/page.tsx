@@ -1,3 +1,4 @@
+import { editorialImage, editorialImageAlt } from "@/lib/catalog/editorial-images";
 import { brandName } from "@/config/site";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -151,7 +152,7 @@ export default async function CategoryPage({
       />
       <JsonLd data={faqJsonLd(aeo.map((x) => ({ q: x.q, a: x.a })))} />
 
-      <PublicHero locale={locale} title={loc.name} lead={loc.description} kicker={loc.childCountLabel} />
+      <PublicHero locale={locale} title={loc.name} lead={loc.description} kicker={loc.childCountLabel} heroImage={editorialImage(null, [cat.slug])} imageAlt={editorialImageAlt(editorialImage(null, [cat.slug]), locale, loc.name)} />
 
       {cat.slug === "electrical" ? (
         <Section>

@@ -36,14 +36,8 @@ export async function generateStaticParams() {
 }
 
 function hubCoverAndAlt(slug: string, locale: string, name: string, emirateName: string) {
-  const s = slug.toLowerCase();
-  let cover = "/media/topics/general.webp";
-  if (/industrial|musaffah|sajaa|quoz|warsan/.test(s)) cover = "/media/topics/electrical.webp";
-  else if (/marina|island|palm|beach|harbour|harbor|aqah|creek/.test(s)) cover = "/media/topics/pool.webp";
-  else if (/hills|ranch|gardens|village|estate/.test(s)) cover = "/media/topics/cleaning.webp";
-  else if (s.includes("abu-dhabi") || s.includes("khalifa") || s.includes("saadiyat")) cover = "/media/topics/ac.webp";
-  else if (s.includes("fujairah") || s.includes("dibba")) cover = "/media/topics/plumbing.webp";
-  else if (s.includes("sharjah") || s.includes("sajaa")) cover = "/media/topics/walls.webp";
+  // An illustration of buildings, never presented as a photograph of this location.
+  const cover = "/media/editorial/location.webp";
   return {
     cover,
     alt:

@@ -7,6 +7,7 @@ import { blogLookupCandidates, blogPathSlug } from "@/lib/slug/blog-slug-map";
 import { normalizeRouteSlug } from "@/lib/slug/route-slug";
 import { isReviewRequiredText } from "@/lib/catalog/public-i18n";
 import { toMasterServiceSlug } from "@/lib/slug/service-slug-map";
+import { editorialImage, editorialImageAlt } from "@/lib/catalog/editorial-images";
 import { cleanPublicEditorialText } from "@/lib/blog/public-editorial-copy";
 
 export type BlogArticleCard = {
@@ -67,8 +68,8 @@ function mapCard(
     slug: publicSlug,
     title: scrubReviewRequired(t.title, jobName),
     excerpt: scrubReviewRequired(t.excerpt, jobName),
-    heroImage: row.heroImage,
-    imageAlt: scrubReviewRequired(t.imageAlt || t.title, jobName),
+    heroImage: editorialImage(row.heroImage, cats, parseJson<string[]>(row.relatedServiceSlugs || "[]", []).map(toMasterServiceSlug)),
+    imageAlt: editorialImageAlt(editorialImage(row.heroImage, cats, parseJson<string[]>(row.relatedServiceSlugs || "[]", []).map(toMasterServiceSlug)), locale, scrubReviewRequired(t.title, jobName), scrubReviewRequired(t.imageAlt || t.title, jobName)),
     categories: cats
       .filter((slug) => isPublicBlogCategorySlug(slug))
       .map((slug) => ({
@@ -214,7 +215,7 @@ export const getBlogArticleBySlug = cache(async (slug: string, locale: string) =
   return {
     id: row.id,
     slug: publicSlug,
-    heroImage: row.heroImage,
+    heroImage: editorialImage(row.heroImage, cats, parseJson<string[]>(row.relatedServiceSlugs || "[]", []).map(toMasterServiceSlug)),
     publishedAt: row.publishedAt,
     updatedAt: row.updatedAt,
     relatedServiceSlugs: parseJson<string[]>(row.relatedServiceSlugs, []).map((s) => toMasterServiceSlug(s)),
@@ -231,7 +232,7 @@ export const getBlogArticleBySlug = cache(async (slug: string, locale: string) =
       body: cleanPublicEditorialText(scrubReviewRequired(t.body, job)),
       diySection: cleanPublicEditorialText(scrubReviewRequired(t.diySection || "", job)),
       faq: parseFaqJson(scrubReviewRequired(t.faq || "[]", job)),
-      imageAlt: scrubReviewRequired(t.imageAlt || t.title, job),
+      imageAlt: editorialImageAlt(editorialImage(row.heroImage, cats, parseJson<string[]>(row.relatedServiceSlugs || "[]", []).map(toMasterServiceSlug)), locale, scrubReviewRequired(t.title, job), scrubReviewRequired(t.imageAlt || t.title, job)),
       seoTitle: scrubReviewRequired(t.seoTitle, job),
       metaDescription: scrubReviewRequired(t.metaDescription, job),
     },
