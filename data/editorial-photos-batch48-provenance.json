@@ -1,0 +1,42 @@
+[
+  {
+    "key": "service-oven-electrical-connection",
+    "kind": "service",
+    "slug": "oven-electrical-connection",
+    "output": "/media/editorial/photos-20261019/service-oven-electrical-connection.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional modest UAE kitchen with one intact built-in electric oven fully closed beneath a clean worktop, simple closed appliance manual on counter, morning window light, realistic ordinary cabinets. No gas flame, visible cable terminations, plugs being moved, people, tools, open electrical compartments, text, brand logos or active connection work. Conceptual appliance assessment setting, not proof of compliance, a wiring tutorial or a real customer kitchen.",
+    "reviewedAt": "2026-10-19T23:51:33.605Z",
+    "review": "Individually visually reviewed: Intact closed built-in oven and plain manual, no connection details, gas flame or recognizable brand; fictional kitchen illustration.",
+    "originalFile": "exec-08ade4fa-b8fb-4996-9025-85de078d383b.png"
+  },
+  {
+    "key": "service-overload-protection-inspection",
+    "kind": "service",
+    "slug": "overload-protection-inspection",
+    "output": "/media/editorial/photos-20261019/service-overload-protection-inspection.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional small commercial premises with intact closed distribution cabinet on a dry utility wall and plain closed load-review folder on foreground administrative table. Realistic simple surroundings, navy chair and soft daylight. No people, meters, readings, breaker internals, exposed wiring, diagrams, tools, sparks, text, logos or asserted protection performance. Conceptual planning of specialist inspection, not a technical design or customer case.",
+    "reviewedAt": "2026-10-19T23:51:33.607Z",
+    "review": "Individually visually reviewed: Closed distribution cabinet and folder, no ratings, readings or asserted protection performance.",
+    "originalFile": "exec-e980abd1-5c29-4578-a76e-5472815e04e9.png"
+  },
+  {
+    "key": "service-partial-power-failure-diagnosis",
+    "kind": "service",
+    "slug": "partial-power-failure-diagnosis",
+    "output": "/media/editorial/photos-20261019/service-partial-power-failure-diagnosis.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional modest UAE apartment hallway at evening, naturally dim doorway at left and warmly illuminated seating room at right, intact closed electrical cupboard, closed blank notebook on entry shelf. Realistic quiet household, no distinctive actual building. No people, switches being touched, loose wires, tools, smoke, sparks, text or brand marks. Conceptual partial-loss-of-use reporting illustration; do not imply a diagnosed fault or actual outage.",
+    "reviewedAt": "2026-10-19T23:51:33.607Z",
+    "review": "Individually visually reviewed: Dim and lit adjoining household spaces with closed cupboard and notebook; no operating action or diagnosed-fault claim.",
+    "originalFile": "exec-917cdfc3-b8ff-4a2d-97de-18f61acead01.png"
+  },
+  {
+    "key": "service-pendant-light-installation",
+    "kind": "service",
+    "slug": "pendant-light-installation",
+    "output": "/media/editorial/photos-20261019/service-pendant-light-installation.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional small UAE home breakfast nook with a single intact modern plain pendant above a compact rectangular wood table, pale plaster, natural linen and a simple window looking to generic low-rise courtyard. Morning daylight and realistic scale, distinct modest interior. No people, ladders, tools, exposed wires, active installation, text, brand labels or actual customer-project claims. Conceptual finished lighting choice, not installation instructions.",
+    "reviewedAt": "2026-10-19T23:51:33.607Z",
+    "review": "Individually visually reviewed: Intact pendant over modest breakfast table, no ladder, tools or wiring; fictional finished setting.",
+    "originalFile": "exec-662a6b12-dc6b-4ba6-8888-2241665f089e.png"
+  }
+]
