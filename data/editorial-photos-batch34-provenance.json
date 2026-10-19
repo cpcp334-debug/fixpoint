@@ -1,0 +1,42 @@
+[
+  {
+    "key": "service-high-voltage-problem-diagnosis",
+    "kind": "service",
+    "slug": "high-voltage-problem-diagnosis",
+    "output": "/media/editorial/photos-20261019/service-high-voltage-problem-diagnosis.webp",
+    "prompt": "Original photorealistic editorial cover, landscape 3:2. A fictional spacious industrial electrical service room viewed from outside its doorway, intact closed tall switchgear cabinets well back from the entrance, plain closed assessment folder on a foreground table outside the room. No people, open doors on electrical cabinets, meters or asserted fault readings. Conceptual professional review only, not a technical design. Natural materials and credible scale, restrained warm and navy tones. No brands, logos, watermarks, certifications, sparks or smoke. Fictional illustrative setting, never a real customer project or evidence of compliance.",
+    "reviewedAt": "2026-10-19T22:10:25.531Z",
+    "review": "Individually visually reviewed: Closed industrial switchgear viewed from outside the room; no active work, readings or asserted fault diagnosis.",
+    "originalFile": "exec-4041c500-f170-4e1e-a19d-d0b4faea1a05.png"
+  },
+  {
+    "key": "service-insulation-resistance-testing",
+    "kind": "service",
+    "slug": "insulation-resistance-testing",
+    "output": "/media/editorial/photos-20261019/service-insulation-resistance-testing.webp",
+    "prompt": "Original photorealistic editorial cover, landscape 3:2. An unbranded closed protective electrical test-instrument case on a clean workshop bench, a plain closed equipment manual beside it, intact closed cabinet softly blurred in the far background. No instrument display, probes, exposed cable ends, hands or testing procedure. Quiet planning-for-professional-assessment composition. Natural materials and credible scale, restrained warm and navy tones. No brands, logos, watermarks, certifications, sparks or smoke. Fictional illustrative setting, never a real customer project or evidence of compliance.",
+    "reviewedAt": "2026-10-19T22:10:25.531Z",
+    "review": "Individually visually reviewed: Closed protective case and plain manual on bench; no testing demonstration or exposed probe.",
+    "originalFile": "exec-a35ca229-d172-45b9-8ed7-9fc152fd17f3.png"
+  },
+  {
+    "key": "service-intermittent-electrical-fault-diagnosis",
+    "kind": "service",
+    "slug": "intermittent-electrical-fault-diagnosis",
+    "output": "/media/editorial/photos-20261019/service-intermittent-electrical-fault-diagnosis.webp",
+    "prompt": "Original photorealistic editorial cover, landscape 3:2. Fictional small office at morning light, closed dated-style logbook with no readable text on a dark blue desk, simple analog clock on wall and closed electrical cupboard in the hallway beyond. No live fault recreation, technical measurements or active repair; conceptual record-keeping for an intermittent concern. Natural materials and credible scale, restrained warm and navy tones. No brands, logos, watermarks, certifications, sparks or smoke. Fictional illustrative setting, never a real customer project or evidence of compliance.",
+    "reviewedAt": "2026-10-19T22:10:25.531Z",
+    "review": "Individually visually reviewed: Closed logbook and clock with closed cupboard beyond; conceptual record-keeping, not an actual fault report.",
+    "originalFile": "exec-bb6c2c7d-1d5e-4058-b136-8509e6994bd5.png"
+  },
+  {
+    "key": "service-isolator-switch-replacement",
+    "kind": "service",
+    "slug": "isolator-switch-replacement",
+    "output": "/media/editorial/photos-20261019/service-isolator-switch-replacement.webp",
+    "prompt": "Original photorealistic editorial cover, landscape 3:2. Fictional dry utility balcony with an intact closed weatherproof electrical isolator enclosure mounted on a pale wall near a closed outdoor air-conditioning unit, all conduits enclosed. No readable switch labels, loose parts, exposed wires, people or active replacement. Realistic close architectural photograph, not an installation instruction. Natural materials and credible scale, restrained warm and navy tones. No brands, logos, watermarks, certifications, sparks or smoke. Fictional illustrative setting, never a real customer project or evidence of compliance.",
+    "reviewedAt": "2026-10-19T22:10:25.531Z",
+    "review": "Individually visually reviewed: Intact closed isolator enclosure and AC unit with enclosed conduit; no labels prescribing switching or active replacement.",
+    "originalFile": "exec-4d799b0a-f9df-4802-9dc1-757a1a92be67.png"
+  }
+]
