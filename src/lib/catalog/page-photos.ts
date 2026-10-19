@@ -1,5 +1,6 @@
 /** Individually generated and reviewed photo-style covers. Each entry belongs to one logical page. */
 export const PAGE_PHOTOS: Record<string,string> = {
+ 'service:emergency-light-repair':'/media/editorial/photos-20261019/service-emergency-light.webp',
  'service:commercial-electrical-inspection':'/media/editorial/photos-20261019/service-commercial.webp',
  'service:office-electrical-maintenance':'/media/editorial/photos-20261019/service-office.webp',
  'service:shop-electrical-maintenance':'/media/editorial/photos-20261019/service-shop.webp',

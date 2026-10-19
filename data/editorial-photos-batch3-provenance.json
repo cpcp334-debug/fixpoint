@@ -1,0 +1,18 @@
+[
+  {
+    "key": "blog-emergency-light",
+    "prompt": "Use case: photorealistic-natural. Editorial cover for an Arabic guide about arranging emergency-light repair in a commercial building, not evidence of a real project. Wide 3:2 professional architectural photograph, empty modern office corridor, softly lit white walls, simple closed doors and a compact white twin-head emergency luminaire mounted high on the wall, lenses softly illuminated. Realistic clean installation, unobstructed passage, no visible wires, no people or tools, no text, logos, exit lettering, watermarks or certification symbols. Neutral daylight with gentle shadows. Do not imply a specific real building or completed job.",
+    "output": "/media/editorial/photos-20261019/blog-emergency-light.webp",
+    "reviewedAt": "2026-10-19T15:57:50.792Z",
+    "review": "Reviewed: enclosed emergency-light fixture, unobstructed commercial setting, no exposed conductors or project claims; distinct composition; AI illustration disclosed.",
+    "originalFile": "exec-1464278b-1e28-42fc-b6f0-759bd6a58d44.png"
+  },
+  {
+    "key": "service-emergency-light",
+    "prompt": "Use case: photorealistic-natural. Original separate commercial service-page image about emergency lighting maintenance, illustrative only. Wide 3:2 close architectural detail of a single white rectangular emergency LED bulkhead luminaire above a closed grey service door, seen obliquely with shallow depth of field, warm neutral commercial stair landing background with a simple handrail. The fixture is fully enclosed and professionally mounted, softly glowing, no open panels or exposed wiring. Empty safe scene, no people, tools, text, logos, labels, exit signs or watermarks. Real material texture and natural lighting. Distinct composition from a long office corridor; not a customer-job photograph.",
+    "output": "/media/editorial/photos-20261019/service-emergency-light.webp",
+    "reviewedAt": "2026-10-19T15:57:50.802Z",
+    "review": "Reviewed: enclosed emergency-light fixture, unobstructed commercial setting, no exposed conductors or project claims; distinct composition; AI illustration disclosed.",
+    "originalFile": "exec-eb199ff9-3b31-46a6-90ed-61a845f29984.png"
+  }
+]
