@@ -30,6 +30,14 @@ const nextConfig: NextConfig = {
     // Prefer leaner defaults for mobile LCP (logo / heroes).
     qualities: [60, 70, 75],
   },
+  async redirects() {
+    return [
+      { source: '/en/water-tank-cleaning-service', destination: '/en/water-tank-cleaning', permanent: true },
+      { source: '/en/building-maintenance', destination: '/en/general-building-maintenance', permanent: true },
+      { source: '/en/diy/diy-building-maintenance', destination: '/en/diy/diy-general-building-maintenance', permanent: true },
+      { source: '/en/electrical-testing-diagnosis', destination: '/en/electrical-testing-and-diagnosis', permanent: true },
+    ];
+  },
   async rewrites() {
     return [
       // Belt-and-suspenders with middleware rewrite (middleware must not 307 `/`).

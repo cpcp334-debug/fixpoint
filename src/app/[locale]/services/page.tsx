@@ -14,8 +14,8 @@ import { CtaBand } from "@/components/public/CtaBand";
 import { CategoryChildGrid } from "@/components/catalog/CategoryChildGrid";
 import { listPageHref, PrevNextPagination } from "@/components/ui/PrevNextPagination";
 
-const CATEGORY_PAGE_SIZE = 6;
-const FULL_LIST_PAGE_SIZE = 6;
+const CATEGORY_PAGE_SIZE = 18;
+const FULL_LIST_PAGE_SIZE = 24;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -48,7 +48,7 @@ export default async function ServicesPage({
   const allChildren = (
       categories.flatMap((cat) =>
         cat.children.map((child) => {
-          const svc = serviceMap.get(toMasterServiceSlug(child.slug));
+          const svc = serviceMap.get(toMasterServiceSlug(child.slug)) || (child.slug === 'water-tank-cleaning-service' ? serviceMap.get('water-tank-cleaning') : undefined);
           if (!svc) return null;
           const loc = getNavCategoryLocalized(cat, locale);
           return {
@@ -91,6 +91,12 @@ export default async function ServicesPage({
     >
       <PublicHero locale={locale} title={t("title")} lead={home("mainServicesLead")} />
 
+      <Section tone="sand">
+        <div className="flex flex-wrap items-center justify-between gap-5 rounded-2xl border border-line bg-white p-6 sm:p-8">
+          <div className="max-w-2xl"><p className="text-xs font-bold uppercase tracking-wider text-accent">{locale === 'ar' ? 'الكهرباء أولاً' : 'Electrical services first'}</p><h2 className="mt-2 text-2xl font-bold text-navy">{locale === 'ar' ? 'اعثر على العمل المناسب، ثم ناقش التفاصيل.' : 'Find the right work. Then agree the details.'}</h2><p className="mt-3 text-muted">{locale === 'ar' ? 'تصفح ١٨ فئة و١٦٠ خدمة كهربائية. يؤكد الفريق النطاق والتوفر في عنوانك قبل الحجز.' : 'Explore 18 categories, including 160 electrical services. Scope and availability at your address are confirmed before booking.'}</p></div>
+          <div className="flex flex-wrap gap-3"><a href={`/${locale}/services/electrical`} className="rounded-lg bg-navy px-5 py-3 font-semibold text-white">{locale === 'ar' ? 'خدمات الكهرباء' : 'Explore electrical'}</a><a href="#all-services" className="rounded-lg border border-line px-5 py-3 font-semibold text-navy">{locale === 'ar' ? 'ابحث في الخدمات' : 'Search all services'}</a></div>
+        </div>
+      </Section>
       <Section>
         <SectionHeader title={home("mainServicesTitle")} lead={home("mainServicesLead")} />
         <PrevNextPagination
@@ -136,7 +142,7 @@ export default async function ServicesPage({
         />
       </Section>
 
-      <Section tone="sand">
+      <Section tone="sand" id="all-services">
         <SectionHeader title={t("fullListTitle")} lead={t("fullListLead", { count: allChildren.length })} />
         <PrevNextPagination
           currentPage={listPage}

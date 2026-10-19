@@ -12,17 +12,20 @@ import {
 import Link from "next/link";
 import type { Prisma, ServiceStatus } from "@prisma/client";
 
+import { buildVisitorNavTree } from '@/lib/catalog/approved-nav';
+
 const STATUSES: ServiceStatus[] = ["draft", "active", "requires_approval", "subcontracted", "unavailable", "archived"];
 
 export default async function ServicesAdminPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; status?: string; ok?: string; error?: string }>;
+  searchParams: Promise<{ q?: string; status?: string; category?: string; ok?: string; error?: string }>;
 }) {
   const auth = await needPermission("services");
   if (!auth.ok) return <Forbidden />;
   const query = await searchParams;
   const where: Prisma.ServiceWhereInput = {};
+  if(query.category) where.category = {slug: query.category};
   if (query.status && (STATUSES as string[]).includes(query.status)) {
     where.status = query.status as ServiceStatus;
   }
@@ -45,7 +48,9 @@ export default async function ServicesAdminPage({
       take: 500,
     }),
   ]);
+  rows.sort((a,b)=>Number(b.category.slug==='electrical')-Number(a.category.slug==='electrical'));
   const sp = new URLSearchParams();
+  if(query.category) sp.set('category',query.category);
   if (query.q) sp.set("q", query.q);
   if (query.status) sp.set("status", query.status);
   const returnTo = `/admin/services${sp.toString() ? `?${sp}` : ""}`;
@@ -64,6 +69,7 @@ export default async function ServicesAdminPage({
         }
       />
       <AdminFlash ok={query.ok} error={query.error} />
+      <div className="mb-5 rounded-xl border border-line bg-sand p-4"><p className="font-semibold text-navy">Approved catalogue: 18 categories · 436 child services · 160 electrical</p><p className="mt-1 text-sm text-muted">Electrical appears first. Stored legacy and draft records remain available below; their counts differ from the approved catalogue.</p></div>
       <form className="mb-4 flex flex-wrap gap-2 text-sm" method="get">
         <input
           name="q"
@@ -71,6 +77,7 @@ export default async function ServicesAdminPage({
           placeholder="Search slug or name"
           className="min-w-48 rounded-md border border-line px-3 py-2"
         />
+        <select name="category" aria-label="Service category" defaultValue={query.category || ''} className="rounded-md border border-line px-3 py-2"><option value="">All categories</option>{buildVisitorNavTree().map(c=><option key={c.slug} value={c.slug}>{c.nameEn}</option>)}</select>
         <select name="status" defaultValue={query.status || ""} className="rounded-md border border-line px-3 py-2">
           <option value="">All statuses</option>
           {STATUSES.map((status) => (

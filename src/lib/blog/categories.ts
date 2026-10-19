@@ -20,6 +20,8 @@ export const BLOG_CATEGORIES = [
 /** Internal corpus tags — do not show as public category chips / hero kickers. */
 export const BLOG_SYSTEM_CATEGORY_SLUGS = new Set(["service-location", "service-faq", "keyword-electrician"]);
 
+export const PUBLIC_BLOG_CATEGORIES = BLOG_CATEGORIES.filter(c => !BLOG_SYSTEM_CATEGORY_SLUGS.has(c.slug)).slice().sort((a,b) => Number(b.slug === 'electrical') - Number(a.slug === 'electrical'));
+
 export type BlogCategorySlug = (typeof BLOG_CATEGORIES)[number]["slug"];
 
 export function blogCategoryLabel(slug: string, locale: "en" | "ar") {

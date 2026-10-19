@@ -1,3 +1,5 @@
+import { blogPathSlug, toMasterBlogSlug } from '@/lib/slug/blog-slug-map';
+import { getSiteUrl } from '@/config/site';
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
@@ -34,6 +36,11 @@ export async function generateMetadata({
     description: article.t.metaDescription,
     path: `/blog/${article.slug}`,
     ogType: "article",
+    image: article.heroImage,
+    languages: {
+      en: `${getSiteUrl()}/en/blog/${blogPathSlug('en',toMasterBlogSlug(slug))}`,
+      ar: `${getSiteUrl()}/ar/blog/${blogPathSlug('ar',toMasterBlogSlug(slug))}`,
+    },
     index: true,
   });
 }
@@ -122,7 +129,7 @@ function renderBody(body: string) {
     }
     return (
       <p key={i} className="mt-4 text-sm leading-relaxed text-muted whitespace-pre-line sm:text-base">
-        {block}
+        {block.split(/(https:\/\/[^\s]+)/g).map((part,j) => part.startsWith('https://') ? <a key={j} href={part} className="break-all underline underline-offset-4" rel="noopener noreferrer" target="_blank">{part}</a> : part)}
       </p>
     );
   });

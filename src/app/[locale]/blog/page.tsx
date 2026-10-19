@@ -10,7 +10,7 @@ import { PageShell } from "@/components/public/PageShell";
 import { CtaBand } from "@/components/public/CtaBand";
 import { listPageHref, PrevNextPagination } from "@/components/ui/PrevNextPagination";
 import { getPublishedBlogArticlesPage } from "@/lib/blog/catalog";
-import { BLOG_CATEGORIES } from "@/lib/blog/categories";
+import { PUBLIC_BLOG_CATEGORIES } from "@/lib/blog/categories";
 import { getPublishedGuides } from "@/lib/catalog";
 import { prisma } from "@/server/db";
 
@@ -53,7 +53,7 @@ export default async function BlogIndexPage({
 
   const category = sp.category?.trim();
   const q = sp.q?.trim();
-  const pageSize = 6;
+  const pageSize = 12;
   // First page count comes with take:1 metadata path; here fetch total via page query
   const pageHint = Math.max(1, Number(sp.page || "1") || 1);
   const first = await getPublishedBlogArticlesPage(locale, {
@@ -121,7 +121,7 @@ export default async function BlogIndexPage({
             className="rounded-md border border-line bg-white px-3 py-2 text-sm"
           >
             <option value="">{t("all")}</option>
-            {BLOG_CATEGORIES.map((c) => (
+            {PUBLIC_BLOG_CATEGORIES.map((c) => (
               <option key={c.slug} value={c.slug}>
                 {locale === "ar" ? c.ar : c.en}
               </option>
@@ -136,7 +136,7 @@ export default async function BlogIndexPage({
       <Section>
         <SectionHeader title={t("categories")} />
         <ul className="mt-4 flex flex-wrap gap-2">
-          {BLOG_CATEGORIES.map((c) => (
+          {PUBLIC_BLOG_CATEGORIES.map((c) => (
             <li key={c.slug}>
               <Link
                 href={`/blog?category=${c.slug}`}

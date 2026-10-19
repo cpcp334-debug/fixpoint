@@ -17,7 +17,7 @@ import { TOP_ELECTRICAL_SLUGS } from "../../../../../prisma/data/electrical-serv
 import { listPageHref, PrevNextPagination } from "@/components/ui/PrevNextPagination";
 import { serviceHref } from "@/lib/slug/locale-slug";
 
-const CHILD_PAGE_SIZE = 6;
+const CHILD_PAGE_SIZE = 24;
 
 export async function generateStaticParams() {
   return buildApprovedNavTree().map((c) => ({ category: c.slug }));
@@ -63,7 +63,7 @@ export default async function CategoryPage({
   const anchorPublished = cat.anchorSlug ? Boolean(await getServiceBySlug(cat.anchorSlug, locale)) : false;
   const childrenWithNames = await Promise.all(
     cat.children.map(async (child) => {
-      const svc = await getApprovedCatalogServiceBySlug(child.slug, locale);
+      const svc = await getApprovedCatalogServiceBySlug(child.slug === 'water-tank-cleaning-service' ? 'water-tank-cleaning' : child.slug, locale);
       let name = child.nameEn;
       let description = locale === "ar" ? cat.descriptionAr : cat.descriptionEn;
       if (svc) {

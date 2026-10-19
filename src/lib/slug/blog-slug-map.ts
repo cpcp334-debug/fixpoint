@@ -7,6 +7,8 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { encodePathSegment, normalizeRouteSlug, publicSlugLookupCandidates } from "@/lib/slug/route-slug";
 
+import { EDITORIAL_BLOG_SLUGS } from './editorial-blog-slugs';
+
 let cachedForward: Record<string, string> | null = null;
 let cachedReverse: Record<string, string> | null = null;
 
@@ -22,6 +24,7 @@ function loadMaps() {
       // identity fallback
     }
   }
+  Object.assign(forward, EDITORIAL_BLOG_SLUGS);
   const reverse: Record<string, string> = {};
   for (const [latin, ar] of Object.entries(forward)) {
     reverse[ar] = latin;
