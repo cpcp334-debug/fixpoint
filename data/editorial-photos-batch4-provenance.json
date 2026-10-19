@@ -1,0 +1,18 @@
+[
+  {
+    "key": "blog-earthing-inspection",
+    "prompt": "Use case photorealistic-natural. Wide 3:2 editorial photo-style cover for a professional earthing-inspection guide in UAE, illustrative not a customer project. Close architectural scene in a clean commercial utility room, a fully CLOSED beige metal electrical cabinet attached to a concrete wall, with a neat green-and-yellow insulated protective conductor externally routed in a secure conduit into the cabinet; absolutely no open enclosure, exposed terminals, bare conductor, electrical schematic or active work. A compact closed testing-instrument carrying case sits on a low bench nearby; no displays or text. Natural side lighting, realistic materials, quiet orderly professional mood. No people, logos, labels, watermark, sparks, brand claims or readable words. Do not imply any specific real site.",
+    "output": "/media/editorial/photos-20261019/blog-earthing-inspection.webp",
+    "reviewedAt": "2026-10-19T16:13:50.468Z",
+    "review": "Visually reviewed: fully closed equipment, no exposed terminals or active work; socket geometry matches Type G. Illustrative composition only, not a technical installation specification or client photograph.",
+    "originalFile": "exec-79186816-2f58-471c-b80e-03cc0caf5359.png"
+  },
+  {
+    "key": "blog-sparking-socket",
+    "prompt": "Use case photorealistic-natural. Original wide 3:2 editorial cover for an Arabic guide about reporting a sparking socket safely, not a repair tutorial or actual incident photo. Eye-level close view of an undamaged white British Type G three-rectangular-hole switched electrical wall socket mounted on a light warm plaster wall in a modest UAE apartment interior. Socket empty, no plug inserted, switches off, no hands, no exposed wiring, no actual sparks or smoke. Blurred simple living room background, realistic natural window light, clean but lived-in material detail. No children, people, tools, arrows, words, logos, watermark or safety certification symbols. Illustrative stock-photo quality, no claim of an actual client property.",
+    "output": "/media/editorial/photos-20261019/blog-sparking-socket.webp",
+    "reviewedAt": "2026-10-19T16:13:50.470Z",
+    "review": "Visually reviewed: fully closed equipment, no exposed terminals or active work; socket geometry matches Type G. Illustrative composition only, not a technical installation specification or client photograph.",
+    "originalFile": "exec-6c9b94c9-7e22-4161-8fbc-2c477973c6c3.png"
+  }
+]
