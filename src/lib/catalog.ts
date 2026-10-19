@@ -3,6 +3,7 @@ import type { Prisma } from "@prisma/client";
 import { prisma } from "@/server/db";
 import { pickI18n } from "@/lib/utils";
 import { isApprovedPublicServiceSlug } from "@/lib/catalog/approved-nav";
+import { pagePhoto } from "@/lib/catalog/page-photos";
 import { editorialImage, editorialImageAlt } from "@/lib/catalog/editorial-images";
 import { sanitizePublicServiceI18n } from "@/lib/catalog/public-i18n";
 import { locationLookupCandidates, serviceLookupCandidates, servicePathSlug } from "@/lib/slug/locale-slug";
@@ -29,7 +30,7 @@ function mapPublicService(row: ServiceWithTranslations, locale: string) {
   const raw = pickServiceTranslation(row, locale);
   if (!raw) return null;
   const t = sanitizePublicServiceI18n(row, locale, raw);
-  const heroImage = editorialImage(row.heroImage, [row.category.slug], [row.slug]);
+  const heroImage = pagePhoto("service", row.slug) || editorialImage(row.heroImage, [row.category.slug], [row.slug]);
   return { ...row, heroImage, imageAlt: editorialImageAlt(heroImage, locale, t.name), t };
 }
 

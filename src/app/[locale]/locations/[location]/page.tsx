@@ -1,3 +1,4 @@
+import { pagePhoto } from "@/lib/catalog/page-photos";
 import { brandName, getSiteUrl } from "@/config/site";
 import { notFound } from "next/navigation";
 import { Link } from "@/i18n/routing";
@@ -37,13 +38,13 @@ export async function generateStaticParams() {
 
 function hubCoverAndAlt(slug: string, locale: string, name: string, emirateName: string) {
   // An illustration of buildings, never presented as a photograph of this location.
-  const cover = "/media/editorial/location.webp";
+  const cover = pagePhoto("location", slug) || "/media/editorial/location.webp";
   return {
     cover,
     alt:
       locale === "ar"
-        ? `صورة توضيحية لمنطقة خدمة الصيانة في ${name}${emirateName ? `، ${emirateName}` : ""}`
-        : `Maintenance service area illustration for ${name}${emirateName ? `, ${emirateName}` : ""}`,
+        ? `${pagePhoto("location",slug) ? "صورة توضيحية مولدة بالذكاء الاصطناعي، وليست تصويراً فعلياً للموقع: " : "رسم توضيحي لمنطقة خدمة الصيانة: "}${name}${emirateName ? `، ${emirateName}` : ""}`
+        : `${pagePhoto("location",slug) ? "AI-generated architectural illustration, not an actual location photograph: " : "Maintenance service area illustration: "}${name}${emirateName ? `, ${emirateName}` : ""}`,
   };
 }
 

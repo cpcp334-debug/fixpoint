@@ -1,0 +1,137 @@
+[
+  {
+    "key": "commercial-inspection",
+    "prompt": "Wide editorial photograph for a commercial electrical inspection guide: a quiet modern commercial building services corridor, closed steel electrical cabinets along one wall, a small inspection clipboard and closed instrument case on a trolley in the foreground, daylight from an ordinary window. Muted navy and warm neutral tones, realistic textures, 4:3 horizontal composition.",
+    "output": "/media/editorial/photos-20261019/commercial-inspection.webp",
+    "kind": "AI-generated photographic illustration; not a real Fixpoint project",
+    "originalFile": "exec-e81cbbe1-5ff8-450c-95c4-544da4730c28.png",
+    "reviewedAt": "2026-10-19T15:05:51.701Z",
+    "review": "Distinct topic scene; no exposed wiring or work being performed; illustrative provenance disclosed"
+  },
+  {
+    "key": "office-maintenance",
+    "prompt": "Wide editorial photograph for an office electrical maintenance guide: an elegant occupied-looking but empty meeting room with workstation area beyond glass, orderly under-desk cable management, ceiling lighting and one neatly closed service cupboard, a blank maintenance notebook on the meeting table. Warm natural daylight, realistic architectural photography, horizontal 4:3.",
+    "output": "/media/editorial/photos-20261019/office-maintenance.webp",
+    "kind": "AI-generated photographic illustration; not a real Fixpoint project",
+    "originalFile": "exec-ff065b9d-ae90-4b24-9205-e5f9e647569d.png",
+    "reviewedAt": "2026-10-19T15:05:51.702Z",
+    "review": "Distinct topic scene; no exposed wiring or work being performed; illustrative provenance disclosed"
+  },
+  {
+    "key": "shop-maintenance",
+    "prompt": "Editorial photograph for retail-shop electrical maintenance: an unbranded small retail shop after closing, tidy shelving with plain generic boxes, ceiling track lights, clear unobstructed shop entrance, maintenance clipboard resting on the checkout counter. Different composition from an office, slightly oblique wide-angle architectural photograph, evening interior lighting, horizontal 4:3.",
+    "output": "/media/editorial/photos-20261019/shop-maintenance.webp",
+    "kind": "AI-generated photographic illustration; not a real Fixpoint project",
+    "originalFile": "exec-1f557988-a38d-4af1-aed4-db94ab75c109.png",
+    "reviewedAt": "2026-10-19T15:05:51.702Z",
+    "review": "Distinct topic scene; no exposed wiring or work being performed; illustrative provenance disclosed"
+  },
+  {
+    "key": "distribution-board",
+    "prompt": "Close editorial photograph for distribution board inspection: closed gray electrical distribution board with intact door and handle mounted on a clean utility-room wall, a blank clipboard and closed protective instrument pouch on a nearby small bench. Emphasize the closed enclosure and access clearance; soft directional light, sharp realistic metal texture, horizontal 4:3.",
+    "output": "/media/editorial/photos-20261019/distribution-board.webp",
+    "kind": "AI-generated photographic illustration; not a real Fixpoint project",
+    "originalFile": "exec-98e7f6b3-32db-4670-b395-b4d126eb87ec.png",
+    "reviewedAt": "2026-10-19T15:05:51.702Z",
+    "review": "Distinct topic scene; no exposed wiring or work being performed; illustrative provenance disclosed"
+  },
+  {
+    "key": "breaker-tripping",
+    "prompt": "Photographic illustration for a guide on repeated circuit-breaker tripping: an empty domestic utility alcove, a closed intact consumer-unit enclosure on the wall and an unplugged ordinary kettle standing on a separate dry countertop with its plug visibly resting safely beside it. Calm neutral daylight, no fault being recreated, no damage, horizontal 4:3, distinct medium-distance composition.",
+    "output": "/media/editorial/photos-20261019/breaker-tripping.webp",
+    "kind": "AI-generated photographic illustration; not a real Fixpoint project",
+    "originalFile": "exec-5374614e-1a1b-40e4-a3c8-7467d3673d5f.png",
+    "reviewedAt": "2026-10-19T15:05:51.702Z",
+    "review": "Distinct topic scene; no exposed wiring or work being performed; illustrative provenance disclosed"
+  },
+  {
+    "key": "load-assessment",
+    "prompt": "Photorealistic editorial flat-lay for an electrical load assessment planning article: a large clean table with a blank equipment inventory sheet, plain closed laptop, tape measure, closed clamp-meter case and separate harmless desktop appliances spaced apart, a softly blurred commercial office in the background. No visible readings or meaningful numbers, natural side lighting, horizontal 4:3.",
+    "output": "/media/editorial/photos-20261019/load-assessment.webp",
+    "kind": "AI-generated photographic illustration; not a real Fixpoint project",
+    "originalFile": "exec-a2ebea7d-b3e2-4da9-a88d-c67fd1251c35.png",
+    "reviewedAt": "2026-10-19T15:05:51.702Z",
+    "review": "Distinct topic scene; no exposed wiring or work being performed; illustrative provenance disclosed"
+  },
+  {
+    "key": "service-commercial",
+    "prompt": "Architectural editorial photograph inside a small commercial building lobby, a closed electrical services door at the side, a blank inspection folder and a closed hard tool case on a freestanding console; clear access and empty lobby, soft daylight. Wide horizontal composition.",
+    "output": "/media/editorial/photos-20261019/service-commercial.webp",
+    "kind": "AI-generated photographic illustration; not real job or location photography",
+    "originalFile": "exec-94fbc03e-40af-45d1-86f5-15377bc46bb5.png",
+    "reviewedAt": "2026-10-19T15:18:08.315Z",
+    "review": "Distinct topic scene reviewed; illustrative AI provenance disclosed; no private or completed-job evidence implied"
+  },
+  {
+    "key": "service-office",
+    "prompt": "Use case: photorealistic-natural. Original wide 4:3 editorial photo-style cover for office electrical maintenance in the UAE. Low side view of a tidy modern office workstation with a CLOSED dark cable-management tray securely mounted under the desk, orderly concealed cable routing, lamp and ceiling lights visible above, daylight through glass, no people. No sockets, receptacles, plugs or power strips visible anywhere, no exposed wires, no repair action, no logos, no text. Realistic furniture and safe unobstructed floor. This is an AI-generated illustrative scene, not evidence of a real Fixpoint project.",
+    "output": "/media/editorial/photos-20261019/service-office.webp",
+    "kind": "AI-generated photographic illustration; not real job or location photography",
+    "originalFile": "exec-a6efb86c-aa51-4999-b12f-4dc148424a62.png",
+    "reviewedAt": "2026-10-19T15:18:08.315Z",
+    "review": "Distinct topic scene reviewed; illustrative AI provenance disclosed; no private or completed-job evidence implied"
+  },
+  {
+    "key": "service-shop",
+    "prompt": "Photo-style architectural view looking upward inside an unbranded retail store at intact ceiling track lights and a clean ceiling, plain shelving lower in frame and a small empty checkout area in the distance. Warm balanced light, no readable packaging. Wide horizontal.",
+    "output": "/media/editorial/photos-20261019/service-shop.webp",
+    "kind": "AI-generated photographic illustration; not real job or location photography",
+    "originalFile": "exec-5a04af22-4738-44b7-9f90-a35b81e076f7.png",
+    "reviewedAt": "2026-10-19T15:18:08.315Z",
+    "review": "Distinct topic scene reviewed; illustrative AI provenance disclosed; no private or completed-job evidence implied"
+  },
+  {
+    "key": "service-board",
+    "prompt": "Photo-style product-context view of a compact closed gray distribution enclosure mounted on a smooth cream utility wall, intact external handle, no internal components visible. A closed clipboard folder rests on a shelf below, cool sidelight, asymmetrical horizontal composition.",
+    "output": "/media/editorial/photos-20261019/service-board.webp",
+    "kind": "AI-generated photographic illustration; not real job or location photography",
+    "originalFile": "exec-0eb2fe0f-00ec-457c-8003-71fa12ad4d8a.png",
+    "reviewedAt": "2026-10-19T15:18:08.315Z",
+    "review": "Distinct topic scene reviewed; illustrative AI provenance disclosed; no private or completed-job evidence implied"
+  },
+  {
+    "key": "service-breaker",
+    "prompt": "Editorial photo-style utility-room scene with a closed white consumer-unit cover on a wall, an unopened tool case and blank report notebook on a small folding bench well below it, no electrical work happening. Soft natural light, wide horizontal perspective, realistic ordinary materials.",
+    "output": "/media/editorial/photos-20261019/service-breaker.webp",
+    "kind": "AI-generated photographic illustration; not real job or location photography",
+    "originalFile": "exec-1730985a-2f51-4ed8-8647-028f03a123b6.png",
+    "reviewedAt": "2026-10-19T15:18:08.315Z",
+    "review": "Distinct topic scene reviewed; illustrative AI provenance disclosed; no private or completed-job evidence implied"
+  },
+  {
+    "key": "service-load",
+    "prompt": "Photo-style planning scene: meeting-table corner with several plain equipment manuals with no readable words, blank inventory sheet, a closed instrument case and a closed laptop; an ordinary office kitchen appliance area blurred at a distance. Bright daylight, wide horizontal.",
+    "output": "/media/editorial/photos-20261019/service-load.webp",
+    "kind": "AI-generated photographic illustration; not real job or location photography",
+    "originalFile": "exec-4261c6ad-ff18-4dd5-83a6-b0e74cd5a8af.png",
+    "reviewedAt": "2026-10-19T15:18:08.315Z",
+    "review": "Distinct topic scene reviewed; illustrative AI provenance disclosed; no private or completed-job evidence implied"
+  },
+  {
+    "key": "location-business-bay",
+    "prompt": "Photographic architectural illustration of an anonymous modern UAE-style mixed-use business district: glass office building facades, shaded pedestrian passage, clean building service entrance. No recognizable actual skyline, no claimed exact address. Morning light, street-level wide horizontal composition.",
+    "output": "/media/editorial/photos-20261019/location-business-bay.webp",
+    "kind": "AI-generated photographic illustration; not real job or location photography",
+    "originalFile": "exec-ad6cbabb-0dce-42bc-b414-02f0ad38e68b.png",
+    "reviewedAt": "2026-10-19T15:18:08.315Z",
+    "review": "Distinct topic scene reviewed; illustrative AI provenance disclosed; no private or completed-job evidence implied"
+  },
+  {
+    "key": "location-al-quoz",
+    "prompt": "Photographic architectural illustration of a generic UAE-style light-industrial neighbourhood: modest low-rise warehouse exterior, closed service bay, tidy pedestrian access and simple utility conduits. No identifiable actual property or shop signs. Daylight, wide horizontal, no vehicles blocking access.",
+    "output": "/media/editorial/photos-20261019/location-al-quoz.webp",
+    "kind": "AI-generated photographic illustration; not real job or location photography",
+    "originalFile": "exec-cd1c4076-b90c-4d6b-bb1a-ecddf1d359d4.png",
+    "reviewedAt": "2026-10-19T15:18:08.315Z",
+    "review": "Distinct topic scene reviewed; illustrative AI provenance disclosed; no private or completed-job evidence implied"
+  },
+  {
+    "key": "location-dubai",
+    "prompt": "Photographic editorial illustration of a generic contemporary UAE city residential and commercial setting: modern mid-rise apartment entrances, a landscaped pavement and ordinary maintenance-access walkway. No iconic landmarks and no exact real location claim. Golden late afternoon light, wide horizontal.",
+    "output": "/media/editorial/photos-20261019/location-dubai.webp",
+    "kind": "AI-generated photographic illustration; not real job or location photography",
+    "originalFile": "exec-0ca1d3c8-5ba1-4d24-9bec-14f89445100a.png",
+    "reviewedAt": "2026-10-19T15:18:08.315Z",
+    "review": "Distinct topic scene reviewed; illustrative AI provenance disclosed; no private or completed-job evidence implied"
+  }
+]

@@ -65,6 +65,7 @@ export function PublicHero({
 }) {
   const publishedImage = resolvePublishedHeroImage(heroImage, locale);
   const illustration = publishedImage?.startsWith("/media/editorial/");
+  const aiPhoto = publishedImage?.startsWith("/media/editorial/photos-");
   const brand = locale ? brandName(locale) : null;
   const extraKicker = kicker && kicker !== title && kicker !== brand ? kicker : null;
 
@@ -116,7 +117,7 @@ export function PublicHero({
             ) : (
               <HeroFallback locale={locale} />
             )}
-            {illustration ? <span className="absolute bottom-3 start-3 rounded-md bg-white/90 px-3 py-1 text-xs text-navy">{locale === "ar" ? "رسم توضيحي للخدمة" : "Service illustration"}</span> : null}
+            {illustration ? <span className="absolute bottom-3 start-3 rounded-md bg-white/90 px-3 py-1 text-xs text-navy">{aiPhoto ? (locale === "ar" ? "صورة توضيحية مولدة بالذكاء الاصطناعي" : "AI-generated illustrative image") : (locale === "ar" ? "رسم توضيحي للخدمة" : "Service illustration")}</span> : null}
           </div>
         )}
       </Container>

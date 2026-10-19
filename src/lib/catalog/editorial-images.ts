@@ -21,6 +21,7 @@ export function editorialImage(src:string|null|undefined,categories:string[]=[],
  return `/media/editorial/${category}.webp`;
 }
 export function editorialImageAlt(src:string,locale:string,title:string,original=''):string {
+ if(src.startsWith('/media/editorial/photos-'))return locale==='ar'?`صورة توضيحية مولدة بالذكاء الاصطناعي: ${title}؛ ليست صورة عميل أو فرع فعلي`:`AI-generated illustrative image: ${title}; not a real customer project or branch photograph`;
  if(src.startsWith('/media/editorial/'))return locale==='ar'?`رسم توضيحي: ${title}، وليس صورة لموقع أو مشروع منفذ`:`Illustration: ${title}; not a photograph of a completed job or local branch`;
  return original||title;
 }
