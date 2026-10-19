@@ -31,6 +31,12 @@ const STATIC_TOP = new Set([
   "about",
   "get-a-quote",
   "privacy-policy",
+  "electrical-services-dubai",
+  "terms",
+  "cancellation-policy",
+  "cookie-policy",
+  "book-a-service",
+  "projects",
 ]);
 
 /**

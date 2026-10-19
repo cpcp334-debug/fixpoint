@@ -3,7 +3,7 @@ import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
 const variants = {
-  primary: "bg-accent text-white hover:bg-accent-hover",
+  primary: "bg-navy text-white hover:bg-navy-deep",
   secondary: "border border-line bg-white text-navy hover:border-navy/20 hover:bg-sand",
   ghost: "text-navy hover:bg-sand",
   inverse: "border border-white/25 bg-white/5 text-white hover:bg-white/10",

@@ -55,7 +55,7 @@ export async function Header({ locale, shell }: { locale: string; shell?: Header
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-full px-3 py-1.5 text-muted transition-colors hover:bg-sand hover:text-navy"
+              className="rounded-full px-3 py-2 font-semibold text-navy transition-colors hover:bg-sand hover:text-navy"
             >
               {link.label}
             </Link>

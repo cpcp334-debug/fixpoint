@@ -5,15 +5,15 @@
   --navy-deep: #000d1a;
   --ink: #0b1726;
   --muted: #5a6b7d;
-  --accent: #c5a059;
-  --accent-hover: #b08d45;
+  --accent: #806427;
+  --accent-hover: #624b1a;
   --gold: #d4af37;
   --sand: #f7f5f0;
   --sand-2: #efe9dc;
   --line: #ddd4c4;
   --white: #ffffff;
   --danger: #b42318;
-  --focus: #c5a059;
+  --focus: #806427;
 }
 
 @theme inline {

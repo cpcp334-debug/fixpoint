@@ -1,7 +1,8 @@
 import { brandName } from "@/config/site";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildVisitorNavTree, getNavCategoryLocalized } from "@/lib/catalog/approved-nav";
-import { getServiceBySlug } from "@/lib/catalog";
+import { getActiveServices } from "@/lib/catalog";
+import { toMasterServiceSlug } from '@/lib/slug/service-slug-map';
 import { serviceHref } from "@/lib/slug/locale-slug";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -41,11 +42,13 @@ export default async function ServicesPage({
   const catTotalPages = Math.max(1, Math.ceil(categories.length / CATEGORY_PAGE_SIZE));
   const catPage = Math.min(catTotalPages, Math.max(1, Number(sp.catPage || "1") || 1));
   const pageCategories = categories.slice((catPage - 1) * CATEGORY_PAGE_SIZE, catPage * CATEGORY_PAGE_SIZE);
+  // One catalogue read instead of one database query for every listed job.
+  const activeServices = await getActiveServices(locale);
+  const serviceMap = new Map(activeServices.map(s=>[toMasterServiceSlug(s.slug),s]));
   const allChildren = (
-    await Promise.all(
       categories.flatMap((cat) =>
-        cat.children.map(async (child) => {
-          const svc = await getServiceBySlug(child.slug, locale);
+        cat.children.map((child) => {
+          const svc = serviceMap.get(toMasterServiceSlug(child.slug));
           if (!svc) return null;
           const loc = getNavCategoryLocalized(cat, locale);
           return {
@@ -55,8 +58,7 @@ export default async function ServicesPage({
             description: svc.t.shortDescription || loc.description,
           };
         }),
-      ),
-    )
+      )
   ).filter((item): item is { slug: string; href: string; name: string; description: string } => Boolean(item?.name));
 
   const q = sp.q?.trim().toLowerCase() || "";

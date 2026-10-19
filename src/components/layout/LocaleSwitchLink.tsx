@@ -1,9 +1,7 @@
-import { Link } from "@/i18n/routing";
+import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 
 /**
- * Server-only locale toggle for chrome (header desktop).
- * Switches to the other locale home — avoids client fetch + usePathname on every page.
- * Mobile drawer keeps LocaleSwitcher for path-aware dual-slug remapping when open.
+ * Shared path-aware locale toggle. Existing EN/AR slug aliases are preserved.
  */
 export function LocaleSwitchLink({
   locale,
@@ -16,10 +14,7 @@ export function LocaleSwitchLink({
   arLabel?: string;
   enLabel?: string;
 }) {
-  const other = locale === "ar" ? "en" : "ar";
   return (
-    <Link href="/" locale={other} className={className} hrefLang={other}>
-      {other === "ar" ? arLabel : enLabel}
-    </Link>
+    <LocaleSwitcher locale={locale} className={className} arLabel={arLabel} enLabel={enLabel} />
   );
 }

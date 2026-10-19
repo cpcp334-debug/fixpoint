@@ -7,6 +7,9 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   compress: true,
+  outputFileTracingIncludes: {
+    '/*': ['./scripts/_slug-maps.json', './prisma/data/uae-location-master-200.json', './prisma/data/uae-place-names-ar.json'],
+  },
   // Dev is opened as both localhost and 127.0.0.1. Without this, Next blocks
   // fonts and HMR from 127.0.0.1 and the page looks like a connection failure.
   allowedDevOrigins: ["127.0.0.1", "localhost"],

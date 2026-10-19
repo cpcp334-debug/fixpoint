@@ -4,6 +4,7 @@
  */
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
+import embeddedLocationMaster from './uae-location-master-200.json';
 
 export type MasterArabicConfidence = "HIGH" | "MEDIUM" | "REVIEW_REQUIRED";
 export type MasterLocationType = "country" | "emirate" | "city" | "community" | "area";
@@ -69,7 +70,10 @@ export const EXISTING_EIGHT_SLUGS = [
 ] as const;
 
 /** Historical filename. Contents are the 277-location proposal plus the UAE country record. */
-export function loadLocationMaster(cwd = process.cwd()): LocationMasterFile {
+export function loadLocationMaster(cwd?: string): LocationMasterFile {
+  // Bundle runtime directory data: standalone hosting does not retain arbitrary
+  // source-tree files read through a dynamic process.cwd() path.
+  if (!cwd) return embeddedLocationMaster as unknown as LocationMasterFile;
   const path = join(cwd, "prisma/data/uae-location-master-200.json");
   return JSON.parse(readFileSync(path, "utf8")) as LocationMasterFile;
 }

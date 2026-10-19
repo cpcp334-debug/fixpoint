@@ -9,6 +9,7 @@ import { Section } from "@/components/ui/Section";
 import { PageShell } from "@/components/public/PageShell";
 import { PublicHero } from "@/components/public/PublicHero";
 import { CtaBand } from "@/components/public/CtaBand";
+import { toMasterServiceSlug } from '@/lib/slug/service-slug-map';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return buildMetadata({ locale, title: `${t("title")} | ${brandName(locale)}`, description: t("lead"), path: "/get-a-quote" });
 }
 
-export default async function QuotePage({ params }: { params: Promise<{ locale: string }> }) {
+export default async function QuotePage({ params, searchParams }: { params: Promise<{ locale: string }>; searchParams:Promise<{service?:string}> }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("Quote");
@@ -24,6 +25,8 @@ export default async function QuotePage({ params }: { params: Promise<{ locale: 
   const home = await getTranslations("Home");
   const cta = await getTranslations("Cta");
   const services = await getActiveServices(locale);
+  const requestedService=(await searchParams).service;
+  const defaultService=requestedService ? services.find(s=>toMasterServiceSlug(s.slug)===toMasterServiceSlug(requestedService))?.slug : undefined;
   const locations = await getActiveEmirates(locale);
 
   return (
@@ -52,6 +55,7 @@ export default async function QuotePage({ params }: { params: Promise<{ locale: 
         <div className="mt-8">
           <LeadForm
             mode="quote"
+            defaultService={defaultService}
             locale={locale}
             services={services.map((s) => ({ slug: s.slug, name: s.t.name }))}
             locations={locations.map((s) => ({ slug: s.slug, name: s.t.name }))}

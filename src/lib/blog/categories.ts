@@ -18,7 +18,7 @@ export const BLOG_CATEGORIES = [
 ] as const;
 
 /** Internal corpus tags — do not show as public category chips / hero kickers. */
-export const BLOG_SYSTEM_CATEGORY_SLUGS = new Set(["service-location", "service-faq"]);
+export const BLOG_SYSTEM_CATEGORY_SLUGS = new Set(["service-location", "service-faq", "keyword-electrician"]);
 
 export type BlogCategorySlug = (typeof BLOG_CATEGORIES)[number]["slug"];
 

@@ -6,7 +6,7 @@ import { Container } from "@/components/ui/Section";
 import { getPublishedSiteShell, type FooterShell } from "@/lib/site-shell";
 
 const headingClass = "text-[11px] font-semibold uppercase tracking-[0.14em] text-gold";
-const listClass = "mt-1.5 flex flex-col gap-1 text-sm leading-snug text-white/75";
+const listClass = "mt-3 flex flex-col gap-2 text-sm leading-relaxed text-white/85";
 const linkClass = "transition-colors hover:text-gold";
 
 export async function Footer({ locale }: { locale: string }) {
@@ -21,12 +21,12 @@ export async function Footer({ locale }: { locale: string }) {
 
   return (
     <footer className="border-t border-gold/25 bg-navy text-white">
-      <Container className="py-5 md:py-6">
+      <Container className="py-10 md:py-14">
         <div className="grid gap-5 md:grid-cols-3 md:gap-6">
           <div>
             <p className={headingClass}>{shell?.companyHeading?.trim() || t("company")}</p>
             <p className="mt-1.5 text-sm font-medium text-white">{brandName(locale)}</p>
-            {shell?.companyBlurb?.trim() ? <p className="mt-1 text-sm text-white/75">{shell.companyBlurb}</p> : null}
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/80">{shell?.companyBlurb?.trim() || (locale==='ar'?'خدمات التنظيف وصيانة المباني للمنازل والمنشآت. أخبرنا بما يحتاج إلى عناية، ودعنا نرتب الخطوة التالية معك.':'Cleaning and building maintenance for homes and business premises. Tell us what needs attention, and let’s arrange the next step.')}</p>
             <p className="mt-1 text-sm text-white/75">
               <a href={productionSiteUrl} className={linkClass} target="_blank" rel="noopener noreferrer">
                 {domainBrandName(locale)} · fixpoint.ae

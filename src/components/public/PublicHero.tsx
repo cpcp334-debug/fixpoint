@@ -68,7 +68,7 @@ export function PublicHero({
   const extraKicker = kicker && kicker !== title && kicker !== brand ? kicker : null;
 
   return (
-    <section className="border-b border-line bg-white">
+    <section className="border-b border-line bg-gradient-to-b from-sand to-white">
       <Container
         className={cn(
           "grid gap-8 py-8 sm:gap-10 sm:py-14 lg:items-center lg:gap-14",
@@ -86,7 +86,7 @@ export function PublicHero({
                 <Icon className="h-5 w-5" />
               </span>
             ) : null}
-            <h1 className="max-w-3xl text-[1.75rem] font-semibold tracking-tight text-navy sm:text-4xl sm:leading-[1.15]">
+            <h1 className="max-w-3xl text-[2rem] font-bold tracking-tight text-navy sm:text-5xl sm:leading-[1.12]">
               {title}
             </h1>
           </div>

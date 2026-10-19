@@ -7,6 +7,7 @@ import { blogLookupCandidates, blogPathSlug } from "@/lib/slug/blog-slug-map";
 import { normalizeRouteSlug } from "@/lib/slug/route-slug";
 import { isReviewRequiredText } from "@/lib/catalog/public-i18n";
 import { toMasterServiceSlug } from "@/lib/slug/service-slug-map";
+import { cleanPublicEditorialText } from "@/lib/blog/public-editorial-copy";
 
 export type BlogArticleCard = {
   slug: string;
@@ -225,8 +226,8 @@ export const getBlogArticleBySlug = cache(async (slug: string, locale: string) =
     t: {
       title: scrubReviewRequired(t.title, job),
       excerpt: scrubReviewRequired(t.excerpt, job),
-      body: scrubReviewRequired(t.body, job),
-      diySection: scrubReviewRequired(t.diySection || "", job),
+      body: cleanPublicEditorialText(scrubReviewRequired(t.body, job)),
+      diySection: cleanPublicEditorialText(scrubReviewRequired(t.diySection || "", job)),
       faq: parseFaqJson(scrubReviewRequired(t.faq || "[]", job)),
       imageAlt: scrubReviewRequired(t.imageAlt || t.title, job),
       seoTitle: scrubReviewRequired(t.seoTitle, job),

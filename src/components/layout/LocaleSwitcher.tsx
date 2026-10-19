@@ -28,6 +28,7 @@ export function LocaleSwitcher({
       return;
     }
     let cancelled = false;
+    setOtherPath(pathname);
     const q = new URLSearchParams({ path: pathname, locale: other });
     fetch(`/api/locale-path?${q.toString()}`)
       .then((r) => (r.ok ? r.json() : null))

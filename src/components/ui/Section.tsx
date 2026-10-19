@@ -52,8 +52,8 @@ export function SectionHeader({
   return (
     <div className={cn("max-w-2xl", className)}>
       {eyebrow ? <p className="text-sm font-medium text-accent">{eyebrow}</p> : null}
-      <h2 className={cn("text-xl font-semibold tracking-tight text-navy sm:text-2xl", eyebrow && "mt-1.5")}>{title}</h2>
-      {lead ? <p className="mt-1 max-w-none text-sm leading-snug text-muted">{lead}</p> : null}
+      <h2 className={cn("text-2xl font-bold tracking-tight text-navy sm:text-3xl", eyebrow && "mt-1.5")}>{title}</h2>
+      {lead ? <p className="mt-3 max-w-none text-base leading-relaxed text-muted">{lead}</p> : null}
     </div>
   );
 }
