@@ -17,6 +17,9 @@ import { getBlogArticleBySlug, getPublishedBlogArticles } from "@/lib/blog/catal
 import { prisma } from "@/server/db";
 import { getGuideBySlug } from "@/lib/catalog";
 
+// Refresh database-backed articles after approved editorial updates, without rebuilding 100k routes.
+export const revalidate = 300;
+
 /** Avoid SSG of 100k+ service×estate×city blog pages (Hostinger OOM). */
 export function generateStaticParams() {
   return [];
