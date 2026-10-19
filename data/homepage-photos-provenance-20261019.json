@@ -1,0 +1,18 @@
+[
+  {
+    "key": "home-property-care",
+    "prompt": "Use case photorealistic-natural. Premium original website hero image for Fixpoint, a UAE cleaning and building maintenance business. Wide 3:2 architectural editorial photograph of a pristine contemporary residential entrance opening onto a bright airy interior, warm cream stone, understated pale wood, a small landscaped courtyard visible, natural morning light and realistic lived-in textures. Quiet confident property-care mood, ample clean composition, not a luxury-palace fantasy. No people, tools, company signs, writing, logos or watermark. Not an actual project or branch, AI illustrative image only. No electrical installations to demonstrate.",
+    "output": "/media/editorial/photos-20261019/home-property-care.webp",
+    "reviewedAt": "2026-10-19T16:45:56.093Z",
+    "review": "Reviewed: distinct residential and commercial architectural illustrations, no client/project claim, no active work or private information; disclose AI illustration in the homepage captions.",
+    "originalFile": "exec-f3241a41-a70e-4386-8198-59703a7062b1.png"
+  },
+  {
+    "key": "home-commercial-care",
+    "prompt": "Use case photorealistic-natural. Distinct original wide 3:2 editorial photo-style website image for commercial electrical and property maintenance services in UAE. A bright, tidy modern office circulation area with glass partitions, clean ceiling lights all enclosed, a small unbranded closed service-equipment case neatly beside a reception desk, indoor greenery and calm natural daylight. No people, maintenance actions, exposed wiring, text, labels, screens with writing, company branding or watermark. Realistic professional business environment, not an actual customer project. Different from a residential entrance; avoid generic dramatic skyscraper views.",
+    "output": "/media/editorial/photos-20261019/home-commercial-care.webp",
+    "reviewedAt": "2026-10-19T16:45:56.096Z",
+    "review": "Reviewed: distinct residential and commercial architectural illustrations, no client/project claim, no active work or private information; disclose AI illustration in the homepage captions.",
+    "originalFile": "exec-12a54d2b-174e-469f-b3ff-5420a8ca5a77.png"
+  }
+]

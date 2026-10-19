@@ -11,7 +11,7 @@ import { canViewAnalytics } from "@/lib/insights/rbac";
 import { canUseCoFounder } from "@/lib/cofounder/rbac";
 import { cn } from "@/lib/utils";
 
-const ADMIN_MARK = "/media/logo-icon.png";
+const ADMIN_MARK = "/media/brand/fixpoint-mark-128.webp";
 
 const LINKS: Array<{ href: string; label: string; permission: AdminPermission }> = [
   { href: "/admin", label: "Dashboard", permission: "dashboard" },

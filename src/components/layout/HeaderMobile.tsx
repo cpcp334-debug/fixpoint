@@ -47,7 +47,7 @@ export function HeaderMobile({
           </a>
         ) : null}
         {showQuote ? (
-          <ButtonLink href="/get-a-quote" className="min-h-11 rounded-full px-3 text-sm">
+          <ButtonLink href="/get-a-quote" className="hidden min-h-11 rounded-full px-3 text-sm min-[420px]:inline-flex">
             {quoteLabel}
           </ButtonLink>
         ) : null}
@@ -87,6 +87,7 @@ export function HeaderMobile({
                 {aiLabel}
               </a>
             ) : null}
+            {showQuote ? <Link href="/get-a-quote" onClick={() => setOpen(false)} className="min-h-11 rounded-lg bg-navy px-3 py-3 font-semibold text-white">{quoteLabel}</Link> : null}
             <LocaleSwitcher
               locale={locale}
               className="min-h-11 rounded-lg px-3 py-3 text-base text-navy"

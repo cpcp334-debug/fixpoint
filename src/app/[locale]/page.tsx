@@ -1,263 +1,46 @@
+import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
-import { getRelatedServices, getGlobalFaqs } from "@/lib/catalog";
-import { toMasterServiceSlug } from "@/lib/slug/service-slug-map";
+import { getGlobalFaqs } from "@/lib/catalog";
 import { buildVisitorNavTree } from "@/lib/catalog/approved-nav";
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd, localBusinessJsonLd, organizationJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { FaqList } from "@/components/ui/Blocks";
-import { Section, SectionHeader } from "@/components/ui/Section";
+import { Section, SectionHeader, Container } from "@/components/ui/Section";
+import { ButtonLink } from "@/components/ui/Button";
 import { Hero } from "@/components/home/Hero";
-import { ProblemCard } from "@/components/home/Cards";
-import { HelpServices } from "@/components/home/HelpServices";
-import { MainCategoryCard } from "@/components/catalog/MainCategoryCard";
-import { ProblemChips } from "@/components/home/ProblemChips";
+import { HomeServiceGrid } from "@/components/home/HomeServiceGrid";
 import { HomePlaces } from "@/components/home/HomePlaces";
 import { publishedHomeLocationGroups } from "@/lib/locations/public-filter";
 import { CtaBand } from "@/components/public/CtaBand";
 import { getPublishedSiteShell, type HomeShell } from "@/lib/site-shell";
-import {
-  IconBolt,
-  IconBrush,
-  IconDroplet,
-  IconMap,
-  IconPipe,
-  IconSparkClean,
-  IconSparkle,
-  IconUsers,
-  IconWall,
-  IconWind,
-} from "@/components/ui/Icon";
-
-/** Keep home ISR-friendly for Hostinger TTFB after the apex rewrite lands. */
-export const revalidate = 3600;
-
-/** Only these four rows hit the DB/RSC payload — not the full catalog. */
-const HOME_SERVICE_SLUGS = ["cleaning-services", "building-maintenance", "ac-maintenance", "plumbing-maintenance"];
-
-function serviceBenefit(
-  service: { diyAvailable: boolean; amcAvailable: boolean; inspectionRequired: boolean },
-  t: Awaited<ReturnType<typeof getTranslations>>,
-) {
-  if (service.amcAvailable) return t("benefitAmc");
-  if (service.diyAvailable) return t("benefitDiy");
-  if (service.inspectionRequired) return t("benefitInspect");
-  return t("benefitQuote");
-}
-
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "Meta" });
-  return buildMetadata({
-    locale,
-    title: t("homeTitle"),
-    description: t("homeDescription"),
-    path: "/",
-  });
-}
-
-/**
- * Lean homepage for mobile PSI: keep hero + primary discovery,
- * defer deep catalogs (DIY, electrical strip, credentials) to their hubs.
- */
-export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  setRequestLocale(locale);
-  const t = await getTranslations("Home");
-  const cta = await getTranslations("Cta");
-  const nav = await getTranslations("Nav");
-  const related = await getRelatedServices(HOME_SERVICE_SLUGS, locale);
-  const services = HOME_SERVICE_SLUGS.map((want) => {
-    const master = toMasterServiceSlug(want);
-    return related.find((s) => toMasterServiceSlug(s.slug) === master);
-  }).filter(Boolean) as typeof related;
-  const faqs = await getGlobalFaqs(locale, 4);
-  const homeShell = (await getPublishedSiteShell("home", locale)) as HomeShell | null;
-  // Drop children arrays from RSC payload (compact cards only need names/hrefs).
-  const mainCategories = buildVisitorNavTree().map((cat) => ({ ...cat, children: [] as typeof cat.children }));
-  const chips = [
-    { label: t("chipAc"), href: "/ac-maintenance" },
-    { label: t("chipLeak"), href: "/plumbing-maintenance" },
-    { label: t("chipPaint"), href: "/painting-services" },
-    { label: t("chipSink"), href: "/plumbing-maintenance" },
-    { label: t("chipWall"), href: "/wall-maintenance" },
-    { label: t("chipClean"), href: "/cleaning-services" },
-  ];
-  const problems = [
-    { title: t("problemCooling"), href: "/ac-maintenance", icon: IconWind, tone: "cool" as const },
-    { title: t("problemLeak"), href: "/plumbing-maintenance", icon: IconDroplet, tone: "water" as const },
-    { title: t("problemElectrical"), href: "/electrical-maintenance", icon: IconBolt, tone: "power" as const },
-    { title: t("problemPainting"), href: "/painting-services", icon: IconBrush, tone: "paint" as const },
-    { title: t("problemWall"), href: "/wall-maintenance", icon: IconWall, tone: "wall" as const },
-    { title: t("problemPlumbing"), href: "/plumbing-maintenance", icon: IconPipe, tone: "pipe" as const },
-    { title: t("problemCleaning"), href: "/cleaning-services", icon: IconSparkClean, tone: "clean" as const },
-  ];
-
-  return (
-    <div>
-      <JsonLd data={organizationJsonLd()} />
-      <JsonLd data={localBusinessJsonLd()} />
-      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }], locale)} />
-      <JsonLd data={faqJsonLd(faqs.slice(0, 4))} />
-
-      <Hero
-        locale={locale}
-        copy={{
-          kicker: homeShell?.heroKicker?.trim() || t("heroKicker"),
-          title: homeShell?.heroTitle?.trim() || t("heroTitle"),
-          lead: homeShell?.heroLead?.trim() || t("heroLead"),
-          quote: homeShell?.ctaQuote?.trim() || t("ctaQuote"),
-          ai: homeShell?.ctaAi?.trim() || t("ctaAi"),
-          whatsapp: nav("whatsapp"),
-        }}
-      />
-
-      <div className="border-b border-line bg-sand/60">
-        <div className="mx-auto grid max-w-6xl gap-1 px-4 py-2 sm:grid-cols-2 sm:px-6 lg:grid-cols-4">
-          {[
-            { icon: IconSparkClean, label: homeShell?.stripCleaning?.trim() || t("stripCleaning") },
-            { icon: IconSparkle, label: t("stripAi") },
-            { icon: IconUsers, label: t("stripHuman") },
-            { icon: IconMap, label: homeShell?.stripCoverage?.trim() || t("stripCoverage") },
-          ].map((item) => (
-            <p key={item.label} className="pass flex items-center gap-2 rounded-lg border border-transparent px-2 py-1 text-sm text-navy">
-              <item.icon className="h-4 w-4 shrink-0 text-gold" />
-              {item.label}
-            </p>
-          ))}
-        </div>
-      </div>
-
-      <Section className="!py-3 sm:!py-4">
-        <SectionHeader
-          title={homeShell?.unsureTitle?.trim() || t("unsureTitle")}
-          lead={homeShell?.unsureLead?.trim() || t("unsureLead")}
-        />
-        <div className="mt-4">
-          <ProblemChips chips={chips} hint={t("chipHint")} />
-        </div>
-      </Section>
-
-      <Section tone="sand" id="main-services" className="!py-3 sm:!py-4">
-        <SectionHeader title={t("mainServicesTitle")} lead={t("mainServicesLead")} />
-        <ul className="mt-3 grid items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {mainCategories.map((cat) => (
-            <li key={cat.slug} className="flex h-full">
-              <MainCategoryCard category={cat} locale={locale} compact />
-            </li>
-          ))}
-        </ul>
-        <p className="mt-3 text-sm">
-          <Link href="/services" className="font-medium text-accent">
-            {t("browseAllServices")}
-          </Link>
-        </p>
-      </Section>
-
-      {services.length ? (
-        <Section className="home-defer !py-3 sm:!py-4">
-          <SectionHeader
-            title={homeShell?.helpTitle?.trim() || t("helpTitle")}
-            lead={homeShell?.helpLead?.trim() || t("helpLead")}
-          />
-          <HelpServices
-            items={services.slice(0, 4).map((service) => ({
-              slug: service.slug,
-              name: service.t.name,
-              description: "",
-              benefit: serviceBenefit(service, t),
-              diyLabel: service.diyAvailable ? t("chipDiy") : undefined,
-              amcLabel: service.amcAvailable ? t("chipAmc") : undefined,
-              emergencyLabel: service.emergencyAvailable ? t("chipEmergency") : undefined,
-            }))}
-            cta={t("viewService")}
-            moreLabel={t("helpSeeMore")}
-            lessLabel={t("helpSeeLess")}
-          />
-          {services.length > 4 ? (
-            <p className="mt-3 text-sm">
-              <Link href="/services" className="font-medium text-accent">
-                {t("browseAllServices")}
-              </Link>
-            </p>
-          ) : null}
-        </Section>
-      ) : null}
-
-      <Section className="home-defer !py-3 sm:!py-4">
-        <SectionHeader title={t("problemTitle")} lead={t("problemLead")} />
-        <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4">
-          {problems.map((problem) => (
-            <ProblemCard key={problem.title} {...problem} />
-          ))}
-        </div>
-      </Section>
-
-      <Section tone="sand" id="locations" className="home-defer !py-3 sm:!py-4">
-        <SectionHeader title={t("areasTitle")} lead={t("areasLead")} />
-        <div className="mt-3">
-          <HomePlaces
-            groups={(await publishedHomeLocationGroups(locale)).map((g) => ({
-              slug: g.slug,
-              name: g.name,
-              count: g.count,
-              places: [],
-            }))}
-            searchPlaceholder={t("placeSearch")}
-            emptyLabel={t("placeEmpty")}
-            openLabel={t("openEmirate")}
-            moreLabel={t("placeMore")}
-            lessLabel={t("placeLess")}
-          />
-        </div>
-      </Section>
-
-      <Section className="home-defer !py-3 sm:!py-4">
-        <SectionHeader title={t("whyTitle")} />
-        <ul className="mt-3 grid gap-2 sm:grid-cols-3">
-          {[1, 2, 3].map((n) => (
-            <li key={n} className="pass rounded-xl border border-line bg-sand/50 p-3">
-              <h3 className="font-semibold tracking-tight text-navy">{t(`why${n}Title`)}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted">{t(`why${n}Body`)}</p>
-            </li>
-          ))}
-        </ul>
-        <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-sm">
-          <Link href="/diy" className="font-medium text-accent">
-            {t("diyTitle")}
-          </Link>
-          <Link href="/about" className="font-medium text-accent">
-            {t("credentialsLink")}
-          </Link>
-          <Link href="/reviews" className="font-medium text-accent">
-            {t("reviewsTitle")}
-          </Link>
-        </p>
-      </Section>
-
-      {faqs.length ? (
-        <Section className="home-defer !py-3 sm:!py-4">
-          <SectionHeader title={t("qaTitle")} lead={t("qaLead")} />
-          <div className="mt-6">
-            <FaqList items={faqs.slice(0, 4)} />
-          </div>
-          <p className="mt-3 text-sm">
-            <Link href="/faq" className="font-medium text-accent">
-              {t("qaTitle")}
-            </Link>
-          </p>
-        </Section>
-      ) : null}
-
-      <CtaBand
-        title={t("ctaTitle")}
-        body={t("ctaBody")}
-        quote={t("ctaQuote")}
-        ai={t("ctaAi")}
-        whatsapp={cta("whatsapp")}
-        className="!py-3 sm:!py-4"
-        compact
-      />
-    </div>
-  );
+import { IconArrow, IconCheck } from "@/components/ui/Icon";
+export const revalidate=3600;
+export async function generateMetadata({params}:{params:Promise<{locale:string}>}){const{locale}=await params;const t=await getTranslations({locale,namespace:"Meta"});return buildMetadata({locale,title:t("homeTitle"),description:t("homeDescription"),path:"/"});}
+export default async function HomePage({params}:{params:Promise<{locale:string}>}){
+ const{locale}=await params;setRequestLocale(locale);const ar=locale==='ar';const t=await getTranslations('Home'),cta=await getTranslations('Cta'),nav=await getTranslations('Nav');const [faqs,shell,groups]=await Promise.all([getGlobalFaqs(locale,4),getPublishedSiteShell('home',locale),publishedHomeLocationGroups(locale)]);const homeShell=shell as HomeShell|null;const categories=buildVisitorNavTree().map(c=>({...c,children:[] as typeof c.children}));
+ const displayFaqs=faqs.length?faqs.slice(0,4):(ar?[
+ {q:'كيف أطلب عرض سعر؟',a:'اختر طلب عرض سعر أو تواصل عبر واتساب، واذكر موقع العقار والخدمة المطلوبة ووصف العمل. يراجع الفريق التفاصيل لتوضيح النطاق والخطوة المناسبة قبل الحجز.'},
+ {q:'هل يمكن طلب الخدمة لمنشأة تجارية؟',a:'يمكنك توضيح احتياجات المكتب أو المحل أو العقار الذي تديره. شارك متطلبات الدخول وتعليمات الإدارة كي يتأكد نطاق العمل والترتيبات المناسبة قبل أي التزام.'},
+ {q:'كيف أتحقق من توفر الخدمة في منطقتي؟',a:'ابدأ بدليل المناطق واختر الإمارة والمدينة أو المنطقة، ثم حدد الخدمة والعنوان في الطلب. التوفر الفعلي وترتيبات الزيارة يؤكدان عند مراجعة التفاصيل.'},
+ {q:'ماذا أجهز قبل المعاينة؟',a:'جهز وصف المشكلة والسجلات المتاحة وتعليمات الوصول. أرسل الصور فقط إذا أمكن التقاطها بأمان، دون فتح أجزاء كهربائية أو مشاركة معلومات خاصة غير ضرورية.'}
+ ]:[
+ {q:'How do I request a quotation?',a:'Choose Get a Free Quote or contact us on WhatsApp. Share the property location, the service and a description of the work so the team can clarify the scope and next step before booking.'},
+ {q:'Can I request services for a business property?',a:'Describe the needs of your office, shop or managed property. Include building access requirements and management instructions so the scope and arrangements can be confirmed before any commitment.'},
+ {q:'How do I check availability in my area?',a:'Start with the location directory and select your emirate and area. Include the service and address in your request; actual availability and visit arrangements are confirmed when the details are reviewed.'},
+ {q:'What should I prepare for an inspection?',a:'Prepare a description of the issue, available records and access instructions. Share photographs only when they can be taken safely, without opening electrical equipment or exposing unnecessary private information.'}
+ ]);
+ const steps=ar?[{title:'أخبرنا بما يحتاج إلى عناية',body:'اختر الخدمة، وشارك الموقع ووصف المشكلة وأي معلومات تساعد على فهم الطلب.'},{title:'راجع النطاق وعرض السعر',body:'نوضح الخطوة المناسبة وما يشمله العمل، ونؤكد التوفر والتكلفة قبل ترتيب الحجز.'},{title:'أكد ترتيبات الزيارة',body:'اتفق على تفاصيل الدخول والوقت المناسب، واحتفظ بنطاق العمل المعتمد للمتابعة.'}]:[{title:'Tell us what needs attention',body:'Choose a service and share the location, the issue and any useful details about the work.'},{title:'Review the scope and quote',body:'Clarify the next step, what is included and the availability and cost before booking.'},{title:'Confirm the arrangements',body:'Agree access details and a suitable time, with the scope of work clear for follow-up.'}];
+ return <div>
+  <JsonLd data={organizationJsonLd()}/><JsonLd data={localBusinessJsonLd()}/><JsonLd data={breadcrumbJsonLd([{name:'Home',path:'/'}],locale)}/><JsonLd data={faqJsonLd(displayFaqs)}/>
+  <Hero locale={locale} copy={{kicker:homeShell?.heroKicker?.trim()||t('heroKicker'),title:homeShell?.heroTitle?.trim()||t('heroTitle'),lead:homeShell?.heroLead?.trim()||t('heroLead'),quote:homeShell?.ctaQuote?.trim()||t('ctaQuote'),ai:homeShell?.ctaAi?.trim()||t('ctaAi'),whatsapp:nav('whatsapp')}}/>
+  <div className="border-b border-line bg-white"><Container className="flex flex-col justify-between gap-3 py-5 sm:flex-row sm:items-center"><p className="text-sm font-semibold text-navy">{ar?'خدمة واضحة. تنسيق أسهل. عناية بعقارك.':'Clear service. Easier coordination. Care for your property.'}</p><Link href="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-accent">{t('browseAllServices')}<IconArrow className="h-4 w-4 rtl:rotate-180"/></Link></Container></div>
+  <Section id="main-services" className="!py-14 sm:!py-20"><div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><SectionHeader eyebrow={ar?'الخدمة المناسبة لعقارك':'THE RIGHT HELP FOR YOUR PROPERTY'} title={t('mainServicesTitle')} lead={t('mainServicesLead')}/><Link href="/get-a-quote" className="shrink-0 text-sm font-semibold text-accent">{ar?'لست متأكداً؟ تحدث مع الفريق':'Not sure? Talk to our team'} <span aria-hidden>↗</span></Link></div><HomeServiceGrid categories={categories} locale={locale}/></Section>
+  <section className="overflow-hidden bg-navy text-white"><Container className="grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-2 lg:gap-16"><figure className="relative overflow-hidden rounded-2xl"><div className="relative aspect-[4/3]"><Image src="/media/editorial/photos-20261019/home-commercial-care.webp" alt={ar?'صورة توضيحية مولدة بالذكاء الاصطناعي لمكتب؛ ليست صورة مشروع عميل':'AI-generated illustration of an office environment; not a customer project'} fill sizes="(max-width:1023px) 100vw, 540px" className="object-cover"/></div><figcaption className="absolute bottom-3 end-3 rounded bg-white/95 px-2 py-1 text-[10px] text-muted">{ar?'صورة توضيحية مولدة بالذكاء الاصطناعي':'AI-generated illustrative image'}</figcaption></figure><div><p className="text-xs font-semibold uppercase tracking-[0.15em] text-gold">{ar?'للمنشآت ومديري العقارات':'FOR BUSINESSES & PROPERTY MANAGERS'}</p><h2 className="mt-4 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">{homeShell?.helpTitle?.trim()||(ar?'رتب صيانة مكان عملك بوضوح.':'Make workplace maintenance easier to arrange.')}</h2><p className="mt-5 text-base leading-8 text-white/75">{homeShell?.helpLead?.trim()||(ar?'من ملاحظة كهربائية في المكتب إلى احتياجات الصيانة والتنظيف، اجمع نطاق العمل وتفاصيل الموقع ومتطلبات الدخول في طلب واضح. نراجع معك الخطوة المناسبة قبل الحجز.':'From an electrical issue at the office to maintenance and cleaning needs, bring the work, location and access requirements into one clear request. Review the right next step with our team before booking.')}</p><ul className="mt-6 space-y-3 text-sm text-white/90">{(ar?['وصف الأعمال والأماكن المطلوب مراجعتها','تنسيق متطلبات إدارة المبنى والدخول','توضيح النطاق والتكلفة قبل ترتيب العمل']:['A clear description of the work and areas involved','Coordination of building access requirements','Scope and cost clarified before work is arranged']).map(s=><li key={s} className="flex items-start gap-3"><IconCheck className="mt-0.5 h-4 w-4 shrink-0 text-gold"/>{s}</li>)}</ul><div className="mt-8 flex flex-wrap gap-3"><ButtonLink href="/electrical-services-dubai" variant="inversePrimary" className="rounded-xl px-5 font-semibold">{ar?'خدمات الكهرباء في دبي':'Electrical services in Dubai'}<IconArrow className="h-4 w-4 rtl:rotate-180"/></ButtonLink><ButtonLink href="/get-a-quote" variant="inverse" className="rounded-xl">{t('ctaQuote')}</ButtonLink></div></div></Container></section>
+  <Section className="!py-14 sm:!py-20"><SectionHeader eyebrow={ar?'من الطلب إلى الزيارة':'FROM YOUR REQUEST TO THE VISIT'} title={ar?'ثلاث خطوات واضحة للبدء.':'A clearer way to get started.'} lead={homeShell?.unsureLead?.trim()||(ar?'شارك التفاصيل، وراجع نطاق الخدمة، ثم أكد الترتيبات المناسبة.':'Share the details, review the work and confirm the right arrangements.')}/><ol className="mt-8 grid gap-6 md:grid-cols-3">{steps.map((s,i)=><li key={s.title} className="rounded-2xl border border-line bg-white p-6"><span className="flex h-10 w-10 items-center justify-center rounded-full bg-sand text-sm font-bold text-accent">0{i+1}</span><h3 className="mt-5 text-lg font-bold text-navy">{s.title}</h3><p className="mt-3 text-sm leading-7 text-muted">{s.body}</p></li>)}</ol></Section>
+  <Section tone="sand" id="locations" className="!py-14 sm:!py-20"><div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end"><SectionHeader eyebrow={ar?'حدد موقع العقار':'START WITH YOUR LOCATION'} title={t('areasTitle')} lead={ar?'اختر الإمارة ثم المدينة أو المنطقة، وأخبرنا بالخدمة المطلوبة. يؤكد التوفر ونطاق العمل عند مراجعة الطلب.':'Choose your emirate, then the city or area, and tell us which service you need. Availability and the scope of work are confirmed when your request is reviewed.'}/><Link href="/locations" className="shrink-0 text-sm font-semibold text-accent">{ar?'دليل المناطق':'Location directory'} ↗</Link></div><div className="mt-8"><HomePlaces groups={groups.map(g=>({slug:g.slug,name:g.name,count:g.count,places:[]}))} searchPlaceholder={t('placeSearch')} emptyLabel={t('placeEmpty')} openLabel={t('openEmirate')} moreLabel={t('placeMore')} lessLabel={t('placeLess')}/></div></Section>
+  <Section className="!py-14 sm:!py-20"><SectionHeader title={t('whyTitle')}/><ul className="mt-8 grid gap-6 sm:grid-cols-3">{[1,2,3].map(n=><li key={n} className="border-s-2 border-gold ps-5"><h3 className="font-bold text-navy">{t(`why${n}Title`)}</h3><p className="mt-3 text-sm leading-7 text-muted">{t(`why${n}Body`)}</p></li>)}</ul><div className="mt-8 flex flex-wrap gap-5 text-sm font-semibold text-accent"><Link href="/about">{t('credentialsLink')} ↗</Link><Link href="/reviews">{t('reviewsTitle')} ↗</Link><Link href="/diy">{t('diyTitle')} ↗</Link></div></Section>
+  {displayFaqs.length?<Section tone="sand" className="!py-14 sm:!py-20"><div className="grid gap-8 lg:grid-cols-[0.7fr_1fr]"><div><SectionHeader title={t('qaTitle')} lead={t('qaLead')}/><Link href="/faq" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent">{ar?'جميع الأسئلة':'All frequently asked questions'}<IconArrow className="h-4 w-4 rtl:rotate-180"/></Link></div><FaqList items={displayFaqs}/></div></Section>:null}
+  <CtaBand title={t('ctaTitle')} body={t('ctaBody')} quote={t('ctaQuote')} ai={t('ctaAi')} whatsapp={cta('whatsapp')} className="!py-14 sm:!py-20"/>
+ </div>;
 }

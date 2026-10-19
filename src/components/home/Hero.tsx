@@ -1,69 +1,21 @@
-import { brandName, domainBrandName, siteConfig, telUrl, whatsappUrl, productionSiteUrl } from "@/config/site";
+import Image from "next/image";
+import { siteConfig, telUrl, whatsappUrl } from "@/config/site";
 import { ButtonLink } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Section";
-import { Link } from '@/i18n/routing';
-
-export function Hero({
-  locale,
-  copy,
-}: {
-  locale: string;
-  copy: {
-    kicker: string;
-    title: string;
-    lead: string;
-    quote: string;
-    ai: string;
-    whatsapp: string;
-  };
-}) {
-  const brand = brandName(locale);
-
-  return (
-    <section className="hero-atmosphere relative overflow-hidden text-white">
-      <Container className="relative grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14 lg:py-20">
-        <div>
-          <p className="text-sm font-semibold tracking-wide text-gold">{brand}</p>
-          <p className="mt-1 text-xs font-medium uppercase tracking-[0.14em] text-white/55">{copy.kicker}</p>
-          <h1 className="mt-4 max-w-2xl text-4xl font-bold tracking-tight leading-[1.1] sm:text-5xl lg:text-[3.4rem]">
-            {copy.title}
-          </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">{copy.lead}</p>
-          <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
-            <ButtonLink href="/get-a-quote" variant="inversePrimary" className="pass w-full sm:w-auto">
-              {copy.quote}
-            </ButtonLink>
-            <ButtonLink href={whatsappUrl()} variant="inverse" external className="pass w-full sm:w-auto">
-              {copy.whatsapp}
-            </ButtonLink>
-          </div>
-          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-white/70">
-            <a href={productionSiteUrl} className="hover:text-gold" target="_blank" rel="noopener noreferrer">
-              {domainBrandName(locale)} · fixpoint.ae
-            </a>
-            <a href={whatsappUrl()} className="hover:text-gold">
-              {copy.whatsapp}
-            </a>
-            <a href={telUrl()} className="hover:text-gold">
-              {siteConfig.phoneDisplay}
-            </a>
-          </div>
-        </div>
-        <div className="rounded-3xl border border-white/20 bg-white/[0.06] p-6 sm:p-8">
-          <p className="text-xs font-bold uppercase tracking-[0.16em] text-gold">{locale==='ar'?'كيف يمكننا مساعدتك؟':'WHAT NEEDS ATTENTION?'}</p>
-          <h2 className="mt-3 text-2xl font-bold">{locale==='ar'?'ابدأ بالخدمة التي تحتاجها.':'Start with the work you need.'}</h2>
-          <div className="mt-6 grid gap-3">
-          {[
-            {href:'/electrical-services-dubai',en:'Electrical maintenance in Dubai',ar:'صيانة الكهرباء في دبي'},
-            {href:'/ac-maintenance',en:'AC maintenance',ar:'صيانة التكييف'},
-            {href:'/plumbing-maintenance',en:'Plumbing and leaks',ar:'السباكة والتسربات'},
-            {href:'/cleaning-services',en:'Cleaning services',ar:'خدمات التنظيف'},
-          ].map(item=><Link key={item.href} href={item.href} className="flex min-h-12 items-center justify-between gap-4 rounded-xl border border-white/15 bg-white/5 px-4 py-3 font-semibold transition-colors hover:bg-white/15"><span>{locale==='ar'?item.ar:item.en}</span><span aria-hidden="true" className="text-gold rtl:rotate-180">↗</span></Link>)}
-          </div>
-          <Link href="/services" className="mt-6 inline-block text-sm font-semibold text-white underline underline-offset-4">{locale==='ar'?'تصفح جميع الخدمات':'Explore all services'}</Link>
-          <p className="mt-5 border-t border-white/15 pt-5 text-sm leading-relaxed text-white/80">{locale==='ar'?'أرسل موقع العقار ووصف العمل والوقت المناسب للدخول. نؤكد معك التفاصيل قبل الحجز.':'Share the location, a short description and a suitable access time. We will confirm the details before booking.'}</p>
-        </div>
-      </Container>
-    </section>
-  );
-}
+import { Link } from "@/i18n/routing";
+import { IconArrow, IconCheck, IconPhone } from "@/components/ui/Icon";
+export function Hero({locale,copy}:{locale:string;copy:{kicker:string;title:string;lead:string;quote:string;ai:string;whatsapp:string}}){const ar=locale==='ar';return <section className="relative overflow-hidden border-b border-line bg-[#f7f6f1] text-navy">
+ <Container className="grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-12 lg:py-16">
+  <div className="relative z-10">
+   <p className="inline-flex items-center gap-2 rounded-full border border-gold/35 bg-white px-3 py-1.5 text-xs font-semibold tracking-wide"><span className="h-1.5 w-1.5 rounded-full bg-gold"/>{ar?'للمنازل والمنشآت · الإمارات العربية المتحدة':'HOMES & BUSINESSES · UNITED ARAB EMIRATES'}</p>
+   <h1 className="mt-6 max-w-2xl text-[2.5rem] font-bold leading-[1.12] tracking-tight sm:text-5xl lg:text-[3.1rem]">{copy.title}</h1>
+   <p className="mt-6 max-w-xl text-base leading-8 text-muted sm:text-lg">{copy.lead}</p>
+   <div className="mt-8 flex flex-col gap-3 sm:flex-row"><ButtonLink href="/get-a-quote" className="min-h-[52px] rounded-xl px-6 font-semibold">{copy.quote}<IconArrow className="h-4 w-4 rtl:rotate-180"/></ButtonLink><ButtonLink href={whatsappUrl()} external variant="secondary" className="min-h-[52px] rounded-xl px-6 font-semibold">{copy.whatsapp}</ButtonLink></div>
+   <a href={telUrl()} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold"><IconPhone className="h-4 w-4 text-accent"/><span dir="ltr">{siteConfig.phoneDisplay}</span></a>
+   <div className="mt-8 flex flex-wrap gap-x-5 gap-y-3 border-t border-navy/10 pt-6 text-xs font-medium text-muted">{(ar?['نطاق عمل واضح','عرض سعر قبل الحجز','تنسيق مباشر مع الفريق']:['Clear scope of work','Quote before booking','Direct team coordination']).map(s=><span key={s} className="inline-flex items-center gap-1.5"><IconCheck className="h-4 w-4 text-accent"/>{s}</span>)}</div>
+  </div>
+  <div className="relative pb-1 lg:ps-3"><figure className="relative overflow-hidden rounded-[1.75rem] border border-white bg-white shadow-[0_20px_70px_-30px_rgba(0,26,51,0.3)]"><div className="relative aspect-[6/5] sm:aspect-[4/3] lg:aspect-square"><Image src="/media/editorial/photos-20261019/home-property-care.webp" alt={ar?'صورة توضيحية مولدة بالذكاء الاصطناعي لمدخل منزل؛ ليست صورة مشروع عميل':'AI-generated illustration of a cared-for residential entrance; not a customer project'} fill preload sizes="(max-width:1023px) 100vw, 520px" className="object-cover"/></div><figcaption className="absolute top-3 end-3 z-10 rounded-md bg-white/95 px-2 py-1 text-[10px] font-medium text-muted">{ar?'صورة توضيحية مولدة بالذكاء الاصطناعي':'AI-generated illustrative image'}</figcaption></figure>
+   <div className="relative mx-4 -mt-12 rounded-2xl border border-line bg-white p-5 shadow-lg sm:mx-8"><p className="text-xs font-semibold uppercase tracking-wider text-accent">{ar?'ابدأ بما يحتاج إلى عناية':'WHAT NEEDS ATTENTION?'}</p><div className="mt-3 grid grid-cols-2 gap-2">{[{href:'/electrical-services-dubai',en:'Electrical',ar:'الكهرباء'},{href:'/ac-maintenance',en:'Air conditioning',ar:'التكييف'},{href:'/plumbing-maintenance',en:'Plumbing',ar:'السباكة'},{href:'/cleaning-services',en:'Cleaning',ar:'التنظيف'}].map(x=><Link key={x.href} href={x.href} className="flex min-h-11 items-center justify-between gap-2 rounded-lg bg-sand/70 px-3 text-sm font-semibold hover:bg-sand"><span>{ar?x.ar:x.en}</span><IconArrow className="h-3.5 w-3.5 shrink-0 text-accent rtl:rotate-180"/></Link>)}</div></div>
+  </div>
+ </Container>
+ </section>}

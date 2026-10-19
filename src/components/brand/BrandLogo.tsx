@@ -1,51 +1,8 @@
-import { brandName } from "@/config/site";
 import { cn } from "@/lib/utils";
-
-/** Full brand wordmark (navy + gold industrial logo). Prefer sized WebP for LCP. */
-export const LOGO_SRC = "/media/logo-opt.jpg";
-
-function logoSrcForSize(size: number) {
-  if (size <= 64) return "/media/logo-128.webp";
-  if (size <= 200) return "/media/logo-280.webp";
-  return "/media/logo-512.webp";
-}
-
-/**
- * Brand mark via plain <img> — avoids next/image srcset bloat on the LCP path
- * (live /en was emitting logo srcsets up to w=1920 in HTML/RSC).
- */
-export function BrandLogo({
-  size = 44,
-  className,
-  priority,
-  locale,
-}: {
-  /** Rendered height in px; width scales to preserve aspect. */
-  size?: number;
-  className?: string;
-  priority?: boolean;
-  /** When `ar`, alt uses Arabic brand (فكس بوينت). */
-  locale?: string;
-}) {
-  const width = Math.round(size * 1.05);
-  const src = logoSrcForSize(size);
-  const alt =
-    locale === "ar"
-      ? `${brandName("ar")} — صيانة المباني`
-      : `${brandName("en")} — Building Maintenance`;
-
-  return (
-    // eslint-disable-next-line @next/next/no-img-element -- intentional LCP: no optimizer srcset
-    <img
-      src={src}
-      alt={alt}
-      width={width}
-      height={size}
-      decoding={priority ? "sync" : "async"}
-      fetchPriority={priority ? "high" : "low"}
-      loading={priority ? "eager" : "lazy"}
-      className={cn("h-auto w-auto max-h-full object-contain", className)}
-      style={{ height: size, width: "auto" }}
-    />
-  );
+export const LOGO_SRC = "/media/brand/fixpoint-wordmark-960.webp";
+/** Owner-approved artwork; mark for compact controls, full bilingual logo for identity. */
+export function BrandLogo({size=44,className,priority,locale,variant="mark"}:{size?:number;className?:string;priority?:boolean;locale?:string;variant?:"mark"|"wordmark"}){
+ const wordmark=variant==="wordmark";
+ const src=wordmark?(size<=90?"/media/brand/fixpoint-wordmark-480.webp":LOGO_SRC):`/media/brand/fixpoint-mark-${size<=64?128:size<=200?280:512}.webp`;
+ return <img src={src} alt={locale==="ar"?"فكس بوينت — النجاح الدائم":"FIXPOINT — Al Najah Al Daem"} width={wordmark?Math.round(size*3.288):size} height={size} decoding={priority?"sync":"async"} fetchPriority={priority?"high":"low"} loading={priority?"eager":"lazy"} className={cn("object-contain",className)} style={{height:size,width:"auto"}}/>;
 }

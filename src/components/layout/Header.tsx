@@ -41,13 +41,9 @@ export async function Header({ locale, shell }: { locale: string; shell?: Header
       <a className="skip-link" href="#main">
         {skip}
       </a>
-      <Container className="flex h-14 items-center gap-3 sm:h-16 sm:gap-4">
+      <Container className="flex h-20 items-center gap-3 sm:h-20 sm:gap-4">
         <Link href="/" className="flex min-w-0 shrink items-center gap-2" aria-label={brand}>
-          {/* Small mark is LCP candidate on mobile (hero mark is desktop-only). */}
-          <BrandLogo size={44} priority locale={locale} />
-          <span className="max-w-[9.5rem] text-start text-[11px] font-semibold leading-tight text-navy xs:max-w-[12rem] sm:max-w-[14rem] sm:text-sm">
-            {brand}
-          </span>
+          <BrandLogo size={56} variant="wordmark" priority locale={locale} className="max-w-[39vw] sm:max-w-[185px]" />
         </Link>
 
         <nav className="hidden min-w-0 flex-1 items-center justify-center gap-0.5 text-sm lg:flex" aria-label="Main">

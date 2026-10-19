@@ -1,3 +1,4 @@
+import { BrandLogo } from "@/components/brand/BrandLogo";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { brandName, domainBrandName, mailUrl, productionSiteUrl, siteConfig, telUrl, whatsappUrl } from "@/config/site";
@@ -24,6 +25,7 @@ export async function Footer({ locale }: { locale: string }) {
       <Container className="py-10 md:py-14">
         <div className="grid gap-5 md:grid-cols-3 md:gap-6">
           <div>
+            <Link href="/" className="mb-6 inline-flex rounded-xl bg-white px-5 py-4" aria-label={brandName(locale)}><BrandLogo size={70} variant="wordmark" locale={locale} /></Link>
             <p className={headingClass}>{shell?.companyHeading?.trim() || t("company")}</p>
             <p className="mt-1.5 text-sm font-medium text-white">{brandName(locale)}</p>
             <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/80">{shell?.companyBlurb?.trim() || (locale==='ar'?'خدمات التنظيف وصيانة المباني للمنازل والمنشآت. أخبرنا بما يحتاج إلى عناية، ودعنا نرتب الخطوة التالية معك.':'Cleaning and building maintenance for homes and business premises. Tell us what needs attention, and let’s arrange the next step.')}</p>

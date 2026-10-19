@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { brandName, getSiteUrl, siteConfig } from "@/config/site";
 
-const DEFAULT_OG_IMAGE = "/media/logo-512.webp";
+const DEFAULT_OG_IMAGE = "/media/brand/fixpoint-mark-512.webp";
 
 export function buildMetadata(opts: {
   locale: string;

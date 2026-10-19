@@ -22,10 +22,10 @@ export const metadata = {
   robots: { index: false, follow: false },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/favicon.png", type: "image/png" },
+      { url: "/favicon.ico?v=fixpoint-20261019", sizes: "any" },
+      { url: "/media/brand/fixpoint-mark-64.png", type: "image/png" },
     ],
-    apple: [{ url: "/apple-touch-icon.png", type: "image/png" }],
+    apple: [{ url: "/apple-touch-icon.png?v=fixpoint-20261019", type: "image/png" }],
   },
 };
 

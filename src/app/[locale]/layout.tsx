@@ -49,7 +49,7 @@ export default async function LocaleLayout({
     <html lang={locale} dir={dir}>
       <head>
         {/* Sole LCP image preload — header mark; no font/CSS preloads. */}
-        <link rel="preload" as="image" href="/media/logo-128.webp" type="image/webp" fetchPriority="high" />
+        <link rel="preload" as="image" href="/media/brand/fixpoint-wordmark-480.webp" type="image/webp" fetchPriority="high" />
         {/* Critical above-fold paint without waiting on the full Tailwind chunk chain. */}
         <style
           dangerouslySetInnerHTML={{
