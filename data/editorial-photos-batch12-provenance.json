@@ -1,0 +1,42 @@
+[
+  {
+    "key": "service-burnt-wire",
+    "kind": "service",
+    "slug": "burnt-wire-repair",
+    "prompt": "Original photorealistic editorial cover, landscape 3:2, fictional UAE property setting, natural light, realistic restrained materials. No people hands active work exposed conductors open electrical equipment sparks flames smoke readable text logos or watermarks. Not a real customer project, not an installation diagram or diagnosis. A fully closed grey surface cable trunking run on a pale utility-room wall, intact opaque inspection cover at center with a faint brown exterior stain nearby. Wide low oblique architectural view, closed storage cabinet below. All cables concealed; do not show burnt bare wire. Calm pre-inspection context.",
+    "output": "/media/editorial/photos-20261019/service-burnt-wire.webp",
+    "reviewedAt": "2026-10-19T18:20:04.770Z",
+    "review": "Individually reviewed: closed trunking and inspection cover with subtle wall staining, closed cabinet, no exposed conductors or work. Fictional property; staining does not establish a wiring fault.",
+    "originalFile": "exec-6a174b04-5aac-4922-96d8-2494082c8fbe.png"
+  },
+  {
+    "key": "service-cable-replacement",
+    "kind": "service",
+    "slug": "cable-replacement",
+    "prompt": "Original photorealistic editorial cover, landscape 3:2, fictional UAE property setting, natural light, realistic restrained materials. No people hands active work exposed conductors open electrical equipment sparks flames smoke readable text logos or watermarks. Not a real customer project, not an installation diagram or diagnosis. Two neatly coiled lengths of intact black sheathed replacement cable resting on a clean wooden staging bench in a modest building utility store. Cable ends securely covered by plain opaque protective caps, no visible layers or strands. Blurred closed wall cabinet background, close still-life view, no connected circuit.",
+    "output": "/media/editorial/photos-20261019/service-cable-replacement.webp",
+    "reviewedAt": "2026-10-19T18:20:04.770Z",
+    "review": "Individually reviewed: two distinct intact cable coils with opaque capped ends on bench; no internal layers or connected circuit. Illustrative materials, no verified specification.",
+    "originalFile": "exec-57b37c4a-8e95-496f-bc5a-792c7b750ea1.png"
+  },
+  {
+    "key": "diy-burnt-socket",
+    "kind": "diy",
+    "slug": "diy-burnt-socket-repair",
+    "prompt": "Original photorealistic editorial cover, landscape 3:2, fictional UAE property setting, natural light, realistic restrained materials. No people hands active work exposed conductors open electrical equipment sparks flames smoke readable text logos or watermarks. Not a real customer project, not an installation diagram or diagnosis. Before-you-book observation context: a closed unplugged UK Type G socket on a plain cream wall viewed from across a tidy empty study room, with a closed notebook on a separate desk foreground and simple chair turned away. No attempted repair or testing. Subtle exterior browning at socket edge only; no scorching in active use. Different wide room composition from a socket close-up.",
+    "output": "/media/editorial/photos-20261019/diy-burnt-socket.webp",
+    "reviewedAt": "2026-10-19T18:20:04.770Z",
+    "review": "Individually reviewed: empty study, distant unplugged socket, closed notebook; no hands, tools or repair attempt. Wide room composition distinct from service socket image.",
+    "originalFile": "exec-e6cad6bc-e6ca-4c8c-9931-b779be506153.png"
+  },
+  {
+    "key": "diy-burnt-switch",
+    "kind": "diy",
+    "slug": "diy-burnt-switch-repair",
+    "prompt": "Original photorealistic editorial cover, landscape 3:2, fictional UAE property setting, natural light, realistic restrained materials. No people hands active work exposed conductors open electrical equipment sparks flames smoke readable text logos or watermarks. Not a real customer project, not an installation diagram or diagnosis. Before-you-book observation context: an intact closed single rocker wall switch beside an empty doorway in a modest bright apartment entrance, a blank closed notebook and pen on a narrow console at a safe distance. Slight exterior discoloration only, no wiring visible. Wide frontal composition, cream plaster and muted sage door, distinct from a close hallway two-switch image.",
+    "output": "/media/editorial/photos-20261019/diy-burnt-switch.webp",
+    "reviewedAt": "2026-10-19T18:20:04.770Z",
+    "review": "Individually reviewed: closed single rocker switch in entrance with sage door and notebook console; distinct wide framing, no active work or exposed parts. Fictional illustration.",
+    "originalFile": "exec-a89b0679-7cbd-44e4-b7e3-2ebb83ce070b.png"
+  }
+]
