@@ -151,7 +151,7 @@ async function DiyCategoryView({
           locale,
         )}
       />
-      <PublicHero locale={locale} kicker={t("title")} title={category.t.name} lead={category.t.description} />
+      <PublicHero locale={locale} kicker={t("title")} title={category.t.name} lead={category.t.description} heroImage={category.heroImage} imageAlt={category.imageAlt} />
       <Section>
         <Disclaimer>{siteConfig.disclaimers.diy[locale === "ar" ? "ar" : "en"]}</Disclaimer>
         <PrevNextPagination
@@ -275,8 +275,8 @@ async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) 
         kicker={guide.categoryT?.name || t("title")}
         title={guide.t.title}
         lead={guide.t.problem}
-        heroImage={topicWebpForDiyCategory(guide.categorySlug)}
-        imageAlt={altForTopic(
+        heroImage={guide.heroImage || topicWebpForDiyCategory(guide.categorySlug)}
+        imageAlt={guide.heroImage ? guide.imageAlt : altForTopic(
           locale === "ar" ? "ar" : "en",
           guide.categoryT?.name || guide.categorySlug,
           guide.categoryT?.name || guide.categorySlug,

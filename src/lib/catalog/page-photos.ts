@@ -1,5 +1,6 @@
+import reviewedAssignments from "../../../data/reviewed-page-photos.json";
 /** Individually generated and reviewed photo-style covers. Each entry belongs to one logical page. */
-export const PAGE_PHOTOS: Record<string,string> = {
+const ORIGINAL_PAGE_PHOTOS: Record<string,string> = {
  'service:emergency-light-repair':'/media/editorial/photos-20261019/service-emergency-light.webp',
  'service:commercial-electrical-inspection':'/media/editorial/photos-20261019/service-commercial.webp',
  'service:office-electrical-maintenance':'/media/editorial/photos-20261019/service-office.webp',
@@ -11,4 +12,6 @@ export const PAGE_PHOTOS: Record<string,string> = {
  'location:al-quoz':'/media/editorial/photos-20261019/location-al-quoz.webp',
  'location:dubai':'/media/editorial/photos-20261019/location-dubai.webp',
 };
-export function pagePhoto(kind:'service'|'location',slug:string):string|null{return PAGE_PHOTOS[`${kind}:${slug}`]||null;}
+const reviewed = Object.fromEntries(Object.entries(reviewedAssignments).filter(([key,image]) => /^(service|location|diy|service-category|diy-category|section):/.test(key) && typeof image === 'string' && /^\/media\/editorial\/photos-[a-z0-9-]+\/[a-z0-9-]+\.webp$/.test(image)));
+export const PAGE_PHOTOS: Record<string,string> = {...ORIGINAL_PAGE_PHOTOS,...reviewed};
+export function pagePhoto(kind:'service'|'location'|'diy'|'service-category'|'diy-category'|'section',slug:string):string|null{return PAGE_PHOTOS[`${kind}:${slug}`]||null;}

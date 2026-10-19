@@ -264,6 +264,8 @@ export const getDiyCategoryBySlug = cache(async (slug: string, locale: string) =
   return {
     ...row,
     slug: diyPathSlug(locale, row.slug),
+    heroImage: pagePhoto("diy-category", row.slug),
+    imageAlt: editorialImageAlt(pagePhoto("diy-category", row.slug) || "", locale, t.name),
     t,
     publishedGuides: row.guides.flatMap((guide) => {
       const guideT = pickI18n(guide.translations, locale);
@@ -296,6 +298,8 @@ export const getGuideBySlug = cache(async (slug: string, locale: string) => {
   return {
     ...row,
     slug: diyPathSlug(locale, row.slug),
+    heroImage: pagePhoto("diy", row.slug),
+    imageAlt: editorialImageAlt(pagePhoto("diy", row.slug) || "", locale, t.title),
     t,
     serviceT: row.service ? pickI18n(row.service.translations, locale) : null,
     categoryT: pickI18n(row.category.translations, locale),

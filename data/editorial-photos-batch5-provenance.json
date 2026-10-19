@@ -1,0 +1,62 @@
+[
+  {
+    "key": "diy-earthing",
+    "kind": "diy",
+    "slug": "diy-earthing-inspection",
+    "prompt": "Use case photorealistic-natural. Original wide 3:2 website editorial cover. Realistic natural light and materials, no text, logos, watermark, people, readable labels, certification marks, active electrical work, exposed conductors, smoke or sparks. AI illustration only, not evidence of a real client project. Educational before-you-book guide for earthing inspection: quiet UAE apartment entrance with a fully closed flush-mounted electrical cabinet on a cream wall, a small empty writing desk and a blank folder in the soft foreground; eye-level medium-wide scene. No sockets or test devices. Emphasize safe preparation and professional assessment, not self repair.",
+    "output": "/media/editorial/photos-20261019/diy-earthing.webp",
+    "reviewedAt": "2026-10-19T16:24:12.946Z",
+    "review": "Reviewed individually: separate composition, no exposed wiring or unsafe actions, Type G socket geometry where visible. Generic architecture is AI illustration, not an actual branch, landmark or client property. No text or watermark.",
+    "originalFile": "exec-4e5dc295-d74e-48ad-9656-500cbb3742b9.png"
+  },
+  {
+    "key": "diy-sparking",
+    "kind": "diy",
+    "slug": "diy-sparking-socket-diagnosis",
+    "prompt": "Use case photorealistic-natural. Original wide 3:2 website editorial cover. Realistic natural light and materials, no text, logos, watermark, people, readable labels, certification marks, active electrical work, exposed conductors, smoke or sparks. AI illustration only, not evidence of a real client project. Educational reporting guide for a suspected socket fault: single fully enclosed empty UK Type G wall outlet with three rectangular holes mounted low on a white wall, photographed from a respectful distance across an uncluttered tiled room. Include a side table far away, no plug, hands, damage, tools or dangerous behavior. Morning light, no visible switches necessary. Different from a close-up product photograph.",
+    "output": "/media/editorial/photos-20261019/diy-sparking.webp",
+    "reviewedAt": "2026-10-19T16:24:12.946Z",
+    "review": "Reviewed individually: separate composition, no exposed wiring or unsafe actions, Type G socket geometry where visible. Generic architecture is AI illustration, not an actual branch, landmark or client property. No text or watermark.",
+    "originalFile": "exec-6e721f3f-8b23-4d7c-9a63-d0d298472988.png"
+  },
+  {
+    "key": "service-earthing",
+    "kind": "service",
+    "slug": "earthing-inspection",
+    "prompt": "Use case photorealistic-natural. Original wide 3:2 website editorial cover. Realistic natural light and materials, no text, logos, watermark, people, readable labels, certification marks, active electrical work, exposed conductors, smoke or sparks. AI illustration only, not evidence of a real client project. Commercial earthing-inspection service cover: large clean closed grey electrical cabinet in a spacious modern building utility alcove, a closed black testing case on a steel trolley, no leads or conductor ends, natural clerestory light, polished concrete. Wide symmetric composition, no label or diagram. No implication of a particular customer's installation.",
+    "output": "/media/editorial/photos-20261019/service-earthing.webp",
+    "reviewedAt": "2026-10-19T16:24:12.946Z",
+    "review": "Reviewed individually: separate composition, no exposed wiring or unsafe actions, Type G socket geometry where visible. Generic architecture is AI illustration, not an actual branch, landmark or client property. No text or watermark.",
+    "originalFile": "exec-dded623c-a92a-4bef-b90b-2286d32bb04f.png"
+  },
+  {
+    "key": "service-sparking",
+    "kind": "service",
+    "slug": "sparking-socket-diagnosis",
+    "prompt": "Use case photorealistic-natural. Original wide 3:2 website editorial cover. Realistic natural light and materials, no text, logos, watermark, people, readable labels, certification marks, active electrical work, exposed conductors, smoke or sparks. AI illustration only, not evidence of a real client project. Socket fault diagnosis service cover: close detail of a single empty white British Type G three-rectangular-hole wall socket on a pale textured wall, switched off, with a tidy closed fabric technician bag blurred on the floor far behind. Entire outlet intact and enclosed, no plug or open wiring, soft side light, no demonstration or incident. Use a single socket, not a double socket.",
+    "output": "/media/editorial/photos-20261019/service-sparking.webp",
+    "reviewedAt": "2026-10-19T16:24:12.946Z",
+    "review": "Reviewed individually: separate composition, no exposed wiring or unsafe actions, Type G socket geometry where visible. Generic architecture is AI illustration, not an actual branch, landmark or client property. No text or watermark.",
+    "originalFile": "exec-d5e06566-bdab-4b1d-ac8e-5a1377e825c8.png"
+  },
+  {
+    "key": "location-sharjah",
+    "kind": "location",
+    "slug": "sharjah",
+    "prompt": "Use case photorealistic-natural. Original wide 3:2 website editorial cover. Realistic natural light and materials, no text, logos, watermark, people, readable labels, certification marks, active electrical work, exposed conductors, smoke or sparks. AI illustration only, not evidence of a real client project. Location service hub illustrative architectural scene for Sharjah UAE: generic contemporary mid-rise cream apartment-building courtyard, shaded stone walkway, palm trees and understated arched ground-floor openings, warm late-afternoon light. Not a named landmark, branch office, specific street or actual photograph of the city. No vehicles or people or shop signs. Calm approachable professional composition.",
+    "output": "/media/editorial/photos-20261019/location-sharjah.webp",
+    "reviewedAt": "2026-10-19T16:24:12.946Z",
+    "review": "Reviewed individually: separate composition, no exposed wiring or unsafe actions, Type G socket geometry where visible. Generic architecture is AI illustration, not an actual branch, landmark or client property. No text or watermark.",
+    "originalFile": "exec-8e1920b2-13ea-4c6a-aee8-2d4f4d5615a4.png"
+  },
+  {
+    "key": "location-ajman",
+    "kind": "location",
+    "slug": "ajman",
+    "prompt": "Use case photorealistic-natural. Original wide 3:2 website editorial cover. Realistic natural light and materials, no text, logos, watermark, people, readable labels, certification marks, active electrical work, exposed conductors, smoke or sparks. AI illustration only, not evidence of a real client project. Location service hub illustrative architectural scene for Ajman UAE: generic low-rise sandy-beige residential villa frontage, geometric boundary wall and a clean paved entrance with a small palm planting, morning light, distinct close street-level composition. No actual landmark, company office, street identity, completed project, cars or people. No lettering or decorative signage.",
+    "output": "/media/editorial/photos-20261019/location-ajman.webp",
+    "reviewedAt": "2026-10-19T16:24:12.946Z",
+    "review": "Reviewed individually: separate composition, no exposed wiring or unsafe actions, Type G socket geometry where visible. Generic architecture is AI illustration, not an actual branch, landmark or client property. No text or watermark.",
+    "originalFile": "exec-43590d5e-ee84-42b6-99f7-63c640349399.png"
+  }
+]
