@@ -1,0 +1,42 @@
+[
+  {
+    "key": "service-outdoor-light-installation",
+    "kind": "service",
+    "slug": "outdoor-light-installation",
+    "output": "/media/editorial/photos-20261019/service-outdoor-light-installation.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional modest UAE courtyard at dusk with one intact enclosed wall lantern beside a shaded entrance and a simple dry tiled walkway, understated planting, realistic plaster and light. No people, ladders, tools, loose wires, open enclosures, text, logos, brand labels or actual customer-work claim. Conceptual finished outdoor-light setting, not an installation diagram or a claim of suitability for a particular site.",
+    "reviewedAt": "2026-10-19T23:42:50.779Z",
+    "review": "Individually visually reviewed: Intact enclosed lantern and dry courtyard, no installation action or real-project claim.",
+    "originalFile": "exec-d6a5f011-147a-4be8-90a8-40a942ce0abf.png"
+  },
+  {
+    "key": "service-outdoor-lighting-repair",
+    "kind": "service",
+    "slug": "outdoor-lighting-repair",
+    "output": "/media/editorial/photos-20261019/service-outdoor-lighting-repair.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional UAE garden side path in soft morning light, intact unlit small bollard light in foreground and one enclosed wall light in distance, plain closed maintenance notebook on a safe bench. Realistic dry landscape and clear path, distinct composition. No people, exposed wiring, opened fixtures, tools, sparks, active fault, text, brands or repair result claim. Illustration of discussing professional outdoor lighting assessment, not proof these fixtures are faulty.",
+    "reviewedAt": "2026-10-19T23:42:50.779Z",
+    "review": "Individually visually reviewed: Intact garden bollard and notebook; lamp appears illuminated despite unlit prompt preference, accepted as general assessment illustration without asserting a fault.",
+    "originalFile": "exec-6f1c13bf-1c4c-4a60-bc6e-d27d9077f2f5.png"
+  },
+  {
+    "key": "service-outdoor-socket-installation",
+    "kind": "service",
+    "slug": "outdoor-socket-installation",
+    "output": "/media/editorial/photos-20261019/service-outdoor-socket-installation.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, close architectural view of a plain unbranded outdoor socket enclosure with its opaque protective lid fully closed on a dry pale UAE courtyard wall under a small sheltered area. Include subtle stone paving and planter background for context. No visible socket contacts, plugs, cords, water, hands, installation activity, text, ratings, logos or claims of compliance. Fictional conceptual enclosure illustration, not a technical installation specification.",
+    "reviewedAt": "2026-10-19T23:42:50.779Z",
+    "review": "Individually visually reviewed: Opaque closed protective socket enclosure, no contacts, plugs or ratings; conceptual cover only.",
+    "originalFile": "exec-9d361ee9-1c7d-45a2-a83d-ba2fc8e26cea.png"
+  },
+  {
+    "key": "service-outdoor-switch-installation",
+    "kind": "service",
+    "slug": "outdoor-switch-installation",
+    "output": "/media/editorial/photos-20261019/service-outdoor-switch-installation.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional UAE utility terrace with one intact plain enclosed weatherproof wall switch, its protective flap fully closed, nearby intact wall light softly out of focus. Dry clean plaster, morning side light, realistic scale and understated materials, distinct angle. No people, tools, open boxes, contacts, wires, labels, text, logos or actual project claims. Conceptual professional service cover, not instructions or certified equipment selection.",
+    "reviewedAt": "2026-10-19T23:42:50.779Z",
+    "review": "Individually visually reviewed: Closed protective switch enclosure and intact nearby light, no internal parts or action; not a product specification.",
+    "originalFile": "exec-550925db-e233-4867-b2f4-939aabf049df.png"
+  }
+]
