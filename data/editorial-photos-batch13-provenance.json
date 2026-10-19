@@ -1,0 +1,22 @@
+[
+  {
+    "key": "blog-interruption-jurf",
+    "slug": "power-interruption-diagnosis-al-jerf-1-ajman",
+    "prompt": "Original photorealistic editorial cover landscape 3:2, fictional UAE property, realistic materials, natural daylight. No people, hands, exposed wires, open electrical cabinets, testing, repairs, sparks, smoke, flames, readable text, logos or watermarks. No actual client or successful repair claim. A modest small-business reception in Ajman with ceiling lights visibly off but daylight through window, closed grey wall electrical cabinet far left, a closed notebook and simple desk clock on an empty reception counter. Calm scene of recording a power interruption, not a damaged installation or abandoned luxury building. No skyline or landmarks, no readable clock numerals.",
+    "kind": "blog",
+    "output": "/media/editorial/photos-20261019/blog-interruption-jurf.webp",
+    "reviewedAt": "2026-10-19T18:29:43.253Z",
+    "review": "Individually visually reviewed: empty daylight reception with ceiling lights off, closed wall cabinet, closed notebook and clock; no exposed parts, people or active work. Fictional scene, not evidence of a real interruption or customer project.",
+    "originalFile": "exec-0e7ea73a-2458-446b-9ca4-7b34038bf83d.png"
+  },
+  {
+    "key": "blog-partial-power-jumeirah",
+    "slug": "partial-power-failure-diagnosis-jumeirah-park-dubai",
+    "prompt": "Original photorealistic editorial cover landscape 3:2, fictional UAE property, realistic materials, natural daylight. No people, hands, exposed wires, open electrical cabinets, testing, repairs, sparks, smoke, flames, readable text, logos or watermarks. No actual client or successful repair claim. A quiet villa interior looking through a wide doorway between two rooms: near cream room with a warm table lamp lit, farther neutral study with ceiling lamp off, both well exposed by soft daylight. All sockets and switches closed and intact, no plugged cable crossings. A small closed planner on side table. Illustrates different room observations, not proof of a specific circuit fault. No skyline or landmarks. Elegant but modest inhabited home.",
+    "kind": "blog",
+    "output": "/media/editorial/photos-20261019/blog-partial-power-jumeirah.webp",
+    "reviewedAt": "2026-10-19T18:29:43.255Z",
+    "review": "Individually visually reviewed: two distinct villa rooms, one lit table lamp and one unlit ceiling lamp, intact surfaces, no work or exposed wiring. Different lighting is illustrative and does not establish an electrical fault.",
+    "originalFile": "exec-bcf66066-fd3f-4398-8364-e7d6230ef6ff.png"
+  }
+]
