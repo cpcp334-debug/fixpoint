@@ -1,0 +1,85 @@
+[
+  {
+    "key": "service-exit-light-installation",
+    "kind": "service",
+    "slug": "exit-light-installation",
+    "output": "/media/editorial/photos-20261019/service-exit-light-installation.webp",
+    "prompt": "Generate one original photorealistic editorial cover, landscape 3:2. Fictional commercial stair-lobby corridor, intact illuminated green running-person exit pictogram above a closed doorway, neat cream walls, a plain closed product carton on a separate bench at the far side. Not a technical route diagram or approval example. Believable scale and materials; composition distinct from generic stock. No identifiable people, hands, brands, logos, watermarks, approval badges, sparks, smoke or electrical repair instructions. Any fixture is intact and closed. This is an illustrative fictional scene, never a claim of an actual Fixpoint customer project.",
+    "reviewedAt": "2026-10-19T21:52:58.886Z",
+    "review": "Individually visually reviewed: Corrected pictogram points down to the doorway; no route-design or compliance claim. Original and edit retained.",
+    "editSourceFile": "exec-41c3844c-c8e0-4b0b-8c07-0a7a8fc074f9.png",
+    "editReason": "Original arrow pointed toward side wall; edited and reviewed to indicate the doorway below.",
+    "editPrompt": "Edit the supplied fictional editorial corridor image. Keep composition, architecture, lighting, closed doorway, stairs and closed carton unchanged. On the green illuminated sign above the door, replace the right-pointing arrow with a simple downward-pointing white arrow, so the pictogram indicates the doorway directly below rather than the side wall. Keep a clean running-person pictogram, no text or brands. This is a conceptual illustration, not an approved escape-route design. Preserve photorealistic appearance.",
+    "originalFile": "exec-fa524162-2e89-4e34-b6d1-13289a28688a.png"
+  },
+  {
+    "key": "service-fan-regulator-replacement",
+    "kind": "service",
+    "slug": "fan-regulator-replacement",
+    "output": "/media/editorial/photos-20261019/service-fan-regulator-replacement.webp",
+    "prompt": "Generate one original photorealistic editorial cover, landscape 3:2. Fictional simple UAE home study, close view of an intact rotary ceiling-fan controller on a sand-coloured wall; an intact stationary ceiling fan softly visible beyond the doorway. No detached components, wiring or work in progress. Believable scale and materials; composition distinct from generic stock. No identifiable people, hands, brands, logos, watermarks, approval badges, sparks, smoke or electrical repair instructions. Any fixture is intact and closed. This is an illustrative fictional scene, never a claim of an actual Fixpoint customer project.",
+    "reviewedAt": "2026-10-19T21:52:58.894Z",
+    "review": "Individually visually reviewed: Intact rotary fan controller and stationary ceiling fan; no repair steps or exposed parts.",
+    "originalFile": "exec-73a2e5f1-73b2-4c78-8313-6e6011f021d1.png"
+  },
+  {
+    "key": "service-garage-electrical-wiring",
+    "kind": "service",
+    "slug": "garage-electrical-wiring",
+    "output": "/media/editorial/photos-20261019/service-garage-electrical-wiring.webp",
+    "prompt": "Generate one original photorealistic editorial cover, landscape 3:2. Fictional clean residential garage with no vehicles, closed surface-mounted grey electrical enclosures and neat closed conduit along a pale block wall, daylight entering through a closed slatted garage door. No EV charger, workshop activity or opened fittings. Believable scale and materials; composition distinct from generic stock. No identifiable people, hands, brands, logos, watermarks, approval badges, sparks, smoke or electrical repair instructions. Any fixture is intact and closed. This is an illustrative fictional scene, never a claim of an actual Fixpoint customer project.",
+    "reviewedAt": "2026-10-19T21:52:58.894Z",
+    "review": "Individually visually reviewed: Empty garage, closed electrical boxes and enclosed conduit; no vehicles, chargers or active work.",
+    "originalFile": "exec-53becaac-c1e8-4ccd-afe6-6e6fef351bb0.png"
+  },
+  {
+    "key": "service-garden-electrical-wiring",
+    "kind": "service",
+    "slug": "garden-electrical-wiring",
+    "output": "/media/editorial/photos-20261019/service-garden-electrical-wiring.webp",
+    "prompt": "Generate one original photorealistic editorial cover, landscape 3:2. Fictional UAE courtyard in morning light, a closed intact weatherproof electrical enclosure and closed conduit discreetly mounted on a cream boundary wall, gravel planting bed and palms nearby, dry ground. No exposed cables, open trench, active installation or watering. Believable scale and materials; composition distinct from generic stock. No identifiable people, hands, brands, logos, watermarks, approval badges, sparks, smoke or electrical repair instructions. Any fixture is intact and closed. This is an illustrative fictional scene, never a claim of an actual Fixpoint customer project.",
+    "reviewedAt": "2026-10-19T21:52:58.894Z",
+    "review": "Individually visually reviewed: Closed outdoor enclosure and conduit in a dry landscaped courtyard; no exposed cable or open trench.",
+    "originalFile": "exec-93229efb-973f-4a9e-9c48-5cd77337aa52.png"
+  },
+  {
+    "key": "service-flickering-light-diagnosis",
+    "kind": "service",
+    "slug": "flickering-light-diagnosis",
+    "output": "/media/editorial/photos-20261019/service-flickering-light-diagnosis.webp",
+    "prompt": "Generate one original photorealistic editorial cover, landscape 3:2. Fictional cosy dining alcove at blue hour, two intact pendant shades over a walnut table, one light off and the other softly lit, sealed service folder on a distant sideboard. A conceptual lighting concern, not proof of fault or a depiction of active testing. Believable scale and materials; composition distinct from generic stock. No identifiable people, hands, brands, logos, watermarks, approval badges, sparks, smoke or electrical repair instructions. Any fixture is intact and closed. This is an illustrative fictional scene, never a claim of an actual Fixpoint customer project.",
+    "reviewedAt": "2026-10-19T21:52:58.897Z",
+    "review": "Individually visually reviewed: Two intact pendant lights, one unlit; conceptual concern only, no asserted fault cause or active testing.",
+    "originalFile": "exec-b2d775a4-fd4a-4eb4-8604-5b09da448c93.png"
+  },
+  {
+    "key": "service-garden-lighting-installation",
+    "kind": "service",
+    "slug": "garden-lighting-installation",
+    "output": "/media/editorial/photos-20261019/service-garden-lighting-installation.webp",
+    "prompt": "Generate one original photorealistic editorial cover, landscape 3:2. Fictional landscaped residential garden at dusk, intact low path lights along a curved stone path with small palms, warm light pools and a plain garden wall, no people or equipment open. Architectural photo, no implied real project or technical spacing design. Believable scale and materials; composition distinct from generic stock. No identifiable people, hands, brands, logos, watermarks, approval badges, sparks, smoke or electrical repair instructions. Any fixture is intact and closed. This is an illustrative fictional scene, never a claim of an actual Fixpoint customer project.",
+    "reviewedAt": "2026-10-19T21:52:58.897Z",
+    "review": "Individually visually reviewed: Intact path lights in a fictional garden; no client-project or technical-spacing claim.",
+    "originalFile": "exec-360d64de-e4ad-4a4c-ae5d-3ef434453c48.png"
+  },
+  {
+    "key": "service-gate-motor-electrical-wiring",
+    "kind": "service",
+    "slug": "gate-motor-electrical-wiring",
+    "output": "/media/editorial/photos-20261019/service-gate-motor-electrical-wiring.webp",
+    "prompt": "Generate one original photorealistic editorial cover, landscape 3:2. Fictional quiet villa driveway in daylight, fully closed modern metal sliding gate with an intact closed gate-motor housing at the side and enclosed conduit, no vehicles or people, unobstructed dry paving. No exposed mechanism, active repair or demonstration. Believable scale and materials; composition distinct from generic stock. No identifiable people, hands, brands, logos, watermarks, approval badges, sparks, smoke or electrical repair instructions. Any fixture is intact and closed. This is an illustrative fictional scene, never a claim of an actual Fixpoint customer project.",
+    "reviewedAt": "2026-10-19T21:52:58.897Z",
+    "review": "Individually visually reviewed: Closed gate, closed motor housing and enclosed conduit; no exposed mechanism or repair process.",
+    "originalFile": "exec-97b966cd-3297-4aca-a9ea-b2c583721e58.png"
+  },
+  {
+    "key": "service-ground-fault-diagnosis",
+    "kind": "service",
+    "slug": "ground-fault-diagnosis",
+    "output": "/media/editorial/photos-20261019/service-ground-fault-diagnosis.webp",
+    "prompt": "Generate one original photorealistic editorial cover, landscape 3:2. Fictional tidy building service room, intact closed grey electrical cabinet on a slate wall, plain closed assessment folder on a freestanding shelf away from the cabinet, muted daylight. Conceptual professional assessment only, no meter readings, fault reenactment, water or exposed conductors. Believable scale and materials; composition distinct from generic stock. No identifiable people, hands, brands, logos, watermarks, approval badges, sparks, smoke or electrical repair instructions. Any fixture is intact and closed. This is an illustrative fictional scene, never a claim of an actual Fixpoint customer project.",
+    "reviewedAt": "2026-10-19T21:52:58.897Z",
+    "review": "Individually visually reviewed: Closed cabinet and separate folder; no exposed conductors, readings, water or fault reenactment.",
+    "originalFile": "exec-5ff7fcc3-e669-4689-9472-0b8117d70c35.png"
+  }
+]
