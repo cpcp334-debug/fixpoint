@@ -1,0 +1,27 @@
+[
+  {
+    "key": "blog-appliance-isolator-musaffah",
+    "slug": "appliance-isolator-installation-musaffah-abu-dhabi",
+    "prompt": "Use case: photorealistic-natural. Create one unique wide 3:2 editorial cover for an Arabic article about planning an appliance isolator installation. A clean small commercial kitchenette in a generic UAE workplace: closed stainless dishwasher under a counter, a fully enclosed plain white isolator wall switch with a red rocker on the backsplash, no symbols or letters. All wiring concealed, dry surfaces, simple cabinetry. Oblique architectural view from across the room, natural morning light, realistic scale and materials. No people, hands, tools, open equipment, visible conductor ends, sparks, technical diagrams, words, watermarks or brand logos. Fictional AI illustrative environment, not a real project photograph or verified installation design.",
+    "output": "/media/editorial/photos-20261019/blog-appliance-isolator-musaffah.webp",
+    "kind": "blog",
+    "reviewedAt": "2026-10-19T17:24:04.330Z",
+    "review": "Reviewed corrected image: plain frosted window removes the inappropriate Dubai skyline; closed appliance and switch, concealed wiring, no people or active work. Generic illustrative interior, not a technical specification or client job.",
+    "edit": {
+      "originalFile": "exec-464563e1-a5a7-4e39-a30f-463605f6455b.png",
+      "instruction": "Replace all exterior skyline and recognisable buildings through left window with frosted glass and diffuse daylight; preserve interior.",
+      "reason": "Rejected first version because a Dubai landmark was inappropriate for a Musaffah article."
+    },
+    "originalFile": "exec-eca164ee-621a-43d8-a5ff-a4672a054e70.png"
+  },
+  {
+    "key": "blog-bonding-al-alia",
+    "slug": "bonding-inspection-al-alia-ajman-ajman",
+    "prompt": "Use case: photorealistic-natural. Create one unique wide 3:2 editorial cover for an Arabic article about arranging protective electrical bonding inspection. Generic building-services corridor: tidy enclosed metal service pipes on the left wall, fully closed unbranded grey electrical cabinet farther down on the right, closed plain inspection-instrument case resting on a low trolley in foreground. No exposed wiring or illustrated bonding termination. Daylight from a high frosted window, realistic clean utilitarian environment, neutral tones, wide composition distinct from a domestic utility cupboard. No people, hands, active electrical work, sparks, open cabinets, text, labels, logos or certification claims. Fictional AI illustration only, not an actual Fixpoint project or a technical specification.",
+    "output": "/media/editorial/photos-20261019/blog-bonding-al-alia.webp",
+    "kind": "blog",
+    "reviewedAt": "2026-10-19T17:24:04.330Z",
+    "review": "Reviewed distinct corridor composition: closed cabinet, enclosed pipework and case, no exposed conductors or active work, no readable text. Generic illustration, not a verified installation or customer project.",
+    "originalFile": "exec-23400b51-f386-47e7-8695-4eed45305080.png"
+  }
+]
