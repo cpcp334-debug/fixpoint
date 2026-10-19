@@ -46,5 +46,17 @@
   "service:cooker-electrical-connection": "/media/editorial/photos-20261019/service-cooker-connection.webp",
   "service:damaged-wire-replacement": "/media/editorial/photos-20261019/service-damaged-wire-replacement.webp",
   "service:dedicated-circuit-installation": "/media/editorial/photos-20261019/service-dedicated-circuit.webp",
-  "service:dimmer-switch-installation": "/media/editorial/photos-20261019/service-dimmer-switch.webp"
+  "service:dimmer-switch-installation": "/media/editorial/photos-20261019/service-dimmer-switch.webp",
+  "diy:diy-ceiling-fan-installation": "/media/editorial/photos-20261019/diy-ceiling-fan-install.webp",
+  "diy:diy-ceiling-fan-repair": "/media/editorial/photos-20261019/diy-ceiling-fan-repair.webp",
+  "diy:diy-ceiling-fan-replacement": "/media/editorial/photos-20261019/diy-ceiling-fan-replacement.webp",
+  "diy:diy-ceiling-light-installation": "/media/editorial/photos-20261019/diy-ceiling-light.webp",
+  "diy:diy-circuit-installation": "/media/editorial/photos-20261019/diy-circuit-installation.webp",
+  "diy:diy-circuit-testing": "/media/editorial/photos-20261019/diy-circuit-testing.webp",
+  "diy:diy-commercial-wiring-installation": "/media/editorial/photos-20261019/diy-commercial-wiring.webp",
+  "diy:diy-common-area-electrical-maintenance": "/media/editorial/photos-20261019/diy-common-area-electrical.webp",
+  "location:abu-dhabi": "/media/editorial/photos-20261019/location-abu-dhabi.webp",
+  "location:fujairah": "/media/editorial/photos-20261019/location-fujairah.webp",
+  "location:ras-al-khaimah": "/media/editorial/photos-20261019/location-ras-al-khaimah.webp",
+  "location:umm-al-quwain": "/media/editorial/photos-20261019/location-umm-al-quwain.webp"
 }
