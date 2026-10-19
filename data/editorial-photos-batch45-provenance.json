@@ -1,0 +1,42 @@
+[
+  {
+    "key": "service-new-electrical-wiring",
+    "kind": "service",
+    "slug": "new-electrical-wiring",
+    "output": "/media/editorial/photos-20261019/service-new-electrical-wiring.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional UAE property planning room with sealed unbranded cable reel and bundled empty conduit sections in plain packaging on a clean supply counter, closed blank project folder beside them, unfinished but tidy room softly blurred in background. All cable ends concealed in packaging; no circuits or connection details. Natural light, realistic proportions. No people, tools in use, wiring diagrams, open panels, exposed copper, text, logos or real-project claim. Conceptual materials planning, not installation instructions or a product specification.",
+    "reviewedAt": "2026-10-19T23:28:46.546Z",
+    "review": "Individually visually reviewed: Sealed cable coil and empty conduit bundles with closed folder, no copper ends or wiring instructions.",
+    "originalFile": "exec-9bd1dbd9-a788-45c5-827b-b3c768fd5924.png"
+  },
+  {
+    "key": "service-occupancy-sensor-installation",
+    "kind": "service",
+    "slug": "occupancy-sensor-installation",
+    "output": "/media/editorial/photos-20261019/service-occupancy-sensor-installation.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional modest UAE meeting room seen through doorway, clear wall-mounted PIR occupancy sensor with a visible translucent faceted Fresnel lens above an intact plain switch plate, ceiling lights and meeting table softly visible. Distinct close wall-and-room composition, realistic scale and neutral daylight. No smoke detector, vented alarm housing, people, hands, loose wires, tools, active installation, text, branding or actual customer claim. Conceptual sensor setting, not a technical layout.",
+    "reviewedAt": "2026-10-19T23:28:46.548Z",
+    "review": "Individually visually reviewed: Clear faceted PIR lens above plain switch plate, intact meeting-room setting; no alarm vents or active work.",
+    "originalFile": "exec-85275cd1-e522-40ad-af1c-2daf5a7927fa.png"
+  },
+  {
+    "key": "service-outdoor-electrical-inspection",
+    "kind": "service",
+    "slug": "outdoor-electrical-inspection",
+    "output": "/media/editorial/photos-20261019/service-outdoor-electrical-inspection.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional UAE managed courtyard after dawn, intact closed weatherproof electrical enclosure mounted beneath a simple canopy on a dry pale wall, plain closed inspection folder on safe foreground table well away from enclosure. Restrained planting and clear path, realistic materials. No people, water spraying, rain, open boxes, loose wires, readings, tools, sparks, text, labels, brands or claim of compliance. Illustration of arranging professional outdoor assessment, not an actual project.",
+    "reviewedAt": "2026-10-19T23:28:46.548Z",
+    "review": "Individually visually reviewed: Closed weatherproof enclosure under canopy, closed folder, dry site, no testing or safety certification claim.",
+    "originalFile": "exec-5a20d124-ffec-450d-8609-bc7164916e81.png"
+  },
+  {
+    "key": "service-outdoor-electrical-wiring",
+    "kind": "service",
+    "slug": "outdoor-electrical-wiring",
+    "output": "/media/editorial/photos-20261019/service-outdoor-electrical-wiring.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional UAE villa side courtyard with intact enclosed surface conduit and small closed weatherproof junction enclosure on a pale service wall, ordinary enclosed wall light above, dry stone path and sparse planting. Simple realistic architectural side view. No visible wire terminations, open housings, people, ladders, tools, route diagrams, printed ratings, labels, logos, sparks or installation action. Conceptual enclosed outdoor electrical setting, not a wiring design, instruction or real customer job.",
+    "reviewedAt": "2026-10-19T23:28:46.548Z",
+    "review": "Individually visually reviewed: Closed junction enclosure, enclosed conduit and intact wall light in dry courtyard; no terminations or route-design claim.",
+    "originalFile": "exec-d1b2360a-8a0c-4894-92e5-a38ae7197b6f.png"
+  }
+]
