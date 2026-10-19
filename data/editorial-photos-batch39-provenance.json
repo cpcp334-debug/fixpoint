@@ -1,0 +1,22 @@
+[
+  {
+    "key": "service-light-repair",
+    "kind": "service",
+    "slug": "light-repair",
+    "output": "/media/editorial/photos-20261019/service-light-repair.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional UAE apartment reading corner in late afternoon. One intact unlit wall sconce above a closed sideboard, nearby window lighting the scene, simple closed appointment notebook on sideboard. No people, tools, damage, burning, exposed wiring, removed covers, active repair, readable text or brand. Natural realistic architectural photo, distinct muted blue and warm wood palette. Conceptual illustration for professional light repair, not instructions or real project evidence.",
+    "reviewedAt": "2026-10-19T22:45:03.882Z",
+    "review": "Visually reviewed: intact wall sconce in fictional reading corner; light is illuminated despite prompt preference for unlit, accepted as general service illustration without asserted fault. No repair steps or exposed parts.",
+    "originalFile": "exec-386f8270-a59d-4ad6-9355-70490eb62606.png"
+  },
+  {
+    "key": "service-light-replacement",
+    "kind": "service",
+    "slug": "light-replacement",
+    "output": "/media/editorial/photos-20261019/service-light-replacement.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional UAE lighting showroom counter with a single elegant unbranded new wall lamp in protective plain packaging, softly blurred varied intact lighting displays behind. Restrained neutral materials and deep navy display wall, realistic product scale, crisp useful foreground composition. No people, loose wires, exposed electronics, tools, text, certification labels or brands. Illustration of choosing a replacement light, not actual installation or a customer project.",
+    "reviewedAt": "2026-10-19T22:45:03.885Z",
+    "review": "Visually reviewed: enclosed unbranded wall light in protective packaging, distinct showroom composition, no exposed wiring or active work; fictional replacement-selection illustration.",
+    "originalFile": "exec-3111702c-6f1d-46ae-ac20-0ba0ce556afb.png"
+  }
+]
