@@ -1,0 +1,82 @@
+[
+  {
+    "key": "service-armoured-cable",
+    "kind": "service",
+    "slug": "armoured-cable-installation",
+    "output": "/media/editorial/photos-20261019/service-armoured-cable.webp",
+    "prompt": "Use case: photorealistic-natural. Create one original wide 3:2 editorial photo-style cover with realistic materials and natural lighting. Generic fictional UAE building context, not an actual client project or technical installation specification. No people, hands, active maintenance, exposed conductor ends, open electrical equipment, sparks, smoke, readable text, labels, logos, watermark, certifications or landmark skyline. A neatly wound coil of black sheathed armoured cable on a plain small wooden cable reel beside a fully closed grey service cabinet in a clean utility staging area. Every cable end securely covered with an opaque cap; no exposed layers, steel strands or copper. Low oblique view, orderly industrial materials, warm daylight, no installation tutorial.",
+    "reviewedAt": "2026-10-19T17:37:07.692Z",
+    "review": "Individually reviewed: distinct reel of intact black sheathed cable with capped end and closed cabinet; no conductor exposure, active work, text or project claim. Not a verified cable specification.",
+    "originalFile": "exec-30301f34-980e-4a58-9d77-b01248778aaf.png"
+  },
+  {
+    "key": "service-bathroom-fan",
+    "kind": "service",
+    "slug": "bathroom-fan-installation",
+    "output": "/media/editorial/photos-20261019/service-bathroom-fan.webp",
+    "prompt": "Use case: photorealistic-natural. Create one original wide 3:2 editorial photo-style cover with realistic materials and natural lighting. Generic fictional UAE building context, not an actual client project or technical installation specification. No people, hands, active maintenance, exposed conductor ends, open electrical equipment, sparks, smoke, readable text, labels, logos, watermark, certifications or landmark skyline. A finished modern dry bathroom corner, simple white enclosed square extractor fan mounted high on a pale stone wall away from shower splash, closed ceiling and concealed wiring, small mirror edge and neatly folded towel. Architectural upward view with realistic vent grille, no screws removed, no wet surfaces.",
+    "reviewedAt": "2026-10-19T17:37:07.696Z",
+    "review": "Individually reviewed: intact enclosed square ventilation cover in a dry bathroom scene, concealed wiring, no people or installation action. Illustrative room only; placement/compliance not established.",
+    "originalFile": "exec-08bec67e-98b1-4bd3-b2c6-33e224a192aa.png"
+  },
+  {
+    "key": "service-blown-fuse",
+    "kind": "service",
+    "slug": "blown-fuse-diagnosis",
+    "output": "/media/editorial/photos-20261019/service-blown-fuse.webp",
+    "prompt": "Use case: photorealistic-natural. Create one original wide 3:2 editorial photo-style cover with realistic materials and natural lighting. Generic fictional UAE building context, not an actual client project or technical installation specification. No people, hands, active maintenance, exposed conductor ends, open electrical equipment, sparks, smoke, readable text, labels, logos, watermark, certifications or landmark skyline. Closed unbranded grey fused electrical enclosure on a clean beige wall in a small workplace utility alcove, black latch intact, no visible internal parts. A closed portable test instrument case sits on a metal bench below at a distance. Calm close architectural view, no indication a fault can be diagnosed from the image, no burnt or damaged parts.",
+    "reviewedAt": "2026-10-19T17:37:07.699Z",
+    "review": "Individually reviewed: closed enclosure and instrument case, no internal parts or depicted diagnosis. Illustrates a service context without pretending to show the cause of a fuse fault.",
+    "originalFile": "exec-2c17f736-10ec-4acf-a5d6-de525cba0457.png"
+  },
+  {
+    "key": "service-building-electrical",
+    "kind": "service",
+    "slug": "building-electrical-maintenance",
+    "output": "/media/editorial/photos-20261019/service-building-electrical.webp",
+    "prompt": "Use case: photorealistic-natural. Create one original wide 3:2 editorial photo-style cover with realistic materials and natural lighting. Generic fictional UAE building context, not an actual client project or technical installation specification. No people, hands, active maintenance, exposed conductor ends, open electrical equipment, sparks, smoke, readable text, labels, logos, watermark, certifications or landmark skyline. Orderly commercial building utility corridor with enclosed ceiling lighting, neat closed surface trunking, two fully closed electrical cabinets recessed on one wall, empty tiled floor. Wide balanced perspective, daylight from plain frosted end window, realistic modest office-building setting rather than luxury or futuristic equipment.",
+    "reviewedAt": "2026-10-19T17:37:07.702Z",
+    "review": "Individually reviewed: closed cabinet doors and enclosed lighting in a clean corridor, no people or work in progress; distinct wide architectural composition, no real-building claim.",
+    "originalFile": "exec-5d3775c2-f994-45ca-9236-67efdcf2bfc5.png"
+  },
+  {
+    "key": "diy-armoured-cable",
+    "kind": "diy",
+    "slug": "diy-armoured-cable-installation",
+    "output": "/media/editorial/photos-20261019/diy-armoured-cable.webp",
+    "prompt": "Use case: photorealistic-natural. Create one original wide 3:2 editorial photo-style cover with realistic materials and natural lighting. Generic fictional UAE building context, not an actual client project or technical installation specification. No people, hands, active maintenance, exposed conductor ends, open electrical equipment, sparks, smoke, readable text, labels, logos, watermark, certifications or landmark skyline. Before-you-book cable route planning context: an empty clean covered service walkway outside a plain building, fully closed smooth grey conduit runs along the side wall to a closed junction box. A rolled blank paper and closed notebook rest on a small table well away from the equipment. No exposed cable, trenches, digging or tools. Wide side perspective different from a reel photograph.",
+    "reviewedAt": "2026-10-19T17:37:07.706Z",
+    "review": "Individually reviewed: route-planning scene with closed conduit/box, blank planning material, no open trench or cable ends. Not an installation diagram or recommendation.",
+    "originalFile": "exec-c1e571fc-6e6a-403a-9558-a626dc6198a2.png"
+  },
+  {
+    "key": "diy-bathroom-fan",
+    "kind": "diy",
+    "slug": "diy-bathroom-fan-installation",
+    "output": "/media/editorial/photos-20261019/diy-bathroom-fan.webp",
+    "prompt": "Use case: photorealistic-natural. Create one original wide 3:2 editorial photo-style cover with realistic materials and natural lighting. Generic fictional UAE building context, not an actual client project or technical installation specification. No people, hands, active maintenance, exposed conductor ends, open electrical equipment, sparks, smoke, readable text, labels, logos, watermark, certifications or landmark skyline. Before-you-book bathroom ventilation context: wider view of a tidy small guest bathroom with an intact white circular enclosed ventilation grille high on the far wall, cream tile, simple hand basin and closed cupboard. All surfaces dry, wiring concealed, no shower area or people. Daylight from a small frosted window, different room and composition from a square fan close-up.",
+    "reviewedAt": "2026-10-19T17:37:07.710Z",
+    "review": "Individually reviewed: wider dry guest-bathroom context with intact round grille, clearly different room and composition from square-fan service image; no active work or technical claim.",
+    "originalFile": "exec-82a44e4e-5010-4a82-b817-212b5c164e16.png"
+  },
+  {
+    "key": "diy-blown-fuse",
+    "kind": "diy",
+    "slug": "diy-blown-fuse-diagnosis",
+    "output": "/media/editorial/photos-20261019/diy-blown-fuse.webp",
+    "prompt": "Use case: photorealistic-natural. Create one original wide 3:2 editorial photo-style cover with realistic materials and natural lighting. Generic fictional UAE building context, not an actual client project or technical installation specification. No people, hands, active maintenance, exposed conductor ends, open electrical equipment, sparks, smoke, readable text, labels, logos, watermark, certifications or landmark skyline. Before-you-book electrical fault reporting context: simple home utility cupboard with a fully closed white electrical enclosure on the rear wall, no switches or internal parts visible, a closed blank notebook on a nearby shelf. Eye-level medium-wide view, clean but ordinary household setting, no tools or actions, no demonstration or claim of identifying a blown fuse by appearance.",
+    "reviewedAt": "2026-10-19T17:37:07.713Z",
+    "review": "Individually reviewed: closed household enclosure and notebook, no exposed parts, tools or fault demonstration. Different setting from commercial service cover; no diagnostic inference.",
+    "originalFile": "exec-38b6d2dc-f8cd-4649-92e6-aec881c581d5.png"
+  },
+  {
+    "key": "diy-building-electrical",
+    "kind": "diy",
+    "slug": "diy-building-electrical-maintenance",
+    "output": "/media/editorial/photos-20261019/diy-building-electrical.webp",
+    "prompt": "Use case: photorealistic-natural. Create one original wide 3:2 editorial photo-style cover with realistic materials and natural lighting. Generic fictional UAE building context, not an actual client project or technical installation specification. No people, hands, active maintenance, exposed conductor ends, open electrical equipment, sparks, smoke, readable text, labels, logos, watermark, certifications or landmark skyline. Before-you-book building maintenance coordination context: a quiet apartment building entrance lobby with enclosed ceiling lights, closed service door on one side, small unbranded reception counter with a closed folder. Soft afternoon daylight, modest modern materials, broad interior perspective, no people or identifiable building. Distinct from an industrial utility corridor.",
+    "reviewedAt": "2026-10-19T17:37:07.717Z",
+    "review": "Individually reviewed: reception lobby with enclosed lights and closed service door; distinct from utility-corridor service image, no people, text or customer-property claim.",
+    "originalFile": "exec-e4f1fba8-0e90-4e35-bdd6-f487a5eaa2aa.png"
+  }
+]

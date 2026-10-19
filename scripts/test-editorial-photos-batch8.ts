@@ -14,6 +14,6 @@ async function main(){
  const drafts=JSON.parse(readFileSync('data/arabic-electrical-batch5-20261019.json','utf8')).articles;
  assert.equal(jobs.length,2);assert.equal(drafts.length,2);
  for(const a of drafts){const j=jobs.find((x:any)=>x.key===a.imageKey);assert(j&&j.slug===a.slug);assert.equal(j.output,'/media/editorial/photos-20261019/'+a.imageKey+'.webp');}
- const report={checkedAt:new Date().toISOString(),pass:true,newImages:2,totalDistinctBatchImages:rows.length,additionalHomepageAssets:home.length,all37DistinctImages:hashes.size,originalGeneratedFilesRetained:true,dimensionsAndDecode:true,localizedAIAlts:true};
+ const report={checkedAt:new Date().toISOString(),pass:true,newImages:2,totalDistinctBatchImages:rows.length,additionalHomepageAssets:home.length,distinctImageHashes:hashes.size,originalGeneratedFilesRetained:true,dimensionsAndDecode:true,localizedAIAlts:true};
  writeFileSync('C:/Users/Asus Ultra 9/Documents/Codex/Fixpoint-2026-10-19/batch8-image-tests.json',JSON.stringify(report,null,2));console.log(report);
 }main().catch(e=>{console.error(e.message);process.exitCode=1});
