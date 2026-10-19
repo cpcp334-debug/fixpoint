@@ -230,6 +230,9 @@ export default async function BlogArticlePage({
                 month: "long",
                 day: "numeric",
               })}
+              {article.updatedAt.getTime() - article.publishedAt.getTime() > 86400000 ? (
+                <span className="ms-3">{locale === "ar" ? "تم التحديث: " : "Updated: "}{article.updatedAt.toLocaleDateString(locale === "ar" ? "ar-AE" : "en-AE", {year:"numeric",month:"long",day:"numeric"})}</span>
+              ) : null}
             </p>
           ) : null
         }
@@ -260,7 +263,7 @@ export default async function BlogArticlePage({
           {article.t.diySection ? (
             <div className="mt-10">
               <ProseCard title={t("diyHelp")}>
-                <div className="whitespace-pre-line text-sm leading-relaxed sm:text-base">{article.t.diySection}</div>
+                <div className="prose-article">{renderBody(article.t.diySection)}</div>
               </ProseCard>
             </div>
           ) : null}

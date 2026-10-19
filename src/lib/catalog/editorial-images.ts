@@ -17,7 +17,7 @@ export function safeLocalImage(src?:string|null): string|null {
 export function editorialImage(src:string|null|undefined,categories:string[]=[],services:string[]=[]):string {
  const valid=safeLocalImage(src);
  if(valid&&!valid.startsWith('/media/topics/')&&valid!=='/media/hero.jpg')return valid;
- const category=editorialImageCategory(categories,services);
+ const category=services.includes("cooker-electrical-connection") ? "burner-cooker" : editorialImageCategory(categories,services);
  return `/media/editorial/${category}.webp`;
 }
 export function editorialImageAlt(src:string,locale:string,title:string,original=''):string {
