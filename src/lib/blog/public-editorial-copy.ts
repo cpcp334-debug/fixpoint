@@ -1,6 +1,11 @@
 /** Presentation cleanup only. Stored articles, titles, URLs and metadata stay intact. */
 export function cleanPublicEditorialText(value: string): string {
  const cleaned = value
+  .replace(/AI-generated illustrative image/gi, "Illustrative image")
+  .replace(/AI-generated illustration/gi, "Illustration")
+  .replace(/AI-generated/gi, "illustrative")
+  .replace(/توضيحية مولدة بالذكاء الاصطناعي/g, "توضيحية")
+  .replace(/مولدة بالذكاء الاصطناعي/g, "توضيحية")
   .replace(/\s*Unique editorial markers:[^\n]*?(?:\.(?=\s|$)|$)/gi, '')
   .replace(/\s*علامات تحريرية فريدة:[^\n]*?(?:[.。](?=\s|$)|$)/g, '')
   .replace(/ServiceLocation\.covered and operational scheduling are the sources of truth when a service page exists\./g, 'Ask the team to confirm service availability and a suitable visit time for your address.')

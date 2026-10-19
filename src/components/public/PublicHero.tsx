@@ -117,7 +117,7 @@ export function PublicHero({
             ) : (
               <HeroFallback locale={locale} />
             )}
-            {illustration ? <span className="absolute bottom-3 start-3 rounded-md bg-white/90 px-3 py-1 text-xs text-navy">{aiPhoto ? (locale === "ar" ? "صورة توضيحية مولدة بالذكاء الاصطناعي" : "AI-generated illustrative image") : (locale === "ar" ? "رسم توضيحي للخدمة" : "Service illustration")}</span> : null}
+            {illustration ? <span data-image-kind="illustration" className="absolute bottom-3 start-3 rounded-md bg-white/90 px-3 py-1 text-xs text-navy">{aiPhoto ? (locale === "ar" ? "صورة توضيحية" : "Illustrative image") : (locale === "ar" ? "رسم توضيحي للخدمة" : "Service illustration")}</span> : null}
           </div>
         )}
       </Container>
