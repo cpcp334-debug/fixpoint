@@ -10,6 +10,7 @@ import { toMasterServiceSlug } from "@/lib/slug/service-slug-map";
 import { cleanPublicEditorialText } from "@/lib/blog/public-editorial-copy";
 
 export type BlogArticleCard = {
+  relatedServiceSlugs: string[];
   slug: string;
   title: string;
   excerpt: string;
@@ -74,6 +75,7 @@ function mapCard(
         slug,
         label: blogCategoryLabel(slug, locale === "ar" ? "ar" : "en"),
       })),
+    relatedServiceSlugs: parseJson<string[]>(row.relatedServiceSlugs || "[]", []).map(toMasterServiceSlug),
     publishedAt: row.publishedAt,
     updatedAt: row.updatedAt,
   };

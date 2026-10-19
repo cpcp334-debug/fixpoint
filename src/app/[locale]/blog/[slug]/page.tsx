@@ -152,7 +152,7 @@ export default async function BlogArticlePage({
 
   const related = (await getPublishedBlogArticles(locale))
     .filter((a) => a.slug !== article.slug)
-    .filter((a) => a.categories.some((c) => article.categories.some((ac) => ac.slug === c.slug)))
+    .filter((a) => a.relatedServiceSlugs.some((service) => article.relatedServiceSlugs.includes(service)))
     .slice(0, 4);
 
   const relatedServices = await prisma.service.findMany({
