@@ -74,5 +74,13 @@
   "service:earthing-testing": "/media/editorial/photos-20261019/service-earthing-testing.webp",
   "service:electrical-burning-smell-diagnosis": "/media/editorial/photos-20261019/service-electrical-burning-smell-diagnosis.webp",
   "service:electrical-cable-repair": "/media/editorial/photos-20261019/service-electrical-cable-repair.webp",
-  "service:electrical-control-panel-inspection": "/media/editorial/photos-20261019/service-electrical-control-panel-inspection.webp"
+  "service:electrical-control-panel-inspection": "/media/editorial/photos-20261019/service-electrical-control-panel-inspection.webp",
+  "diy:diy-cable-routing": "/media/editorial/photos-20261019/diy-cable-routing.webp",
+  "diy:diy-circuit-breaker-inspection": "/media/editorial/photos-20261019/diy-circuit-breaker-inspection.webp",
+  "diy:diy-circuit-breaker-replacement": "/media/editorial/photos-20261019/diy-circuit-breaker-replacement.webp",
+  "diy:diy-commercial-electrical-inspection": "/media/editorial/photos-20261019/diy-commercial-electrical-inspection.webp",
+  "diy:diy-concealed-wiring-installation": "/media/editorial/photos-20261019/diy-concealed-wiring-installation.webp",
+  "diy:diy-consumer-unit-inspection": "/media/editorial/photos-20261019/diy-consumer-unit-inspection.webp",
+  "diy:diy-consumer-unit-replacement": "/media/editorial/photos-20261019/diy-consumer-unit-replacement.webp",
+  "diy:diy-contactor-replacement": "/media/editorial/photos-20261019/diy-contactor-replacement.webp"
 }
