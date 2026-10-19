@@ -1,0 +1,22 @@
+[
+  {
+    "key": "diy-balcony",
+    "kind": "diy",
+    "slug": "diy-balcony-electrical-wiring",
+    "output": "/media/editorial/photos-20261019/diy-balcony-wiring.webp",
+    "prompt": "Use case: photorealistic-natural. Original wide 3:2 editorial cover for a before-you-book balcony electrical guide. A calm covered apartment balcony with a closed outdoor wall lamp and fully closed weatherproof enclosure on a dry cream wall, tidy concealed conduit, empty rattan chair to the left, distant anonymous residential buildings blurred. Morning side light, realistic materials. No people, tools, wiring instructions, open equipment, exposed conductors, sparks, text, logos or brands. Illustrative fictional setting, not a customer project or identifiable location. Distinct medium-wide architectural composition.",
+    "reviewedAt": "2026-10-19T17:12:41.908Z",
+    "review": "Individually visually reviewed: distinct relevant architectural contexts, fully closed equipment, no people, exposed conductors, active work, text or real-project claim. Generic illustration, not a technical specification.",
+    "originalFile": "exec-43498593-e334-4b6b-87a3-ae7656229c9d.png"
+  },
+  {
+    "key": "diy-bonding",
+    "kind": "diy",
+    "slug": "diy-bonding-inspection",
+    "output": "/media/editorial/photos-20261019/diy-bonding-inspection.webp",
+    "prompt": "Use case: photorealistic-natural. Original wide 3:2 editorial cover for a before-you-book electrical bonding inspection guide. Residential utility cupboard viewed from a safe distance, orderly enclosed service pipes and a fully closed plain electrical cabinet, a closed blank notebook on adjacent shelf. No depicted bonding connection or technical installation detail. Soft daylight, muted cream and grey realistic interior, landscape composition. No people, hands, tools, active work, open enclosures, conductor ends, wiring diagrams, text, logos or certification claims. Fictional illustrative context, not real customer photography.",
+    "reviewedAt": "2026-10-19T17:12:41.911Z",
+    "review": "Individually visually reviewed: distinct relevant architectural contexts, fully closed equipment, no people, exposed conductors, active work, text or real-project claim. Generic illustration, not a technical specification.",
+    "originalFile": "exec-95a3ccb3-f2a8-465d-95f6-fad8105b28e9.png"
+  }
+]
