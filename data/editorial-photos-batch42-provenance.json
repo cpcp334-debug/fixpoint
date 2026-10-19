@@ -1,0 +1,42 @@
+[
+  {
+    "key": "service-loose-electrical-connection-repair",
+    "kind": "service",
+    "slug": "loose-electrical-connection-repair",
+    "output": "/media/editorial/photos-20261019/service-loose-electrical-connection-repair.webp",
+    "prompt": "One photorealistic editorial cover horizontal3:2, fictional UAE small workshop administrative area, plain closed electrical enclosure flush on a pale wall in background, closed maintenance folder and unbranded protective case on clean foreground desk. Realistic perspective and natural morning light, navy chair and warm wood. No workers, exposed wiring, open panels, depicted loose parts, tools in use, sparks, smoke, labels, logos, readable text or actual repair claims. Conceptual professional assessment illustration, not a fault demonstration or real project.",
+    "reviewedAt": "2026-10-19T23:03:09.073Z",
+    "review": "Individually visually reviewed: Closed utility enclosure, folder and protective case; no depicted fault or repair action.",
+    "originalFile": "exec-b8b4b7f4-df88-430b-8726-be66d56d14ca.png"
+  },
+  {
+    "key": "service-low-voltage-problem-diagnosis",
+    "kind": "service",
+    "slug": "low-voltage-problem-diagnosis",
+    "output": "/media/editorial/photos-20261019/service-low-voltage-problem-diagnosis.webp",
+    "prompt": "One photorealistic editorial cover horizontal3:2, fictional UAE home office with an intact unlit desk lamp and closed laptop on a table, plain household logbook beside them, daylight through window, closed electrical cupboard distant in hallway. Gentle subdued natural light, realistic modest interior. No meters or screen readings, plugs being moved, exposed wires, hands, people, brands, text, active testing or claimed voltage diagnosis. Conceptual reporting illustration, not proof that these items have a fault or a customer home.",
+    "reviewedAt": "2026-10-19T23:03:09.074Z",
+    "review": "Individually visually reviewed: Closed laptop, unlit lamp and notebook in fictional home office, no readings or diagnosis claim.",
+    "originalFile": "exec-06e308c5-41f9-4a0b-8a0b-a9e703829b49.png"
+  },
+  {
+    "key": "service-mcb-replacement",
+    "kind": "service",
+    "slug": "mcb-replacement",
+    "output": "/media/editorial/photos-20261019/service-mcb-replacement.webp",
+    "prompt": "One photorealistic editorial website cover horizontal3:2, an unbranded new miniature circuit breaker fully enclosed in its plain protective packaging on a clean planning counter, terminals covered by protective packaging and not visible, smooth pale wall and closed cabinet blurred behind. Realistic compact product scale. No people, loose wires, diagrams, tools, installation action, printed ratings, readable text, brands or certification claims. Conceptual selection of a component for professional review, not a specification or installation tutorial.",
+    "reviewedAt": "2026-10-19T23:03:09.074Z",
+    "review": "Individually visually reviewed: Generic packaged multi-pole miniature breaker, terminals covered; no ratings or installation instruction, not a specified real product.",
+    "originalFile": "exec-e54a3901-0aa9-4c66-a526-e6b37c758296.png"
+  },
+  {
+    "key": "service-mccb-inspection",
+    "kind": "service",
+    "slug": "mccb-inspection",
+    "output": "/media/editorial/photos-20261019/service-mccb-inspection.webp",
+    "prompt": "One photorealistic editorial website cover horizontal3:2, fictional industrial facility corridor viewed from outside a restricted service-room doorway, intact closed large electrical cabinets well inside, plain closed inspection folder on a foreground administrative table outside. Realistic scale, clean neutral walls, restrained navy and warm light. No people, open panels, visible conductors or breaker internals, meters, readings, sparks, smoke, text, logos or asserted compliance. Conceptual planning of specialist inspection, not an actual facility or technical layout.",
+    "reviewedAt": "2026-10-19T23:03:09.074Z",
+    "review": "Individually visually reviewed: Closed industrial cabinets viewed from outside room and closed folder; no internal breaker detail, active work or compliance claim.",
+    "originalFile": "exec-6911792d-1aa1-430d-a184-1cc86c8728d0.png"
+  }
+]
