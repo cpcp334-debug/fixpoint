@@ -1,3 +1,4 @@
+import { InstallApps } from "@/components/home/InstallApps";
 import type { ReactNode } from "react";
 import type { Viewport } from "next";
 import { redirect } from "next/navigation";
@@ -18,6 +19,7 @@ const sans = IBM_Plex_Sans({
 export const dynamic = "force-dynamic";
 
 export const metadata = {
+  manifest: "/fixpoint-admin.webmanifest",
   title: "Admin | Al Najah Al Daem · Fixpoint",
   robots: { index: false, follow: false },
   icons: {
@@ -52,7 +54,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
                 </button>
               </form>
             </header>
-            <main className="flex-1 overflow-x-auto px-4 py-5 sm:px-6 sm:py-6">{children}</main>
+            <main className="flex-1 overflow-x-auto px-4 py-5 sm:px-6 sm:py-6">{children}<InstallApps adminOnly /></main>
           </div>
         </div>
       </body>

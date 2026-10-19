@@ -48,6 +48,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={dir}>
       <head>
+        <link rel="manifest" href="/fixpoint.webmanifest" />
         {/* Sole LCP image preload — header mark; no font/CSS preloads. */}
         <link rel="preload" as="image" href="/media/brand/fixpoint-wordmark-480.webp" type="image/webp" fetchPriority="high" />
         {/* Critical above-fold paint without waiting on the full Tailwind chunk chain. */}

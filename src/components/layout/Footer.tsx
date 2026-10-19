@@ -28,7 +28,7 @@ export async function Footer({ locale }: { locale: string }) {
             <Link href="/" className="mb-6 inline-flex rounded-xl bg-white px-5 py-4" aria-label={brandName(locale)}><BrandLogo size={70} variant="wordmark" locale={locale} /></Link>
             <p className={headingClass}>{shell?.companyHeading?.trim() || t("company")}</p>
             <p className="mt-1.5 text-sm font-medium text-white">{brandName(locale)}</p>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/80">{shell?.companyBlurb?.trim() || (locale==='ar'?'خدمات التنظيف وصيانة المباني للمنازل والمنشآت. أخبرنا بما يحتاج إلى عناية، ودعنا نرتب الخطوة التالية معك.':'Cleaning and building maintenance for homes and business premises. Tell us what needs attention, and let’s arrange the next step.')}</p>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-white/80">{shell?.companyBlurb?.trim() || (locale==='ar'?'أعمال الكهرباء للمنشآت والمنازل. أخبرنا بمتطلباتك، أو تصفح جميع الخدمات لاحتياجات العقار الأخرى.':'Electrical work for businesses and homes. Tell us what you need, or explore All services for other property requirements.')}</p>
             <p className="mt-1 text-sm text-white/75">
               <a href={productionSiteUrl} className={linkClass} target="_blank" rel="noopener noreferrer">
                 {domainBrandName(locale)} · fixpoint.ae
