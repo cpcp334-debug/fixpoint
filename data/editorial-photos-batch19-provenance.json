@@ -1,0 +1,22 @@
+[
+  {
+    "key": "blog-earthing-rumaila",
+    "slug": "earthing-inspection-rumaila-2-ajman",
+    "prompt": "Original photorealistic editorial cover wide 3:2. Fictional UAE property setting, realistic restrained materials and natural daylight. No people hands active work ladders tools in use open electrical equipment exposed conductor ends sparks smoke flames readable text logos watermarks or identifiable landmarks. Not a real customer project, technical diagram or inspection result. All fittings intact and closed. A modest building utility alcove with a fully closed grey electrical enclosure on a pale mint wall, smooth enclosed conduit below and a closed document folder on a separate simple chair. Wide view from open doorway with dry clean floor. Do not show earth rods, exposed terminals or actual measurements. Distinct from previous cabinet-and-pipe bonding imagery.",
+    "kind": "blog",
+    "output": "/media/editorial/photos-20261019/blog-earthing-rumaila.webp",
+    "reviewedAt": "2026-10-19T19:41:08.148Z",
+    "review": "Individually visually reviewed: closed grey enclosure and enclosed conduit in mint utility alcove, closed document folder on separate chair, dry floor; no terminals, rods, measurements or inspection action. Fictional setting, not a test result.",
+    "originalFile": "exec-982aa18a-a898-431d-9be6-ef2ed93cfa9f.png"
+  },
+  {
+    "key": "blog-power-failure-qidfa",
+    "slug": "power-failure-diagnosis-qidfa-fujairah",
+    "prompt": "Original photorealistic editorial cover wide 3:2. Fictional UAE property setting, realistic restrained materials and natural daylight. No people hands active work ladders tools in use open electrical equipment exposed conductor ends sparks smoke flames readable text logos watermarks or identifiable landmarks. Not a real customer project, technical diagram or inspection result. All fittings intact and closed. A quiet modest apartment dining area with ceiling lights off and soft daylight through plain curtains, closed notebook and simple unmarked analog clock on wooden side table, no skyline. A fully closed small utility cupboard visible far behind. Calm documentation context for a power-loss enquiry, not an emergency or damaged installation, distinct from commercial reception interruption image.",
+    "kind": "blog",
+    "output": "/media/editorial/photos-20261019/blog-power-failure-qidfa.webp",
+    "reviewedAt": "2026-10-19T19:41:08.151Z",
+    "review": "Individually visually reviewed: quiet daylight dining room, ceiling light off, closed notebook and unmarked clock, closed cupboard; no damage, emergency or real outage claim. Distinct from reception interruption cover.",
+    "originalFile": "exec-b7f80359-a769-4262-bf5d-8fa36e01dd50.png"
+  }
+]
