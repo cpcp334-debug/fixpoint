@@ -35,6 +35,7 @@ type ServiceI18nLike = {
 };
 
 type ServiceRowLike = {
+  status?: string;
   slug: string;
   translations: ServiceI18nLike[];
   category?: {
@@ -71,6 +72,19 @@ export function sanitizePublicServiceI18n<T extends ServiceI18nLike>(
     categoryNameEn: category?.nameEn || "Maintenance",
     categoryNameAr,
   });
+
+  // Activated legacy records can still hold authoring-only seed text. Keep the
+  // stored record and SEO fields intact; present the existing visitor copy.
+  if (row.status === 'active') {
+    const stale = (value?: string) => /draft catalog|not publicly offered|not offered publicly|not active\.|Phase A1 master catalog|draft\/non-indexable|require human review before public activation|مسودة|قاعدة البيانات|غير قابلة للفهرسة/i.test(value || '');
+    t = {...t};
+    const fallback = locale === 'ar'
+      ? {shortDescription:copy.shortAr,longDescription:copy.longAr,whoItIsFor:copy.whoAr,whatWeDo:copy.whatAr,whenProfessional:copy.whenAr,process:copy.processAr,pricingInfo:copy.priceAr,professionalFallback:copy.safetyAr,safetyNotes:copy.safetyAr}
+      : {shortDescription:copy.shortEn,longDescription:copy.longEn,whoItIsFor:copy.whoEn,whatWeDo:copy.whatEn,whenProfessional:copy.whenEn,process:copy.processEn,pricingInfo:copy.priceEn,professionalFallback:copy.safetyEn,safetyNotes:copy.safetyEn};
+    for (const key of Object.keys(fallback) as Array<keyof typeof fallback>) {
+      if(stale(t[key])) (t as ServiceI18nLike)[key] = fallback[key];
+    }
+  }
 
   if (locale === "ar") {
     const name = !isReviewRequiredText(t.name) && AR.test(t.name) ? t.name : copy.nameAr;
