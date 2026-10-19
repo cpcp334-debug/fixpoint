@@ -1,0 +1,82 @@
+[
+  {
+    "key": "service-ceiling-fan-install",
+    "kind": "service",
+    "slug": "ceiling-fan-installation",
+    "prompt": "Original photorealistic editorial website cover, wide landscape 3:2. Fictional UAE property, realistic materials and daylight, no real customer project or verified installation claim. No people hands ladders active work exposed wiring open electrical equipment sparks smoke readable text brands logos watermarks or landmarks. Equipment stationary, intact and closed. Not a technical installation diagram. An intact simple white three-blade ceiling fan centered above an uncluttered cream living-room seating area, concealed mounting and wiring, blades stopped, viewed from ordinary seated height toward a tall curtained window. Modest architectural room photography.",
+    "output": "/media/editorial/photos-20261019/service-ceiling-fan-install.webp",
+    "reviewedAt": "2026-10-19T18:46:45.846Z",
+    "review": "Reviewed individually: stationary white ceiling fan with closed housing in cream living room; no installation action or exposed wiring. Fictional setting, not technical clearance guidance.",
+    "originalFile": "exec-0a377763-43d9-464e-a002-0ff8ef4844c7.png"
+  },
+  {
+    "key": "service-ceiling-fan-repair",
+    "kind": "service",
+    "slug": "ceiling-fan-repair",
+    "prompt": "Original photorealistic editorial website cover, wide landscape 3:2. Fictional UAE property, realistic materials and daylight, no real customer project or verified installation claim. No people hands ladders active work exposed wiring open electrical equipment sparks smoke readable text brands logos watermarks or landmarks. Equipment stationary, intact and closed. Not a technical installation diagram. Close architectural view of a stationary dark walnut five-blade ceiling fan with intact closed motor housing and ordinary ceiling canopy in a quiet dining room, blurred wooden dining table below. No disassembly or defect diagnosis. Different angle and room from white fan living room.",
+    "output": "/media/editorial/photos-20261019/service-ceiling-fan-repair.webp",
+    "reviewedAt": "2026-10-19T18:46:45.849Z",
+    "review": "Reviewed individually: stationary walnut fan close-up in dining room, intact closed housing; distinct from living-room fan. No fault or repair result is depicted or claimed.",
+    "originalFile": "exec-0aab9983-c9fb-4804-946d-49140e2841bc.png"
+  },
+  {
+    "key": "service-ceiling-fan-replacement",
+    "kind": "service",
+    "slug": "ceiling-fan-replacement",
+    "prompt": "Original photorealistic editorial website cover, wide landscape 3:2. Fictional UAE property, realistic materials and daylight, no real customer project or verified installation claim. No people hands ladders active work exposed wiring open electrical equipment sparks smoke readable text brands logos watermarks or landmarks. Equipment stationary, intact and closed. Not a technical installation diagram. A finished airy guest bedroom with an intact brushed-metal four-blade ceiling fan stopped overhead, pale blue wall, folded blanket on bed and plain window. Wide diagonal room view showing ample surrounding space, no removed old equipment or installation action.",
+    "output": "/media/editorial/photos-20261019/service-ceiling-fan-replacement.webp",
+    "reviewedAt": "2026-10-19T18:46:45.849Z",
+    "review": "Reviewed individually: stationary metal fan in blue guest bedroom, distinct room and framing; no old equipment removal or work. Not a real replacement project.",
+    "originalFile": "exec-541be258-201e-441e-a277-fb69033e7c9f.png"
+  },
+  {
+    "key": "service-ceiling-light",
+    "kind": "service",
+    "slug": "ceiling-light-installation",
+    "prompt": "Original photorealistic editorial website cover, wide landscape 3:2. Fictional UAE property, realistic materials and daylight, no real customer project or verified installation claim. No people hands ladders active work exposed wiring open electrical equipment sparks smoke readable text brands logos watermarks or landmarks. Equipment stationary, intact and closed. Not a technical installation diagram. A simple completed reading nook with one enclosed circular flush ceiling light and a slim floor-to-ceiling bookcase, warm pale plaster and muted green armchair. Daylight and gentle interior illumination, upward architectural angle, wiring entirely concealed.",
+    "output": "/media/editorial/photos-20261019/service-ceiling-light.webp",
+    "reviewedAt": "2026-10-19T18:46:45.849Z",
+    "review": "Reviewed individually: enclosed flush ceiling light in reading nook, no wiring or fitting work; no text or identifiable customer property. Illustrative lighting context.",
+    "originalFile": "exec-5a02234a-17d1-4e53-8702-c993c38bb424.png"
+  },
+  {
+    "key": "service-circuit-installation",
+    "kind": "service",
+    "slug": "circuit-installation",
+    "prompt": "Original photorealistic editorial website cover, wide landscape 3:2. Fictional UAE property, realistic materials and daylight, no real customer project or verified installation claim. No people hands ladders active work exposed wiring open electrical equipment sparks smoke readable text brands logos watermarks or landmarks. Equipment stationary, intact and closed. Not a technical installation diagram. A modest finished office utility alcove with a fully closed small grey distribution cabinet and neatly enclosed opaque conduit descending along the wall, clean empty tiled floor and a simple closed wooden storage cupboard. Side perspective with no internal circuitry visible.",
+    "output": "/media/editorial/photos-20261019/service-circuit-installation.webp",
+    "reviewedAt": "2026-10-19T18:46:45.849Z",
+    "review": "Reviewed individually: closed cabinet and enclosed conduit in utility alcove with storage cupboard; no internal circuits or active installation. Not a verified specification.",
+    "originalFile": "exec-b01c7544-fd0c-47c4-85a1-6a1f41eaeb11.png"
+  },
+  {
+    "key": "service-circuit-testing",
+    "kind": "service",
+    "slug": "circuit-testing",
+    "prompt": "Original photorealistic editorial website cover, wide landscape 3:2. Fictional UAE property, realistic materials and daylight, no real customer project or verified installation claim. No people hands ladders active work exposed wiring open electrical equipment sparks smoke readable text brands logos watermarks or landmarks. Equipment stationary, intact and closed. Not a technical installation diagram. A closed rugged unbranded electrical-test-instrument carrying case on a tidy grey workbench, fully closed cream wall electrical cabinet in the background, no loose probes cables numerical readings or connections. Still-life context for a professional inspection appointment without showing a test or claiming results.",
+    "output": "/media/editorial/photos-20261019/service-circuit-testing.webp",
+    "reviewedAt": "2026-10-19T18:46:45.849Z",
+    "review": "Reviewed individually: closed rugged carrying case and closed cabinet in background; no instrument readings, exposed probes, test or result. Distinct still-life composition.",
+    "originalFile": "exec-9061400a-92eb-4894-8766-3b9bdccb1236.png"
+  },
+  {
+    "key": "service-commercial-wiring",
+    "kind": "service",
+    "slug": "commercial-wiring-installation",
+    "prompt": "Original photorealistic editorial website cover, wide landscape 3:2. Fictional UAE property, realistic materials and daylight, no real customer project or verified installation claim. No people hands ladders active work exposed wiring open electrical equipment sparks smoke readable text brands logos watermarks or landmarks. Equipment stationary, intact and closed. Not a technical installation diagram. A completed small retail premises interior before opening, plain empty shelving, ceiling track lighting enclosed and intact, all conductors hidden in smooth closed trunking. Balanced wide view from entrance toward plain back counter, no products labels customers or work in progress.",
+    "output": "/media/editorial/photos-20261019/service-commercial-wiring.webp",
+    "reviewedAt": "2026-10-19T18:46:45.849Z",
+    "review": "Reviewed individually: empty shop with intact track lighting and shelving; no people, active work, product labels or project claim. Illustrative commercial interior.",
+    "originalFile": "exec-63266ba8-7a24-40ab-a191-686917a9263d.png"
+  },
+  {
+    "key": "service-common-area-electrical",
+    "kind": "service",
+    "slug": "common-area-electrical-maintenance",
+    "prompt": "Original photorealistic editorial website cover, wide landscape 3:2. Fictional UAE property, realistic materials and daylight, no real customer project or verified installation claim. No people hands ladders active work exposed wiring open electrical equipment sparks smoke readable text brands logos watermarks or landmarks. Equipment stationary, intact and closed. Not a technical installation diagram. A clean shared apartment lobby and hallway, intact enclosed wall lighting, closed service cupboard, simple benches and an empty staircase entrance beyond. Wide architectural perspective with daylight from frosted glazing, no room numbers signage or people, no implication it is a real managed building.",
+    "output": "/media/editorial/photos-20261019/service-common-area-electrical.webp",
+    "reviewedAt": "2026-10-19T18:46:45.849Z",
+    "review": "Reviewed individually: shared lobby with enclosed wall lights, closed service cupboard and staircase; no residents or branch claim. Fictional common-area context.",
+    "originalFile": "exec-0865875c-f0bb-4c93-97e4-dc74c7894069.png"
+  }
+]
