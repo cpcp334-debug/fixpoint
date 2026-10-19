@@ -1,0 +1,42 @@
+[
+  {
+    "key": "service-cable-routing",
+    "kind": "service",
+    "slug": "cable-routing",
+    "prompt": "Original photorealistic editorial website cover, wide 3:2. Fictional UAE building, not a client project or technical installation diagram. No people, hands, active work, exposed conductors, open electrical equipment, sparks, smoke, text, labels, logos, watermark or identifiable landmarks. Natural light, realistic restrained materials. A finished office service corridor with an intact fully enclosed white surface trunking run turning neatly around a doorway, cables entirely concealed, closed matching junction cover. Empty passage, warm beige walls and modest grey floor. View along wall, no loose leads or trip hazards.",
+    "output": "/media/editorial/photos-20261019/service-cable-routing.webp",
+    "reviewedAt": "2026-10-19T18:34:35.550Z",
+    "review": "Individually reviewed: closed trunking follows an office doorway, no loose cables or work; illustrative route context, not a verified installation specification.",
+    "originalFile": "exec-38c83095-8839-492d-a251-e0f6272eb48b.png"
+  },
+  {
+    "key": "service-circuit-breaker-inspection",
+    "kind": "service",
+    "slug": "circuit-breaker-inspection",
+    "prompt": "Original photorealistic editorial website cover, wide 3:2. Fictional UAE building, not a client project or technical installation diagram. No people, hands, active work, exposed conductors, open electrical equipment, sparks, smoke, text, labels, logos, watermark or identifiable landmarks. Natural light, realistic restrained materials. A fully closed flush grey electrical distribution cabinet on a pale utility wall with no internal breakers visible, a small closed instrument carrying case on a separate bench. Tight architectural still life from slight side angle, no inspection being performed, no suggestion condition can be established from a photograph.",
+    "output": "/media/editorial/photos-20261019/service-circuit-breaker-inspection.webp",
+    "reviewedAt": "2026-10-19T18:34:35.550Z",
+    "review": "Individually reviewed: closed distribution cabinet and instrument case; no internal breaker view, inspection act or diagnosis implied. Fictional site.",
+    "originalFile": "exec-c37a9fd1-fc20-427f-a404-6980132dc35c.png"
+  },
+  {
+    "key": "diy-burnt-wire",
+    "kind": "diy",
+    "slug": "diy-burnt-wire-repair",
+    "prompt": "Original photorealistic editorial website cover, wide 3:2. Fictional UAE building, not a client project or technical installation diagram. No people, hands, active work, exposed conductors, open electrical equipment, sparks, smoke, text, labels, logos, watermark or identifiable landmarks. Natural light, realistic restrained materials. Before-you-book information gathering context: empty small utility alcove seen from doorway, smooth closed cable trunking high on far wall with a tiny area of exterior wall discoloration, all internal wires concealed. Closed notebook on shelf well away from equipment. Distinct wider vertical-wall composition, no touching or testing.",
+    "output": "/media/editorial/photos-20261019/diy-burnt-wire.webp",
+    "reviewedAt": "2026-10-19T18:34:35.550Z",
+    "review": "Individually reviewed: empty utility alcove with closed trunking and slight exterior wall stain; closed notebook on shelf, no open wiring or attempted repair. Staining does not establish cause.",
+    "originalFile": "exec-1b8dcc9e-f8be-48f0-97bf-4480fb400e9f.png"
+  },
+  {
+    "key": "diy-cable-replacement",
+    "kind": "diy",
+    "slug": "diy-cable-replacement",
+    "prompt": "Original photorealistic editorial website cover, wide 3:2. Fictional UAE building, not a client project or technical installation diagram. No people, hands, active work, exposed conductors, open electrical equipment, sparks, smoke, text, labels, logos, watermark or identifiable landmarks. Natural light, realistic restrained materials. Before-you-book planning context: a blank closed folder and rolled plain paper on a small desk facing an intact closed surface conduit route on a distant wall in a simple workshop office. No loose cables, no actual work, no specifications or drawings visible. Warm daylight and slate-blue wall, different from cable-coil service photograph.",
+    "output": "/media/editorial/photos-20261019/diy-cable-replacement.webp",
+    "reviewedAt": "2026-10-19T18:34:35.550Z",
+    "review": "Individually reviewed: closed planner and blank rolled paper with distant closed conduit on blue wall; no legible specifications or active work. Fixture details are illustrative, not UAE technical guidance.",
+    "originalFile": "exec-38bb99cd-3e92-4d08-a26f-0456e569619c.png"
+  }
+]
