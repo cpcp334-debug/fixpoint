@@ -1,0 +1,22 @@
+[
+  {
+    "key": "service-burnt-socket",
+    "kind": "service",
+    "slug": "burnt-socket-repair",
+    "output": "/media/editorial/photos-20261019/service-burnt-socket.webp",
+    "prompt": "Photorealistic editorial website cover, wide 3:2. Fictional UAE home interior. Close architectural view of a single intact UK Type G wall socket with switches off and nothing plugged in, on pale textured wall beside a closed sideboard; discreet minor brown discoloration around the outer plastic edge suggests a reason to request professional inspection, no flames smoke sparks, no exposed wiring, no open parts, no people tools hands labels logos or text. Calm daylight, realistic materials. Illustrative service context, not a diagnosis or demonstration. No dangerously charred equipment in use.",
+    "reviewedAt": "2026-10-19T18:12:03.341Z",
+    "review": "Reviewed individually: closed unplugged socket with slight exterior discoloration; no live work, open parts or people. Fictional setting, not a verified socket design, diagnosis or client project.",
+    "originalFile": "exec-69ba6269-ad3e-47f5-9839-3efa633f8a26.png"
+  },
+  {
+    "key": "service-burnt-switch",
+    "kind": "service",
+    "slug": "burnt-switch-repair",
+    "output": "/media/editorial/photos-20261019/service-burnt-switch.webp",
+    "prompt": "Photorealistic editorial website cover, wide 3:2. Fictional UAE apartment hallway. One fully closed white two-rocker light switch plate on a warm grey wall with very subtle dark discoloration at its lower exterior edge, no damage to reveal internal components. Side view includes a wooden door frame and softly lit hallway beyond. Different composition from a socket close-up. No people hands tools testing active repair flames smoke sparks exposed wiring readable text logos or watermarks. Calm realistic materials. Represents a reason to ask a professional to inspect, not a verified diagnosis or actual project.",
+    "reviewedAt": "2026-10-19T18:12:03.344Z",
+    "review": "Reviewed individually: intact enclosed two-rocker wall switch, slight lower-edge discoloration, distinct hallway composition; no exposed wiring, tools or active repair. Fictional illustration, no diagnosis claimed.",
+    "originalFile": "exec-975d2530-b6e8-4578-b1a7-6a21f942241d.png"
+  }
+]
