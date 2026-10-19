@@ -1,0 +1,46 @@
+[
+  {
+    "key": "service-contactor-replacement",
+    "kind": "service",
+    "slug": "contactor-replacement",
+    "scene": "A closed charcoal electrical control cabinet with three unlit unmarked indicator lenses on its door, in a tidy plant-room alcove, pale sand tiles. Oblique medium composition. No internal components.",
+    "output": "/media/editorial/photos-20261019/service-contactor-replacement.webp",
+    "prompt": "Original photorealistic editorial photograph-style cover, wide 3:2. Fictional UAE building context, not an actual client project or branch. Safe planning context, no people, hands, active work, exposed conductors, sparks, readable text, brands, logos, watermarks, technical diagrams or invented certifications. All electrical equipment intact and fully closed. A closed charcoal electrical control cabinet with three unlit unmarked indicator lenses on its door, in a tidy plant-room alcove, pale sand tiles. Oblique medium composition. No internal components.",
+    "reviewedAt": "2026-10-19T19:47:36.698Z",
+    "review": "Individually visually reviewed. Closed charcoal control cabinet, intact conduits and unmarked indicator lenses; no active work or exposed components.",
+    "originalFile": "exec-d9e2565b-9e27-49a0-9ea2-b8e4549d2e44.png"
+  },
+  {
+    "key": "service-continuity-testing",
+    "kind": "service",
+    "slug": "continuity-testing",
+    "scene": "A tidy electrical inspection planning still life: closed dark instrument carrying case and blank closed folder on a clean table, enclosed conduit neatly routed on a pale wall behind. No probes or diagrams. Side-lit close composition.",
+    "output": "/media/editorial/photos-20261019/service-continuity-testing.webp",
+    "prompt": "Original photorealistic editorial photograph-style cover, wide 3:2. Fictional UAE building context, not an actual client project or branch. Safe planning context, no people, hands, active work, exposed conductors, sparks, readable text, brands, logos, watermarks, technical diagrams or invented certifications. All electrical equipment intact and fully closed. A tidy electrical inspection planning still life: closed dark instrument carrying case and blank closed folder on a clean table, enclosed conduit neatly routed on a pale wall behind. No probes or diagrams. Side-lit close composition.",
+    "reviewedAt": "2026-10-19T19:47:36.701Z",
+    "review": "Individually visually reviewed. Closed case and folder with enclosed conduit; fictional inspection-planning scene, no testing instructions or claims of real project.",
+    "originalFile": "exec-982b3e02-10c6-4586-aaa2-e94a7a335421.png"
+  },
+  {
+    "key": "service-dishwasher-electrical-connection",
+    "kind": "service",
+    "slug": "dishwasher-electrical-connection",
+    "scene": "An intact closed stainless dishwasher beneath a light kitchen countertop, small clear gap around base, nearby wall electrical fittings closed with no readable text, warm morning light, uncluttered modern apartment kitchen. No tools or hands.",
+    "output": "/media/editorial/photos-20261019/service-dishwasher-electrical-connection.webp",
+    "prompt": "Original photorealistic editorial photograph-style cover, wide 3:2. Fictional UAE building context, not an actual client project or branch. Safe planning context, no people, hands, active work, exposed conductors, sparks, readable text, brands, logos, watermarks, technical diagrams or invented certifications. All electrical equipment intact and fully closed. An intact closed stainless dishwasher beneath a light kitchen countertop, small clear gap around base, nearby wall electrical fittings closed with no readable text, warm morning light, uncluttered modern apartment kitchen. No tools or hands.",
+    "reviewedAt": "2026-10-19T19:47:36.701Z",
+    "review": "Individually visually reviewed. Closed unbranded dishwasher in fictional kitchen, intact fittings; no connection work or exposed cables.",
+    "originalFile": "exec-95f1181b-00b2-409a-8a8a-77b5691d71cc.png"
+  },
+  {
+    "key": "service-distribution-board-repair",
+    "kind": "service",
+    "slug": "distribution-board-repair",
+    "scene": "An intact closed white distribution-board enclosure high on a terracotta utility-room wall, empty clear working space beneath, closed plain notebook on nearby shelf, realistic daylight, vertical lines and medium-wide perspective. No open door or repair activity.",
+    "output": "/media/editorial/photos-20261019/service-distribution-board-repair.webp",
+    "prompt": "Original photorealistic editorial photograph-style cover, wide 3:2. Fictional UAE building context, not an actual client project or branch. Safe planning context, no people, hands, active work, exposed conductors, sparks, readable text, brands, logos, watermarks, technical diagrams or invented certifications. All electrical equipment intact and fully closed. An intact closed white distribution-board enclosure high on a terracotta utility-room wall, empty clear working space beneath, closed plain notebook on nearby shelf, realistic daylight, vertical lines and medium-wide perspective. No open door or repair activity.",
+    "reviewedAt": "2026-10-19T19:47:36.701Z",
+    "review": "Individually visually reviewed. Closed white board enclosure on terracotta wall with clear access area; no open equipment or active repair.",
+    "originalFile": "exec-f639696a-8513-4567-9740-24a9b3e53ff6.png"
+  }
+]
