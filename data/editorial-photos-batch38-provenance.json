@@ -1,0 +1,22 @@
+[
+  {
+    "key": "service-led-light-replacement",
+    "kind": "service",
+    "slug": "led-light-replacement",
+    "output": "/media/editorial/photos-20261019/service-led-light-replacement.webp",
+    "prompt": "Photorealistic editorial cover, horizontal 3:2: a new unbranded enclosed LED ceiling luminaire resting in its plain open cardboard packaging on a clean wood counter in a fictional UAE apartment, intact finished ceiling visible beyond, no electrical work in progress. Natural daylight, navy and cream restrained styling. No hands, people, wires, exposed parts, labels, logos, text or certification claims. Conceptual selection of a replacement light, not technical installation steps or an actual customer project.",
+    "reviewedAt": "2026-10-19T22:40:13.810Z",
+    "review": "Visually reviewed: unbranded enclosed light in plain packaging, no exposed components or active work; fictional replacement-selection illustration.",
+    "originalFile": "exec-3f53e70d-fa91-44a9-81fc-7474faba9a91.png"
+  },
+  {
+    "key": "service-light-installation",
+    "kind": "service",
+    "slug": "light-installation",
+    "output": "/media/editorial/photos-20261019/service-light-installation.webp",
+    "prompt": "Photorealistic editorial cover, horizontal3:2: fictional UAE dining area with a tasteful fully installed pendant light over an uncluttered oval table, warm plaster arch, natural morning light, closed intact ceiling fixtures, realistic architecture. No people, ladders, tools, loose wiring, active installation, readable text, brands or claims of actual customer work. Distinct wide interior composition illustrating lighting planning, not a tutorial.",
+    "reviewedAt": "2026-10-19T22:40:13.813Z",
+    "review": "Visually reviewed: intact installed pendant in fictional dining interior, no loose wiring, tools or people; no real-project claim.",
+    "originalFile": "exec-a552f79e-5e34-4d37-b082-541cef417080.png"
+  }
+]
