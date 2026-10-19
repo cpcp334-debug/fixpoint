@@ -1,0 +1,84 @@
+[
+  {
+    "key": "service-breaker-replacement",
+    "kind": "service",
+    "slug": "circuit-breaker-replacement",
+    "prompt": "Original photorealistic editorial website cover, wide landscape 3:2. Fictional UAE property, natural light, realistic materials, no actual client project, fault diagnosis or verified installation claim. No people, hands, tools in use, active maintenance, open electrical equipment, exposed conductor ends, sparks smoke flames text labels brands logos watermarks or identifiable landmarks. All fittings intact and closed, all cable ends opaque capped. Not an installation diagram. A fully closed light-grey electrical cabinet at the far end of a clean narrow service passage, sealed plain cardboard carton on a separate low bench in foreground, no breaker internals visible. Low wide perspective, terracotta floor and white walls, no packaging claims.",
+    "output": "/media/editorial/photos-20261019/service-breaker-replacement.webp",
+    "reviewedAt": "2026-10-19T19:06:07.367Z",
+    "review": "Reviewed individually: closed cabinet in tiled service passage with sealed blank carton on separate bench; no internal breaker view or replacement action, distinct from inspection cover.",
+    "originalFile": "exec-e91f0702-56e5-40fb-aada-1e08a3f71b63.png"
+  },
+  {
+    "key": "service-concealed-wiring",
+    "kind": "service",
+    "slug": "concealed-wiring-installation",
+    "prompt": "Original photorealistic editorial website cover, wide landscape 3:2. Fictional UAE property, natural light, realistic materials, no actual client project, fault diagnosis or verified installation claim. No people, hands, tools in use, active maintenance, open electrical equipment, exposed conductor ends, sparks smoke flames text labels brands logos watermarks or identifiable landmarks. All fittings intact and closed, all cable ends opaque capped. Not an installation diagram. A finished plain ivory interior wall with one intact closed wall socket and light switch, simple wood skirting and doorway, soft shadows from a window. No surface cables, no cut wall, no visible hidden wires. Restrained architectural detail, no implication hidden conditions are verified.",
+    "output": "/media/editorial/photos-20261019/service-concealed-wiring.webp",
+    "reviewedAt": "2026-10-19T19:06:07.367Z",
+    "review": "Reviewed individually: finished wall with intact closed socket and switch; hidden wiring is not depicted or verified. No open wall or active work.",
+    "originalFile": "exec-5dd5e346-b98b-4717-867b-ad0e2d651395.png"
+  },
+  {
+    "key": "service-consumer-unit-inspection",
+    "kind": "service",
+    "slug": "consumer-unit-inspection",
+    "prompt": "Original photorealistic editorial website cover, wide landscape 3:2. Fictional UAE property, natural light, realistic materials, no actual client project, fault diagnosis or verified installation claim. No people, hands, tools in use, active maintenance, open electrical equipment, exposed conductor ends, sparks smoke flames text labels brands logos watermarks or identifiable landmarks. All fittings intact and closed, all cable ends opaque capped. Not an installation diagram. A small residential utility closet with a fully closed white consumer-unit cabinet on a pale sage wall, closed notebook on an empty shelf at a distance. Cabinet front opaque with no internal parts or readable markings. Wide view including folded linen in a closed glass-front cupboard, no work in progress.",
+    "output": "/media/editorial/photos-20261019/service-consumer-unit-inspection.webp",
+    "reviewedAt": "2026-10-19T19:06:07.367Z",
+    "review": "Reviewed individually: closed white cabinet in sage utility closet with notebook and linen cupboard; no opened enclosure or test, fictional property.",
+    "originalFile": "exec-1cb9f4a0-6b8a-44a2-a868-44f29bba9cc8.png"
+  },
+  {
+    "key": "service-consumer-unit-replacement",
+    "kind": "service",
+    "slug": "consumer-unit-replacement",
+    "prompt": "Original photorealistic editorial website cover, wide landscape 3:2. Fictional UAE property, natural light, realistic materials, no actual client project, fault diagnosis or verified installation claim. No people, hands, tools in use, active maintenance, open electrical equipment, exposed conductor ends, sparks smoke flames text labels brands logos watermarks or identifiable landmarks. All fittings intact and closed, all cable ends opaque capped. Not an installation diagram. A fully closed beige electrical enclosure on a clean blue-grey utility wall, neatly enclosed conduits, a sealed blank protective storage crate standing separately on floor. Frontal architectural view, no old unit being removed or internal breakers displayed. Different setting from residential inspection closet.",
+    "output": "/media/editorial/photos-20261019/service-consumer-unit-replacement.webp",
+    "reviewedAt": "2026-10-19T19:06:07.367Z",
+    "review": "Reviewed individually: closed beige enclosure and separate sealed crate against blue-grey wall, no old unit removal or internal parts. Distinct from inspection scene.",
+    "originalFile": "exec-3a7eb645-efc3-4b39-9a00-2ae013693a4e.png"
+  },
+  {
+    "key": "service-cooker-connection",
+    "kind": "service",
+    "slug": "cooker-electrical-connection",
+    "prompt": "Original photorealistic editorial website cover, wide landscape 3:2. Fictional UAE property, natural light, realistic materials, no actual client project, fault diagnosis or verified installation claim. No people, hands, tools in use, active maintenance, open electrical equipment, exposed conductor ends, sparks smoke flames text labels brands logos watermarks or identifiable landmarks. All fittings intact and closed, all cable ends opaque capped. Not an installation diagram. A finished modest kitchen with an unused closed built-in electric oven and smooth unlit hob, concealed connections, plain beige backsplash and timber cabinetry. Wide side angle, no cookware, no exposed socket behind appliance, no connection action or compliance diagram.",
+    "output": "/media/editorial/photos-20261019/service-cooker-connection.webp",
+    "reviewedAt": "2026-10-19T19:06:07.367Z",
+    "review": "Reviewed individually: unused closed electric oven and smooth unlit hob, connections concealed, no action or compliance claim. No readable brand name seen.",
+    "originalFile": "exec-2572ba0b-bc43-4b47-b69d-5a971a7b5b5a.png"
+  },
+  {
+    "key": "service-damaged-wire-replacement",
+    "kind": "service",
+    "slug": "damaged-wire-replacement",
+    "prompt": "Original photorealistic editorial website cover, wide landscape 3:2. Fictional UAE property, natural light, realistic materials, no actual client project, fault diagnosis or verified installation claim. No people, hands, tools in use, active maintenance, open electrical equipment, exposed conductor ends, sparks smoke flames text labels brands logos watermarks or identifiable landmarks. All fittings intact and closed, all cable ends opaque capped. Not an installation diagram. An unconnected coil of opaque grey sheathed cable with securely covered ends on a clean storage shelf, slight superficial scuff on outer sheath but no inner layers visible. Closed plain cabinet background, soft daylight, no suggestion it should be energized or repaired by viewer.",
+    "output": "/media/editorial/photos-20261019/service-damaged-wire-replacement.webp",
+    "reviewedAt": "2026-10-19T19:06:07.367Z",
+    "review": "Reviewed individually: unconnected grey cable coil with opaque capped ends and minor exterior scuff; no visible conductors or energized use. Not a repair demonstration.",
+    "originalFile": "exec-148ed4be-28c6-49f0-a0b2-c24c701aae83.png"
+  },
+  {
+    "key": "service-dedicated-circuit",
+    "kind": "service",
+    "slug": "dedicated-circuit-installation",
+    "prompt": "Original photorealistic editorial website cover, wide landscape 3:2. Fictional UAE property, natural light, realistic materials, no actual client project, fault diagnosis or verified installation claim. No people, hands, tools in use, active maintenance, open electrical equipment, exposed conductor ends, sparks smoke flames text labels brands logos watermarks or identifiable landmarks. All fittings intact and closed, all cable ends opaque capped. Not an installation diagram. A clean utility laundry room with an unused closed washing machine and fully closed small wall electrical cabinet at a distance, all wiring concealed and no active connections shown. Warm cream tiles and simple closed storage, wide room view. Illustrative planning context, not proof of a dedicated circuit.",
+    "output": "/media/editorial/photos-20261019/service-dedicated-circuit.webp",
+    "reviewedAt": "2026-10-19T19:06:07.367Z",
+    "review": "Reviewed individually after targeted edit: closed washer in utility room with distant closed cabinet; unwanted washer lettering removed, no people or active work. Scene does not establish a dedicated circuit.",
+    "editSourceFile": "exec-68ddbfcb-bb52-444e-b4fc-a83c256b199f.png",
+    "editPrompt": "Edit this fictional laundry-room image only: remove every brand name, word, letter and numeral from the washing machine fascia, including the small branding at upper left and all tiny control labels/display characters. Replace them with plain neutral unmarked surface while retaining the closed door, physical dial and buttons. Preserve the room composition, daylight, closed electrical cabinet, intact surfaces and all other objects. No new text or logos, no people, no active electrical work. Keep photorealistic wide 3:2.",
+    "originalFile": "exec-10208c53-6ff2-4f4b-8a43-d34f81ecdcb1.png"
+  },
+  {
+    "key": "service-dimmer-switch",
+    "kind": "service",
+    "slug": "dimmer-switch-installation",
+    "prompt": "Original photorealistic editorial website cover, wide landscape 3:2. Fictional UAE property, natural light, realistic materials, no actual client project, fault diagnosis or verified installation claim. No people, hands, tools in use, active maintenance, open electrical equipment, exposed conductor ends, sparks smoke flames text labels brands logos watermarks or identifiable landmarks. All fittings intact and closed, all cable ends opaque capped. Not an installation diagram. A single intact enclosed rotary wall dimmer plate on a textured taupe wall in a quiet living-room corner, shaded floor lamp and small chair beyond. No touching, no installation, no exposed wires or brands. Close architectural view of the closed control, not a compatibility recommendation.",
+    "output": "/media/editorial/photos-20261019/service-dimmer-switch.webp",
+    "reviewedAt": "2026-10-19T19:06:07.367Z",
+    "review": "Reviewed individually: intact closed rotary wall control with lamp and chair behind, no touching or wiring; not a compatibility recommendation.",
+    "originalFile": "exec-77c484c7-5b63-4a14-b8ff-04ac917f0268.png"
+  }
+]
