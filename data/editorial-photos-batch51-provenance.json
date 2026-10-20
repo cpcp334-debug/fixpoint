@@ -1,0 +1,42 @@
+[
+  {
+    "key": "service:power-failure-diagnosis",
+    "kind": "service",
+    "slug": "power-failure-diagnosis",
+    "output": "/media/editorial/photos-20261019/service-power-failure-diagnosis.webp",
+    "prompt": "Photorealistic fictional UAE office reception at dusk with one switched-off dark overhead light fixture, daylight fading through a window, a plain closed incident notebook on counter, intact closed electrical cupboard on distant wall. Editorial conceptual illustration of reporting a loss of power, no diagnosis or actual customer claim. No people, readable text, wires, open panels, sparks, leads, tools or logos. Horizontal 3:2.",
+    "reviewedAt": "2026-10-20T00:15:37.036Z",
+    "review": "Visually reviewed: dark overhead fixture, closed notebook and closed cupboard in fictional reception. Ambient accent lights remain on; illustration does not diagnose a complete building outage.",
+    "originalFile": "exec-c5343bf9-f5da-49f2-9527-bbfb8beeb598.png"
+  },
+  {
+    "key": "service:power-interruption-diagnosis",
+    "kind": "service",
+    "slug": "power-interruption-diagnosis",
+    "output": "/media/editorial/photos-20261019/service-power-interruption-diagnosis.webp",
+    "prompt": "Photorealistic fictional UAE apartment corridor and living room in natural daylight, small plain analog clock and closed plain logbook on table in foreground, intact closed wall electrical cupboard far behind. Conceptual editorial cover about recording times of intermittent power loss, not actual outage evidence. No people, readable text, screens, tools, exposed wiring or open panels. Horizontal 3:2.",
+    "reviewedAt": "2026-10-20T00:15:37.036Z",
+    "review": "Visually reviewed: analog clock and closed logbook in daylit apartment, closed cupboard. Generic skyline only, no actual incident or testing shown.",
+    "originalFile": "exec-79c965e7-d0ed-40c5-b46a-0afed55a14da.png"
+  },
+  {
+    "key": "service:power-quality-inspection",
+    "kind": "service",
+    "slug": "power-quality-inspection",
+    "output": "/media/editorial/photos-20261019/service-power-quality-inspection.webp",
+    "prompt": "Photorealistic editorial cover, fictional dry office technical review desk with closed generic portable instrument case and blank grid-paper notebook beside a pen, intact closed unbranded electrical cabinet behind glass in background. Conceptual discussion of power quality assessment, not a real test, measurement or customer project. No people, visible leads, numeric readings, readable text, exposed conductors or logos. Horizontal 3:2.",
+    "reviewedAt": "2026-10-20T00:15:37.036Z",
+    "review": "Visually reviewed: closed instrument case and blank grid notebook outside glass-separated closed cabinet; no readings or test procedure.",
+    "originalFile": "exec-7f326e9a-71a5-45c6-a419-290e29ee1120.png"
+  },
+  {
+    "key": "service:pump-control-panel-inspection",
+    "kind": "service",
+    "slug": "pump-control-panel-inspection",
+    "output": "/media/editorial/photos-20261019/service-pump-control-panel-inspection.webp",
+    "prompt": "Photorealistic fictional dry UAE building pump plant room, large intact closed grey pump control enclosure on wall above a pair of orderly pump housings and intact pipes, generous clear floor, all equipment behind a low access barrier. Conceptual editorial illustration only, not a technical design or real installation. No people, open doors, exposed wiring, tools, wet floors, readable labels or brands. Horizontal 3:2.",
+    "reviewedAt": "2026-10-20T00:15:37.037Z",
+    "review": "Visually reviewed: dry pump-room scene with closed panel, pumps and barrier. Conceptual illustration, not installation design or evidence of safety compliance.",
+    "originalFile": "exec-7025bc4c-8f19-4cbd-8549-03dacf0e6731.png"
+  }
+]
