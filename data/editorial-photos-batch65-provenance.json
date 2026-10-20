@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "blog",
+    "slug": "lighting-control-repair-al-hamidiya-ajman",
+    "key": "blog-control-observation-hamidiya",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional modest UAE living room with intact ordinary wall lighting control in distant context, one softly lit wall lamp and a blank observation notebook on side table foreground. No hands, people, smartphone screen, readable text, wiring, tools or fault demonstration. Conceptual reporting of desired versus observed lighting behavior, not a real repair or diagnosis.",
+    "output": "/media/editorial/photos-20261019/blog-control-observation-hamidiya.webp",
+    "reviewedAt": "2026-10-20T01:43:02.595Z",
+    "review": "Visually reviewed: intact controls, warm lamp and blank notebook in fictional room. Generic skyline not location evidence; no fault or product compatibility asserted.",
+    "originalFile": "exec-eaa440bd-6b96-4ace-b007-bdd382482ebb.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "motor-wiring-repair-al-sajaa-sharjah",
+    "key": "blog-motor-boundaries-sajaa",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional industrial administrative desk outside glass-separated dry machinery room, intact enclosed motor housing and closed control cabinet beyond, two closed plain folders on desk. No people, moving machinery, test leads, open terminals, exposed wires, readable ratings or tools. Conceptual coordination of motor and control assessment scope, not an actual wiring fault or customer project.",
+    "output": "/media/editorial/photos-20261019/blog-motor-boundaries-sajaa.webp",
+    "reviewedAt": "2026-10-20T01:43:02.595Z",
+    "review": "Visually reviewed: intact motor housing and closed control cabinet behind glass, two closed folders; no wiring or operation demonstrated, no actual fault claim.",
+    "originalFile": "exec-88a97f82-28fb-402b-9387-45c468fab760.png"
+  }
+]

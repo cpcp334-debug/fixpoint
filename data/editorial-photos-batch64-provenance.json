@@ -1,0 +1,42 @@
+[
+  {
+    "kind": "diy",
+    "slug": "diy-distribution-board-inspection",
+    "key": "diy:diy-distribution-board-inspection",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional UAE home entrance with intact fully closed distribution cupboard on wall and a plain blank appointment-note pad on console below, soft daylight, ordinary calm materials. No people, tools, readings, open covers, exposed wires or readable personal records. Conceptual before-booking inspection preparation only, not a DIY electrical procedure or safety certificate.",
+    "output": "/media/editorial/photos-20261019/diy-distribution-board-inspection.webp",
+    "reviewedAt": "2026-10-20T01:43:02.592Z",
+    "review": "Visually reviewed: closed home electrical cupboard and blank note pad, no work or test; booking preparation only.",
+    "originalFile": "exec-8830e543-7982-4c3a-a67a-e53c2d73cd75.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-distribution-board-repair",
+    "key": "diy:diy-distribution-board-repair",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional dry property-management desk with a closed plain repair-scope folder and compact closed parts case, intact closed electrical board enclosure behind glass in background. No people, tools, removed covers, wiring, numeric results or damage evidence. Conceptual booking preparation for qualified board repair, not instructions or an actual customer fault.",
+    "output": "/media/editorial/photos-20261019/diy-distribution-board-repair.webp",
+    "reviewedAt": "2026-10-20T01:43:02.595Z",
+    "review": "Visually reviewed: closed glass-front enclosure behind partition, intact device faces, closed scope folder and parts case. No exposed conductors or repair procedure.",
+    "originalFile": "exec-7e25f686-9b3c-47e9-9b90-fbb541668899.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-distribution-board-replacement",
+    "key": "diy:diy-distribution-board-replacement",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Generic intact closed electrical distribution enclosure upright in plain protective packaging on a clean dry counter, separate closed proposal folder nearby. No open door, breakers exposed, wires, ratings, people, tools or readable text. Conceptual before-booking replacement scope discussion, not product-selection advice or an actual installation.",
+    "output": "/media/editorial/photos-20261019/diy-distribution-board-replacement.webp",
+    "reviewedAt": "2026-10-20T01:43:02.595Z",
+    "review": "Visually reviewed: intact fully closed enclosure packaged on dry counter beside closed folder; no model or compatibility claim.",
+    "originalFile": "exec-c3220048-950a-4673-9ca0-744fd921a202.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-distribution-board-rewiring",
+    "key": "diy:diy-distribution-board-rewiring",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional dry building-services corridor viewed from administrative desk, intact closed electrical enclosure and closed surface containment along wall, a plain closed access-coordination folder in foreground. No wires visible, people, tools, open covers, labels or procedures. Conceptual preparation for a qualified rewiring enquiry, not a technical design or DIY work demonstration.",
+    "output": "/media/editorial/photos-20261019/diy-distribution-board-rewiring.webp",
+    "reviewedAt": "2026-10-20T01:43:02.595Z",
+    "review": "Visually reviewed: closed enclosure and containment, closed access folder in fictional corridor; not a wiring layout or DIY procedure.",
+    "originalFile": "exec-a6683391-07e7-4d98-9328-ed6df6893290.png"
+  }
+]
