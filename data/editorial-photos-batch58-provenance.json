@@ -1,0 +1,42 @@
+[
+  {
+    "kind": "service",
+    "slug": "switch-replacement",
+    "key": "service:switch-replacement",
+    "prompt": "Original photorealistic editorial website cover horizontal3:2. Two disconnected generic single rocker switch front faces, one white and one brushed warm metal, separately placed in plain packaging on a clean dry workbench. No rear terminals, wiring, people, tools, brand names, ratings or procedures. Conceptual professional replacement choice, not compatibility advice or actual installation.",
+    "output": "/media/editorial/photos-20261019/service-switch-replacement.webp",
+    "reviewedAt": "2026-10-20T00:57:56.696Z",
+    "review": "Visually reviewed: disconnected white and metal switch front faces separately packaged, no wiring or rear terminals; not model-compatibility advice.",
+    "originalFile": "exec-53832852-e5ff-4417-8081-f61882c0c044.png"
+  },
+  {
+    "kind": "service",
+    "slug": "timer-replacement",
+    "key": "service:timer-replacement",
+    "prompt": "Original photorealistic editorial website cover horizontal3:2. One generic disconnected enclosed mechanical time-switch module with simple unnumbered circular dial in a plain protective cardboard tray, closed dark parts case behind and softly blurred closed control cabinet. No people, exposed wiring, readable settings or labels, tools or procedural actions. Conceptual timer replacement scope only, not model-selection or programming guidance.",
+    "output": "/media/editorial/photos-20261019/service-timer-replacement.webp",
+    "reviewedAt": "2026-10-20T00:57:56.696Z",
+    "review": "Visually reviewed: generic disconnected enclosed timer module with unnumbered dial, closed parts case and cabinet; no settings, readings or programming instructions.",
+    "originalFile": "exec-aa3861ae-d131-46fe-8e1a-95637c5cb85d.png"
+  },
+  {
+    "kind": "service",
+    "slug": "underground-electrical-cable-repair",
+    "key": "service:underground-electrical-cable-repair",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional UAE facility exterior with intact paved service walkway, closed flush utility access cover and a plain closed planning folder on a nearby reception ledge, restrained natural daylight. No excavation, exposed cables, tools, markings, people, readable maps or utility logos. Conceptual access and scope planning for underground cable assessment, not a real fault, digging instruction or engineering design.",
+    "output": "/media/editorial/photos-20261019/service-underground-electrical-cable-repair.webp",
+    "reviewedAt": "2026-10-20T00:57:56.696Z",
+    "review": "Visually reviewed: intact paving and closed access cover with closed planning folder, no excavation or cables. Generic skyline is not location or route evidence.",
+    "originalFile": "exec-0abe414a-fba1-453b-9378-fd834c4d8ae9.png"
+  },
+  {
+    "kind": "service",
+    "slug": "usb-socket-installation",
+    "key": "service:usb-socket-installation",
+    "prompt": "Original photorealistic editorial website cover horizontal3:2. Intact generic wall outlet front with UK-style socket and two small USB-style openings mounted on a clean pale wall beside an empty bedside shelf, fictional UAE room, soft daylight. No connected devices, branding, wattage claims, readable labels, wiring, people or tools. Conceptual finished outlet illustration, not exact product specification or real customer installation.",
+    "output": "/media/editorial/photos-20261019/service-usb-socket-installation.webp",
+    "reviewedAt": "2026-10-20T00:57:56.696Z",
+    "review": "Visually reviewed: intact outlet front with two USB-style openings in fictional room; no rated power, model or compatibility promise.",
+    "originalFile": "exec-9ab3442e-75e2-4fdc-b73c-6f19534e4864.png"
+  }
+]
