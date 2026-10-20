@@ -1,0 +1,22 @@
+[
+  {
+    "key": "blog-movein-power-almajaz",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional modest Sharjah apartment just before move-in, two plain sealed moving boxes near entrance and closed handover folder on a clean small table, naturally daylit room, intact closed electrical cupboard on far wall. No people, readable contracts, keys showing security details, account data, open panels, tools, wires, actual outage or customer claim. Conceptual illustration of separating move-in paperwork from a technical assessment, not evidence a service request is complete.",
+    "kind": "blog",
+    "slug": "power-failure-diagnosis-al-majaz-sharjah",
+    "output": "/media/editorial/photos-20261019/blog-movein-power-almajaz.webp",
+    "reviewedAt": "2026-10-20T00:10:10.243Z",
+    "review": "Visually reviewed: fictional daylit apartment, sealed moving boxes, closed cupboard and handover folder. Generic Handover Documents wording is not a real contract or confirmation. No personal data, wiring, people or fault diagnosis.",
+    "originalFile": "exec-1a659cc2-d67b-4a7e-961b-70503e39c16e.png"
+  },
+  {
+    "key": "blog-voltage-scope-jurf2",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional Ajman industrial administrative desk outside a dry service room, plain closed equipment-scope folder and unbranded closed instrument case in foreground, intact closed industrial cabinets behind a glass partition. Restrained navy and grey realistic materials, natural warehouse daylight. No people, test leads, meter readings, open cabinets, exposed conductors, high-voltage warning text, brands or authority marks. Conceptual specialist-scope discussion, not an actual diagnosis, customer project or technical installation design.",
+    "kind": "blog",
+    "slug": "high-voltage-problem-diagnosis-jurf-industrial-2-ajman",
+    "output": "/media/editorial/photos-20261019/blog-voltage-scope-jurf2.webp",
+    "reviewedAt": "2026-10-20T00:10:10.243Z",
+    "review": "Visually reviewed: closed folder and instrument case outside glass-separated closed cabinets. No leads, readings, people or authority marks; conceptual scope discussion, not a technical design or actual project.",
+    "originalFile": "exec-e4af042d-d7f1-4f73-9f32-46b79175773e.png"
+  }
+]

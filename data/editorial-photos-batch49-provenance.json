@@ -1,0 +1,42 @@
+[
+  {
+    "key": "service-phase-sequence-testing",
+    "kind": "service",
+    "slug": "phase-sequence-testing",
+    "output": "/media/editorial/photos-20261019/service-phase-sequence-testing.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional UAE industrial assessment office with a plain closed protective test-instrument case and closed scheduling folder on a foreground table, intact closed motor-control cabinets visible through a glass partition far behind. Natural warehouse daylight and realistic scale. No people, probes, wire ends, instrument readings, open enclosures, testing actions, diagrams, text, logos or implied verified phase sequence. Conceptual preparation for specialist testing, not an actual customer site or technical procedure.",
+    "reviewedAt": "2026-10-20T00:06:34.344Z",
+    "review": "Individually visually reviewed: Closed protective case and folder outside glass-separated closed control cabinets; no test leads or phase readings.",
+    "originalFile": "exec-7c2ddbe9-9db4-40f3-bc9f-e6b1c1f2236c.png"
+  },
+  {
+    "key": "service-phase-testing",
+    "kind": "service",
+    "slug": "phase-testing",
+    "output": "/media/editorial/photos-20261019/service-phase-testing.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional modest UAE electrical service coordination room, unbranded test instrument entirely enclosed inside a clear-lidded protective storage box with display off and leads not visible, closed electrical cupboard on distant wall, plain blank notebook nearby. Distinct close product-storage composition, soft side light, realistic materials. No people, exposed terminals, wires, measurements, tools in use, diagrams, labels, brands or compliance claims. Conceptual professional review setting, not test instructions or a real product specification.",
+    "reviewedAt": "2026-10-20T00:06:34.344Z",
+    "review": "Individually visually reviewed: Enclosed unbranded instrument in closed clear storage case, screen blank; conceptual storage, no specified test instrument or procedure.",
+    "originalFile": "exec-1a07fe5d-2364-4f4c-85a5-a259edc0c5b7.png"
+  },
+  {
+    "key": "service-photocell-installation",
+    "kind": "service",
+    "slug": "photocell-installation",
+    "output": "/media/editorial/photos-20261019/service-photocell-installation.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional UAE exterior service wall at twilight, small intact plain daylight photocell sensor with a simple opaque housing and dark translucent sensing window mounted near an enclosed outdoor light, no camera lens or security-camera shape. Dry pale plaster and sparse planting, realistic modest architectural composition. No people, hands, open boxes, loose wires, installation action, text, logos or product ratings. Conceptual illustration, not an installation design or a real completed customer project.",
+    "reviewedAt": "2026-10-20T00:06:34.344Z",
+    "review": "Individually visually reviewed: Closed daylight-sensor-style housing with dark sensing window beside intact light; no camera lens, exposed connections or actual installation claim.",
+    "originalFile": "exec-aea6cd9b-5514-4be0-946e-8c97c08155a8.png"
+  },
+  {
+    "key": "service-pool-electrical-equipment-inspection",
+    "kind": "service",
+    "slug": "pool-electrical-equipment-inspection",
+    "output": "/media/editorial/photos-20261019/service-pool-electrical-equipment-inspection.webp",
+    "prompt": "Photorealistic editorial website cover horizontal3:2, fictional UAE pool facility viewed from a dry administrative doorway: intact closed electrical control cabinet and enclosed pump equipment beyond a closed barrier in a dry equipment room, a plain closed inspection folder on foreground desk, a small distant glimpse of an outdoor pool through a separate window. Realistic scale and subdued daylight. No people, wet electrical surfaces, water spraying, exposed wires, open panels, testing, readings, text, logos or claim the equipment is safe or certified. Conceptual specialist-inspection illustration.",
+    "reviewedAt": "2026-10-20T00:06:34.344Z",
+    "review": "Individually visually reviewed: Dry equipment room behind closed barrier, closed controls and enclosed pump, pool only through separate window; no wet electrical work or safety certification claim.",
+    "originalFile": "exec-3d70edbb-28eb-49b5-8c86-74c9e896cdee.png"
+  }
+]
