@@ -1,0 +1,42 @@
+[
+  {
+    "key": "service:security-light-installation",
+    "kind": "service",
+    "slug": "security-light-installation",
+    "output": "/media/editorial/photos-20261019/service-security-light-installation.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2, fictional UAE villa entrance at blue hour, one small modern rectangular white security floodlight with integrated rounded motion sensor fixed high on exterior wall, intact housing and wall, warm restrained pool of light over paving. No people, cameras, readable property identifiers, ladders, wires, tools or logos. Conceptual illustration of finished lighting placement, not a real project or technical design.",
+    "reviewedAt": "2026-10-20T00:28:12.038Z",
+    "review": "Visually reviewed: intact floodlight with motion sensor at fictional villa entrance, no camera or identifiers. Finished-placement illustration only, not a technical design.",
+    "originalFile": "exec-f77f9db4-d933-468c-8b9f-12655a8746dd.png"
+  },
+  {
+    "key": "service:short-circuit-diagnosis",
+    "kind": "service",
+    "slug": "short-circuit-diagnosis",
+    "output": "/media/editorial/photos-20261019/service-short-circuit-diagnosis.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2, fictional electrical assessment desk, plain closed incident folder beside a disconnected intact household power adapter in a closed transparent storage box, closed electrical cupboard in soft background. Calm neutral materials. No people, smoke, burn marks, tools, wires, open conductors, readings or text. Conceptual illustration of preserving an item for qualified assessment, not actual fault evidence or a diagnosis.",
+    "reviewedAt": "2026-10-20T00:28:12.038Z",
+    "review": "Visually reviewed: disconnected generic adapter in closed box and plain incident folder; no burn marks, readings, wiring or actual fault claim.",
+    "originalFile": "exec-158ba427-8414-46bd-86af-7d42e7cd89b2.png"
+  },
+  {
+    "key": "service:short-circuit-protection-inspection",
+    "kind": "service",
+    "slug": "short-circuit-protection-inspection",
+    "output": "/media/editorial/photos-20261019/service-short-circuit-protection-inspection.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2, a closed clean electrical protective-device storage case with several individually compartmented disconnected generic modular devices visible through transparent lid on a dry pale workbench, a closed plain checklist folder beside it. No people, brand labels, ratings, test leads, wiring, numeric results or open electrical panels. Conceptual scope illustration, not certification or device-selection guidance.",
+    "reviewedAt": "2026-10-20T00:28:12.038Z",
+    "review": "Visually reviewed: disconnected generic protective devices in compartmented closed case, closed folder, no leads or readings. Device specification and certification not asserted.",
+    "originalFile": "exec-e52e19ef-9d42-41d1-a136-218f6a30dd7f.png"
+  },
+  {
+    "key": "service:smart-dimmer-installation",
+    "kind": "service",
+    "slug": "smart-dimmer-installation",
+    "output": "/media/editorial/photos-20261019/service-smart-dimmer-installation.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2, fictional contemporary UAE living room with a single elegant wall dimmer control with plain circular dial on intact wall, a softly lit pendant in background and natural evening light. No people, smartphone interfaces, logos, readable labels, wiring, tools or installation procedure. Conceptual finished smart-dimming interior, not a real customer project, compatibility promise or technical design.",
+    "reviewedAt": "2026-10-20T00:28:12.038Z",
+    "review": "Visually reviewed: intact wall dial and softly lit pendant in fictional living room; no phone interface or installation steps, no smart compatibility promise.",
+    "originalFile": "exec-82d8f5c4-edbe-477e-ba6b-3fb6698b9308.png"
+  }
+]
