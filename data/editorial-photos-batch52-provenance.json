@@ -1,0 +1,42 @@
+[
+  {
+    "kind": "service",
+    "slug": "rcbo-installation",
+    "key": "service:rcbo-installation",
+    "prompt": "Original photorealistic editorial website cover horizontal3:2, a single generic unbranded RCBO style modular electrical protective device resting disconnected on a clean pale workbench, enclosure intact with small dark test button, softly blurred closed distribution cabinet in distant background. No people, wires, tools, terminal closeups, readable ratings, logos or actual installation. Conceptual product-style illustration only; not specification guidance or an approved model.",
+    "output": "/media/editorial/photos-20261019/service-rcbo-installation.webp",
+    "reviewedAt": "2026-10-20T00:24:32.992Z",
+    "review": "Visually reviewed: disconnected generic protective device with test button; no brand or ratings. Conceptual only, exact RCBO specification not asserted.",
+    "originalFile": "exec-bdb97b4b-ceaf-4a0d-bdad-1a090d4b5712.png"
+  },
+  {
+    "kind": "service",
+    "slug": "rccb-inspection",
+    "key": "service:rccb-inspection",
+    "prompt": "Original photorealistic editorial cover horizontal3:2, fictional dry UAE facilities office, closed electrical distribution cupboard on wall behind glass partition and a plain closed inspection folder on nearby desk. A single disconnected unbranded residual-current protective device in a clear closed storage box on desk, no readable labels. No people, test operation, leads, open panels or numeric results. Conceptual inspection-scope illustration, not an actual test or compliance proof.",
+    "output": "/media/editorial/photos-20261019/service-rccb-inspection.webp",
+    "reviewedAt": "2026-10-20T00:24:32.994Z",
+    "review": "Visually reviewed: disconnected protective device inside closed storage box, closed folder and cupboard; no test or results. Generic skyline is not a real location claim.",
+    "originalFile": "exec-93641a76-06c2-4298-9b56-672255c7f78e.png"
+  },
+  {
+    "kind": "service",
+    "slug": "rccb-replacement",
+    "key": "service:rccb-replacement",
+    "prompt": "Original photorealistic editorial cover horizontal3:2, two disconnected generic unbranded residual-current protective devices individually placed in separate plain open cardboard packaging trays on clean workshop counter, intact body shapes, soft background of a closed cabinet. No people, readable specifications, wires, exposed building conductors, tools or replacement procedure. Conceptual discussion of professional replacement scope; not compatible product advice or actual customer work.",
+    "output": "/media/editorial/photos-20261019/service-rccb-replacement.webp",
+    "reviewedAt": "2026-10-20T00:24:32.994Z",
+    "review": "Visually reviewed: two separately packaged disconnected devices with intact enclosures; no replacement procedure or model-compatibility claim.",
+    "originalFile": "exec-5ad2c79a-668b-4b42-b407-d9cd2fd436a6.png"
+  },
+  {
+    "kind": "service",
+    "slug": "relay-replacement",
+    "key": "service:relay-replacement",
+    "prompt": "Original photorealistic editorial cover horizontal3:2, one generic translucent enclosed plug-in style electrical relay disconnected in a small plain protective storage tray on clean maintenance desk, a closed dark spare-parts box nearby and softly blurred closed control cabinet behind. No people, readable ratings or brands, energized circuits, wires, pin closeup, tools or procedural actions. Editorial conceptual illustration only, not actual replacement or equipment selection.",
+    "output": "/media/editorial/photos-20261019/service-relay-replacement.webp",
+    "reviewedAt": "2026-10-20T00:24:32.994Z",
+    "review": "Visually reviewed: enclosed translucent relay in tray and closed spare case; unplugged pins visible but no wiring or live circuit; conceptual not selection instructions.",
+    "originalFile": "exec-f2fc6034-01fd-4ed4-bd50-6d879ed7a974.png"
+  }
+]

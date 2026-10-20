@@ -162,5 +162,9 @@
   "service:power-failure-diagnosis": "/media/editorial/photos-20261019/service-power-failure-diagnosis.webp",
   "service:power-interruption-diagnosis": "/media/editorial/photos-20261019/service-power-interruption-diagnosis.webp",
   "service:power-quality-inspection": "/media/editorial/photos-20261019/service-power-quality-inspection.webp",
-  "service:pump-control-panel-inspection": "/media/editorial/photos-20261019/service-pump-control-panel-inspection.webp"
+  "service:pump-control-panel-inspection": "/media/editorial/photos-20261019/service-pump-control-panel-inspection.webp",
+  "service:rcbo-installation": "/media/editorial/photos-20261019/service-rcbo-installation.webp",
+  "service:rccb-inspection": "/media/editorial/photos-20261019/service-rccb-inspection.webp",
+  "service:rccb-replacement": "/media/editorial/photos-20261019/service-rccb-replacement.webp",
+  "service:relay-replacement": "/media/editorial/photos-20261019/service-relay-replacement.webp"
 }
