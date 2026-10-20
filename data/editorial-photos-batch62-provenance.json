@@ -1,0 +1,24 @@
+[
+  {
+    "kind": "blog",
+    "slug": "occupancy-sensor-installation-jumeirah-beach-residence-dubai",
+    "key": "blog-sensor-brief-jbr",
+    "prompt": "Original photorealistic editorial cover horizontal3:2, fictional UAE apartment entrance corridor with a small intact ceiling occupancy sensor without camera lens, soft warm lighting, plain closed room-use folder on console. No people, surveillance screen, interfaces, readable text, labels, wiring or tools. Conceptual briefing for lighting control behavior, not evidence of data collection, exact product capability, savings or a real JBR project.\nEDIT AFTER REVIEW: Edit this fictional apartment corridor photograph: remove the small round ceiling device completely and restore plain continuous ceiling at that spot. Preserve the corridor, warm lighting, door, console with closed room-use folder, composition and realistic materials. Do not add any camera, detector, sensor, text, logo, person or tool. This will be an illustrative room-use planning cover, not a product demonstration or actual project.",
+    "output": "/media/editorial/photos-20261019/blog-sensor-brief-jbr.webp",
+    "reviewedAt": "2026-10-20T01:20:19.739Z",
+    "review": "Visually reviewed corrected image: ambiguous detector removed; plain ceiling, intact corridor and closed room-use folder retained. Planning illustration only, not a sensor product demonstration.",
+    "rejectedOriginalFile": "exec-eb089acd-d396-42e1-9abc-82c1957b196b.png",
+    "correctionReason": "Original ceiling device could be mistaken for a smoke alarm; retained rejected PNG, removed ambiguous device in new generated revision.",
+    "originalFile": "exec-048c7a1f-1a65-4bb4-aa0d-3a376f7e66b8.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "distribution-board-replacement-safia-ajman",
+    "key": "blog-board-decision-safia",
+    "prompt": "Original photorealistic editorial cover horizontal3:2, fictional modest UAE property office with a closed existing-equipment folder and separate closed proposal folder on desk, intact closed distribution-board enclosure visible behind a glass partition. Calm neutral daylight. No people, brands, readable reports, wiring, tools, open panels or old-vs-new technical claims. Conceptual decision and scope review before board replacement, not actual diagnosis or customer installation.",
+    "output": "/media/editorial/photos-20261019/blog-board-decision-safia.webp",
+    "reviewedAt": "2026-10-20T01:20:19.739Z",
+    "review": "Visually reviewed: two closed generic Existing Equipment and Proposal folders with closed board behind glass; fictional decision scene, no diagnosis or authorization claim.",
+    "originalFile": "exec-34c4c2fe-62bd-46bd-87d7-bf4dea7f23be.png"
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "kind": "service",
+    "slug": "washing-machine-electrical-connection",
+    "key": "service:washing-machine-electrical-connection",
+    "prompt": "Original photorealistic editorial cover horizontal3:2, fictional dry UAE laundry room with intact front-loading washing machine and a clean closed wall electrical enclosure in background, plain closed appliance information folder on distant counter. Natural daylight, restrained white and wood. No people, plugs being handled, visible leads, hoses connected by hand, tools, labels or installation steps. Conceptual appliance connection planning, not an actual design or customer project.",
+    "output": "/media/editorial/photos-20261019/service-washing-machine-electrical-connection.webp",
+    "reviewedAt": "2026-10-20T01:20:19.737Z",
+    "review": "Visually reviewed: intact washing machine, closed enclosure and folder in fictional dry laundry. Not connection instructions or evidence of correct placement.",
+    "originalFile": "exec-18873f16-4489-487c-97e5-ae5833d11912.png"
+  },
+  {
+    "kind": "service",
+    "slug": "water-heater-electrical-connection",
+    "key": "service:water-heater-electrical-connection",
+    "prompt": "Original photorealistic editorial cover horizontal3:2, fictional dry utility room with intact enclosed wall-mounted electric storage water heater in contextual wide view and closed electrical enclosure far on separate wall, simple clean surfaces and natural light. No exposed wiring, people, tools, labels, wet surfaces or procedural details. Conceptual equipment-scope illustration only, not installation clearance guidance, technical design or actual customer work.",
+    "output": "/media/editorial/photos-20261019/service-water-heater-electrical-connection.webp",
+    "reviewedAt": "2026-10-20T01:20:19.739Z",
+    "review": "Visually reviewed: intact enclosed heater and closed electrical enclosure in fictional dry room. No conductors or installation action; not technical layout or clearance guidance.",
+    "originalFile": "exec-8aa2e5d1-eb15-4c69-92c5-0216f1de26d6.png"
+  },
+  {
+    "kind": "service",
+    "slug": "water-pump-electrical-inspection",
+    "key": "service:water-pump-electrical-inspection",
+    "prompt": "Original photorealistic editorial cover horizontal3:2, fictional dry pump-room observation area behind glass, intact pump housing and closed control enclosure visible beyond, plain closed inspection folder on desk foreground. No people, readings, tools, open panels, wires, wet floor or brands. Conceptual qualified inspection planning, not a real measurement or proof of compliance.",
+    "output": "/media/editorial/photos-20261019/service-water-pump-electrical-inspection.webp",
+    "reviewedAt": "2026-10-20T01:20:19.739Z",
+    "review": "Visually reviewed: intact pump and closed control enclosure behind glass with closed folder. No readings or inspection procedure; no compliance claim.",
+    "originalFile": "exec-c8eac90e-a8e9-450e-a565-9ce5db7b8e7d.png"
+  },
+  {
+    "kind": "service",
+    "slug": "water-pump-electrical-repair",
+    "key": "service:water-pump-electrical-repair",
+    "prompt": "Original photorealistic editorial cover horizontal3:2, fictional maintenance reception with a small intact disconnected generic pump motor assembly in a plain packing cradle on dry counter, closed repair folder beside it and blurred closed parts cupboard behind. No people, opened motor, wiring, tools, numeric labels or repair actions. Conceptual electrical repair assessment scope, not an actual customer fault or procedure.",
+    "output": "/media/editorial/photos-20261019/service-water-pump-electrical-repair.webp",
+    "reviewedAt": "2026-10-20T01:20:19.739Z",
+    "review": "Visually reviewed: disconnected intact pump-motor assembly in cradle with closed folder; generic maintenance reception sign, no actual customer item or repair action.",
+    "originalFile": "exec-4f5bc8c7-c73b-44dc-93ad-69b936721a09.png"
+  }
+]
