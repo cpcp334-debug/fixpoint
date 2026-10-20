@@ -1,0 +1,42 @@
+[
+  {
+    "key": "service:weatherproof-socket-installation",
+    "kind": "service",
+    "slug": "weatherproof-socket-installation",
+    "output": "/media/editorial/photos-20261019/service-weatherproof-socket-installation.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional UAE sheltered patio wall with a single generic outdoor socket enclosure with fully closed hinged protective cover, intact wall and dry paving, soft daylight. No people, plug, cables, brands, ratings, tools or water jets. Conceptual finished outdoor outlet, not certified weather rating, technical placement guidance or actual customer project.",
+    "reviewedAt": "2026-10-20T01:27:03.201Z",
+    "review": "Visually reviewed: intact closed outdoor enclosure under shelter, dry scene; no asserted weather rating, technical placement or actual project.",
+    "originalFile": "exec-836b9d31-c29e-4e9e-b6d4-bcaf8f873c1b.png"
+  },
+  {
+    "key": "service:wiring-inspection",
+    "kind": "service",
+    "slug": "wiring-inspection",
+    "output": "/media/editorial/photos-20261019/service-wiring-inspection.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional dry building-services observation area with a closed wiring-containment channel and closed access enclosures on wall behind glass, plain closed inspection folder and blank note pad on desk foreground. No exposed wires, people, tools, readings, readable reports or brands. Conceptual qualified wiring inspection planning, not actual test or compliance evidence.",
+    "reviewedAt": "2026-10-20T01:27:03.203Z",
+    "review": "Visually reviewed: closed containment and access enclosures behind glass, blank pad and folder, no exposed conductors or actual test claim.",
+    "originalFile": "exec-b02610f7-1aa7-4e4f-a317-fe8fc0cf7f76.png"
+  },
+  {
+    "key": "service:wiring-repair",
+    "kind": "service",
+    "slug": "wiring-repair",
+    "output": "/media/editorial/photos-20261019/service-wiring-repair.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional tidy maintenance planning desk with a closed plain repair work-order folder, closed compact parts case and intact closed wall access cover in softly blurred background. A short disconnected fully jacketed cable coil stays sealed in a clear storage box, no cut ends visible. No people, tools, exposed conductors, text or wiring actions. Conceptual professional repair assessment, not real fault evidence or instructions.",
+    "reviewedAt": "2026-10-20T01:27:03.203Z",
+    "review": "Visually reviewed: fully jacketed coil inside closed clear box with hidden ends, closed parts case and repair folder; no repair procedure or fault evidence.",
+    "originalFile": "exec-2620c179-2fe0-41e4-877c-474dfc1c227d.png"
+  },
+  {
+    "key": "service:wiring-replacement",
+    "kind": "service",
+    "slug": "wiring-replacement",
+    "output": "/media/editorial/photos-20261019/service-wiring-replacement.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. A plain sealed carton containing a disconnected fully jacketed cable coil with both ends hidden in packaging, next to a closed project-scope folder on dry workbench, closed cabinet softly blurred behind. No ratings, brand names, people, tools, installation layout or exposed conductors. Conceptual replacement planning only, not cable-selection advice or actual customer work.",
+    "reviewedAt": "2026-10-20T01:27:03.203Z",
+    "review": "Visually reviewed: jacketed coil bagged in carton, hidden ends and closed generic scope folder. Printed building image is generic scenery, not a customer case; no cable-specification claim.",
+    "originalFile": "exec-5068a421-935a-41e8-9233-85efd7d21fe2.png"
+  }
+]
