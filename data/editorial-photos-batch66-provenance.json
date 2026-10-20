@@ -1,0 +1,42 @@
+[
+  {
+    "kind": "diy",
+    "slug": "diy-double-socket-installation",
+    "key": "diy:diy-double-socket-installation",
+    "prompt": "Create one photorealistic editorial cover for a UAE home electrical booking guide about double socket installation. Landscape 3:2. A calm contemporary apartment study, an intact white British-style double switched wall socket above a pale oak desk, two sockets fully closed with no plugs, blank booking notebook on desk, warm daylight, restrained navy accessory, realistic materials. No person, no tools, no exposed conductors, no installation steps, no text or logos, no badges, no claim of actual client property or location. Compose the socket naturally on the right half, enough contextual room detail to distinguish this scene from a product packshot. This is an illustrative fictional scene, not evidence of completed electrical work.",
+    "output": "/media/editorial/photos-20261019/diy-double-socket-installation.webp",
+    "reviewedAt": "2026-10-20T01:51:51.737Z",
+    "review": "Visually reviewed: intact double socket in fictional room, blank notebook, no exposed conductors or electrical action. Generic skyline does not establish actual location. Accepted for illustrative booking guide; not assigned or deployed yet.",
+    "originalFile": "exec-22453041-805e-4c93-8f8d-2394129b2f7b.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-downlight-installation",
+    "key": "diy:diy-downlight-installation",
+    "prompt": "Photorealistic editorial landscape 3:2 cover for a fictional UAE home guide about preparing to book downlight installation. Wide low-angle view across a clean dining room with a plain cream ceiling and a small row of finished recessed downlights, all intact, no opened ceiling or wiring. On the table below a blank appointment folder and neutral fabric sample, afternoon light, quiet navy and warm wood accents. No people, ladders, tools, diagrams, measurements, visible brands, text or logos. No claim of an actual Fixpoint project or verified premises. Natural ordinary residential architecture, believable fixture spacing; focus on finished lighting appearance and planning context, not installation instructions.",
+    "output": "/media/editorial/photos-20261019/diy-downlight-installation.webp",
+    "reviewedAt": "2026-10-20T01:52:41.833Z",
+    "review": "Visually reviewed intact recessed lighting in fictional dining room; blank folder, no electrical procedure or location claim. Accepted; not assigned or deployed.",
+    "originalFile": "exec-5fb0637b-2eda-47a3-bc8c-e96d3f8e5188.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-earth-leakage-protection-testing",
+    "key": "diy:diy-earth-leakage-protection-testing",
+    "prompt": "Create an original photorealistic editorial 3:2 landscape image for a fictional before-booking guide for earth leakage protection testing. A quiet property reception alcove, fully closed opaque electrical distribution enclosure on wall in background, a blank appointment clipboard and closed unmarked instrument carrying case on a clean reception table in foreground. No device readings, no cables or probes, no people, no hands, no opened electrical equipment, no instructions, no safety certificate or pass result. Natural UAE apartment materials with warm stone and navy upholstery, soft daylight, realistic ordinary architecture. Not an actual customer site, no text, no logo, no watermark. Convey arranging a qualified assessment, not testing performed.",
+    "output": "/media/editorial/photos-20261019/diy-earth-leakage-protection-testing.webp",
+    "reviewedAt": "2026-10-20T01:54:00.358Z",
+    "review": "Visually reviewed closed enclosure and instrument case, blank clipboard; no readings or testing action. Fictional generic surroundings, not a client project or proof of location. Accepted; not assigned or deployed.",
+    "originalFile": "exec-ad4e8836-0b8c-4b95-a798-a71fcdfd79a5.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-earth-pit-inspection",
+    "key": "diy:diy-earth-pit-inspection",
+    "prompt": "One original photorealistic horizontal 3:2 editorial cover for a fictional UAE property guide about preparing to book earth pit inspection. Low angle exterior of a modest property service courtyard, an intact flush rectangular dark inspection cover closed in dry paving, blank appointment folder held flat on a low stone ledge in foreground, no humans. Ordinary neutral service wall, small plant, clear morning light. No open pit, no soil excavation, no exposed conductor, no test instruments/readings, no diagrams, no instructions, no brand/text. The cover remains fully closed; convey access planning only, not inspection completed or an actual client installation.",
+    "output": "/media/editorial/photos-20261019/diy-earth-pit-inspection.webp",
+    "reviewedAt": "2026-10-20T01:55:32.777Z",
+    "review": "Visually reviewed closed generic access cover in dry courtyard and blank folder. No exposed conductor or inspection action. Illustration of access planning only; not evidence the fictional chamber contains an earth electrode or has passed inspection. Accepted; not assigned or deployed.",
+    "originalFile": "exec-7c98691f-f3fe-425d-927c-4538d6063fdc.png"
+  }
+]
