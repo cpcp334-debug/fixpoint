@@ -1,0 +1,42 @@
+[
+  {
+    "kind": "service",
+    "slug": "smart-light-installation",
+    "key": "service:smart-light-installation",
+    "prompt": "Original photorealistic editorial website cover horizontal3:2. Fictional UAE apartment dining area with two contemporary ceiling pendant lights softly lit in warm white and one small simple wireless lighting control on a sideboard. Restrained cream and navy, natural dusk light. No people, logos, readable interface, wires, ladders, tools or app screens. Conceptual illustration of coordinated lighting only, not actual customer work or product compatibility evidence.",
+    "output": "/media/editorial/photos-20261019/service-smart-light-installation.webp",
+    "reviewedAt": "2026-10-20T00:40:07.149Z",
+    "review": "Visually reviewed: coordinated warm pendant lights and simple wireless control in fictional dining room. No interface or actual smart compatibility claim.",
+    "originalFile": "exec-64244069-4b5b-4b5c-8152-ae168b763d6a.png"
+  },
+  {
+    "kind": "service",
+    "slug": "smart-switch-installation",
+    "key": "service:smart-switch-installation",
+    "prompt": "Original photorealistic editorial website cover horizontal3:2. Close but contextual view of an intact minimal two-gang wall switch with plain flat touch-style face on a clean warm wall, softly blurred fictional UAE hallway beyond. No hand, people, text, brand, phone, wires, tools, open fittings or installation steps. Finished smart-switch concept only, not proof of compatibility, approvals or a real project.",
+    "output": "/media/editorial/photos-20261019/service-smart-switch-installation.webp",
+    "reviewedAt": "2026-10-20T00:40:07.149Z",
+    "review": "Visually reviewed: intact two-gang face on wall, no wires or people; finished concept only, no model or technical approval claim.",
+    "originalFile": "exec-b6d0e1a2-b758-428c-a932-2e20f3733795.png"
+  },
+  {
+    "kind": "service",
+    "slug": "socket-repair",
+    "key": "service:socket-repair",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional dry maintenance planning desk with closed plain repair folder in foreground, distant intact UK-style wall socket faceplate mounted on clean wall, nothing plugged in, generous natural light. No people, tools, exposed conductors, scorch marks, readable labels or damage claims. Conceptual socket assessment and repair scope, not an actual repair, safety certificate or procedure.",
+    "output": "/media/editorial/photos-20261019/service-socket-repair.webp",
+    "reviewedAt": "2026-10-20T00:40:07.149Z",
+    "review": "Visually reviewed: plain closed folder and intact empty wall socket. A partial diagram on desk is generic planning scenery, not installation instructions or a confirmed fault.",
+    "originalFile": "exec-f8b325a1-cbcc-49cd-a872-cc2d4de117ff.png"
+  },
+  {
+    "kind": "service",
+    "slug": "socket-replacement",
+    "key": "service:socket-replacement",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. One disconnected generic UK-style single socket front face in a plain open cardboard tray on pale workbench, a second differently finished front face in separate closed clear storage box behind, softly blurred closed cupboard. No wiring, people, tools, rear terminals, labels or logos. Conceptual professional replacement choice, not compatibility advice or actual installation.",
+    "output": "/media/editorial/photos-20261019/service-socket-replacement.webp",
+    "reviewedAt": "2026-10-20T00:40:07.149Z",
+    "review": "Visually reviewed: two disconnected generic socket front faces separately stored, no rear terminals or wiring; not compatible-model advice.",
+    "originalFile": "exec-628252e9-fc9a-4611-8ac6-4e7f404923f5.png"
+  }
+]

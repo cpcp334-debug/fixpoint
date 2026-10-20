@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "blog",
+    "slug": "electrical-burning-smell-diagnosis-al-ras-umm-al-quwain-umm-al-quwain",
+    "key": "blog-odour-handover-alras",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional modest UAE property-management reception, plain closed handover notebook and blank message card on counter, closed room door and intact closed electrical cupboard distant behind glass. Neutral daylight. No people, smoke, fire, burn marks, labels, readable records, tools or wiring. Conceptual reporting and handover after an unusual odour observation, not an actual incident, diagnosis or customer location.",
+    "output": "/media/editorial/photos-20261019/blog-odour-handover-alras.webp",
+    "reviewedAt": "2026-10-20T00:40:07.149Z",
+    "review": "Visually reviewed: closed notebook, blank message card, closed door and cupboard behind glass. Framed skyline is office artwork, not proof of an Al Ras location or incident.",
+    "originalFile": "exec-1c68968c-2a38-4874-90f3-804b2797cbe2.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "partial-power-failure-diagnosis-al-safa-1-dubai",
+    "key": "blog-room-scope-safa1",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional UAE villa interior with two distinct adjacent room doorways visible from a tidy hallway, one naturally bright and one dim with no electrical activity, a plain closed property folder on low console and intact closed wall cupboard. No people, floorplan labels, tools, wires, operated switches or logos. Conceptual illustration of distinguishing room descriptions from electrical circuit scope; not a real outage or project photograph.",
+    "output": "/media/editorial/photos-20261019/blog-room-scope-safa1.webp",
+    "reviewedAt": "2026-10-20T00:40:07.149Z",
+    "review": "Visually reviewed: distinct bright and dim room doorways and closed cabinet in fictional villa. No test or actual outage claim; room contrast illustrates reporting limits, not circuit topology.",
+    "originalFile": "exec-a10d152f-2025-4d4d-a176-d800ac864091.png"
+  }
+]
