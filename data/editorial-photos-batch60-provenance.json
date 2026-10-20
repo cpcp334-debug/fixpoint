@@ -1,0 +1,42 @@
+[
+  {
+    "key": "service:voltage-testing",
+    "kind": "service",
+    "slug": "voltage-testing",
+    "output": "/media/editorial/photos-20261019/service-voltage-testing.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Generic unbranded handheld electrical measuring instrument inside a closed clear storage case on a clean dry facilities desk, screen completely blank and no leads attached, closed plain assessment notebook and intact closed cabinet in soft background. No people, readings, labels, wiring, terminals or testing procedure. Conceptual qualified assessment planning only, not an actual measurement, specification or compliance proof.",
+    "reviewedAt": "2026-10-20T01:03:21.860Z",
+    "review": "Visually reviewed: blank-screen generic instrument in closed case with no leads; no actual reading or testing procedure. Not a specified approved model.",
+    "originalFile": "exec-80eed7a3-2168-4db3-b6ef-f8195f88ee16.png"
+  },
+  {
+    "key": "service:wall-fan-installation",
+    "kind": "service",
+    "slug": "wall-fan-installation",
+    "output": "/media/editorial/photos-20261019/service-wall-fan-installation.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional modest UAE utility room with a single finished wall-mounted fan with full intact protective grille positioned high on clean wall, visible room context, natural daylight. No people, wires, tools, ladder, readable labels or logos. Conceptual finished fan placement, not a technical installation design, working demonstration or customer project.",
+    "reviewedAt": "2026-10-20T01:03:21.860Z",
+    "review": "Visually reviewed: intact wall-mounted fan with full grille in fictional utility room. Scene does not establish installation clearances, suitability or compliance.",
+    "originalFile": "exec-43b1c39f-9fc2-4321-971c-14f4682506ed.png"
+  },
+  {
+    "key": "service:wall-fan-repair",
+    "kind": "service",
+    "slug": "wall-fan-repair",
+    "output": "/media/editorial/photos-20261019/service-wall-fan-repair.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional tidy maintenance reception with a small disconnected wall-fan assembly upright in its plain packing cradle on work counter, complete protective grille intact, closed plain repair folder nearby. Fan fully still, no exposed motor or internal parts, no tools, people, wire leads, labels or logos. Conceptual repair assessment scope only, not a confirmed fault, repair procedure or actual customer item.",
+    "reviewedAt": "2026-10-20T01:03:21.860Z",
+    "review": "Visually reviewed: disconnected still fan assembly in packing cradle with complete grille and closed folder; no exposed motor or repair action.",
+    "originalFile": "exec-de147df1-63f6-46cb-8b2f-c3c1ca866f15.png"
+  },
+  {
+    "key": "service:wall-light-installation",
+    "kind": "service",
+    "slug": "wall-light-installation",
+    "output": "/media/editorial/photos-20261019/service-wall-light-installation.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional UAE apartment corridor with two simple warm wall sconces on intact cream walls, softly lit wood console and restrained decor, evening ambient light. No people, labels, brands, tools, ladders, visible wiring or open fittings. Conceptual finished wall-light placement, not a real project or electrical design.",
+    "reviewedAt": "2026-10-20T01:03:21.860Z",
+    "review": "Visually reviewed: finished warm sconces in fictional corridor, no open fittings or installation steps; not a real customer project or electrical design.",
+    "originalFile": "exec-f41cc385-31e5-4bf9-a5b5-b870f766399c.png"
+  }
+]
