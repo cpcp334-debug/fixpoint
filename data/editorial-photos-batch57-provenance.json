@@ -1,0 +1,42 @@
+[
+  {
+    "key": "service:spotlight-installation",
+    "kind": "service",
+    "slug": "spotlight-installation",
+    "output": "/media/editorial/photos-20261019/service-spotlight-installation.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional UAE contemporary small retail display corner with three modest ceiling-mounted adjustable spotlights aimed at plain shelves with neutral unbranded objects, warm natural materials and realistic light pools. No people, words, ladders, cables, tools or logos. Conceptual finished lighting illustration, not actual installation, customer work or compliance evidence.",
+    "reviewedAt": "2026-10-20T00:44:52.443Z",
+    "review": "Visually reviewed: three finished spotlights with light pools over neutral display shelving; no actual shop or installation claim.",
+    "originalFile": "exec-0a1d6977-b60c-409f-b28a-a94515847507.png"
+  },
+  {
+    "key": "service:surface-wiring-installation",
+    "kind": "service",
+    "slug": "surface-wiring-installation",
+    "output": "/media/editorial/photos-20261019/service-surface-wiring-installation.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional tidy UAE utility office wall with closed cream surface trunking running neatly along a visible wall corner to an intact closed junction enclosure and one intact wall socket, normal room context and natural daylight. All covers closed, no conductors or terminals visible. No people, labels, tools or procedural diagram. Conceptual surface-routing illustration only, not a technical installation design or real project.",
+    "reviewedAt": "2026-10-20T00:44:52.444Z",
+    "review": "Visually reviewed: closed surface trunking, enclosure and intact socket in fictional office; no conductors or procedural diagram. Scene is not a design or compliance certificate.",
+    "originalFile": "exec-02ced848-aa87-4994-b9da-94ce7b71fb5f.png"
+  },
+  {
+    "key": "service:surge-protection-device-installation",
+    "kind": "service",
+    "slug": "surge-protection-device-installation",
+    "output": "/media/editorial/photos-20261019/service-surge-protection-device-installation.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. A generic unbranded modular surge-protection style device with simple small indicator window resting disconnected in a plain cardboard storage tray on a clean dry desk, a closed distribution cabinet softly blurred in distant background. No text, ratings, brand, wiring, hands, open panels or installation procedure. Conceptual product-style cover only; not exact specification, compatibility or approval evidence.",
+    "reviewedAt": "2026-10-20T00:44:52.444Z",
+    "review": "Visually reviewed: disconnected generic modular surge-protection-style enclosure with indicator windows in tray; no rating, exact model or compatibility claim.",
+    "originalFile": "exec-abf2def1-7cce-4b71-be54-f141024378d0.png"
+  },
+  {
+    "key": "service:switch-repair",
+    "kind": "service",
+    "slug": "switch-repair",
+    "output": "/media/editorial/photos-20261019/service-switch-repair.webp",
+    "prompt": "Original photorealistic editorial cover horizontal3:2. Fictional modest UAE room, intact single wall rocker switch in contextual close view, closed plain repair notebook and pen on side table below, natural soft daylight, realistic cream wall and wood. No people, tools, wires, removed covers, damage marks, ratings or logos. Conceptual professional assessment cover, not a documented fault, repair procedure or safety assurance.",
+    "reviewedAt": "2026-10-20T00:44:52.444Z",
+    "review": "Visually reviewed: intact single rocker switch and closed notebook in fictional room; no repair procedure, exposed components or confirmed fault.",
+    "originalFile": "exec-c078619d-877d-4784-a299-a28482897d77.png"
+  }
+]
