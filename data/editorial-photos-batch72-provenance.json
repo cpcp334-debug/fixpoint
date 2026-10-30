@@ -1,0 +1,42 @@
+[
+  {
+    "kind": "diy",
+    "slug": "diy-electrical-fault-diagnosis",
+    "key": "diy:diy-electrical-fault-diagnosis",
+    "prompt": "Original photorealistic editorial horizontal 3:2 cover for a fictional UAE homeowner guide about booking electrical fault diagnosis. A fictional adult facilities professional in plain unbranded navy work shirt stands at a respectful distance from an intact fully closed electrical cupboard in a clean apartment utility hallway, holding a closed blank tablet folio at waist level. Both hands visible naturally, no equipment touched, no exposed electrical parts, no testing, no tools, no uniform logo, badges or certifications. Natural daylight, realistic ordinary property. Show a calm initial discussion/observation context, not diagnosis performed, actual Fixpoint employee or customer project. No text or watermark.",
+    "output": "/media/editorial/photos-20261019/diy-electrical-fault-diagnosis.webp",
+    "reviewedAt": "2026-10-30T14:38:45.244Z",
+    "review": "Visually reviewed two fictional adults discussing beside fully closed cupboard; professional holds blank closed tablet folio and touches no equipment. Natural anatomy, no tool or exposed conductor. Accepted conceptual initial discussion, not real employee/customer, diagnosis or completed job.",
+    "originalFile": "exec-75ae55a3-9c58-4384-a33f-6d77df0fdfd5.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-electrical-fault-finding",
+    "key": "diy:diy-electrical-fault-finding",
+    "prompt": "Original photorealistic editorial landscape 3:2 cover for a fictional UAE homeowner guide on preparing an electrical fault-finding visit. A fictional adult woman facilities coordinator in plain unbranded navy shirt sits at an ordinary property reception desk reviewing a blank symptom note sheet beside a closed tablet case; a fully closed electrical cupboard is visible down the corridor, no one near it. Calm professional planning context, natural daylight, realistic modest interior. No text, tools, exposed wires, diagrams, meter readings, certificates or logo. Do not depict testing or a diagnosed fault; she is fictional, not an actual Fixpoint employee or customer. Distinct wider reception view rather than two people standing by a panel.",
+    "output": "/media/editorial/photos-20261019/diy-electrical-fault-finding.webp",
+    "reviewedAt": "2026-10-30T14:40:35.161Z",
+    "review": "Visually reviewed fictional coordinator reading a blank note sheet beside closed tablet case; fully closed cupboard at a distance. Natural anatomy, no tools or electrical intervention. Accepted information-preparation illustration, not real employee/customer or diagnosed fault.",
+    "originalFile": "exec-bd6ccd84-bf9b-4ade-88fe-220fbc37b4eb.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-electrical-fuse-replacement",
+    "key": "diy:diy-electrical-fuse-replacement",
+    "prompt": "Original photorealistic editorial landscape 3:2 cover for a fictional homeowner guide about arranging electrical fuse replacement. A small unbranded white ceramic cartridge fuse sealed inside a clear protective parts pouch on a clean dry desk beside a closed blank proposal folder. No printed rating or numbers, no fuse holder, no wiring, tools, hands, open electrical equipment or installation steps. Soft natural light, modest navy and pale wood office setting; shallow depth of field but pouch and enclosed component clear. This is a generic illustrative component for a qualified scope discussion, not a specified replacement, suitability recommendation, actual customer repair or instruction. No text, logos, certificate or watermark.",
+    "output": "/media/editorial/photos-20261019/diy-electrical-fuse-replacement.webp",
+    "reviewedAt": "2026-10-30T14:42:49.69Z",
+    "review": "Visually reviewed unattached generic cartridge fuse sealed in pouch beside blank proposal folder. No ratings, holder, circuit or work action. Accepted component illustration only, not a specified replacement, suitability advice, installation step or actual repair.",
+    "originalFile": "exec-da0ebf26-d7b8-45c6-926e-327b4264e8c3.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-electrical-inspection",
+    "key": "diy:diy-electrical-inspection",
+    "prompt": "Original photorealistic editorial landscape 3:2 image for a fictional UAE homeowner guide about booking an electrical inspection. A fictional adult professional wearing a plain unbranded navy shirt and a fictional adult property representative in neutral casual clothes stand in a bright modest property reception area reviewing a blank appointment folder on a table. A fully closed opaque electrical cupboard appears at a distance in the corridor behind them. Natural hands and faces, no one touching equipment, no tools, wiring, test readings, certificates, logos or readable text. Wide scene showing the people and the planning discussion, clearly not an inspection being performed or approved. Not actual Fixpoint staff, actual customer, testimonial or completed project; no watermark.",
+    "output": "/media/editorial/photos-20261019/diy-electrical-inspection.webp",
+    "reviewedAt": "2026-10-30T14:44:37.051Z",
+    "review": "Visually reviewed two fictional adults reviewing blank folder with fully closed cupboard in distant corridor. Natural anatomy, no electrical touch, tool, test or certificate. Accepted booking-scope discussion illustration, not real staff/customer, inspection performed or approval.",
+    "originalFile": "exec-e3edb1dd-9b98-48b9-89dc-5beb8651cba9.png"
+  }
+]
