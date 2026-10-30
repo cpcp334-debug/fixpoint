@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "blog",
+    "slug": "wiring-inspection-bu-tina-sharjah",
+    "key": "blog-wiring-records-bu-tina",
+    "prompt": "Original photorealistic editorial horizontal 3:2 cover for a fictional Arabic article about preparing information for a wiring inspection in an ordinary UAE apartment. Wide modest living-room wall with intact closed cable trunking running neatly at a skirting edge, closed white wall socket, blank property information folder on coffee table. No visible conductors, open covers, tools, meters, persons or actions. Daylight, ordinary furniture and realistic materials; no luxury skyline or implied actual location. The scene is a conceptual reference for describing areas and available records, not an actual inspection, assurance of compliant wiring or a repair procedure. No text, logos, watermark or certificates.",
+    "output": "/media/editorial/photos-20261019/blog-wiring-records-bu-tina.webp",
+    "reviewedAt": "2026-10-30T14:03:54.383Z",
+    "review": "Visually reviewed closed trunking and socket with blank folder in fictional room. No electrical intervention or inspection action. Generic skyline does not establish Bu Tina location. Accepted illustrative records context, not evidence of condition or compliance.",
+    "originalFile": "exec-3f84eb0e-bcf1-46fa-ace3-3e4eed215621.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "landscape-lighting-repair-damac-hills-2-dubai",
+    "key": "blog-landscape-observation-damac-hills-2",
+    "prompt": "Original photorealistic editorial landscape 3:2 cover for a fictional Arabic article about describing a landscape-lighting repair request. Ordinary UAE residential garden at dusk, two intact low bollard garden lights beside a paved path and planted border, one softly illuminated and another unlit but undamaged; no explanation of cause implied. Blank appointment notebook on a patio table foreground. No people, tools, open fixtures, visible cables, water hazard, sparks, smoke or testing. A calm observational distant scene, not a DIY repair or actual customer project. No brand, readable text, location landmarks or watermark. Differing light appearance is a description to discuss, not a diagnosis or proof either fixture is faulty.",
+    "output": "/media/editorial/photos-20261019/blog-landscape-observation-damac-hills-2.webp",
+    "reviewedAt": "2026-10-30T14:05:41.91Z",
+    "review": "Visually reviewed two intact bollard lights with differing illumination and blank notebook in fictional garden. No exposed equipment or repair. Different light appearance is illustrative only, not a diagnosed fault or actual Damac Hills project.",
+    "originalFile": "exec-9c943c55-aed7-4a40-a2b6-b87478587584.png"
+  }
+]
