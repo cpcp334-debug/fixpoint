@@ -1,0 +1,62 @@
+[
+  {
+    "kind": "service",
+    "slug": "water-heater-electrical-fault-diagnosis",
+    "key": "service:water-heater-electrical-fault-diagnosis",
+    "prompt": "Photorealistic original editorial landscape 3:2 cover for water-heater electrical fault diagnosis enquiry. Fictional utility closet, intact CLOSED plain electric water heater behind closed safety-transparent outer door, blank appointment card and dark tablet on separate foreground bench. Muted navy and cream palette, indirect soft lighting, no people or reflections. No open components, testing, tools, fault, sparks, labels, text, logo or watermark. Context only, not diagnosis or actual installation/project evidence.",
+    "output": "/media/editorial/photos-20261019/service-water-heater-electrical-fault-diagnosis.webp",
+    "reviewedAt": "2026-10-30T20:11:23.879Z",
+    "review": "Visually reviewed. Closed heater behind glazed door, dark tablet and blank paper with pen. Connected plumbing illustrated, no diagnosis shown; not an approved installation diagram.",
+    "originalFile": "exec-69400d7a-7e6e-4551-9859-b18ae5977387.png"
+  },
+  {
+    "kind": "service",
+    "slug": "water-heater-heating-element-replacement",
+    "key": "service:water-heater-heating-element-replacement",
+    "prompt": "Photorealistic original editorial landscape 3:2 cover for professional water-heater heating-element replacement enquiry. Fictional tiled washroom, intact CLOSED white heater upper right, blank closed parts carton on dry clean counter lower left, simple brass-toned faucet distant background. No exposed element, open heater, active replacement, tools, people or reflection, no text, logo or watermark. Warm beige daylight. Not a DIY guide, real project or verified installation.",
+    "output": "/media/editorial/photos-20261019/service-water-heater-heating-element-replacement.webp",
+    "reviewedAt": "2026-10-30T20:11:23.882Z",
+    "review": "Visually reviewed. Closed heater, blank sealed carton and dry counter. No replacement or exposed element shown; carton does not identify an actual supplied part.",
+    "originalFile": "exec-15902345-fe57-4474-88d2-ba8f985203b0.png"
+  },
+  {
+    "kind": "service",
+    "slug": "water-heater-inspection",
+    "key": "service:water-heater-inspection",
+    "prompt": "Photorealistic original editorial landscape 3:2 cover for a water-heater inspection appointment. Fictional modest UAE utility alcove, intact CLOSED heater on far wall, blank closed inspection folder on oak shelf, soft cool morning daylight, grey-blue tiles. No visible fault, test equipment, hands, people/reflections, tools or open covers. No readable text, logos, watermark or claims of approved installation; not actual customer property.",
+    "output": "/media/editorial/photos-20261019/service-water-heater-inspection.webp",
+    "reviewedAt": "2026-10-30T20:11:23.882Z",
+    "review": "Visually reviewed. Closed heater and blank folder in cool tiled room. Distant generic fictional skyline; no inspection, certification or actual branch claim. Visible connected conduit and plumbing not evaluated as installation evidence.",
+    "originalFile": "exec-5621264e-60c4-480c-9b55-03541b592d64.png"
+  },
+  {
+    "kind": "service",
+    "slug": "water-heater-no-hot-water",
+    "key": "service:water-heater-no-hot-water",
+    "prompt": "Photorealistic original editorial landscape 3:2 cover for enquiry about no hot water. Fictional clean bathroom, dry unmoving plain faucet in close foreground and intact CLOSED water heater distant background, folded muted coral towel, light stone tiles. No flowing water, steam, thermal cues, damage, active repairs, people/reflections, tools, text, logo or watermark. Contextual illustration only; does not diagnose temperature or actual heater condition.",
+    "output": "/media/editorial/photos-20261019/service-water-heater-no-hot-water.webp",
+    "reviewedAt": "2026-10-30T20:11:23.882Z",
+    "review": "Visually reviewed. Dry faucet and coral towels with closed heater in background. No temperature cue or actual fault, no diagnosis implied.",
+    "originalFile": "exec-c6faa893-e872-4ae1-a641-c2530d6022b4.png"
+  },
+  {
+    "kind": "service",
+    "slug": "water-heater-pressure-problem",
+    "key": "service:water-heater-pressure-problem",
+    "prompt": "Photorealistic original editorial landscape 3:2 cover for a water-heater pressure concern enquiry. Fictional utility nook viewed at oblique angle, intact CLOSED heater, plain blank appointment notebook and dark phone on near ledge, muted green wall accent. NO gauge closeups, pressure reading, discharge, leak, steam, open equipment, tools, people/reflections, diagram, text, logo or watermark. Not a fault demonstration or instruction; not real property/project or compliance evidence.",
+    "output": "/media/editorial/photos-20261019/service-water-heater-pressure-problem.webp",
+    "reviewedAt": "2026-10-30T20:11:23.882Z",
+    "review": "Visually reviewed. Closed floor-standing heater with visible upper flue and connected pipework, blank notebook and dark phone. Generic water-heater context, not electrical-only equipment or pressure diagnosis, no reading, release or active work shown.",
+    "originalFile": "exec-b841f1b4-c23b-4b97-9e5d-c26fe1b22dc7.png"
+  },
+  {
+    "kind": "service",
+    "slug": "water-heater-preventive-maintenance",
+    "key": "service:water-heater-preventive-maintenance",
+    "prompt": "Photorealistic original editorial landscape 3:2 cover for professional preventive water-heater maintenance enquiry. Fictional spacious laundry corner with intact CLOSED white heater, tidy closed storage cabinet, blank closed maintenance folder on wooden bench, soft pale blue and off-white daylight. No active maintenance, open covers, parts, tools, people or reflections, visible faults, text, logos, calendar numbers or watermark. Illustrative only, not actual service record or safe installation claim.",
+    "output": "/media/editorial/photos-20261019/service-water-heater-preventive-maintenance.webp",
+    "reviewedAt": "2026-10-30T20:11:23.882Z",
+    "review": "Visually reviewed. Closed heater in laundry room and closed folder on bench. Stylized connected plumbing detail not a validated installation; no maintenance or test shown, no actual service record.",
+    "originalFile": "exec-de1fa133-77d3-489c-8bdf-af7896a32f55.png"
+  }
+]
