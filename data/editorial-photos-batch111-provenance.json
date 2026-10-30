@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "diy",
+    "slug": "diy-refrigerator-electrical-fault-diagnosis",
+    "key": "diy:diy-refrigerator-electrical-fault-diagnosis",
+    "prompt": "Photorealistic natural editorial website cover landscape 3:2, closed upright domestic refrigerator in a fictional modern apartment kitchen, full appliance clearly visible with intact exterior and dark unlit control panel, plain closed appointment notebook on adjacent counter, gentle afternoon daylight, realistic understated interiors. Illustrates preparing to book professional electrical fault diagnosis, not a procedure. No people, exposed parts, tools, wires, smoke, sparks, logos, readable text, or claims of actual job or location. Distinct frontal wide composition.",
+    "output": "/media/editorial/photos-20261019/diy-refrigerator-electrical-fault-diagnosis-cover111.webp",
+    "reviewedAt": "2026-10-30T23:22:02.041Z",
+    "review": "Individually viewed: intact closed refrigerator with dark panel and appointment notebook in fictional kitchen. No tools or repairs. Accepted as service-booking illustration, not fault diagnosis or actual location evidence.",
+    "originalFile": "exec-132c964d-ef88-4ab3-bbd9-17b1b1db2f27.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-water-heater-electrical-fault-diagnosis",
+    "key": "diy:diy-water-heater-electrical-fault-diagnosis",
+    "prompt": "Photorealistic natural editorial website cover landscape 3:2. A closed small white wall-mounted domestic electric storage water heater in a neat fictional utility room, its intact outer casing and lower covered connection area fully visible, simple closed service folder on a shelf well away from equipment. Soft natural daylight, realistic modest domestic setting, no people, no hands, no tools, no opened covers, no exposed electrical terminals or wires, no water leaks, no operation or repair demonstration, no logos or readable text. Illustrates arranging a professional electrical diagnosis visit, never a wiring guide or proof of compliance. Three-quarter side composition.",
+    "output": "/media/editorial/photos-20261019/diy-water-heater-electrical-fault-diagnosis-cover111.webp",
+    "reviewedAt": "2026-10-30T23:22:02.048Z",
+    "review": "Individually viewed: closed storage water heater and folder in fictional utility room. No exposed electrical components or demonstration. Plumbing visible but not accepted as installation design, compliance, wiring arrangement or actual service evidence.",
+    "originalFile": "exec-88f9da65-9e4b-4df0-9b13-9797822a1257.png"
+  }
+]
