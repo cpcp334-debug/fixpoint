@@ -1,0 +1,202 @@
+[
+  {
+    "kind": "service",
+    "slug": "drain-blockage-removal",
+    "key": "service:drain-blockage-removal",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for a UAE service page. Not a real client property or completed project. No people, human reflections, readable text, logos or watermark. Dry tidy fictional UAE kitchenette with intact sink and closed drain strainer, dark phone and blank appointment notebook on separate counter, muted blue cabinets. No visible blockage, water overflow, chemical bottle, tool or person. Booking-context only, no diagnosis or completed work.",
+    "output": "/media/editorial/photos-20261019/service-drain-blockage-removal.webp",
+    "reviewedAt": "2026-10-30T18:35:50.841Z",
+    "review": "Reviewed intact dry sink and closed faucet, blank notebook and dark phone. No blockage, overflow or work shown. Accepted enquiry illustration, not a diagnosis or cleaning result.",
+    "originalFile": "exec-24c9444a-6731-49f6-886e-0e2d731e3257.png"
+  },
+  {
+    "kind": "service",
+    "slug": "drain-cleaning",
+    "key": "service:drain-cleaning",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for a UAE service page. Not a real client property or completed project. No people, human reflections, readable text, logos or watermark. Fictional UAE washroom with clean intact floor drain grate and dry tiled floor, closed blank service folder on dry bench, warm limestone and daylight. No worker, cleaning tool, chemical or open drain. Maintenance enquiry context, not before/after result.",
+    "output": "/media/editorial/photos-20261019/service-drain-cleaning.webp",
+    "reviewedAt": "2026-10-30T18:35:50.848Z",
+    "review": "Reviewed intact floor grate in dry washroom, closed folder and no worker or tools. Accepted cleaning-service context, not before/after or proof of a cleared drain.",
+    "originalFile": "exec-a22c3365-7e33-4a9f-8c89-caea014b7b42.png"
+  },
+  {
+    "kind": "service",
+    "slug": "faucet-repair",
+    "key": "service:faucet-repair",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for a UAE service page. Not a real client property or completed project. No people, human reflections, readable text, logos or watermark. Intact closed brushed-metal faucet above empty dry basin, blank observation card and dark phone on adjacent dry shelf, modest fictional UAE bathroom with sage tile. No leak, disassembly, tool or repair, no claimed cause.",
+    "output": "/media/editorial/photos-20261019/service-faucet-repair.webp",
+    "reviewedAt": "2026-10-30T18:35:50.848Z",
+    "review": "Reviewed intact closed faucet over empty dry basin, blank card and dark phone. No leak or work. Accepted repair-enquiry context, not fault diagnosis.",
+    "originalFile": "exec-6d28f25b-03fd-4ea8-8588-c7901efb3026.png"
+  },
+  {
+    "kind": "service",
+    "slug": "faucet-replacement",
+    "key": "service:faucet-replacement",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for a UAE service page. Not a real client property or completed project. No people, human reflections, readable text, logos or watermark. Sealed plain faucet-sized carton and closed blank selection notebook on dry counter beside intact unbranded faucet, fictional UAE small kitchen in daylight. No installation, compatibility claim, removed fitting, tools or people.",
+    "output": "/media/editorial/photos-20261019/service-faucet-replacement.webp",
+    "reviewedAt": "2026-10-30T18:35:50.848Z",
+    "review": "Reviewed sealed plain carton, closed notebook and intact faucet. No installation, component selection or compatibility claim. Accepted replacement-planning illustration.",
+    "originalFile": "exec-1fc70a26-7918-4a12-831f-50c833ac261c.png"
+  },
+  {
+    "kind": "service",
+    "slug": "floor-drain-repair",
+    "key": "service:floor-drain-repair",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for a UAE service page. Not a real client property or completed project. No people, human reflections, readable text, logos or watermark. Dry fictional UAE utility room with intact flush floor drain grate in foreground, blank assessment binder on bench, pale grey tile and soft daylight. No open drain, flooding, damage, tools or work. Enquiry illustration, not proof of condition.",
+    "output": "/media/editorial/photos-20261019/service-floor-drain-repair.webp",
+    "reviewedAt": "2026-10-30T18:35:50.848Z",
+    "review": "Reviewed intact floor grate, dry utility room and blank binder. Background equipment is incidental; no open drain, flooding or repair shown. Accepted assessment-booking illustration.",
+    "originalFile": "exec-b44294c7-6896-4103-ba52-b16c20e79762.png"
+  },
+  {
+    "kind": "service",
+    "slug": "pipe-repair",
+    "key": "service:pipe-repair",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for a UAE service page. Not a real client property or completed project. No people, human reflections, readable text, logos or watermark. Fictional dry UAE service corridor with fully intact closed plumbing pipework viewed from doorway, closed observation notebook and dark phone on nearby bench. No leak, open pipe, gauge reading, tool or person. No diagnosis or project claim.",
+    "output": "/media/editorial/photos-20261019/service-pipe-repair.webp",
+    "reviewedAt": "2026-10-30T18:35:50.848Z",
+    "review": "Reviewed intact closed pipework viewed from doorway, blank notebook and dark phone. No leak, open end, tools or work. Accepted observation-enquiry context, not compliant-installation specification.",
+    "originalFile": "exec-0942083f-925f-4d77-98f5-981c1f1cc07f.png"
+  },
+  {
+    "kind": "service",
+    "slug": "pipe-replacement",
+    "key": "service:pipe-replacement",
+    "prompt": "Photorealistic editorial landscape 3:2 illustration for pipe-replacement enquiry. Fictional UAE room, sealed plain carton and CLOSED blank binder on clean desk, fully closed plumbing cupboard in background. No loose papers, diagrams, blueprints, text or markings. No pipe ends, tools, work, people or reflections. Natural light, warm modest office. Not an actual plan, installation or customer project.",
+    "output": "/media/editorial/photos-20261019/service-pipe-replacement.webp",
+    "reviewedAt": "2026-10-30T18:35:50.848Z",
+    "review": "Reviewed replacement image with sealed carton, closed blank binder and fully closed cupboard. Previous version with invented plan excluded and retained. Accepted scope-planning illustration only.",
+    "originalFile": "exec-3458e83e-1df6-4fa3-9dd6-aeac4b5e0e59.png"
+  },
+  {
+    "kind": "service",
+    "slug": "plumbing-inspection",
+    "key": "service:plumbing-inspection",
+    "prompt": "Photorealistic editorial landscape 3:2 illustration for a plumbing-inspection booking. Fictional UAE dry utility room, blank closed appointment binder on bench, one intact closed plumbing riser pipe running continuously from floor to ceiling with no branches or visible pipe ends. No blue unit, open pipe, gauge, reading, tool, diagram, readable text, logo, person or reflections. Not an actual inspection or compliant installation example. Pale stone and daylight.",
+    "output": "/media/editorial/photos-20261019/service-plumbing-inspection.webp",
+    "reviewedAt": "2026-10-30T18:35:50.848Z",
+    "review": "Reviewed replacement image with continuous enclosed riser, blank closed binder and dry room. Previous version with open pipe end excluded and retained. No inspection, result or compliance claim.",
+    "originalFile": "exec-5021c70d-578d-4c33-8cab-d266e9150a11.png"
+  },
+  {
+    "kind": "service",
+    "slug": "plumbing-maintenance",
+    "key": "service:plumbing-maintenance",
+    "prompt": "Original photorealistic landscape 3:2 editorial illustration for plumbing maintenance enquiry, fictional UAE utility room. Intact sink and fully closed service cupboard, blank closed maintenance binder on dry counter, soft daylight and muted terracotta. No people, reflections, readable text, logos, tools, open fitting, visible fault or actual work. Not a real client project or proof of condition.",
+    "output": "/media/editorial/photos-20261019/service-plumbing-maintenance.webp",
+    "reviewedAt": "2026-10-30T18:42:12.883Z",
+    "review": "Reviewed intact dry sink, fully closed cupboard and blank binder in empty utility room. No work or condition proof; accepted maintenance enquiry illustration.",
+    "originalFile": "exec-80fbfc55-2360-4615-af77-68de85669589.png"
+  },
+  {
+    "kind": "service",
+    "slug": "running-toilet-repair",
+    "key": "service:running-toilet-repair",
+    "prompt": "Original photorealistic landscape 3:2 editorial illustration for booking assessment of a running-toilet concern. Fictional UAE modest bathroom, intact toilet with both cistern and seat fully closed, blank observation notebook and dark phone on separate dry shelf. No visible water flow, opened cistern, tools, chemicals, person, reflection, readable text, logo or work. No diagnosis or actual customer project claim.",
+    "output": "/media/editorial/photos-20261019/service-running-toilet-repair.webp",
+    "reviewedAt": "2026-10-30T18:42:12.883Z",
+    "review": "Reviewed intact toilet with cistern and seat closed, blank notebook and dark phone on dry surface. No internal mechanism, flow or work. Accepted enquiry illustration, not diagnosis.",
+    "originalFile": "exec-0506208e-0b6d-4afd-87ea-016a1528cff3.png"
+  },
+  {
+    "kind": "service",
+    "slug": "shower-mixer-replacement",
+    "key": "service:shower-mixer-replacement",
+    "prompt": "Original photorealistic landscape 3:2 editorial illustration for shower-mixer replacement planning. Fictional UAE dry shower room with intact closed unbranded mixer fixture, sealed plain carton and closed blank notebook on dry exterior bench. No water flow, dismantling, tools, person, reflection, readable text, logo, compatibility or completed installation claim. Calm warm stone and daylight.",
+    "output": "/media/editorial/photos-20261019/service-shower-mixer-replacement.webp",
+    "reviewedAt": "2026-10-30T18:42:12.883Z",
+    "review": "Reviewed intact closed shower mixer and showerhead, sealed plain carton and closed notebook on dry bench. No flow or work. Accepted replacement planning, not compatibility or actual installation.",
+    "originalFile": "exec-7f61e2de-edc6-47af-a46d-c88447a12f17.png"
+  },
+  {
+    "kind": "service",
+    "slug": "shower-repair",
+    "key": "service:shower-repair",
+    "prompt": "Original photorealistic landscape 3:2 editorial illustration for shower repair enquiry. Fictional UAE dry tiled shower with intact closed showerhead and mixer in background, blank observation card and dark phone on dry vanity outside shower. No leak, damage, water flow, opening, tools, chemicals, person, reflection, text or logo. Not a diagnosis, repair result or real customer project.",
+    "output": "/media/editorial/photos-20261019/service-shower-repair.webp",
+    "reviewedAt": "2026-10-30T18:42:12.883Z",
+    "review": "Reviewed intact showerhead and mixer behind glass, blank observation card and dark phone on dry vanity. No flow, fault or repair. Accepted enquiry context.",
+    "originalFile": "exec-1050edbd-5544-4fd1-a940-dcef35cabad7.png"
+  },
+  {
+    "kind": "service",
+    "slug": "sink-installation",
+    "key": "service:sink-installation",
+    "prompt": "Photorealistic editorial landscape 3:2 fictional UAE kitchen planning scene. Intact empty dry sink and closed faucet, sealed plain carton and blank CLOSED selection binder on adjacent counter, simple oak cabinetry and daylight. No people, human reflections, text, logo, blueprint, tools, open plumbing or work. Illustration only, not actual installation or product compatibility.",
+    "output": "/media/editorial/photos-20261019/service-sink-installation.webp",
+    "reviewedAt": "2026-10-30T18:47:16.193Z",
+    "review": "Reviewed intact dry sink, sealed carton and closed blank binder. No installation, blueprint or compatibility claim. Accepted fictional planning illustration.",
+    "originalFile": "exec-2c93d258-1fca-4839-a35b-0d9f6f3148e5.png"
+  },
+  {
+    "kind": "service",
+    "slug": "sink-repair",
+    "key": "service:sink-repair",
+    "prompt": "Photorealistic editorial landscape 3:2 fictional UAE utility sink repair enquiry. Intact dry ceramic sink, blank observation sheet and dark phone on separate dry shelf, muted blue and ivory tiles. No leak, crack, open pipe, tools, person, reflections, text, logo or actual repair. Not a fault diagnosis or customer project.",
+    "output": "/media/editorial/photos-20261019/service-sink-repair.webp",
+    "reviewedAt": "2026-10-30T18:47:16.193Z",
+    "review": "Reviewed intact dry utility sink with blank clipboard and dark phone. No leak, fault or work. Accepted observation-enquiry illustration.",
+    "originalFile": "exec-2f4aff1d-aea9-4ebc-84aa-eb6f9c10f93f.png"
+  },
+  {
+    "kind": "service",
+    "slug": "toilet-installation",
+    "key": "service:toilet-installation",
+    "prompt": "Photorealistic editorial landscape 3:2 fictional UAE bathroom planning illustration. Intact fully closed toilet in background, sealed plain carton and blank CLOSED planning notebook on dry exterior bench. No opened cistern, removal, tools, person, reflections, text, logo, blueprint or installation work. No claim of product suitability or real customer property.",
+    "output": "/media/editorial/photos-20261019/service-toilet-installation.webp",
+    "reviewedAt": "2026-10-30T18:47:16.193Z",
+    "review": "Reviewed intact closed toilet seen through doorway with sealed carton and closed notebook on outside bench. Exterior-facing composition is fictional, not a recommended layout or real project. No installation or suitability claim.",
+    "originalFile": "exec-acbfc77d-d526-426a-aef6-44022d47507b.png"
+  },
+  {
+    "kind": "service",
+    "slug": "toilet-repair",
+    "key": "service:toilet-repair",
+    "prompt": "Photorealistic editorial landscape 3:2 fictional UAE toilet repair booking illustration. Modest clean dry bathroom with intact toilet seat and cistern fully closed, blank observation card and dark phone on dry cabinet. No water flow, blockage, tools, chemical, open mechanism, person, reflections, text, logo or work. No diagnosis or completed project.",
+    "output": "/media/editorial/photos-20261019/service-toilet-repair.webp",
+    "reviewedAt": "2026-10-30T18:47:16.193Z",
+    "review": "Reviewed intact fully closed toilet, blank notebook and dark phone on dry cabinet. No mechanism, water flow, tools or repair. Accepted booking illustration, not diagnosis.",
+    "originalFile": "exec-afc10dcc-49d9-475e-9254-b89c1dd59ac7.png"
+  },
+  {
+    "kind": "service",
+    "slug": "water-leakage-detection",
+    "key": "service:water-leakage-detection",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for water-leakage detection booking. Fictional modest UAE utility room, intact dry wall and closed plumbing service cabinet, blank observation notebook and dark phone on clean counter. No wet patch, visible fault, opening, meter, tools, diagnostic result, person, human reflection, text, logo or watermark. Not actual customer property or inspection evidence.",
+    "output": "/media/editorial/photos-20261019/service-water-leakage-detection.webp",
+    "reviewedAt": "2026-10-30T18:53:25.597Z",
+    "review": "Reviewed intact dry utility room and closed cabinet, blank notebook and dark phone. No visible leak or testing. Accepted detection-enquiry context, not diagnostic result.",
+    "originalFile": "exec-5f02eaab-5bfc-47f9-9278-4172e983f642.png"
+  },
+  {
+    "kind": "service",
+    "slug": "water-leakage-repair",
+    "key": "service:water-leakage-repair",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for water-leakage repair enquiry. Fictional UAE dry kitchen service corner, intact closed pipework visible from doorway with no open pipe ends, closed blank scope folder on bench and sealed plain carton. No leak, water flow, damage, disassembly, tools, work, person, human reflection, text, logo or watermark. No actual repair or diagnosis claim.",
+    "output": "/media/editorial/photos-20261019/service-water-leakage-repair.webp",
+    "reviewedAt": "2026-10-30T18:53:25.601Z",
+    "review": "Reviewed intact dry kitchen, closed cabinets, sealed carton and closed folder. Pipework is concealed rather than shown; accepted repair-enquiry context, not condition or completed work evidence.",
+    "originalFile": "exec-f76df370-aa3e-4fa0-8596-121b561f5561.png"
+  },
+  {
+    "kind": "service",
+    "slug": "water-pressure-problem-diagnosis",
+    "key": "service:water-pressure-problem-diagnosis",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for arranging professional water-pressure assessment. Fictional UAE bathroom with intact closed faucet, blank appointment binder on dry vanity, fully closed service cupboard distant. No water flow, gauge, reading, test, open fitting, tool, person, reflection, readable text, logo or watermark. Not actual diagnosis or proof of pressure. Muted slate blue and cream daylight.",
+    "output": "/media/editorial/photos-20261019/service-water-pressure-problem-diagnosis.webp",
+    "reviewedAt": "2026-10-30T18:53:25.601Z",
+    "review": "Reviewed intact closed faucet, closed binder and distant closed cupboard. No water flow or pressure reading. Accepted assessment-booking illustration only.",
+    "originalFile": "exec-58f2d7c3-0c21-4d51-a71f-f804f74ebb9a.png"
+  },
+  {
+    "kind": "service",
+    "slug": "water-supply-line-repair",
+    "key": "service:water-supply-line-repair",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for water-supply-line repair enquiry. Fictional UAE dry utility corridor with one intact closed continuous plumbing riser from floor to ceiling, no branches or visible pipe ends; blank closed observation folder and dark phone on separate dry bench. No leak, tools, opening, diagram, work, person, human reflection, text, logo or watermark. Not a real project or condition evidence.",
+    "output": "/media/editorial/photos-20261019/service-water-supply-line-repair.webp",
+    "reviewedAt": "2026-10-30T18:53:25.601Z",
+    "review": "Reviewed continuous enclosed riser with no visible open ends, closed folder and dark phone on dry bench. Accepted supply-line enquiry context, not verified pipe material, system type or compliance.",
+    "originalFile": "exec-a6694d19-7cb4-4d67-bdd4-10bf8309ffc8.png"
+  }
+]
