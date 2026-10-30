@@ -1,0 +1,42 @@
+[
+  {
+    "kind": "diy",
+    "slug": "diy-electrical-cable-repair",
+    "key": "diy:diy-electrical-cable-repair",
+    "prompt": "Original photorealistic landscape 3:2 editorial cover for a fictional before-booking electrical cable repair guide. A dry modest property utility corridor with an intact closed cable-containment run along a wall, entirely closed metal junction enclosure, and a blank repair-scope folder resting on a small plain work counter at a distance. No cable ends or exposed conductors, no damage, no tools, no people, no meter readings, no action or instructions. Neutral UAE building materials and soft daylight. Make the fully closed cable route the main subject, not a distribution-board closeup. No text, labels, logos or certificates. Illustration of identifying a route and planning qualified assessment, not proof that the route is safe or an actual repair.",
+    "output": "/media/editorial/photos-20261019/diy-electrical-cable-repair.webp",
+    "reviewedAt": "2026-10-30T14:15:57.275Z",
+    "review": "Visually reviewed closed containment and enclosure with blank scope folder in fictional dry property walkway. No exposed conductor, damage or repair procedure. Accepted for route description and booking context; not actual repair, compliance or condition evidence.",
+    "originalFile": "exec-eaf176d4-e925-4bdb-b234-d49188584df5.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-electrical-control-panel-inspection",
+    "key": "diy:diy-electrical-control-panel-inspection",
+    "prompt": "Original photorealistic editorial horizontal 3:2 cover for a before-booking guide about electrical control panel inspection. Fictional modest building plant-room entrance viewed from an adjacent clean office; fully closed opaque control cabinet with intact unlabelled small external indicator lenses and no readings, a blank asset-reference folder and empty appointment pad on office desk foreground. No open panels, diagrams, visible wires, test instruments, tools or people; no buttons being touched. Cool daylight and ordinary practical materials, different wide composition from household electrical board scenes. No text, logos, certificates or claim of a real property. Conceptual identification and qualified review booking, not an inspection result or proof of safe equipment.",
+    "output": "/media/editorial/photos-20261019/diy-electrical-control-panel-inspection.webp",
+    "reviewedAt": "2026-10-30T14:17:20.408Z",
+    "review": "Visually reviewed closed control cabinet with intact external lenses, blank folder and pad in separate office. Background contains insulated cable runs, not exposed conductor ends. No intervention, reading or inspection result. Accepted fictional asset-identification and booking context only.",
+    "originalFile": "exec-dd7b2ab7-89fe-4f4d-80c2-943d0eee03ca.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-electrical-control-panel-repair",
+    "key": "diy:diy-electrical-control-panel-repair",
+    "prompt": "Original photorealistic editorial horizontal 3:2 image for a fictional before-booking control panel repair guide. A modest property maintenance office desk with a closed blank proposed-repair folder and small closed unmarked parts case, fully closed opaque industrial control cabinet seen through interior glass partition in the background. No people, tools, removed components, open equipment, bare wire, readings or tests. Muted navy chair, natural indirect daylight, functional grey and pale wood finishes. Wide composition with folder and parts case right foreground and cabinet far left rear. No text, brands, certificates or watermark. Conceptual scope discussion before qualified repair, not a diagnosis, guarantee, completed work or actual customer project.",
+    "output": "/media/editorial/photos-20261019/diy-electrical-control-panel-repair.webp",
+    "reviewedAt": "2026-10-30T14:19:40.154Z",
+    "review": "Visually reviewed closed cabinet behind glass, blank proposed-scope folder and closed parts case. No open equipment, exposed conductors or repair procedure. Accepted fictional scope-planning illustration, not diagnosis or completed client work.",
+    "originalFile": "exec-7065e206-776a-4c86-b348-73c0c296f19f.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-electrical-corrective-maintenance",
+    "key": "diy:diy-electrical-corrective-maintenance",
+    "prompt": "Original photorealistic editorial horizontal 3:2 cover for a fictional before-booking electrical corrective maintenance guide. An ordinary UAE property reception counter with two separate closed blank folders and a blank appointment notebook, intact fully closed electrical service cupboard visible down a corridor. Composition shows organised review of a reported issue and proposed work; no workers, tools, damaged equipment, test results, certificates, readable text, logos or exposed wires. Warm daylight, modest practical stone and wood interior with navy accents. Clearly a conceptual planning scene, not evidence of a completed repair, safety approval or an actual client property. Make the foreground folders and corridor perspective distinct from a plant-room desk scene.",
+    "output": "/media/editorial/photos-20261019/diy-electrical-corrective-maintenance.webp",
+    "reviewedAt": "2026-10-30T14:21:22.116Z",
+    "review": "Visually reviewed two blank closed folders and appointment pad with closed service cupboard in fictional corridor. No fault, work action, reading or completion claim. Accepted for separating reported issue and proposed scope; not actual maintenance or safety approval.",
+    "originalFile": "exec-aad2b41e-aa66-400a-b013-f369ffa68214.png"
+  }
+]
