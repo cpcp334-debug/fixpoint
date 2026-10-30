@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "diy",
+    "slug": "diy-microwave-electrical-diagnosis",
+    "key": "diy:diy-microwave-electrical-diagnosis",
+    "prompt": "Photorealistic editorial website cover, landscape 3:2. An intact closed modern countertop microwave in a quiet clean fictional apartment kitchen, unlit display, unobstructed front and side, a plain closed service notebook on nearby countertop suggesting preparing for a professional electrical diagnosis appointment. Soft window daylight, realistic textures, restrained composition. No people, no tools touching the appliance, no open covers, no exposed wiring, no sparks or smoke, no repair demonstration, no logos, no legible text, no proof of actual service or location. Illustrative scene only.",
+    "output": "/media/editorial/photos-20261019/diy-microwave-electrical-diagnosis-cover110.webp",
+    "reviewedAt": "2026-10-30T23:13:36.717Z",
+    "review": "Individually viewed: closed countertop microwave, dark display and notebook. No exposed wiring, people or repair demonstration. Accepted as fictional professional appointment preparation illustration, not diagnostic evidence.",
+    "originalFile": "exec-44d15bea-e179-4778-8d4c-22cc05262408.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-oven-electrical-fault-diagnosis",
+    "key": "diy:diy-oven-electrical-fault-diagnosis",
+    "prompt": "Photorealistic editorial website cover, landscape 3:2. A closed built-in electric oven under a pale stone counter in a fictional contemporary apartment kitchen, front controls unlit, full closed door visible, a plain closed appointment folder on counter, morning side light, natural restrained colors. Distinct low three-quarter viewpoint at oven height, realistic domestic room. Illustrates arranging a professional electrical fault diagnosis, not performing it. No people, no exposed internals, no tools, no wiring, no sparks or smoke, no logo or legible text, no claim of actual job or location.",
+    "output": "/media/editorial/photos-20261019/diy-oven-electrical-fault-diagnosis-cover110.webp",
+    "reviewedAt": "2026-10-30T23:13:36.723Z",
+    "review": "Individually viewed: closed built-in oven, unlit controls and folder, no exposed internals or repair demonstration. Accepted as fictional appointment preparation illustration, not fault or location evidence.",
+    "originalFile": "exec-48550da7-11aa-4c12-9d06-cbcea0c1aac7.png"
+  }
+]
