@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "service",
+    "slug": "emergency-water-heater-repair",
+    "key": "service:emergency-water-heater-repair",
+    "prompt": "Original photorealistic editorial landscape 3:2 cover for emergency water-heater repair enquiry. Fictional UAE utility room viewed from doorway, intact closed wall-mounted cylindrical electric water heater, no logos, modest neutral tiles, blank dark phone and folded plain towel on distant shelf. Calm warm daylight with navy accent. No danger, leak, damage, steam, fire, sparks, exposed wiring, open equipment, tools, people or reflections. Not a real client project or proof of safe installation; no text, diagram or certification.",
+    "output": "/media/editorial/photos-20261019/service-emergency-water-heater-repair.webp",
+    "reviewedAt": "2026-10-30T19:57:04.564Z",
+    "review": "Reviewed closed heater in fictional tiled utility room with towel and dark phone. Visible connected hoses and valves are illustration details, not a verified or approved installation; no active fault or work depicted. No readable label or people.",
+    "originalFile": "exec-bd6c65ec-bd8a-4e6a-ae2d-0b23eee5e513.png"
+  },
+  {
+    "kind": "service",
+    "slug": "water-heater-cleaning",
+    "key": "service:water-heater-cleaning",
+    "prompt": "Original photorealistic editorial landscape 3:2 cover for professional water-heater cleaning service. Fictional bright tiled service alcove with intact closed white cylindrical water heater in background, neatly rolled clean cloths and an empty plain bucket on foreground floor, cream and muted sage palette. No active cleaning or draining, no open equipment, wiring, loose pipes, chemicals, tools, people or reflections. No text, labels, logo or watermark. Illustrative service context, not an actual company project or claim that inside is clean.",
+    "output": "/media/editorial/photos-20261019/service-water-heater-cleaning.webp",
+    "reviewedAt": "2026-10-30T19:57:04.567Z",
+    "review": "Reviewed closed heater behind clean cloths and plain bucket in fictional alcove. Connected pipework visible, no draining, active cleaning or opened equipment. Does not prove cleanliness inside or depict an actual client project.",
+    "originalFile": "exec-9af89d36-c4d2-4bfe-a3e5-bdb5f432781a.png"
+  }
+]
