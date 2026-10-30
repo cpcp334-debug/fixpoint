@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "blog",
+    "slug": "partial-power-failure-diagnosis-al-hamra-village-ras-al-khaimah",
+    "key": "blog-partial-observations-al-hamra",
+    "prompt": "Original photorealistic landscape 3:2 editorial cover for Arabic consumer article about describing PARTIAL power loss in Al Hamra Village. Fictional modest UAE apartment dining area in natural daylight, intact off pendant and ordinary off desk lamp in separate visible zones, blank floor-plan sheet and blank observation notebook on table. No actual outage visual effects, no readings, no tools, no open panel, no person or electrical contact. Do not imply which circuit failed or actual utility condition. Plain terracotta and cream decor, no landmarks, text, logos or watermark. Hypothetical observation-planning scene, not client property.",
+    "output": "/media/editorial/photos-20261019/blog-partial-observations-al-hamra.webp",
+    "reviewedAt": "2026-10-30T15:55:29.119Z",
+    "review": "Reviewed intact off lamps, blank notebook and conceptual floor-plan sheet in fictional apartment. Drawing is not an electrical design or actual property plan. Accepted observation-planning scene, not outage, circuit or utility-condition evidence.",
+    "originalFile": "exec-2c32bc47-e3d9-4f41-9df7-a34456834d8b.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "electrical-corrective-maintenance-al-tallah-ajman",
+    "key": "blog-corrective-scope-al-tallah",
+    "prompt": "Original photorealistic landscape 3:2 editorial cover for Arabic consumer article about scoping electrical CORRECTIVE maintenance in Al Tallah. Fictional ordinary UAE property manager office, two neatly separated closed plain work folders and blank appointment notebook on wooden desk, fully closed unbranded electrical cupboard in distant hallway. Wide composition with muted green office chair and daylight, no person, exposed wires, tools, certificates, stamps or safety claim. No text logos watermark. Concept of distinguishing initial assessment and approved remedial work, not actual customer job or completed repair.",
+    "output": "/media/editorial/photos-20261019/blog-corrective-scope-al-tallah.webp",
+    "reviewedAt": "2026-10-30T15:55:29.123Z",
+    "review": "Reviewed two closed folders, blank notebook and distant closed cupboard in fictional office. No work, staff or certification. Accepted conceptual distinction of assessment and remedial scope, not actual job or repair.",
+    "originalFile": "exec-c4594823-90b4-459f-b477-8a398369b458.png"
+  }
+]
