@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "blog",
+    "slug": "socket-repair-muwaileh-sharjah",
+    "key": "blog-socket-observation-muwaileh",
+    "prompt": "Original photorealistic editorial landscape 3:2 cover for a fictional Arabic consumer article about describing a socket-repair request in a modest UAE apartment. Intact fully closed white British-style wall socket above an ordinary side table, unplugged and untouched; blank observation notebook and closed plain folder on table, soft natural daylight. No burn marks, damage, sparks, open covers, exposed wiring, tools, hands, measurements or test. Wider room context with neutral furniture and no location landmark. No text, brand, certificate or watermark. The image illustrates recording an observation before qualified assessment, not proof the socket is defective or safe, not an actual customer project or repair instructions.",
+    "output": "/media/editorial/photos-20261019/blog-socket-observation-muwaileh.webp",
+    "reviewedAt": "2026-10-30T14:48:15.687Z",
+    "review": "Visually reviewed intact unplugged double socket with blank notebook/folder in fictional room. No damage, testing or intervention. Accepted observation-preparation illustration, not proof of fault, safety or an actual Muwaileh repair.",
+    "originalFile": "exec-518c35d6-c05d-47f1-86d9-f536ab12652d.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "flickering-light-diagnosis-maliha-sharjah",
+    "key": "blog-flicker-log-maliha",
+    "prompt": "Original photorealistic editorial horizontal 3:2 cover for a fictional Arabic consumer article about recording a flickering-light observation before booking assessment. Modest UAE living room at early evening, one intact shaded floor lamp emitting a steady soft glow, blank timing-notes notebook on a side table and a closed unbranded folder. No animation blur, sparks, smoke, damage, open fixture, wires, tools, people or technical readings. Do not visually pretend a static photo proves flicker; this is a calm conceptual observation-recording scene, not diagnosis or repair. No text, logo, certificate, location landmark or watermark. Distinct composition with lamp left and notebook in right foreground.",
+    "output": "/media/editorial/photos-20261019/blog-flicker-log-maliha.webp",
+    "reviewedAt": "2026-10-30T14:50:03.014Z",
+    "review": "Visually reviewed intact lamp emitting steady glow and blank timing notebook in fictional room. No fault simulation, work action or hazard. Accepted observation-recording illustration; static image does not prove flicker, a cause or an actual Maliha job.",
+    "originalFile": "exec-705f708a-1ac0-482c-b6cf-299d54b9294f.png"
+  }
+]
