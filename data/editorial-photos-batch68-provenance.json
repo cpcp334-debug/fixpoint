@@ -1,0 +1,42 @@
+[
+  {
+    "kind": "diy",
+    "slug": "diy-earthing-cable-replacement",
+    "key": "diy:diy-earthing-cable-replacement",
+    "prompt": "Photorealistic editorial landscape 3:2 cover for a fictional before-booking guide on earthing cable replacement. Clean dry property facilities store, a neatly coiled unbranded green-and-yellow insulated cable fully detached and unconnected on an ordinary shelf beside a closed blank scope folder; no cut ends visible, no wiring terminals, no gauges or dimensions, no test equipment, no people or tools. Soft natural light, neutral stone and navy accents. Show planning materials only, not a specification, completed installation or instruction. No readable text, logos or watermark. Composition distinct from an electrical panel lobby; restrained close view of shelf and sealed proposal folder.",
+    "output": "/media/editorial/photos-20261019/diy-earthing-cable-replacement.webp",
+    "reviewedAt": "2026-10-30T13:55:55.498Z",
+    "review": "Visually reviewed detached unconnected insulated cable on shelf beside blank folder. No terminals, sizing or procedure. Fictional planning context only, not a specified replacement or actual client installation.",
+    "originalFile": "exec-9ba05d26-5e2f-41c3-a7c5-41a7e109fc8b.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-earthing-repair",
+    "key": "diy:diy-earthing-repair",
+    "prompt": "Original photorealistic editorial landscape 3:2 cover for a fictional before-booking guide on earthing repair. Quiet external service walkway of a generic UAE low-rise property, intact opaque closed service cabinet on a wall, dry paving with a small closed flush access cover, blank appointment notebook on a near ledge. Wide environmental framing, calm morning daylight, practical ordinary architecture not luxury hotel. No exposed conductors or earth rods, no open pit, no hands, tools, meters or actions; no visible fault, smoke, sparks, test readings, safety certificate, text or logos. Illustrate locating and arranging access for qualified assessment only, not repair instructions or an actual client job.",
+    "output": "/media/editorial/photos-20261019/diy-earthing-repair.webp",
+    "reviewedAt": "2026-10-30T13:57:08.836Z",
+    "review": "Visually reviewed fully closed enclosure and flush cover with blank notebook in fictional dry courtyard. No exposed wires or repair action. Illustrates access planning; does not prove earthing contents, condition or actual repair.",
+    "originalFile": "exec-aa9a698c-7fd2-4301-b6b0-a24470b614fd.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-earthing-testing",
+    "key": "diy:diy-earthing-testing",
+    "prompt": "Photorealistic editorial horizontal 3:2 cover for a fictional guide about arranging earthing testing by a qualified professional. Simple property reception meeting desk, closed unmarked black protective instrument case, blank report folder and blank appointment card on desk, a closed opaque electrical service cupboard in far background. No test leads, no open instrument, numbers, pass result, certificate, people, exposed wiring or actions. Natural daylight, modest contemporary UAE building interior, restrained navy and light grey colours. Make the closed case the visual focus, not a panel repair or product sales scene. No text, logo or watermark. Conceptual assessment booking only, not proof testing was performed.",
+    "output": "/media/editorial/photos-20261019/diy-earthing-testing.webp",
+    "reviewedAt": "2026-10-30T13:58:09.145Z",
+    "review": "Visually reviewed closed case, blank folder and appointment card with closed cupboard in fictional reception. No exposed wiring, readings or testing performed. Accepted booking illustration, not evidence of a passed test or actual project.",
+    "originalFile": "exec-b0bff596-bf8e-4c7f-a311-549b71f7a72f.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-electrical-burning-smell-diagnosis",
+    "key": "diy:diy-electrical-burning-smell-diagnosis",
+    "prompt": "Original photorealistic editorial landscape 3:2 image for a safety-focused before-booking guide on reporting an electrical burning smell. Exterior view from outside the open entrance of an ordinary fictional UAE home: unoccupied quiet hallway visible beyond, an intact closed electrical cupboard in the distant background, a smartphone with completely blank dark screen placed on an outdoor side table beside a blank notepad. Show a distant observation and contacting qualified help context; no one approaching or touching equipment. No smoke, fire, sparks, burn marks, open covers, exposed wires, tools, testing, readable emergency numbers, text, logos or claims about an actual incident. Neutral daylight and modest residential setting, no image suggesting that absence of visible smoke proves safety. Composition emphasises distance from the closed equipment, not a repair demonstration.",
+    "output": "/media/editorial/photos-20261019/diy-electrical-burning-smell-diagnosis.webp",
+    "reviewedAt": "2026-10-30T14:00:10.63Z",
+    "review": "Visually reviewed distant closed cupboard seen from outside an empty entrance, blank phone and notepad outside. No touching equipment, smoke or fault depiction. Fictional reporting context only; absence of visible signs is not proof of safety. Accepted as illustrative cover, not an actual incident.",
+    "originalFile": "exec-36937bb4-b4a5-45ab-86d7-dff74c58c98b.png"
+  }
+]
