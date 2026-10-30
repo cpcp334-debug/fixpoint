@@ -1,0 +1,42 @@
+[
+  {
+    "kind": "location",
+    "slug": "al-ain",
+    "key": "location:al-ain",
+    "prompt": "Photorealistic natural editorial website cover landscape 3:2. Fictional courtyard of a low-rise cream stucco home, palm fronds framing a closed external utility cabinet on a shaded wall, warm late-afternoon light, wide quiet composition, inspired by UAE domestic architecture for an Al Ain service-area page without claiming an actual Al Ain scene. Realistic textures, modest believable architecture. No people, no workers, no exposed wires or opened equipment, no repair demonstration, no vehicles, no logos, no legible text, no landmark imitation. Fictional illustrative scene, not proof of local presence, completed work or electrical compliance.",
+    "output": "/media/editorial/photos-20261019/location-al-ain-cover113.webp",
+    "reviewedAt": "2026-10-30T23:31:39.682Z",
+    "review": "Individually viewed and accepted. Closed utility cabinet and palm courtyard; fictional architecture, not verified Al Ain geography or project.",
+    "originalFile": "exec-9801e2a6-bde1-4a64-8558-72e2612fdf62.png"
+  },
+  {
+    "kind": "location",
+    "slug": "al-alia-ajman",
+    "key": "location:al-alia-ajman",
+    "prompt": "Photorealistic natural editorial website cover landscape 3:2. Fictional contemporary pale beige residential entrance with a closed wall-mounted exterior light and neat covered service enclosure, recessed blue-grey doorway and small planted border, bright soft morning light, oblique architectural close wide composition for an Al Alia service-area illustration, not an actual location. Realistic textures, modest believable architecture. No people, no workers, no exposed wires or opened equipment, no repair demonstration, no vehicles, no logos, no legible text, no landmark imitation. Fictional illustrative scene, not proof of local presence, completed work or electrical compliance.",
+    "output": "/media/editorial/photos-20261019/location-al-alia-ajman-cover113.webp",
+    "reviewedAt": "2026-10-30T23:31:39.690Z",
+    "review": "Individually viewed and accepted. Closed enclosure and exterior light at entrance; fictional building, no claim of actual Al Alia property or local presence.",
+    "originalFile": "exec-fa5d1712-6c74-4ea6-90f1-c1d50a1d14a8.png"
+  },
+  {
+    "kind": "location",
+    "slug": "al-amerah",
+    "key": "location:al-amerah",
+    "prompt": "Photorealistic natural editorial website cover landscape 3:2. Fictional compact villa frontage, two-story neutral facade, shaded carport edge, intact exterior lighting fixture, clean paved forecourt with a single young tree, low late-afternoon viewpoint, restrained natural palette for an Al Amerah service-area illustration, not an actual location. Realistic textures, modest believable architecture. No people, no workers, no exposed wires or opened equipment, no repair demonstration, no vehicles, no logos, no legible text, no landmark imitation. Fictional illustrative scene, not proof of local presence, completed work or electrical compliance.",
+    "output": "/media/editorial/photos-20261019/location-al-amerah-cover113.webp",
+    "reviewedAt": "2026-10-30T23:31:39.693Z",
+    "review": "Individually viewed and accepted. Fictional villa frontage and intact lights. Background mountains are invented and not evidence of Al Amerah geography; image accepted only as expressly illustrative, not a site photograph.",
+    "originalFile": "exec-f736bc0d-4d68-4224-a2e7-9d4b534f6378.png"
+  },
+  {
+    "kind": "location",
+    "slug": "al-aqah",
+    "key": "location:al-aqah",
+    "prompt": "Photorealistic natural editorial website cover landscape 3:2. Fictional coastal-style apartment balcony service area, pale plaster walls, closed outdoor-rated-looking cabinet and intact wall light under deep shade, generic blue sea visible out of focus beyond blank railing, airy midday light, landscape architectural composition for an Al Aqah area-page illustration, not an actual location. Realistic textures, modest believable architecture. No people, no workers, no exposed wires or opened equipment, no repair demonstration, no vehicles, no logos, no legible text, no landmark imitation. Fictional illustrative scene, not proof of local presence, completed work or electrical compliance.",
+    "output": "/media/editorial/photos-20261019/location-al-aqah-cover113.webp",
+    "reviewedAt": "2026-10-30T23:31:39.696Z",
+    "review": "Individually viewed and accepted. Fictional balcony with closed cupboard, intact light and imagined coastal scenery; not a surveyed Al Aqah view, real property or compliance demonstration.",
+    "originalFile": "exec-c5f2d97f-81cb-4a55-a15e-bf1ffcdefe60.png"
+  }
+]
