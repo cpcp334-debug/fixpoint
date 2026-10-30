@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "diy",
+    "slug": "diy-electrical-panel-preventive-maintenance",
+    "key": "diy:diy-electrical-panel-preventive-maintenance",
+    "prompt": "Photorealistic editorial landscape 3:2 cover for a consumer guide about booking electrical PANEL preventive maintenance. Fictional modern UAE apartment utility corridor, one fully closed unbranded flush electrical panel on wall, a small standalone table with blank maintenance folder and plain calendar without readable letters in foreground. Warm daylight, straight architectural photography, uncluttered quiet scene. No person, no open panel, no exposed wires, no instruments, no repair, no claims of inspection or safety. No text, logos or watermarks. Clearly conceptual booking preparation rather than actual customer job.",
+    "output": "/media/editorial/photos-20261019/diy-electrical-panel-preventive-maintenance.webp",
+    "reviewedAt": "2026-10-30T15:23:22.631Z",
+    "review": "Visually reviewed fully closed wall enclosure and blank planning folder/calendar. Distant stylised skyline is incidental, not proof of location. No exposed wiring or work performed. Accepted fictional booking-preparation illustration; not real project or safety certification.",
+    "originalFile": "exec-7ccdf5a5-499d-4077-8b40-a3f2082e49fd.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-electrical-preventive-maintenance",
+    "key": "diy:diy-electrical-preventive-maintenance",
+    "prompt": "Photorealistic editorial landscape 3:2 cover for a consumer guide about planning general electrical preventive maintenance. Fictional modest UAE home living room with ordinary switched-off floor lamp, neatly placed unplugged table lamp on cabinet and blank appointment notebook with closed pen in foreground. No sockets shown in closeup, no loose cables across walkway, no person, no repair, no testing, no exposed conductors. Natural side daylight, olive and cream decor, original interior composition distinctly different from utility-panel imagery. No text, logo, watermark or false real-project implication.",
+    "output": "/media/editorial/photos-20261019/diy-electrical-preventive-maintenance.webp",
+    "reviewedAt": "2026-10-30T15:23:22.635Z",
+    "review": "Visually reviewed living-room lamps switched off and blank appointment notebook. Plug state is not visible; image does not establish electrical isolation. Accepted conceptual maintenance planning scene, not repair instructions or actual customer project.",
+    "originalFile": "exec-f40bcbd7-4761-470e-816d-0e7950dafdb3.png"
+  }
+]
