@@ -1,0 +1,192 @@
+[
+  {
+    "kind": "service",
+    "slug": "ac-air-conditioning-maintenance",
+    "key": "service:ac-air-conditioning-maintenance",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for a service enquiry page. No people, human reflections, readable text, logo or watermark. Not real client property, certification, measurement or completed work. Fictional UAE modest lounge with intact closed unbranded wall-mounted AC indoor unit, closed blank maintenance folder on side table, sage upholstery and natural daylight. No work or claimed condition.",
+    "output": "/media/editorial/photos-20261019/service-ac-air-conditioning-maintenance.webp",
+    "reviewedAt": "2026-10-30T19:17:08.324Z",
+    "review": "Reviewed intact closed AC indoor unit, closed notebook and empty lounge. No work or condition proof; accepted maintenance-enquiry illustration.",
+    "originalFile": "exec-22e7963f-982d-4533-848f-1ce28cb4bc93.png"
+  },
+  {
+    "kind": "service",
+    "slug": "ac-cleaning",
+    "key": "service:ac-cleaning",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for a service enquiry page. No people, human reflections, readable text, logo or watermark. Not real client property, certification, measurement or completed work. Fictional UAE tidy bedroom with intact closed wall AC indoor unit above empty bed, blank closed appointment notebook on dry bedside table, warm linen and soft light. No cleaning tools, opened unit, chemicals, dirt or before-and-after claim.",
+    "output": "/media/editorial/photos-20261019/service-ac-cleaning.webp",
+    "reviewedAt": "2026-10-30T19:17:08.331Z",
+    "review": "Reviewed intact AC housing in bedroom, normal outlet louvers visible rather than fully shut; no casing opened, exposed internals or cleaning. Accepted cleaning-booking illustration, not before/after result.",
+    "originalFile": "exec-09b59e39-8a80-4dba-93f4-c8841451ee2d.png"
+  },
+  {
+    "kind": "service",
+    "slug": "ac-cooling-problem-diagnosis",
+    "key": "service:ac-cooling-problem-diagnosis",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for a service enquiry page. No people, human reflections, readable text, logo or watermark. Not real client property, certification, measurement or completed work. Fictional UAE empty office with intact closed AC indoor unit, blank observation sheet and dark phone on desk, pale blue daylight. No temperature display, meter, measurement, fault or diagnostic result.",
+    "output": "/media/editorial/photos-20261019/service-ac-cooling-problem-diagnosis.webp",
+    "reviewedAt": "2026-10-30T19:17:08.331Z",
+    "review": "Reviewed intact closed AC housing and blank clipboard in empty office. A desk phone replaces a mobile phone, harmless composition variation. No reading or diagnosis.",
+    "originalFile": "exec-e6fa849e-1c74-47b7-9c99-8e54e0d05638.png"
+  },
+  {
+    "kind": "service",
+    "slug": "ac-drain-cleaning",
+    "key": "service:ac-drain-cleaning",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for a service enquiry page. No people, human reflections, readable text, logo or watermark. Not real client property, certification, measurement or completed work. Fictional UAE dry utility corner with intact closed AC indoor unit and enclosed drain route disappearing into wall, blank closed booking folder on bench. No open drain, tools, water, cleaning result or plumbing instructions.",
+    "output": "/media/editorial/photos-20261019/service-ac-drain-cleaning.webp",
+    "reviewedAt": "2026-10-30T19:17:08.331Z",
+    "review": "Reviewed intact AC housing and enclosed wall route, closed binder. No open drain or cleaning activity. Accepted enquiry illustration, not proof of route identity, condition or result.",
+    "originalFile": "exec-349204ba-57b4-4da2-8812-4980685984d0.png"
+  },
+  {
+    "kind": "service",
+    "slug": "ac-drain-pipe-repair",
+    "key": "service:ac-drain-pipe-repair",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for a service enquiry page. No people, human reflections, readable text, logo or watermark. Not real client property, certification, measurement or completed work. Fictional UAE dry apartment corridor with closed AC service cupboard, blank observation notebook and dark phone on separate table, pale stone. All drainage concealed, no leak, open pipe, fault, tools or work.",
+    "output": "/media/editorial/photos-20261019/service-ac-drain-pipe-repair.webp",
+    "reviewedAt": "2026-10-30T19:17:08.331Z",
+    "review": "Reviewed closed service cupboard, blank notebook and dark phone. Drainage unseen; accepted access/repair-enquiry context, not a verified pipe or fault.",
+    "originalFile": "exec-a13b609d-c207-4871-b50c-3a2871dacacd.png"
+  },
+  {
+    "kind": "service",
+    "slug": "ac-filter-cleaning",
+    "key": "service:ac-filter-cleaning",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for a service enquiry page. No people, human reflections, readable text, logo or watermark. Not real client property, certification, measurement or completed work. Fictional UAE simple study with intact closed AC indoor unit, closed blank appointment binder on table, olive and cream. No exposed filter, disassembly, dust, cleaning tools or before-and-after result.",
+    "output": "/media/editorial/photos-20261019/service-ac-filter-cleaning.webp",
+    "reviewedAt": "2026-10-30T19:17:08.331Z",
+    "review": "Reviewed intact AC housing, closed binder and empty room. No exposed filter or cleaning. Accepted booking illustration, not cleanliness evidence.",
+    "originalFile": "exec-9a1a67c7-16c7-49d2-8907-59c8173d976a.png"
+  },
+  {
+    "kind": "service",
+    "slug": "ac-gas-check",
+    "key": "service:ac-gas-check",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for a service enquiry page. No people, human reflections, readable text, logo or watermark. Not real client property, certification, measurement or completed work. Fictional UAE property office with closed AC service cupboard distant and blank assessment folder on dry desk. No cylinder, gauge, gas handling, reading, test, tool or actual result.",
+    "output": "/media/editorial/photos-20261019/service-ac-gas-check.webp",
+    "reviewedAt": "2026-10-30T19:17:08.331Z",
+    "review": "Reviewed blank binder and fully closed distant service cupboard. No gas, cylinder, gauge, readings or intervention. Accepted assessment-enquiry illustration only.",
+    "originalFile": "exec-3f88fd39-0eba-41cf-9101-492818f4cada.png"
+  },
+  {
+    "kind": "service",
+    "slug": "ac-gas-recharge",
+    "key": "service:ac-gas-recharge",
+    "prompt": "Original photorealistic editorial landscape 3:2 illustration for a service enquiry page. No people, human reflections, readable text, logo or watermark. Not real client property, certification, measurement or completed work. Fictional UAE empty sitting room with intact closed wall AC unit, closed blank service-scope notebook on side table, muted terracotta and sand. No cylinder, refrigerant handling, readings, tools, open equipment or work. Enquiry context, not a recharge or recommendation.",
+    "output": "/media/editorial/photos-20261019/service-ac-gas-recharge.webp",
+    "reviewedAt": "2026-10-30T19:17:08.331Z",
+    "review": "Reviewed intact AC housing and closed notebook in empty lounge. No gas handling, recharge, diagnosis or product recommendation. Accepted scope-enquiry illustration only.",
+    "originalFile": "exec-059e7d2a-eb36-46fd-b587-9a282183e3aa.png"
+  },
+  {
+    "kind": "service",
+    "slug": "ac-inspection",
+    "key": "service:ac-inspection",
+    "prompt": "Original photorealistic editorial landscape 3:2 service-enquiry illustration. No people, human reflections, readable text, logos, watermark, tools, exposed wiring, gas cylinder, test or work. Not a real customer project, branch photograph or certification. Empty modest UAE office with intact closed AC indoor unit, blank assessment binder on meeting table, pale blue natural light. No instruments, readings or inspection result.",
+    "output": "/media/editorial/photos-20261019/service-ac-inspection.webp",
+    "reviewedAt": "2026-10-30T19:31:12.562Z",
+    "review": "Reviewed intact closed AC housing and blank assessment binder. No testing or result; accepted inspection-booking illustration.",
+    "originalFile": "exec-fd625ca1-f264-4a52-be66-ef5c01c5d113.png"
+  },
+  {
+    "kind": "service",
+    "slug": "ac-installation",
+    "key": "service:ac-installation",
+    "prompt": "Original photorealistic landscape 3:2 fictional UAE AC-installation enquiry illustration. Sealed plain carton and CLOSED blank binder on a clean table, intact closed AC indoor unit distant. Absolutely no loose paper, floor plan, blueprint, diagram, labels or text. No people or reflections, tools, open equipment, wires or work. No model selection or compatibility claim. Warm modest office daylight.",
+    "output": "/media/editorial/photos-20261019/service-ac-installation.webp",
+    "reviewedAt": "2026-10-30T19:31:12.562Z",
+    "review": "Reviewed replacement image with sealed carton, closed blank binder and intact closed AC unit. Prior image with invented floor plan excluded and retained. Accepted installation-enquiry context only.",
+    "originalFile": "exec-30495e90-6e9a-42d3-aaff-0f332c8d6442.png"
+  },
+  {
+    "kind": "service",
+    "slug": "ac-noise-problem-diagnosis",
+    "key": "service:ac-noise-problem-diagnosis",
+    "prompt": "Original photorealistic editorial landscape 3:2 service-enquiry illustration. No people, human reflections, readable text, logos, watermark, tools, exposed wiring, gas cylinder, test or work. Not a real customer project, branch photograph or certification. Quiet-looking fictional UAE empty study with intact closed AC indoor unit, blank observation card and dark phone on desk. No sound visualizations, decibel meter, reading, fault or diagnosis.",
+    "output": "/media/editorial/photos-20261019/service-ac-noise-problem-diagnosis.webp",
+    "reviewedAt": "2026-10-30T19:31:12.563Z",
+    "review": "Reviewed intact closed unit, blank observation card and dark phone. No sound measurement, visible fault or diagnosis. Accepted enquiry illustration.",
+    "originalFile": "exec-fee3ef2f-46c0-4c5c-b318-2e508d6ed00d.png"
+  },
+  {
+    "kind": "service",
+    "slug": "ac-preventive-maintenance",
+    "key": "service:ac-preventive-maintenance",
+    "prompt": "Original photorealistic editorial landscape 3:2 service-enquiry illustration. No people, human reflections, readable text, logos, watermark, tools, exposed wiring, gas cylinder, test or work. Not a real customer project, branch photograph or certification. Fictional UAE simple reception with intact closed AC indoor unit, closed blank maintenance binder on counter, olive and cream daylight. No calendar text, service activity or promised prevention result.",
+    "output": "/media/editorial/photos-20261019/service-ac-preventive-maintenance.webp",
+    "reviewedAt": "2026-10-30T19:31:12.563Z",
+    "review": "Reviewed intact AC housing and closed binder in empty reception. No calendar or prevention guarantee. Accepted maintenance-planning illustration.",
+    "originalFile": "exec-5626aecd-d16e-4b09-8af7-d9ba4a8c46fa.png"
+  },
+  {
+    "kind": "service",
+    "slug": "ac-replacement",
+    "key": "service:ac-replacement",
+    "prompt": "Original photorealistic editorial landscape 3:2 service-enquiry illustration. No people, human reflections, readable text, logos, watermark, tools, exposed wiring, gas cylinder, test or work. Not a real customer project, branch photograph or certification. Fictional UAE selection-planning corner, sealed plain carton and closed blank reference binder on table, intact existing AC indoor unit in background. No removed equipment, work, model claim or recommendation.",
+    "output": "/media/editorial/photos-20261019/service-ac-replacement.webp",
+    "reviewedAt": "2026-10-30T19:31:12.563Z",
+    "review": "Reviewed sealed carton, closed binder and intact existing AC housing. No removal, recommendation or completed replacement; accepted enquiry scene.",
+    "originalFile": "exec-964b1678-d747-4447-bb4d-c60fea4a0457.png"
+  },
+  {
+    "kind": "service",
+    "slug": "ac-servicing",
+    "key": "service:ac-servicing",
+    "prompt": "Original photorealistic editorial landscape 3:2 service-enquiry illustration. No people, human reflections, readable text, logos, watermark, tools, exposed wiring, gas cylinder, test or work. Not a real customer project, branch photograph or certification. Fictional UAE small meeting room with intact closed AC unit above closed storage cabinet, blank closed appointment folder on table, warm wood and muted blue. No opened equipment, tools, cleaning or work.",
+    "output": "/media/editorial/photos-20261019/service-ac-servicing.webp",
+    "reviewedAt": "2026-10-30T19:31:12.563Z",
+    "review": "Reviewed intact AC housing and closed folder in empty meeting room. No servicing or cleaning shown; accepted booking illustration.",
+    "originalFile": "exec-e9c643cc-ac4f-4c86-833e-9b39e8e3495f.png"
+  },
+  {
+    "kind": "service",
+    "slug": "ac-water-leakage-repair",
+    "key": "service:ac-water-leakage-repair",
+    "prompt": "Original photorealistic editorial landscape 3:2 service-enquiry illustration. No people, human reflections, readable text, logos, watermark, tools, exposed wiring, gas cylinder, test or work. Not a real customer project, branch photograph or certification. Fictional UAE dry apartment hallway with intact closed AC indoor unit, blank observation journal and dark phone on console, soft daylight. No water patch, leak, fault, damage or repair; booking context only.",
+    "output": "/media/editorial/photos-20261019/service-ac-water-leakage-repair.webp",
+    "reviewedAt": "2026-10-30T19:31:12.563Z",
+    "review": "Reviewed intact unit, dry wall, blank journal and dark phone. No leak, damage or repair result. Accepted observation-enquiry illustration.",
+    "originalFile": "exec-c17ffe6a-0dd2-418a-8858-aaa40f1f8090.png"
+  },
+  {
+    "kind": "service",
+    "slug": "central-ac-maintenance",
+    "key": "service:central-ac-maintenance",
+    "prompt": "Original photorealistic editorial landscape 3:2 service-enquiry illustration. No people, human reflections, readable text, logos, watermark, tools, exposed wiring, gas cylinder, test or work. Not a real customer project, branch photograph or certification. Fictional UAE shared office lobby with intact ceiling supply grille and fully closed plant-access door, closed blank scope folder on concierge desk, cream stone. No actual central system identity, condition, maintenance work or result.",
+    "output": "/media/editorial/photos-20261019/service-central-ac-maintenance.webp",
+    "reviewedAt": "2026-10-30T19:31:12.563Z",
+    "review": "Reviewed intact ceiling grille, closed plant-access door and blank folder in empty lobby. No evidence of actual system identity or servicing. Accepted central-AC enquiry context.",
+    "originalFile": "exec-e8bcf5bb-d8dc-47df-af33-0d4a756ada8c.png"
+  },
+  {
+    "kind": "service",
+    "slug": "ducted-ac-maintenance",
+    "key": "service:ducted-ac-maintenance",
+    "prompt": "Original photorealistic editorial landscape 3:2 service-enquiry illustration. No people, human reflections, readable text, logos, watermark, tools, exposed wiring, gas cylinder, test or work. Not a real customer project, branch photograph or certification. Fictional UAE empty home-office corner with intact ceiling linear air grille, closed blank appointment notebook on desk, sage and oak daylight. No visible duct interior, ceiling opening, tools, person or servicing result.",
+    "output": "/media/editorial/photos-20261019/service-ducted-ac-maintenance.webp",
+    "reviewedAt": "2026-10-30T19:31:12.563Z",
+    "review": "Reviewed intact linear grille and blank notebook in empty study. Duct interior unseen; accepted maintenance-booking illustration, not a system specification or result.",
+    "originalFile": "exec-d3c8f5e1-705e-4095-9900-c5453984f08e.png"
+  },
+  {
+    "kind": "service",
+    "slug": "package-ac-maintenance",
+    "key": "service:package-ac-maintenance",
+    "prompt": "Original photorealistic editorial landscape 3:2 service-enquiry illustration. No people, human reflections, readable text, logos, watermark, tools, exposed wiring, gas cylinder, test or work. Not a real customer project, branch photograph or certification. Fictional UAE dry enclosed service yard with one intact fully enclosed generic package-AC-style cabinet, all access panels closed, viewed from safe pedestrian doorway with closed blank folder on foreground table. No roof edge, ladder, tools, wiring, work or actual model/compliance claim.",
+    "output": "/media/editorial/photos-20261019/service-package-ac-maintenance.webp",
+    "reviewedAt": "2026-10-30T19:31:12.563Z",
+    "review": "Reviewed fully enclosed generic package-AC-style cabinet with access panels closed in dry service yard, viewed from doorway. No exposed work or roof edge. Accepted enquiry illustration, not actual model or compliance proof.",
+    "originalFile": "exec-79806699-feeb-4a93-ac5b-85307be5d3cc.png"
+  },
+  {
+    "kind": "service",
+    "slug": "split-ac-maintenance",
+    "key": "service:split-ac-maintenance",
+    "prompt": "Original photorealistic editorial landscape 3:2 service-enquiry illustration. No people, human reflections, readable text, logos, watermark, tools, exposed wiring, gas cylinder, test or work. Not a real customer project, branch photograph or certification. Fictional UAE empty sitting room with intact closed split-AC-style indoor unit high on wall, closed blank service binder on side table, muted rust textiles and bright daylight. No maintenance activity, exposed internals or actual performance claim.",
+    "output": "/media/editorial/photos-20261019/service-split-ac-maintenance.webp",
+    "reviewedAt": "2026-10-30T19:31:12.563Z",
+    "review": "Reviewed intact closed split-AC-style housing and blank notebook in empty sitting room. No servicing or performance claim. Accepted enquiry illustration.",
+    "originalFile": "exec-af4345eb-8ed5-4958-8a27-86e4312a463e.png"
+  }
+]
