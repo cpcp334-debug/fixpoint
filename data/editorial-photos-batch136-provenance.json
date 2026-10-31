@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "blog",
+    "slug": "electrical-load-inspection-al-ramla-sharjah",
+    "key": "blog-load-review-brief-alramla",
+    "prompt": "Landscape 3:2 photorealistic editorial cover for a customer guide to arranging an electrical load assessment. Invented enclosed small shop back office, intact closed pale-grey wall cabinet with no visible labels or controls, tidy oak desk with closed blank notebook, two empty navy chairs and intact ceiling light. No person, text, logo, tools, open panels, exposed wires, measurement display, repair demonstration, windows or landmarks. Context illustration only; do not depict a test result, actual client property, approved installation or Fixpoint project.",
+    "output": "/media/editorial/photos-20261019/blog-load-review-brief-alramla.webp",
+    "reviewedAt": "2026-10-31T03:20:45.111Z",
+    "review": "Individually viewed original PNG. Closed unlabelled wall cabinet in an invented small office, intact ceiling lamp, oak desk, closed notebook and two navy chairs. No exposed wiring, measurement display, people or repair procedure. Cabinet purpose, capacity and safety not established. Accepted as fictional context only, not actual premises or completed Fixpoint work.",
+    "originalFile": "exec-605b92b4-7e6e-4695-beb2-6542add7ebca.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "smart-dimmer-installation-masafi-fujairah-fujairah",
+    "key": "blog-smart-dimmer-brief-masafi",
+    "prompt": "Landscape 3:2 realistic editorial interior photograph for a customer guide to specifying a smart dimmer installation. Invented enclosed cream living room with a plain intact wall-mounted rotary lighting control, closed walnut door, an intact simple pendant lamp and sage upholstered chair. No screen, readable markings, phone, person, text, logos, wires, tools, open covers, windows or landmarks. The control has no claimed smart functionality or compatibility. Fictional setting only, not actual installation, approved product, safety proof or completed Fixpoint work.",
+    "output": "/media/editorial/photos-20261019/blog-smart-dimmer-brief-masafi.webp",
+    "reviewedAt": "2026-10-31T03:20:45.114Z",
+    "review": "Individually viewed original PNG. Intact plain rotary wall control, pendant lamp, closed walnut door and sage chair in invented room. No text, screen, tools, exposed wiring or people. Appearance does not establish smart capability, connectivity, compatibility, installation quality or safety. Accepted as fictional context only, not actual premises or completed Fixpoint work.",
+    "originalFile": "exec-c4cf6505-9012-440a-b47c-799c003d835e.png"
+  }
+]
