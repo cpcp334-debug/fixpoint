@@ -1,0 +1,82 @@
+[
+  {
+    "kind": "location",
+    "slug": "al-twar",
+    "key": "location:al-twar",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture photograph for UAE service-location page. Enclosed residential hallway, pale stone floor, closed navy timber door, intact bronze wall lamp, olive planter and low oak bench. Distinct documentary composition. Entirely fictional interior, not actual local premises or completed Fixpoint work. Solid enclosed walls, no windows, exterior views, skyline or landmarks. No people, readable text, logos, tools, exposed wires, open panels, tests or repair demonstration. Context illustration only, not proof of locality, installation safety or authorization.",
+    "output": "/media/editorial/photos-20261019/location-al-twar-cover141.webp",
+    "reviewedAt": "2026-10-31T04:09:01.528Z",
+    "review": "Individually viewed original PNG. Hallway, closed navy door, intact bronze wall lamp, olive planter and oak bench. Accepted as fictional interior context only. No actual local premises, completed Fixpoint project, safety or authorization proof; no people, exposed wiring, open panels, tools or repair demonstration.",
+    "originalFile": "exec-355081bc-bce5-4adf-8fe8-8b20bfd770a0.png"
+  },
+  {
+    "kind": "location",
+    "slug": "al-warqa",
+    "key": "location:al-warqa",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture photograph for UAE service-location page. Enclosed family home foyer, cream arch, closed sage-green door, intact linen ceiling pendant and walnut console. Distinct documentary composition. Entirely fictional interior, not actual local premises or completed Fixpoint work. Solid enclosed walls, no windows, exterior views, skyline or landmarks. No people, readable text, logos, tools, exposed wires, open panels, tests or repair demonstration. Context illustration only, not proof of locality, installation safety or authorization.",
+    "output": "/media/editorial/photos-20261019/location-al-warqa-cover141.webp",
+    "reviewedAt": "2026-10-31T04:09:01.530Z",
+    "review": "Individually viewed original PNG. Cream arched foyer, closed sage door, intact linen pendant and walnut console. Accepted as fictional interior context only. No actual local premises, completed Fixpoint project, safety or authorization proof; no people, exposed wiring, open panels, tools or repair demonstration.",
+    "originalFile": "exec-b54cfa75-53e2-4563-ba7b-cf57f494910d.png"
+  },
+  {
+    "kind": "location",
+    "slug": "al-wasl",
+    "key": "location:al-wasl",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture photograph for UAE service-location page. Enclosed small office reception, pale beige walls, closed oak cupboard, intact track lights, charcoal chairs and closed blank notebook on console. Distinct documentary composition. Entirely fictional interior, not actual local premises or completed Fixpoint work. Solid enclosed walls, no windows, exterior views, skyline or landmarks. No people, readable text, logos, tools, exposed wires, open panels, tests or repair demonstration. Context illustration only, not proof of locality, installation safety or authorization.",
+    "output": "/media/editorial/photos-20261019/location-al-wasl-cover141.webp",
+    "reviewedAt": "2026-10-31T04:09:01.530Z",
+    "review": "Individually viewed original PNG. Office reception, closed oak cupboard, intact track lights, charcoal chairs and closed notebook. Accepted as fictional interior context only. No actual local premises, completed Fixpoint project, safety or authorization proof; no people, exposed wiring, open panels, tools or repair demonstration.",
+    "originalFile": "exec-1ffc805d-f8b0-4846-bf85-eb7c41c02670.png"
+  },
+  {
+    "kind": "location",
+    "slug": "al-wathbah",
+    "key": "location:al-wathbah",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture photograph for UAE service-location page. Enclosed modest house entry, white textured plaster, closed brown timber door, intact brass lantern and terracotta pot. Distinct documentary composition. Entirely fictional interior, not actual local premises or completed Fixpoint work. Solid enclosed walls, no windows, exterior views, skyline or landmarks. No people, readable text, logos, tools, exposed wires, open panels, tests or repair demonstration. Context illustration only, not proof of locality, installation safety or authorization.",
+    "output": "/media/editorial/photos-20261019/location-al-wathbah-cover141.webp",
+    "reviewedAt": "2026-10-31T04:09:01.530Z",
+    "review": "Individually viewed original PNG. White-plaster house entry, closed brown door, intact brass lantern and terracotta planter. Accepted as fictional interior context only. No actual local premises, completed Fixpoint project, safety or authorization proof; no people, exposed wiring, open panels, tools or repair demonstration.",
+    "originalFile": "exec-6e5742f1-2bc2-4db5-a897-61e03ea06d0a.png"
+  },
+  {
+    "kind": "location",
+    "slug": "al-yarmook",
+    "key": "location:al-yarmook",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture photograph for UAE service-location page. Enclosed apartment landing, pale grey tiles, closed blue-green door, intact round ceiling lamp and dark metal stair rail. Distinct documentary composition. Entirely fictional interior, not actual local premises or completed Fixpoint work. Solid enclosed walls, no windows, exterior views, skyline or landmarks. No people, readable text, logos, tools, exposed wires, open panels, tests or repair demonstration. Context illustration only, not proof of locality, installation safety or authorization.",
+    "output": "/media/editorial/photos-20261019/location-al-yarmook-cover141.webp",
+    "reviewedAt": "2026-10-31T04:09:01.530Z",
+    "review": "Individually viewed original PNG. Apartment landing, closed blue-green door, intact round ceiling light and dark stair rail. Accepted as fictional interior context only. No actual local premises, completed Fixpoint project, safety or authorization proof; no people, exposed wiring, open panels, tools or repair demonstration.",
+    "originalFile": "exec-c6ef7ff4-5975-4421-b9c0-9f8da0303621.png"
+  },
+  {
+    "kind": "location",
+    "slug": "al-yasmeen-ajman",
+    "key": "location:al-yasmeen-ajman",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture photograph for UAE service-location page. Enclosed contemporary villa dining room, cream walls, oak table, closed olive cupboard and intact black pendant lights. Distinct documentary composition. Entirely fictional interior, not actual local premises or completed Fixpoint work. Solid enclosed walls, no windows, exterior views, skyline or landmarks. No people, readable text, logos, tools, exposed wires, open panels, tests or repair demonstration. Context illustration only, not proof of locality, installation safety or authorization.",
+    "output": "/media/editorial/photos-20261019/location-al-yasmeen-ajman-cover141.webp",
+    "reviewedAt": "2026-10-31T04:09:01.530Z",
+    "review": "Individually viewed original PNG. Dining room, closed olive cupboard, oak table and intact black pendant lights. Accepted as fictional interior context only. No actual local premises, completed Fixpoint project, safety or authorization proof; no people, exposed wiring, open panels, tools or repair demonstration.",
+    "originalFile": "exec-3c433ec1-c6cc-4887-b76c-9ebcca6c45b0.png"
+  },
+  {
+    "kind": "location",
+    "slug": "al-zahia",
+    "key": "location:al-zahia",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture photograph for UAE service-location page. Enclosed home reading corner, warm white walls, closed walnut cabinet, camel chair, low stone table and intact ceramic floor lamp with no visible cords. Distinct documentary composition. Entirely fictional interior, not actual local premises or completed Fixpoint work. Solid enclosed walls, no windows, exterior views, skyline or landmarks. No people, readable text, logos, tools, exposed wires, open panels, tests or repair demonstration. Context illustration only, not proof of locality, installation safety or authorization.",
+    "output": "/media/editorial/photos-20261019/location-al-zahia-cover141.webp",
+    "reviewedAt": "2026-10-31T04:09:01.530Z",
+    "review": "Individually viewed original PNG. Reading corner, closed walnut cabinet, camel chair, low stone table and intact ceramic floor lamp; no visible cord. Accepted as fictional interior context only. No actual local premises, completed Fixpoint project, safety or authorization proof; no people, exposed wiring, open panels, tools or repair demonstration.",
+    "originalFile": "exec-58ca6977-27a5-4954-aa55-f5b97ffda7da.png"
+  },
+  {
+    "kind": "location",
+    "slug": "al-zahiyah",
+    "key": "location:al-zahiyah",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture photograph for UAE service-location page. Enclosed apartment lift lobby, pale stone walls, closed brushed metal lift doors, intact linear ceiling lamps and dark green bench. Distinct documentary composition. Entirely fictional interior, not actual local premises or completed Fixpoint work. Solid enclosed walls, no windows, exterior views, skyline or landmarks. No people, readable text, logos, tools, exposed wires, open panels, tests or repair demonstration. Context illustration only, not proof of locality, installation safety or authorization.",
+    "output": "/media/editorial/photos-20261019/location-al-zahiyah-cover141.webp",
+    "reviewedAt": "2026-10-31T04:09:01.530Z",
+    "review": "Individually viewed original PNG. Stone lift lobby, closed metal doors, intact linear lights and dark green bench. Accepted as fictional interior context only. No actual local premises, completed Fixpoint project, safety or authorization proof; no people, exposed wiring, open panels, tools or repair demonstration.",
+    "originalFile": "exec-50e2fa54-21af-4814-a0b4-6c1d2191ba28.png"
+  }
+]
