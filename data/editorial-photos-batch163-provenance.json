@@ -1,0 +1,82 @@
+[
+  {
+    "kind": "location",
+    "slug": "liwara-2",
+    "key": "location:liwara-2",
+    "prompt": "Create one distinct professional photorealistic editorial cover landscape3:2. Fictional modest urban residential entry: ivory stucco, closed muted blue door, deep shaded recess, large ceramic planter and quiet paved verge, low-rise walls block background. Generic UAE-inspired fictional architectural illustration, not documentary geography. Realistic coherent proportions, believable materials, sand/navy palette. No people, vehicles, text, logos, watermark, recognizable landmarks or skyline, exposed wiring, tools, faults or repair activity. No implied completed Fixpoint project or safety certification.",
+    "output": "/media/editorial/photos-20261019/location-liwara-2-cover163.webp",
+    "reviewedAt": "2026-10-31T14:01:25.445Z",
+    "review": "Individually viewed original PNG and accepted. Ivory recessed entry with muted blue door and ceramic planter. No recognizable landmarks, text, people, repair or exposed electrical work. Fictional contextual illustration, not geographic/project/safety evidence.",
+    "originalFile": "exec-75a399a5-dbff-4920-a715-b2a732f05f5a.png"
+  },
+  {
+    "kind": "location",
+    "slug": "madhab",
+    "key": "location:madhab",
+    "prompt": "Create one distinct professional photorealistic editorial cover landscape3:2. Fictional low-rise residential courtyard: light stone boundary, closed dark green gate, native-style small trees and simple sand-colored facade, soft morning light. Generic UAE-inspired fictional architectural illustration, not documentary geography. Realistic coherent proportions, believable materials, sand/navy palette. No people, vehicles, text, logos, watermark, recognizable landmarks or skyline, exposed wiring, tools, faults or repair activity. No implied completed Fixpoint project or safety certification.",
+    "output": "/media/editorial/photos-20261019/location-madhab-cover163.webp",
+    "reviewedAt": "2026-10-31T14:01:25.63Z",
+    "review": "Individually viewed original PNG and accepted. Low stone boundary, dark green gate and simple planted residential frontage. No recognizable landmarks, text, people, repair or exposed electrical work. Fictional contextual illustration, not geographic/project/safety evidence.",
+    "originalFile": "exec-ebce8b30-0209-4672-b8b3-f88e6a1075fe.png"
+  },
+  {
+    "kind": "location",
+    "slug": "madinat-zayed",
+    "key": "location:madinat-zayed",
+    "prompt": "Create one distinct professional photorealistic editorial cover landscape3:2. Fictional desert-town villa entrance: pale ochre facade, closed walnut door, square shaded porch, date palm and low planted border, no distant skyline. Generic UAE-inspired fictional architectural illustration, not documentary geography. Realistic coherent proportions, believable materials, sand/navy palette. No people, vehicles, text, logos, watermark, recognizable landmarks or skyline, exposed wiring, tools, faults or repair activity. No implied completed Fixpoint project or safety certification.",
+    "output": "/media/editorial/photos-20261019/location-madinat-zayed-cover163.webp",
+    "reviewedAt": "2026-10-31T14:01:25.796Z",
+    "review": "Individually viewed original PNG and accepted. Pale ochre porch, walnut door and date-palm garden. No recognizable landmarks, text, people, repair or exposed electrical work. Fictional contextual illustration, not geographic/project/safety evidence.",
+    "originalFile": "exec-99896fb2-beab-4088-be94-74a68bebd4b2.png"
+  },
+  {
+    "kind": "location",
+    "slug": "maliha",
+    "key": "location:maliha",
+    "prompt": "Create one distinct professional photorealistic editorial cover landscape3:2. Fictional quiet village frontage: warm beige plaster, closed bronze gate, simple geometric parapet, gravel garden and one mature tree, clear daylight. Generic UAE-inspired fictional architectural illustration, not documentary geography. Realistic coherent proportions, believable materials, sand/navy palette. No people, vehicles, text, logos, watermark, recognizable landmarks or skyline, exposed wiring, tools, faults or repair activity. No implied completed Fixpoint project or safety certification.",
+    "output": "/media/editorial/photos-20261019/location-maliha-cover163.webp",
+    "reviewedAt": "2026-10-31T14:01:25.958Z",
+    "review": "Individually viewed original PNG and accepted. Beige village-style frontage, bronze gate, gravel planting and mature tree. No recognizable landmarks, text, people, repair or exposed electrical work. Fictional contextual illustration, not geographic/project/safety evidence.",
+    "originalFile": "exec-97559180-c53b-4654-b3df-a581f7dfb5d7.png"
+  },
+  {
+    "kind": "location",
+    "slug": "maryam-island",
+    "key": "location:maryam-island",
+    "prompt": "Create one distinct professional photorealistic editorial cover landscape3:2. Fictional contemporary apartment courtyard, white facade with soft rounded balconies, closed bronze glazed lobby entrance, palms and wide pale paving, no waterfront or skyline. Generic UAE-inspired fictional architecture, not documentary geography. Realistic coherent proportions and materials, sand/navy palette, natural daylight. No people, vehicles, text, logos, watermark, recognizable landmarks, electrical faults, exposed wiring, tools or repair activity. Not actual Fixpoint project or safety evidence.",
+    "output": "/media/editorial/photos-20261019/location-maryam-island-cover163.webp",
+    "reviewedAt": "2026-10-31T14:05:57.828Z",
+    "review": "Individually viewed original PNG and accepted. White apartment courtyard with rounded balconies and closed glazed lobby. No readable text, people, repairs or exposed electrical work. Fictional contextual illustration, not exact location, actual project or safety evidence.",
+    "originalFile": "exec-b6480863-291c-4a92-ae08-99026bf95825.png"
+  },
+  {
+    "kind": "location",
+    "slug": "masaar",
+    "key": "location:masaar",
+    "prompt": "Create one distinct professional photorealistic editorial cover landscape3:2. Fictional leafy contemporary townhouse frontage, sand facade, closed charcoal door, shaded timber canopy and lush but believable planted walkway, no logos or recognizable project architecture. Generic UAE-inspired fictional architecture, not documentary geography. Realistic coherent proportions and materials, sand/navy palette, natural daylight. No people, vehicles, text, logos, watermark, recognizable landmarks, electrical faults, exposed wiring, tools or repair activity. Not actual Fixpoint project or safety evidence.",
+    "output": "/media/editorial/photos-20261019/location-masaar-cover163.webp",
+    "reviewedAt": "2026-10-31T14:05:57.988Z",
+    "review": "Individually viewed original PNG and accepted. Leafy townhouse frontage with timber canopy and closed charcoal door. No readable text, people, repairs or exposed electrical work. Fictional contextual illustration, not exact location, actual project or safety evidence.",
+    "originalFile": "exec-f2765f8d-9ae7-4b96-9853-29c34957aa85.png"
+  },
+  {
+    "kind": "location",
+    "slug": "masafi-fujairah",
+    "key": "location:masafi-fujairah",
+    "prompt": "Create one distinct professional photorealistic editorial cover landscape3:2. Fictional modest mountain-region town house entrance, warm stone and cream plaster, closed walnut gate, gravel verge and small shade tree; nearby walls fully block distant landscape. Generic UAE-inspired fictional architecture, not documentary geography. Realistic coherent proportions and materials, sand/navy palette, natural daylight. No people, vehicles, text, logos, watermark, recognizable landmarks, electrical faults, exposed wiring, tools or repair activity. Not actual Fixpoint project or safety evidence.",
+    "output": "/media/editorial/photos-20261019/location-masafi-fujairah-cover163.webp",
+    "reviewedAt": "2026-10-31T14:05:58.143Z",
+    "review": "Individually viewed original PNG and accepted. Stone-and-cream house entrance, closed timber gate and generic imagined rocky hillside; no identifiable landmark, not geographic evidence. No readable text, people, repairs or exposed electrical work. Fictional contextual illustration, not exact location, actual project or safety evidence.",
+    "originalFile": "exec-d85453f7-3b83-4ef7-b0ab-e0d838cfa0e4.png"
+  },
+  {
+    "kind": "location",
+    "slug": "masafi-rak",
+    "key": "location:masafi-rak",
+    "prompt": "Create one distinct professional photorealistic editorial cover landscape3:2. Fictional low-rise residential lane, pale stone facade, closed navy pedestrian door, square clay planters and simple planted border; no mountains, skyline or landmarks. Generic UAE-inspired fictional architecture, not documentary geography. Realistic coherent proportions and materials, sand/navy palette, natural daylight. No people, vehicles, text, logos, watermark, recognizable landmarks, electrical faults, exposed wiring, tools or repair activity. Not actual Fixpoint project or safety evidence.",
+    "output": "/media/editorial/photos-20261019/location-masafi-rak-cover163.webp",
+    "reviewedAt": "2026-10-31T14:05:58.304Z",
+    "review": "Individually viewed original PNG and accepted. Pale stone residential lane with navy pedestrian doors and square clay planters. No readable text, people, repairs or exposed electrical work. Fictional contextual illustration, not exact location, actual project or safety evidence.",
+    "originalFile": "exec-3e9134b5-3ded-445d-ac15-8182e7f9bba5.png"
+  }
+]
