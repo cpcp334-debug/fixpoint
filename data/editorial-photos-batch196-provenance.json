@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "blog",
+    "key": "blog:short-circuit-diagnosis-al-hamidiya-1-ajman",
+    "slug": "short-circuit-diagnosis-al-hamidiya-1-ajman",
+    "output": "/media/editorial/photos-20261019/blog-short-circuit-report-hamidiya1.webp",
+    "prompt": "One original landscape1536x1024 photorealistic editorial illustration for a short-circuit diagnosis enquiry article. Fictional enclosed apartment-service hallway with fully closed plain gray utility cupboard at far left and closed unmarked navy report folder on cream console at right. Intact walls, dry floor, warm enclosed ceiling light, empty space. No actual short circuit, sparks, smoke, scorch marks, wires, open panels, meters, tools, people, switches being operated, text, labels, numbers, logos, windows, exterior or landmarks. Realistic architectural photograph. Planning illustration, not actual Fixpoint work or a diagnosis.",
+    "reviewedAt": "2026-10-31T20:15:58.229Z",
+    "review": "Individually viewed original PNG and accepted. Empty enclosed hallway with closed utility cupboard and closed folder; no fault or diagnosis shown. Coherent fictional illustration, not actual Fixpoint work, measured condition, safety evidence or a real client property.",
+    "originalFile": "exec-bdd04182-77c1-476d-9ca0-ea457b89cdd3.png"
+  },
+  {
+    "kind": "blog",
+    "key": "blog:high-voltage-problem-diagnosis-industrial-area-2-sharjah",
+    "slug": "high-voltage-problem-diagnosis-industrial-area-2-sharjah",
+    "output": "/media/editorial/photos-20261019/blog-voltage-wording-brief-industrial2.webp",
+    "prompt": "One original landscape1536x1024 photorealistic editorial illustration for an article clarifying an unverified 'high voltage' report before professional assessment. Fictional enclosed industrial-property office, closed unmarked navy case file on oak desk, empty chair, opaque cream wall and fully closed featureless dark service door behind. No electrical equipment shown at all; no voltage implication, readings, HV symbols, pylons, cables, switches, faults, tools, people, labels,text,numbers,logos,windows or exterior. Coherent architectural photography. Not actual Fixpoint work, high-voltage installation or evidence of any measured condition.",
+    "reviewedAt": "2026-10-31T20:15:58.233Z",
+    "review": "Individually viewed original PNG and accepted. Closed case file on desk, empty chair and closed dark door; no electrical equipment or voltage implication. Coherent fictional illustration, not actual Fixpoint work, measured condition, safety evidence or a real client property.",
+    "originalFile": "exec-c0aec508-0725-4050-87ae-96a1cad7e8c9.png"
+  }
+]
