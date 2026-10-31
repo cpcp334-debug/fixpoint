@@ -1,0 +1,82 @@
+[
+  {
+    "kind": "location",
+    "slug": "bur-dubai",
+    "key": "location:bur-dubai",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture cover for a UAE service-location page. Enclosed modest apartment foyer, pale cream walls, closed dark teal timber door, intact brass ceiling lamp, woven bench and clay planter. Distinct documentary composition. Entirely fictional interior, not actual local premises or completed Fixpoint work. Solid enclosed walls, no windows, external views, skyline or landmarks. No people, readable text, logos, tools, exposed wires, open panels, tests or repair demonstration. Context illustration only, not proof of geography, safety, product suitability or authorization.",
+    "output": "/media/editorial/photos-20261019/location-bur-dubai-cover145.webp",
+    "reviewedAt": "2026-10-31T04:57:14.784Z",
+    "review": "Individually viewed original PNG. Apartment foyer, closed teal door, brass ceiling lamp and woven bench. Accepted as fictional architectural context only, not proof of actual locality, customer premises, completed Fixpoint work, safety or authorization. No people, exposed wiring, open panels or repair demonstration.",
+    "originalFile": "exec-4e08ce4b-d4b6-4bdb-a2eb-6b9ae69619bd.png"
+  },
+  {
+    "kind": "location",
+    "slug": "city-walk",
+    "key": "location:city-walk",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture cover for a UAE service-location page. Enclosed contemporary small office reception, limestone counter, closed oak cupboard, empty charcoal chairs and intact simple track lights. Distinct documentary composition. Entirely fictional interior, not actual local premises or completed Fixpoint work. Solid enclosed walls, no windows, external views, skyline or landmarks. No people, readable text, logos, tools, exposed wires, open panels, tests or repair demonstration. Context illustration only, not proof of geography, safety, product suitability or authorization.",
+    "output": "/media/editorial/photos-20261019/location-city-walk-cover145.webp",
+    "reviewedAt": "2026-10-31T04:57:14.789Z",
+    "review": "Individually viewed original PNG. Office reception, limestone counter, closed oak cupboard and track lights. Accepted as fictional architectural context only, not proof of actual locality, customer premises, completed Fixpoint work, safety or authorization. No people, exposed wiring, open panels or repair demonstration.",
+    "originalFile": "exec-3174cd59-09fd-40d1-89f1-ad833b80aae5.png"
+  },
+  {
+    "kind": "location",
+    "slug": "dadna",
+    "key": "location:dadna",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture cover for a UAE service-location page. Enclosed low-rise home entry, white textured plaster, closed brown wooden door, intact bronze lantern and olive planter. Distinct documentary composition. Entirely fictional interior, not actual local premises or completed Fixpoint work. Solid enclosed walls, no windows, external views, skyline or landmarks. No people, readable text, logos, tools, exposed wires, open panels, tests or repair demonstration. Context illustration only, not proof of geography, safety, product suitability or authorization.",
+    "output": "/media/editorial/photos-20261019/location-dadna-cover145.webp",
+    "reviewedAt": "2026-10-31T04:57:14.789Z",
+    "review": "Individually viewed original PNG. White plaster entry, closed brown door, bronze lanterns and planter. Accepted as fictional architectural context only, not proof of actual locality, customer premises, completed Fixpoint work, safety or authorization. No people, exposed wiring, open panels or repair demonstration.",
+    "originalFile": "exec-17b602a6-c745-4050-9c31-82c08d845f80.png"
+  },
+  {
+    "kind": "location",
+    "slug": "damac-hills",
+    "key": "location:damac-hills",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture cover for a UAE service-location page. Enclosed family home lounge, cream walls, closed walnut cabinet, sage chair, low stone table and intact linen pendant. Distinct documentary composition. Entirely fictional interior, not actual local premises or completed Fixpoint work. Solid enclosed walls, no windows, external views, skyline or landmarks. No people, readable text, logos, tools, exposed wires, open panels, tests or repair demonstration. Context illustration only, not proof of geography, safety, product suitability or authorization.",
+    "output": "/media/editorial/photos-20261019/location-damac-hills-cover145.webp",
+    "reviewedAt": "2026-10-31T04:57:14.789Z",
+    "review": "Individually viewed original PNG. Home lounge, closed walnut cabinet, sage chair and linen pendant. Accepted as fictional architectural context only, not proof of actual locality, customer premises, completed Fixpoint work, safety or authorization. No people, exposed wiring, open panels or repair demonstration.",
+    "originalFile": "exec-6afb72c5-fd24-4568-9fbe-41c1f0d9b386.png"
+  },
+  {
+    "kind": "location",
+    "slug": "damac-hills-2",
+    "key": "location:damac-hills-2",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture cover for a UAE service-location page. Enclosed home dining room, pale beige arch, oak table, closed navy cupboard and intact brass pendant lights. Distinct documentary composition. Entirely fictional interior, not actual local premises or completed Fixpoint work. Solid enclosed walls, no windows, external views, skyline or landmarks. No people, readable text, logos, tools, exposed wires, open panels, tests or repair demonstration. Context illustration only, not proof of geography, safety, product suitability or authorization.",
+    "output": "/media/editorial/photos-20261019/location-damac-hills-2-cover145.webp",
+    "reviewedAt": "2026-10-31T04:57:14.789Z",
+    "review": "Individually viewed original PNG. Arched dining room, oak table, closed navy cupboards and brass pendants. Accepted as fictional architectural context only, not proof of actual locality, customer premises, completed Fixpoint work, safety or authorization. No people, exposed wiring, open panels or repair demonstration.",
+    "originalFile": "exec-9b8b08be-fcf6-4570-8f74-4aaf103f1cab.png"
+  },
+  {
+    "kind": "location",
+    "slug": "deira",
+    "key": "location:deira",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture cover for a UAE service-location page. Enclosed small shop reception, cream walls, closed charcoal storage cabinet, oak counter, empty olive chair and intact ceiling lights. No merchandise. Distinct documentary composition. Entirely fictional interior, not actual local premises or completed Fixpoint work. Solid enclosed walls, no windows, external views, skyline or landmarks. No people, readable text, logos, tools, exposed wires, open panels, tests or repair demonstration. Context illustration only, not proof of geography, safety, product suitability or authorization.",
+    "output": "/media/editorial/photos-20261019/location-deira-cover145.webp",
+    "reviewedAt": "2026-10-31T04:57:14.789Z",
+    "review": "Individually viewed original PNG. Shop reception, closed charcoal cupboard, oak counter, olive chair and pendants. Accepted as fictional architectural context only, not proof of actual locality, customer premises, completed Fixpoint work, safety or authorization. No people, exposed wiring, open panels or repair demonstration.",
+    "originalFile": "exec-8bad13b2-fb8f-4c57-a016-9dda52cc6c1d.png"
+  },
+  {
+    "kind": "location",
+    "slug": "delma",
+    "key": "location:delma",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture cover for a UAE service-location page. Enclosed modest residential porch, sandy plaster, closed dark green door, intact simple bronze wall lamp and terracotta pot. Distinct documentary composition. Entirely fictional interior, not actual local premises or completed Fixpoint work. Solid enclosed walls, no windows, external views, skyline or landmarks. No people, readable text, logos, tools, exposed wires, open panels, tests or repair demonstration. Context illustration only, not proof of geography, safety, product suitability or authorization.",
+    "output": "/media/editorial/photos-20261019/location-delma-cover145.webp",
+    "reviewedAt": "2026-10-31T04:57:14.789Z",
+    "review": "Individually viewed original PNG. Sandy residential porch, closed green door, bronze wall lamp and terracotta pot. Accepted as fictional architectural context only, not proof of actual locality, customer premises, completed Fixpoint work, safety or authorization. No people, exposed wiring, open panels or repair demonstration.",
+    "originalFile": "exec-d861feb9-7f44-45d3-af70-140f07d0f0e5.png"
+  },
+  {
+    "kind": "location",
+    "slug": "dhaid-industrial-area",
+    "key": "location:dhaid-industrial-area",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture cover for a UAE service-location page. Enclosed small administration office, pale grey walls, closed unlabelled metal cabinet, oak desk with closed blank folder, empty navy chairs and intact ceiling lights. No machinery. Distinct documentary composition. Entirely fictional interior, not actual local premises or completed Fixpoint work. Solid enclosed walls, no windows, external views, skyline or landmarks. No people, readable text, logos, tools, exposed wires, open panels, tests or repair demonstration. Context illustration only, not proof of geography, safety, product suitability or authorization.",
+    "output": "/media/editorial/photos-20261019/location-dhaid-industrial-area-cover145.webp",
+    "reviewedAt": "2026-10-31T04:57:14.789Z",
+    "review": "Individually viewed original PNG. Administration office, closed grey cabinet, oak desk, closed folder, navy chairs and ceiling lights. Accepted as fictional architectural context only, not proof of actual locality, customer premises, completed Fixpoint work, safety or authorization. No people, exposed wiring, open panels or repair demonstration.",
+    "originalFile": "exec-b6198a34-54b3-447c-858c-4d80b95c1e84.png"
+  }
+]
