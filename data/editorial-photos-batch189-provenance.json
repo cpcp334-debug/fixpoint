@@ -1,0 +1,42 @@
+[
+  {
+    "kind": "diy",
+    "key": "diy:diy-apartment-maintenance",
+    "slug": "diy-apartment-maintenance",
+    "output": "/media/editorial/photos-20261019/diy-apartment-maintenance-cover189.webp",
+    "prompt": "Create one original landscape1536x1024 photorealistic editorial illustration for a UAE home-service before-booking guide. An enclosed fictional apartment entry, intact closed oak door, closed plain utility cupboard, cream wall, small console and closed navy property folder. No fault or repair activity. Interior-only view. Professional architectural photography, coherent realistic proportions. No people, text, numbers, logos, watermark, tools, exposed wiring, fault demonstration, skyline, exterior buildings, windows or identifiable landmarks. Fictional illustrative setting, not actual Fixpoint work or a real client property.",
+    "reviewedAt": "2026-10-31T19:33:36.586Z",
+    "review": "Individually viewed original PNG and accepted. Closed apartment entry and cupboards with navy folder; intact surfaces. Coherent fictional editorial illustration, not actual Fixpoint work or a real client property. No people, readable text, recognizable landmarks or unsafe instructions.",
+    "originalFile": "exec-1ee4432c-9153-41d6-8315-b6cffc63c648.png"
+  },
+  {
+    "kind": "diy",
+    "key": "diy:diy-apartment-painting",
+    "slug": "diy-apartment-painting",
+    "output": "/media/editorial/photos-20261019/diy-apartment-painting-cover189.webp",
+    "prompt": "Create one original landscape1536x1024 photorealistic editorial illustration for a UAE home-service before-booking guide. An enclosed fictional empty apartment living room with evenly finished matte warm ivory wall, white skirting, pale oak floor, one navy armchair and a small plant. No tools, paint tins, ladder, worker or before-after scene. Focus on finished wall surface and calm space, not an actual project. Professional architectural photography, coherent realistic proportions. No people, text, numbers, logos, watermark, tools, exposed wiring, fault demonstration, skyline, exterior buildings, windows or identifiable landmarks. Fictional illustrative setting, not actual Fixpoint work or a real client property.",
+    "reviewedAt": "2026-10-31T19:33:36.961Z",
+    "review": "Individually viewed original PNG and accepted. Finished ivory wall, oak floor, navy chair and plant; no painting process or before-after claim. Coherent fictional editorial illustration, not actual Fixpoint work or a real client property. No people, readable text, recognizable landmarks or unsafe instructions.",
+    "originalFile": "exec-0ab89258-2052-4b84-806b-22890e1c921f.png"
+  },
+  {
+    "kind": "diy",
+    "key": "diy:diy-bathroom-cleaning",
+    "slug": "diy-bathroom-cleaning",
+    "output": "/media/editorial/photos-20261019/diy-bathroom-cleaning-cover189.webp",
+    "prompt": "Create one original landscape1536x1024 photorealistic editorial illustration for a UAE home-service before-booking guide. An enclosed fictional tidy bathroom with ceramic basin, chrome tap, dry cream tiled counter and walls, closed opaque cupboard and one folded plain hand towel. No mirror, glass, shower screen, windows, chemicals or cleaning action. Navy accent towel on rail, no personal products. Professional architectural photography, coherent realistic proportions. No people, text, numbers, logos, watermark, tools, exposed wiring, fault demonstration, skyline, exterior buildings, windows or identifiable landmarks. Fictional illustrative setting, not actual Fixpoint work or a real client property.",
+    "reviewedAt": "2026-10-31T19:33:37.333Z",
+    "review": "Individually viewed original PNG and accepted. Dry tiled bathroom basin and closed cupboard with towels; no chemicals or cleaning action. Coherent fictional editorial illustration, not actual Fixpoint work or a real client property. No people, readable text, recognizable landmarks or unsafe instructions.",
+    "originalFile": "exec-fd07da7a-230c-4143-a115-3abab44bca09.png"
+  },
+  {
+    "kind": "diy",
+    "key": "diy:diy-building-common-area-cleaning",
+    "slug": "diy-building-common-area-cleaning",
+    "output": "/media/editorial/photos-20261019/diy-building-common-area-cleaning-cover189.webp",
+    "prompt": "Create one original landscape1536x1024 photorealistic editorial illustration for a UAE home-service before-booking guide. An enclosed fictional apartment-building shared lobby with dry pale stone floor, closed dark double doors, simple bench and one potted plant, enclosed ceiling lights. No signs, unit numbers, exterior, recognizable architecture, people, equipment or before-after claim. Professional architectural photography, coherent realistic proportions. No people, text, numbers, logos, watermark, tools, exposed wiring, fault demonstration, skyline, exterior buildings, windows or identifiable landmarks. Fictional illustrative setting, not actual Fixpoint work or a real client property.",
+    "reviewedAt": "2026-10-31T19:33:37.706Z",
+    "review": "Individually viewed original PNG and accepted. Enclosed shared lobby, dry stone floor, bench and closed doors; no identifiers or actual project claim. Coherent fictional editorial illustration, not actual Fixpoint work or a real client property. No people, readable text, recognizable landmarks or unsafe instructions.",
+    "originalFile": "exec-afc810ca-511a-49a0-91fc-136940368a4a.png"
+  }
+]
