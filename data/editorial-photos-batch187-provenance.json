@@ -1,0 +1,45 @@
+[
+  {
+    "kind": "diy",
+    "key": "diy:diy-ac-replacement",
+    "slug": "diy-ac-replacement",
+    "prompt": "One original landscape1536x1024 photorealistic editorial cover for a UAE home-service before-booking guide. A fictional enclosed modern dining alcove with one intact white wall-mounted air conditioner high on taupe wall, fully assembled and untouched. Rounded oak dining table, two navy chairs, closed neutral document folio, no windows or exterior. Suggest planning a replacement consultation, not installation or proof a replacement is needed. Wide interior architectural photograph with coherent materials and realistic perspective. No text, readable papers, numbers, logos, watermark, people, identifiable landmarks, skyline, exposed wiring, open appliance casing, fault demonstration or step-by-step procedure. Not actual Fixpoint work.",
+    "reviewedAt": "2026-10-31T19:18:59.757Z",
+    "accepted": true,
+    "review": "Individually viewed original and accepted. Enclosed dining alcove with intact AC, oak table, closed folio and navy chairs. Fictional illustration, not actual Fixpoint work or evidence of a fault or repair. No people or identifiable landmark.",
+    "output": "/media/editorial/photos-20261019/diy-ac-replacement-cover187.webp",
+    "originalFile": "exec-0649720b-d096-4258-8d1e-d0b2a7fdff65.png"
+  },
+  {
+    "kind": "diy",
+    "key": "diy:diy-ac-servicing",
+    "slug": "diy-ac-servicing",
+    "prompt": "One original landscape1536x1024 photorealistic editorial cover for a UAE home-service before-booking guide. A fictional tidy small enclosed office lounge, fully assembled closed white air conditioner mounted on cream wall, low navy sofa and round beige ottoman, warm enclosed ceiling lights, no windows or exterior. Topic professional servicing appointment, no maintenance action. Wide interior architectural photograph with coherent materials and realistic perspective. No text, readable papers, numbers, logos, watermark, people, identifiable landmarks, skyline, exposed wiring, open appliance casing, fault demonstration or step-by-step procedure. Not actual Fixpoint work.",
+    "reviewedAt": "2026-10-31T19:19:00.145Z",
+    "accepted": true,
+    "review": "Individually viewed original and accepted. Enclosed office lounge with intact AC, navy sofa and beige ottoman. Fictional illustration, not actual Fixpoint work or evidence of a fault or repair. No people or identifiable landmark.",
+    "output": "/media/editorial/photos-20261019/diy-ac-servicing-cover187.webp",
+    "originalFile": "exec-35ea196b-a0c0-4fa1-b7c8-91d4d04ab373.png"
+  },
+  {
+    "kind": "diy",
+    "key": "diy:diy-ac-water-leakage-repair",
+    "slug": "diy-ac-water-leakage-repair",
+    "prompt": "One original landscape1536x1024 photorealistic editorial cover for a UAE home-service before-booking guide. A fictional dry enclosed apartment passage with intact fully assembled wall AC, pale stone floor visibly dry, a closed wood utility door and small dark console. No water, damp, stains, buckets or tools. Illustrates a before-booking guide, not a simulated leak, diagnosis or successful repair. Wide interior architectural photograph with coherent materials and realistic perspective. No text, readable papers, numbers, logos, watermark, people, identifiable landmarks, skyline, exposed wiring, open appliance casing, fault demonstration or step-by-step procedure. Not actual Fixpoint work.",
+    "reviewedAt": "2026-10-31T19:19:00.518Z",
+    "accepted": true,
+    "review": "Individually viewed original and accepted. Dry interior passage with intact AC and closed door; no leakage or remedy depicted. Fictional illustration, not actual Fixpoint work or evidence of a fault or repair. No people or identifiable landmark.",
+    "output": "/media/editorial/photos-20261019/diy-ac-water-leakage-repair-cover187.webp",
+    "originalFile": "exec-f9db55f3-35f4-4416-b93f-454134012060.png"
+  },
+  {
+    "kind": "diy",
+    "key": "diy:diy-apartment-cleaning",
+    "slug": "diy-apartment-cleaning",
+    "output": "/media/editorial/photos-20261019/diy-apartment-cleaning-cover187.webp",
+    "prompt": "One landscape1536x1024 photorealistic editorial illustration for an apartment-cleaning before-booking guide. A fully enclosed fictional kitchen corner, opaque cream tiled walls on all sides, closed unbranded beige cupboards, empty stone counter with one folded plain white cloth and a small plant, lower counter cabinet and simple navy stool. No appliances whatsoever: no refrigerator, oven, cooktop or washer. No windows, glass, mirrors, openings, outside views, buildings, skyline, text, logos, brand marks, people, chemicals or before-after comparison. Soft enclosed ceiling light, realistic architectural photograph, tidy everyday home setting. Not actual Fixpoint work or an actual client apartment.",
+    "reviewedAt": "2026-10-31T19:19:55.598Z",
+    "review": "Individually viewed replacement original and accepted. Enclosed cream tiled kitchen corner, cupboards, folded cloth, plant and navy stool. No appliances, brands, people, windows, skyline or misleading before-after claim. Fictional illustration, not actual Fixpoint work.",
+    "originalFile": "exec-ec94984c-2b35-4027-9ef8-9e1120eae420.png"
+  }
+]
