@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "blog",
+    "slug": "switch-repair-dubai-sports-city-dubai",
+    "key": "blog-switch-enquiry-dubaisportscity",
+    "prompt": "Create a landscape 3:2 realistic editorial photograph for a switch repair enquiry article. Fictional modern Dubai apartment entrance, matte ivory intact wall with a plain closed two-gang rocker light switch in foreground, gently lit hallway and sports bag far in background, refined natural daylight, navy and warm neutral accents. No people, no hands, no tools, no exposed wiring, no sparks, no dismantling, no repair demonstration, no readable text or logos. Not an actual Fixpoint project, no claim of equipment safety or geographic authenticity. Clean premium documentary composition.",
+    "output": "/media/editorial/photos-20261019/blog-switch-enquiry-dubaisportscity.webp",
+    "reviewedAt": "2026-10-31T01:00:51.556Z",
+    "review": "Individually viewed original PNG. Clear intact closed two-gang rocker switch, hallway and sports bag; no exposed conductors, tools or work demonstration. Accepted as fictional enquiry illustration, not an actual job, fault diagnosis, safety certification or location proof.",
+    "originalFile": "exec-8671cc79-99af-4bb3-9824-a1acc20cc9c0.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "exhaust-fan-installation-al-bandar-abu-dhabi",
+    "key": "blog-exhaust-planning-albandar",
+    "prompt": "Create a landscape 3:2 realistic editorial photograph for an exhaust fan installation planning article. Fictional contemporary coastal UAE apartment utility room with an intact closed square white ceiling ventilation grille, tasteful pale stone surfaces, small closed clipboard on counter, indirect daylight through frosted window. Wide architectural composition with ceiling grille clearly visible, distinct from a wall fan. No people, no tools, no exposed wiring, no open ducts, no installation demonstration, no text or logos. Imagined property, not actual client premises or proof of compliant airflow design.",
+    "output": "/media/editorial/photos-20261019/blog-exhaust-planning-albandar.webp",
+    "reviewedAt": "2026-10-31T01:00:51.558Z",
+    "review": "Individually viewed original PNG. Utility room with intact square ceiling grille, appliances and clipboard. Grille resembles a ventilation diffuser; its function and presence of an exhaust fan cannot be established. Accepted only as a generic ventilation-planning room illustration. Not a fan product image, installation design, airflow proof, actual property, geographic proof or completed job.",
+    "originalFile": "exec-5d61db9c-d016-4361-8b9d-115744de2ac1.png"
+  }
+]
