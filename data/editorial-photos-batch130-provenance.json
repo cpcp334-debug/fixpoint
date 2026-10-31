@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "blog",
+    "slug": "smart-light-installation-al-muntaz-1-ajman",
+    "key": "blog-smart-light-brief-almuntaz1",
+    "prompt": "Landscape 3:2 realistic editorial photo, entirely fictional enclosed living room with cream solid walls, walnut furniture, muted green sofa cushions, intact simple ceiling lights and one table lamp, closed blank product box and paper notebook on coffee table. Absolutely no windows, no outside view, no skyline, no buildings, no landmarks. No people, text, logos, tools, exposed wiring, setup or installation demonstration. Context for smart-lighting planning only, not proof lights are smart, compatible or installed by Fixpoint. Natural soft indirect light.",
+    "output": "/media/editorial/photos-20261019/blog-smart-light-brief-almuntaz1.webp",
+    "reviewedAt": "2026-10-31T02:15:42.167Z",
+    "review": "Individually viewed replacement PNG. Enclosed fictional living room, green sofa, intact ceiling light and table lamp, blank box/notebook. No outside view or landmark. Accepted as planning illustration only; no actual smart functionality, compatibility, savings, client or project proved.",
+    "originalFile": "exec-846a83fa-658e-4bc8-b5bd-e9a09de66f0e.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "smart-dimmer-installation-al-barsha-first-dubai",
+    "key": "blog-dimmer-evidence-albarsha1",
+    "prompt": "Landscape 3:2 photorealistic editorial image for dimmer-and-lamp compatibility enquiry. Fictional neutral interior, intact plain closed white rotary wall control in foreground, softly lit unbranded pendant in background, closed notebook on console, calm documentary daylight. No people, hands, text, labels, logos, tools, exposed wiring, repair or test demonstration. Control model and function unverified; not a product photo or proof of compatible dimming, safe design, actual Al Barsha premises or Fixpoint work.",
+    "output": "/media/editorial/photos-20261019/blog-dimmer-evidence-albarsha1.webp",
+    "reviewedAt": "2026-10-31T02:15:42.176Z",
+    "review": "Individually viewed original PNG. Closed white rotary control, intact lit pendant and notebook in fictional room. No open gear, testing or operating action. Accepted as enquiry illustration; model, smart functionality and lamp/dimmer compatibility unverified; not actual premises or work.",
+    "originalFile": "exec-09f21a96-5d70-42fc-a1f9-8375f2f66950.png"
+  }
+]
