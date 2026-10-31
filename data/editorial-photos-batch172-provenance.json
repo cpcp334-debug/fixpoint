@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "blog",
+    "slug": "circuit-testing-al-twar-dubai",
+    "key": "blog:circuit-testing-al-twar-dubai",
+    "prompt": "Professional photorealistic editorial website cover landscape 3:2. Fictional interior property-management desk with a closed unmarked navy report folder and cream folder, empty chair, closed plain wooden utility-room door behind. Composition faces an opaque cream interior wall. NO windows, NO exterior view, NO skyline. Soft daylight from unseen source. No text, plans, diagrams, labels, logos, people, instruments, electrical equipment, exposed wires or repair. Coherent architecture, navy/sand palette. Illustrates planning only, never actual testing, safety approval or Fixpoint work.",
+    "output": "/media/editorial/photos-20261019/blog-circuit-test-report-twar.webp",
+    "reviewedAt": "2026-10-31T16:21:41.561Z",
+    "review": "Individually viewed replacement original PNG and accepted. Closed navy/cream folders on desk, empty chair, closed wooden door and opaque wall, no skyline, text, tools, people or electrical equipment. Fictional planning illustration is not test evidence, safety approval or Fixpoint project.",
+    "originalFile": "exec-c1c93435-d809-40e4-991a-ef5c6f099cde.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "sparking-socket-diagnosis-helio-2-ajman",
+    "key": "blog:sparking-socket-diagnosis-helio-2-ajman",
+    "prompt": "Create one distinct professional photorealistic editorial cover, landscape 3:2. An empty residential living room seen from its open doorway at a respectful distance, a plain cream wall with one small intact closed white wall socket far in background, an empty console table and warm neutral furnishings. No plugs, no sparks, no scorch marks, no smoke, no contact or repair. Contextual incident-reporting illustration, not a diagnosis or safety approval. Fictional generic UAE-inspired interior, coherent materials and proportions, natural daylight, navy/sand palette. No people, text, logos, watermark, identifiable landmarks, exposed wires, tools or repair activity. Not an actual Fixpoint project or inspection evidence.",
+    "output": "/media/editorial/photos-20261019/blog-socket-incident-report-helio2.webp",
+    "reviewedAt": "2026-10-31T16:20:48.606Z",
+    "review": "Individually viewed original PNG and accepted. Empty cream/navy living room viewed through doorway, small intact white socket in distant wall, no plugs, sparks, smoke or repair. Fictional illustration does not diagnose condition, prove safety or depict a Fixpoint project.",
+    "originalFile": "exec-ab1a737a-dc3c-48ee-a0d6-b91ed837e612.png"
+  }
+]
