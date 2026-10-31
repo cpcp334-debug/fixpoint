@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "blog",
+    "slug": "earthing-inspection-al-jurf-industrial-ajman",
+    "key": "blog-earthing-report-scope-jurf-industrial",
+    "prompt": "Landscape 3:2 photorealistic editorial cover for an Arabic article about defining the scope of a professional earthing-inspection report. Fictional small property-management office, oak desk with closed plain cream document folder, empty navy chairs, pale grey wall with a closed unlabelled flush utility cupboard in the background. No readable documents, people, brands, tools, meters, exposed wires, open panels, tests or demonstration. Context illustration only, not a real inspection, actual local property, completed Fixpoint work or proof of earthing, safety or authorization. Revision of retained rejected original exec-a8abef0e-3769-4cf6-b20b-eaf7ac6b469f.png: Edit this fictional office image. Replace framed streetscape with simple abstract cream-and-navy geometric artwork containing no buildings, text or symbols. Replace the entire window and exterior view with a solid pale grey plaster wall. Keep closed cream folder, oak desk, empty navy chairs, closed unlabelled utility cupboard and intact lamp. No people, logos, wires, open panels, meters or tests. Photorealistic editorial context only, not real premises, completed work or proof of inspection/safety.",
+    "output": "/media/editorial/photos-20261019/blog-earthing-report-scope-jurf-industrial.webp",
+    "reviewedAt": "2026-10-31T11:57:36.052Z",
+    "review": "Individually viewed original PNG. Office desk, closed cream folder, empty navy chairs, closed unlabelled wall cupboard and abstract artwork. Individually viewed edited replacement with foreign streetscape and exterior window removed. Original rejection retained. Accepted as fictional context only, not an actual local property, inspection or completed Fixpoint work. No people, readable text, logos, meters, tools, exposed wires, open panels or tests; no safety, suitability or authorization proof.",
+    "originalFile": "exec-5c3a23b8-95ba-48b1-a107-e20919f15047.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "surge-protection-device-installation-dubai-south-dubai",
+    "key": "blog-surge-objective-dubai-south",
+    "prompt": "Landscape 3:2 photorealistic editorial cover for an article about planning professional surge-protection requirements for equipment. Fictional compact office equipment room, closed dark navy unlabelled equipment cabinet, light oak desk with closed laptop and closed blank folder, intact ceiling light, clean cream walls. No screens showing data, people, readable text, logos, visible wiring, open panels, tools, damage, tests or installation demonstration. Not actual customer premises or completed Fixpoint work. Architectural context only, not proof of a surge protector, protection level, backup power, safety, suitability or authorization.",
+    "output": "/media/editorial/photos-20261019/blog-surge-objective-dubai-south.webp",
+    "reviewedAt": "2026-10-31T11:57:36.052Z",
+    "review": "Individually viewed original PNG. Office equipment room, closed navy cabinet, closed laptop and folder, intact ceiling light; framed generic mountain artwork has no identifiable locality. Not evidence of a surge device, protection level or backup power. Accepted as fictional context only, not an actual local property, inspection or completed Fixpoint work. No people, readable text, logos, meters, tools, exposed wires, open panels or tests; no safety, suitability or authorization proof.",
+    "originalFile": "exec-6c079bf2-3e9d-45d1-8a7e-6e5acc260d46.png"
+  }
+]
