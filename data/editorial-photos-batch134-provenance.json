@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "blog",
+    "slug": "ceiling-fan-repair-university-city-sharjah",
+    "key": "blog-fan-repair-brief-universitycity",
+    "prompt": "Landscape 3:2 photorealistic editorial photograph for an Arabic customer guide to arranging ceiling fan repair. Invented enclosed cream room with a complete stationary matte-white three-blade ceiling fan firmly attached to the intact ceiling, closed pale wood door and sage upholstered chair. Show whole fan, no motion blur. No people, tools, exposed wiring, removed covers, ladders, text, logos, windows or landmarks. Image illustrates an everyday fixture only, not a diagnosed fault, installation quality, actual customer property or Fixpoint project. Quiet natural interior composition.",
+    "output": "/media/editorial/photos-20261019/blog-fan-repair-brief-universitycity.webp",
+    "reviewedAt": "2026-10-31T03:04:40.041Z",
+    "review": "Individually viewed original. Complete stationary white three-blade ceiling fan, closed wood door, sage chair and plant. No exposed wiring, people, tools or visible repair. Accept as invented fixture illustration only, not diagnosis, mounting certification, model identification, real premises or completed work.",
+    "originalFile": "exec-649572ed-ec77-45b6-8001-1cc9c8083e53.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "office-electrical-maintenance-al-shahamah-abu-dhabi",
+    "key": "blog-office-electrical-plan-shahamah",
+    "prompt": "Landscape 3:2 photorealistic editorial photograph for a customer guide to planning office electrical maintenance. Invented small enclosed office meeting room, intact ceiling lights, closed navy storage cupboard, oak meeting table with a closed blank notebook and neatly arranged empty chairs. No people, screens, cables, exposed wiring, tools, open panels, text, logos, windows or landmarks. Documentary style, neutral daylight effect. Illustrative property context only, not a real office, certified installation or completed Fixpoint project.",
+    "output": "/media/editorial/photos-20261019/blog-office-electrical-plan-shahamah.webp",
+    "reviewedAt": "2026-10-31T03:04:40.041Z",
+    "review": "Individually viewed original. Enclosed meeting room with intact ceiling lights, navy cupboard, oak table, closed notebook and empty chairs. No exposed wiring, tools, people or real geographic evidence. Accept as fictional office context only, not approved installation or completed Fixpoint project.",
+    "originalFile": "exec-38ff4ef8-4f2c-464c-9027-c4ec7cc7ef7b.png"
+  }
+]
