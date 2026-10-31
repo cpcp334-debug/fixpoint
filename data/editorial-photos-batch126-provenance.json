@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "blog",
+    "slug": "burnt-wire-repair-al-amerah-ajman",
+    "key": "blog-heat-damage-enquiry-alamerah",
+    "prompt": "Landscape 3:2 realistic editorial photo for an enquiry about suspected heat-damaged wiring. Fictional neutral apartment hallway, a closed white wall electrical enclosure seen from a respectful distance, with a plain closed notebook on a side console. No damage visible: do not invent fault evidence. Calm natural light, clean documentary composition. No exposed wire, scorch marks, fire, smoke, people, tools, repair or testing demonstration, text or logos. Context illustration only, not actual Al Amerah premises, a diagnosis or Fixpoint job.",
+    "output": "/media/editorial/photos-20261019/blog-heat-damage-enquiry-alamerah.webp",
+    "reviewedAt": "2026-10-31T01:33:34.976Z",
+    "review": "Individually viewed original PNG. Closed white enclosure in fictional hallway, closed notebook, intact surfaces, no damage or open conductors. Accepted only as enquiry-context illustration. Does not depict or prove burnt wiring, diagnosis, safe equipment, actual Al Amerah property or Fixpoint project.",
+    "originalFile": "exec-13b7c0c4-22ce-4f2a-946b-6f18026ba44a.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "shop-electrical-maintenance-al-ghuwair-sharjah",
+    "key": "blog-shop-coordination-alghuwair",
+    "prompt": "Landscape 3:2 realistic editorial photo for shop electrical service coordination. Fictional small retail shop before opening, neat empty counter and simple shelves with unbranded blank boxes, intact ceiling track lights, closed plain service cupboard at back, closed appointment folder on counter. Warm neutral and navy colour palette, natural documentary photography. No people, readable writing, logos, tools, open electrical parts or work in progress. Not an actual customer, location evidence or proof of completed maintenance.",
+    "output": "/media/editorial/photos-20261019/blog-shop-coordination-alghuwair.webp",
+    "reviewedAt": "2026-10-31T01:33:34.979Z",
+    "review": "Individually viewed original PNG. Fictional retail counter, folder, unbranded boxes, intact track lighting and closed rear cupboard. No work demonstration or open electrical gear. Accepted as service-coordination illustration only; cupboard function is unknown, no actual shop, customer, maintenance outcome or authorization claimed.",
+    "originalFile": "exec-3365ab95-db7b-4df5-99f0-03debcf86d77.png"
+  }
+]
