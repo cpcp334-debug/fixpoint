@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "blog",
+    "slug": "garden-lighting-installation-al-manhal-abu-dhabi",
+    "key": "blog-garden-brief-almanhal",
+    "prompt": "Landscape 3:2 realistic editorial photo for garden-lighting planning article. Entirely fictional UAE courtyard garden at blue hour, curved stone path framed by sparse native-looking grasses, three intact low shielded warm path lights illuminating pavement, dark tree canopy and calm cream wall, no bright sky beams. Premium documentary architecture, no people, no tools, no text/logos, no visible cables or repairs. Not an actual project or proof of compliant lighting design, no geographic landmark.",
+    "output": "/media/editorial/photos-20261019/blog-garden-brief-almanhal.webp",
+    "reviewedAt": "2026-10-31T01:16:51.016Z",
+    "review": "Individually viewed original. Three intact path fixtures, warm light on curved pavement, planted courtyard; some decorative light also reaches trees. Accepted as fictional atmosphere/planning illustration only, not proof of dark-sky performance, ecological outcome, compliant design, actual Al Manhal location or Fixpoint project.",
+    "originalFile": "exec-e5366014-96c0-48c5-b052-f3d762648a45.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "pump-control-panel-inspection-al-markaziyah-abu-dhabi",
+    "key": "blog-pump-panel-enquiry-almarkaziyah",
+    "prompt": "Landscape 3:2 realistic editorial photo for pump-control-panel inspection enquiry. Entirely fictional tidy building services room, one closed grey rectangular control cabinet prominently on wall, two simple dark status windows and closed door handle, neat blue pipework and small closed pump housings at a distance, paper service folder on a separate shelf. No readable labels, brands, people, tools, open wiring, exposed live equipment, testing, operating demonstration or claims of compliance. Neutral realistic documentary lighting, distinct industrial composition, not a real Fixpoint job.",
+    "output": "/media/editorial/photos-20261019/blog-pump-panel-enquiry-almarkaziyah.webp",
+    "reviewedAt": "2026-10-31T01:16:51.019Z",
+    "review": "Individually viewed original. Closed grey cabinet, generic indicator windows, covered conduits, blue pump housings and folder. No open conductors or testing. Accepted as imagined services-room illustration, not a particular product, diagnostic result, safe/compliant layout, actual site or company project.",
+    "originalFile": "exec-746d27e2-9921-4b8c-b8be-27291abc7565.png"
+  }
+]
