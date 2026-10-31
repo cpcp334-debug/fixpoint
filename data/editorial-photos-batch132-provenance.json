@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "blog",
+    "slug": "outdoor-electrical-inspection-al-jazirah-al-hamra-ras-al-khaimah",
+    "key": "blog-outdoor-enquiry-jazirahhamra",
+    "prompt": "Landscape 3:2 photorealistic editorial photo for outdoor electrical inspection enquiry. Fictional enclosed courtyard, cream textured walls, intact closed plain grey outdoor-style service enclosure at a distance, dry stone paving and one intact sheltered wall light, closed notebook on bench. Solid surrounding walls, no skyline, outside buildings or landmarks. No people, tools, open gear, cables, damage, testing or work demonstration, writing or logos. Not proof of weather rating, safe installation, geographic location or Fixpoint project. Calm natural light.",
+    "output": "/media/editorial/photos-20261019/blog-outdoor-enquiry-jazirahhamra.webp",
+    "reviewedAt": "2026-10-31T02:43:08.287Z",
+    "review": "Individually viewed original PNG. Fictional dry courtyard, closed grey enclosure, covered conduits and intact lantern, notebook on bench. No exposed wiring or inspection action. Accepted as enquiry-context illustration, not verified enclosure function/rating, safety, actual Al Jazirah premises or completed Fixpoint work.",
+    "originalFile": "exec-7bd09e64-43b7-4b9f-af9c-30bc35cbeeac.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "wall-light-installation-qidfa-fujairah",
+    "key": "blog-walllight-brief-qidfa",
+    "prompt": "Landscape 3:2 photorealistic editorial close architectural photograph for wall-light installation planning. Fictional enclosed hallway with intact simple matte black wall sconce on pale plaster, closed dark oak door, indirect warm light, small closed blank product box on console. No window, skyline, landmark, people, labels, logos, tools, exposed wiring, installation or testing. Model, suitability and compliance unverified; context illustration only, not actual Qidfa premises or Fixpoint project.",
+    "output": "/media/editorial/photos-20261019/blog-walllight-brief-qidfa.webp",
+    "reviewedAt": "2026-10-31T02:43:08.296Z",
+    "review": "Individually viewed original PNG. Fictional enclosed hallway, intact black sconce, closed oak door and blank box. No wiring, tools or installation shown. Accepted as product-planning context only, not a known model, suitability, measured output, compliance, actual Qidfa premises or company project.",
+    "originalFile": "exec-b830168b-ce6e-456d-8c56-3ceeaea2d7d8.png"
+  }
+]
