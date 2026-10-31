@@ -1,0 +1,82 @@
+[
+  {
+    "kind": "location",
+    "slug": "al-muntaz-2",
+    "key": "location:al-muntaz-2",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture cover for a UAE service-location page. Fictional low-rise house entrance, pale sandstone facade, closed olive timber door and sheltered ceiling lamps, simple gravel courtyard, morning. Distinct documentary composition, ordinary plausible property. Entirely fictional illustration, not actual local premises, landmark or Fixpoint project. No people, text, branding, tools, exposed wiring, repair demonstration, safety badges or geographic claims.",
+    "output": "/media/editorial/photos-20261019/location-al-muntaz-2-cover129.webp",
+    "reviewedAt": "2026-10-31T02:04:23.189Z",
+    "review": "Individually viewed original PNG. Low-rise sandstone entrance, closed olive door and intact sheltered lanterns. Accepted as fictional property illustration only; not geographic evidence, actual premises, completed work, compliance or authorization.",
+    "originalFile": "exec-335d904e-2651-4e3c-ace8-fb18bb45a260.png"
+  },
+  {
+    "kind": "location",
+    "slug": "al-muroor",
+    "key": "location:al-muroor",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture cover for a UAE service-location page. Fictional urban apartment corridor, white walls and dark skirting, closed walnut entrance, intact wall light, muted natural daylight. Distinct documentary composition, ordinary plausible property. Entirely fictional illustration, not actual local premises, landmark or Fixpoint project. No people, text, branding, tools, exposed wiring, repair demonstration, safety badges or geographic claims.",
+    "output": "/media/editorial/photos-20261019/location-al-muroor-cover129.webp",
+    "reviewedAt": "2026-10-31T02:04:23.195Z",
+    "review": "Individually viewed original PNG. Apartment corridor with closed walnut doors and intact wall/ceiling lights; distant city background is fictional. Accepted as fictional property illustration only; not geographic evidence, actual premises, completed work, compliance or authorization.",
+    "originalFile": "exec-59ae7b17-9cca-46ee-a84f-402c14de918e.png"
+  },
+  {
+    "kind": "location",
+    "slug": "al-mushrif",
+    "key": "location:al-mushrif",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture cover for a UAE service-location page. Fictional shaded residential garden entrance, cream arches, closed dark green door and intact warm lantern, sparse planting, afternoon. Distinct documentary composition, ordinary plausible property. Entirely fictional illustration, not actual local premises, landmark or Fixpoint project. No people, text, branding, tools, exposed wiring, repair demonstration, safety badges or geographic claims.",
+    "output": "/media/editorial/photos-20261019/location-al-mushrif-cover129.webp",
+    "reviewedAt": "2026-10-31T02:04:23.200Z",
+    "review": "Individually viewed original PNG. Garden entrance, cream arch, closed green door and intact lantern. Accepted as fictional property illustration only; not geographic evidence, actual premises, completed work, compliance or authorization.",
+    "originalFile": "exec-11bde2f5-6549-4083-a176-7574082602cd.png"
+  },
+  {
+    "kind": "location",
+    "slug": "al-muwaihat-1",
+    "key": "location:al-muwaihat-1",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture cover for a UAE service-location page. Fictional contemporary villa foyer, light oak console, closed charcoal entrance, intact white rocker control, calm morning light. Distinct documentary composition, ordinary plausible property. Entirely fictional illustration, not actual local premises, landmark or Fixpoint project. No people, text, branding, tools, exposed wiring, repair demonstration, safety badges or geographic claims.",
+    "output": "/media/editorial/photos-20261019/location-al-muwaihat-1-cover129.webp",
+    "reviewedAt": "2026-10-31T02:04:23.203Z",
+    "review": "Individually viewed original PNG. Villa foyer, oak console, closed charcoal door and intact white wall control. Accepted as fictional property illustration only; not geographic evidence, actual premises, completed work, compliance or authorization.",
+    "originalFile": "exec-4ae5a024-8006-4641-8e9d-9a56c7bf21a5.png"
+  },
+  {
+    "kind": "location",
+    "slug": "al-nabba",
+    "key": "location:al-nabba",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture cover for a UAE service-location page. Fictional compact residential building vestibule, pale grey tile, closed blue-grey door and intact round ceiling light, simple modest setting. Distinct documentary composition, ordinary plausible property. Entirely fictional illustration, not actual local premises, landmark or Fixpoint project. No people, text, branding, tools, exposed wiring, repair demonstration, safety badges or geographic claims.",
+    "output": "/media/editorial/photos-20261019/location-al-nabba-cover129.webp",
+    "reviewedAt": "2026-10-31T02:04:23.206Z",
+    "review": "Individually viewed original PNG. Modest tiled vestibule, closed blue-grey door and intact round ceiling light; lift visible, not a work demonstration. Accepted as fictional property illustration only; not geographic evidence, actual premises, completed work, compliance or authorization.",
+    "originalFile": "exec-51351ef0-5db6-455e-9d48-14fe9c54f23e.png"
+  },
+  {
+    "kind": "location",
+    "slug": "al-nahda-dubai",
+    "key": "location:al-nahda-dubai",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture cover for a UAE service-location page. Fictional modern apartment lift lobby, light stone floor, navy bench, closed brushed-metal lift doors and intact ceiling lighting, daylight. Distinct documentary composition, ordinary plausible property. Entirely fictional illustration, not actual local premises, landmark or Fixpoint project. No people, text, branding, tools, exposed wiring, repair demonstration, safety badges or geographic claims.",
+    "output": "/media/editorial/photos-20261019/location-al-nahda-dubai-cover129.webp",
+    "reviewedAt": "2026-10-31T02:04:23.210Z",
+    "review": "Individually viewed original PNG. Stone lift lobby, closed metal doors, navy bench and intact ceiling lights; distant background fictional. Accepted as fictional property illustration only; not geographic evidence, actual premises, completed work, compliance or authorization.",
+    "originalFile": "exec-4405242c-77f0-43ca-9b53-545e6b1d8ddd.png"
+  },
+  {
+    "kind": "location",
+    "slug": "al-nahda-sharjah",
+    "key": "location:al-nahda-sharjah",
+    "prompt": "Landscape 3:2 realistic editorial photograph, entirely fictional enclosed apartment foyer. Beige walls, closed light oak door, terracotta planter, plain intact white rocker wall switch, soft indirect afternoon light. Solid walls throughout, absolutely no window, no outside view, no skyline, no building silhouette, no landmark. No people, text, logos, tools, exposed wiring or repair. Not actual local premises or Fixpoint project. Distinct quiet architectural composition for service-location illustration.",
+    "output": "/media/editorial/photos-20261019/location-al-nahda-sharjah-cover129.webp",
+    "reviewedAt": "2026-10-31T02:04:23.213Z",
+    "review": "Individually viewed original PNG. Replacement individually viewed: enclosed beige foyer, closed oak door, terracotta planter and intact white rocker; no windows, skyline or landmarks. Replaces rejected landmark image retained separately. Accepted as fictional property illustration only; not geographic evidence, actual premises, completed work, compliance or authorization.",
+    "originalFile": "exec-804f5847-6f06-417b-a408-bae8295bdf92.png"
+  },
+  {
+    "kind": "location",
+    "slug": "al-nahyan",
+    "key": "location:al-nahyan",
+    "prompt": "Landscape 3:2 photorealistic editorial architecture cover for a UAE service-location page. Fictional townhouse shaded porch, cream plaster, closed bronze-brown door, intact warm wall fixture and potted plants, evening. Distinct documentary composition, ordinary plausible property. Entirely fictional illustration, not actual local premises, landmark or Fixpoint project. No people, text, branding, tools, exposed wiring, repair demonstration, safety badges or geographic claims.",
+    "output": "/media/editorial/photos-20261019/location-al-nahyan-cover129.webp",
+    "reviewedAt": "2026-10-31T02:04:23.217Z",
+    "review": "Individually viewed original PNG. Townhouse porch, closed brown door and intact warm lantern, invented evening garden. Accepted as fictional property illustration only; not geographic evidence, actual premises, completed work, compliance or authorization.",
+    "originalFile": "exec-40ab3d36-da4e-4f24-87ff-e6bd5b52d026.png"
+  }
+]
