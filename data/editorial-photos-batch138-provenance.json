@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "blog",
+    "slug": "shop-electrical-maintenance-al-raas-umm-al-quwain",
+    "key": "blog-shop-electrical-plan-alraas",
+    "prompt": "Landscape 3:2 photorealistic editorial photograph for a customer guide to planning shop electrical maintenance. Invented enclosed small shop interior during closed hours: pale stone counter, closed oak storage cabinets, empty dark green chairs, intact ceiling track lights and closed unlabelled notebook. No merchandise, till, readable text, signage, logo, people, tools, exposed wires, open covers, screens, windows or landmarks. Context illustration only, not a real shop, customer job, safety inspection or approved installation.",
+    "output": "/media/editorial/photos-20261019/blog-shop-electrical-plan-alraas.webp",
+    "reviewedAt": "2026-10-31T03:36:46.438Z",
+    "review": "Individually viewed original PNG. Empty shop interior with stone counter, closed lower oak cupboards, empty open shelving, green chairs, closed notebook and intact track lights. No people, tools, open electrical equipment, text, merchandise or branding. Accepted as fictional context illustration only, not actual local premises, completed Fixpoint work, assessment, safety or authorization proof.",
+    "originalFile": "exec-8415509f-626e-4f72-b59a-4139161b14e8.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "garden-lighting-installation-dubai-islands-dubai",
+    "key": "blog-garden-lighting-plan-dubaiislands",
+    "prompt": "Landscape 3:2 photorealistic editorial photograph for a customer guide to planning garden lighting. Entirely fictional enclosed small courtyard garden with solid cream perimeter walls, closed cedar door, raised olive planter, short stone path and intact simple low garden lights beside the planter. Gentle dusk illumination, no skyline or outside view, no water feature. No people, text, branding, tools, exposed wires, digging, open electrical boxes or repair demonstration. Not actual Dubai Islands premises, a completed Fixpoint job, product suitability, safety or local geography evidence.",
+    "output": "/media/editorial/photos-20261019/blog-garden-lighting-plan-dubaiislands.webp",
+    "reviewedAt": "2026-10-31T03:36:46.440Z",
+    "review": "Individually viewed original PNG. Enclosed invented garden with cream walls, closed cedar door, olive planter, stone path and intact low lights. Only sky above wall, no skyline or external buildings. No people, wires, digging, tools, water or repair demonstration. Product suitability, ratings, light output and safety not established. Accepted as fictional context illustration only, not actual local premises, completed Fixpoint work, assessment, safety or authorization proof.",
+    "originalFile": "exec-01160189-c2b1-47bf-bb3b-11975e2ba524.png"
+  }
+]
