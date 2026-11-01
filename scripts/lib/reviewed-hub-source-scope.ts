@@ -4,7 +4,7 @@ import {APPROVED_CATEGORIES} from '../../prisma/data/catalog-a1';
 export function reviewedHubSourceScope(kind:string,slug:string):string[]{
  const common=['messages/en.json','messages/ar.json'];
  if(kind==='section'){
-  assert(['blog','diy','services','locations'].includes(slug),'Unknown section; homepage uses its existing separate provenance');
+  assert(['blog','diy','services','locations','electrical-services-dubai'].includes(slug),'Unknown section; homepage uses its existing separate provenance');
   return [...common,`src/app/[locale]/${slug}/page.tsx`,'src/components/public/ReviewedSectionPhoto.tsx'];
  }
  if(kind==='service-category'){

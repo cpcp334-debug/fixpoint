@@ -1,0 +1,15 @@
+[
+  {
+    "key": "section:electrical-services-dubai",
+    "kind": "section",
+    "slug": "electrical-services-dubai",
+    "prompt": "Use case: photorealistic-natural. Asset type: one original landscape1536x1024 editorial cover for Fixpoint's existing Electrical Maintenance in Dubai landing page, which invites enquiries for offices, shops and homes. Show an imaginary small contemporary retail interior at dusk, simple neutral display plinths, orderly intact ceiling luminaires, a clear unmarked wall-switch plate in the near architectural foreground, and a fully closed discreet service cabinet on a distant wall. Wide architectural composition with inviting natural and interior light, credible materials and proportions, understated navy and warm stone palette. Electrical-building context is the subject; no work or test is being performed. No people, technicians, tools, exposed wires, open panels, diagrams, readable text, signatures, safety/approval labels, brands, logos, recognisable addresses or identifiable real property. No collage. This is a fictional editorial illustration, not a photograph of an actual Fixpoint job, customer premises, staff, licensed contractor, completed project, inspection or evidence of compliance.",
+    "editPrompt": "Edit this fictional retail electrical-maintenance editorial cover with one targeted change: remove all merchandise, handbags, clothes and small product accessories from the display plinths and shelves, leaving simple completely unbranded empty display surfaces. Eliminate every logo-like mark. Preserve the overall architectural composition, intact wall switch in the near foreground, fully closed background service cabinet, ceiling and pendant luminaires, lighting, colours, wide landscape1536x1024 framing and unoccupied setting. No people, readable text, branding, tools, open electrical parts, testing or work. Remain a fictional AI illustration, not actual Fixpoint work, customer premises, credentials or compliance evidence.",
+    "output": "/media/editorial/photos-20261019/section-electrical-dubai-campaign-cover255.webp",
+    "reviewedAt": "2026-11-01T04:48:14.000Z",
+    "review": "Individually viewed final edited original PNG and accepted. Coherent unoccupied fictional retail interior, intact switch plate, fully closed cabinet and ceiling luminaires. No merchandise, readable branding, exposed electrical parts, tools, people or work/test activity. Generated urban backdrop is context only; not actual Fixpoint work, client premises, staff, a completed project or approval/compliance evidence.",
+    "rejectedOriginalFile": "exec-7d0ab34e-5a76-4690-a51e-dd26226146d5.png",
+    "rejectionReason": "Rejected after individual review: logo-like gold mark on displayed handbag. Merchandise removed through image editing; first original retained privately.",
+    "originalFile": "exec-8378eea9-964d-4640-a9c3-f5f0f9e44644.png"
+  }
+]

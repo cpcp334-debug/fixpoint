@@ -4,7 +4,7 @@ import {createElement} from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {ReviewedSectionPhoto} from '../src/components/public/ReviewedSectionPhoto';
 import {PAGE_PHOTOS} from '../src/lib/catalog/page-photos';
-const sections=['blog','diy','services','locations'] as const;
+const sections=['blog','diy','services','locations','electrical-services-dubai'] as const;
 let checks=0;
 for(const section of sections){
  const key='section:'+section,original=PAGE_PHOTOS[key];
@@ -27,4 +27,4 @@ for(const section of sections){
  const source=readFileSync('src/app/[locale]/'+section+'/page.tsx','utf8');
  assert.equal(source.split('<ReviewedSectionPhoto section="'+section+'"').length,2);checks++;
 }
-console.log({passed:checks,failed:0,scope:'Four overview hooks; EN/AR rendering, absent/missing assignment, localized illustration disclosure, no additional headings; sample mappings exist only in test memory'});
+console.log({passed:checks,failed:0,scope:'Five public overview/campaign hooks; EN/AR rendering, absent/missing assignment, localized illustration disclosure, no additional headings; sample mappings exist only in test memory'});

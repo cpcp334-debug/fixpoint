@@ -3,7 +3,7 @@ import { pagePhoto } from "@/lib/catalog/page-photos";
 import { editorialImageAlt, safeLocalImage } from "@/lib/catalog/editorial-images";
 
 /** A reviewed overview cover adds no heading, copy or placeholder when unassigned. */
-export function ReviewedSectionPhoto({ section, locale, title }: { section: "blog" | "diy" | "services" | "locations"; locale: string; title: string }) {
+export function ReviewedSectionPhoto({ section, locale, title }: { section: "blog" | "diy" | "services" | "locations" | "electrical-services-dubai"; locale: string; title: string }) {
   const image = safeLocalImage(pagePhoto("section", section));
   if (!image) return null;
   return (
