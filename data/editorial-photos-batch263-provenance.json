@@ -1,0 +1,33 @@
+[
+  {
+    "kind": "blog",
+    "slug": "electrical-subcontracting-sharjah-checklist",
+    "key": "blog:electrical-subcontracting-sharjah-checklist",
+    "output": "/media/editorial/photos-20261019/blog-electrical-subcontract-sharjah-cover263.webp",
+    "prompt": "A single photorealistic 3:2 landscape editorial cover for a project-planning guide about electrical subcontracting in Sharjah. Entirely fictional commercial fit-out setting, not an actual Sharjah building or completed Fixpoint project. Foreground: plain site coordination table with a closed navy folder, blank rolled drawing sheets with no visible diagrams or words, an unbranded pencil and a simple clipboard turned face down. Background: orderly unoccupied commercial unit with newly finished neutral partitions, closed service access panels, intact ceiling luminaires and a wide clear walkway. Realistic soft morning daylight, restrained navy/stone tones, credible modest-scale premises. The scene communicates scope and site coordination only, not electrical design, inspection or repair. No people, tools, power tools, helmets bearing logos, instruments, exposed wires, open electrical boxes, sparks, damage, certificates, official seals, branded items, readable text, signs, labels, skyline or recognizable landmarks. High-quality documentary architectural photography, not a diagram or collage.",
+    "reviewedAt": "2026-11-01T06:22:45.640Z",
+    "review": "Individually viewed: fictional commercial premises and coordination table with blank rolled paper/folder, closed panels, clear walkway and intact luminaires. No people, exposed wiring, readable plans, brands or official claims. No recognizable Sharjah site; represents enquiry/scope planning only, not a real Fixpoint project or technical design. Approved with neutral illustration caption and truthful AI alt. Intended to replace this article's shared homepage photo, preserving the existing homepage asset.",
+    "generation": "built-in image_gen",
+    "originalFile": "exec-ee3bb0a7-ebc4-4495-b159-d338733b802e.png",
+    "retainedOriginalFile": "electrical-subcontract-sharjah-original263.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "motion-sensor-light-installation-nasma-residences-sharjah",
+    "key": "blog:motion-sensor-light-installation-nasma-residences-sharjah",
+    "output": "/media/editorial/photos-20261019/blog-motion-light-nasma-cover263.webp",
+    "prompt": "Create one photorealistic landscape 3:2 editorial cover for a customer planning guide about motion-sensor light installation in Nasma Residences, Sharjah. Entirely fictional ordinary residential entry corridor, not an actual Nasma property or a completed contractor job. Warm cream walls, closed plain front door with frosted glass side panel, tidy clear tiled walkway, slim wooden console with a small ceramic bowl. Show an intact ceiling light providing a soft warm pool of illumination and a small unbranded opaque-white motion detector on the ceiling, with no dark camera lens or camera-like appearance. Quiet dusk light through the glass, modest realistic proportions, thoughtful architectural photograph. The scene illustrates a lighting use case only, not a recommended wiring layout, technical placement or tested product performance. No people, tools, exposed wiring, open covers, ladders, diagrams, arrows, detection beams, movement trails, surveillance screens, brands, readable labels, lettering, watermarks or identifiable landmarks. Distinct from a closed electrical-board hallway or office reception image.\nFINAL EDIT: Edit this fictional editorial image only: remove the small round ceiling detector above and to the left of the main ceiling light. Restore a seamless plain cream ceiling in that small area. Preserve the entire composition, closed doors, main ceiling light, warm illumination, furniture and all other details. Do not add any replacement sensor, camera, smoke alarm, device, text, logo or wiring. The final image is simply a fictional entrance-lighting use case, not a product photograph or a technical installation layout.",
+    "reviewedAt": "2026-11-01T06:31:46.734Z",
+    "review": "Final edited PNG individually viewed. Fictional residential entrance with intact ceiling light, no sensor product shown, no exposed wiring, tools, people or readable claims. The ambiguous ceiling device was removed to avoid suggesting a smoke detector was a motion sensor. Represents an entrance-lighting use case only, not a product specification, technical layout, actual Nasma property or Fixpoint installation. Approved with neutral illustration caption and truthful AI alt.",
+    "rejectedVariants": [
+      {
+        "originalFile": "exec-2f45c196-4b06-4c31-95da-00c4201f4677.png",
+        "retainedOriginalFile": "motion-light-nasma-rejected263.png",
+        "reason": "Ceiling device appearance could be mistaken for a smoke detector; replaced by edited illustration without that device."
+      }
+    ],
+    "generation": "built-in image_gen, followed by targeted built-in edit",
+    "originalFile": "exec-16e05e9b-71f5-4d14-81a3-9b6354ae54ad.png",
+    "retainedOriginalFile": "motion-light-nasma-original263.png"
+  }
+]
