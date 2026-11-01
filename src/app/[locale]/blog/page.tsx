@@ -17,15 +17,44 @@ import { prisma } from "@/server/db";
 /** Rebuild after MySQL import / publish — avoid empty SSG baked at first Hostinger build. */
 export const revalidate = 300;
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+const BLOG_PAGE_SIZE = 12;
+
+type BlogSearchParams = {
+  category?: string | string[];
+  q?: string | string[];
+  page?: string | string[];
+};
+
+type BlogPageProps = {
+  params: Promise<{ locale: string }>;
+  searchParams: Promise<BlogSearchParams>;
+};
+
+function firstQueryValue(value: string | string[] | undefined) {
+  return (Array.isArray(value) ? value[0] : value)?.trim();
+}
+
+function blogQuery(searchParams: BlogSearchParams) {
+  const requestedPage = Number(firstQueryValue(searchParams.page));
+  return {
+    category: firstQueryValue(searchParams.category),
+    q: firstQueryValue(searchParams.q),
+    pageHint: Number.isSafeInteger(requestedPage) && requestedPage > 0 ? requestedPage : 1,
+  };
+}
+
+export async function generateMetadata({ params, searchParams }: BlogPageProps) {
   const { locale } = await params;
+  const { category, q, pageHint } = blogQuery(await searchParams);
   const t = await getTranslations({ locale, namespace: "Blog" });
-  const { total } = await getPublishedBlogArticlesPage(locale, { skip: 0, take: 1 });
+  const { total } = await getPublishedBlogArticlesPage(locale, { skip: 0, take: 1, category, q });
+  const totalPages = Math.max(1, Math.ceil(total / BLOG_PAGE_SIZE));
+  const page = Math.min(totalPages, pageHint);
   return buildMetadata({
     locale,
     title: `${t("title")} | ${brandName(locale)}`,
     description: t("lead"),
-    path: "/blog",
+    path: listPageHref("/blog", page, { category, q }),
     index: total > 0,
   });
 }
@@ -38,10 +67,7 @@ function readMinutes(text: string) {
 export default async function BlogIndexPage({
   params,
   searchParams,
-}: {
-  params: Promise<{ locale: string }>;
-  searchParams: Promise<{ category?: string; q?: string; page?: string }>;
-}) {
+}: BlogPageProps) {
   const { locale } = await params;
   const sp = await searchParams;
   setRequestLocale(locale);
@@ -51,25 +77,21 @@ export default async function BlogIndexPage({
   const home = await getTranslations("Home");
   const cta = await getTranslations("Cta");
 
-  const category = sp.category?.trim();
-  const q = sp.q?.trim();
-  const pageSize = 12;
-  // First page count comes with take:1 metadata path; here fetch total via page query
-  const pageHint = Math.max(1, Number(sp.page || "1") || 1);
+  const { category, q, pageHint } = blogQuery(sp);
   const first = await getPublishedBlogArticlesPage(locale, {
     skip: 0,
-    take: pageSize,
+    take: BLOG_PAGE_SIZE,
     category,
     q,
   });
-  const totalPages = Math.max(1, Math.ceil(first.total / pageSize));
+  const totalPages = Math.max(1, Math.ceil(first.total / BLOG_PAGE_SIZE));
   const page = Math.min(totalPages, pageHint);
   const pagePack =
     page === 1
       ? first
       : await getPublishedBlogArticlesPage(locale, {
-          skip: (page - 1) * pageSize,
-          take: pageSize,
+          skip: (page - 1) * BLOG_PAGE_SIZE,
+          take: BLOG_PAGE_SIZE,
           category,
           q,
         });
@@ -98,7 +120,7 @@ export default async function BlogIndexPage({
         data={collectionPageJsonLd({
           name: t("title"),
           description: t("lead"),
-          path: "/blog",
+          path: listPageHref("/blog", page, { category, q }),
           locale,
         })}
       />
@@ -111,7 +133,7 @@ export default async function BlogIndexPage({
           <input
             type="search"
             name="q"
-            defaultValue={sp.q || ""}
+            defaultValue={q || ""}
             placeholder={locale === "ar" ? "ابحث في المدونة" : "Search the blog"}
             className="min-w-[12rem] flex-1 rounded-md border border-line bg-white px-3 py-2 text-sm"
           />
@@ -192,12 +214,12 @@ export default async function BlogIndexPage({
               totalPages={totalPages}
               previousHref={
                 page > 1
-                  ? listPageHref("/blog", page - 1, { category, q: sp.q?.trim() })
+                  ? listPageHref("/blog", page - 1, { category, q })
                   : null
               }
               nextHref={
                 page < totalPages
-                  ? listPageHref("/blog", page + 1, { category, q: sp.q?.trim() })
+                  ? listPageHref("/blog", page + 1, { category, q })
                   : null
               }
               previousLabel={pager("previous")}
@@ -236,12 +258,12 @@ export default async function BlogIndexPage({
               totalPages={totalPages}
               previousHref={
                 page > 1
-                  ? listPageHref("/blog", page - 1, { category, q: sp.q?.trim() })
+                  ? listPageHref("/blog", page - 1, { category, q })
                   : null
               }
               nextHref={
                 page < totalPages
-                  ? listPageHref("/blog", page + 1, { category, q: sp.q?.trim() })
+                  ? listPageHref("/blog", page + 1, { category, q })
                   : null
               }
               previousLabel={pager("previous")}
