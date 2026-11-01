@@ -1,0 +1,26 @@
+[
+  {
+    "kind": "blog",
+    "slug": "additional-socket-installation-al-alia-ajman-ajman",
+    "key": "blog:additional-socket-installation-al-alia-ajman-ajman",
+    "output": "/media/editorial/photos-20261019/blog-additional-socket-al-alia-cover256.webp",
+    "prompt": "Create one photorealistic editorial cover for an Arabic and English customer guide about planning an additional electrical socket in a home in Al Alia, Ajman, UAE. Fictional illustrative interior, never a claim of an actual project or exact local building. Landscape 3:2 photograph, warm natural daylight. A modest modern home study corner with cream plaster wall, pale wood desk, closed unbranded laptop, simple desk lamp switched off, existing intact UAE-style Type G switched wall socket clearly visible to the side of the desk. Keep the foreground socket geometrically plausible with three rectangular holes and closed cover, nothing plugged in. Thoughtful uncluttered composition showing practical furniture placement and access, not electrical work. A small leafy plant in background. No people, tools, loose wires, extension strips, open electrical equipment, diagrams, unsafe installation, text, logos, labels, watermark, skyline or recognizable landmark. Realistic material detail, restrained professional commercial photography, visually distinct from a warehouse or retail interior. No fabricated certifications or company markings.",
+    "reviewedAt": "2026-11-01T05:32:33.169Z",
+    "review": "Individually inspected with view_image. Fictional home study; intact switched Type G wall socket, no exposed wires or tools or people. No readable brand or textual claims. Shows furniture/access planning only, not an installation demonstration or actual Fixpoint project. Approved as an AI illustration with visible neutral caption and truthful generated-image alt text.",
+    "generation": "built-in image_gen",
+    "originalFile": "exec-206a2522-1172-46aa-8c1c-e80d7d4b92ec.png",
+    "retainedOriginalFile": "additional-socket-al-alia-original256.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "loose-electrical-connection-repair-al-garhoud-dubai",
+    "key": "blog:loose-electrical-connection-repair-al-garhoud-dubai",
+    "output": "/media/editorial/photos-20261019/blog-loose-connection-al-garhoud-cover257.webp",
+    "prompt": "One realistic editorial photographic cover, landscape 3:2, for a customer guide about arranging professional assessment of a suspected loose electrical connection in Al Garhoud Dubai. Fictional modest apartment entry hallway, never an actual property or completed contractor job. Main subject: a plain intact CLOSED flush-mounted electrical distribution-board cover on a cream wall, absolutely no open door or visible internal parts. Nearby a simple wall switch, an empty timber console and a blank small notebook closed on it. Long perspective to a softly sunlit living room with a single pendant lamp. Natural restrained colors, credible ordinary residential setting, careful architectural photography, crisp closed cabinet foreground and softer background. The image illustrates reporting the location of a suspected fault, not diagnosing it visually. No people, tools, instruments, cables, sparks, burns, smoke, warning icons, touch demonstration, branded objects, logos, lettering, signage, readable text or recognizable landmarks. No wall plan or circuit diagram. Visually distinct from a desk/socket photograph. Nothing to suggest licensing, authority endorsement or actual Fixpoint work.",
+    "reviewedAt": "2026-11-01T05:34:30.147Z",
+    "review": "Individually inspected with view_image: fictional residential hallway, closed intact electrical cabinet, switch, clear approach, no people or exposed wiring, no readable brands or claims, neutral generated background not identified as an actual Al Garhoud building. No diagnostic inference from intact cover. Approved for planning/reporting illustration only with visible caption and truthful AI alt.",
+    "generation": "built-in image_gen",
+    "originalFile": "exec-2be86b65-d566-48df-977d-dc947fd330d4.png",
+    "retainedOriginalFile": "loose-connection-al-garhoud-original257.png"
+  }
+]
