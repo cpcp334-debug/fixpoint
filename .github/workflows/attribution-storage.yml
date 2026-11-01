@@ -1,0 +1,31 @@
+name: Attribution storage
+
+on:
+  pull_request:
+    paths:
+      - "src/lib/attribution/**"
+      - "scripts/test-attribution-storage.ts"
+      - ".github/workflows/attribution-storage.yml"
+  push:
+    branches: [main]
+    paths:
+      - "src/lib/attribution/**"
+      - "scripts/test-attribution-storage.ts"
+      - ".github/workflows/attribution-storage.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  storage-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: node --import tsx --test scripts/test-attribution-storage.ts
+      - run: npx eslint src/lib/attribution/client.ts scripts/test-attribution-storage.ts --max-warnings 0
