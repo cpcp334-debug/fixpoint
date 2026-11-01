@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "diy",
+    "slug": "diy-microwave-repair",
+    "key": "diy:diy-microwave-repair",
+    "output": "/media/editorial/photos-20261019/diy-microwave-repair-cover291.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for an existing before-you-book microwave-repair guide. Entirely fictional modest apartment kitchen with muted terracotta backsplash and pale oak cupboards, one compact unbranded silver-and-black microwave on a dry countertop, door fully closed, no readable controls. In foreground an untouched dark-screen phone on a small side table. Restrained realistic documentary interior photography and soft daylight, ordinary proportions. Appliance enquiry context only, not actual repair, diagnosis, operating recommendation, safety proof or Fixpoint project. No people, tools, repair action, open door or casing, internal parts, wiring, sparks, smoke, damage, food, branding, certificates, readable words or watermark. Preserve the context of a red-risk guide; do not depict DIY methods.",
+    "reviewedAt": "2026-11-01T19:10:32.948Z",
+    "review": "Individually visually reviewed: fictional terracotta kitchen with fully closed unbranded microwave and untouched dark-screen phone on table. No people, repair action, tools, open appliance, internal components, exposed wiring, sparks, smoke, damage or readable branding. Appliance enquiry context only, not an actual model recommendation, repair, diagnosis, safe installation or Fixpoint project. Existing red-risk settings must remain unchanged; neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 116940,
+    "optimizedSha256": "9290b04b3442217ed9dcd01e1f57f9fa103fa7466e450efcea07437b190ca6cf",
+    "originalFile": "exec-ec383254-2c71-42da-99c5-f2837db929cb.png",
+    "retainedOriginalFile": "diy-microwave-repair-original291.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-microwave-spark-problem",
+    "key": "diy:diy-microwave-spark-problem",
+    "output": "/media/editorial/photos-20261019/diy-microwave-spark-cover291.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for an existing before-you-book guide about a reported microwave spark problem. Entirely fictional modest kitchen with pale blue tile and off-white cupboards, one plain unbranded white-and-black microwave on a dry broad countertop, door and casing fully closed, no readable controls. A closed plain service folder rests on a separate breakfast table in foreground. Soft natural daylight, realistic restrained documentary interior photography, ordinary proportions. Appliance enquiry context only: do NOT show sparks, an operating problem, a diagnosis, a safe-use decision, an actual incident or Fixpoint job. No people, food, metal objects inside appliance, repair action, tools, open door or casing, exposed components, wiring, smoke, damage, branding, labels, certificates, readable text or watermark. Existing red-risk guide must remain unchanged; no DIY steps.",
+    "reviewedAt": "2026-11-01T19:23:49.774Z",
+    "review": "Individually visually reviewed: fictional pale-blue kitchen with fully closed unbranded microwave and closed folder on separate table. No people, operating fault, sparks, food inside appliance, repair action, tools, open casing, exposed parts or wiring, smoke, damage or readable branding. Appliance enquiry context only, not incident evidence, diagnosis, safe-use decision or Fixpoint project. Existing red-risk settings must remain unchanged; neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 71048,
+    "optimizedSha256": "9bb7410a7a0db8f2f1dcfb0f2ca0aa4dcc9f20b8f46d902631294c4e91d1dfe1",
+    "originalFile": "exec-8855eac9-13bb-445d-8a98-0c300ad51e08.png",
+    "retainedOriginalFile": "diy-microwave-spark-original291.png"
+  }
+]
