@@ -1,0 +1,42 @@
+[
+  {
+    "kind": "service-category",
+    "key": "service-category:ac",
+    "slug": "ac",
+    "output": "/media/editorial/photos-20261019/service-category-ac-cover239.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for an air-conditioning service category. Fictional modern UAE apartment lounge, one intact wall-mounted split air conditioner high on a pale wall, completely closed casing, clean unobstructed surroundings, linen sofa and subtle indoor plant. Wide architectural angle, natural afternoon light, realistic unit proportions. No people, readable labels, logos, tools, opened parts, condensation, visible fault, diagnosis or repair. Fictional context, not actual Fixpoint client property, work or proof of equipment performance. No collage.",
+    "reviewedAt": "2026-11-01T02:27:00.517Z",
+    "review": "Individually viewed original PNG and accepted: coherent lounge with intact assembled split AC and no opened components or repair; background skyline is fictional, not a real client location. Not actual Fixpoint work, completed repair or evidence of performance/safety.",
+    "originalFile": "exec-8a3d35da-1424-47c2-be30-0b7ab6bdfd8d.png"
+  },
+  {
+    "kind": "diy-category",
+    "key": "diy-category:ac",
+    "slug": "ac",
+    "output": "/media/editorial/photos-20261019/diy-category-ac-cover239.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial illustration for an air-conditioning before-booking guide index. Fictional bedroom corner with an intact closed wall-mounted air conditioner in soft background; foreground a plain remote controller with blank dark display resting untouched on a small side table beside folded linen. Close-medium natural angle, muted blue and ivory, coherent realistic proportions. No people, text, branding, opened appliance, tools, control instructions, troubleshooting demonstration or identifiable property. Not actual Fixpoint work, diagnosed fault or evidence of equipment safety. No collage.",
+    "reviewedAt": "2026-11-01T02:27:00.518Z",
+    "review": "Individually viewed original PNG and accepted: intact AC in bedroom background and untouched remote with blank display, no instructions or testing. Fictional contextual illustration, not actual client property, Fixpoint work, diagnosis or proof of safety.",
+    "originalFile": "exec-35aa828a-a65b-4fe4-80ee-0898419bd34c.png"
+  },
+  {
+    "kind": "service-category",
+    "key": "service-category:general-maintenance",
+    "slug": "general-maintenance",
+    "output": "/media/editorial/photos-20261019/service-category-general-maintenance-cover239.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a general building maintenance category. Fictional contemporary apartment-building common corridor with intact closed doors, aligned handles, neat wall finishes and recessed lighting, a simple unmarked service folder on a small reception shelf. Wide architectural view, warm neutral stone and subtle navy accents, coherent realistic proportions. No people, text, branding, work in progress, tools, exposed components, defects, identifiable property or skyline. Not actual Fixpoint work, branch, client building, completed repair or proof of compliance. No collage.",
+    "reviewedAt": "2026-11-01T02:27:00.518Z",
+    "review": "Individually viewed original PNG and accepted: coherent fictional corridor with closed doors, intact finishes and lighting, plain folio. No work or identifiable property. Not actual Fixpoint work, client building, branch, completed repair or compliance evidence.",
+    "originalFile": "exec-2166592f-75f5-4bf5-94ff-ecc8f26ba496.png"
+  },
+  {
+    "kind": "diy-category",
+    "key": "diy-category:general-maintenance",
+    "slug": "general-maintenance",
+    "output": "/media/editorial/photos-20261019/diy-category-general-maintenance-cover239.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a general home maintenance before-booking guide index. Fictional compact apartment entryway with intact closed shoe cabinet, neatly aligned interior door and dry undamaged wall finish, a plain closed appointment folio on a console shelf. Close-medium diagonal view, natural daylight, pale oak and cream, realistic proportions. No people, tools, demonstrations, open parts, readable text, logos, defects or identifiable real property. Fictional context only, not actual Fixpoint client home, completed repair, diagnosis or proof of safety. No collage.",
+    "reviewedAt": "2026-11-01T02:27:00.518Z",
+    "review": "Individually viewed original PNG and accepted: coherent entryway, closed cabinet and door, intact finishes and plain folio. No repair demonstration or defect claim. Fictional contextual illustration, not actual Fixpoint work, client property, diagnosis or proof of safety.",
+    "originalFile": "exec-7c7d6b7e-4aea-4e18-9af2-0cc189e9cef8.png"
+  }
+]
