@@ -16,6 +16,10 @@ async function main() {
     });
   }
   check('missing translation',()=>assert.equal(ready(undefined),false));
+  for (const body of ['Unique editorial markers: internal.', 'UNIQUE EDITORIAL MARKERS: internal', 'علامات تحريرية فريدة: داخلي.', '\r\nUnique editorial markers: one.\r\n\r\nUnique editorial markers: two.']) {
+    check('reject body empty after presentation cleanup', () => assert.equal(ready({...en, body}), false));
+  }
+  check('retain useful text beside an internal marker', () => assert.equal(ready({...en, body: 'Useful evidence.\n\nUnique editorial markers: internal.'}), true));
   check('both content languages accepted',()=>{assert.equal(ready(en),true);assert.equal(ready(ar),true);});
   const hostile = "x' OR 1=1 --";
   const queries = blogPageQueries('ar',{skip:12,take:12,category:hostile,q:hostile});
@@ -24,7 +28,8 @@ async function main() {
   check('count and pagination share exact predicate',()=>{
     assert.equal(idSql.slice(idSql.indexOf('FROM'),idSql.indexOf(' ORDER BY')),countSql.slice(countSql.indexOf('FROM')));
     assert.deepEqual(queries.ids.values.slice(0,-2),queries.count.values);
-    assert.ok(idSql.indexOf('t.body REGEXP') < idSql.indexOf(' LIMIT'));
+    assert.ok(idSql.includes('REGEXP_REPLACE'));
+    assert.ok(idSql.indexOf('REGEXP_REPLACE') < idSql.indexOf(' LIMIT'));
   });
   check('filters and pagination are bound parameters',()=>{
     assert.ok(!idSql.includes(hostile));assert.ok(queries.ids.values.includes(`%${hostile}%`));

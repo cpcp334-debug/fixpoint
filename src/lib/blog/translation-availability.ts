@@ -1,4 +1,5 @@
 import { Prisma } from '@prisma/client';
+import { cleanPublicEditorialText, EDITORIAL_MARKER_PATTERNS } from './public-editorial-copy';
 
 // Explicit ECMAScript trim characters, shared with the MySQL regexp parameter.
 // This is a minimum content-presence rule, not language or editorial approval.
@@ -6,13 +7,20 @@ export const BLOG_NON_WHITESPACE = '[^\u0009-\u000d\u0020\u00a0\u1680\u2000-\u20
 const nonWhitespace = new RegExp(BLOG_NON_WHITESPACE);
 export type BlogTranslationContent = { title: string; body: string };
 export function isBlogTranslationAvailable(t: BlogTranslationContent | null | undefined): boolean {
-  return !!t && [t.title, t.body].every(value => nonWhitespace.test(value) && !/REVIEW_REQUIRED/i.test(value));
+  return !!t && [t.title, t.body].every(value => typeof value === 'string' && nonWhitespace.test(value) && !/REVIEW_REQUIRED/i.test(value))
+    && nonWhitespace.test(cleanPublicEditorialText(t.body));
 }
 
 /** Alias t is fixed by the queries below; never interpolate an identifier from input. */
 export function blogTranslationAvailabilitySql(): Prisma.Sql {
+  // Use the same content-removing rules as the renderer before pagination.
+  // Three-argument REGEXP_REPLACE is supported by MySQL 8+ and MariaDB 10.11.
+  let body = Prisma.sql`REPLACE(REPLACE(t.body, ${'\r\n'}, ${'\n'}), ${'\r'}, ${'\n'})`;
+  for (const rule of EDITORIAL_MARKER_PATTERNS) {
+    body = Prisma.sql`REGEXP_REPLACE(${body}, ${(rule.ignoreCase ? '(?i)' : '(?-i)') + rule.pattern}, '')`;
+  }
   return Prisma.sql`t.title REGEXP ${BLOG_NON_WHITESPACE}
-    AND t.body REGEXP ${BLOG_NON_WHITESPACE}
+    AND ${body} REGEXP ${BLOG_NON_WHITESPACE}
     AND LOCATE('review_required', LOWER(t.title)) = 0
     AND LOCATE('review_required', LOWER(t.body)) = 0`;
 }
