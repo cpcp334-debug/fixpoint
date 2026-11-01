@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "blog",
+    "slug": "partial-power-failure-diagnosis-dubai-production-city-dubai",
+    "key": "blog:partial-power-failure-diagnosis-dubai-production-city-dubai",
+    "output": "/media/editorial/photos-20261019/blog-partial-production-cover293.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for a workplace enquiry guide about reported partial power loss in Dubai Production City. Entirely fictional small-business office, empty front desk with two dark-screen monitors, adjacent meeting nook visible in natural daylight with one intact desk lamp softly lit. Ordinary modest finishes, pale grey and muted green, restrained realistic documentary interior photography, no identifiable company or landmark. Workplace coordination context only, not evidence of a power fault, cause, operating status, safety, actual Dubai Production City office or Fixpoint project. No people, tools, testing, open panel, exposed wiring, damage, sparks, smoke, technical diagrams, readable screens, words, logos, certificates or watermark.",
+    "reviewedAt": "2026-11-01T19:38:02.018Z",
+    "review": "Individually visually reviewed: fictional empty office reception and meeting nook, backs of two monitors and softly lit desk lamp. Screen or power states cannot be inferred; no fault is shown. No people, work action, tools, open components, exposed wiring, damage, readable text, branding or identifiable landmark. Workplace enquiry context only, not outage evidence, diagnosis, operating status, safety proof, actual Dubai Production City office or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 73458,
+    "optimizedSha256": "fa0abd16a18282ac29b5a990b4a5aee17fd990f121df885346d832e579674b5d",
+    "originalFile": "exec-9cb1222a-4b6e-404d-9c54-a42de9a839e9.png",
+    "retainedOriginalFile": "blog-partial-production-original293.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "blown-fuse-diagnosis-al-qusaidat-ras-al-khaimah",
+    "key": "blog:blown-fuse-diagnosis-al-qusaidat-ras-al-khaimah",
+    "output": "/media/editorial/photos-20261019/blog-fuse-qusaidat-cover293.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for a customer blown-fuse diagnosis enquiry guide in Al Qusaidat, Ras Al Khaimah. Entirely fictional modest building service-room entrance with a fully closed unbranded metal cabinet in background. One fictional adult in plain navy clothing stands in the foreground away from all equipment, looking at a blank clipboard; no interaction with cabinet. Realistic restrained documentary photograph, soft neutral daylight, ordinary proportions. Documentation/enquiry context only, not a test, repair, blown fuse, qualified employee, safe-access proof, actual Al Qusaidat site or Fixpoint project. No tools, meters, probes, exposed components, open panel, fuse close-up, wiring, damage, sparks, smoke, readable words, logos, badges, certificates, technical diagrams or watermark.",
+    "reviewedAt": "2026-11-01T19:40:32.992Z",
+    "review": "Individually visually reviewed: fictional adult in plain navy clothing looking at clipboard whose contents are not visible, away from a fully closed unbranded cabinet. No equipment interaction, tools, testing, fuse display, open components, exposed wiring, damage, branding or identifiable property. Documentation context only; not a blown fuse, diagnosis, qualified Fixpoint employee, safe-access proof, actual Al Qusaidat site or completed project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 58916,
+    "optimizedSha256": "34af922c3c4b075fa5b19f70fbf97c31916f8997bed9d5ff114636d6d9e48cd4",
+    "originalFile": "exec-fbaa273b-0d38-4833-b2c4-2823a08207ba.png",
+    "retainedOriginalFile": "blog-fuse-qusaidat-original293.png"
+  }
+]
