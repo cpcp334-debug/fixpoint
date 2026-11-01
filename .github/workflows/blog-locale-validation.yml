@@ -1,0 +1,76 @@
+name: Blog locale database validation
+on:
+  push:
+    branches: [draft/blog-locale-catalog-20261101]
+    paths:
+      - 'src/lib/blog/**'
+      - 'src/app/**/blog/**'
+      - 'src/app/sitemap.ts'
+      - 'src/app/api/locale-path/**'
+      - 'src/components/layout/LocaleSwitcher.tsx'
+      - 'scripts/test-blog-*.ts'
+      - '.github/workflows/blog-locale-validation.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  database:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ['mysql:8.0', 'mariadb:10.11', 'mariadb:11.8']
+    services:
+      mysql:
+        image: ${{ matrix.image }}
+        env:
+          MYSQL_ROOT_PASSWORD: validation-only
+          MYSQL_DATABASE: fixpoint_validation
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="${{ matrix.image == 'mysql:8.0' && 'mysqladmin ping -h localhost -pvalidation-only' || 'healthcheck.sh --connect --innodb_initialized' }}"
+          --health-interval=10s --health-timeout=5s --health-retries=12
+    env:
+      DATABASE_URL: mysql://root:validation-only@127.0.0.1:3306/fixpoint_validation
+      MYSQL_TEST_URL: mysql://root:validation-only@127.0.0.1:3306/fixpoint_validation
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: node --import tsx scripts/test-blog-translation-availability.ts
+      - run: node --import tsx scripts/test-blog-metadata-availability.ts
+      - run: node --import tsx scripts/test-blog-locale-consumers.ts
+      - run: node --import tsx scripts/test-blog-availability-mysql.ts
+      - run: npx tsc --noEmit
+      # Existing schema uses TEXT defaults accepted by MariaDB. Keep the
+      # MySQL job for query compatibility; runtime/bootstrap validation uses MariaDB.
+      - name: Create isolated runtime schema
+        if: matrix.image == 'mariadb:11.8'
+        run: npx prisma db push --skip-generate
+      - name: Seed isolated runtime fixture
+        if: matrix.image == 'mariadb:11.8'
+        run: node --import tsx scripts/test-blog-runtime.ts --seed
+      - name: Compile production application
+        if: matrix.image == 'mariadb:11.8'
+        run: npx next build --webpack
+        env:
+          NEXT_PUBLIC_SITE_URL: https://fixpoint.ae
+      - name: Validate production runtime responses
+        if: matrix.image == 'mariadb:11.8'
+        run: node --import tsx scripts/test-blog-runtime.ts
+        env:
+          NEXT_PUBLIC_SITE_URL: https://fixpoint.ae
+      - name: Package tracked source for Hostinger
+        if: matrix.image == 'mariadb:11.8'
+        run: git archive --format=zip --output=fixpoint-hostinger-source.zip HEAD
+      - uses: actions/upload-artifact@v4
+        if: matrix.image == 'mariadb:11.8'
+        with:
+          name: fixpoint-hostinger-source
+          path: fixpoint-hostinger-source.zip
+          retention-days: 14

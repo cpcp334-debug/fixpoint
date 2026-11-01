@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-11-01T22:48:41.856Z",
+  "mode": "READ ONLY",
+  "rows": 239860,
+  "newSqlVsJsMismatches": 0,
+  "oldVsNewDifferences": 0,
+  "newAvailable": {
+    "en": 119930,
+    "ar": 43502
+  },
+  "oldAvailable": {
+    "en": 119930,
+    "ar": 43502
+  }
+}

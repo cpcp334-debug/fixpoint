@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { remapPublicPathForLocale } from "@/lib/slug/remap-public-path";
+import { getBlogArticleBySlug } from "@/lib/blog/catalog";
 
 export const runtime = "nodejs";
 
@@ -15,5 +16,13 @@ export async function GET(request: Request) {
     return NextResponse.json({ href: "/" }, { status: 400 });
   }
   const href = remapPublicPathForLocale(path, locale);
+  const blogMatch = /^\/blog\/([^/?#]+)\/?$/.exec(path);
+  if (blogMatch) {
+    const article = await getBlogArticleBySlug(blogMatch[1], locale);
+    return NextResponse.json({
+      href: article ? `/blog/${article.slug}` : "/blog",
+      available: !!article,
+    });
+  }
   return NextResponse.json({ href });
 }

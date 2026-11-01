@@ -1,3 +1,4 @@
+import { blogPageQueries, isBlogTranslationAvailable } from "@/lib/blog/translation-availability";
 import { cache } from "react";
 import { prisma } from "@/server/db";
 import { parseJson } from "@/lib/utils";
@@ -94,51 +95,37 @@ const blogWhere = {
   ],
 };
 
-export const getPublishedBlogArticlesPage = cache(
-  async (locale: string, opts?: { skip?: number; take?: number; category?: string; q?: string }) => {
+type BlogPageOptions = { skip?: number; take?: number; category?: string; q?: string };
+
+const getPublishedBlogArticlesPageData = cache(
+  async (locale: string, opts?: BlogPageOptions & { count?: boolean }) => {
     const skip = Math.max(0, opts?.skip ?? 0);
     const take = Math.min(100, Math.max(1, opts?.take ?? 12));
     const category = opts?.category?.trim();
     const q = opts?.q?.trim();
 
-    const where: Parameters<typeof prisma.article.findMany>[0] extends { where?: infer W } | undefined
-      ? W
-      : never = {
-      ...blogWhere,
-      ...(category ? { categorySlugs: { contains: category } } : {}),
-      translations: {
-        some: {
-          locale,
-          ...(q
-            ? {
-                OR: [{ title: { contains: q } }, { excerpt: { contains: q } }],
-              }
-            : {}),
+    // Apply the identical availability predicate before both pagination and count.
+    // ArticleI18n has a unique (articleId, locale) constraint, so no duplicate IDs.
+    const queries = blogPageQueries(locale, { skip, take, category, q });
+    const [ids, counts] = await Promise.all([
+      prisma.$queryRaw<Array<{ id: string }>>(queries.ids),
+      // Related-article cards need no total; avoid a catalog-wide body scan.
+      opts?.count === false ? Promise.resolve([{ total: BigInt(0) }])
+        : prisma.$queryRaw<Array<{ total: bigint }>>(queries.count),
+    ]);
+    const totalRaw = Number(counts[0]?.total ?? 0);
+    const rows = ids.length ? await prisma.article.findMany({
+      where: { ...blogWhere, id: { in: ids.map(row => row.id) } },
+      select: {
+        slug: true, categorySlugs: true, heroImage: true, publishedAt: true,
+        updatedAt: true, relatedServiceSlugs: true,
+        translations: {
+          where: { locale },
+          select: { locale: true, title: true, excerpt: true, imageAlt: true },
         },
       },
-    };
-
-    const [rows, totalRaw] = await Promise.all([
-      prisma.article.findMany({
-        where,
-        select: {
-          slug: true,
-          categorySlugs: true,
-          heroImage: true,
-          publishedAt: true,
-          updatedAt: true,
-          relatedServiceSlugs: true,
-          translations: {
-            where: { locale },
-            select: { locale: true, title: true, excerpt: true, imageAlt: true },
-          },
-        },
-        orderBy: [{ publishedAt: "desc" }, { updatedAt: "desc" }, { id: "desc" }],
-        skip,
-        take,
-      }),
-      prisma.article.count({ where }),
-    ]);
+      orderBy: [{ publishedAt: "desc" }, { updatedAt: "desc" }, { id: "desc" }],
+    }) : [];
 
     const relatedLatin = [
       ...new Set(
@@ -185,8 +172,12 @@ export const getPublishedBlogArticlesPage = cache(
   },
 );
 
+export const getPublishedBlogArticlesPage = cache((locale: string, opts?: BlogPageOptions) =>
+  getPublishedBlogArticlesPageData(locale, opts),
+);
+
 export const getPublishedBlogArticles = cache(async (locale: string) => {
-  const { items } = await getPublishedBlogArticlesPage(locale, { skip: 0, take: 500 });
+  const { items } = await getPublishedBlogArticlesPageData(locale, { skip: 0, take: 100, count: false });
   return items;
 });
 
@@ -209,11 +200,12 @@ export const getBlogArticleBySlug = cache(async (slug: string, locale: string) =
   const cats = parseJson<string[]>(row.categorySlugs, []);
   if (cats.includes("service-faq")) return null;
   const t = row.translations.find((x) => x.locale === locale);
-  if (!t) return null;
+  if (!t || !isBlogTranslationAvailable(t)) return null;
   const job = await jobDisplayName(row.relatedServiceSlugs, locale);
   const publicSlug = blogPathSlug(locale, row.slug);
   return {
     id: row.id,
+    availableLocales: row.translations.filter(isBlogTranslationAvailable).map(t => t.locale).filter(locale => locale === "en" || locale === "ar"),
     slug: publicSlug,
     heroImage: editorialImage(row.heroImage, cats, parseJson<string[]>(row.relatedServiceSlugs || "[]", []).map(toMasterServiceSlug)),
     publishedAt: row.publishedAt,

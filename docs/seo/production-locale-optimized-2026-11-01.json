@@ -1,0 +1,293 @@
+{
+  "checkedAt": "2026-11-01T22:44:32.828Z",
+  "mode": "READ ONLY",
+  "queries": [
+    {
+      "locale": "en",
+      "case": "page1",
+      "kind": "ids",
+      "ms": 814,
+      "rows": 12,
+      "plan": [
+        {
+          "table": "a",
+          "type": "range",
+          "key": "wdbi_status_indexable_dab8372e6a5c",
+          "rows": "111453",
+          "extra": "Using index condition; Using where; Using filesort"
+        },
+        {
+          "table": "t",
+          "type": "eq_ref",
+          "key": "ArticleI18n_articleId_locale_key",
+          "rows": "1",
+          "extra": "Using index condition; Using where"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "case": "page1",
+      "kind": "count",
+      "ms": 4927,
+      "rows": 1,
+      "total": 119930,
+      "plan": [
+        {
+          "table": "a",
+          "type": "ALL",
+          "key": null,
+          "rows": "111453",
+          "extra": "Using where"
+        },
+        {
+          "table": "t",
+          "type": "eq_ref",
+          "key": "ArticleI18n_articleId_locale_key",
+          "rows": "1",
+          "extra": "Using index condition; Using where"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "case": "page2",
+      "kind": "ids",
+      "ms": 771,
+      "rows": 12,
+      "plan": [
+        {
+          "table": "a",
+          "type": "range",
+          "key": "wdbi_status_indexable_dab8372e6a5c",
+          "rows": "111453",
+          "extra": "Using index condition; Using where; Using filesort"
+        },
+        {
+          "table": "t",
+          "type": "eq_ref",
+          "key": "ArticleI18n_articleId_locale_key",
+          "rows": "1",
+          "extra": "Using index condition; Using where"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "case": "page100",
+      "kind": "ids",
+      "ms": 895,
+      "rows": 12,
+      "plan": [
+        {
+          "table": "a",
+          "type": "range",
+          "key": "wdbi_status_indexable_dab8372e6a5c",
+          "rows": "111453",
+          "extra": "Using index condition; Using where; Using filesort"
+        },
+        {
+          "table": "t",
+          "type": "eq_ref",
+          "key": "ArticleI18n_articleId_locale_key",
+          "rows": "1",
+          "extra": "Using index condition; Using where"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "case": "electricalSearch",
+      "kind": "ids",
+      "ms": 829,
+      "rows": 12,
+      "plan": [
+        {
+          "table": "a",
+          "type": "range",
+          "key": "wdbi_status_indexable_dab8372e6a5c",
+          "rows": "111453",
+          "extra": "Using index condition; Using where; Using filesort"
+        },
+        {
+          "table": "t",
+          "type": "eq_ref",
+          "key": "ArticleI18n_articleId_locale_key",
+          "rows": "1",
+          "extra": "Using index condition; Using where"
+        }
+      ]
+    },
+    {
+      "locale": "en",
+      "case": "electricalSearch",
+      "kind": "count",
+      "ms": 5442,
+      "rows": 1,
+      "total": 13358,
+      "plan": [
+        {
+          "table": "a",
+          "type": "ALL",
+          "key": null,
+          "rows": "111453",
+          "extra": "Using where"
+        },
+        {
+          "table": "t",
+          "type": "eq_ref",
+          "key": "ArticleI18n_articleId_locale_key",
+          "rows": "1",
+          "extra": "Using index condition; Using where"
+        }
+      ]
+    },
+    {
+      "locale": "ar",
+      "case": "page1",
+      "kind": "ids",
+      "ms": 834,
+      "rows": 12,
+      "plan": [
+        {
+          "table": "a",
+          "type": "range",
+          "key": "wdbi_status_indexable_dab8372e6a5c",
+          "rows": "111453",
+          "extra": "Using index condition; Using where; Using filesort"
+        },
+        {
+          "table": "t",
+          "type": "eq_ref",
+          "key": "ArticleI18n_articleId_locale_key",
+          "rows": "1",
+          "extra": "Using index condition; Using where"
+        }
+      ]
+    },
+    {
+      "locale": "ar",
+      "case": "page1",
+      "kind": "count",
+      "ms": 3889,
+      "rows": 1,
+      "total": 43502,
+      "plan": [
+        {
+          "table": "a",
+          "type": "ALL",
+          "key": null,
+          "rows": "111453",
+          "extra": "Using where"
+        },
+        {
+          "table": "t",
+          "type": "eq_ref",
+          "key": "ArticleI18n_articleId_locale_key",
+          "rows": "1",
+          "extra": "Using index condition; Using where"
+        }
+      ]
+    },
+    {
+      "locale": "ar",
+      "case": "page2",
+      "kind": "ids",
+      "ms": 864,
+      "rows": 12,
+      "plan": [
+        {
+          "table": "a",
+          "type": "range",
+          "key": "wdbi_status_indexable_dab8372e6a5c",
+          "rows": "111453",
+          "extra": "Using index condition; Using where; Using filesort"
+        },
+        {
+          "table": "t",
+          "type": "eq_ref",
+          "key": "ArticleI18n_articleId_locale_key",
+          "rows": "1",
+          "extra": "Using index condition; Using where"
+        }
+      ]
+    },
+    {
+      "locale": "ar",
+      "case": "page100",
+      "kind": "ids",
+      "ms": 932,
+      "rows": 12,
+      "plan": [
+        {
+          "table": "a",
+          "type": "range",
+          "key": "wdbi_status_indexable_dab8372e6a5c",
+          "rows": "111453",
+          "extra": "Using index condition; Using where; Using filesort"
+        },
+        {
+          "table": "t",
+          "type": "eq_ref",
+          "key": "ArticleI18n_articleId_locale_key",
+          "rows": "1",
+          "extra": "Using index condition; Using where"
+        }
+      ]
+    },
+    {
+      "locale": "ar",
+      "case": "electricalSearch",
+      "kind": "ids",
+      "ms": 842,
+      "rows": 12,
+      "plan": [
+        {
+          "table": "a",
+          "type": "range",
+          "key": "wdbi_status_indexable_dab8372e6a5c",
+          "rows": "111453",
+          "extra": "Using index condition; Using where; Using filesort"
+        },
+        {
+          "table": "t",
+          "type": "eq_ref",
+          "key": "ArticleI18n_articleId_locale_key",
+          "rows": "1",
+          "extra": "Using index condition; Using where"
+        }
+      ]
+    },
+    {
+      "locale": "ar",
+      "case": "electricalSearch",
+      "kind": "count",
+      "ms": 3775,
+      "rows": 1,
+      "total": 58,
+      "plan": [
+        {
+          "table": "a",
+          "type": "ALL",
+          "key": null,
+          "rows": "111453",
+          "extra": "Using where"
+        },
+        {
+          "table": "t",
+          "type": "eq_ref",
+          "key": "ArticleI18n_articleId_locale_key",
+          "rows": "1",
+          "extra": "Using index condition; Using where"
+        }
+      ]
+    }
+  ],
+  "syntheticChecks": 16,
+  "privateSampleChecks": 18,
+  "placeholderSamples": {
+    "count": 3,
+    "minBodyCharacters": 5640,
+    "maxBodyCharacters": 5841
+  }
+}
