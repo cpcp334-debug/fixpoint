@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "blog",
+    "slug": "balcony-electrical-wiring-discovery-gardens-dubai",
+    "key": "blog:balcony-electrical-wiring-discovery-gardens-dubai",
+    "output": "/media/editorial/photos-20261019/blog-balcony-discovery-cover289.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for a customer balcony-electrical-wiring enquiry guide in Discovery Gardens, Dubai. Entirely fictional modest apartment viewed from inside through a fully closed glass balcony door at early evening. Beyond glass a dry small balcony with plain furniture and one intact unbranded enclosed wall light; foreground indoor console holds a closed navy enquiry folder. Restrained realistic documentary interior photography, no identifiable landmark. Context only, not a wiring design, recommended outdoor fitting, weatherproof rating, safety proof, actual Discovery Gardens property or Fixpoint project. No people, tools, work action, socket close-up, extension leads, exposed cable, open fitting, water, damage, readable words, logo, certificates, technical diagrams or watermark.",
+    "reviewedAt": "2026-11-01T18:53:02.332Z",
+    "review": "Individually visually reviewed: fictional apartment viewed through closed balcony door at dusk, dry balcony with intact enclosed wall light, closed navy folder indoors. No people, action, tools, sockets, cables, open components, water, damage, branding or identifiable landmark. Enquiry context only, not wiring design, recommended fitting or rating, safety proof, actual Discovery Gardens property or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 95422,
+    "optimizedSha256": "2af237a122d74188e69c6816326f79cd37fe8b73ca99b6e8bd217e02b2435618",
+    "originalFile": "exec-5805eaf1-f963-48ec-839f-cb85287111e7.png",
+    "retainedOriginalFile": "blog-balcony-discovery-original289.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "electrical-smoke-damage-inspection-al-raqayeb-1-ajman",
+    "key": "blog:electrical-smoke-damage-inspection-al-raqayeb-1-ajman",
+    "output": "/media/editorial/photos-20261019/blog-smoke-raqayeb-cover289.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for an electrical smoke-damage inspection enquiry guide in Al Raqayeb 1, Ajman. Entirely fictional plain building service-room threshold viewed from a distant hallway. On the far wall a fully closed unbranded metal service cabinet, with a small restrained soot-like grey discoloration on the plaster above it; foreground outside the room a closed plain blue documentation folder on a narrow console. Realistic restrained documentary interior photo, neutral daylight, not sensational. No active fire, visible smoke, people, tools, testing, open cabinet, exposed wiring, broken components, technical labels, readable words, branding, certificates, injuries or watermark. Fictional illustration only: not proof of electrical origin, actual damage, inspection result, safe access, completed repair, actual Ajman property or Fixpoint project.",
+    "reviewedAt": "2026-11-01T18:55:09.049Z",
+    "review": "Individually visually reviewed: fictional room viewed from hallway, fully closed cabinet with restrained grey soot-like wall discoloration, closed blue documentation folder outside. No active fire or smoke, person, inspection action, tools, open components, exposed wiring, injuries or recognizable branding. Enquiry illustration only; not proof of electrical origin, actual damage, inspection result, safe access, completed repair, Ajman client property or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 35068,
+    "optimizedSha256": "6eae5c7ef4ac03d441c823107de62f92975a5d39a919c986fd07f1c18e5b8d1d",
+    "originalFile": "exec-2706ee4d-0c18-453b-a0e2-3726ecad6d83.png",
+    "retainedOriginalFile": "blog-smoke-raqayeb-original289.png"
+  }
+]
