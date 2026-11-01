@@ -7,7 +7,7 @@ This baseline distinguishes observed public behaviour from account metrics. Traf
 Evidence: [public snapshot at approximately 17:07 UTC](https://github.com/cpcp334-debug/fixpoint/actions/runs/41329846155). Exact observations are in [the JSON baseline](2026-11-01-public-baseline.json).
 
 - Live HTML on English and Arabic pages includes GTM container `GTM-TPPFX2WM`. The published container script returned HTTP 200 and contains `quote_submit_success`.
-- No GA4 measurement ID was detected by the limited static scan. This does **not** establish that GA4 is absent: container variables, downstream tags and browser execution require separate inspection.
+- A later [public configuration snapshot](https://github.com/cpcp334-debug/fixpoint/actions/runs/41330355983) identified Google tag destination `G-WBQ2B83BTM` in the published container (`vtp_tagId`). This supersedes the earlier limited ID scan. Its presence establishes configuration only; browser firing and authenticated GA4 receipt remain unverified.
 - Search Console access, GA4 property access, event receipt and enquiry reconciliation are unavailable to this execution. No new account/property/container was created.
 - The Arabic BOQ article still returns HTTP 200 with blank title/H1 and zero article words, index/follow, self-canonical, a sitemap entry and a locale-switch API target.
 - The Arabic testing/commissioning article now has an Arabic title/H1 and 1,113 body words. It is a bilingual control, not a remaining empty-page example.
@@ -39,7 +39,7 @@ CTR = clicks / impressions. Organic lead rate = verified attributable organic en
 
 ## GTM / GA4 validation checklist
 
-- Access the existing `GTM-TPPFX2WM` workspace, identify its published GA4 destination (if any), and confirm the existing web stream is for `fixpoint.ae`.
+- Access the existing `GTM-TPPFX2WM` workspace, confirm the observed published GA4 destination `G-WBQ2B83BTM`, and confirm the existing web stream is for `fixpoint.ae`.
 - In GTM Preview and GA4 DebugView, confirm one page-view event per intended navigation, including client navigation and both languages.
 - Map the existing custom events `quote_submit_success`, `booking_submit_success` and `contact_submit_success` to GA4. Mark the chosen successful-lead events as key events after validation. Avoid creating a second redundant lead event that doubles totals.
 - Test successful submission, invalid/rejected submission, refresh/back navigation and duplicate receipt. Schedule clearly labelled test enquiries with the owner/team; no forms were submitted in this audit.

@@ -787,5 +787,13 @@
       ],
       "notes": "Public container configuration only; event firing and GA4 receipt require browser and account verification."
     }
-  ]
+  ],
+  "trackingFollowUp": {
+    "evidenceUrl": "https://github.com/cpcp334-debug/fixpoint/actions/runs/41330355983",
+    "containerId": "GTM-TPPFX2WM",
+    "observedGoogleTagId": "G-WBQ2B83BTM",
+    "sourceField": "vtp_tagId",
+    "ga4ReceiptVerified": false,
+    "notes": "Public tag configuration supersedes earlier limited regex ID scan; original snapshot results retained."
+  }
 }
