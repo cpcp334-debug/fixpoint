@@ -1,0 +1,24 @@
+[
+  {
+    "key": "blog:warehouse-electrical-installation-uae",
+    "kind": "blog",
+    "slug": "warehouse-electrical-installation-uae",
+    "prompt": "Use case: photorealistic-natural. Asset type: one original landscape1536x1024 editorial cover for the existing article Warehouse Electrical Installation in the UAE: Planning the Package. Fictional unoccupied warehouse interior seen diagonally from a quiet small planning desk at the loading-area edge, empty orderly storage racks and broad clear aisle, intact closed wall-mounted electrical cabinet far in background, simple closed unmarked planning folder in foreground. Natural diffuse daylight, credible architecture and proportions, understated navy and warm grey. Emphasize the relationship between operational layout, access and electrical planning rather than work being performed. No people, workers, exposed wiring, open panels, operating machinery, tools, installation or test demonstrations, readable text, logos, brand marks, addresses, landmarks or identifiable customer property. No collage. This is an imaginary planning illustration, not actual Fixpoint work, staff, client property, completed project, certification or proof of compliance.",
+    "output": "/media/editorial/photos-20261019/blog-warehouse-electrical-planning-cover253.webp",
+    "reviewedAt": "2026-11-01T04:02:28.307Z",
+    "review": "Individually viewed original PNG; accepted. Coherent fictional warehouse planning setting, broad clear aisle, closed background cabinet, closed foreground folio and storage racks. No people, exposed wiring, open electrical enclosure, test or installation activity, readable labels or logos. Pallets in racks are ordinary storage context. Not actual Fixpoint work, client property, a completed project or compliance evidence.",
+    "originalFile": "exec-5c3f0df7-4be9-4cde-9003-431817c712d9.png",
+    "retainedOriginalFile": "warehouse-electrical-planning-original253.png"
+  },
+  {
+    "key": "blog:electrical-testing-commissioning-readiness",
+    "kind": "blog",
+    "slug": "electrical-testing-commissioning-readiness",
+    "prompt": "Use case: photorealistic-natural. Asset type: one original landscape1536x1024 editorial cover for Electrical Testing and Commissioning: A UAE Project Readiness Guide. Fictional building-management meeting area, a tidy round table with two plain closed document binders and several unmarked tabbed folders for organizing inspection records; a small intact closed electrical cabinet is visible on a distant corridor wall through glass. Broad architectural context with natural morning light, restrained warm stone and navy palette, realistic proportions, distinct composition from warehouse/loading-area scenes. No people, signatures, certificates, readable text, logos, brand marks, addresses, diagrams, exposed wiring, open panels, measuring instruments, tools, test or commissioning action. No collage. Illustrate organizing evidence and professional coordination, not instructions to perform electrical testing. Imaginary editorial setting, not an actual Fixpoint office, client property, completed project, approval, inspection result or evidence of compliance.",
+    "output": "/media/editorial/photos-20261019/blog-electrical-testing-planning-cover253.webp",
+    "reviewedAt": "2026-11-01T04:15:06.000Z",
+    "review": "Individually viewed original PNG and accepted. Coherent fictional meeting area with closed plain binders, unmarked folders and intact closed background cabinet. No people, readable certificates or labels, exposed components, instruments or test action. Generated city skyline is context only, not a real Fixpoint office, client property, location evidence, actual project, inspection outcome or approval.",
+    "originalFile": "exec-9a8ac665-f9b5-4d63-9e95-fd41978dbdd4.png",
+    "retainedOriginalFile": "electrical-testing-planning-original253.png"
+  }
+]
