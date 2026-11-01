@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "blog",
+    "slug": "wall-fan-installation-the-springs-dubai",
+    "key": "blog:wall-fan-installation-the-springs-dubai",
+    "output": "/media/editorial/photos-20261019/blog-wallfan-springs-cover305.webp",
+    "prompt": "Use case: photorealistic-natural. Original landscape 3:2 editorial cover for a customer wall-fan installation enquiry guide. Entirely fictional modest sitting room with warm cream wall and muted olive chair, one plain fully assembled unbranded wall-mounted fan with an intact protective cage and visually still blades. No visible electrical cable, plug or mounting work. Blank paper folder on a separate wooden table in foreground. Realistic restrained documentary interior photograph, soft daylight, ordinary proportions. No person or technical activity. Enquiry illustration only, not proof of operation, safe installation, product suitability, actual The Springs property or Fixpoint project. No tools, ladders, open parts, exposed wiring, hands, readable text, labels, badges, numbers, brand, logo or watermark.",
+    "reviewedAt": "2026-11-01T21:18:01.217Z",
+    "review": "Individually visually reviewed: fictional cream sitting room with assembled unbranded wall fan and visible cage, olive chair and blank folder on separate table. No people, mounting action, tools, ladder, exposed wires or readable branding. Image does not establish operating state, cage compliance, safe installation or product suitability. Not an actual The Springs property or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 150006,
+    "optimizedSha256": "56badd96e61cf007c17dba5d4a02c3d7f30d8865d736d394016b70a7520af4ba",
+    "originalFile": "exec-c05c9dbf-420a-495f-bb55-fa4139d1dca3.png",
+    "retainedOriginalFile": "wall-fan-installation-the-springs-dubai-original305.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "gate-motor-electrical-wiring-al-qusais-dubai",
+    "key": "blog:gate-motor-electrical-wiring-al-qusais-dubai",
+    "output": "/media/editorial/photos-20261019/blog-gate-qusais-cover305.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for a gate-motor electrical-coordination enquiry article. Entirely fictional modest commercial-property entrance with a fully closed plain charcoal metal gate between pale sand-coloured boundary walls; one small fully closed unbranded utility enclosure on the side wall. No visible wiring, exposed motor, controls or access mechanism. Realistic restrained street-level architectural photograph, soft morning light, ordinary proportions. No people, vehicles or technical activity. Context only, not actual wiring, operation, compliant installation, security design, safe-access permission, actual Al Qusais property or Fixpoint project. No tools, diagrams, open gate or box, readable words, numbers, plates, signage, brand, logo, badges, damage or watermark.",
+    "reviewedAt": "2026-11-01T21:18:01.348Z",
+    "review": "Individually visually reviewed: fictional closed charcoal gate and sand-coloured walls with fully closed unbranded side enclosure. No people, vehicles, exposed motor, wiring, controls, access credentials, readable signage, tools or technical action. Image does not establish motor presence, operation, electrical work, safe access, compliant installation or security design. Not an actual Al Qusais property or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 138898,
+    "optimizedSha256": "1cd7fbb8a358b669c20fd41bcc1d5400d4cc9fc0b0f7b2bb6c57420e61c41ca1",
+    "originalFile": "exec-4db52bc3-fceb-48a4-9c77-6a90d57c4191.png",
+    "retainedOriginalFile": "gate-motor-electrical-wiring-al-qusais-dubai-original305.png"
+  }
+]
