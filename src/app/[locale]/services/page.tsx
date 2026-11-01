@@ -1,3 +1,4 @@
+import { ReviewedSectionPhoto } from "@/components/public/ReviewedSectionPhoto";
 import { brandName } from "@/config/site";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildVisitorNavTree, getNavCategoryLocalized } from "@/lib/catalog/approved-nav";
@@ -90,6 +91,7 @@ export default async function ServicesPage({
       }
     >
       <PublicHero locale={locale} title={t("title")} lead={home("mainServicesLead")} />
+      <ReviewedSectionPhoto section="services" locale={locale} title={t("title")} />
 
       <Section tone="sand">
         <div className="flex flex-wrap items-center justify-between gap-5 rounded-2xl border border-line bg-white p-6 sm:p-8">

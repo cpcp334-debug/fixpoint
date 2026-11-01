@@ -1,3 +1,4 @@
+import { ReviewedSectionPhoto } from "@/components/public/ReviewedSectionPhoto";
 import { brandName } from "@/config/site";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
@@ -128,6 +129,7 @@ export default async function BlogIndexPage({
       <Section>
         <h1 className="text-[2rem] font-semibold text-navy">{t("title")}</h1>
         <p className="mt-3 max-w-3xl text-muted">{t("lead")}</p>
+        <ReviewedSectionPhoto section="blog" locale={locale} title={t("title")} />
 
         <form className="mt-6 flex flex-wrap gap-3" method="get">
           <input

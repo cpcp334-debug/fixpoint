@@ -1,3 +1,4 @@
+import { ReviewedSectionPhoto } from "@/components/public/ReviewedSectionPhoto";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
 import { getPublishedDiyCategories, getPublishedGuides } from "@/lib/catalog";
@@ -133,6 +134,7 @@ export default async function DiyIndexPage({
           </div>
         }
       />
+      <ReviewedSectionPhoto section="diy" locale={locale} title={t("title")} />
 
       <Section>
         <Disclaimer>{siteConfig.disclaimers.diy[locale === "ar" ? "ar" : "en"]}</Disclaimer>

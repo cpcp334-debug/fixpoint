@@ -1,3 +1,4 @@
+import { ReviewedSectionPhoto } from "@/components/public/ReviewedSectionPhoto";
 import { brandName } from "@/config/site";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getActiveEmirates } from "@/lib/catalog";
@@ -35,6 +36,7 @@ export default async function LocationsPage({ params }: { params: Promise<{ loca
       }
     >
       <PublicHero locale={locale} title={t("title")} lead={t("lead")} compact={!emirates.length} />
+      <ReviewedSectionPhoto section="locations" locale={locale} title={t("title")} />
 
       <Section>
         <ul className="grid gap-3 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7">
