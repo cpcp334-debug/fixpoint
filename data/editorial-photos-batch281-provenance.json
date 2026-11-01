@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "blog",
+    "slug": "phase-testing-dubai-islands-dubai",
+    "key": "blog:phase-testing-dubai-islands-dubai",
+    "output": "/media/editorial/photos-20261019/blog-phase-dubai-islands-cover281.webp",
+    "prompt": "Use case: photorealistic-natural. Create one original landscape 3:2 editorial cover for a customer guide about booking professional phase-testing assessment in Dubai Islands. Fictional ordinary building service-room entrance, fully closed unbranded electrical cabinet at the back, adult professional in plain navy workwear standing well away in foreground reviewing a blank clipboard, no interaction with equipment. Restrained daylight, realistic clean documentary photography, no identifiable site, logos or landmark. Scene communicates organising a professional assessment only; no actual test, diagnosis, accreditation, completed Fixpoint job or safety proof. No tools, meters, probes, exposed wires, open panel, technical diagram, readable text, certificate, dangerous action, sparks, damage, watermark. Do not portray a test method or work procedure.",
+    "reviewedAt": "2026-11-01T18:00:13.045Z",
+    "review": "Individually visually reviewed: fictional adult in plain navy workwear reviewing clipboard outside a service room, closed cabinet and no interaction, tools, meters, probes, open electrical components, readable branding or identifiable landmark. Approved as arranging an assessment only; not a test method, actual Dubai Islands site, Fixpoint employee, accreditation, diagnosis or completed project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 57430,
+    "optimizedSha256": "6a993edd26b841254e0f8679a4ca5428140a80deb8637599bf7e1382fb661260",
+    "originalFile": "exec-82749346-90eb-4db6-96ca-9a934e931cb1.png",
+    "retainedOriginalFile": "blog-phase-dubai-islands-original281.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "short-circuit-diagnosis-dubai-marina-dubai",
+    "key": "blog:short-circuit-diagnosis-dubai-marina-dubai",
+    "output": "/media/editorial/photos-20261019/blog-short-dubai-marina-cover281.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for a customer enquiry guide about professional short-circuit diagnosis in Dubai Marina. Entirely fictional modern modest apartment entry, one intact closed plain electrical cupboard on a side wall, untouched dark-screen phone and blank incident-notes notebook on a console well away from cupboard; soft daylight through ordinary windows, no identifiable tower or landmark. Restrained realistic documentary interior photography. This illustrates recording an enquiry only, not an actual fault, diagnosis, repair, Fixpoint project or proof that a scene is safe. No people, tools, meters, probes, electrical action, appliance manipulation, open covers, exposed wire, technical diagrams, readable text, branding, damage, sparks, smoke, certificate, watermark.",
+    "reviewedAt": "2026-11-01T18:01:05.512Z",
+    "review": "Individually visually reviewed: fictional apartment entry with intact closed wall cupboard, untouched dark-screen phone and blank notebook. No person, fault, work action, open components, wiring, tools, meter, branding or identifiable landmark. Enquiry context only, not actual Dubai Marina property, observed short circuit, diagnosis, safety proof or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 68360,
+    "optimizedSha256": "17fd89fd61917ff05e96ef9500049e3e4bf07c13039847bf4950076aed77b2e6",
+    "originalFile": "exec-757b44bb-ee57-4a39-8ca1-9d7c3908f16b.png",
+    "retainedOriginalFile": "blog-short-dubai-marina-original281.png"
+  }
+]
