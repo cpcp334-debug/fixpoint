@@ -1,0 +1,42 @@
+[
+  {
+    "kind": "service-category",
+    "key": "service-category:microwave",
+    "slug": "microwave",
+    "output": "/media/editorial/photos-20261019/service-category-microwave-cover247.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a microwave service category. Fictional contemporary apartment kitchen with one intact assembled countertop microwave, door completely closed and display dark, ample dry clear counter space and subtle warm cabinetry. Wide diagonal room view, natural daylight, coherent realistic appliance proportions. No people, tools, opened panels, food test, steam, repair action, readable text, logos, skyline or identifiable real property. Not actual Fixpoint work, diagnosed fault, completed repair or proof of performance. No collage.",
+    "reviewedAt": "2026-11-01T02:56:45.778Z",
+    "review": "Individually viewed original PNG and accepted. Coherent kitchen, intact fully closed inactive microwave; no tools, opened parts, food test or repair. Fictional contextual illustration, not actual Fixpoint work, client property, diagnosed fault, completed repair or proof of performance/safety.",
+    "originalFile": "exec-6fe5f1ee-892e-429f-ae9d-f31234b4d8dc.png"
+  },
+  {
+    "kind": "diy-category",
+    "key": "diy-category:microwave",
+    "slug": "microwave",
+    "output": "/media/editorial/photos-20261019/diy-category-microwave-cover247.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a microwave before-booking guide index. Fictional compact blue-grey kitchen with an intact closed inactive microwave in background, plain unprinted enquiry notebook and dark-screen phone on foreground dry worktop. Distinct close-medium side angle, soft natural light, realistic proportions. No people, tools, opened components, testing, food, instructions, readable branding or identifiable property. Fictional context only, not actual Fixpoint customer property, diagnosis, completed repair or proof of safety. No collage.",
+    "reviewedAt": "2026-11-01T02:56:45.781Z",
+    "review": "Individually viewed original PNG and accepted. Coherent counter, intact closed microwave, blank notebook and dark phone; no testing or repair. Fictional contextual illustration, not actual Fixpoint work, client property, diagnosed fault, completed repair or proof of performance/safety.",
+    "originalFile": "exec-371fae42-98d7-41ef-8a82-ce9b80900a66.png"
+  },
+  {
+    "kind": "service-category",
+    "key": "service-category:oven",
+    "slug": "oven",
+    "output": "/media/editorial/photos-20261019/service-category-oven-cover247.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for an oven service category. Fictional warm modern kitchen with an intact closed built-in oven, dark controls and clear dry surroundings, pale stone countertop and muted olive cabinetry. Wide architectural angle, natural daylight, coherent realistic proportions. No people, tools, open appliance, glowing elements, heat test, food, fault effects, readable text, logos or identifiable real property. Fictional context, not actual Fixpoint work, diagnosed fault, completed repair or evidence of safe operation. No collage.",
+    "reviewedAt": "2026-11-01T02:56:45.781Z",
+    "review": "Individually viewed original PNG and accepted. Coherent kitchen, intact fully closed oven with dark controls; no heat, tools, fault or repair. Fictional contextual illustration, not actual Fixpoint work, client property, diagnosed fault, completed repair or proof of performance/safety.",
+    "originalFile": "exec-2bfccedd-d871-48dc-94da-3dae0b8bbefe.png"
+  },
+  {
+    "kind": "diy-category",
+    "key": "diy-category:oven",
+    "slug": "oven",
+    "output": "/media/editorial/photos-20261019/diy-category-oven-cover247.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for an oven before-booking guide index. Fictional small ivory kitchen, intact fully closed inactive oven in soft background, plain closed appointment folio on a foreground breakfast counter beside a simple ceramic bowl. Distinct close-medium side view, warm oak and soft daylight, realistic materials. No people, tools, heat, food test, open panels, instruction labels, readable branding or identifiable real property. Not actual Fixpoint work, client property, diagnosis, completed repair or proof of safety. No collage.",
+    "reviewedAt": "2026-11-01T02:56:45.781Z",
+    "review": "Individually viewed original PNG and accepted. Coherent breakfast counter, closed folio and intact closed oven in background; no demonstration, heat or repair. Fictional contextual illustration, not actual Fixpoint work, client property, diagnosed fault, completed repair or proof of performance/safety.",
+    "originalFile": "exec-fb79bcc7-6b90-4321-b78c-b4e44e9ccd0d.png"
+  }
+]
