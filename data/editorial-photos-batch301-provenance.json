@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "blog",
+    "slug": "ground-fault-diagnosis-garden-city-ajman",
+    "key": "blog:ground-fault-diagnosis-garden-city-ajman",
+    "output": "/media/editorial/photos-20261019/blog-ground-garden-city-cover301.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for a customer ground-fault diagnosis enquiry guide. Entirely fictional small reception office, muted sage-grey wall with one fully closed unbranded electrical-style wall cabinet in soft focus in the background, blank paper folder and untouched dark-screen phone on a separate desk in the foreground. Quiet realistic documentary photograph, soft window daylight, ordinary proportions. No person or technical action. Documentation context only, not an actual ground fault, electrical diagnosis, safe-access proof, safe-use recommendation, real Garden City property or Fixpoint project. No open equipment, sockets in use, wires, tools, meters, tests, diagrams, damage, water leak, smoke, sparks, readable text, labels, brand, badge or watermark. Distinct composition with desk at lower right and closed cabinet high left.",
+    "reviewedAt": "2026-11-01T20:28:46.752Z",
+    "review": "Individually visually reviewed: fictional sage-grey office, fully closed unbranded wall cabinet, blank folder and untouched dark phone on separate desk. No people, open parts, tests, tools, wiring, water, damage, readable labels, branding or technical action. Cabinet contents and a ground fault are not visible or established. Documentation/enquiry context only, not a diagnosis, safe-access permission, actual Garden City property or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 58364,
+    "optimizedSha256": "e66ca8c9d7170d2ac667d752cacd2bcad475819c1737ae80d7849c69fcf3ee41",
+    "originalFile": "exec-22ebf625-a7a8-4fc8-8490-7fbf1f6476fa.png",
+    "retainedOriginalFile": "ground-fault-diagnosis-garden-city-ajman-original301.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "distribution-board-inspection-dubai-marina-dubai",
+    "key": "blog:distribution-board-inspection-dubai-marina-dubai",
+    "output": "/media/editorial/photos-20261019/blog-board-dubai-marina-cover301.webp",
+    "prompt": "Use case: photorealistic-natural. Original landscape 3:2 editorial cover for a distribution-board inspection enquiry guide. Entirely fictional commercial-building corridor with a fully closed unbranded double-door electrical-style cabinet recessed into a warm-white wall, terrazzo floor and soft ceiling light. One simple dark-screen phone lies untouched on a separate narrow reception console in foreground. Restrained realistic architectural documentary photograph, wide side-angle composition and ordinary proportions. No people, open doors, testing, tools, wiring, switches, meter displays, warning labels, diagrams or technical activity. Documentation context only, not an actual inspection or finding, compliant cabinet design, safe-access permission, actual Dubai Marina property or Fixpoint project. No readable words, brands, badges, certificates, water, damage, smoke, sparks or watermark.",
+    "reviewedAt": "2026-11-01T20:28:46.880Z",
+    "review": "Individually visually reviewed: fictional warm-white commercial corridor with a fully closed double-door wall cabinet and untouched dark phone on separate console. No people, open equipment, inspection, tools, meters, wiring, readable labels or branding. Cabinet contents and electrical compliance are not visible or established. Enquiry context only, not an actual distribution-board inspection, finding, approved design, safe-access permission, actual Dubai Marina property or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 101262,
+    "optimizedSha256": "01de752769eee0ea7f4a834627140bf868d964a5a0c8bbce522ec6f993a6d7bb",
+    "originalFile": "exec-ea79e838-0988-4ad4-a049-9c0cba2567f8.png",
+    "retainedOriginalFile": "distribution-board-inspection-dubai-marina-dubai-original301.png"
+  }
+]
