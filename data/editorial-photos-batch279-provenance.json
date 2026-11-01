@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "blog",
+    "slug": "electrical-preventive-maintenance-jurf-2-ajman",
+    "key": "blog:electrical-preventive-maintenance-jurf-2-ajman",
+    "output": "/media/editorial/photos-20261019/blog-preventive-jurf2-cover279.webp",
+    "prompt": "One original photorealistic landscape 3:2 editorial cover for a customer planning guide about electrical preventive-maintenance enquiries in Jurf 2, Ajman. Entirely fictional modest small-business office beside an empty shared corridor. Foreground focus on a plain blank grid planner, a closed navy maintenance file and untouched dark-screen phone on a simple desk. Distant fully closed service cupboard and intact lights, clear walkway. Soft daylight, realistic stone and muted blue-grey materials, documentary interior photography. Communicate organising records, follow-up and access only, not an actual maintenance programme, recommended frequency, completed Fixpoint job or compliance result. No people, tools in use, meters, probes, exposed wires, open panels, technical diagrams, readable words, logos, brands, certificates, damage, smoke, sparks, watermark or identifiable local landmarks.",
+    "reviewedAt": "2026-11-01T17:51:45.030Z",
+    "review": "Individually visually reviewed: fictional office, blank planner, closed navy file, dark-screen phone, closed cupboard and empty corridor. No work action, exposed components, technical steps, readable branding or identifiable property. Approved as planning context only; not an actual Jurf 2 site, Fixpoint project, maintenance schedule, safety or compliance result. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 89408,
+    "optimizedSha256": "9d61a7b6748b63b6836205e7c848791839b8c7019e0d727f6c4b101c83f24b81",
+    "originalFile": "exec-d537bfd9-367b-4f27-828d-afeeeec56ea4.png",
+    "retainedOriginalFile": "blog-preventive-jurf2-original279.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "exhaust-fan-installation-mina-al-arab-ras-al-khaimah",
+    "key": "blog:exhaust-fan-installation-mina-al-arab-ras-al-khaimah",
+    "output": "/media/editorial/photos-20261019/blog-exhaust-mina-cover279.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for an Arabic customer guide about requesting an exhaust-fan installation assessment in Mina Al Arab, Ras Al Khaimah. Fictional modest apartment washroom viewed from its open doorway, neutral sand tile, an intact simple white circular ventilation grille high on the far wall, a closed plain blue enquiry folder resting on a dry console outside the washroom in foreground. Calm natural daylight and realistic restrained architectural photography. Context only, not an installation diagram, verified ventilation design, completed job, Fixpoint project or actual local property. No people, tools, work action, open components, exposed wiring, ladders, readable text, branding, certificates, landmarks, damage, smoke or watermark. Do not depict proposed equipment placement as a technical recommendation.",
+    "reviewedAt": "2026-11-01T17:52:39.776Z",
+    "review": "Individually visually reviewed: fictional sand-tile washroom, closed wall grille, closed enquiry folder outside, intact interior and no work action or exposed components. Context for an assessment enquiry only, not actual Mina Al Arab property, installation specification, ventilation performance, Fixpoint project or safety result. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 57370,
+    "optimizedSha256": "5c7fbfb53ad7c82e7451b484449cca00c73726cc235af7cd190d8c29a736d4ee",
+    "originalFile": "exec-c3219460-65fb-4e17-b8c9-5901b76eac8b.png",
+    "retainedOriginalFile": "blog-exhaust-mina-original279.png"
+  }
+]
