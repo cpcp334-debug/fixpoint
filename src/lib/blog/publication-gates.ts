@@ -43,6 +43,18 @@ export type BlogGateResult = {
 
 const CLAIM_RE =
   /\b(best|#1|number\s*one|cheapest|guaranteed|certified|licensed|24\s*\/\s*7|24-7|fastest|most\s+trusted|official)\b/i;
+/** References to consulting instructions do not claim provider credentials.
+ * Keep the full claim scan for every other token, including elsewhere in the same text.
+ * This affects validation only; the published source text is never rewritten.
+ */
+export function hasUnsupportedBlogClaims(text: string): boolean {
+  const referencesNormalized = text.replace(
+    /\b(?:use|follow|consult)\s+(?:current\s+)?official\s+(?:instructions|guidance)\b/gi,
+    "consult published reference material",
+  );
+  return CLAIM_RE.test(referencesNormalized);
+}
+
 const FILLER_RE =
   /Exclusive editorial lexicon|مفردات تحريرية حصرية|Extra field note \d+|ملاحظة ميدانية إضافية/i;
 
@@ -158,7 +170,7 @@ export function evaluateBlogPublicationGates(input: BlogGateInput): BlogGateResu
     input.ar.seoTitle,
     input.ar.metaDescription,
   ].join("\n");
-  const claims = !CLAIM_RE.test(claimBlob);
+  const claims = !hasUnsupportedBlogClaims(claimBlob);
   if (!claims) failures.push("unsupported_claims");
 
   const filler = !FILLER_RE.test(`${input.en.body}\n${input.ar.body}`);
