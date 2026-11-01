@@ -47,27 +47,29 @@ jobs:
       - run: node --import tsx scripts/test-blog-locale-consumers.ts
       - run: node --import tsx scripts/test-blog-availability-mysql.ts
       - run: npx tsc --noEmit
+      # Existing schema uses TEXT defaults accepted by MariaDB. Keep the
+      # MySQL job for query compatibility; runtime/bootstrap validation uses MariaDB.
       - name: Create isolated runtime schema
-        if: matrix.image == 'mysql:8.0'
+        if: matrix.image == 'mariadb:10.11'
         run: npx prisma db push --skip-generate
       - name: Seed isolated runtime fixture
-        if: matrix.image == 'mysql:8.0'
+        if: matrix.image == 'mariadb:10.11'
         run: node --import tsx scripts/test-blog-runtime.ts --seed
       - name: Compile production application
-        if: matrix.image == 'mysql:8.0'
+        if: matrix.image == 'mariadb:10.11'
         run: npx next build --webpack
         env:
           NEXT_PUBLIC_SITE_URL: https://fixpoint.ae
       - name: Validate production runtime responses
-        if: matrix.image == 'mysql:8.0'
+        if: matrix.image == 'mariadb:10.11'
         run: node --import tsx scripts/test-blog-runtime.ts
         env:
           NEXT_PUBLIC_SITE_URL: https://fixpoint.ae
       - name: Package tracked source for Hostinger
-        if: matrix.image == 'mysql:8.0'
+        if: matrix.image == 'mariadb:10.11'
         run: git archive --format=zip --output=fixpoint-hostinger-source.zip HEAD
       - uses: actions/upload-artifact@v4
-        if: matrix.image == 'mysql:8.0'
+        if: matrix.image == 'mariadb:10.11'
         with:
           name: fixpoint-hostinger-source
           path: fixpoint-hostinger-source.zip
