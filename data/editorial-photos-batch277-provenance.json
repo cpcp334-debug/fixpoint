@@ -1,0 +1,33 @@
+[
+  {
+    "kind": "diy",
+    "slug": "diy-microwave-internal-cleaning",
+    "key": "diy:diy-microwave-internal-cleaning",
+    "output": "/media/editorial/photos-20261019/diy-microwave-internal-cleaning-cover277.webp",
+    "prompt": "One original photorealistic landscape 3:2 editorial cover for an existing UAE before-you-book guide about arranging professional microwave internal-cleaning service. Entirely fictional modest home kitchen with muted sage cabinets and a pale wood table. One plain unbranded white-and-black countertop microwave, door completely closed, no readable controls. A closed plain service folder sits on the foreground table. Appliance-context only: not an actual cleaned appliance, hygiene result, before-and-after image, safety proof or Fixpoint project. No person, hands, cleaning action, chemicals, tools, open microwave door, open casing, interior components, wiring, food, spills, damage, sparks, text, logos, labels, certificates or identifiable real property/landmarks. Soft natural daylight, realistic restrained documentary interior photograph.",
+    "reviewedAt": "2026-11-01T17:32:42.228Z",
+    "review": "Individually visually reviewed: fictional sage kitchen with fully closed unbranded microwave and closed folder. No people, cleaning action, chemicals, open appliance, exposed components, tools, readable controls, branding or real property. Approved only as identifying an appliance and arranging professional service, not actual cleaning, hygiene outcome, before-and-after result, safety proof or Fixpoint project. Existing red-risk gate must remain unchanged. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 60224,
+    "optimizedSha256": "c58e3ca45a0a39fc69c6b03b79ea70fbd0145947b64e198c0cd31c28281fb853",
+    "originalFile": "exec-4e1790c6-e08f-49f3-948c-0ebea647f6c3.png",
+    "retainedOriginalFile": "diy-microwave-internal-cleaning-original277.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-microwave-no-power-diagnosis",
+    "key": "diy:diy-microwave-no-power-diagnosis",
+    "output": "/media/editorial/photos-20261019/diy-microwave-nopower-cover277.webp",
+    "prompt": "One original photorealistic landscape 3:2 editorial cover for an existing UAE before-you-book guide about professional microwave no-power assessment. Entirely fictional small home pantry/utility nook. Plain unbranded dark-grey microwave with door fully closed and blank dark display, seen from a normal room distance; a blank incident-notes pad and closed service folio on a separate foreground shelf. Soft natural side light, warm oak and off-white walls, realistic restrained product-context photograph. The blank display is illustrative only and must not be presented as proof of a fault or cause. Not an actual client appliance, diagnostic result, repair or Fixpoint project. No people, hands, tools, meters, probes, open casing, opened door, exposed components, cables, plugs, readable controls, text, branding, labels, smoke, sparks, damage, certificates or recognizable landmarks. No technical installation details.",
+    "editPrompt": "Edit this fictional editorial image. Keep a plain closed unbranded dark-grey microwave with blank display and the incident-notes pad/closed folio as the subjects, but completely remove the enclosing shelving, side panels, upper shelf, jars, baskets and nearby plants. Recompose as a wider room view: microwave staged on a broad freestanding plain table in a spacious neutral room, with distant plain background and no cabinetry immediately surrounding or above it. Notes and folio on a separate foreground table. No operating, diagnostic or installation demonstration, no model-specific clearance diagram and no statement of safety/compliance. This is only an appliance-identification scene for a professional-service enquiry, not an actual failure or Fixpoint job. No people, tools, opened appliance, visible wiring, plugs, labels, brands, text, smoke, sparks, damage or landmarks. Realistic restrained documentary product-context photography, landscape 3:2.",
+    "rejectedOriginalFile": "exec-7935f306-92c5-45b4-8606-fafeae0bd063.png",
+    "rejectionReason": "Narrow shelf/cabinet framing could be mistaken for an installation recommendation. Rejected for visual context ambiguity; no model-specific clearance or compliance assessment is claimed.",
+    "reviewedAt": "2026-11-01T17:36:37.600Z",
+    "review": "Individually visually reviewed final edit: fully closed unbranded microwave with blank display staged on broad freestanding table, notes/folio on separate foreground table; enclosing shelves and nearby items removed. No people, tools, exposed parts, wiring, readable controls, brands or real property. Approved as appliance-identification and professional-enquiry illustration only. Blank display does not prove a fault; scene is not a technical installation recommendation, clearance specification, safety/compliance proof, diagnosis or actual Fixpoint work. Existing red-risk gate remains unchanged. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen edit",
+    "optimizedBytes": 66440,
+    "optimizedSha256": "e38ba55089a7f00c1c19e82a65660795646beb61e4010190a54cb744f1dd6a47",
+    "originalFile": "exec-e92423d0-dbc4-4bc9-a134-4ea29f42c42c.png",
+    "retainedOriginalFile": "diy-microwave-nopower-original277.png"
+  }
+]
