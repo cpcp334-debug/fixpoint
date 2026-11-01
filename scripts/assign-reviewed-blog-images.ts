@@ -11,7 +11,7 @@ const base='C:/Users/Asus Ultra 9/Documents/Codex/Fixpoint-2026-10-19/';
 const json=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
 const digest=(x:Buffer)=>createHash('sha256').update(x).digest('hex');
 const include={translations:{orderBy:{locale:'asc' as const}}};
-async function publicPage(url:string){const r=await fetch(url,{signal:AbortSignal.timeout(25000)}),h=await r.text();return{url,final:r.url,status:r.status,title:h.match(/<title>(.*?)<\/title>/s)?.[1],canonical:h.match(/<link[^>]*rel="canonical"[^>]*href="([^"]+)"/)?.[1]};}
+async function publicPage(url:string){const r=await fetch(url,{signal:AbortSignal.timeout(25000)}),h=await r.text();return{url,final:r.url,status:r.status,title:h.match(/<title>([\s\S]*?)<\/title>/)?.[1],canonical:h.match(/<link[^>]*rel="canonical"[^>]*href="([^"]+)"/)?.[1]};}
 async function main(){
  const batch=Number(process.argv[2]),mode=process.argv[3];assert(Number.isInteger(batch)&&batch>=250);assert(['--backup','--validate','--apply','--verify'].includes(mode));
  const jobs=json(`data/editorial-photos-batch${batch}-provenance.json`);assertImagePair(jobs);
