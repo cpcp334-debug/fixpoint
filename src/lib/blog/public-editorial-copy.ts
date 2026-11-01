@@ -1,6 +1,8 @@
 /** Presentation cleanup only. Stored articles, titles, URLs and metadata stay intact. */
 export function cleanPublicEditorialText(value: string): string {
  const cleaned = value
+  // Browser form submissions may use CRLF; paragraph parsing expects LF.
+  .replace(/\r\n?/g, "\n")
   .replace(/AI-generated illustrative image/gi, "Illustrative image")
   .replace(/AI-generated illustration/gi, "Illustration")
   .replace(/AI-generated/gi, "illustrative")
