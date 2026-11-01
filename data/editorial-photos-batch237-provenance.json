@@ -1,0 +1,32 @@
+[
+  {
+    "kind": "section",
+    "key": "section:blog",
+    "slug": "blog",
+    "output": "/media/editorial/photos-20261019/section-blog-cover237.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial illustration for a UAE electrical-first services blog overview. Fictional home office in warm daylight, closed unmarked journal on a desk, tidy reading lamp, an intact closed wall switch and calm modern interior in the background. Wide side angle with generous negative space, navy and warm oak accents, realistic proportions. No people, text, logos, tools, electrical testing, exposed parts, specific skyline or identifiable property. Context only, not actual Fixpoint work or evidence of completed services. No collage.",
+    "reviewedAt": "2026-11-01T02:21:58.440Z",
+    "review": "Individually viewed original PNG and accepted: coherent study, closed journal, intact reading lamp and closed switch; no work, testing or exposed parts. Fictional contextual illustration, not an actual Fixpoint client home, project, diagnosis or proof of safety.",
+    "originalFile": "exec-318d7c0f-113c-4180-a1b3-2f880987b5b0.png"
+  },
+  {
+    "kind": "section",
+    "key": "section:diy",
+    "slug": "diy",
+    "output": "/media/editorial/photos-20261019/section-diy-cover237.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 photo-style illustration for a before-booking practical household guide overview. Fictional apartment dining nook, plain closed home-care folder, dark-screen phone and one closed organizer on the table, intact cabinetry and switched-off lamp in background. Over-the-shoulder-height wide interior view without people. Soft daylight, stone and muted green, coherent realism. No readable text, branding, tools, repairs, open appliances, exposed wires or safety demonstration. Not an actual Fixpoint customer home, completed job, diagnosis or proof of safety. No collage.",
+    "reviewedAt": "2026-11-01T02:21:58.442Z",
+    "review": "Individually viewed original PNG and accepted: coherent dining nook, closed folders/organizer and dark-screen phone; no repair demonstration, tools or exposed components. Fictional contextual illustration, not actual Fixpoint work, client property, diagnosis or proof of safety.",
+    "originalFile": "exec-132bf41c-0edf-43bf-999f-5e6f2f3e54ea.png"
+  },
+  {
+    "kind": "section",
+    "key": "section:locations",
+    "slug": "locations",
+    "output": "/media/editorial/photos-20261019/section-locations-cover237.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a UAE service-area overview. Fictional broad shaded residential boulevard with contemporary low-rise villas, distant generic mid-rise buildings, palms and warm morning daylight. Wide street view with realistic scale, restrained navy-gold architectural accents. No people, vehicles, signage, logos, readable text, identifiable landmark or real building. Entirely imagined architecture, not a photographed UAE locality, branch, operating office, actual project or evidence of service availability. No collage, no map, no labels.",
+    "reviewedAt": "2026-11-01T02:21:58.442Z",
+    "review": "Individually viewed original PNG and accepted: coherent fictional boulevard and architecture; no location labels or office signage. Entirely imagined location context, not an actual locality, Fixpoint branch/office, completed project or evidence of service availability.",
+    "originalFile": "exec-3289d5f4-b69b-43c5-b8ef-87af3569775f.png"
+  }
+]
