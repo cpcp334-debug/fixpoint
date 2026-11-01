@@ -1,0 +1,42 @@
+[
+  {
+    "kind": "service-category",
+    "key": "service-category:cleaning",
+    "slug": "cleaning",
+    "output": "/media/editorial/photos-20261019/service-category-cleaning-cover243.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a cleaning service-category page. Fictional bright commercial kitchenette with intact closed cabinets, uncluttered dry worktop, stainless sink and neatly aligned stools, morning window light and realistic materials. Broad diagonal architectural view. No people, tools, branded products, chemicals, before-after comparison, hygiene test, readable text, logos or identifiable real property. Fictional context only, not actual Fixpoint cleaning, client property, completed job or evidence of sanitization. No collage.",
+    "reviewedAt": "2026-11-01T02:43:11.819Z",
+    "review": "Individually viewed original PNG and accepted: coherent commercial kitchenette, dry worktop and intact cabinets/fixtures; background buildings are fictional. No people, cleaning action, chemicals or hygiene test. Not actual Fixpoint cleaning, client property, completed job or sanitization evidence.",
+    "originalFile": "exec-b99b534b-d006-44fa-ba75-985214160483.png"
+  },
+  {
+    "kind": "diy-category",
+    "key": "diy-category:cleaning",
+    "slug": "cleaning",
+    "output": "/media/editorial/photos-20261019/diy-category-cleaning-cover243.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a household cleaning before-booking guide index. Fictional laundry storage shelf with folded plain cotton cloths, a simple closed unmarked organizer and a neat dry sink out of focus in the background. Close-medium side view, muted cream and blue, natural daylight, realistic proportions. No people, chemical bottles, brands, tools in use, demonstration, readable text, germ imagery or identifiable property. Not actual Fixpoint work, customer home, completed cleaning or hygiene claim. No collage.",
+    "reviewedAt": "2026-11-01T02:43:11.822Z",
+    "review": "Individually viewed original PNG and accepted: coherent shelf, folded cloths, closed organizer and dry sink; no chemicals, demonstration or test. Fictional contextual illustration, not actual Fixpoint work, client property, completed cleaning or hygiene claim.",
+    "originalFile": "exec-6b3f91fd-b1aa-4302-a4bf-efa5d4a5c9ba.png"
+  },
+  {
+    "kind": "service-category",
+    "key": "service-category:walls",
+    "slug": "walls",
+    "output": "/media/editorial/photos-20261019/service-category-walls-cover243.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a wall-maintenance service category. Fictional modern reception corridor with intact pale plaster wall surfaces, simple wall recess and closed timber door, gentle side daylight emphasizing realistic wall texture. Wide architectural view, soft sand and muted navy accents, coherent straight geometry. No people, tools, damage, repair activity, before-after comparison, readable text, logos, identifiable real property or skyline. Fictional service context, not actual Fixpoint client property, finished repair or proof of workmanship. No collage.",
+    "reviewedAt": "2026-11-01T02:43:11.822Z",
+    "review": "Individually viewed original PNG and accepted: coherent fictional corridor, intact wall finishes and closed door, no damage or repair action. Not actual Fixpoint customer property, completed repair or workmanship evidence.",
+    "originalFile": "exec-bccd7fd1-10c0-4606-9357-17d9589a7604.png"
+  },
+  {
+    "kind": "diy-category",
+    "key": "diy-category:walls",
+    "slug": "walls",
+    "output": "/media/editorial/photos-20261019/diy-category-walls-cover243.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a wall-care before-booking guide index. Fictional interior study with a plain closed consultation folder on a narrow console, two unlabelled neutral wall-finish sample panels resting untouched against an intact dry wall. Distinct close-medium oblique angle, warm daylight, pale wood and soft grey, coherent realistic proportions. No people, tools, cutting, drilling, cracks, repair demonstration, readable text, branding or identifiable real property. Not actual Fixpoint work, diagnosed defect, completed repair or safety claim. No collage.",
+    "reviewedAt": "2026-11-01T02:43:11.822Z",
+    "review": "Individually viewed original PNG and accepted: coherent console, closed folio and two unlabelled wall-finish sample panels; no cutting, drilling, defect diagnosis or repair action. Fictional context, not actual Fixpoint work, client property, completed repair or safety claim.",
+    "originalFile": "exec-bb137b6c-8b2a-4d92-ab30-68ef066599b2.png"
+  }
+]
