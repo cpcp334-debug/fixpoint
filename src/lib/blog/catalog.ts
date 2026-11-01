@@ -110,7 +110,7 @@ const getPublishedBlogArticlesPageData = cache(
     const [ids, counts] = await Promise.all([
       prisma.$queryRaw<Array<{ id: string }>>(queries.ids),
       // Related-article cards need no total; avoid a catalog-wide body scan.
-      opts?.count === false ? Promise.resolve([{ total: 0n }])
+      opts?.count === false ? Promise.resolve([{ total: BigInt(0) }])
         : prisma.$queryRaw<Array<{ total: bigint }>>(queries.count),
     ]);
     const totalRaw = Number(counts[0]?.total ?? 0);
