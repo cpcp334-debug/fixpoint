@@ -1,0 +1,146 @@
+[
+  {
+    "key": "service-category:burner-cooker",
+    "kind": "service-category",
+    "slug": "burner-cooker",
+    "prompt": "Use case photorealistic-natural. Create one original landscape1536x1024 editorial photo-style illustration for a UAE service category or its before-booking guide index. A fictional warm modern kitchen with an intact assembled cooker and closed oven door, unlit burners and unmarked controls. Broad diagonal room view, clear dry counters, pale oak and stone. No flames, food, gas parts or testing. Coherent realistic proportions and materials. No readable text, branding, logos, tools in use, exposed components, repair action, skyline or identifiable real property. Fictional context only, not actual Fixpoint work, client property, completed project, diagnosed fault, proof of performance, hygiene, safety or compliance. No collage. No extractor hood at all. Completely blank unbranded metal surfaces; no markings or pseudo-brand lettering anywhere.",
+    "rejectedOriginalFile": "exec-19f9ac80-4519-441b-b983-a5db5e884db2.png",
+    "rejectionReason": "Small pseudo-brand lettering appeared on the hood; regenerate without an extractor hood.",
+    "reviewedAt": "2026-11-01T03:09:02.748Z",
+    "review": "Individually viewed original PNG and accepted. Replacement accepted: intact unlit cooker, closed door, no hood or pseudo-brand lettering. Fictional contextual illustration, not actual Fixpoint work, client property, completed service, safety, hygiene or compliance evidence.",
+    "output": "/media/editorial/photos-20261019/service-category-burner-cooker-cover249.webp",
+    "originalFile": "exec-d890d972-7680-4037-a123-d48420db22d1.png"
+  },
+  {
+    "key": "diy-category:burner-cooker",
+    "kind": "diy-category",
+    "slug": "burner-cooker",
+    "prompt": "Use case photorealistic-natural. Create one original landscape1536x1024 editorial photo-style illustration for a UAE service category or its before-booking guide index. A fictional small kitchen, intact unlit cooker in the background; foreground plain closed enquiry folio and untouched dark-screen phone. Close-medium side view, soft sage and cream. No gas parts, flames or demonstration. Coherent realistic proportions and materials. No readable text, branding, logos, tools in use, exposed components, repair action, skyline or identifiable real property. Fictional context only, not actual Fixpoint work, client property, completed project, diagnosed fault, proof of performance, hygiene, safety or compliance. No collage.",
+    "reviewedAt": "2026-11-01T03:09:02.752Z",
+    "review": "Individually viewed original PNG and accepted. Intact unlit cooker in background, closed folio and dark phone; no gas parts or action. Fictional contextual illustration, not actual Fixpoint work, client property, completed service, safety, hygiene or compliance evidence.",
+    "output": "/media/editorial/photos-20261019/diy-category-burner-cooker-cover249.webp",
+    "originalFile": "exec-010cc8f7-e2eb-4255-9280-67a6d0d5f4c4.png"
+  },
+  {
+    "key": "service-category:dishwasher",
+    "kind": "service-category",
+    "slug": "dishwasher",
+    "prompt": "Use case photorealistic-natural. Create one original landscape1536x1024 editorial photo-style illustration for a UAE service category or its before-booking guide index. A fictional bright kitchen with an intact completely closed under-counter dishwasher, blank dark controls, dry floor and uncluttered cabinets. Wide architectural view, light stone and navy accents. No water, dishes in use, testing or repair. Coherent realistic proportions and materials. No readable text, branding, logos, tools in use, exposed components, repair action, skyline or identifiable real property. Fictional context only, not actual Fixpoint work, client property, completed project, diagnosed fault, proof of performance, hygiene, safety or compliance. No collage.",
+    "reviewedAt": "2026-11-01T03:09:02.752Z",
+    "review": "Individually viewed original PNG and accepted. Intact completely closed dishwasher and dry kitchen; no test or repair. Fictional contextual illustration, not actual Fixpoint work, client property, completed service, safety, hygiene or compliance evidence.",
+    "output": "/media/editorial/photos-20261019/service-category-dishwasher-cover249.webp",
+    "originalFile": "exec-c95b63a0-59be-4aaf-b036-315156905171.png"
+  },
+  {
+    "key": "diy-category:dishwasher",
+    "kind": "diy-category",
+    "slug": "dishwasher",
+    "prompt": "Use case photorealistic-natural. Create one original landscape1536x1024 editorial photo-style illustration for a UAE service category or its before-booking guide index. A fictional ivory kitchen, completely closed intact dishwasher in background, plain closed appointment notebook on a foreground counter. Distinct close-medium angle, oak and daylight. No racks, internal parts, dishwashing cycle or demonstration. Coherent realistic proportions and materials. No readable text, branding, logos, tools in use, exposed components, repair action, skyline or identifiable real property. Fictional context only, not actual Fixpoint work, client property, completed project, diagnosed fault, proof of performance, hygiene, safety or compliance. No collage.",
+    "reviewedAt": "2026-11-01T03:09:02.752Z",
+    "review": "Individually viewed original PNG and accepted. Closed dishwasher in background, plain notebook; no test, parts or action. Fictional contextual illustration, not actual Fixpoint work, client property, completed service, safety, hygiene or compliance evidence.",
+    "output": "/media/editorial/photos-20261019/diy-category-dishwasher-cover249.webp",
+    "originalFile": "exec-70008210-b9c1-44d3-9f91-f0c6b9b996dc.png"
+  },
+  {
+    "key": "service-category:gym",
+    "kind": "service-category",
+    "slug": "gym",
+    "prompt": "Use case photorealistic-natural. Create one original landscape1536x1024 editorial photo-style illustration for a UAE service category or its before-booking guide index. A fictional empty contemporary fitness room with intact stationary exercise equipment, dry floor and broad daylight. Wide architectural view, neutral finishes and muted navy. No people, moving machinery, maintenance demonstration or compliance claims. Coherent realistic proportions and materials. No readable text, branding, logos, tools in use, exposed components, repair action, skyline or identifiable real property. Fictional context only, not actual Fixpoint work, client property, completed project, diagnosed fault, proof of performance, hygiene, safety or compliance. No collage.",
+    "reviewedAt": "2026-11-01T03:09:02.752Z",
+    "review": "Individually viewed original PNG and accepted. Coherent empty gym with idle equipment; no people, maintenance or compliance claim. Fictional contextual illustration, not actual Fixpoint work, client property, completed service, safety, hygiene or compliance evidence.",
+    "output": "/media/editorial/photos-20261019/service-category-gym-cover249.webp",
+    "originalFile": "exec-0d5e62ec-6cb1-4a74-829e-64fe52e2ee76.png"
+  },
+  {
+    "key": "diy-category:gym",
+    "kind": "diy-category",
+    "slug": "gym",
+    "prompt": "Use case photorealistic-natural. Create one original landscape1536x1024 editorial photo-style illustration for a UAE service category or its before-booking guide index. A fictional fitness-room reception corner with plain closed appointment folio and folded towels, intact idle exercise equipment in soft background. Close-medium view, warm wood and daylight. No people, testing or equipment adjustment. Coherent realistic proportions and materials. No readable text, branding, logos, tools in use, exposed components, repair action, skyline or identifiable real property. Fictional context only, not actual Fixpoint work, client property, completed project, diagnosed fault, proof of performance, hygiene, safety or compliance. No collage.",
+    "reviewedAt": "2026-11-01T03:09:02.752Z",
+    "review": "Individually viewed original PNG and accepted. Closed folio and towels, idle gym in background; no adjustment or testing. Fictional contextual illustration, not actual Fixpoint work, client property, completed service, safety, hygiene or compliance evidence.",
+    "output": "/media/editorial/photos-20261019/diy-category-gym-cover249.webp",
+    "originalFile": "exec-66dc56b1-dd53-4dcd-8f3b-772f6e664f06.png"
+  },
+  {
+    "key": "service-category:sauna",
+    "kind": "service-category",
+    "slug": "sauna",
+    "prompt": "Use case photorealistic-natural. Create one original landscape1536x1024 editorial photo-style illustration for a UAE service category or its before-booking guide index. A fictional fully enclosed wooden sauna cabin viewed through its glass entrance, intact benches and soft ambient lighting. Wide exterior-to-interior view. No people, steam, visible heater elements, maintenance process or health claims. Coherent realistic proportions and materials. No readable text, branding, logos, tools in use, exposed components, repair action, skyline or identifiable real property. Fictional context only, not actual Fixpoint work, client property, completed project, diagnosed fault, proof of performance, hygiene, safety or compliance. No collage.",
+    "reviewedAt": "2026-11-01T03:10:16.863Z",
+    "review": "Individually viewed original PNG and accepted. Coherent closed glass-front sauna cabin with intact benches, no visible heater elements or steam. Fictional context, not an actual Fixpoint client site, completed work, safety, hygiene or health claim.",
+    "output": "/media/editorial/photos-20261019/service-category-sauna-cover249.webp",
+    "originalFile": "exec-539c2b85-6983-4261-a561-61f6a5840eed.png"
+  },
+  {
+    "key": "diy-category:sauna",
+    "kind": "diy-category",
+    "slug": "sauna",
+    "prompt": "Use case photorealistic-natural. Create one original landscape1536x1024 editorial photo-style illustration for a UAE service category or its before-booking guide index. A fictional calm changing-room bench with folded plain towels and closed unprinted enquiry notebook, closed sauna entrance in the background. Close-medium natural perspective, pale timber. No people, heat effects, heater details, chemicals or instructions. Coherent realistic proportions and materials. No readable text, branding, logos, tools in use, exposed components, repair action, skyline or identifiable real property. Fictional context only, not actual Fixpoint work, client property, completed project, diagnosed fault, proof of performance, hygiene, safety or compliance. No collage.",
+    "reviewedAt": "2026-11-01T03:10:16.863Z",
+    "review": "Individually viewed original PNG and accepted. Coherent bench with folded towels and closed notebook, closed sauna entrance in background. Fictional context, not an actual Fixpoint client site, completed work, safety, hygiene or health claim.",
+    "output": "/media/editorial/photos-20261019/diy-category-sauna-cover249.webp",
+    "originalFile": "exec-32c046d5-f776-4ed3-af0e-2ce2f1da496c.png"
+  },
+  {
+    "key": "service-category:swimming-pool",
+    "kind": "service-category",
+    "slug": "swimming-pool",
+    "prompt": "Use case photorealistic-natural. Create one original landscape1536x1024 editorial photo-style illustration for a UAE service category or its before-booking guide index. A fictional pool area viewed from an enclosed lounge through full-height glazing, tranquil water and simple surrounding architecture. Wide daylight composition, pale stone and muted blue. No people, pool equipment, drains, chemicals, cleaning action or safety claims. Coherent realistic proportions and materials. No readable text, branding, logos, tools in use, exposed components, repair action, skyline or identifiable real property. Fictional context only, not actual Fixpoint work, client property, completed project, diagnosed fault, proof of performance, hygiene, safety or compliance. No collage.",
+    "reviewedAt": "2026-11-01T03:11:27.180Z",
+    "review": "Individually viewed original PNG and accepted. Coherent pool viewed through glazing from enclosed lounge. No people, equipment, chemical use or maintenance action. Fictional property, not an actual Fixpoint project or proof of hygiene/safety.",
+    "output": "/media/editorial/photos-20261019/service-category-swimming-pool-cover249.webp",
+    "originalFile": "exec-a2cb5318-e561-43e7-9439-759445490a64.png"
+  },
+  {
+    "key": "diy-category:swimming-pool",
+    "kind": "diy-category",
+    "slug": "swimming-pool",
+    "prompt": "Use case photorealistic-natural. Create one original landscape1536x1024 editorial photo-style illustration for a UAE service category or its before-booking guide index. A fictional indoor poolside lounge with a plain closed appointment folder on a table, pool visible beyond glass in soft background. Close-medium side view, restrained cream and blue. No people, pool access, equipment, chemical products or testing. Coherent realistic proportions and materials. No readable text, branding, logos, tools in use, exposed components, repair action, skyline or identifiable real property. Fictional context only, not actual Fixpoint work, client property, completed project, diagnosed fault, proof of performance, hygiene, safety or compliance. No collage.",
+    "reviewedAt": "2026-11-01T03:11:27.180Z",
+    "review": "Individually viewed original PNG and accepted. Closed folio on lounge table, pool behind glazing. No people, equipment, chemical use or maintenance action. Fictional property, not an actual Fixpoint project or proof of hygiene/safety.",
+    "output": "/media/editorial/photos-20261019/diy-category-swimming-pool-cover249.webp",
+    "originalFile": "exec-e711379f-7911-4bd0-8ecf-8dcc352981bd.png"
+  },
+  {
+    "key": "service-category:water-heater",
+    "kind": "service-category",
+    "slug": "water-heater",
+    "prompt": "Use case photorealistic-natural. Create one original landscape1536x1024 editorial photo-style illustration for a UAE service category or its before-booking guide index. A fictional uncluttered utility storage room with one intact completely enclosed white water-heater cylinder as an inactive standalone appliance, no installation shown. Wide side view, dry floor and soft daylight. No visible wiring, pipes, valves, controls, gas parts, tools or operation. Coherent realistic proportions and materials. No readable text, branding, logos, tools in use, exposed components, repair action, skyline or identifiable real property. Fictional context only, not actual Fixpoint work, client property, completed project, diagnosed fault, proof of performance, hygiene, safety or compliance. No collage.",
+    "reviewedAt": "2026-11-01T03:12:51.612Z",
+    "review": "Individually viewed original PNG and accepted. Intact fully enclosed inactive cylinder in unoccupied storeroom; no installation, pipes, wiring or operation shown. Fictional context, not actual Fixpoint work, client property, product specification or safety evidence.",
+    "output": "/media/editorial/photos-20261019/service-category-water-heater-cover249.webp",
+    "originalFile": "exec-6bb0ae8b-c218-4ce8-873d-321ac00bad3d.png"
+  },
+  {
+    "key": "diy-category:water-heater",
+    "kind": "diy-category",
+    "slug": "water-heater",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial illustration. Empty unoccupied utility room: a plain closed notebook on a narrow shelf in foreground and one intact completely enclosed inactive white water-heater cylinder in background. No people, faces, hands, bodies or reflection of a person anywhere. No consultation scene. Soft daylight, coherent realistic proportions. No pipes, wiring, valves, controls, installation, testing, tools, logos, labels or readable text. Fictional context only, not actual Fixpoint work, customer property or proof of safety. No collage.",
+    "rejectedOriginalFile": "exec-302d7749-c552-4bb0-8aae-e6e2bcd4ca8c.png",
+    "rejectionReason": "Generated people despite no-people brief; avoid implying actual staff or customers.",
+    "reviewedAt": "2026-11-01T03:14:26.267Z",
+    "review": "Individually viewed original PNG and accepted. Replacement accepted: empty utility room, closed notebook and fully enclosed inactive cylinder; no people, installation or exposed parts. Fictional contextual illustration, not actual Fixpoint work, staff, client property, completed service or proof of safety/hygiene.",
+    "output": "/media/editorial/photos-20261019/diy-category-water-heater-cover249.webp",
+    "originalFile": "exec-e7fddbaa-12e0-490a-9838-7626df333f6d.png"
+  },
+  {
+    "key": "service-category:water-tank",
+    "kind": "service-category",
+    "slug": "water-tank",
+    "prompt": "Use case photorealistic-natural. Create one original landscape1536x1024 editorial photo-style illustration for a UAE service category or its before-booking guide index. A fictional enclosed level service courtyard with one plain fully closed water-storage tank, intact lid and uncluttered surroundings. Wide morning daylight view, neutral architecture. No people, access ladder, open hatch, chemical products, climbing or cleaning action. Coherent realistic proportions and materials. No readable text, branding, logos, tools in use, exposed components, repair action, skyline or identifiable real property. Fictional context only, not actual Fixpoint work, client property, completed project, diagnosed fault, proof of performance, hygiene, safety or compliance. No collage.",
+    "reviewedAt": "2026-11-01T03:14:26.267Z",
+    "review": "Individually viewed original PNG and accepted. Coherent level courtyard, fully closed tank and lid, no access, climbing, chemicals or cleaning. Fictional contextual illustration, not actual Fixpoint work, staff, client property, completed service or proof of safety/hygiene.",
+    "output": "/media/editorial/photos-20261019/service-category-water-tank-cover249.webp",
+    "originalFile": "exec-382b9562-986f-435c-b0b6-88453fb614fe.png"
+  },
+  {
+    "key": "diy-category:water-tank",
+    "kind": "diy-category",
+    "slug": "water-tank",
+    "prompt": "Use case photorealistic-natural. Create one original landscape1536x1024 editorial photo-style illustration for a UAE service category or its before-booking guide index. A fictional utility-office desk with a plain closed appointment notebook, a fully closed water-storage tank visible beyond a ground-floor window in soft background. Close-medium angle, warm daylight. No people, entry hatch, ladder, chemicals, testing or cleaning instructions. Coherent realistic proportions and materials. No readable text, branding, logos, tools in use, exposed components, repair action, skyline or identifiable real property. Fictional context only, not actual Fixpoint work, client property, completed project, diagnosed fault, proof of performance, hygiene, safety or compliance. No collage.",
+    "reviewedAt": "2026-11-01T03:14:26.267Z",
+    "review": "Individually viewed original PNG and accepted. Closed notebook indoors with closed tank beyond a ground-floor window; no access, cleaning, test or maintenance action. Fictional contextual illustration, not actual Fixpoint work, staff, client property, completed service or proof of safety/hygiene.",
+    "output": "/media/editorial/photos-20261019/diy-category-water-tank-cover249.webp",
+    "originalFile": "exec-5ab05fa0-0205-41b2-9819-32c8cd517937.png"
+  }
+]
