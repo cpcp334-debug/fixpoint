@@ -20,7 +20,7 @@ async function main(){
  for(const j of jobs){const raw=readFileSync('public'+j.output),m=await sharp(raw).metadata();assert(m.format==='webp'&&(m.width||0)>=1200&&(m.height||0)>=800);assert(plain.some((r:any)=>r.slug===j.slug));}
  if(mode==='--backup'){
   assert(!existsSync(originalFile)&&!existsSync(baselineFile),'Refusing to overwrite evidence');const pages=[];
-  for(const row of plain){assertUnchangedBlog(row,row);const j=jobs.find((x:any)=>x.slug===row.slug);for(const locale of ['en','ar']){const url='https://fixpoint.ae/'+locale+'/blog/'+blogPathSlug(locale,row.slug),p=await publicPage(url);assert(p.status===200&&p.final===url&&p.title&&p.canonical,'Stable public URL required');pages.push({...p,key:'blog:'+row.slug,slug:row.slug,locale,image:j.output,originalPublishedAt:row.publishedAt});}}
+  for(const row of plain){assertUnchangedBlog(row,row);const j=jobs.find((x:any)=>x.slug===row.slug);for(const locale of ['en','ar']){const url='https://fixpoint.ae/'+locale+'/blog/'+blogPathSlug(locale,row.slug),p=await publicPage(url);assert(p.status===200&&p.final===url&&p.title&&p.canonical,'Stable public URL and complete existing title/canonical required; cover-only assignment stopped');pages.push({...p,key:'blog:'+row.slug,slug:row.slug,locale,image:j.output,originalPublishedAt:row.publishedAt});}}
   writeFileSync(originalFile,JSON.stringify({checkedAt:new Date().toISOString(),readOnlyDatabase:true,records:plain},null,2),{flag:'wx'});writeFileSync(baselineFile,JSON.stringify(pages,null,2),{flag:'wx'});console.log({batch,mode,backedUpFullRecords:2,publicUrls:4,databaseWrites:0});return;
  }
  const before=json(originalFile).records;assert.equal(before.length,2);for(const old of before)assert(jobs.some((j:any)=>j.slug===old.slug));

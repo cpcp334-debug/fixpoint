@@ -1,0 +1,22 @@
+[
+  {
+    "key": "blog:cable-tray-conduit-coordination",
+    "slug": "cable-tray-conduit-coordination",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial illustration for an electrical planning article about cable tray and conduit coordination. Fictional unoccupied commercial service corridor, broad architectural view showing neat closed metal service raceways high along a wall and intact closed access panels, plain closed coordination folder on a foreground table. No open trays, wires, cable detail, installation demonstration, people, tools, readable labels, plans, logos or identifiable real property. Coherent realistic proportions, soft daylight, restrained navy/stone palette. Fictional planning context, not an actual Fixpoint installation, client site, completed project or proof of compliance. No collage.",
+    "kind": "blog",
+    "output": "/media/editorial/photos-20261019/blog-cable-tray-conduit-coordination-cover251.webp",
+    "reviewedAt": "2026-11-01T03:32:41.032Z",
+    "review": "Individually viewed original PNG and accepted. Coherent unoccupied corridor with closed raceways/access panels and closed folio; no exposed wiring or installation action. Fictional planning context, not actual Fixpoint work, staff, client property, completed installation or compliance/safety evidence.",
+    "originalFile": "exec-26d496ee-9d41-4c9b-bd4e-03d5076be67e.png"
+  },
+  {
+    "key": "blog:distribution-board-installation-planning",
+    "slug": "distribution-board-installation-planning",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial illustration for an article about planning a distribution-board installation. Fictional quiet building-management office corner with a fully closed unmarked flush electrical cabinet on a distant wall, plain closed appointment folder on the foreground console. Distinct diagonal room angle, warm ivory and navy, realistic proportions and natural daylight. No people, opened panels, breaker detail, exposed wires, tools, installation or test action, readable text, branding, plans or identifiable property. Not actual Fixpoint work, client property, completed installation, approval or evidence of safety. No collage.",
+    "kind": "blog",
+    "output": "/media/editorial/photos-20261019/blog-distribution-board-installation-planning-cover251.webp",
+    "reviewedAt": "2026-11-01T03:32:41.034Z",
+    "review": "Individually viewed original PNG and accepted. Coherent office corner, closed flush cabinet and folio; no open panel, component detail or work. Fictional planning context, not actual Fixpoint work, staff, client property, completed installation or compliance/safety evidence.",
+    "originalFile": "exec-8afb5fde-e1d7-4ade-a0b5-c98641834f24.png"
+  }
+]
