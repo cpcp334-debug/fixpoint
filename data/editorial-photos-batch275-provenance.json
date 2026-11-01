@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "blog",
+    "slug": "power-failure-diagnosis-arabian-ranches-2-dubai",
+    "key": "blog:power-failure-diagnosis-arabian-ranches-2-dubai",
+    "output": "/media/editorial/photos-20261019/blog-power-failure-ranches2-cover275.webp",
+    "prompt": "One original photorealistic landscape 3:2 editorial cover for a customer enquiry guide about professional power-failure diagnosis in Arabian Ranches 2, Dubai. Entirely fictional modest villa living area in clear natural daylight, plain ceiling lights unlit, a fully closed unbranded service cupboard near the entrance, foreground table with a closed navy folder and a blank incident-notes pad. Neutral cream and warm stone palette, calm documentary interior photography. Only context for documenting a concern and arranging a professional assessment; unlit lights do not establish an actual outage, cause or diagnosis. Not an actual Arabian Ranches property or completed Fixpoint project. No people, tools, meters, probes, open electrical covers, wires, switches being operated, damage, smoke, sparks, text, brands, certificates, watermark, recognizable skyline or landmarks. No technical installation details or repair demonstration.",
+    "reviewedAt": "2026-11-01T17:15:47.330Z",
+    "review": "Individually visually reviewed: fictional daylit residential living/entry area, unlit ceiling lights, plain closed cupboard, folder and blank notes pad. No people, tools, testing, exposed wiring, damage, readable words, brands or identifiable real property. Approved only as incident documentation and professional-enquiry context; unlit lamps are not proof of an outage or diagnosis. Not a real Arabian Ranches 2 home, Fixpoint project, technical installation or compliance evidence. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 129746,
+    "optimizedSha256": "7003e8ae0d47e4d0372c55c3fcdbd7c8c643fe18a8bf4c751ba2adc47d272d8a",
+    "originalFile": "exec-c13c5260-87a3-4c53-ac48-334e3eaaeb82.png",
+    "retainedOriginalFile": "power-failure-ranches2-original275.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "relay-replacement-mohammed-bin-zayed-2-ajman",
+    "key": "blog:relay-replacement-mohammed-bin-zayed-2-ajman",
+    "output": "/media/editorial/photos-20261019/blog-relay-mbz2-ajman-cover275.webp",
+    "prompt": "One original photorealistic landscape 3:2 editorial cover for a customer planning guide about arranging professional relay replacement in Mohammed Bin Zayed 2, Ajman. Entirely fictional modest commercial reception and back-office approach, not an actual local property or Fixpoint project. A fully closed plain service cabinet in the distant background, intact ceiling lights, foreground table with a closed unbranded maintenance folder and plain blank envelope. No relay or internal component is visible. Soft daylight, restrained blue-grey and cream materials, natural documentary interior photography. Illustrates discussing an identified work order and parts responsibility only, not a technical diagnosis, part specification, installation or completed repair. No people, tools, meters, probes, exposed wires, open panels, diagrams, markings, brands, readable words, certificates, smoke, damage, sparks, watermark, skyline or recognizable landmarks.",
+    "reviewedAt": "2026-11-01T17:21:46.555Z",
+    "review": "Individually visually reviewed: fictional reception/back-office setting, plain closed service cabinet in background, closed maintenance folder and blank envelope foreground. No relay or internal components visible, no people, testing, tools, exposed wiring, readable text, branding, damage or identifiable local site. Approved only as discussing an identified work order and parts responsibility, not part selection, a technical example, a real Ajman property, completed Fixpoint repair or compliance evidence. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 77012,
+    "optimizedSha256": "47c04c79524761144754ffdb598064d31db99f2b837ee9f299b28c6783e14854",
+    "originalFile": "exec-16c04f93-14a4-4778-a34c-851bc07a66aa.png",
+    "retainedOriginalFile": "relay-mbz2-ajman-original275.png"
+  }
+]
