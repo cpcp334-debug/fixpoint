@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "blog",
+    "slug": "commercial-electrical-inspection-al-badaa-dubai-dubai",
+    "key": "blog:commercial-electrical-inspection-al-badaa-dubai-dubai",
+    "output": "/media/editorial/photos-20261019/blog-commercial-badaa-cover313.webp",
+    "prompt": "Use case: photorealistic-natural. Original landscape 3:2 editorial cover for a commercial electrical inspection enquiry guide. Entirely fictional modest office reception with pale stone desk on left, blank closed paper folder and dark-screen phone, fully closed unbranded flush grey service-cupboard doors along back wall, ordinary ceiling lights, no people. Wide architectural documentary photograph in soft daylight, credible everyday commercial interior. No electrical internals, meters, labels, switches being used, tools, workers, diagnostic activity, certification marks, text, logos or watermark. Enquiry context only, not an inspection finding, compliant installation, actual Al Badaa premises or actual Fixpoint project.",
+    "reviewedAt": "2026-11-01T22:24:43.433Z",
+    "review": "Individually visually reviewed: fictional office reception with plain folder/dark phone and closed grey cupboard doors. No electrical contents visible or established, no people, inspection, tools, meters, wiring, certification or readable branding. Generic commercial enquiry context only; not an inspection finding, compliant installation, actual Al Badaa premises or actual Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 91898,
+    "optimizedSha256": "6859f0208a57b7fcfd42c92cdfa2c779e79c794247a4981debfcfd9456a471c4",
+    "originalFile": "exec-9e9f1efa-649e-4ebb-bbdf-b36532ea66cd.png",
+    "retainedOriginalFile": "commercial-electrical-inspection-al-badaa-dubai-dubai-original313.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "partial-power-failure-diagnosis-al-badaa-dubai-dubai",
+    "key": "blog:partial-power-failure-diagnosis-al-badaa-dubai-dubai",
+    "output": "/media/editorial/photos-20261019/blog-partial-badaa-cover313.webp",
+    "prompt": "Use case: photorealistic-natural. Original landscape 3:2 editorial cover for a partial-power-failure diagnosis enquiry guide. Entirely fictional apartment sitting room in soft natural twilight, one ordinary floor lamp unlit beside an armchair, daylight visible through a window in adjoining room, blank closed notebook and dark-screen phone on a low wooden table. Realistic architectural documentary photograph, calm ordinary setting. Do not imply a confirmed outage or cause. No people, sockets closeups, panels, exposed wiring, tools, tests, sparks, smoke, damage, emergency symbols, readable text, brands or watermark. General enquiry context only, not proof of supply failure, diagnosis, safe conditions, repair outcome, actual Al Badaa premises or Fixpoint project.",
+    "reviewedAt": "2026-11-01T22:24:43.564Z",
+    "review": "Individually visually reviewed: fictional twilight sitting room, unlit ordinary floor lamp, daylight in adjoining room, blank notebook and dark phone on table. No people, electrical panels, open parts, meters, tests, sparks, damage, branding or technical activity. Light contrast does not prove a partial power failure or its cause. Not diagnosis, safe-condition proof, repair result, actual Al Badaa property or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 119334,
+    "optimizedSha256": "18e821317939819ad1a898786db7d713bd6f771267cdbdceea8d4c2df0f960ff",
+    "originalFile": "exec-603948fe-fc70-463e-963b-f9f5c12b5d99.png",
+    "retainedOriginalFile": "partial-power-failure-diagnosis-al-badaa-dubai-dubai-original313.png"
+  }
+]
