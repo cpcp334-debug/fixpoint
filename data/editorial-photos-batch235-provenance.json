@@ -1,0 +1,22 @@
+[
+  {
+    "kind": "service-category",
+    "key": "service-category:electrical",
+    "slug": "electrical",
+    "output": "/media/editorial/photos-20261019/service-category-electrical-cover235.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a UAE electrical-services category page. Fictional empty small commercial showroom, broad diagonal view with intact neat ceiling lighting, closed flush distribution cabinet on side wall, dry neutral polished floor, a simple unmarked folder on foreground reception counter. Muted warm grey and navy accents, realistic architecture, no people. No readable text, branding, exposed wires, open panels, tools, repair, fault effects, specific skyline or identifiable real property. Context only, not actual Fixpoint work, completed installation, certification or proof of safety. No collage.",
+    "reviewedAt": "2026-11-01T02:18:49.848Z",
+    "review": "Individually viewed original PNG and accepted: coherent empty showroom, intact lighting, fully closed cabinet, plain folio. No exposed wiring, repair, tools or test. Fictional contextual illustration, not actual Fixpoint work, client property, certification or proof of safety.",
+    "originalFile": "exec-ca978591-462e-47f1-bb6a-a2edd39ec747.png"
+  },
+  {
+    "kind": "diy-category",
+    "key": "diy-category:electrical",
+    "slug": "electrical",
+    "output": "/media/editorial/photos-20261019/diy-category-electrical-cover235.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for an electrical before-booking guide index. Fictional quiet residential reading corner, an intact wall light and closed wall switches in background; foreground blank closed notebook and plain phone with dark screen on a table, no demonstration. Distinct intimate side view, daylight, oak and muted blue fabrics, coherent realistic proportions. No people, readable text, branding, tools, exposed parts, repair steps, testing or identifiable real property. Fictional context, not actual Fixpoint work, project, diagnosis or proof of safety. No collage.",
+    "reviewedAt": "2026-11-01T02:18:49.851Z",
+    "review": "Individually viewed original PNG and accepted: coherent reading corner, closed switches, intact wall light, closed notebook and dark phone. No demonstration, exposed components, repair or testing. Fictional contextual illustration, not actual Fixpoint work, diagnosis, client property, completed project or proof of safety.",
+    "originalFile": "exec-1e66916a-2f28-472c-8b3f-2ee5f7722ca1.png"
+  }
+]
