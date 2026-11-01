@@ -19,33 +19,41 @@ export function LocaleSwitcher({
 }) {
   const pathname = usePathname();
   const other = locale === "ar" ? "en" : "ar";
-  const [otherPath, setOtherPath] = useState(pathname);
+  const isBlogDetail = /^\/blog\/[^/?#]+\/?$/.test(pathname);
+  const [resolved, setResolved] = useState<{ key: string; href: string; available?: boolean } | null>(null);
+  const requestKey = `${other}:${pathname}`;
+  const current = resolved?.key === requestKey ? resolved : null;
+  // A stale response or an unresolved blog translation must never link to an empty article.
+  const otherPath = current?.href ?? (isBlogDetail ? "/blog" : pathname);
+  const blogFallback = isBlogDetail && current?.available !== true;
 
   useEffect(() => {
     // Home needs no dual-slug remap — skip network on the PSI critical path.
     if (pathname === "/" || pathname === "") {
-      setOtherPath("/");
       return;
     }
     let cancelled = false;
-    setOtherPath(pathname);
     const q = new URLSearchParams({ path: pathname, locale: other });
     fetch(`/api/locale-path?${q.toString()}`)
       .then((r) => (r.ok ? r.json() : null))
-      .then((data: { href?: string } | null) => {
-        if (!cancelled && data?.href) setOtherPath(data.href);
+      .then((data: { href?: string; available?: boolean } | null) => {
+        if (!cancelled && data?.href) setResolved({
+          key: requestKey,
+          href: isBlogDetail && data.available !== true ? "/blog" : data.href,
+          available: data.available,
+        });
       })
       .catch(() => {
-        if (!cancelled) setOtherPath(pathname);
+        // Keep the labelled blog-index fallback if the availability request fails.
       });
     return () => {
       cancelled = true;
     };
-  }, [pathname, other]);
+  }, [pathname, other, requestKey, isBlogDetail]);
 
   return (
     <Link href={otherPath} locale={other} className={className} onClick={onNavigate}>
-      {other === "ar" ? arLabel : enLabel}
+      {blogFallback ? (other === "ar" ? "المدونة بالعربية" : "Blog in English") : (other === "ar" ? arLabel : enLabel)}
     </Link>
   );
 }
