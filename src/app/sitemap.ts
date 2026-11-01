@@ -7,6 +7,8 @@ import { servicePathSlug, locationPathSlug } from "@/lib/slug/locale-slug";
 import { diyGuidePathSlug, diyCategoryPathSlug } from "@/lib/slug/diy-slug-map";
 import { blogPathSlug } from "@/lib/slug/blog-slug-map";
 import { faqPathSlug } from "@/lib/slug/faq-slug-map";
+import { Prisma } from "@prisma/client";
+import { blogTranslationAvailabilitySql } from "@/lib/blog/translation-availability";
 
 /**
  * Serve sitemaps on demand so Hostinger `next build` does not prerender
@@ -226,10 +228,22 @@ async function articleEntriesForShard(site: string, shard: number): Promise<Meta
     );
     if (!batch.length) break;
 
-    for (const article of batch) {
-      if (articleShardId(article.slug) !== shard) continue;
+    const shardArticles = batch.filter(article => articleShardId(article.slug) === shard);
+    const blogIds = shardArticles.filter(article =>
+      !article.slug.startsWith("faq-") && !article.slug.startsWith("أسئلة")
+    ).map(article => article.id);
+    // Query only this shard's IDs within the cursor batch. Do not load long article
+    // bodies into memory or scan all translations for every sitemap request.
+    const available = blogIds.length ? await prisma.$queryRaw<Array<{ articleId: string; locale: string }>>(
+      Prisma.sql`SELECT t.articleId, t.locale FROM ArticleI18n t
+        WHERE t.articleId IN (${Prisma.join(blogIds)}) AND t.locale IN ('en', 'ar')
+        AND ${blogTranslationAvailabilitySql()}`
+    ) : [];
+    const availableKeys = new Set(available.map(t => `${t.articleId}:${t.locale}`));
+    for (const article of shardArticles) {
       const isFaq = article.slug.startsWith("faq-") || article.slug.startsWith("أسئلة");
       for (const locale of locales) {
+        if (!isFaq && !availableKeys.has(`${article.id}:${locale}`)) continue;
         const segment = isFaq ? faqPathSlug(locale, article.slug) : blogPathSlug(locale, article.slug);
         const path = isFaq ? `/faq/${segment}` : `/blog/${segment}`;
         entries.push({
@@ -321,7 +335,7 @@ async function buildShardEntries(site: string, shard: number): Promise<MetadataR
 /** Cache built shards so concurrent Googlebot fetches do not re-scan the DB 64×. */
 const getCachedShardEntries = unstable_cache(
   async (site: string, shard: number) => buildShardEntries(site, shard),
-  ["sitemap-shard-v3"],
+  ["sitemap-shard-v4-blog-locales"],
   { revalidate: 3600 },
 );
 
