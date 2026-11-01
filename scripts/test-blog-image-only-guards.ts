@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {assertImagePair,assertUnchangedBlog,expectedImageOnlyRecord,assertImageOnlyResult,articleScalarCompareAndSwap} from './lib/blog-image-only-guards';
+// Clearly labelled sample records. No real articles, database calls or public requests.
+const before={id:'SAMPLE_ONLY_1',slug:'sample-only-blog',status:'published',indexable:true,publishedAt:'2026-01-01T00:00:00.000Z',createdAt:'2026-01-01T00:00:00.000Z',updatedAt:'2026-01-02T00:00:00.000Z',heroImage:'/sample-old.webp',translations:[{locale:'en',title:'SAMPLE ONLY',body:'SAMPLE English body'},{locale:'ar',title:'مثال اختباري فقط',body:'نص اختباري فقط'}]},at='2026-11-01T00:00:00.000Z',image='/media/editorial/photos-test/sample-new.webp';
+const job=(slug:string,output:string)=>({kind:'blog',key:'blog:'+slug,slug,output,prompt:'SAMPLE ONLY',review:'SAMPLE reviewed',reviewedAt:at});const jobs=[job('sample-only-blog',image),job('sample-only-blog2','/media/editorial/photos-test/sample2.webp')];let passed=0;
+assertImagePair(jobs);passed++;for(const bad of [[jobs[0]],[jobs[0],jobs[0]],[jobs[0],{...jobs[1],output:image}],[jobs[0],{...jobs[1],kind:'service'}],[jobs[0],{...jobs[1],review:''}],[jobs[0],{...jobs[1],output:'/../../.env'}]]){assert.throws(()=>assertImagePair(bad));passed++;}
+assertUnchangedBlog(before,structuredClone(before));passed++;assert.throws(()=>assertUnchangedBlog(before,{...before,heroImage:'/concurrent.webp'}));passed++;
+const after=expectedImageOnlyRecord(before,image,at);assertImageOnlyResult(before,after,image,at);passed++;
+for(const field of ['id','slug','status','indexable','publishedAt','createdAt']){assert.throws(()=>assertImageOnlyResult(before,{...after,[field]:'SAMPLE_CHANGED'},image,at));passed++;}
+for(const locale of ['en','ar']){const changed=structuredClone(after);changed.translations.find((x:any)=>x.locale===locale)!.body='SAMPLE_CHANGED';assert.throws(()=>assertImageOnlyResult(before,changed,image,at));passed++;}
+const where=articleScalarCompareAndSwap(before);assert(!('translations'in where));assert.equal(where.heroImage,before.heroImage);assert.equal(where.updatedAt,before.updatedAt);passed++;
+console.log({passed,failed:0,sampleOnly:true,scope:'Strict two-record allowlist, unique images and manual reviews, concurrent-edit rejection, image/timestamp-only updates, both texts and original dates immutable, scalar compare-and-swap fields; no database writes'});
