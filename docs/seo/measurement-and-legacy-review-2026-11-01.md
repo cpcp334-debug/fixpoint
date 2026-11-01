@@ -1,6 +1,6 @@
 # Fixpoint SEO measurement baseline and legacy review — 1 November 2026
 
-This baseline distinguishes observed public behaviour from account metrics. Traffic growth, ranking gains and new enquiries are not yet verified. The public snapshot is reproducible with `node scripts/fixpoint-public-audit.mjs`; it sends bounded GET requests and submits no forms.
+This baseline distinguishes observed public behaviour from account metrics. Traffic growth, ranking gains and new enquiries are not yet verified. Latest [public audit 41330536574](https://github.com/cpcp334-debug/fixpoint/actions/runs/41330536574) also confirmed `G-WBQ2B83BTM` with the corrected ID extraction. The public snapshot is reproducible with `node scripts/fixpoint-public-audit.mjs`; it sends bounded GET requests and submits no forms.
 
 ## Verified baseline
 
@@ -72,7 +72,9 @@ Before changing live indexing, review each candidate's Search Console clicks/que
 
 [PR 3](https://github.com/cpcp334-debug/fixpoint/pull/3) contains catalog, metadata, sitemap and locale-switch availability checks, including bodies that become empty after editorial cleanup. Both MySQL 8.0.46 and MariaDB 10.11.19 passed 38 source checks and eight real database checks each, plus TypeScript: [successful matrix](https://github.com/cpcp334-debug/fixpoint/actions/runs/41329218450).
 
-The branch integrates main through `e336a404dc11e6ef47fbcfc4864cc8c0657fc0fe`; later concurrent main changes must be reconciled before release. Full build/runtime validation is tracked in the PR's Actions runs.
+The branch integrates main through `e336a404dc11e6ef47fbcfc4864cc8c0657fc0fe`; later concurrent main changes must be reconciled before release. [Final validation run 41330356008](https://github.com/cpcp334-debug/fixpoint/actions/runs/41330356008) passed on application commit `8c1a7407742030c6c967f5f2ad6150b00295b15a`: both database/source suites and TypeScript; production build on isolated MariaDB; real Next responses for English, empty Arabic (404/noindex with normal and Googlebot agents), completed Arabic, both locale API states, page-2 canonical and sitemap availability. This verifies server rendering, not visual browser QA. Later commits change only audit/report files.
+
+[Hostinger source package](https://github.com/cpcp334-debug/fixpoint/actions/runs/41330356008/artifacts/13092788895), built from the tested application commit, is available until 15 November 2026. It contains tracked source, not production credentials or database data. Package availability does not mean deployment. The source remains reproducible from the commit after artifact expiry.
 
 A fresh MySQL 8 schema bootstrap failed because existing TEXT columns have literal defaults. No schema was changed to hide this existing compatibility issue. Runtime validation uses MariaDB, while the locale query tests continue on both engines. Confirm Hostinger's actual engine/version before rollout.
 
