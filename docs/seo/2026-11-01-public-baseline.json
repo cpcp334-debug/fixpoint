@@ -1,0 +1,791 @@
+{
+  "checkedAt": "2026-11-01T17:07:48.6802019Z",
+  "evidenceUrl": "https://github.com/cpcp334-debug/fixpoint/actions/runs/41329846155",
+  "measurementStatus": {
+    "searchConsoleAccess": false,
+    "ga4ReceiptVerified": false,
+    "organicClicks": null,
+    "organicImpressions": null,
+    "organicSessions": null,
+    "verifiedEnquiries": null,
+    "rankingChange": null
+  },
+  "limits": [
+    "Public initial server HTML and static public GTM configuration.",
+    "No claim of Google indexing, GA4 receipt, live code deployment, traffic growth or lead growth.",
+    "Unavailable account metrics are null, never zero."
+  ],
+  "results": [
+    {
+      "url": "https://fixpoint.ae/en",
+      "finalUrl": "https://fixpoint.ae/en",
+      "status": 200,
+      "title": "Electrical Services in Dubai & UAE | Fixpoint",
+      "h1": "Electrical packages for your next project.",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en"
+        }
+      ],
+      "articleBodyWords": null,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/ar",
+      "finalUrl": "https://fixpoint.ae/ar",
+      "status": 200,
+      "title": "خدمات الكهرباء في دبي والإمارات | فكس بوينت",
+      "h1": "أعمال كهربائية لمشروعك القادم.",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/ar",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en"
+        }
+      ],
+      "articleBodyWords": null,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog",
+      "finalUrl": "https://fixpoint.ae/en/blog",
+      "status": 200,
+      "title": "Blog | Al Najah Al Daem · Fixpoint",
+      "h1": "Blog",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en/blog",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog"
+        }
+      ],
+      "articleBodyWords": null,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog?page=2",
+      "finalUrl": "https://fixpoint.ae/en/blog?page=2",
+      "status": 200,
+      "title": "Blog | Al Najah Al Daem · Fixpoint",
+      "h1": "Blog",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en/blog?page=2",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog?page=2"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog?page=2"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog?page=2"
+        }
+      ],
+      "articleBodyWords": null,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/electrical-boq-quotation-checklist-uae",
+      "finalUrl": "https://fixpoint.ae/en/blog/electrical-boq-quotation-checklist-uae",
+      "status": 200,
+      "title": "Electrical BOQ & Quotation Checklist UAE | Fixpoint",
+      "h1": "Electrical BOQ and Quotation Checklist for UAE Contractors",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en/blog/electrical-boq-quotation-checklist-uae",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/electrical-boq-quotation-checklist-uae"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/electrical-boq-quotation-checklist-uae"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/electrical-boq-quotation-checklist-uae"
+        }
+      ],
+      "articleBodyWords": 1627,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/ar/blog/electrical-boq-quotation-checklist-uae",
+      "finalUrl": "https://fixpoint.ae/ar/blog/electrical-boq-quotation-checklist-uae",
+      "status": 200,
+      "title": "",
+      "h1": "",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/ar/blog/electrical-boq-quotation-checklist-uae",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/electrical-boq-quotation-checklist-uae"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/electrical-boq-quotation-checklist-uae"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/electrical-boq-quotation-checklist-uae"
+        }
+      ],
+      "articleBodyWords": 0,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/electrical-testing-commissioning-readiness",
+      "finalUrl": "https://fixpoint.ae/en/blog/electrical-testing-commissioning-readiness",
+      "status": 200,
+      "title": "Electrical Testing & Commissioning UAE Guide | Fixpoint",
+      "h1": "Electrical Testing and Commissioning: A UAE Project Readiness Guide",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en/blog/electrical-testing-commissioning-readiness",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/electrical-testing-commissioning-readiness"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/electrical-testing-commissioning-readiness"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/electrical-testing-commissioning-readiness"
+        }
+      ],
+      "articleBodyWords": 1532,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/ar/blog/electrical-testing-commissioning-readiness",
+      "finalUrl": "https://fixpoint.ae/ar/blog/electrical-testing-commissioning-readiness",
+      "status": 200,
+      "title": "جاهزية فحص الكهرباء وملف التسليم | Fixpoint",
+      "h1": "جاهزية فحص الكهرباء والتشغيل: نظم المسؤوليات وأدلة التسليم",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/ar/blog/electrical-testing-commissioning-readiness",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/electrical-testing-commissioning-readiness"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/electrical-testing-commissioning-readiness"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/electrical-testing-commissioning-readiness"
+        }
+      ],
+      "articleBodyWords": 1113,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/kw-emergency-room-technician",
+      "finalUrl": "https://fixpoint.ae/en/blog/kw-emergency-room-technician",
+      "status": 200,
+      "title": "emergency room technician | UAE guide | Al Najah Al Daem · Fixpoint",
+      "h1": "emergency room technician: career information for UAE readers",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en/blog/kw-emergency-room-technician",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/kw-emergency-room-technician"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/kw-emergency-room-technician"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/kw-emergency-room-technician"
+        }
+      ],
+      "articleBodyWords": 612,
+      "medicalTopicCandidate": true,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/kw-medical-lab-technician",
+      "finalUrl": "https://fixpoint.ae/en/blog/kw-medical-lab-technician",
+      "status": 404,
+      "title": "",
+      "h1": "",
+      "robots": "noindex",
+      "canonical": "",
+      "alternates": [],
+      "articleBodyWords": null,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/kw-medical-laboratory-technologist",
+      "finalUrl": "https://fixpoint.ae/en/blog/kw-medical-laboratory-technologist",
+      "status": 404,
+      "title": "",
+      "h1": "",
+      "robots": "noindex",
+      "canonical": "",
+      "alternates": [],
+      "articleBodyWords": null,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/kw-medical-lab-tech",
+      "finalUrl": "https://fixpoint.ae/en/blog/kw-medical-lab-tech",
+      "status": 404,
+      "title": "",
+      "h1": "",
+      "robots": "noindex",
+      "canonical": "",
+      "alternates": [],
+      "articleBodyWords": null,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/kw-emergency-medical-technician-training",
+      "finalUrl": "https://fixpoint.ae/en/blog/kw-emergency-medical-technician-training",
+      "status": 200,
+      "title": "emergency medical technician | UAE guide | Fixpoint",
+      "h1": "emergency medical technician training: career information for UAE readers",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en/blog/kw-emergency-medical-technician-training",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/kw-emergency-medical-technician-training"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/kw-emergency-medical-technician-training"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/kw-emergency-medical-technician-training"
+        }
+      ],
+      "articleBodyWords": 616,
+      "medicalTopicCandidate": true,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/kw-sterile-processing-technician-certification",
+      "finalUrl": "https://fixpoint.ae/en/blog/kw-sterile-processing-technician-certification",
+      "status": 200,
+      "title": "sterile processing technicia | UAE guide | Fixpoint",
+      "h1": "sterile processing technician certification: career information for UAE readers",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en/blog/kw-sterile-processing-technician-certification",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/kw-sterile-processing-technician-certification"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/kw-sterile-processing-technician-certification"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/kw-sterile-processing-technician-certification"
+        }
+      ],
+      "articleBodyWords": 616,
+      "medicalTopicCandidate": true,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/kw-central-service-technician",
+      "finalUrl": "https://fixpoint.ae/en/blog/kw-central-service-technician",
+      "status": 200,
+      "title": "central service technician | UAE guide | Al Najah Al Daem · Fixpoint",
+      "h1": "central service technician: career information for UAE readers",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en/blog/kw-central-service-technician",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/kw-central-service-technician"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/kw-central-service-technician"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/kw-central-service-technician"
+        }
+      ],
+      "articleBodyWords": 612,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/kw-operating-room-technician",
+      "finalUrl": "https://fixpoint.ae/en/blog/kw-operating-room-technician",
+      "status": 200,
+      "title": "operating room technician | UAE guide | Al Najah Al Daem · Fixpoint",
+      "h1": "operating room technician: career information for UAE readers",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en/blog/kw-operating-room-technician",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/kw-operating-room-technician"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/kw-operating-room-technician"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/kw-operating-room-technician"
+        }
+      ],
+      "articleBodyWords": 612,
+      "medicalTopicCandidate": true,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/ar/blog/kw-emergency-room-technician",
+      "finalUrl": "https://fixpoint.ae/ar/blog/kw-emergency-room-technician",
+      "status": 200,
+      "title": "فني غرفة الطوارئ | دليل الإمارات | النجاح الدائم · فكس بوينت",
+      "h1": "فني غرفة الطوارئ: معلومات مهنية للقراء في الإمارات",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/ar/blog/kw-emergency-room-technician",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/kw-emergency-room-technician"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/kw-emergency-room-technician"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/kw-emergency-room-technician"
+        }
+      ],
+      "articleBodyWords": 541,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/api/locale-path?path=%2Fblog%2Felectrical-boq-quotation-checklist-uae&locale=ar",
+      "status": 200,
+      "localeResponse": "{\"href\":\"/blog/electrical-boq-quotation-checklist-uae\"}"
+    },
+    {
+      "url": "https://fixpoint.ae/sitemap/18.xml",
+      "status": 200,
+      "locCount": 3834,
+      "includesArabicTesting": false,
+      "includesArabicBoq": true
+    },
+    {
+      "url": "https://fixpoint.ae/sitemap/29.xml",
+      "status": 200,
+      "locCount": 3798,
+      "includesArabicTesting": true,
+      "includesArabicBoq": false
+    },
+    {
+      "url": "https://fixpoint.ae/api/locale-path?path=%2Fblog%2Felectrical-testing-commissioning-readiness&locale=ar",
+      "status": 200,
+      "localeResponse": "{\"href\":\"/blog/electrical-testing-commissioning-readiness\"}"
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/electrical-snagging-handover-checklist",
+      "finalUrl": "https://fixpoint.ae/en/blog/electrical-snagging-handover-checklist",
+      "status": 200,
+      "title": "Electrical Snagging & Handover Checklist | Fixpoint",
+      "h1": "Electrical Snagging and Handover Checklist for Main Contractors",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en/blog/electrical-snagging-handover-checklist",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/electrical-snagging-handover-checklist"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/electrical-snagging-handover-checklist"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/electrical-snagging-handover-checklist"
+        }
+      ],
+      "articleBodyWords": 1297,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/electrical-subcontracting-sharjah-checklist",
+      "finalUrl": "https://fixpoint.ae/en/blog/electrical-subcontracting-sharjah-checklist",
+      "status": 200,
+      "title": "Electrical Subcontracting in Sharjah Checklist | Fixpoint",
+      "h1": "Electrical Subcontracting in Sharjah: A Project Planning Checklist",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en/blog/electrical-subcontracting-sharjah-checklist",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/electrical-subcontracting-sharjah-checklist"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/electrical-subcontracting-sharjah-checklist"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/electrical-subcontracting-sharjah-checklist"
+        }
+      ],
+      "articleBodyWords": 1187,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/distribution-board-installation-planning",
+      "finalUrl": "https://fixpoint.ae/en/blog/distribution-board-installation-planning",
+      "status": 200,
+      "title": "Distribution Board Installation Planning | Fixpoint",
+      "h1": "Distribution Board Installation: What Contractors Should Plan",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en/blog/distribution-board-installation-planning",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/distribution-board-installation-planning"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/distribution-board-installation-planning"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/distribution-board-installation-planning"
+        }
+      ],
+      "articleBodyWords": 1351,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/cable-tray-conduit-coordination",
+      "finalUrl": "https://fixpoint.ae/en/blog/cable-tray-conduit-coordination",
+      "status": 200,
+      "title": "Cable Tray & Conduit Coordination Guide | Fixpoint",
+      "h1": "Cable Tray and Conduit Coordination: Avoiding Electrical Rework",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en/blog/cable-tray-conduit-coordination",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/cable-tray-conduit-coordination"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/cable-tray-conduit-coordination"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/cable-tray-conduit-coordination"
+        }
+      ],
+      "articleBodyWords": 1363,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/warehouse-electrical-installation-uae",
+      "finalUrl": "https://fixpoint.ae/en/blog/warehouse-electrical-installation-uae",
+      "status": 200,
+      "title": "Warehouse Electrical Installation UAE Guide | Fixpoint",
+      "h1": "Warehouse Electrical Installation in the UAE: Planning the Package",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en/blog/warehouse-electrical-installation-uae",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/warehouse-electrical-installation-uae"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/warehouse-electrical-installation-uae"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/warehouse-electrical-installation-uae"
+        }
+      ],
+      "articleBodyWords": 1243,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/office-electrical-fit-out-dubai",
+      "finalUrl": "https://fixpoint.ae/en/blog/office-electrical-fit-out-dubai",
+      "status": 200,
+      "title": "Office Electrical Fit-Out Planning in Dubai | Fixpoint",
+      "h1": "Office Electrical Fit-Out in Dubai: A Contractor's Planning Guide",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en/blog/office-electrical-fit-out-dubai",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/office-electrical-fit-out-dubai"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/office-electrical-fit-out-dubai"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/office-electrical-fit-out-dubai"
+        }
+      ],
+      "articleBodyWords": 1372,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/labour-only-vs-supply-install-electrical",
+      "finalUrl": "https://fixpoint.ae/en/blog/labour-only-vs-supply-install-electrical",
+      "status": 200,
+      "title": "Labour-Only vs Supply-and-Install Electrical | Fixpoint",
+      "h1": "Labour-Only vs Supply-and-Install Electrical Contracts",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en/blog/labour-only-vs-supply-install-electrical",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/labour-only-vs-supply-install-electrical"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/labour-only-vs-supply-install-electrical"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/labour-only-vs-supply-install-electrical"
+        }
+      ],
+      "articleBodyWords": 1257,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://fixpoint.ae/en/blog/choose-electrical-subcontractor-dubai",
+      "finalUrl": "https://fixpoint.ae/en/blog/choose-electrical-subcontractor-dubai",
+      "status": 200,
+      "title": "Choose an Electrical Subcontractor in Dubai | Fixpoint",
+      "h1": "How to Choose an Electrical Subcontractor in Dubai",
+      "robots": "index, follow",
+      "canonical": "https://fixpoint.ae/en/blog/choose-electrical-subcontractor-dubai",
+      "alternates": [
+        {
+          "locale": "en",
+          "href": "https://fixpoint.ae/en/blog/choose-electrical-subcontractor-dubai"
+        },
+        {
+          "locale": "ar",
+          "href": "https://fixpoint.ae/ar/blog/choose-electrical-subcontractor-dubai"
+        },
+        {
+          "locale": "x-default",
+          "href": "https://fixpoint.ae/en/blog/choose-electrical-subcontractor-dubai"
+        }
+      ],
+      "articleBodyWords": 1368,
+      "medicalTopicCandidate": false,
+      "gtmIds": [
+        "GTM-TPPFX2WM"
+      ],
+      "ga4Ids": [],
+      "googleVerificationMetaPresent": false,
+      "notes": "Initial server HTML only. No assertion of Google indexing, browser tag execution, analytics totals or ranking."
+    },
+    {
+      "url": "https://www.googletagmanager.com/gtm.js?id=GTM-TPPFX2WM",
+      "status": 200,
+      "containerId": "GTM-TPPFX2WM",
+      "configuredGa4Ids": [],
+      "configuredAdsIds": [],
+      "successEventNames": [
+        "quote_submit_success"
+      ],
+      "notes": "Public container configuration only; event firing and GA4 receipt require browser and account verification."
+    }
+  ]
+}

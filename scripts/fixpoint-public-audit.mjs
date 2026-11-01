@@ -60,7 +60,7 @@ for(const id of [...new Set(output.flatMap(item=>item.gtmIds??[]))].slice(0,2)){
     const item={url,status:response.status,containerId:id,
       configuredGa4Ids:[...new Set(script.match(/\\bG-[A-Z0-9]{6,}\\b/g)||[])],
       configuredAdsIds:[...new Set(script.match(/\\bAW-[0-9]+\\b/g)||[])],
-      tagConfigFields:[...script.matchAll(/"(?:vtp_measurementId|vtp_tagId|vtp_conversionId|vtp_conversionLabel|function)"\\s*:\\s*(?:"[^"]*"|\\[[^\\]]{0,300}\\]|\\d+)/g)].map(x=>x[0]).slice(0,50),
+      tagConfigFields:[...script.matchAll(/"(?:vtp_measurementId|vtp_tagId|vtp_conversionId|vtp_conversionLabel|function)"\s*:\s*(?:"[^"]*"|\[[^\]]{0,300}\]|\d+)/g)].map(x=>x[0]).slice(0,50),
       successEventNames:['quote_submit_success','booking_submit_success','contact_submit_success'].filter(event=>script.includes(event)),
       notes:'Public container configuration only; event firing and GA4 receipt require browser and account verification.'};
     output.push(item);console.log(JSON.stringify(item));

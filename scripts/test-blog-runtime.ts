@@ -7,6 +7,8 @@ if(process.env.CI!=='true'||!['localhost','127.0.0.1'].includes(url.hostname)||u
 const db=new PrismaClient();
 const slug='validation-electrical-language';
 async function seed(){
+ // More than one page is required to test pagination without page-number clamping.
+ for(let n=0;n<13;n++)await db.article.create({data:{id:'pagination-'+n,slug:'pagination-electrical-'+n,status:'published',indexable:true,publishedAt:new Date(),categorySlugs:'["electrical"]',translations:{create:[{locale:'en',title:'Electrical pagination '+n,body:'Useful electrical scope and handover planning.',seoTitle:'Electrical pagination '+n,metaDescription:'Pagination fixture.'},{locale:'ar',title:'دليل كهربائي '+n,body:'محتوى كهربائي للمراجعة والتسليم.',seoTitle:'دليل كهربائي '+n,metaDescription:'وصف دليل كهربائي.'}]}}});
  await db.article.create({data:{id:slug,slug,status:'published',indexable:true,publishedAt:new Date(),categorySlugs:'["electrical"]',
  translations:{create:[
  {locale:'en',title:'Electrical validation article',body:'A complete electrical scope needs drawings and an agreed handover plan.',seoTitle:'Electrical validation article',metaDescription:'Isolated test of English article availability.'},
@@ -42,8 +44,15 @@ async function smoke(){
   const api=await get('/api/locale-path?path=%2Fblog%2F'+slug+'&locale=ar');
   assert.deepEqual(JSON.parse(api.html),{href:'/blog',available:false});
   console.log('PASS production locale API excludes unavailable Arabic');
+  const availableApi=await get('/api/locale-path?path=%2Fblog%2Fpagination-electrical-0&locale=ar');
+  assert.deepEqual(JSON.parse(availableApi.html),{href:'/blog/pagination-electrical-0',available:true});
+  const availableArabic=await get('/ar/blog/pagination-electrical-0');
+  assert.equal(availableArabic.status,200);assert.ok(availableArabic.html.includes('class="prose-article"'));
+  console.log('PASS completed Arabic remains available');
   const listing=await get('/en/blog?page=2');
-  assert.equal(listing.status,200);assert.match(listing.html,/<link[^>]*rel="canonical"[^>]*href="https:\/\/fixpoint\.ae\/en\/blog\?page=2"/);
+  assert.equal(listing.status,200);
+  const canonical=listing.html.match(/<link[^>]*rel="canonical"[^>]*href="([^"]+)"/)?.[1];
+  assert.equal(canonical,'https://fixpoint.ae/en/blog?page=2');
   console.log('PASS page-2 canonical preserved');
   let hash=2166136261;
   for(const c of 'article:'+slug){hash^=c.charCodeAt(0);hash=Math.imul(hash,16777619);}
