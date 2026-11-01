@@ -1,0 +1,26 @@
+[
+  {
+    "kind": "blog",
+    "slug": "shop-electrical-maintenance-barsha-heights-dubai",
+    "key": "blog:shop-electrical-maintenance-barsha-heights-dubai",
+    "output": "/media/editorial/photos-20261019/blog-shop-barsha-heights-cover261.webp",
+    "prompt": "Create a photorealistic 3:2 landscape editorial cover for an Arabic/English customer guide on planning electrical maintenance for a small shop in Barsha Heights, Dubai. Fictional unbranded stationery shop interior after closing, not a real Dubai shop or a completed Fixpoint project. Eye-level composition from entry toward checkout counter: plain birch shelving with unlabelled notebooks and paper boxes, modest black unbranded till screen switched off, clear floor aisle, intact CLOSED light-grey electrical distribution cabinet on the rear wall and tidy ceiling light fixtures. Late afternoon soft light, balanced navy/neutral accents, credible small retail proportions. Show orderly access planning and the business setting only. No people, technician, open cabinet, exposed wiring, tools, meters, damaged equipment, sparks, smoke, brands, logos, lettering, signage, price labels, readable packaging or recognizable buildings. Do not show an inspection or repair being performed. Distinct from an empty warehouse, home desk or home TV scene. Documentary-style realistic architectural photography, not a collage.",
+    "reviewedAt": "2026-11-01T06:00:27.439Z",
+    "review": "Individually inspected: fictional stationery retail interior with clear aisle, unbranded counter, closed wall cabinet and intact ceiling lights. No people, exposed wiring, tools or readable commercial claims. Background is generic, not identified as a real Barsha Heights shop. Appropriate only as a labelled AI illustration of access/operating context, not actual maintenance or a customer project.",
+    "generation": "built-in image_gen",
+    "originalFile": "exec-180121eb-7024-4ca2-b9e3-f452626b92f3.png",
+    "retainedOriginalFile": "shop-barsha-heights-original261.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "commercial-electrical-inspection-bur-dubai-dubai",
+    "key": "blog:commercial-electrical-inspection-bur-dubai-dubai",
+    "output": "/media/editorial/photos-20261019/blog-inspection-bur-dubai-cover261.webp",
+    "prompt": "One photorealistic landscape 3:2 editorial cover for an Arabic and English guide about defining the scope of a commercial electrical inspection before a business takes over premises in Bur Dubai. Entirely fictional small commercial reception and meeting suite; do not depict an actual Dubai site or completed Fixpoint job. Composition from reception looking along a clear corridor toward a glass meeting room, simple empty reception desk at front with a closed blank document folder, intact closed electrical cabinet on a side wall, orderly ceiling luminaires and ordinary commercial finishes. Morning diffuse daylight; muted stone grey, dark teal upholstery and natural oak. Show the premises and the owner's planning context, not any inspection or testing. No people, tools, meters, open equipment, cables, damage, electrical demonstrations, branded objects, words, logos, signage, readable papers, certifications, official seals, skyline or recognizable landmark. Plausible modest scale, crisp material details, balanced professional architectural photography; distinct from a stationery shop or residential hallway.",
+    "reviewedAt": "2026-11-01T06:02:24.435Z",
+    "review": "Individually inspected: fictional commercial reception/corridor and meeting room, intact closed cabinet, blank folder, no person or testing activity or exposed wiring. No readable brand, official seal or recognizable Bur Dubai location. Suitable as an AI illustration of premises/scope planning, not actual inspection evidence or a Fixpoint project, with neutral visible caption and truthful generated alt.",
+    "generation": "built-in image_gen",
+    "originalFile": "exec-cfa1308b-350f-42cb-adfa-9bef220d1061.png",
+    "retainedOriginalFile": "inspection-bur-dubai-original261.png"
+  }
+]
