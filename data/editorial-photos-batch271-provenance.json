@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "blog",
+    "slug": "building-electrical-maintenance-al-dhait-ras-al-khaimah-ras-al-khaimah",
+    "key": "blog:building-electrical-maintenance-al-dhait-ras-al-khaimah-ras-al-khaimah",
+    "output": "/media/editorial/photos-20261019/blog-building-maintenance-dhait-cover271.webp",
+    "prompt": "One photorealistic landscape 3:2 editorial cover for a customer planning article about coordinating building electrical maintenance in Al Dhait, Ras Al Khaimah. Entirely fictional modest multi-unit building management area; not an actual local building or completed Fixpoint project. Small foreground coordination desk with three plain closed folders of different muted colours and blank scheduling sheets facing down; background a clean shared corridor with intact ceiling lights, closed plain service cupboard and clear walkway. Soft morning daylight, realistic stone and muted navy palette. Emphasize organizing responsibilities and access for professional visits only. No people, tools, test instruments, open electrical panels, wiring, repair action, diagrams, signs, readable words, logos, branding, certificates, damage, sparks, skyline or identifiable local landmarks. Documentary architectural photo, no collage or technical installation detail.",
+    "reviewedAt": "2026-11-01T16:13:01.303Z",
+    "review": "Individually visually reviewed: fictional shared corridor with intact lights, closed plain service cupboard, clear walkway and coordination desk with three folders and unreadable blank grid sheets. No people, tools, exposed wiring, technical measurements, readable words, brands or actual local landmark. Approved as responsibility/access coordination context only, not a real Al Dhait property, completed Fixpoint work, technical installation or compliance evidence. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 87712,
+    "optimizedSha256": "818bd7877bc6c0fe5c269233c49917a271e467b30ff7b2d024b3f5d83620a55c",
+    "originalFile": "exec-aab69680-15ce-438b-8aae-bcc9309cb9f3.png",
+    "retainedOriginalFile": "building-maintenance-dhait-original271.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "dishwasher-electrical-connection-al-qusais-dubai",
+    "key": "blog:dishwasher-electrical-connection-al-qusais-dubai",
+    "output": "/media/editorial/photos-20261019/blog-dishwasher-qusais-cover271.webp",
+    "prompt": "One photorealistic 3:2 landscape editorial cover for a customer planning guide about professional dishwasher electrical connection enquiries in Al Qusais, Dubai. Entirely fictional modest apartment kitchen, not an actual property or completed Fixpoint job. Plain intact unbranded freestanding dishwasher with door fully closed next to a kitchen cabinet, seen from the dining-table side, with a closed dark folder and blank plain product-document envelope on the foreground table. All connections, hoses, plugs and electrical points completely concealed. Soft natural daylight, cream cabinets, muted stone countertop. Illustrates identifying the appliance and coordinating a professional visit only, not a recommended installation layout. No people, tools, open appliance panels, visible wiring, close-up fittings, water, damage, smoke, sparks, readable labels or controls, text, brand marks, certificates, skyline or recognizable landmarks. Realistic architectural/product-context photo.",
+    "reviewedAt": "2026-11-01T16:15:27.571Z",
+    "review": "Individually visually reviewed: closed intact unbranded dishwasher in fictional kitchen with closed folder and blank envelope in foreground. No hoses, plugs, wiring, internal components, people, tools, readable controls, brands or actual local landmark. Approved as appliance identification and professional-visit coordination context only, not a recommended installation arrangement, real Fixpoint project, testing result or compliance evidence. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 70136,
+    "optimizedSha256": "151d50b2cc47dbad301e4244f19b830cebfefbb17b090c0754be4ed9e7f1d635",
+    "originalFile": "exec-da88c166-6157-4a68-9988-89e40b0d84b7.png",
+    "retainedOriginalFile": "dishwasher-qusais-original271.png"
+  }
+]
