@@ -1,0 +1,42 @@
+[
+  {
+    "kind": "service-category",
+    "key": "service-category:refrigerator",
+    "slug": "refrigerator",
+    "output": "/media/editorial/photos-20261019/service-category-refrigerator-cover245.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a refrigerator service category. Fictional modern apartment kitchen with an intact freestanding refrigerator, fully closed doors and dark unmarked display, uncluttered dry floor and warm oak cabinets. Wide diagonal architectural view, soft daylight, realistic appliance proportions. No people, tools, opened panels, food-temperature test, frost, leak, readable labels, brand names, skyline or identifiable client property. Not actual Fixpoint work, diagnosed defect, completed repair or proof of performance. No collage.",
+    "reviewedAt": "2026-11-01T02:51:04.307Z",
+    "review": "Individually viewed original PNG and accepted: coherent kitchen, fully closed intact refrigerator, dry floor; no fault, test, tools or opened parts. Fictional context, not actual Fixpoint work, customer property, completed repair or performance/safety evidence.",
+    "originalFile": "exec-e83b8e9d-8e0d-4613-b3be-1c31a74f6b66.png"
+  },
+  {
+    "kind": "diy-category",
+    "key": "diy-category:refrigerator",
+    "slug": "refrigerator",
+    "output": "/media/editorial/photos-20261019/diy-category-refrigerator-cover245.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a refrigerator before-booking guide index. Fictional compact kitchen with a fully closed intact fridge in the background and a plain closed enquiry folder on a foreground counter, dark-screen phone untouched nearby. Close-medium side angle, muted sage and ivory, realistic proportions. No people, food test, tools, open parts, repair demonstration, readable text, branding or identifiable real property. Fictional context only, not actual Fixpoint work, diagnosis, customer property or safety evidence. No collage.",
+    "reviewedAt": "2026-11-01T02:51:04.310Z",
+    "review": "Individually viewed original PNG and accepted: coherent kitchen, fully closed fridge, plain closed folder and dark phone; no test, repair or open parts. Fictional illustration, not actual Fixpoint work, client property, diagnosis or proof of safety.",
+    "originalFile": "exec-727c963a-66af-4713-9637-72957cfba2cf.png"
+  },
+  {
+    "kind": "service-category",
+    "key": "service-category:washing-machine",
+    "slug": "washing-machine",
+    "output": "/media/editorial/photos-20261019/service-category-washing-machine-cover245.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a washing-machine service category. Fictional bright utility room with one intact fully assembled front-loading washing machine, closed door and dark control display, dry floor and orderly shelves. Wide diagonal room view, warm ivory and pale wood, natural daylight, realistic proportions. No people, tools, open panels, laundry-cycle test, water, fault effects, readable text, branding or identifiable real property. Fictional context, not actual Fixpoint work, diagnosed fault, completed repair or proof of performance. No collage.",
+    "reviewedAt": "2026-11-01T02:51:04.310Z",
+    "review": "Individually viewed original PNG and accepted: coherent utility room with intact assembled washing machine, closed door and dark display, dry floor. No cycle test, opened parts or repair. Not actual Fixpoint work, diagnosed fault, client property or performance claim.",
+    "originalFile": "exec-118e4566-634d-46b0-9254-f0d1f5e2270e.png"
+  },
+  {
+    "kind": "diy-category",
+    "key": "diy-category:washing-machine",
+    "slug": "washing-machine",
+    "output": "/media/editorial/photos-20261019/diy-category-washing-machine-cover245.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a washing-machine before-booking guide index. Fictional small laundry alcove with an intact fully closed washing machine in the background and a neat basket of folded plain cloths on a bench, a plain unprinted appointment notebook nearby. Distinct close-medium side angle, muted blue cabinetry and soft daylight. No people, chemicals, tools, open parts, test cycle, repair demonstration, readable text, logos or identifiable property. Not actual Fixpoint work, client home, diagnosis or proof of safety. No collage.",
+    "reviewedAt": "2026-11-01T02:51:04.310Z",
+    "review": "Individually viewed original PNG and accepted: coherent laundry alcove, intact closed washing machine, folded cloths and closed notebook; no repair, chemicals or test. Fictional context, not actual Fixpoint work, client property, diagnosis or proof of safety.",
+    "originalFile": "exec-437ba487-d082-4add-9f78-a0c18e5e714e.png"
+  }
+]
