@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "blog",
+    "slug": "emergency-light-installation-al-badaa-dubai-dubai",
+    "key": "blog:emergency-light-installation-al-badaa-dubai-dubai",
+    "output": "/media/editorial/photos-20261019/blog-emergency-badaa-cover309.webp",
+    "prompt": "Use case: photorealistic-natural. Original landscape 3:2 editorial cover for a commercial emergency-lighting enquiry guide. Entirely fictional plain office corridor with one closed unbranded rectangular twin-lamp emergency-light fixture high on a pale wall; modest closed meeting-room doors, soft natural daylight, no people. Wide eye-level architectural photograph, believable proportions, uncluttered contemporary interior. Fixture is illustrative only, no operation, coverage, compliant placement, certified escape route or actual Al Bada'a property or Fixpoint project implied. No exit symbols, arrows, lettering, illuminated status indicators, brands, tools, exposed wiring, open covers, installation action, test activity or watermark.",
+    "reviewedAt": "2026-11-01T21:55:28.071Z",
+    "review": "Individually visually reviewed: fictional office corridor, closed unbranded twin-lamp emergency-light illustration, no people, test, exposed wiring, technical actions, readable words, exit symbols or fabricated branding. No proof of operating state, compliant placement, illumination coverage, certified escape route, actual Al Badaa property or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 67036,
+    "optimizedSha256": "fda088fb0d0903b1b0809a1c6c89134cc66499f96f29aaa69b3af0029231d8c7",
+    "originalFile": "exec-dc2656bf-93ae-4ef7-a572-e80614619b11.png",
+    "retainedOriginalFile": "emergency-light-installation-al-badaa-dubai-dubai-original309.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "water-pump-electrical-inspection-al-badaa-dubai-dubai",
+    "key": "blog:water-pump-electrical-inspection-al-badaa-dubai-dubai",
+    "output": "/media/editorial/photos-20261019/blog-pump-badaa-cover309.webp",
+    "prompt": "Use case: photorealistic-natural. Landscape 3:2 editorial cover for a building water-pump electrical inspection enquiry guide. Fictional clean indoor building utility room with one fully assembled unbranded blue horizontal water pump on low plinth, simple intact pipework continuing outside frame, fully closed plain grey wall enclosure in background. Stable wide doorway viewpoint, soft realistic industrial daylight, no people. No exposed electrical connections, loose cables, opened covers, instruments, testing, repair actions, water leaks, damage, readable words, model labels, brand, watermark. General context only, not a technical diagram or proof of correct installation, safe condition, inspection findings, actual Al Badaa property or Fixpoint project.",
+    "reviewedAt": "2026-11-01T21:55:28.196Z",
+    "review": "Individually visually reviewed: fictional assembled blue horizontal pump and closed motor housing with intact pipework in utility room. No people, technical actions, exposed electrical connections, testing instruments, leaks, damage or readable branding. Requested background wall enclosure is not visible; not needed for general context and no technical layout is claimed. Not a technical diagram, correct installation, safe condition, inspection finding, actual Al Badaa property or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 81484,
+    "optimizedSha256": "7e4515cda2daede84e8cb6eec9ce3bb899b8a7e23d6e518d8aa1c0497c0e2213",
+    "originalFile": "exec-1424ad21-3cf5-4fff-94a2-1aaa7cdefc07.png",
+    "retainedOriginalFile": "water-pump-electrical-inspection-al-badaa-dubai-dubai-original309.png"
+  }
+]

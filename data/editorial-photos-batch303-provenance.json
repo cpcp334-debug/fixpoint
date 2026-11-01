@@ -1,0 +1,58 @@
+[
+  {
+    "kind": "diy",
+    "slug": "diy-oven-door-seal-replacement",
+    "key": "diy:diy-oven-door-seal-replacement",
+    "output": "/media/editorial/photos-20261019/diy-oven-seal-cover303.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for a before-you-book oven-door-seal replacement enquiry guide. Entirely fictional modest kitchen with warm mushroom-grey cabinetry and pale stone worktop, unbranded closed black oven on left, intact closed glass door and plain handle, smooth plain upper strip without controls or any lettering. A blank folder rests untouched on a separate small table at lower right. Natural soft daylight, restrained realistic documentary interior photograph, ordinary proportions. No people or technical activity. Seal is not exposed or evaluated. Not an actual defect, replacement, correct installation, safe-use proof or Fixpoint project. No open door/panel, parts, tools, wires, chemicals, food, smoke, damage, readable marks, numbers, letters, brand, labels, logo or watermark anywhere.",
+    "reviewedAt": "2026-11-01T20:49:04.385Z",
+    "review": "Individually visually reviewed: fictional mushroom-grey kitchen, fully closed unbranded oven with plain strip and intact door, blank folder on separate table. Small background fruit and ordinary utensils are incidental decor, not a procedure. Seal is not exposed or evaluated. No people, replacement action, tools, open appliance, wiring, damage or readable branding. Enquiry context only, not an actual seal fault, repair result, safe-use proof, correct installation or Fixpoint project. Red-risk settings retained; neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 95286,
+    "optimizedSha256": "d6c1f28dd7a7a22772ab32587633ff1185036ab40eb19ba543c1c0f584366b88",
+    "originalFile": "exec-8bf65092-ba6a-440a-8a4e-069432103094.png",
+    "retainedOriginalFile": "diy-oven-door-seal-replacement-original303.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-oven-fan-repair",
+    "key": "diy:diy-oven-fan-repair",
+    "output": "/media/editorial/photos-20261019/diy-oven-fan-cover303.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for a before-you-book oven-fan repair enquiry guide. Entirely fictional compact kitchen with matte navy cabinetry and a warm ochre wall. Fully closed unbranded black oven at right, plain upper strip with no controls or marks, ordinary closed intact door and handle. Untouched dark-screen phone lies on a separate pale table at left. Soft window daylight, realistic documentary interior photography, wide side-angle composition, ordinary proportions. No people or technical activity. Fan is not visible, tested or repaired. Enquiry context only, not a fault demonstration, repair result, correct installation, safe-use proof or actual Fixpoint project. No open door or panels, parts, tools, wires, chemicals, smoke, damage, text, numbers, labels, branding, logos or watermark.",
+    "reviewedAt": "2026-11-01T20:49:04.515Z",
+    "review": "Individually visually reviewed: fictional navy kitchen with ochre wall, fully closed unbranded oven and untouched dark reflective phone on separate table. Ordinary background utensils and cloth do not depict a repair or cleaning action. Fan is not visible, tested or repaired. No people, tools, exposed parts, wiring, damage, smoke, readable controls or branding. Enquiry context only, not a fault demonstration, repair result, correct installation, safe-use proof or Fixpoint project. Red-risk settings retained; neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 109580,
+    "optimizedSha256": "1e01d7468f999d6d0773c6d1a3449e29f7b9d404e6d8980475157c881ce85eb7",
+    "originalFile": "exec-5e41760b-8819-4184-ab12-f94dbf660198.png",
+    "retainedOriginalFile": "diy-oven-fan-repair-original303.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-oven-heating-element-replacement",
+    "key": "diy:diy-oven-heating-element-replacement",
+    "output": "/media/editorial/photos-20261019/diy-oven-element-cover303.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for a before-you-book oven-heating-element replacement enquiry guide. Entirely fictional compact kitchen with muted dusty-rose cabinetry and pale grey stone backsplash. Fully closed unbranded oven at left, plain smooth upper strip and closed intact glass door, no lettering or controls. A blank paper folder lies untouched on a separate dark wood table at right. Restrained realistic documentary interior photograph, soft cool daylight, ordinary proportions. No people or technical action. Heating element is not exposed, evaluated or replaced. Context only, not a fault, repair demonstration, safe-use proof, correct installation or real Fixpoint project. No tools, parts, open panels/door, wires, smoke, sparks, damage, readable marks, numbers, brands, labels, logos or watermark.",
+    "reviewedAt": "2026-11-01T20:58:47.487Z",
+    "review": "Individually visually reviewed: fictional dusty-rose kitchen, fully closed unbranded oven with plain strip and blank folder on separate wood table. Ordinary background fruit and utensils are incidental, not a demonstration. Heating element is not exposed, evaluated or replaced. No people, repair action, tools, wiring, damage, open components or readable branding. Enquiry context only, not a defect, repair result, correct installation, safe-use proof or actual Fixpoint project. Red-risk settings retained; neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 87050,
+    "optimizedSha256": "6903fce8d392e56f0a93d565364ba5319072c902b446ba704c3029b32a6e9cfe",
+    "originalFile": "exec-ad67318b-8dcd-4caa-aa21-469dd39ad8bf.png",
+    "retainedOriginalFile": "diy-oven-heating-element-replacement-original303.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-oven-inspection",
+    "key": "diy:diy-oven-inspection",
+    "output": "/media/editorial/photos-20261019/diy-oven-inspection-cover303.webp",
+    "prompt": "Use case: photorealistic-natural. Original landscape 3:2 editorial cover for a before-you-book oven inspection enquiry guide. Entirely fictional contemporary kitchen with muted teal cabinets, cream tiled backsplash and fully closed unbranded oven centered in the background. Plain black upper front with no controls or lettering. Blank notebook and unused pencil on a separate foreground kitchen table. Realistic architectural documentary photograph, soft morning daylight, ordinary proportions. No person, inspection, testing or repair action. Enquiry context only, not an actual inspection result, verified appliance condition, correct installation, safe-use permission or Fixpoint project. No open door/panel, tools, meters, wiring, exposed parts, damage, smoke, sparks, readable words, numbers, labels, brand, logo or watermark.",
+    "reviewedAt": "2026-11-01T20:58:47.619Z",
+    "review": "Individually visually reviewed: fictional teal kitchen with fully closed unbranded oven and blank notebook and unused pencil on separate table. No people, inspection, testing, repair action, meters, wiring, open appliance, damage or readable branding. Ordinary kitchen objects do not establish appliance condition. Enquiry context only, not an inspection result, correct installation, safe-use permission or Fixpoint project. Red-risk settings retained; neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 98074,
+    "optimizedSha256": "c37ea9229c1911ca0f1d11b3b845822a8d150f83e1baa09509306ab83a92a9d4",
+    "originalFile": "exec-4307cba6-01ff-4100-b324-6509871929a4.png",
+    "retainedOriginalFile": "diy-oven-inspection-original303.png"
+  }
+]

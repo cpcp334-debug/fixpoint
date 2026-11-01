@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "service",
+    "slug": "apartment-cleaning",
+    "key": "service:apartment-cleaning",
+    "output": "/media/editorial/photos-20261019/service-apartment-cleaning-cover273.webp",
+    "prompt": "One original photorealistic landscape 3:2 editorial cover for an existing UAE apartment cleaning service page. Entirely fictional modest apartment living room viewed toward a dining nook, realistic cream walls, fabric sofa, plain floor, daylight from balcony window. A small plain closed cleaning-supply caddy with one neatly folded unbranded cloth sits beside the entry, not on food surfaces. Context for discussing a cleaning visit only; not an actual client property, before-and-after result, completed Fixpoint project, hygiene claim or evidence of service quality. No people, workers, chemicals being used, open chemical bottles, brands, readable text, logos, badges, certificates, watermark, recognizable skyline or landmarks. Natural documentary interior photography, realistic restrained materials, no collage or exaggerated luxury.",
+    "reviewedAt": "2026-11-01T16:50:32.111Z",
+    "review": "Individually visually reviewed: fictional apartment living/dining area with plain caddy and folded cloth near entry, no chemicals, people, readable text, branding or recognizable real property. Caddy is open rather than the prompt requested closed; accepted because no chemical containers or risky use are depicted. Approved as context for discussing a cleaning visit only, not actual Fixpoint work, a before-and-after result, hygiene claim, performance or compliance evidence. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 110912,
+    "optimizedSha256": "9904629e8d2fc4ca44689b70164186a772f73520756b20dc9187203af6bc8634",
+    "originalFile": "exec-25011ec0-cf61-49b9-8bcd-809f4deec922.png",
+    "retainedOriginalFile": "service-apartment-cleaning-original273.png"
+  },
+  {
+    "kind": "service",
+    "slug": "apartment-painting",
+    "key": "service:apartment-painting",
+    "output": "/media/editorial/photos-20261019/service-apartment-painting-cover273.webp",
+    "prompt": "One original photorealistic landscape 3:2 editorial cover for an existing UAE apartment painting service page. Entirely fictional modest apartment room with plain cream walls, one muted warm-grey accent wall and an empty clear floor area. In the foreground a small side table holds three plain rectangular colour swatch cards with no print, a closed unbranded paint tin and a neatly folded unused plain drop cloth. Daylight from a window, realistic restrained interior materials. This illustrates discussing finish and scope for a painting visit, not an actual completed Fixpoint project, before-and-after result, workmanship guarantee or a specific paint product. No people, painting action, open paint containers, spills, tools in use, brand marks, readable text, logos, labels, certificates, watermark or identifiable real property/landmarks. Documentary interior photography, no collage.",
+    "reviewedAt": "2026-11-01T17:00:04.375Z",
+    "review": "Individually visually reviewed: fictional empty apartment with cream and grey walls, plain closed tin, three unprinted swatch cards and folded cloth on table. Generic background buildings, no identifiable local landmark or real client property. No people, action, open paint, brands, readable text or performance claims. Approved only as discussing finish and scope for a painting visit, not a completed Fixpoint project, product recommendation, before-and-after result, workmanship guarantee or compliance evidence. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 60582,
+    "optimizedSha256": "a84fdec0eca2dbaeb0da3b638b19f7d67ed870ffef49aafb8e1b490513375e7c",
+    "originalFile": "exec-f3bbd55c-3bb8-4b46-a4c9-7fce52481bab.png",
+    "retainedOriginalFile": "service-apartment-painting-original273.png"
+  }
+]

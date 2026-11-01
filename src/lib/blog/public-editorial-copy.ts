@@ -1,9 +1,13 @@
 // Exact ECMAScript whitespace; shared with the database availability query.
 export const EDITORIAL_WHITESPACE = '[\u0009-\u000d\u0020\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]';
 export const EDITORIAL_MARKER_PATTERNS = [
- { pattern: `${EDITORIAL_WHITESPACE}*Unique editorial markers:[^\\n]*?(?:\\.(?=${EDITORIAL_WHITESPACE}|$)|$)`, ignoreCase: true },
- { pattern: `${EDITORIAL_WHITESPACE}*علامات تحريرية فريدة:[^\\n]*?(?:[.。](?=${EDITORIAL_WHITESPACE}|$)|$)`, ignoreCase: false },
-];
+ { prefix: 'Unique editorial markers:', ending: '\\.', ignoreCase: true },
+ { prefix: 'علامات تحريرية فريدة:', ending: '[.。]', ignoreCase: false },
+].map(rule => ({
+ ...rule,
+ startPattern: `${EDITORIAL_WHITESPACE}*${rule.prefix}`,
+ pattern: `${EDITORIAL_WHITESPACE}*${rule.prefix}[^\\n]*?(?:${rule.ending}(?=${EDITORIAL_WHITESPACE}|$)|$)`,
+}));
 
 export function removePublicEditorialMarkers(value: string): string {
  return EDITORIAL_MARKER_PATTERNS.reduce(

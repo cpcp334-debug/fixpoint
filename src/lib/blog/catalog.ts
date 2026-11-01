@@ -95,8 +95,10 @@ const blogWhere = {
   ],
 };
 
-export const getPublishedBlogArticlesPage = cache(
-  async (locale: string, opts?: { skip?: number; take?: number; category?: string; q?: string }) => {
+type BlogPageOptions = { skip?: number; take?: number; category?: string; q?: string };
+
+const getPublishedBlogArticlesPageData = cache(
+  async (locale: string, opts?: BlogPageOptions & { count?: boolean }) => {
     const skip = Math.max(0, opts?.skip ?? 0);
     const take = Math.min(100, Math.max(1, opts?.take ?? 12));
     const category = opts?.category?.trim();
@@ -107,7 +109,9 @@ export const getPublishedBlogArticlesPage = cache(
     const queries = blogPageQueries(locale, { skip, take, category, q });
     const [ids, counts] = await Promise.all([
       prisma.$queryRaw<Array<{ id: string }>>(queries.ids),
-      prisma.$queryRaw<Array<{ total: bigint }>>(queries.count),
+      // Related-article cards need no total; avoid a catalog-wide body scan.
+      opts?.count === false ? Promise.resolve([{ total: 0n }])
+        : prisma.$queryRaw<Array<{ total: bigint }>>(queries.count),
     ]);
     const totalRaw = Number(counts[0]?.total ?? 0);
     const rows = ids.length ? await prisma.article.findMany({
@@ -168,8 +172,12 @@ export const getPublishedBlogArticlesPage = cache(
   },
 );
 
+export const getPublishedBlogArticlesPage = cache((locale: string, opts?: BlogPageOptions) =>
+  getPublishedBlogArticlesPageData(locale, opts),
+);
+
 export const getPublishedBlogArticles = cache(async (locale: string) => {
-  const { items } = await getPublishedBlogArticlesPage(locale, { skip: 0, take: 500 });
+  const { items } = await getPublishedBlogArticlesPageData(locale, { skip: 0, take: 100, count: false });
   return items;
 });
 

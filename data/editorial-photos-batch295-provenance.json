@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "diy",
+    "slug": "diy-microwave-turntable-problem",
+    "key": "diy:diy-microwave-turntable-problem",
+    "output": "/media/editorial/photos-20261019/diy-microwave-turntable-cover295.webp",
+    "prompt": "Use case: photorealistic-natural. Create one original landscape 3:2 editorial cover for a before-you-book microwave turntable problem guide. Entirely fictional modest modern kitchen, muted olive-green wall, closed unbranded countertop microwave with opaque dark door, one plain folder and pencil on a separate counter surface. Wide natural daylight composition, realistic documentary photo, no person. No demonstration of operation or fault; the turntable is not visible. Enquiry/documentation context only, not an actual Fixpoint project, actual appliance diagnosis, safe-use proof or repair instruction. No open door or enclosure, tools, wires, plugs, displayed controls, sparks, smoke, food, readable words, logos, badges, watermark. Distinct composition, camera at counter height with appliance right and uncluttered negative space left.",
+    "reviewedAt": "2026-11-01T19:57:51.106Z",
+    "review": "Individually visually reviewed: fictional olive-green kitchen, closed unbranded microwave with dark front, folder and pencil on separate counter. No people, open appliance, turntable display, testing, repair action, wiring, smoke, sparks or readable branding. The picture does not show the turntable or prove a fault, diagnosis, operating state, safe installation or actual Fixpoint work. Existing red-risk settings retained; neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 77516,
+    "optimizedSha256": "eafb95cf7a5845466312ca55642bfc09b3cf7fa58b0b7924912d3eab398ff3bb",
+    "originalFile": "exec-84394a9d-f1c6-4691-adc9-94d5a190ca45.png",
+    "retainedOriginalFile": "diy-microwave-turntable-problem-original295.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-oven-control-panel-problem",
+    "key": "diy:diy-oven-control-panel-problem",
+    "output": "/media/editorial/photos-20261019/diy-oven-panel-cover295.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial photograph for a before-you-book oven control-panel problem enquiry guide. Entirely fictional compact contemporary kitchen, warm ivory cabinetry, unbranded built-in oven fully closed, dark plain control strip without readable markings, no illuminated digits. A blank notebook lies on a separate kitchen table in foreground, soft morning daylight, slightly wide angled composition with oven on left. No people or actions. Enquiry context only, not diagnosis, correct installation, proof of safe operation, a real property or Fixpoint project. No exposed components, wires, plugs, open door/panel, test instruments, tools, demonstration of use, damage, smoke, sparks, food, text, logo, badge, watermark. Realistic photographic proportions and natural restrained lighting.",
+    "reviewedAt": "2026-11-01T19:57:51.231Z",
+    "review": "Individually visually reviewed: fictional ivory kitchen with fully closed unbranded oven, dark control strip and blank notebook on separate table. No people, readable control labels, illuminated digits, open panel, tools, testing, repair activity, exposed components, smoke or sparks. Closed door glass shows empty shelves, not a diagnostic demonstration. No claim of actual fault, diagnosis, safe operation, correct installation, real property or Fixpoint project. Existing red-risk settings retained; neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 72872,
+    "optimizedSha256": "5de124e02540e32a1359f9180dd9a94ce07b843a185e5b76456650545056ffb1",
+    "originalFile": "exec-ca1a974c-230c-4904-bdf5-2781484c54f6.png",
+    "retainedOriginalFile": "diy-oven-control-panel-problem-original295.png"
+  }
+]

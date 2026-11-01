@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "service",
+    "slug": "bathroom-cleaning",
+    "key": "service:bathroom-cleaning",
+    "output": "/media/editorial/photos-20261019/service-bathroom-cleaning-cover283.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial service-page photo-style cover for bathroom cleaning. Fictional modest UAE apartment bathroom, a plain unbranded closed cleaning caddy with folded microfibre cloths on a dry trolley outside the doorway; beyond it an ordinary intact vanity, mirror, pale tiles and shower glass. No person, cleaning action or chemicals being applied. Realistic restrained documentary interior photography, soft daylight, no luxury showroom exaggeration. Illustrative service context only, not an actual cleaned property, hygiene result, before/after comparison or Fixpoint project. No readable labels, branding, certificate, identifiable property, exposed electrical fittings, damage, watermark or text.",
+    "reviewedAt": "2026-11-01T18:11:57.729Z",
+    "review": "Individually visually reviewed: fictional bathroom with intact vanity and shower glass; closed unbranded caddy and folded cloths on trolley outside. No people, cleaning action, exposed electrical components, branding or identifiable property. Approved only as service context, not actual client property, hygiene result, before/after image or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 72204,
+    "optimizedSha256": "322870b3b5321dc3a96adbbe2a6ff7d7b1c030907e61a2d3cf7a0e63a109b10f",
+    "originalFile": "exec-cbf59d56-0d2d-4f4a-a81b-cbcef21cdc79.png",
+    "retainedOriginalFile": "service-bathroom-cleaning-original283.png"
+  },
+  {
+    "kind": "service",
+    "slug": "building-common-area-cleaning",
+    "key": "service:building-common-area-cleaning",
+    "output": "/media/editorial/photos-20261019/service-common-area-cover283.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial service-page cover for building common-area cleaning. Entirely fictional modest UAE apartment-building lobby and shared corridor, wide view with intact pale stone floor, plain walls, lift doors fully closed, a discreet unbranded cleaning trolley parked to the side with folded cloths and sealed storage box, no people and no cleaning action. Keep clear walking route and realistic everyday building proportions, soft daylight and restrained documentary interior photography. Illustrative service context only, not actual property, completed Fixpoint project, hygiene proof or before/after result. No chemicals being applied, readable words, branding, awards, certificates, identifiable landmark, exposed wiring, damage, watermark.",
+    "reviewedAt": "2026-11-01T18:13:04.894Z",
+    "review": "Individually visually reviewed: fictional building lobby and shared corridor, closed lift doors, intact flooring and unbranded trolley parked to one side with clear walking route. No people, cleaning action, readable branding, identifiable property or exposed electrical components. Approved as service context only, not actual client property, hygiene proof, before/after result or completed Fixpoint work. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 96000,
+    "optimizedSha256": "6eef9bc51f7349cf8cc805891c18f5c6e7e11d95ffb5204e04ed44bcc48dea22",
+    "originalFile": "exec-e8d7a7b5-e62b-4025-bfa7-da0861bb5396.png",
+    "retainedOriginalFile": "service-common-area-original283.png"
+  }
+]

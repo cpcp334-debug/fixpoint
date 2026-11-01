@@ -19,10 +19,18 @@ export function blogTranslationAvailabilitySql(): Prisma.Sql {
   for (const rule of EDITORIAL_MARKER_PATTERNS) {
     body = Prisma.sql`REGEXP_REPLACE(${body}, ${(rule.ignoreCase ? '(?i)' : '(?-i)') + rule.pattern}, '')`;
   }
+  // If ordinary text precedes the first removable marker, cleanup cannot
+  // empty the body. Avoid copying/replacing every long article during counts.
+  const markerAtStart = '^(?:' + EDITORIAL_MARKER_PATTERNS.map(rule =>
+    (rule.ignoreCase ? '(?i:' : '(?-i:') + rule.startPattern + ')',
+  ).join('|') + ')';
   return Prisma.sql`t.title REGEXP ${BLOG_NON_WHITESPACE}
-    AND ${body} REGEXP ${BLOG_NON_WHITESPACE}
-    AND LOCATE('review_required', LOWER(t.title)) = 0
-    AND LOCATE('review_required', LOWER(t.body)) = 0`;
+    AND t.body REGEXP ${BLOG_NON_WHITESPACE}
+    AND t.title NOT REGEXP ${'(?i)REVIEW_REQUIRED'}
+    AND t.body NOT REGEXP ${'(?i)REVIEW_REQUIRED'}
+    AND CASE WHEN t.body REGEXP ${markerAtStart}
+      THEN ${body} REGEXP ${BLOG_NON_WHITESPACE}
+      ELSE true END`;
 }
 
 export function blogPageQueries(locale: string, opts: {skip: number; take: number; category?: string; q?: string}) {

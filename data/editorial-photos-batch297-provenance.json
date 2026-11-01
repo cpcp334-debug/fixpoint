@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "blog",
+    "slug": "overload-protection-inspection-al-muwaihat-1-ajman",
+    "key": "blog:overload-protection-inspection-al-muwaihat-1-ajman",
+    "output": "/media/editorial/photos-20261019/blog-overload-muwaihat-cover297.webp",
+    "prompt": "Use case: photorealistic-natural. Create one original landscape 3:2 editorial cover for an overload-protection inspection enquiry article. Entirely fictional plain building utility-area entrance, fully closed unbranded grey wall cabinet on muted pale-blue wall, simple blank paper folder resting on a separate small wooden desk in foreground. Realistic restrained architectural documentary photo, ordinary proportions, soft overhead ambient light. No people, no equipment interaction. Documentation/enquiry context only: not an actual inspection, finding, overload diagnosis, correct cabinet design, safe-access permission or Fixpoint project, and not an actual property in Al Muwaihat. No exposed wires, open cabinet, tools, meters, switches, instructions, diagrams, labels, readable words, logos, certificates, smoke, sparks, damage, watermark. Distinct side-angle composition with desk at lower left and closed cabinet upper right.",
+    "reviewedAt": "2026-11-01T20:06:11.100Z",
+    "review": "Individually visually reviewed: fictional pale-blue room, fully closed grey wall cabinet and blank folder on separate wooden desk. No people, open components, wires, testing, tools, operation, damage, smoke, sparks, labels or branding. Documentation/enquiry context only, not an overload finding, inspection result, correct cabinet design, safe-access permission, actual Al Muwaihat property or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 48936,
+    "optimizedSha256": "9a0f1a4503756a43aa40d925b86064205a8902ffdc9411977aa02aa4a4616eb7",
+    "originalFile": "exec-f4628740-d0b2-40b5-ac63-c635d74b460d.png",
+    "retainedOriginalFile": "overload-protection-inspection-al-muwaihat-1-ajman-original297.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "motion-sensor-light-installation-mina-al-arab-ras-al-khaimah",
+    "key": "blog:motion-sensor-light-installation-mina-al-arab-ras-al-khaimah",
+    "output": "/media/editorial/photos-20261019/blog-motion-mina-arab-cover297.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for a customer motion-sensor lighting enquiry article. Entirely fictional modest covered entrance with pale sand-coloured plaster and a plain closed exterior wall light with a small dark sensor window, no visible wiring or readable markings. Blue-grey unbranded front door, soft late-afternoon daylight, natural documentary architectural photograph, wide realistic composition. No people or installation work. Illustrative design/enquiry context only, not proof of detection, operation, correct installation, safety, product suitability, actual Mina Al Arab property or completed Fixpoint project. No diagrams, tools, ladders, exposed components, switches in use, logos, text, labels, certificates, watermarks.",
+    "reviewedAt": "2026-11-01T20:06:10.983Z",
+    "review": "Individually visually reviewed: fictional covered entrance, blue-grey door and closed plain wall light with small dark circular window. Light appears illuminated; image does not establish motion detection, function, correct installation, safe access or product suitability. No people, tools, wiring, installation action, labels or readable branding. Generic fictional surroundings are not an actual Mina Al Arab property or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 166044,
+    "optimizedSha256": "890294a7cac66881e7ebd40da6ae86274aacbf82abafa4f7fe45d784739a4926",
+    "originalFile": "exec-4ba08c89-bd4c-434c-ac19-f006191bb9e6.png",
+    "retainedOriginalFile": "motion-sensor-light-installation-mina-al-arab-ras-al-khaimah-original297.png"
+  }
+]

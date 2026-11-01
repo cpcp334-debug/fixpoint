@@ -8,7 +8,7 @@ Evidence: [public snapshot at approximately 17:07 UTC](https://github.com/cpcp33
 
 - Live HTML on English and Arabic pages includes GTM container `GTM-TPPFX2WM`. The published container script returned HTTP 200 and contains `quote_submit_success`.
 - A later [public configuration snapshot](https://github.com/cpcp334-debug/fixpoint/actions/runs/41330355983) identified Google tag destination `G-WBQ2B83BTM` in the published container (`vtp_tagId`). This supersedes the earlier limited ID scan. Its presence establishes configuration only; browser firing and authenticated GA4 receipt remain unverified.
-- Search Console access, GA4 property access, event receipt and enquiry reconciliation are unavailable to this execution. No new account/property/container was created.
+- Search Console access, GA4 property access, event receipt and enquiry reconciliation remain unverified. Staff authentication and a read-only production database connection were established later on 1 November. No new account/property/container was created.
 - The Arabic BOQ article still returns HTTP 200 with blank title/H1 and zero article words, index/follow, self-canonical, a sitemap entry and a locale-switch API target.
 - The Arabic testing/commissioning article now has an Arabic title/H1 and 1,113 body words. It is a bilingual control, not a remaining empty-page example.
 - English BOQ/testing articles have 1,627/1,532 body words. The English blog page-2 canonical retains `?page=2`.
@@ -70,21 +70,28 @@ Before changing live indexing, review each candidate's Search Console clicks/que
 
 ## Arabic fix deployment checkpoint
 
-[PR 3](https://github.com/cpcp334-debug/fixpoint/pull/3) contains catalog, metadata, sitemap and locale-switch availability checks, including bodies that become empty after editorial cleanup. Both MySQL 8.0.46 and MariaDB 10.11.19 passed 38 source checks and eight real database checks each, plus TypeScript: [successful matrix](https://github.com/cpcp334-debug/fixpoint/actions/runs/41329218450).
+[PR 3](https://github.com/cpcp334-debug/fixpoint/pull/3) contains the shared availability rule for catalog, metadata, sitemap and locale switching. The current release candidate incorporates main through `6f118e2de1e9a9849a7fbb19247e65d14c0d37c3`; concurrent content/image changes are retained.
 
-The branch integrates main through `e336a404dc11e6ef47fbcfc4864cc8c0657fc0fe`; later concurrent main changes must be reconciled before release. [Final validation run 41330356008](https://github.com/cpcp334-debug/fixpoint/actions/runs/41330356008) passed on application commit `8c1a7407742030c6c967f5f2ad6150b00295b15a`: both database/source suites and TypeScript; production build on isolated MariaDB; real Next responses for English, empty Arabic (404/noindex with normal and Googlebot agents), completed Arabic, both locale API states, page-2 canonical and sitemap availability. This verifies server rendering, not visual browser QA. Later commits change only audit/report files.
+Production read-only access confirmed MariaDB **11.8.9** and utf8mb4_unicode_ci. The first candidate count query exceeded the 15-second limit. The optimized predicate performs editorial-marker replacement only where the body begins with a removable marker. Related-article loading no longer runs a full catalog count.
 
-[Hostinger source package](https://github.com/cpcp334-debug/fixpoint/actions/runs/41330356008/artifacts/13092788895), built from the tested application commit, is available until 15 November 2026. It contains tracked source, not production credentials or database data. Package availability does not mean deployment. The source remains reproducible from the commit after artifact expiry.
+The [same-snapshot comparison](production-locale-parity-2026-11-01.json) evaluated **239,860 translation rows** across **119,930 eligible articles** and found **zero old/new availability differences**. At 22:48 UTC, 119,930 English and 43,502 Arabic entries were available. The earlier inventory found 76,425 Arabic review placeholders and five empty titles; two Arabic entries became available between snapshots during concurrent publishing. These counts are content-presence results, not evidence of language quality or Google indexing. Placeholder rows can contain thousands of characters; do not describe all affected rows as blank pages.
 
-A fresh MySQL 8 schema bootstrap failed because existing TEXT columns have literal defaults. No schema was changed to hide this existing compatibility issue. Runtime validation uses MariaDB, while the locale query tests continue on both engines. Confirm Hostinger's actual engine/version before rollout.
+The [optimized production measurements](production-locale-optimized-2026-11-01.json) recorded:
+- 16 synthetic SQL/JavaScript cases and 18 private samples passed; no private body text is included in these reports.
+- English unfiltered count: 4,927 ms; Arabic: 3,889 ms.
+- Filtered counts: 5,442 ms English and 3,775 ms Arabic.
+- Page 1, page 2, page 100 and search ID queries: 771–932 ms.
+- Counts still scan the eligible catalog. These single-run, read-only measurements are not a load test or a front-end speed score.
 
-Required before release: authenticated Hostinger access, a read-only affected-locale inventory and representative production query plans/timings (the 23-fixture timings are not production performance). Count affected locale rows and sample URLs before enabling a rule across the large catalog.
+The previous successful [validation run](https://github.com/cpcp334-debug/fixpoint/actions/runs/41330356008) predates this optimization. Fresh validation now includes MySQL 8, MariaDB 10.11 and production-series MariaDB 11.8, with a production build/runtime check and source package on MariaDB 11.8. Do not deploy the earlier source artifact as the current release.
 
-Deploy the validated source through the established Hostinger flow under the owner's existing authorization. No database seed/reset is part of this fix. Record the deployed commit and deployment result, then verify:
+Hostinger deployment and production verification are still pending. No production migration, seed, reset or bulk data update was executed during validation. The availability rule changes exposure of placeholder translations but retains their database records.
+
+After a successful current-source build, deploy through the established Hostinger flow under the owner's existing authorization. Record the deployed commit and retain the previous build for rollback. Verify:
 - English BOQ remains complete; empty Arabic BOQ is no longer an indexable empty article or advertised translation.
-- Now-populated Arabic testing/commissioning remains available, with reciprocal alternates.
-- Both affected sitemap shards and locale API responses match availability.
-- English/Arabic blog pagination keeps correct canonical/filter state; headings, content, images and FAQ schema render correctly.
-- Logs, query latency and errors remain acceptable; retain the previous deployed build for rollback.
+- Populated Arabic testing/commissioning remains available with reciprocal alternates.
+- Sitemap shards and locale API responses agree with availability.
+- English/Arabic pagination, canonical/filter state, content, images and FAQ schema remain correct.
+- Server logs, latency and errors remain acceptable.
 
 Traffic, ranking and enquiry impact remain unverified until measured against account baselines.

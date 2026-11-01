@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "blog",
+    "slug": "bathroom-fan-installation-al-khalidiyah-abu-dhabi",
+    "key": "blog:bathroom-fan-installation-al-khalidiyah-abu-dhabi",
+    "output": "/media/editorial/photos-20261019/blog-fan-khalidiyah-cover285.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for a customer guide about preparing a bathroom-fan installation enquiry in Al Khalidiyah, Abu Dhabi. Entirely fictional ordinary apartment, foreground plain cardboard box containing one new unbranded square white extractor-fan grille with all components enclosed and no visible wires, next to a closed navy enquiry folder on a dry table outside the bathroom; muted blue bathroom doorway in soft background. Realistic restrained product-context documentary photography, soft daylight. No installation action, people, tools, diagrams, readable controls, labels, logos, certificates, wiring, damage or watermark. This is a fictional product and enquiry setting, not a recommended model, installation design, performance claim, actual Al Khalidiyah property or Fixpoint project.",
+    "reviewedAt": "2026-11-01T18:22:45.492Z",
+    "review": "Individually visually reviewed: fictional boxed white ventilation grille and enclosed accessories with closed navy folder on dry table, ordinary bathroom in background. No people, installation action, wiring, tools, readable branding or identifiable property. Approved as enquiry/product context only, not recommended model, performance result, actual Al Khalidiyah property or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 76826,
+    "optimizedSha256": "7f5c61d880ff075299492789859d95ef9f385782bc44739ec1f102f8a00ed154",
+    "originalFile": "exec-e7373f95-b604-4c1a-b17e-1b61a0744cf7.png",
+    "retainedOriginalFile": "blog-fan-khalidiyah-original285.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "light-replacement-al-reem-island-abu-dhabi",
+    "key": "blog:light-replacement-al-reem-island-abu-dhabi",
+    "output": "/media/editorial/photos-20261019/blog-light-reem-cover285.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for a customer guide about coordinating a lighting-replacement enquiry for multiple rooms on Al Reem Island, Abu Dhabi. Fictional modest apartment dining space with two intact unbranded ceiling pendant lights above a simple table; foreground blank room checklist and one boxed unbranded light shade, all packaging closed, no loose bulb or electrical parts. Warm restrained natural daylight, realistic documentary interior photo, ordinary proportions. Illustrative planning context only, not recommended fixture, lighting performance, actual Al Reem property, completed replacement or Fixpoint project. No people, ladder, work action, tools, exposed wires, open fittings, technical diagram, readable words, logos, certificates, identifiable towers, damage, sparks or watermark.",
+    "reviewedAt": "2026-11-01T18:24:36.025Z",
+    "review": "Individually visually reviewed: fictional dining space with intact pendant lights, blank checklist and closed plain box bearing only generic shade icon. No people, installation action, open fittings, tools, wiring, readable branding or identifiable landmark. Planning context only, not recommended fixture, lighting performance, real Al Reem property, completed replacement or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 102252,
+    "optimizedSha256": "a8cc33fc2100acbfd67c914658040d446339be0adfb9941d5a5d04c1623e8f2d",
+    "originalFile": "exec-715ba318-eeec-4e3b-8c9c-1ea1a155533c.png",
+    "retainedOriginalFile": "blog-light-reem-original285.png"
+  }
+]

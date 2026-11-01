@@ -1,0 +1,37 @@
+[
+  {
+    "kind": "diy",
+    "slug": "diy-oven-cleaning",
+    "key": "diy:diy-oven-cleaning",
+    "output": "/media/editorial/photos-20261019/diy-oven-cleaning-cover299.webp",
+    "prompt": "Use case: photorealistic-natural. Original landscape 3:2 editorial cover for an oven-cleaning service enquiry guide. Entirely fictional lived-in but tidy kitchen with deep forest-green cabinets, warm terracotta tile backsplash and an unbranded under-counter oven fully closed. Wide three-quarter documentary interior photograph, soft natural evening light, ordinary realistic proportions. A plain closed paper folder is on a separate breakfast table. No cleaning action or people. Enquiry context only, not an actual cleaning result, before/after comparison, recommendation to clean an appliance yourself, verified appliance condition, correct installation or Fixpoint project. No chemicals, cloths, tools, food, open oven/panel, exposed components, damage, smoke, readable controls, text, branding, certificate or watermark.",
+    "reviewedAt": "2026-11-01T20:19:41.552Z",
+    "review": "Individually visually reviewed: fictional forest-green kitchen with terracotta tiles, fully closed oven and plain folder on separate table. No people, cleaning action, chemicals, open appliance, tools, wiring, damage or readable branding. Kitchen utensils in background are ordinary decor, not a cleaning demonstration. Not an actual cleaning result, before/after comparison, correct installation, safe-use proof or Fixpoint project. Red-risk settings retained; neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 110926,
+    "optimizedSha256": "22395c6187c760b33c1dfb0c25a338ecd6faf0bc1ad974c94ca538e014ceeecf",
+    "originalFile": "exec-02994918-33be-4194-b081-579da14fe549.png",
+    "retainedOriginalFile": "diy-oven-cleaning-original299.png"
+  },
+  {
+    "kind": "diy",
+    "slug": "diy-oven-door-repair",
+    "key": "diy:diy-oven-door-repair",
+    "output": "/media/editorial/photos-20261019/diy-oven-door-cover299.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for a before-you-book oven-door repair enquiry guide. Entirely fictional kitchen with muted powder-blue cabinetry and honey-oak worktop. Unbranded oven on right, framed at slightly oblique mid distance; its glass door and plain handle are fully closed and intact. A dark-screen phone rests untouched on a separate narrow table on left. Soft daylight, realistic ordinary proportions, restrained documentary interior photograph. No person, repair action or diagnosis. Context only, not a defect demonstration, before/after result, safe-use proof, correct installation or actual Fixpoint project. No damaged door, open panel, exposed components, tools, wiring, chemicals, food, readable controls, brand, text, certificates, smoke, sparks or watermark.\n\nApproved edit instruction:\nEdit this fictional oven-enquiry illustration only: remove all tiny lettering or brand-like marks from the lower oven door, and remove every small number, word or symbol around the control knobs so the surfaces are plain and unbranded. Keep the entire composition, closed intact oven door and handle, powder-blue cabinetry, wood worktop, daylight, dark untouched phone, angle and realistic photographic style unchanged. Do not add anything. No text, logos, watermark, repair action, damage or open parts. This remains a fictional service-enquiry image, not an actual project, diagnosis or safe-use proof.",
+    "reviewedAt": "2026-11-01T20:19:41.684Z",
+    "review": "Individually visually reviewed edited final: fictional powder-blue kitchen, fully closed intact oven door and plain handle, untouched dark phone on separate table. Invented lettering and control markings from the rejected candidate have been removed. No people, repair action, open components, testing, tools, wiring, readable branding, sparks or damage. Not a defect demonstration, repair result, correct installation, safe-use proof or Fixpoint project. Original rejected PNG and both prompts retained. Red-risk settings retained; neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 101190,
+    "optimizedSha256": "f50b1c702b799417f95e73a9891a52464dba25a964679c750c631a1a5cf91950",
+    "originalFile": "exec-721b4e12-eddb-4c7f-bfb7-a5ebd9b738b2.png",
+    "retainedOriginalFile": "diy-oven-door-repair-original299.png",
+    "editHistory": {
+      "rejectedOriginalFile": "exec-91a8c44d-d42f-4c04-970d-2e59fc82e325.png",
+      "retainedRejectedFile": "diy-oven-door-rejected299.png",
+      "reason": "Invented brand-like lettering and control markings",
+      "originalPrompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for a before-you-book oven-door repair enquiry guide. Entirely fictional kitchen with muted powder-blue cabinetry and honey-oak worktop. Unbranded oven on right, framed at slightly oblique mid distance; its glass door and plain handle are fully closed and intact. A dark-screen phone rests untouched on a separate narrow table on left. Soft daylight, realistic ordinary proportions, restrained documentary interior photograph. No person, repair action or diagnosis. Context only, not a defect demonstration, before/after result, safe-use proof, correct installation or actual Fixpoint project. No damaged door, open panel, exposed components, tools, wiring, chemicals, food, readable controls, brand, text, certificates, smoke, sparks or watermark.",
+      "editPrompt": "Edit this fictional oven-enquiry illustration only: remove all tiny lettering or brand-like marks from the lower oven door, and remove every small number, word or symbol around the control knobs so the surfaces are plain and unbranded. Keep the entire composition, closed intact oven door and handle, powder-blue cabinetry, wood worktop, daylight, dark untouched phone, angle and realistic photographic style unchanged. Do not add anything. No text, logos, watermark, repair action, damage or open parts. This remains a fictional service-enquiry image, not an actual project, diagnosis or safe-use proof."
+    }
+  }
+]

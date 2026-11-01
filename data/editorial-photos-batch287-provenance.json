@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "blog",
+    "slug": "switch-repair-al-qasimia-sharjah",
+    "key": "blog:switch-repair-al-qasimia-sharjah",
+    "output": "/media/editorial/photos-20261019/blog-switch-qasimia-cover287.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for a customer switch-repair enquiry guide in Al Qasimia, Sharjah. Fictional ordinary apartment entry, close angled composition with one intact plain white wall rocker-switch plate fully closed on a warm cream wall; a closed simple navy service folder rests on a console well away from switch, soft natural daylight. Realistic restrained documentary interior photograph. No people, hands, work action, tools, meter, probes, open cover, exposed wiring, diagram, damage, smoke, spark, readable words, logo or watermark. This is an illustrative enquiry setting, not an actual faulty switch, repair procedure, safety result, actual Al Qasimia property or Fixpoint project.",
+    "reviewedAt": "2026-11-01T18:38:35.819Z",
+    "review": "Individually visually reviewed: fictional entry with intact closed white rocker-switch plate and closed navy folder on console. No people, hands, work action, tools, open components, exposed wiring, damage, branding or identifiable property. Enquiry context only, not an actual faulty switch, repair procedure, safety proof, Al Qasimia property or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 65666,
+    "optimizedSha256": "06a7f6d5c7cbb713fed70e34484142cca2c0150c242c9e6240c0f347df2cf660",
+    "originalFile": "exec-2d943eff-7285-4e66-ad33-bb94b8f0f608.png",
+    "retainedOriginalFile": "blog-switch-qasimia-original287.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "partial-power-failure-diagnosis-al-mujarrah-sharjah",
+    "key": "blog:partial-power-failure-diagnosis-al-mujarrah-sharjah",
+    "output": "/media/editorial/photos-20261019/blog-partial-mujarrah-cover287.webp",
+    "prompt": "Use case: photorealistic-natural. One original landscape 3:2 editorial cover for an enquiry guide about reported partial power loss in Al Mujarrah, Sharjah. Entirely fictional modest apartment with a small study in foreground and adjacent dining area visible through doorway, intact desk lamp softly lit while an ordinary ceiling pendant in adjacent room is unlit in daylight. An untouched dark-screen phone rests on the study desk. Realistic restrained documentary interior photograph, no identifiable landmark. This is only a fictional contrasting-room scene for recording observations, not evidence of an electrical fault, diagnosis, safe condition, actual Al Mujarrah property or Fixpoint project. No people, tools, meters, probes, open covers, exposed wiring, damaged fixtures, readable text, logos, sparks, smoke, technical diagram or watermark.",
+    "reviewedAt": "2026-11-01T18:40:28.477Z",
+    "review": "Individually visually reviewed: fictional study with lit desk lamp, unlit dining pendant in adjacent daylight room and untouched dark-screen phone. No person, work action, tools, probes, open electrical components, damage, branding or identifiable property. Contrasting-room enquiry context only; not evidence of power loss, diagnosis, safety, actual Al Mujarrah property or Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 74080,
+    "optimizedSha256": "722a868fdf5b772dd6632f0b1a1ee2fedf7b0544f593f75291f27e755e745c26",
+    "originalFile": "exec-fc888435-c012-4921-b8a0-d69d93e41031.png",
+    "retainedOriginalFile": "blog-partial-mujarrah-original287.png"
+  }
+]

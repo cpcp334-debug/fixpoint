@@ -35,6 +35,10 @@ async function main() {
       'Unique editorial markers: one\nUseful content.',
       '\u0085Unique editorial markers: one.', '\ufeffUnique editorial markers: one.',
       'Unique editorial markers: a.\n\nعلامات تحريرية فريدة: ب.',
+      'علامات تحريرية فريدة: Unique editorial markers: nested.',
+      'Useful prefix. علامات تحريرية فريدة: داخلي.',
+      'Réview_required is not the literal review placeholder.',
+      'ReViEw_ReQuIrEd',
     ];
     const fixtures = bodies.map((body,i)=>({id:'fixture-'+String(i).padStart(3,'0'), title:'Electrical guide',body,locale:'en'}));
     fixtures.push({id:'empty-title',title:' ',body:'Useful content',locale:'en'});
