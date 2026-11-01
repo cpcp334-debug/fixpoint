@@ -32,7 +32,7 @@ export async function generateMetadata({
 }) {
   const { locale, slug } = await params;
   const article = await getBlogArticleBySlug(slug, locale);
-  if (!article) return {};
+  if (!article) notFound();
   return buildMetadata({
     locale,
     title: article.t.seoTitle,
@@ -40,10 +40,10 @@ export async function generateMetadata({
     path: `/blog/${article.slug}`,
     ogType: "article",
     image: article.heroImage,
-    languages: {
-      en: `${getSiteUrl()}/en/blog/${blogPathSlug('en',toMasterBlogSlug(slug))}`,
-      ar: `${getSiteUrl()}/ar/blog/${blogPathSlug('ar',toMasterBlogSlug(slug))}`,
-    },
+    languages: Object.fromEntries(article.availableLocales.map((availableLocale) => [
+      availableLocale,
+      `${getSiteUrl()}/${availableLocale}/blog/${blogPathSlug(availableLocale, toMasterBlogSlug(slug))}`,
+    ])),
     index: true,
   });
 }
