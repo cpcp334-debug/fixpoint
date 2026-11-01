@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "blog",
+    "slug": "electrical-fault-finding-al-zahiyah-abu-dhabi",
+    "key": "blog:electrical-fault-finding-al-zahiyah-abu-dhabi",
+    "output": "/media/editorial/photos-20261019/blog-fault-finding-zahiyah-cover267.webp",
+    "prompt": "A single photorealistic landscape 3:2 editorial cover for a customer guide about requesting professional electrical fault finding in Al Zahiyah, Abu Dhabi. Entirely fictional small office, not an actual property or completed Fixpoint project. View from reception toward an empty meeting area, intact ceiling luminaires, closed wall service cabinet in distant background, foreground table with a plain closed folder and a blank appointment notepad. One neutral unused wall socket visible at ordinary distance without any wiring detail. Soft daylight, realistic modest business premises, calm navy and warm grey tones. Depict documenting a concern and arranging professional assessment, not diagnosing or repairing. No people, tools, meters, probes, exposed cables, open electrical cabinets, smoke, sparks, damage, switches being operated, logos, brands, text, labels, certificates, skyline or recognizable landmarks. Documentary architectural photo style, no collage.",
+    "reviewedAt": "2026-11-01T16:01:45.424Z",
+    "review": "Individually visually reviewed: fictional quiet office with intact luminaires, closed wall cabinet, ordinary socket, folder and blank notepad. No people, tools, test instruments, exposed wiring, damage, branding or recognizable local property. Approved only as documenting a concern and arranging professional assessment, not a technical diagnosis, installation specification or actual Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 81754,
+    "optimizedSha256": "ed765a6860b87c825d0056d7ad40b9ceaabbf719b4fb4586ed2bebedb35d7e94",
+    "originalFile": "exec-26b38ee9-179c-4a1c-892f-0020ac46fac3.png",
+    "retainedOriginalFile": "fault-finding-zahiyah-original267.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "rcbo-installation-al-rashidiya-dubai-dubai",
+    "key": "blog:rcbo-installation-al-rashidiya-dubai-dubai",
+    "output": "/media/editorial/photos-20261019/blog-rcbo-rashidiya-cover267.webp",
+    "prompt": "One photorealistic landscape 3:2 editorial cover for a customer enquiry guide about arranging a professional RCBO-related electrical assessment in Al Rashidiya, Dubai. Entirely fictional apartment entry utility alcove, not a real property or completed contractor job. A fully closed plain white flush wall electrical-cabinet cover beside a narrow console holding a closed dark folder and blank plain envelope; doorway into a neutral living room in the background. Ordinary modest home, soft afternoon light, warm stone and muted blue tones. Depict visit planning only: the RCBO itself and all internal connections must be entirely concealed. No people, hands, tools, instruments, wires, open doors on electrical boxes, diagrams, technical labels, visible circuit components, branding, text, certifications, smoke, sparks, damage or recognizable Dubai landmarks. Architectural documentary photography, not an installation guide or compliance example.",
+    "reviewedAt": "2026-11-01T16:03:31.334Z",
+    "review": "Individually visually reviewed: fictional residential entry with fully closed plain wall cover, console, folder and envelope, living room beyond. No RCBO or internal connections visible, no people, tools, test instruments, readable text, damage or actual local landmark. Approved only as visit-planning context, not a product depiction, technical installation example, compliance evidence or real Fixpoint project. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 66632,
+    "optimizedSha256": "3f94ad6ad7db411898daff73ac853aa10be6d3cc88eb2e6358fcd6b2300cae5b",
+    "originalFile": "exec-600d09b2-c7cc-414d-b3ee-f32e7954d35b.png",
+    "retainedOriginalFile": "rcbo-rashidiya-original267.png"
+  }
+]
