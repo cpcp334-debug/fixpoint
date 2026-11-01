@@ -38,6 +38,7 @@ async function inspect(path) {
     }
     return {url,finalUrl:response.url,status:response.status,title,h1,robots:attr(meta('robots')??'','content'),canonical:attr(canonical??'','href'),alternates,
       articleBodyWords:body===undefined?null:text(body).split(/\s+/).filter(Boolean).length,
+      articleBodyPreview:path.includes('/kw-')&&body?text(body).slice(0,1000):undefined,
       medicalTopicCandidate:/medical|emergency room|operating room|sterile processing|laboratory techn/i.test(title+' '+h1),
       gtmIds:[...new Set(html.match(/\bGTM-[A-Z0-9]{4,}\b/g)||[])],
       ga4Ids:[...new Set(html.match(/\bG-[A-Z0-9]{6,}\b/g)||[])],
@@ -59,6 +60,7 @@ for(const id of [...new Set(output.flatMap(item=>item.gtmIds??[]))].slice(0,2)){
     const item={url,status:response.status,containerId:id,
       configuredGa4Ids:[...new Set(script.match(/\\bG-[A-Z0-9]{6,}\\b/g)||[])],
       configuredAdsIds:[...new Set(script.match(/\\bAW-[0-9]+\\b/g)||[])],
+      tagConfigFields:[...script.matchAll(/"(?:vtp_measurementId|vtp_tagId|vtp_conversionId|vtp_conversionLabel|function)"\\s*:\\s*(?:"[^"]*"|\\[[^\\]]{0,300}\\]|\\d+)/g)].map(x=>x[0]).slice(0,50),
       successEventNames:['quote_submit_success','booking_submit_success','contact_submit_success'].filter(event=>script.includes(event)),
       notes:'Public container configuration only; event firing and GA4 receipt require browser and account verification.'};
     output.push(item);console.log(JSON.stringify(item));
