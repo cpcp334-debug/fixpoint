@@ -51,6 +51,9 @@ export function hasUnsupportedBlogClaims(text: string): boolean {
   const referencesNormalized = text.replace(
     /\b(?:use|follow|consult)\s+(?:current\s+)?official\s+(?:instructions|guidance)\b/gi,
     "consult published reference material",
+  ).replace(
+    /\bprocedures\s+should\s+be\s+checked\s+through\s+its\s+current\s+official\s+channels\b/gi,
+    "procedures should be checked through current published channels",
   );
   return CLAIM_RE.test(referencesNormalized);
 }
