@@ -45,13 +45,19 @@ function parseStored(raw: string | null): AttributionPayload | null {
 
 export function readStoredAttribution(): AttributionPayload | null {
   if (typeof window === "undefined") return null;
+  let fromLs: AttributionPayload | null = null;
+  let fromCookie: AttributionPayload | null = null;
   try {
-    const fromLs = parseStored(window.localStorage.getItem(ATTR_STORAGE_KEY));
-    const fromCookie = parseStored(readCookie(ATTR_COOKIE));
-    return mergeFirstTouch(fromLs, fromCookie);
+    fromLs = parseStored(window.localStorage.getItem(ATTR_STORAGE_KEY));
   } catch {
-    return null;
+    // One blocked storage mechanism must not hide the other.
   }
+  try {
+    fromCookie = parseStored(readCookie(ATTR_COOKIE));
+  } catch {
+    // Cookies may be blocked independently of localStorage.
+  }
+  return mergeFirstTouch(fromLs, fromCookie);
 }
 
 function persistAttribution(attr: AttributionPayload) {
@@ -62,7 +68,11 @@ function persistAttribution(attr: AttributionPayload) {
   } catch {
     // private mode / quota
   }
-  writeCookie(ATTR_COOKIE, json);
+  try {
+    writeCookie(ATTR_COOKIE, json);
+  } catch {
+    // Attribution persistence must never prevent an enquiry submission.
+  }
 }
 
 /** Capture utm_* + click ids from the current URL (first-touch; never overwrite). */
@@ -92,7 +102,7 @@ export function captureAttributionFromUrl(search?: string, pathname?: string): A
 
 /** Payload to attach on lead/booking POST (no PII). */
 export function getAttributionForSubmit(): AttributionPayload | null {
-  captureAttributionFromUrl();
-  return readStoredAttribution();
+  // Keep the current capture even if the browser rejects or ignores storage writes.
+  return captureAttributionFromUrl();
 }
 
