@@ -1,0 +1,12 @@
+[
+  {
+    "kind": "service",
+    "key": "service:apartment-maintenance",
+    "slug": "apartment-maintenance",
+    "output": "/media/editorial/photos-20261019/service-apartment-maintenance-cover231.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for an apartment-maintenance booking page. Fictional bright contemporary apartment interior with an intact closed interior door, neatly aligned cabinet doors, dry clean sink visible through adjacent kitchenette, neutral linen furnishings and a closed plain appointment folder on a foreground table. Wide coherent architectural view, naturally lived-in but orderly, no people, no repair activity, exposed electrical parts, tools, text, branding, watermark, skyline or identifiable property. Not actual Fixpoint work, client property, completed repair or proof of safety. No collage.",
+    "reviewedAt": "2026-11-01T02:03:50.021Z",
+    "review": "Individually viewed original PNG and accepted: coherent enclosed apartment, intact door and cabinet fronts, dry sink and closed folder. No repair or dangerous electrical activity. Fictional contextual illustration, not actual Fixpoint work, client property, completed repair or proof of safety.",
+    "originalFile": "exec-12445305-f705-4a55-83d3-0af07a1c3e59.png"
+  }
+]
