@@ -4,7 +4,13 @@ const known=[
 '/en','/ar','/en/blog','/en/blog?page=2',
 '/en/blog/electrical-boq-quotation-checklist-uae','/ar/blog/electrical-boq-quotation-checklist-uae',
 '/en/blog/electrical-testing-commissioning-readiness','/ar/blog/electrical-testing-commissioning-readiness',
-'/en/blog/kw-emergency-room-technician','/sitemap/18.xml','/sitemap/29.xml',
+'/en/blog/kw-emergency-room-technician',
+'/en/blog/kw-medical-lab-technician','/en/blog/kw-medical-laboratory-technologist',
+'/en/blog/kw-medical-lab-tech','/en/blog/kw-emergency-medical-technician-training',
+'/en/blog/kw-sterile-processing-technician-certification','/en/blog/kw-central-service-technician',
+'/en/blog/kw-operating-room-technician','/ar/blog/kw-emergency-room-technician',
+'/api/locale-path?path=%2Fblog%2Felectrical-boq-quotation-checklist-uae&locale=ar',
+'/sitemap/18.xml','/sitemap/29.xml',
 '/api/locale-path?path=%2Fblog%2Felectrical-testing-commissioning-readiness&locale=ar'
 ];
 const decode=s=>s.replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&#x27;|&#39;/g,"'").replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&nbsp;/g,' ');
@@ -18,7 +24,7 @@ async function inspect(path) {
     const html=await response.text();
     if(html.length>5000000)throw Error('Response exceeds audit size limit');
     if(path.startsWith('/api/'))return {url,status:response.status,localeResponse:html.slice(0,500)};
-    if(path.includes('.xml'))return {url,status:response.status,locCount:(html.match(/<loc>/g)||[]).length,includesEmptyArabicTesting:html.includes('/ar/blog/electrical-testing-commissioning-readiness'),includesEmptyArabicBoq:html.includes('/ar/blog/electrical-boq-quotation-checklist-uae')};
+    if(path.includes('.xml'))return {url,status:response.status,locCount:(html.match(/<loc>/g)||[]).length,includesArabicTesting:html.includes('/ar/blog/electrical-testing-commissioning-readiness'),includesArabicBoq:html.includes('/ar/blog/electrical-boq-quotation-checklist-uae')};
     const title=text(html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1]??'');
     const h1=text(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]??'');
     const body=html.match(/<div class="prose-article">([\s\S]*?)<\/div>/i)?.[1];
@@ -43,5 +49,20 @@ const output=[];
 for(const path of known){const item=await inspect(path);output.push(item);console.log(JSON.stringify(item));}
 const extra=[...links].filter(p=>!known.includes(p)).slice(0,8);
 for(const path of extra){const item=await inspect(path);output.push(item);console.log(JSON.stringify(item));}
+// Inspect only containers observed in owned-site HTML. Public script contents
+// reveal configuration, not receipt of events in an authenticated GA4 property.
+for(const id of [...new Set(output.flatMap(item=>item.gtmIds??[]))].slice(0,2)){
+  const url='https://www.googletagmanager.com/gtm.js?id='+encodeURIComponent(id);
+  try{
+    const response=await fetch(url,{signal:AbortSignal.timeout(20000)});
+    const script=await response.text();
+    const item={url,status:response.status,containerId:id,
+      configuredGa4Ids:[...new Set(script.match(/\\bG-[A-Z0-9]{6,}\\b/g)||[])],
+      configuredAdsIds:[...new Set(script.match(/\\bAW-[0-9]+\\b/g)||[])],
+      successEventNames:['quote_submit_success','booking_submit_success','contact_submit_success'].filter(event=>script.includes(event)),
+      notes:'Public container configuration only; event firing and GA4 receipt require browser and account verification.'};
+    output.push(item);console.log(JSON.stringify(item));
+  }catch(e){const item={url,error:String(e.message)};output.push(item);console.log(JSON.stringify(item));}
+}
 const fs=await import('node:fs/promises');
-await fs.writeFile('fixpoint-public-snapshot.json',JSON.stringify({checkedAt:new Date().toISOString(),limit:20,results:output},null,2));
+await fs.writeFile('fixpoint-public-snapshot.json',JSON.stringify({checkedAt:new Date().toISOString(),limit:30,results:output},null,2));

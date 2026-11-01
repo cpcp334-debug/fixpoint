@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "blog",
+    "slug": "water-heater-electrical-connection-al-mareija-sharjah",
+    "key": "blog:water-heater-electrical-connection-al-mareija-sharjah",
+    "output": "/media/editorial/photos-20261019/blog-water-heater-mareija-cover265.webp",
+    "prompt": "One photorealistic landscape 3:2 editorial cover for a customer enquiry guide about the electrical scope associated with a domestic water heater in Al Mareija, Sharjah. Entirely fictional utility cupboard, not an actual local property or completed contractor job. Plain closed white cylindrical wall-mounted water-heater casing with no readable labels or branding, seen at a modest distance beside a neatly closed storage cabinet and a blank maintenance folder on a small shelf. Soft daylight, cream tiled walls, clear uncluttered approach. Keep connection points concealed from view; no exposed cables, open panels, close-up pipe fittings, hands, tools, ladders, switches being operated, diagrams, technical markings, sparks, damage or leakage. The scene illustrates identifying the appliance and planning a professional visit, not a recommended installation layout or compliance example. No people, logos, text, watermark, certifications or recognizable landmarks. Realistic restrained architectural/product-context photograph.",
+    "reviewedAt": "2026-11-01T15:53:20.786Z",
+    "review": "Individually visually reviewed: fictional cream tiled utility space, closed plain white heater casing, closed cupboard, blank folder. No exposed electrical connections, tools, people, brands, readable labels or actual local landmark. Approved as appliance-identification and visit-planning illustration only; concealed connections are not an installation specification or compliance example. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 46292,
+    "optimizedSha256": "9dd99cb4b91b380aeea47b85221dbb1fe53a1811b6e23da1a2d1227e008abdaa",
+    "originalFile": "exec-bc6254fb-3f08-4702-805c-ef5cda699f9f.png",
+    "retainedOriginalFile": "water-heater-mareija-original265.png"
+  },
+  {
+    "kind": "blog",
+    "slug": "phase-sequence-testing-al-zahiyah-abu-dhabi",
+    "key": "blog:phase-sequence-testing-al-zahiyah-abu-dhabi",
+    "output": "/media/editorial/photos-20261019/blog-phase-sequence-zahiyah-cover265.webp",
+    "prompt": "One photorealistic landscape 3:2 editorial cover for a customer planning guide about requesting professional phase-sequence testing in Al Zahiyah, Abu Dhabi. Entirely fictional unoccupied commercial equipment-room approach, no actual local property or completed contractor job. Show two closed plain grey service cabinets at a distance, an unobstructed doorway and a small foreground desk with a closed navy folder and blank scheduling sheet turned away. Modest realistic commercial premises, soft neutral light, restrained documentary architectural photography. This represents scheduling and professional coordination only, not how to perform testing. No people, meters, probes, tools, open doors on cabinets, exposed wires, diagrams, circuit markings, labels, brands, text, readable documents, seals, certificates, sparks or damage. No recognizable skyline or landmarks. Keep electrical equipment fully closed and do not depict technical installation detail.",
+    "reviewedAt": "2026-11-01T15:55:01.142Z",
+    "review": "Individually visually reviewed: fictional commercial equipment-room approach, fully closed grey cabinets, unobstructed doorway, closed folder and unreadable blank planning sheet. No people, exposed wiring, instruments, technical testing, branding or recognizable actual site. Approved as professional scheduling and coordination illustration only; not an installation specification, real Fixpoint project or measurement evidence. Neutral illustration caption and truthful AI alt required.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 65028,
+    "optimizedSha256": "5e882436c179ef3dca1f3a6545e662a312b25cb7b56aad05960dd4fb1d2ff054",
+    "originalFile": "exec-5f440ee5-4e9a-48fd-a621-7db9abcda1fa.png",
+    "retainedOriginalFile": "phase-sequence-zahiyah-original265.png"
+  }
+]

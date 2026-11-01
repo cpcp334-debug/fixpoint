@@ -12,6 +12,11 @@ const ORIGINAL_PAGE_PHOTOS: Record<string,string> = {
  'location:al-quoz':'/media/editorial/photos-20261019/location-al-quoz.webp',
  'location:dubai':'/media/editorial/photos-20261019/location-dubai.webp',
 };
-const reviewed = Object.fromEntries(Object.entries(reviewedAssignments).filter(([key,image]) => /^(service|location|diy|service-category|diy-category|section):/.test(key) && typeof image === 'string' && /^\/media\/editorial\/photos-[a-z0-9-]+\/[a-z0-9-]+\.webp$/.test(image)));
+export function isReviewedPagePhotoAssignment(key:string,image:unknown):boolean {
+ const knownKind=/^(service|location|diy|service-category|diy-category|section):/.test(key);
+ const canonicalPair=/^service-location:[a-z0-9-]+\/[a-z0-9-]+$/.test(key);
+ return (knownKind||canonicalPair)&&typeof image==='string'&&/^\/media\/editorial\/photos-[a-z0-9-]+\/[a-z0-9-]+\.webp$/.test(image);
+}
+const reviewed = Object.fromEntries(Object.entries(reviewedAssignments).filter(([key,image]) => isReviewedPagePhotoAssignment(key,image)));
 export const PAGE_PHOTOS: Record<string,string> = {...ORIGINAL_PAGE_PHOTOS,...reviewed};
-export function pagePhoto(kind:'service'|'location'|'diy'|'service-category'|'diy-category'|'section',slug:string):string|null{return PAGE_PHOTOS[`${kind}:${slug}`]||null;}
+export function pagePhoto(kind:'service'|'location'|'diy'|'service-category'|'diy-category'|'section'|'service-location',slug:string):string|null{return PAGE_PHOTOS[`${kind}:${slug}`]||null;}

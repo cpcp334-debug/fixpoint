@@ -47,3 +47,28 @@ jobs:
       - run: node --import tsx scripts/test-blog-locale-consumers.ts
       - run: node --import tsx scripts/test-blog-availability-mysql.ts
       - run: npx tsc --noEmit
+      - name: Create isolated runtime schema
+        if: matrix.image == 'mysql:8.0'
+        run: npx prisma db push --skip-generate
+      - name: Seed isolated runtime fixture
+        if: matrix.image == 'mysql:8.0'
+        run: node --import tsx scripts/test-blog-runtime.ts --seed
+      - name: Compile production application
+        if: matrix.image == 'mysql:8.0'
+        run: npx next build --webpack
+        env:
+          NEXT_PUBLIC_SITE_URL: https://fixpoint.ae
+      - name: Validate production runtime responses
+        if: matrix.image == 'mysql:8.0'
+        run: node --import tsx scripts/test-blog-runtime.ts
+        env:
+          NEXT_PUBLIC_SITE_URL: https://fixpoint.ae
+      - name: Package tracked source for Hostinger
+        if: matrix.image == 'mysql:8.0'
+        run: git archive --format=zip --output=fixpoint-hostinger-source.zip HEAD
+      - uses: actions/upload-artifact@v4
+        if: matrix.image == 'mysql:8.0'
+        with:
+          name: fixpoint-hostinger-source
+          path: fixpoint-hostinger-source.zip
+          retention-days: 14

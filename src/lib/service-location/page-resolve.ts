@@ -12,6 +12,8 @@ import { isPubliclyEligible } from "@/lib/service-location/coverage";
 import { evaluateServiceLocationGates, localeShouldIndex } from "@/lib/service-location/gates";
 import { resolveDiyInheritance } from "@/lib/service-location/diy";
 import { resolveImageInheritance } from "@/lib/service-location/images";
+import { pagePhoto } from "@/lib/catalog/page-photos";
+import { editorialImageAlt } from "@/lib/catalog/editorial-images";
 import { resolveEffectiveOps } from "@/lib/service-location/overrides";
 import {
   buildAeoBlocks,
@@ -315,10 +317,13 @@ async function softResolveFromServiceAndLocation(
       ? `${serviceName} في ${locationName}: اطلب تقييمًا من ${brand} دون افتراض سعر أو تغطية.`
       : `${serviceName} in ${locationName}: request an assessment from ${brand} — no invented price or coverage claim.`;
 
+  const reviewedPairPhoto = pagePhoto("service-location", `${service.slug}/${location.slug}`);
   const image = resolveImageInheritance({
-    heroImageOverride: null,
+    heroImageOverride: reviewedPairPhoto,
     serviceHeroImage: service.heroImage,
-    imageAlt: locale === "ar" ? `${serviceName} في ${locationName}` : `${serviceName} in ${locationName}`,
+    imageAlt: reviewedPairPhoto
+      ? editorialImageAlt(reviewedPairPhoto, locale, `${serviceName} — ${locationName}`)
+      : locale === "ar" ? `${serviceName} في ${locationName}` : `${serviceName} in ${locationName}`,
     serviceName,
     locationName,
     locale,
