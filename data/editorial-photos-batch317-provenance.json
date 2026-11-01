@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "blog",
+    "key": "blog:office-electrical-maintenance-al-barsha-first-dubai",
+    "slug": "office-electrical-maintenance-al-barsha-first-dubai",
+    "output": "/media/editorial/photos-20261019/blog-office-barsha-cover317.webp",
+    "prompt": "Use case: photorealistic-natural. Generate one landscape 3:2 editorial photograph-style cover for an Arabic article about arranging OFFICE electrical maintenance around business operations. Fictional modest contemporary Dubai office, not an identifiable real property or company project. Composition: empty meeting room seen from doorway, long pale oak table with a closed plain paper folder and two unmarked notebooks, chairs, glass partition, neatly finished walls, ordinary recessed ceiling lights; soft daylight. The setting should communicate organizing access and work continuity, not electrical repair technique. No people, no tools, no opened panels or exposed wiring, no sparks, no damage, no readable text, logos, watermarks, brand devices or skyline landmarks. Natural architectural photography, realistic proportions, warm-neutral colors, crisp unobtrusive detail. Distinct uncluttered room composition. Do not add caption or typography.",
+    "reviewedAt": "2026-11-01T23:28:11.936Z",
+    "review": "Visually inspected: empty meeting room, closed paper folder, recessed lights, glass partition, no people, visible branding, repair instructions or open wiring. Fictional illustration suitable for planning office access; not proof of a real location, electrical condition or Fixpoint project.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 130498,
+    "optimizedSha256": "919bfee19f4dbd93dbefbf98caa7eb74871a2a8d88ece8208c6725369df80f07",
+    "originalFile": "exec-d1db87b9-a2a1-4013-b509-0f594e2b7fff.png",
+    "retainedOriginalFile": "office-electrical-maintenance-al-barsha-first-dubai-original317.png"
+  },
+  {
+    "kind": "blog",
+    "key": "blog:shop-electrical-maintenance-al-barsha-first-dubai",
+    "slug": "shop-electrical-maintenance-al-barsha-first-dubai",
+    "output": "/media/editorial/photos-20261019/blog-shop-barsha-cover317.webp",
+    "prompt": "Use case: photorealistic-natural. One landscape 3:2 editorial photograph-style cover for Arabic article organizing electrical maintenance in a small SHOP in Dubai. Fictional shop, no identifiable business or real project. Eye-level architectural photo toward a compact unoccupied homewares retail interior, tidy pale shelving with generic ceramic bowls and folded plain textiles, slim unbranded checkout counter at right, broad clear walkway, ordinary ceiling spotlights and soft storefront daylight. No people, lettering, logos, checkout screens, brands, skyline, wiring, open electrical covers, tools, repairs, flames, damage or safety claims. The subject is planning access to the retail space, not demonstrating electrical work. Warm ivory and muted terracotta interior, realistic photographic textures and perspective, visually distinct from an office meeting room. No caption or typography.",
+    "reviewedAt": "2026-11-01T23:28:11.938Z",
+    "review": "Visually inspected: fictional empty homewares shop, generic ceramics/textiles, clear central walkway, ordinary track lights and counter. No people, text, logos, opened covers, tools or hazardous repair depiction. Distinct from office scene; not an actual Fixpoint customer or project.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 160588,
+    "optimizedSha256": "5c3b91ce052223d0c916c1947f799e8f1975363d2497f89aaefcf1045901e4f3",
+    "originalFile": "exec-2d479f66-e631-4439-92fc-2a03577c5a7c.png",
+    "retainedOriginalFile": "shop-electrical-maintenance-al-barsha-first-dubai-original317.png"
+  }
+]
