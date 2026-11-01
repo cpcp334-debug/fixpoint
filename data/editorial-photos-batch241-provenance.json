@@ -1,0 +1,42 @@
+[
+  {
+    "kind": "service-category",
+    "key": "service-category:plumbing",
+    "slug": "plumbing",
+    "output": "/media/editorial/photos-20261019/service-category-plumbing-cover241.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a plumbing service-category page. Fictional contemporary UAE washroom with intact basin, neat chrome tap and enclosed vanity, dry pale stone surfaces and warm daylight. Wide architectural angle emphasizing fixtures and uncluttered access, realistic proportions. No people, visible leak, tools, disassembled pipes, demonstration, logos, text, identifiable client property or claims of completed work. Fictional context only, not actual Fixpoint work, diagnosis, verified installation or proof of safety. No collage.",
+    "reviewedAt": "2026-11-01T02:32:22.542Z",
+    "review": "Individually viewed original PNG and accepted: coherent washroom, intact basin/tap/enclosed vanity, dry surfaces, no leak or repair. Background skyline is fictional and does not identify a real client property. Not actual Fixpoint work, completed repair, diagnosis or proof of safety.",
+    "originalFile": "exec-174fcc1f-a6fc-4556-9a2c-31bd4041f121.png"
+  },
+  {
+    "kind": "diy-category",
+    "key": "diy-category:plumbing",
+    "slug": "plumbing",
+    "output": "/media/editorial/photos-20261019/diy-category-plumbing-cover241.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a plumbing before-booking guide index. Fictional compact laundry nook, intact closed utility sink cabinet and plain tap in background, neatly folded cloths and a blank closed enquiry notebook on a dry shelf. Distinct close-medium side angle, soft daylight, muted sage and cream, coherent realism. No people, open pipes, tools, leak, testing or repair demonstration, readable text, branding or identifiable real property. Not actual Fixpoint work, diagnosed fault, completed repair or proof of safety. No collage.",
+    "reviewedAt": "2026-11-01T02:32:22.545Z",
+    "review": "Individually viewed original PNG and accepted: coherent utility sink nook, closed cabinet, cloths and closed notebook, no pipe access or demonstration. Fictional contextual illustration, not actual Fixpoint client property, work, diagnosed fault or proof of safety.",
+    "originalFile": "exec-c0061b94-180d-4b44-8ad9-ea82baee1d4b.png"
+  },
+  {
+    "kind": "service-category",
+    "key": "service-category:painting",
+    "slug": "painting",
+    "output": "/media/editorial/photos-20261019/service-category-painting-cover241.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a painting service category. Fictional uncluttered apartment living room with smooth warm ivory walls, a muted terracotta feature wall, neatly finished closed door and simple neutral furnishings. Wide architectural view showing wall surfaces in natural daylight, coherent realistic perspective. No people, tools, paint labels, before-after comparison, text, logos or identifiable real property. This is imagined service context, not actual Fixpoint painting, client property, completed project or evidence of workmanship. No collage.",
+    "reviewedAt": "2026-11-01T02:32:22.545Z",
+    "review": "Individually viewed original PNG and accepted: coherent fictional living room and intact painted surfaces, no work, before-after comparison or defect claim. Not an actual Fixpoint customer project or evidence of workmanship.",
+    "originalFile": "exec-80515891-a1ae-4d56-aeba-2b58fbfa8985.png"
+  },
+  {
+    "kind": "diy-category",
+    "key": "diy-category:painting",
+    "slug": "painting",
+    "output": "/media/editorial/photos-20261019/diy-category-painting-cover241.webp",
+    "prompt": "Use case photorealistic-natural. One original landscape1536x1024 editorial photo-style illustration for a painting before-booking guide index. Fictional bright interior with a plain unprinted selection of three neutral colour-sample cards resting flat on a clean table, intact unmarked wall in background and a simple closed appointment folder. Distinct tabletop angle, pale oak and warm beige, realistic material textures. No people, tools, paint tins, readable text, logos, painting demonstration, before-after claim or identifiable property. Not actual Fixpoint work or completed customer project. No collage.",
+    "reviewedAt": "2026-11-01T02:32:22.545Z",
+    "review": "Individually viewed original PNG and accepted: coherent tabletop with three unprinted colour sample cards and closed folio; no tools, paint brands, demonstration or customer claim. Fictional contextual illustration, not actual Fixpoint work or completed project.",
+    "originalFile": "exec-5ffb7d1f-1df0-4425-9b1b-d39e962c07c5.png"
+  }
+]
