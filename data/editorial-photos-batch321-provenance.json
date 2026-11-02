@@ -1,0 +1,36 @@
+[
+  {
+    "name": "electric-cooker",
+    "kind": "service",
+    "slug": "electric-cooker-repair",
+    "imageKey": "service-electric-cooker-cover321",
+    "prompt": "Use case: photorealistic-natural. Create one landscape 3:2 editorial photo-style cover for an electric cooker repair enquiry page. Entirely fictional modest contemporary UAE apartment kitchen, never a real customer property or Fixpoint project. Three-quarter view of a plain freestanding electric cooker with an unbranded black glass ceramic top and closed oven door, all controls visibly off, no glowing zones, no food or cookware. Fully assembled appliance in a clean pale cream kitchen with light wood cabinet and small folded plain linen towel on distant countertop. Natural side window light, realistic proportions and honest ordinary materials. No people, hands, tools, repair activity, exposed connections, open panels, wiring, plugs, diagnostic displays, labels, letters, logos, watermark or gas burners. No suggestion of fault diagnosis, compliance certification or repair result. Calm contextual interior photograph, distinct composition, crisp natural texture, subdued colors.",
+    "review": "Individually visually reviewed: fully enclosed unbranded freestanding electric cooker with ceramic top and closed oven, no glowing zones, people, tools, exposed connections or repair activity. Natural fictional kitchen context only. Does not prove a defect, diagnosis, safety certification, repair outcome or a Fixpoint project.",
+    "reviewedAt": "2026-11-02T00:41:13.228Z",
+    "output": "/media/editorial/photos-20261019/service-electric-cooker-cover321.webp",
+    "generator": "built-in image_gen",
+    "illustrative": true,
+    "key": "service:electric-cooker-repair",
+    "optimizedSha256": "a1a15a750b01e946ef25e95e63762fbcb508a74730dc0b3b48b07033cd624d11",
+    "optimizedBytes": 103010,
+    "originalFile": "exec-138629ad-2cb7-4ad5-b2ae-f1b9b456c737.png",
+    "retainedOriginalFile": "service-electric-cooker-original.png"
+  },
+  {
+    "name": "induction-cooker",
+    "kind": "service",
+    "slug": "induction-cooker-inspection",
+    "imageKey": "service-induction-cooker-cover321",
+    "prompt": "Use case: photorealistic-natural. One landscape 3:2 editorial photo-style cover illustrating an induction-cooker inspection enquiry. Fictional ordinary UAE apartment kitchenette, not a real project or customer property. Wide diagonal view of a compact built-in black glass induction hob set flush into a pale stone counter on a blue-grey kitchen island, all cooking zones off, no numbers or lit displays. The hob is fully intact and closed; no cookware. Background plain cabinet doors, small ceramic bowl of lemons well away from hob, soft morning daylight. Clean restrained documentary photography, realistic scale, no luxury advertising style. No people, tools, repair action, exposed wires, open covers, gas burners, sparks, damage, text, brand logos, watermark or certification symbols. Context only, no claims of a completed inspection, diagnosis, compatibility, regulatory approval or safety.",
+    "review": "Individually visually reviewed: fictional kitchen island with intact black-glass hob and four marked cooking zones, no active display, people, tools, exposed connections or inspection activity. No readable branding. Approved as cooker enquiry context only; appearance does not establish induction technology, safety, compatibility, diagnosis, inspection result or a completed Fixpoint project.",
+    "reviewedAt": "2026-11-02T00:42:27.516Z",
+    "output": "/media/editorial/photos-20261019/service-induction-cooker-cover321.webp",
+    "generator": "built-in image_gen",
+    "illustrative": true,
+    "key": "service:induction-cooker-inspection",
+    "optimizedSha256": "6307a6641e453e77e51d10b5177c9b146db4ca73caffe854d095252e32a4c106",
+    "optimizedBytes": 65246,
+    "originalFile": "exec-b32adf62-67ca-4c53-b57b-92d9d1f7d3f7.png",
+    "retainedOriginalFile": "service-induction-cooker-original.png"
+  }
+]
