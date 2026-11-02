@@ -307,9 +307,9 @@ export default async function ServicePage({
       </Section>
 
       <CtaBand
-        title={home("ctaTitle")}
-        body={home("ctaBody")}
-        quote={home("ctaQuote")}
+        title={row.category.slug === "plumbing" ? (locale === "ar" ? "أخبرنا عن أعمال السباكة المطلوبة." : "Tell us about your plumbing job.") : home("ctaTitle")}
+        body={row.category.slug === "plumbing" ? (locale === "ar" ? "شارك موقع العقار ومشكلة السباكة وترتيبات الدخول. يراجع الفريق الطلب قبل تأكيد النطاق والتوفر وعرض السعر." : "Share the property location, the plumbing issue and any access arrangements. The team reviews the request before confirming scope, availability and quotation.") : home("ctaBody")}
+        quote={row.category.slug === "plumbing" ? (locale === "ar" ? "اطلب عرض سعر للسباكة" : "Request a plumbing quote") : home("ctaQuote")}
         ai={home("ctaAi")}
         whatsapp={cta("whatsapp")}
         whatsappText={wa}
