@@ -1,3 +1,4 @@
+import { serviceChoiceLabels } from "@/lib/catalog/service-choice-labels";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getActiveEmirates, getActiveServices } from "@/lib/catalog";
 import { buildMetadata } from "@/lib/seo";
@@ -57,7 +58,11 @@ export default async function QuotePage({ params, searchParams }: { params: Prom
             mode="quote"
             defaultService={defaultService}
             locale={locale}
-            services={services.map((s) => ({ slug: s.slug, name: s.t.name }))}
+            services={serviceChoiceLabels(services.map((s) => ({
+              slug: s.slug,
+              name: s.t.name,
+              englishName: s.translations.find((translation) => translation.locale === "en")?.name,
+            })), locale)}
             locations={locations.map((s) => ({ slug: s.slug, name: s.t.name }))}
           />
         </div>

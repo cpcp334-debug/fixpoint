@@ -1,3 +1,4 @@
+import { serviceChoiceLabels } from "@/lib/catalog/service-choice-labels";
 import { brandName } from "@/config/site";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
@@ -80,7 +81,11 @@ export default async function BookingPage({
           <BookingForm
             locale={locale}
             type={type}
-            services={services.map((s) => ({ slug: s.slug, name: s.t.name }))}
+            services={serviceChoiceLabels(services.map((s) => ({
+              slug: s.slug,
+              name: s.t.name,
+              englishName: s.translations.find((translation) => translation.locale === "en")?.name,
+            })), locale)}
             locations={locations.map((s) => ({ slug: s.slug, name: s.t.name }))}
             labels={{
               name: q("name"),
