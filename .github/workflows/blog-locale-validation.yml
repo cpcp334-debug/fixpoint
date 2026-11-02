@@ -1,9 +1,10 @@
 name: Blog locale database validation
 on:
   push:
-    branches: [draft/blog-locale-catalog-20261101]
+    branches: [draft/blog-locale-catalog-20261101, draft/blog-body-parser-20261102]
     paths:
       - 'src/lib/blog/**'
+      - 'src/components/blog/BlogBody.tsx'
       - 'src/app/**/blog/**'
       - 'src/app/sitemap.ts'
       - 'src/app/api/locale-path/**'
@@ -45,6 +46,7 @@ jobs:
       - run: node --import tsx scripts/test-blog-translation-availability.ts
       - run: node --import tsx scripts/test-blog-metadata-availability.ts
       - run: node --import tsx scripts/test-blog-locale-consumers.ts
+      - run: node --import tsx --test scripts/test-blog-body.ts
       - run: node --import tsx scripts/test-blog-availability-mysql.ts
       - run: npx tsc --noEmit
       # Existing schema uses TEXT defaults accepted by MariaDB. Keep the

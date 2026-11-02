@@ -16,6 +16,8 @@ import { CtaBand } from "@/components/public/CtaBand";
 import { getBlogArticleBySlug, getPublishedBlogArticles } from "@/lib/blog/catalog";
 import { prisma } from "@/server/db";
 import { getGuideBySlug } from "@/lib/catalog";
+import { parseBlogBody } from "@/lib/blog/body-blocks";
+import { BlogBody } from "@/components/blog/BlogBody";
 
 // Refresh database-backed articles after approved editorial updates, without rebuilding 100k routes.
 export const revalidate = 300;
@@ -45,96 +47,6 @@ export async function generateMetadata({
       `${getSiteUrl()}/${availableLocale}/blog/${blogPathSlug(availableLocale, toMasterBlogSlug(slug))}`,
     ])),
     index: true,
-  });
-}
-
-function headingId(title: string) {
-  return `s-${title
-    .toLowerCase()
-    .replace(/[^\p{L}\p{N}]+/gu, "-")
-    .replace(/^-|-$/g, "")
-    .slice(0, 64)}`;
-}
-
-function extractHeadings(body: string) {
-  const seen = new Set<string>();
-  return body
-    .split(/\n+/)
-    .map((line) => line.trim())
-    .filter((line) => line.startsWith("## "))
-    .map((line) => line.replace(/^##\s+/, ""))
-    .filter((title) => {
-      if (
-        /^Field detail\b/i.test(title) ||
-        /^تفصيل ميداني\b/i.test(title) ||
-        /^Exclusive checkpoint\b/i.test(title) ||
-        /^نقطة تحقق حصرية\b/i.test(title) ||
-        /^Documentation markers\b/i.test(title) ||
-        /^علامات توثيق\b/i.test(title)
-      ) {
-        return false;
-      }
-      // padToWords historically repeated heading blocks — keep TOC unique.
-      if (seen.has(title)) return false;
-      seen.add(title);
-      return true;
-    });
-}
-
-function renderBody(body: string) {
-  // Collapse historically padded duplicate ## sections (padToWords bug):
-  // when a heading title repeats, drop that heading and its following blocks
-  // until the next unique ## heading.
-  const rawBlocks = body.split(/\n\n+/).map((b) => b.trim()).filter(Boolean);
-  const seenH2 = new Set<string>();
-  const blocks: string[] = [];
-  let skippingDupSection = false;
-  for (const block of rawBlocks) {
-    if (block.startsWith("## ")) {
-      const title = block.replace(/^##\s+/, "").trim();
-      if (seenH2.has(title)) {
-        skippingDupSection = true;
-        continue;
-      }
-      seenH2.add(title);
-      skippingDupSection = false;
-      blocks.push(block);
-      continue;
-    }
-    if (skippingDupSection) continue;
-    blocks.push(block);
-  }
-  return blocks.map((block, i) => {
-    if (block.startsWith("## ")) {
-      const title = block.replace(/^##\s+/, "");
-      return (
-        <h2 key={i} id={headingId(title)} className="mt-8 scroll-mt-24 text-xl font-semibold text-navy">
-          {title}
-        </h2>
-      );
-    }
-    if (block.startsWith("### ")) {
-      return (
-        <h3 key={i} className="mt-6 text-lg font-semibold text-navy">
-          {block.replace(/^###\s+/, "")}
-        </h3>
-      );
-    }
-    if (block.startsWith("- ")) {
-      const items = block.split("\n").map((l) => l.replace(/^- /, "").trim()).filter(Boolean);
-      return (
-        <ul key={i} className="mt-3 list-disc space-y-1 ps-5 text-sm leading-relaxed text-muted sm:text-base">
-          {items.map((item) => (
-            <li key={item.slice(0, 48)}>{item}</li>
-          ))}
-        </ul>
-      );
-    }
-    return (
-      <p key={i} className="mt-4 text-sm leading-relaxed text-muted whitespace-pre-line sm:text-base">
-        {block.split(/(https:\/\/[^\s]+)/g).map((part,j) => part.startsWith('https://') ? <a key={j} href={part} className="break-all underline underline-offset-4" rel="noopener noreferrer" target="_blank">{part}</a> : part)}
-      </p>
-    );
   });
 }
 
@@ -177,7 +89,10 @@ export default async function BlogArticlePage({
     call: cta("call"),
   };
 
-  const outline = extractHeadings(article.t.body);
+  const usedHeadingIds = new Set<string>();
+  const content = parseBlogBody(article.t.body, usedHeadingIds);
+  const diyContent = article.t.diySection ? parseBlogBody(article.t.diySection, usedHeadingIds) : null;
+  const outline = content.outline;
 
   return (
     <PageShell
@@ -253,20 +168,20 @@ export default async function BlogArticlePage({
               </p>
               <ol className="mt-3 grid gap-2 text-sm text-muted sm:grid-cols-2">
                 {outline.map((heading) => (
-                  <li key={heading}>
-                    <a href={`#${headingId(heading)}`} className="hover:text-accent">
-                      {heading}
+                  <li key={heading.id}>
+                    <a href={`#${heading.id}`} className="hover:text-accent">
+                      {heading.text}
                     </a>
                   </li>
                 ))}
               </ol>
             </nav>
           ) : null}
-          <div className="prose-article">{renderBody(article.t.body)}</div>
-          {article.t.diySection ? (
+          <div className="prose-article"><BlogBody blocks={content.blocks} /></div>
+          {diyContent ? (
             <div className="mt-10">
               <ProseCard title={t("diyHelp")}>
-                <div className="prose-article">{renderBody(article.t.diySection)}</div>
+                <div className="prose-article"><BlogBody blocks={diyContent.blocks} /></div>
               </ProseCard>
             </div>
           ) : null}
