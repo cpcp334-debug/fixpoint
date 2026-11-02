@@ -8,10 +8,10 @@ const db=new PrismaClient();
 const slug='validation-electrical-language';
 async function seed(){
  // More than one page is required to test pagination without page-number clamping.
- for(let n=0;n<13;n++)await db.article.create({data:{id:'pagination-'+n,slug:'pagination-electrical-'+n,status:'published',indexable:true,publishedAt:new Date(),categorySlugs:'["electrical"]',translations:{create:[{locale:'en',title:'Electrical pagination '+n,body:'Useful electrical scope and handover planning.',seoTitle:'Electrical pagination '+n,metaDescription:'Pagination fixture.'},{locale:'ar',title:'دليل كهربائي '+n,body:'محتوى كهربائي للمراجعة والتسليم.',seoTitle:'دليل كهربائي '+n,metaDescription:'وصف دليل كهربائي.'}]}}});
+ for(let n=0;n<13;n++)await db.article.create({data:{id:'pagination-'+n,slug:'pagination-electrical-'+n,status:'published',indexable:true,publishedAt:new Date(),categorySlugs:'["electrical"]',translations:{create:[{locale:'en',title:'Electrical pagination '+n,body:'Useful electrical scope and handover planning.',seoTitle:'Electrical pagination '+n,metaDescription:'Pagination fixture.'},{locale:'ar',title:'دليل كهربائي '+n,body:'## نطاق العمل\nمحتوى كهربائي للمراجعة والتسليم.',seoTitle:'دليل كهربائي '+n,metaDescription:'وصف دليل كهربائي.'}]}}});
  await db.article.create({data:{id:slug,slug,status:'published',indexable:true,publishedAt:new Date(),categorySlugs:'["electrical"]',
  translations:{create:[
- {locale:'en',title:'Electrical validation article',body:'A complete electrical scope needs drawings and an agreed handover plan.',seoTitle:'Electrical validation article',metaDescription:'Isolated test of English article availability.'},
+ {locale:'en',title:'Electrical validation article',body:'## Scope\nA complete electrical scope needs drawings and an agreed handover plan.',seoTitle:'Electrical validation article',metaDescription:'Isolated test of English article availability.'},
  {locale:'ar',title:'',body:'',seoTitle:'',metaDescription:''}
  ]}}});
 }
@@ -28,12 +28,19 @@ async function smoke(){
    try{await get('/api/locale-path?path=/&locale=en');ready=true;break;}catch{await new Promise(r=>setTimeout(r,500));}
   }
   assert.ok(ready,'Next production server must start');
+  const verification=await fetch(base+'/google096fdf75dd37d9aa.html',{redirect:'manual',signal:AbortSignal.timeout(30000)});
+  assert.equal(verification.status,200);
+  assert.equal(await verification.text(),'google-site-verification: google096fdf75dd37d9aa.html');
+  console.log('PASS Google verification file returns exact public content without redirect');
   const english=await get('/en/blog/'+slug);
   assert.equal(english.status,200);assert.match(english.html,/<h1[^>]*>Electrical validation article<\/h1>/);
   const languageLinks=english.html.match(/<link[^>]*hrefLang[^>]*>/gi)||[];
   assert.ok(languageLinks.some(tag=>/hrefLang="en"/i.test(tag)));
   assert.ok(!languageLinks.some(tag=>/hrefLang="ar"/i.test(tag)));
-  console.log('PASS production English rendering and available-language metadata');
+  assert.match(english.html,/<h2[^>]*id="s-scope"[^>]*>Scope<\/h2>/);
+  assert.match(english.html,/href="#s-scope"/);
+  assert.match(english.html,/<p[^>]*>A complete electrical scope needs drawings and an agreed handover plan\.<\/p>/);
+  console.log('PASS production English rendering, heading navigation and available-language metadata');
   for(const bot of [false,true]){
    const arabic=await get('/ar/blog/'+slug,bot);
    assert.ok([200,404].includes(arabic.status),'Unavailable page must not fail with 500');
@@ -48,7 +55,10 @@ async function smoke(){
   assert.deepEqual(JSON.parse(availableApi.html),{href:'/blog/pagination-electrical-0',available:true});
   const availableArabic=await get('/ar/blog/pagination-electrical-0');
   assert.equal(availableArabic.status,200);assert.ok(availableArabic.html.includes('class="prose-article"'));
-  console.log('PASS completed Arabic remains available');
+  assert.match(availableArabic.html,/<h2[^>]*id="s-نطاق-العمل"[^>]*>نطاق العمل<\/h2>/);
+  assert.match(availableArabic.html,/href="#s-نطاق-العمل"/);
+  assert.match(availableArabic.html,/<p[^>]*>محتوى كهربائي للمراجعة والتسليم\.<\/p>/);
+  console.log('PASS completed Arabic remains available with matching heading navigation');
   const listing=await get('/en/blog?page=2');
   assert.equal(listing.status,200);
   const canonical=listing.html.match(/<link[^>]*rel="canonical"[^>]*href="([^"]+)"/)?.[1];
