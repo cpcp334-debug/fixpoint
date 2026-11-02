@@ -12,6 +12,7 @@ import {
 import { prisma } from "@/server/db";
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd, reviewAggregateJsonLd, serviceJsonLd } from "@/lib/seo";
 import { parseJson } from "@/lib/utils";
+import { publicIntakeQuestions } from "@/lib/catalog/public-intake";
 import { parseFaqJson } from "@/lib/faq";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -30,14 +31,8 @@ import { TopElectricalServices } from "@/components/catalog/TopElectricalService
 import { Link } from "@/i18n/routing";
 import { getServiceFaqBySlug } from "@/lib/faq/pages";
 import { serviceFaqSlug } from "@/lib/faq/service-faq";
-import { serviceHref, serviceLocationHref, locationPageHref, servicePathSlug } from "@/lib/slug/locale-slug";
+import { serviceLocationHref, locationPageHref, servicePathSlug } from "@/lib/slug/locale-slug";
 
-function intakeChips(raw: string, locale: string) {
-  return parseJson<Array<{ en?: string; ar?: string } | string>>(raw, [])
-    .map((q) => (typeof q === "string" ? q : locale === "ar" ? q.ar || q.en || "" : q.en || q.ar || ""))
-    .filter(Boolean)
-    .map((label) => ({ label, prompt: label }));
-}
 
 /**
  * Avoid SSG of hundreds of service pages × locales at Hostinger build
@@ -101,7 +96,7 @@ export default async function ServicePage({
     summarizeApprovedServiceReviews({ serviceId: row.id }),
     getApprovedServiceReviews({ serviceId: row.id, take: 10 }),
   ]);
-  const questions = intakeChips(row.aiIntakeQuestions, locale);
+  const questions = publicIntakeQuestions(row.aiIntakeQuestions, locale).map((label) => ({ label, prompt: label }));
   const capabilities = [
     row.diyAvailable ? home("chipDiy") : null,
     row.emergencyAvailable ? home("chipEmergency") : null,
