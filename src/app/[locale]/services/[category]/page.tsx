@@ -225,9 +225,9 @@ export default async function CategoryPage({
       </Section>
 
       <CtaBand
-        title={cat.slug === "plumbing" ? (locale === "ar" ? "أخبرنا عن أعمال السباكة المطلوبة." : "Tell us about your plumbing job.") : home("ctaTitle")}
-        body={cat.slug === "plumbing" ? (locale === "ar" ? "شارك موقع العقار ومشكلة السباكة وترتيبات الدخول. يراجع الفريق الطلب قبل تأكيد النطاق والتوفر وعرض السعر." : "Share the property location, the plumbing issue and any access arrangements. The team reviews the request before confirming scope, availability and quotation.") : home("ctaBody")}
-        quote={cat.slug === "plumbing" ? (locale === "ar" ? "اطلب عرض سعر للسباكة" : "Request a plumbing quote") : home("ctaQuote")}
+        title={cat.slug === "ac" ? (locale === "ar" ? "أخبرنا عن أعمال التكييف المطلوبة." : "Tell us about your AC job.") : cat.slug === "plumbing" ? (locale === "ar" ? "أخبرنا عن أعمال السباكة المطلوبة." : "Tell us about your plumbing job.") : home("ctaTitle")}
+        body={cat.slug === "ac" ? (locale === "ar" ? "شارك موقع العقار ومشكلة التكييف وتفاصيل الجهاز إن توفرت وترتيبات الدخول. يراجع الفريق الطلب قبل تأكيد النطاق والتوفر وعرض السعر." : "Share the property location, the AC issue, available unit details and any access arrangements. The team reviews the request before confirming scope, availability and quotation.") : cat.slug === "plumbing" ? (locale === "ar" ? "شارك موقع العقار ومشكلة السباكة وترتيبات الدخول. يراجع الفريق الطلب قبل تأكيد النطاق والتوفر وعرض السعر." : "Share the property location, the plumbing issue and any access arrangements. The team reviews the request before confirming scope, availability and quotation.") : home("ctaBody")}
+        quote={cat.slug === "ac" ? (locale === "ar" ? "اطلب عرض سعر للتكييف" : "Request an AC quote") : cat.slug === "plumbing" ? (locale === "ar" ? "اطلب عرض سعر للسباكة" : "Request a plumbing quote") : home("ctaQuote")}
         ai={home("ctaAi")}
         whatsapp={cta("whatsapp")}
       />
