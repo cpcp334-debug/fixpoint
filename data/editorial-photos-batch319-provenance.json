@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "blog",
+    "key": "blog:usb-socket-installation-al-warqa-dubai",
+    "slug": "usb-socket-installation-al-warqa-dubai",
+    "output": "/media/editorial/photos-20261019/blog-usb-warqa-cover319.webp",
+    "prompt": "Use case: photorealistic-natural. One landscape 3:2 editorial photo-style cover for a planning guide about adding USB charging sockets to a home. Entirely fictional modest contemporary apartment study corner in Dubai, not a real property or client project. Medium architectural view of a small pale wood desk against a warm off-white finished wall, simple desk chair, blank closed notebook, an unbranded black-screen phone lying on desk with a single tidy charging cable leading to a fully assembled plain wall charging faceplate. Keep faceplate small in scene, no technical close-up or exposed internals. Natural morning window light, muted sage accent, realistic human-scale proportions. No people, hands, tools, electrical work in progress, exposed wiring, damage, sparks, certification marks, product text, logos, watermark, advertising copy or skyline landmarks. Not a wiring diagram, instruction, compatible product endorsement or safety finding. Calm useful household context with clear photographic detail.",
+    "reviewedAt": "2026-11-01T23:53:34.377Z",
+    "review": "Individually visually reviewed: fictional study desk with black-screen unbranded phone, intact wall faceplate and plug-in charger, one cable, no people/tools/open wiring or visible branding. The generated scene shows a plug-in adapter, NOT an integrated USB socket. Approved only as existing charging/planning context; alt/caption must describe that accurately and must not imply a finished USB installation, compatibility, certification, a real Al Warqa property or a Fixpoint project.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 123778,
+    "optimizedSha256": "0d1485e76e8cd3711f82247d625427629cad021e9f937bccd412b23e45f41ab5",
+    "originalFile": "exec-5db880d7-c3e0-458c-b609-28114fbf58da.png",
+    "retainedOriginalFile": "usb-socket-installation-al-warqa-dubai-original319.png"
+  },
+  {
+    "kind": "blog",
+    "key": "blog:smart-dimmer-installation-discovery-gardens-dubai",
+    "slug": "smart-dimmer-installation-discovery-gardens-dubai",
+    "output": "/media/editorial/photos-20261019/blog-dimmer-discovery-cover319.webp",
+    "prompt": "Use case: photorealistic-natural. Generate one landscape 3:2 editorial photo-style cover for a guide about planning a smart dimmer installation. Entirely fictional compact contemporary apartment living room, not a real property or completed client project. Evening architectural interior: muted clay sofa at left, low oak coffee table with one closed plain book, soft indirect cove lighting and a single simple pendant light. At right foreground a finished off-white wall with one fully enclosed plain unbranded small rotary wall-control faceplate, no writing, screens or visible circuitry. Wide room view, control small but noticeable, credible modest apartment proportions. Natural photographic texture, warm restrained lighting, no exaggerated luxury, no people, hands, tools, exposed wires, open covers, branded products, text, symbols, watermark, diagnostic apparatus, wiring diagram or skyline. The scene illustrates lighting-control enquiry context only, not electrical compatibility, safe installation, certification, actual smart connectivity or a Fixpoint project.",
+    "reviewedAt": "2026-11-01T23:53:34.377Z",
+    "review": "Individually visually reviewed: fictional modest living room, clay sofa, closed book, pendant and indirect lights, fully enclosed plain rotary wall-control faceplate. No people, tools, exposed wiring, readable text or branding. Suitable lighting-control enquiry context only; does NOT prove smart connectivity, compatibility, safe installation, a real Discovery Gardens property or a Fixpoint project.",
+    "generation": "built-in image_gen",
+    "optimizedBytes": 83096,
+    "optimizedSha256": "3fd9925d0e24dcba7d4512357ba516766a6d4cbe7f22d48a73600830b4d97c4c",
+    "originalFile": "exec-986fa40a-b1a2-4ce7-9eef-205ddb96276e.png",
+    "retainedOriginalFile": "smart-dimmer-installation-discovery-gardens-dubai-original319.png"
+  }
+]
