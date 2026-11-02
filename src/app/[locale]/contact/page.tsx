@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getActiveEmirates, getActiveServices } from "@/lib/catalog";
+import { serviceChoiceLabels } from "@/lib/catalog/service-choice-labels";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { LeadForm } from "@/components/forms/LeadForm";
@@ -79,7 +80,11 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           <LeadForm
             mode="contact"
             locale={locale}
-            services={services.map((s) => ({ slug: s.slug, name: s.t.name }))}
+            services={serviceChoiceLabels(services.map((s) => ({
+              slug: s.slug,
+              name: s.t.name,
+              englishName: s.translations.find((translation) => translation.locale === "en")?.name,
+            })), locale)}
             locations={locations.map((s) => ({ slug: s.slug, name: s.t.name }))}
           />
         </div>
