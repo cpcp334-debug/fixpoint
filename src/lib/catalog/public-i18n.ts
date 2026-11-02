@@ -74,7 +74,7 @@ export function sanitizePublicServiceI18n<T extends ServiceI18nLike>(
   });
 
   // Activated legacy records can still hold authoring-only seed text. Keep the
-  // stored record and SEO fields intact; present the existing visitor copy.
+  // stored record intact; present the existing visitor copy.
   if (row.status === 'active') {
     const stale = (value?: string) => /draft catalog|not publicly offered|not offered publicly|not active\.|Phase A1 master catalog|draft\/non-indexable|require human review before public activation|مسودة|قاعدة البيانات|غير قابلة للفهرسة/i.test(value || '');
     t = {...t};
@@ -83,6 +83,12 @@ export function sanitizePublicServiceI18n<T extends ServiceI18nLike>(
       : {shortDescription:copy.shortEn,longDescription:copy.longEn,whoItIsFor:copy.whoEn,whatWeDo:copy.whatEn,whenProfessional:copy.whenEn,process:copy.processEn,pricingInfo:copy.priceEn,professionalFallback:copy.safetyEn,safetyNotes:copy.safetyEn};
     for (const key of Object.keys(fallback) as Array<keyof typeof fallback>) {
       if(stale(t[key])) (t as ServiceI18nLike)[key] = fallback[key];
+    }
+    // Only the exact legacy English seed description is authoring text.
+    // Reuse the visible short description; preserve bespoke SEO and drafts.
+    const seedDescription = `${t.name} is a draft catalog offering and is not publicly offered until activated.`;
+    if (locale === "en" && t.metaDescription?.trim() === seedDescription) {
+      t.metaDescription = publicText(t.shortDescription, copy.shortEn).slice(0, 155);
     }
   }
 
