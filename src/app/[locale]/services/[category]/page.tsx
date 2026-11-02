@@ -1,3 +1,4 @@
+import { serviceQuotationCopy } from "@/lib/catalog/service-quotation-copy";
 import { pagePhoto } from "@/lib/catalog/page-photos";
 import { editorialImage, editorialImageAlt } from "@/lib/catalog/editorial-images";
 import { brandName } from "@/config/site";
@@ -61,6 +62,7 @@ export default async function CategoryPage({
   const cta = await getTranslations("Cta");
   const pager = await getTranslations("Pagination");
   const loc = getNavCategoryLocalized(cat, locale);
+  const quotationCopy = serviceQuotationCopy(cat.slug, locale, loc.name);
 
   const anchorPublished = cat.anchorSlug ? Boolean(await getServiceBySlug(cat.anchorSlug, locale)) : false;
   const childrenWithNames = await Promise.all(
@@ -225,9 +227,9 @@ export default async function CategoryPage({
       </Section>
 
       <CtaBand
-        title={cat.slug === "ac" ? (locale === "ar" ? "أخبرنا عن أعمال التكييف المطلوبة." : "Tell us about your AC job.") : cat.slug === "plumbing" ? (locale === "ar" ? "أخبرنا عن أعمال السباكة المطلوبة." : "Tell us about your plumbing job.") : home("ctaTitle")}
-        body={cat.slug === "ac" ? (locale === "ar" ? "شارك موقع العقار ومشكلة التكييف وتفاصيل الجهاز إن توفرت وترتيبات الدخول. يراجع الفريق الطلب قبل تأكيد النطاق والتوفر وعرض السعر." : "Share the property location, the AC issue, available unit details and any access arrangements. The team reviews the request before confirming scope, availability and quotation.") : cat.slug === "plumbing" ? (locale === "ar" ? "شارك موقع العقار ومشكلة السباكة وترتيبات الدخول. يراجع الفريق الطلب قبل تأكيد النطاق والتوفر وعرض السعر." : "Share the property location, the plumbing issue and any access arrangements. The team reviews the request before confirming scope, availability and quotation.") : home("ctaBody")}
-        quote={cat.slug === "ac" ? (locale === "ar" ? "اطلب عرض سعر للتكييف" : "Request an AC quote") : cat.slug === "plumbing" ? (locale === "ar" ? "اطلب عرض سعر للسباكة" : "Request a plumbing quote") : home("ctaQuote")}
+        title={quotationCopy?.title ?? home("ctaTitle")}
+        body={quotationCopy?.body ?? home("ctaBody")}
+        quote={quotationCopy?.quote ?? home("ctaQuote")}
         ai={home("ctaAi")}
         whatsapp={cta("whatsapp")}
       />
