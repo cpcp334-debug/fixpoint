@@ -42,9 +42,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         </div>
       </Section>
       <CtaBand
-        title={home("ctaTitle")}
-        body={home("ctaBody")}
-        quote={home("ctaQuote")}
+        title={locale === "ar" ? "أخبرنا عن الأعمال التي تحتاجها." : "Tell us about the work you need."}
+        body={locale === "ar" ? "شارك موقع العقار والخدمة المطلوبة. يراجع الفريق طلبك ويؤكد الخطوة التالية." : "Share the property location and service required. The team reviews your request and confirms the next step."}
+        quote={locale === "ar" ? "اطلب عرض سعر" : "Request a quote"}
         ai={home("ctaAi")}
         whatsapp={cta("whatsapp")}
         aiHref={`/${locale}#alnajah-ai`}
