@@ -100,6 +100,10 @@ export default async function ServicePage({
   const faqs = parseFaqJson(row.t.faq);
   const serviceFaq = await getServiceFaqBySlug(serviceFaqSlug(row.slug), locale);
   const guides = (await getPublishedGuides(locale)).filter((g) => g.serviceId === row.id);
+  // Correct the exact legacy placeholder only in this verified service’s previews.
+  const previewText = (text: string) => locale === "ar" && row.slug === "cleaning-services"
+    ? text.replaceAll("خدمة ضمن الخدمة", row.t.name)
+    : text;
   const [reviewSummary, approvedReviews] = await Promise.all([
     summarizeApprovedServiceReviews({ serviceId: row.id }),
     getApprovedServiceReviews({ serviceId: row.id, take: 10 }),
@@ -217,11 +221,11 @@ export default async function ServicePage({
               <li key={guide.slug}>
                 <DiyCard
                   slug={guide.slug}
-                  title={guide.t.title}
+                  title={previewText(guide.t.title)}
                   category={guide.categoryT?.name}
                   difficulty={guide.t.difficulty || guide.difficulty}
                   time={guide.t.estimatedTime || guide.estimatedTime}
-                  summary={guide.t.quickAnswer}
+                  summary={previewText(guide.t.quickAnswer)}
                   cta={home("readGuide")}
                 />
               </li>
@@ -251,7 +255,7 @@ export default async function ServicePage({
       {serviceFaq ? (
         <Section tone="sand">
           <SectionHeader title={t("faq")} />
-          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted sm:text-base">{serviceFaq.t.excerpt}</p>
+          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-muted sm:text-base">{previewText(serviceFaq.t.excerpt)}</p>
           <Link href={`/faq/${serviceFaq.slug}`} className="mt-4 inline-block text-sm font-semibold text-navy underline">
             {locale === "ar" ? "افتح صفحة الأسئلة الخاصة بهذه الخدمة" : "Open the FAQ page for this service"}
           </Link>
