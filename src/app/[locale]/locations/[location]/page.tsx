@@ -107,6 +107,7 @@ export default async function LocationPage({
       ? `مرحباً ${brandName("ar")}، أحتاج خدمة في ${em.t.name}.`
       : `Hello ${brandName("en")}, I need service in ${em.t.name}.`;
   const publicLoc = locationPathSlug(locale, em.slug);
+  const quoteHref = `/get-a-quote?location=${encodeURIComponent(em.slug)}`;
 
   return (
     <PageShell
@@ -133,7 +134,7 @@ export default async function LocationPage({
         shareUrl={publicCanonical(locale, `/locations/${publicLoc}`)}
         shareLabel={home("share")}
         copiedLabel={home("copied")}
-        actions={<CtaRow labels={ctaLabels} whatsappText={wa} />}
+        actions={<CtaRow labels={ctaLabels} whatsappText={wa} quoteHref={quoteHref} />}
         {...(() => {
           const media = hubCoverAndAlt(em.slug, locale, em.t.name, em.t.name);
           return { heroImage: media.cover, imageAlt: media.alt };
@@ -208,6 +209,7 @@ export default async function LocationPage({
       ) : null}
 
       <CtaBand
+        quoteHref={quoteHref}
         title={locale === "ar" ? "أخبرنا عن الأعمال التي تحتاجها." : "Tell us about the work you need."}
         body={locale === "ar"
           ? "شارك الخدمة المطلوبة وعنوان العقار وترتيبات الدخول. يراجع الفريق طلبك قبل تأكيد النطاق والتوفر وعرض السعر."
