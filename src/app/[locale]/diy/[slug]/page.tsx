@@ -1,3 +1,4 @@
+import { relatedServiceQuotationCopy } from "@/lib/catalog/service-quotation-copy";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { siteConfig, brandName } from "@/config/site";
@@ -6,6 +7,7 @@ import {
   getApprovedGuideQuestions,
   getDiyCategoryBySlug,
   getGuideBySlug,
+  getServiceBySlug,
   getPublishedGuidesBySlugs,
 } from "@/lib/catalog";
 import {
@@ -203,6 +205,8 @@ async function DiyCategoryView({
 async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) {
   const guide = await getGuideBySlug(slug, locale);
   if (!guide) notFound();
+  const relatedService = guide.service ? await getServiceBySlug(guide.service.slug, locale) : null;
+  const quotationCopy = relatedServiceQuotationCopy(relatedService, locale);
   const t = await getTranslations("Diy");
   const nav = await getTranslations("Nav");
   const cta = await getTranslations("Cta");
@@ -439,9 +443,9 @@ async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) 
       </Section>
 
       <CtaBand
-        title={home("ctaTitle")}
-        body={home("ctaBody")}
-        quote={home("ctaQuote")}
+        title={quotationCopy?.title ?? home("ctaTitle")}
+        body={quotationCopy?.body ?? home("ctaBody")}
+        quote={quotationCopy?.quote ?? home("ctaQuote")}
         ai={home("ctaAi")}
         whatsapp={cta("whatsapp")}
       />
