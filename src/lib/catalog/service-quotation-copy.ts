@@ -2,6 +2,18 @@ type QuoteCopy = { title: string; body: string; quote: string };
 
 // Preserve the established, published specialist enquiry wording.
 const specialised: Record<string, { en: QuoteCopy; ar: QuoteCopy }> = {
+  "cleaning": {
+    "en": {
+      "title": "Plan your cleaning quotation.",
+      "body": "Share the property location and type, approximate area, rooms to include, visit frequency and access arrangements. Ask the team to confirm the task list, exclusions and who provides cleaning products and equipment in the written quotation. Scope and availability are confirmed after review.",
+      "quote": "Request a cleaning quote"
+    },
+    "ar": {
+      "title": "حدّد متطلبات عرض سعر التنظيف.",
+      "body": "شارك موقع العقار ونوعه والمساحة التقريبية والغرف المشمولة وتكرار الزيارات وترتيبات الدخول. اطلب من الفريق توضيح قائمة المهام والاستثناءات ومن يوفّر مواد التنظيف والمعدات في عرض السعر المكتوب. يُؤكَّد النطاق والتوفر بعد المراجعة.",
+      "quote": "اطلب عرض سعر للتنظيف"
+    }
+  },
   "plumbing": {
     "en": {
       "title": "Tell us about your plumbing job.",
