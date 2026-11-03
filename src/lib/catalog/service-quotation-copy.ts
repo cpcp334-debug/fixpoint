@@ -59,3 +59,22 @@ export function serviceQuotationCopy(categorySlug: string, locale: string, name:
         quote: "Request a quote",
       };
 }
+
+/** Enquiry wording for related content; unresolved services use the general Contact prompt. */
+export function relatedServiceQuotationCopy(
+  service: { category: { slug: string }; t: { name: string } } | null,
+  locale: string,
+): QuoteCopy | null {
+  if (service) return serviceQuotationCopy(service.category.slug, locale, service.t.name);
+  return locale === "ar"
+    ? {
+        title: "أخبرنا عن الأعمال التي تحتاجها.",
+        body: "شارك موقع العقار والخدمة المطلوبة. يراجع الفريق طلبك ويؤكد الخطوة التالية.",
+        quote: "اطلب عرض سعر",
+      }
+    : {
+        title: "Tell us about the work you need.",
+        body: "Share the property location and service required. The team reviews your request and confirms the next step.",
+        quote: "Request a quote",
+      };
+}

@@ -1,3 +1,5 @@
+import { getServiceBySlug } from "@/lib/catalog";
+import { relatedServiceQuotationCopy } from "@/lib/catalog/service-quotation-copy";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
@@ -75,6 +77,8 @@ export default async function ServiceFaqPage({
   const cta = await getTranslations("Cta");
   const serviceSlug = page.relatedServiceSlugs[0];
   const diySlug = page.relatedDiySlugs[0];
+  const relatedService = serviceSlug ? await getServiceBySlug(serviceSlug, locale) : null;
+  const quotationCopy = relatedServiceQuotationCopy(relatedService, locale);
 
   return (
     <PageShell
@@ -123,9 +127,9 @@ export default async function ServiceFaqPage({
         </div>
       </Section>
       <CtaBand
-        title={home("ctaTitle")}
-        body={home("ctaBody")}
-        quote={home("ctaQuote")}
+        title={quotationCopy?.title ?? home("ctaTitle")}
+        body={quotationCopy?.body ?? home("ctaBody")}
+        quote={quotationCopy?.quote ?? home("ctaQuote")}
         ai={home("ctaAi")}
         whatsapp={cta("whatsapp")}
       />
