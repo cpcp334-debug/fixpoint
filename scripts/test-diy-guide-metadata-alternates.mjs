@@ -4,7 +4,7 @@ import vm from 'node:vm';
 import ts from 'typescript';
 import { createRequire } from 'node:module';
 const loadModule = createRequire(import.meta.url);
-const { diyGuidePathSlug, diyLookupCandidates, diyPathSlug, toMasterDiyGuideSlug } = loadModule('../src/lib/slug/diy-slug-map.ts');
+const { diyCategoryPathSlug, diyGuidePathSlug, diyLookupCandidates, diyPathSlug, toMasterDiyGuideSlug } = loadModule('../src/lib/slug/diy-slug-map.ts');
 const { pickI18n } = loadModule('../src/lib/utils.ts');
 const { buildMetadata } = loadModule('../src/lib/seo.ts');
 const { getSiteUrl } = loadModule('../src/config/site.ts');
@@ -25,7 +25,7 @@ async function main() {
   });
   const { publicCanonical } = load('src/components/public/PublicHero.tsx',['publicCanonical'],{getSiteUrl});
   const { generateMetadata } = load('src/app/[locale]/diy/[slug]/page.tsx',['generateMetadata'],{
-    getDiyCategoryBySlug:async()=>category,getGuideBySlug,buildMetadata,publicCanonical,diyGuidePathSlug,brandName:()=> 'Brand',
+    getDiyCategoryBySlug:async()=>category,getGuideBySlug,buildMetadata,publicCanonical,diyGuidePathSlug,diyCategoryPathSlug,brandName:()=> 'Brand',
   });
   const translation = locale => ({locale,title:locale+' title',seoTitle:locale+' SEO',metaDescription:locale+' description'});
   const fixture = locales => ({slug:'diy-cleaning-services',translations:locales.map(translation),service:null,category:{translations:[{locale:'en',name:'Cleaning'}]}});
@@ -49,9 +49,9 @@ async function main() {
   let before=queries.length;assert.equal((await getGuideBySlug('cleaning-services','en')).masterSlug,'diy-cleaning-services');assert.equal(queries.length-before,2);assert.deepEqual(JSON.parse(JSON.stringify(queries.at(-1).orderBy)),[{isPrimary:'desc'},{slug:'asc'}]);cases++;missFirst=false;
   for(const invalid of [null,fixture([])]){row=invalid;assert.equal(JSON.stringify(await generateMetadata({params:Promise.resolve({locale:'en',slug:'missing'})})), '{}');cases++;}
   for(const locale of ['en','ar']){
-    category={slug:locale==='ar'?'التنظيف':'cleaning',t:{name:'Cleaning',seoTitle:'Category SEO',metaDescription:'Category description'}};
+    category={masterSlug:'cleaning',translations:[{locale:'en'},{locale:'ar'}],slug:locale==='ar'?'التنظيف':'cleaning',t:{name:'Cleaning',seoTitle:'Category SEO',metaDescription:'Category description'}};
     before=queries.length;const result=await generateMetadata({params:Promise.resolve({locale,slug:category.slug})});
-    const expected=buildMetadata({locale,title:'Category SEO',description:'Category description',path:`/diy/${category.slug}`,index:true});assert.deepEqual(result,expected);assert.equal(queries.length,before);cases++;
+    const expected=buildMetadata({locale,title:'Category SEO',description:'Category description',path:`/diy/${category.slug}`,index:true,languages:Object.fromEntries(['en','ar'].map(l=>[l,`${getSiteUrl()}/${l}/diy/${diyCategoryPathSlug(l,category.masterSlug)}`]))});assert.deepEqual(result,expected);assert.equal(queries.length,before);cases++;
   }
   for(const q of queries){assert.equal(q.where.status,'published');assert.equal(q.where.indexable,true);assert.equal(q.include.translations,true);}
   console.log(`${cases} DIY loader/metadata cases passed; guide query counts and category branch preserved.`);

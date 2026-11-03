@@ -72,6 +72,11 @@ export async function generateMetadata({
       description: category.t.metaDescription || category.t.description,
       path: `/diy/${category.slug}`,
       index: true,
+      languages: Object.fromEntries(
+        ["en", "ar"]
+          .filter((language) => category.translations.some((translation) => translation.locale === language))
+          .map((language) => [language, publicCanonical(language, `/diy/${diyCategoryPathSlug(language, category.masterSlug)}`)]),
+      ),
     });
   }
   const guide = await getGuideBySlug(slug, locale);
