@@ -297,8 +297,8 @@ export default async function ServicePage({
         <SectionHeader title={t("areas")} />
         <p className="mt-3 text-sm leading-relaxed text-muted">
           {locale === "ar"
-            ? "نخدم الإمارات السبع و277 مكاناً. اختر الإمارة، ثم اذكر المدينة أو المنطقة في الطلب."
-            : "We serve the seven emirates and 277 places. Choose the emirate, then name the city or area on the request."}
+            ? "اختر الإمارة واذكر المدينة أو المنطقة أو المبنى في الطلب. يُؤكَّد توفر هذه الخدمة في العنوان المطلوب قبل تحديد الموعد. صفحة الموقع لا تعني تأكيد تغطية الخدمة."
+            : "Choose an emirate and include the city, community or building in your request. Availability is confirmed for this service and address before scheduling. A location page is not confirmation of service coverage."}
         </p>
         <ul className="mt-3 grid gap-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7">
           {emirates.map((em) => (
