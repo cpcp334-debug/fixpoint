@@ -7,10 +7,15 @@ const cleaningNames: Record<string, { before: string; after: string }> = {
   "move-out-cleaning": { before: "تنظيف الانتقال", after: "تنظيف عند المغادرة" },
 };
 
+const plumbingNames: Record<string, { before: string; after: string }> = {
+  "running-toilet-repair": { before: "إصلاح المرحاض", after: "إصلاح تدفق مياه المرحاض المستمر" },
+};
+
 /** Correct known ambiguous category previews without replacing reviewed content or URLs. */
 export function categoryChildCopy(category: string, locale: string, masterSlug: string, copy: CardCopy): CardCopy {
-  if (category !== "cleaning" || locale !== "ar") return copy;
-  const replacement = cleaningNames[masterSlug];
+  if (locale !== "ar") return copy;
+  const replacement = category === "cleaning" ? cleaningNames[masterSlug]
+    : category === "plumbing" ? plumbingNames[masterSlug] : undefined;
   if (!replacement || copy.name !== replacement.before) return copy;
   return {
     name: replacement.after,
