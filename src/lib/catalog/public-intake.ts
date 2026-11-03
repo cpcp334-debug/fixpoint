@@ -15,9 +15,13 @@ export function publicIntakeQuestions(raw: string, locale: string): string[] {
     }
     if (!entry || typeof entry !== 'object' || Array.isArray(entry)) return [];
     const question = entry as Record<string, unknown>;
+    const english = usable(question.en);
+    // Reuse the existing seed translation only when Arabic is unavailable.
+    const arabicFallback = english === 'Describe the issue and the property type.'
+      ? 'صف المشكلة ونوع العقار.' : english;
     const label = locale === 'ar'
-      ? usable(question.ar) || usable(question.en)
-      : usable(question.en) || usable(question.ar);
+      ? usable(question.ar) || arabicFallback
+      : english || usable(question.ar);
     return label ? [label] : [];
   });
 }
