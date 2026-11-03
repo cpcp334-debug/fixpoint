@@ -134,7 +134,7 @@ export default async function LocationPage({
         shareUrl={publicCanonical(locale, `/locations/${publicLoc}`)}
         shareLabel={home("share")}
         copiedLabel={home("copied")}
-        actions={<CtaRow labels={ctaLabels} whatsappText={wa} quoteHref={quoteHref} />}
+        actions={<CtaRow labels={ctaLabels} whatsappText={wa} quoteHref={quoteHref} bookHref={`/book-a-service?location=${encodeURIComponent(em.slug)}`} />}
         {...(() => {
           const media = hubCoverAndAlt(em.slug, locale, em.t.name, em.t.name);
           return { heroImage: media.cover, imageAlt: media.alt };

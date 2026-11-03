@@ -14,6 +14,7 @@ export function BookingForm({
   locale,
   type,
   defaultService,
+  defaultLocation,
   services,
   locations,
   labels,
@@ -21,6 +22,7 @@ export function BookingForm({
   locale: string;
   type: PublicBookingType;
   defaultService?: string;
+  defaultLocation?: string;
   services: Array<{ slug: string; name: string }>;
   locations: Array<{ slug: string; name: string }>;
   labels: {
@@ -140,6 +142,7 @@ export function BookingForm({
             }}
           />
           <Select
+            defaultValue={defaultLocation}
             id="bk-emirate"
             name="locationSlug"
             label={labels.emirate}
@@ -256,6 +259,7 @@ function Field({
 }
 
 function Select({
+  defaultValue,
   id,
   name,
   label,
@@ -265,13 +269,14 @@ function Select({
   name: string;
   label: string;
   options: Array<{ value: string; label: string }>;
+  defaultValue?: string;
 }) {
   return (
     <div>
       <label htmlFor={id} className={fieldLabelClass}>
         {label}
       </label>
-      <select id={id} name={name} className={fieldControlClass}>
+      <select id={id} name={name} defaultValue={defaultValue} className={fieldControlClass}>
         {options.map((opt) => (
           <option key={opt.value + opt.label} value={opt.value}>
             {opt.label}

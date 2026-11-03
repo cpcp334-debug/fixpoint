@@ -1,3 +1,4 @@
+import { toMasterLocationSlug } from "@/lib/slug/location-slug-map";
 import { toMasterServiceSlug } from "@/lib/slug/service-slug-map";
 import { serviceChoiceLabels } from "@/lib/catalog/service-choice-labels";
 import { brandName } from "@/config/site";
@@ -34,10 +35,10 @@ export default async function BookingPage({
   searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ type?: string; service?: string | string[] }>;
+  searchParams: Promise<{ type?: string; service?: string | string[]; location?: string | string[] }>;
 }) {
   const { locale } = await params;
-  const { type: typeParam, service: requestedService } = await searchParams;
+  const { type: typeParam, service: requestedService, location: requestedLocation } = await searchParams;
   setRequestLocale(locale);
   const type = parseBookingTypeParam(typeParam);
   const t = await getTranslations("Booking");
@@ -52,6 +53,8 @@ export default async function BookingPage({
     ? services.find((s) => toMasterServiceSlug(s.slug) === toMasterServiceSlug(requestedService))?.slug
     : undefined;
   const locations = await getActiveEmirates(locale);
+  const locationSlug = typeof requestedLocation === "string" ? toMasterLocationSlug(requestedLocation) : undefined;
+  const defaultLocation = locations.find((location) => location.slug === locationSlug)?.slug;
 
   return (
     <PageShell
@@ -86,6 +89,7 @@ export default async function BookingPage({
             locale={locale}
             type={type}
             defaultService={defaultService}
+            defaultLocation={defaultLocation}
             services={serviceChoiceLabels(services.map((s) => ({
               slug: s.slug,
               name: s.t.name,
