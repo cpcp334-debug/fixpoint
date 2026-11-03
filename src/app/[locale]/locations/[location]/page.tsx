@@ -164,7 +164,12 @@ export default async function LocationPage({
       </Section>
 
       <Section>
-        <SectionHeader title={t("services")} />
+        <SectionHeader
+          title={locale === "ar" ? "تصفّح الخدمات" : "Explore services"}
+          lead={locale === "ar"
+            ? "تصفّح دليل الخدمات وأكّد توفر الخدمة في عنوانك الدقيق. إدراج الخدمة أو الموقع لا يعني تأكيد الزيارة."
+            : "Browse the service catalogue and confirm availability for your exact address. A listed service or location does not confirm a visit."}
+        />
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <ServiceCard
