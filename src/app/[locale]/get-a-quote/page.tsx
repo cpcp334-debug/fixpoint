@@ -10,6 +10,7 @@ import { Section } from "@/components/ui/Section";
 import { PageShell } from "@/components/public/PageShell";
 import { PublicHero } from "@/components/public/PublicHero";
 import { CtaBand } from "@/components/public/CtaBand";
+import { toMasterLocationSlug } from '@/lib/slug/location-slug-map';
 import { toMasterServiceSlug } from '@/lib/slug/service-slug-map';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -18,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return buildMetadata({ locale, title: `${t("title")} | ${brandName(locale)}`, description: t("lead"), path: "/get-a-quote" });
 }
 
-export default async function QuotePage({ params, searchParams }: { params: Promise<{ locale: string }>; searchParams:Promise<{service?:string}> }) {
+export default async function QuotePage({ params, searchParams }: { params: Promise<{ locale: string }>; searchParams:Promise<{service?:string | string[]; location?:string | string[]}> }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("Quote");
@@ -26,9 +27,12 @@ export default async function QuotePage({ params, searchParams }: { params: Prom
   const home = await getTranslations("Home");
   const cta = await getTranslations("Cta");
   const services = await getActiveServices(locale);
-  const requestedService=(await searchParams).service;
+  const query = await searchParams;
+  const requestedService = typeof query.service === "string" ? query.service : undefined;
   const defaultService=requestedService ? services.find(s=>toMasterServiceSlug(s.slug)===toMasterServiceSlug(requestedService))?.slug : undefined;
   const locations = await getActiveEmirates(locale);
+  const requestedLocation = typeof query.location === "string" ? toMasterLocationSlug(query.location) : undefined;
+  const defaultLocation = locations.find((location) => location.slug === requestedLocation)?.slug;
 
   return (
     <PageShell
@@ -57,6 +61,7 @@ export default async function QuotePage({ params, searchParams }: { params: Prom
           <LeadForm
             mode="quote"
             defaultService={defaultService}
+            defaultLocation={defaultLocation}
             locale={locale}
             services={serviceChoiceLabels(services.map((s) => ({
               slug: s.slug,
