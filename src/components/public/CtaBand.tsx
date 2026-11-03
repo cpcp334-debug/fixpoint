@@ -9,6 +9,7 @@ export function CtaBand({
   ai,
   whatsapp,
   whatsappText,
+  quoteHref = "/get-a-quote",
   aiHref = "#alnajah-ai",
   className,
   compact = false,
@@ -19,6 +20,7 @@ export function CtaBand({
   ai: string;
   whatsapp: string;
   whatsappText?: string;
+  quoteHref?: string;
   aiHref?: string;
   className?: string;
   compact?: boolean;
@@ -28,7 +30,7 @@ export function CtaBand({
       <h2 className="max-w-xl text-2xl font-semibold tracking-tight text-navy sm:text-3xl">{title}</h2>
       <p className={compact ? "mt-2 max-w-xl text-muted" : "mt-3 max-w-xl text-muted"}>{body}</p>
       <div className={compact ? "mt-3 flex flex-col gap-2 sm:flex-row sm:flex-wrap" : "mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap"}>
-        <ButtonLink href="/get-a-quote" className="w-full sm:w-auto">
+        <ButtonLink href={quoteHref} className="w-full sm:w-auto">
           {quote}
         </ButtonLink>
         <ButtonLink href={aiHref} variant="secondary" external className="w-full sm:w-auto">

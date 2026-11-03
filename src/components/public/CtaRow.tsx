@@ -5,6 +5,7 @@ import { ButtonLink } from "@/components/ui/Button";
 export function CtaRow({
   labels,
   whatsappText,
+  quoteHref = "/get-a-quote",
   tone = "light",
   includeInspect = false,
   bookingEnabled = true,
@@ -18,6 +19,7 @@ export function CtaRow({
     call: string;
   };
   whatsappText?: string;
+  quoteHref?: string;
   tone?: "light" | "inverse";
   includeInspect?: boolean;
   /** When false, omit the book CTA (effective ServiceLocation ops). */
@@ -29,7 +31,7 @@ export function CtaRow({
 
   return (
     <div className="flex flex-wrap gap-3">
-      <ButtonLink href="/get-a-quote" variant={primary}>
+      <ButtonLink href={quoteHref} variant={primary}>
         {labels.quote}
       </ButtonLink>
       {bookingEnabled ? (

@@ -83,6 +83,7 @@ export default async function ServicePage({
   const cta = await getTranslations("Cta");
   const home = await getTranslations("Home");
   const quotationCopy = serviceQuotationCopy(row.category.slug, locale, row.t.name);
+  const quoteHref = `/get-a-quote?service=${encodeURIComponent(row.slug)}`;
   const emirates = await getActiveEmirates(locale);
   const coveredEmirates = await prisma.serviceLocation.findMany({
     where: {
@@ -160,7 +161,7 @@ export default async function ServicePage({
         shareUrl={publicCanonical(locale, publicPath)}
         shareLabel={home("share")}
         copiedLabel={home("copied")}
-        actions={<CtaRow labels={ctaLabels} whatsappText={wa} />}
+        actions={<CtaRow labels={ctaLabels} whatsappText={wa} quoteHref={quoteHref} />}
       />
 
       {row.slug === "electrical-maintenance" ? (
@@ -314,6 +315,7 @@ export default async function ServicePage({
       </Section>
 
       <CtaBand
+        quoteHref={quoteHref}
         title={quotationCopy?.title ?? home("ctaTitle")}
         body={quotationCopy?.body ?? home("ctaBody")}
         quote={quotationCopy?.quote ?? home("ctaQuote")}
