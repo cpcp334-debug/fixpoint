@@ -208,9 +208,11 @@ export default async function LocationPage({
       ) : null}
 
       <CtaBand
-        title={home("ctaTitle")}
-        body={home("ctaBody")}
-        quote={home("ctaQuote")}
+        title={locale === "ar" ? "أخبرنا عن الأعمال التي تحتاجها." : "Tell us about the work you need."}
+        body={locale === "ar"
+          ? "شارك الخدمة المطلوبة وعنوان العقار وترتيبات الدخول. يراجع الفريق طلبك قبل تأكيد النطاق والتوفر وعرض السعر."
+          : "Share the service required, property address and access arrangements. The team reviews your request before confirming scope, availability and quotation."}
+        quote={locale === "ar" ? "اطلب عرض سعر" : "Request a quote"}
         ai={home("ctaAi")}
         whatsapp={cta("whatsapp")}
         whatsappText={wa}
@@ -363,9 +365,11 @@ async function PublishedPlacePage({
         </Section>
       ) : null}
       <CtaBand
-        title={home("ctaTitle")}
-        body={home("ctaBody")}
-        quote={home("ctaQuote")}
+        title={locale === "ar" ? "أخبرنا عن الأعمال التي تحتاجها." : "Tell us about the work you need."}
+        body={locale === "ar"
+          ? "شارك الخدمة المطلوبة وعنوان العقار وترتيبات الدخول. يراجع الفريق طلبك قبل تأكيد النطاق والتوفر وعرض السعر."
+          : "Share the service required, property address and access arrangements. The team reviews your request before confirming scope, availability and quotation."}
+        quote={locale === "ar" ? "اطلب عرض سعر" : "Request a quote"}
         ai={home("ctaAi")}
         whatsapp={cta("whatsapp")}
         whatsappText={wa}
