@@ -60,6 +60,11 @@ export async function generateMetadata({
     description: row.t.metaDescription,
     path: `/${servicePathSlug(locale, row.slug)}`,
     index: row.publicIndexable,
+    languages: Object.fromEntries(
+      ["en", "ar"]
+        .filter((language) => row.translations.some((translation) => translation.locale === language))
+        .map((language) => [language, publicCanonical(language, `/${servicePathSlug(language, row.slug)}`)]),
+    ),
   });
 }
 
