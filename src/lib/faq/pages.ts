@@ -63,6 +63,8 @@ export const getServiceFaqBySlug = cache(async (slug: string, locale: string) =>
   const publicSlug = faqPathSlug(locale, master);
   return {
     slug: publicSlug,
+    masterSlug: master,
+    translationLocales: row.translations.map((translation) => translation.locale),
     categorySlug: pickCategory(row.categorySlugs),
     relatedServiceSlugs: parseJson<string[]>(row.relatedServiceSlugs, []),
     relatedDiySlugs: parseJson<string[]>(row.relatedDiySlugs, []),

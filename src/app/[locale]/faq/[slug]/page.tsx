@@ -1,3 +1,4 @@
+import { faqPathSlug } from "@/lib/slug/faq-slug-map";
 import { getServiceBySlug } from "@/lib/catalog";
 import { relatedServiceQuotationCopy } from "@/lib/catalog/service-quotation-copy";
 import { notFound } from "next/navigation";
@@ -9,7 +10,7 @@ import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { FaqList } from "@/components/ui/Blocks";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { PageShell } from "@/components/public/PageShell";
-import { PublicHero } from "@/components/public/PublicHero";
+import { PublicHero, publicCanonical } from "@/components/public/PublicHero";
 import { CtaBand } from "@/components/public/CtaBand";
 import { getServiceFaqBySlug } from "@/lib/faq/pages";
 import { serviceHref } from "@/lib/slug/locale-slug";
@@ -38,6 +39,11 @@ export async function generateMetadata({
     description: page.t.metaDescription,
     path: `/faq/${page.slug}`,
     index: true,
+    languages: Object.fromEntries(
+      ["en", "ar"]
+        .filter((language) => page.translationLocales.includes(language))
+        .map((language) => [language, publicCanonical(language, `/faq/${faqPathSlug(language, page.masterSlug)}`)]),
+    ),
   });
 }
 
