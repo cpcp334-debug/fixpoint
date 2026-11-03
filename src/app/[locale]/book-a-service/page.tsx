@@ -1,3 +1,4 @@
+import { toMasterServiceSlug } from "@/lib/slug/service-slug-map";
 import { serviceChoiceLabels } from "@/lib/catalog/service-choice-labels";
 import { brandName } from "@/config/site";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -33,10 +34,10 @@ export default async function BookingPage({
   searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ type?: string }>;
+  searchParams: Promise<{ type?: string; service?: string | string[] }>;
 }) {
   const { locale } = await params;
-  const { type: typeParam } = await searchParams;
+  const { type: typeParam, service: requestedService } = await searchParams;
   setRequestLocale(locale);
   const type = parseBookingTypeParam(typeParam);
   const t = await getTranslations("Booking");
@@ -47,6 +48,9 @@ export default async function BookingPage({
   const cta = await getTranslations("Cta");
   const allServices = await getActiveServices(locale);
   const services = allServices.filter((s) => serviceAllowsBookingType(s, type));
+  const defaultService = typeof requestedService === "string"
+    ? services.find((s) => toMasterServiceSlug(s.slug) === toMasterServiceSlug(requestedService))?.slug
+    : undefined;
   const locations = await getActiveEmirates(locale);
 
   return (
@@ -81,6 +85,7 @@ export default async function BookingPage({
           <BookingForm
             locale={locale}
             type={type}
+            defaultService={defaultService}
             services={serviceChoiceLabels(services.map((s) => ({
               slug: s.slug,
               name: s.t.name,

@@ -13,12 +13,14 @@ import { getAttributionForSubmit } from "@/lib/attribution/client";
 export function BookingForm({
   locale,
   type,
+  defaultService,
   services,
   locations,
   labels,
 }: {
   locale: string;
   type: PublicBookingType;
+  defaultService?: string;
   services: Array<{ slug: string; name: string }>;
   locations: Array<{ slug: string; name: string }>;
   labels: {
@@ -124,6 +126,8 @@ export function BookingForm({
         </FormGroup>
         <FormGroup legend={t("groupJob")}>
           <ServiceModeField
+            key={`${type}:${defaultService ?? ""}`}
+            defaultSlug={defaultService}
             idPrefix={`bk-${type}`}
             services={services}
             error={fieldErrors.serviceSlug || fieldErrors.serviceOther}

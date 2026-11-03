@@ -6,6 +6,7 @@ export function CtaRow({
   labels,
   whatsappText,
   quoteHref = "/get-a-quote",
+  bookHref = "/book-a-service",
   tone = "light",
   includeInspect = false,
   bookingEnabled = true,
@@ -20,6 +21,7 @@ export function CtaRow({
   };
   whatsappText?: string;
   quoteHref?: string;
+  bookHref?: string;
   tone?: "light" | "inverse";
   includeInspect?: boolean;
   /** When false, omit the book CTA (effective ServiceLocation ops). */
@@ -35,7 +37,7 @@ export function CtaRow({
         {labels.quote}
       </ButtonLink>
       {bookingEnabled ? (
-        <ButtonLink href="/book-a-service" variant={secondary}>
+        <ButtonLink href={bookHref} variant={secondary}>
           {labels.book}
         </ButtonLink>
       ) : null}

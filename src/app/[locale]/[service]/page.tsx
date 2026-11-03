@@ -161,7 +161,7 @@ export default async function ServicePage({
         shareUrl={publicCanonical(locale, publicPath)}
         shareLabel={home("share")}
         copiedLabel={home("copied")}
-        actions={<CtaRow labels={ctaLabels} whatsappText={wa} quoteHref={quoteHref} />}
+        actions={<CtaRow labels={ctaLabels} whatsappText={wa} quoteHref={quoteHref} bookHref={`/book-a-service?service=${encodeURIComponent(row.slug)}`} />}
       />
 
       {row.slug === "electrical-maintenance" ? (
