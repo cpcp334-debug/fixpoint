@@ -363,14 +363,14 @@ async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) 
         </div>
       </Section>
 
-      {guide.serviceT && guide.service ? (
+      {relatedService ? (
         <Section tone="sand">
           <SectionHeader title={t("relatedService")} />
           <div className="mt-8 max-w-lg">
             <ServiceCard
-              slug={guide.service.slug}
-              name={guide.serviceT.name}
-              description={guide.serviceT.shortDescription}
+              slug={relatedService.slug}
+              name={relatedService.t.name}
+              description={relatedService.t.shortDescription}
               cta={home("viewService")}
             />
           </div>
