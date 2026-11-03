@@ -7,7 +7,7 @@ import { pagePhoto } from "@/lib/catalog/page-photos";
 import { editorialImage, editorialImageAlt } from "@/lib/catalog/editorial-images";
 import { sanitizePublicServiceI18n } from "@/lib/catalog/public-i18n";
 import { locationLookupCandidates, serviceLookupCandidates, servicePathSlug } from "@/lib/slug/locale-slug";
-import { diyLookupCandidates, diyPathSlug } from "@/lib/slug/diy-slug-map";
+import { diyLookupCandidates, diyPathSlug, toMasterDiyGuideSlug } from "@/lib/slug/diy-slug-map";
 import { toMasterServiceSlug } from "@/lib/slug/service-slug-map";
 import {
   getServiceLocation as resolvePublicServiceLocation,
@@ -298,6 +298,7 @@ export const getGuideBySlug = cache(async (slug: string, locale: string) => {
   return {
     ...row,
     slug: diyPathSlug(locale, row.slug),
+    masterSlug: toMasterDiyGuideSlug(row.slug),
     heroImage: pagePhoto("diy", row.slug),
     imageAlt: editorialImageAlt(pagePhoto("diy", row.slug) || "", locale, t.title),
     t,
