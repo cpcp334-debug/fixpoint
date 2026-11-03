@@ -1,4 +1,5 @@
 import { serviceQuotationCopy } from "@/lib/catalog/service-quotation-copy";
+import { categoryChildCopy } from "@/lib/catalog/category-child-copy";
 import { pagePhoto } from "@/lib/catalog/page-photos";
 import { editorialImage, editorialImageAlt } from "@/lib/catalog/editorial-images";
 import { brandName } from "@/config/site";
@@ -79,8 +80,7 @@ export default async function CategoryPage({
       return {
         slug: svc?.slug || child.slug,
         href: serviceHref(locale, svc?.slug || child.slug),
-        name,
-        description,
+        ...categoryChildCopy(cat.slug, locale, child.slug, { name, description }),
       };
     }),
   );
