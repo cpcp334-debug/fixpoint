@@ -32,7 +32,7 @@ import { CtaRow } from "@/components/public/CtaRow";
 import { CtaBand } from "@/components/public/CtaBand";
 import { topicWebpForDiyCategory, altForTopic } from "@/lib/media/topic-webp";
 import { listPageHref, PrevNextPagination } from "@/components/ui/PrevNextPagination";
-import { diyCategoryPathSlug } from "@/lib/slug/diy-slug-map";
+import { diyCategoryPathSlug, diyGuidePathSlug } from "@/lib/slug/diy-slug-map";
 
 const DIY_CATEGORY_PAGE_SIZE = 6;
 
@@ -83,6 +83,11 @@ export async function generateMetadata({
     path: `/diy/${guide.slug}`,
     ogType: "article",
     index: true,
+    languages: Object.fromEntries(
+      ["en", "ar"]
+        .filter((language) => guide.translations.some((translation) => translation.locale === language))
+        .map((language) => [language, publicCanonical(language, `/diy/${diyGuidePathSlug(language, guide.masterSlug)}`)]),
+    ),
   });
 }
 
