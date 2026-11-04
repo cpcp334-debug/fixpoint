@@ -37,7 +37,8 @@ export async function generateMetadata({
     description: model.metaDescription,
     path: model.path,
     index: model.localeIndexable,
-    languages: Object.keys(languages).length ? languages : undefined,
+    // An empty resolver set means no eligible alternates; do not synthesize them.
+    languages,
   });
 }
 
