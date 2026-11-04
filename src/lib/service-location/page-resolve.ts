@@ -39,6 +39,7 @@ const resolveInclude = {
   },
   service: {
     include: {
+      category: { select: { slug: true } },
       translations: true,
       primaryDiyGuide: { include: { translations: true } },
       diyGuides: {
@@ -345,6 +346,7 @@ async function softResolveFromServiceAndLocation(
     mode: "public",
     locale,
     serviceSlug: service.slug,
+    categorySlug: service.category.slug,
     locationSlug: location.slug,
     path,
     serviceId: service.id,
@@ -734,6 +736,7 @@ function buildModel(
     mode,
     locale,
     serviceSlug: row.service.slug,
+    categorySlug: row.service.category.slug,
     locationSlug: row.location.slug,
     path,
     serviceId: row.service.id,

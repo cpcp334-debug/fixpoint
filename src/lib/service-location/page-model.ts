@@ -33,6 +33,7 @@ export type ServiceLocationPageModel = {
   mode: "public" | "preview";
   locale: "en" | "ar";
   serviceSlug: string;
+  categorySlug: string;
   locationSlug: string;
   path: string;
   serviceId: string;
