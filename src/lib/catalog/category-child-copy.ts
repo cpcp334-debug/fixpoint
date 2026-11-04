@@ -29,6 +29,7 @@ const paintingNames: Record<string, { before: string; after: string }> = {
 };
 
 const microwaveNames: Record<string, { before: string; after: string }> = {
+  "microwave-door-problem": { before: "المايكروويف الباب", after: "مشكلة باب المايكروويف" },
   "microwave-no-power-diagnosis": { before: "تشخيص المايكروويف الكهرباء", after: "تشخيص عدم تشغيل المايكروويف" },
   "microwave-display-problem": { before: "المايكروويف", after: "مشكلة شاشة المايكروويف" },
   "microwave-electrical-diagnosis": { before: "تشخيص المايكروويف الكهرباء", after: "تشخيص أعطال المايكروويف الكهربائية" },
