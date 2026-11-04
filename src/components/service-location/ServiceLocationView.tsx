@@ -75,6 +75,12 @@ export function ServiceLocationView({
   approvedReviews?: Array<{ authorName: string; stars: number; body: string }>;
 }) {
   const quotationCopy = serviceQuotationCopy(model.categorySlug, model.locale, model.serviceName);
+  const quoteLocation = isPublicEmirateSlug(model.locationSlug)
+    ? model.locationSlug
+    : model.breadcrumbs.find((crumb) => crumb.type === "emirate" && isPublicEmirateSlug(crumb.slug))?.slug;
+  const quoteParams = new URLSearchParams({ service: model.serviceSlug });
+  if (quoteLocation) quoteParams.set("location", quoteLocation);
+  const quoteHref = `/get-a-quote?${quoteParams.toString()}`;
   const Icon = serviceIcons[model.serviceSlug as keyof typeof serviceIcons];
   const wa = `Hello ${brandName("en")}, I need ${model.serviceName} in ${model.locationName}.`;
   const crumbItems = [
@@ -160,6 +166,7 @@ export function ServiceLocationView({
         copiedLabel={labels.copied}
         actions={
           <CtaRow
+            quoteHref={quoteHref}
             labels={{
               quote: labels.quote,
               book: labels.book,
@@ -366,6 +373,7 @@ export function ServiceLocationView({
       ) : null}
 
       <CtaBand
+        quoteHref={quoteHref}
         title={quotationCopy?.title ?? labels.ctaTitle}
         body={quotationCopy?.body ?? labels.ctaBody}
         quote={quotationCopy?.quote ?? labels.ctaQuote}
