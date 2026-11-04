@@ -81,6 +81,7 @@ export function ServiceLocationView({
   const quoteParams = new URLSearchParams({ service: model.serviceSlug });
   if (quoteLocation) quoteParams.set("location", quoteLocation);
   const quoteHref = `/get-a-quote?${quoteParams.toString()}`;
+  const bookHref = `/book-a-service?${quoteParams.toString()}`;
   const Icon = serviceIcons[model.serviceSlug as keyof typeof serviceIcons];
   const wa = `Hello ${brandName("en")}, I need ${model.serviceName} in ${model.locationName}.`;
   const crumbItems = [
@@ -167,6 +168,7 @@ export function ServiceLocationView({
         actions={
           <CtaRow
             quoteHref={quoteHref}
+            bookHref={bookHref}
             labels={{
               quote: labels.quote,
               book: labels.book,
@@ -179,7 +181,7 @@ export function ServiceLocationView({
             extra={
               <>
                 {model.ops.emergencyAvailable && labels.emergency ? (
-                  <ButtonLink href="/book-a-service?type=emergency" variant="secondary">
+                  <ButtonLink href={`${bookHref}&type=emergency`} variant="secondary">
                     {labels.emergency}
                   </ButtonLink>
                 ) : null}
