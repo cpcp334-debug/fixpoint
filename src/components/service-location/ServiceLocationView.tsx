@@ -1,3 +1,4 @@
+import { serviceQuotationCopy } from "@/lib/catalog/service-quotation-copy";
 import { renderArticleBody } from "@/components/content/ArticleBody";
 import { Link } from "@/i18n/routing";
 import { brandName } from "@/config/site";
@@ -73,6 +74,7 @@ export function ServiceLocationView({
   reviewSummary?: { average: number; count: number };
   approvedReviews?: Array<{ authorName: string; stars: number; body: string }>;
 }) {
+  const quotationCopy = serviceQuotationCopy(model.categorySlug, model.locale, model.serviceName);
   const Icon = serviceIcons[model.serviceSlug as keyof typeof serviceIcons];
   const wa = `Hello ${brandName("en")}, I need ${model.serviceName} in ${model.locationName}.`;
   const crumbItems = [
@@ -364,9 +366,9 @@ export function ServiceLocationView({
       ) : null}
 
       <CtaBand
-        title={labels.ctaTitle}
-        body={labels.ctaBody}
-        quote={labels.ctaQuote}
+        title={quotationCopy?.title ?? labels.ctaTitle}
+        body={quotationCopy?.body ?? labels.ctaBody}
+        quote={quotationCopy?.quote ?? labels.ctaQuote}
         ai={labels.ctaAi}
         whatsapp={labels.whatsapp}
         whatsappText={wa}
