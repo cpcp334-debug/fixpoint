@@ -8,6 +8,9 @@ const cleaningNames: Record<string, { before: string; after: string }> = {
 };
 
 const plumbingNames: Record<string, { before: string; after: string }> = {
+  "water-leakage-detection": { before: "كشف المياه التسرب", after: "كشف تسرب المياه" },
+  "water-leakage-repair": { before: "إصلاح المياه التسرب", after: "إصلاح تسرب المياه" },
+  "water-pressure-problem-diagnosis": { before: "تشخيص المياه", after: "تشخيص مشاكل ضغط المياه" },
   "running-toilet-repair": { before: "إصلاح المرحاض", after: "إصلاح تدفق مياه المرحاض المستمر" },
 };
 
