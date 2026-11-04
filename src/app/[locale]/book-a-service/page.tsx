@@ -55,6 +55,19 @@ export default async function BookingPage({
   const locations = await getActiveEmirates(locale);
   const locationSlug = typeof requestedLocation === "string" ? toMasterLocationSlug(requestedLocation) : undefined;
   const defaultLocation = locations.find((location) => location.slug === locationSlug)?.slug;
+  const contextService = typeof requestedService === "string"
+    ? allServices.find((service) => toMasterServiceSlug(service.slug) === toMasterServiceSlug(requestedService))
+    : undefined;
+  const bookingTypes = TYPE_HREF.map((item) => {
+    const [path, search] = item.href.split("?");
+    const query = new URLSearchParams(search);
+    if (contextService && serviceAllowsBookingType(contextService, item.type)) {
+      query.set("service", contextService.slug);
+    }
+    if (defaultLocation) query.set("location", defaultLocation);
+    const params = query.toString();
+    return { ...item, href: params ? `${path}?${params}` : path };
+  });
 
   return (
     <PageShell
@@ -69,7 +82,7 @@ export default async function BookingPage({
       <Section>
         <Disclaimer>{t("notConfirmed")}</Disclaimer>
         <nav className="mt-6 flex flex-wrap gap-2" aria-label={t("types")}>
-          {TYPE_HREF.map((item) => (
+          {bookingTypes.map((item) => (
             <Link
               key={item.type}
               href={item.href}
