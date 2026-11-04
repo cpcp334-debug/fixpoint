@@ -1,3 +1,4 @@
+import { renderArticleBody } from "@/components/content/ArticleBody";
 import { Link } from "@/i18n/routing";
 import { brandName } from "@/config/site";
 import type { ServiceLocationPageModel } from "@/lib/service-location/page-model";
@@ -188,7 +189,9 @@ export function ServiceLocationView({
         <div className="grid gap-4">
           {geoText ? (
             <ProseCard title={labels.geo}>
-              <div className="whitespace-pre-line">{geoText}</div>
+              {/^#{2,3} /m.test(geoText)
+                ? renderArticleBody(geoText, { deduplicateSections: false, headingLevel: 3 })
+                : <div className="whitespace-pre-line">{geoText}</div>}
             </ProseCard>
           ) : model.content.localInfo ? (
             <ProseCard title={labels.local}>{model.content.localInfo}</ProseCard>
