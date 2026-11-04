@@ -20,8 +20,9 @@ import { TopElectricalServices } from "@/components/catalog/TopElectricalService
 import { TOP_ELECTRICAL_SLUGS } from "../../../../../prisma/data/electrical-service-copy";
 import { listPageHref, PrevNextPagination } from "@/components/ui/PrevNextPagination";
 import { serviceHref } from "@/lib/slug/locale-slug";
+import { CATEGORY_PAGE_SIZE, categoryPagination, firstCategoryQueryValue, type CategorySearchParams } from "@/lib/catalog/category-pagination";
 
-const CHILD_PAGE_SIZE = 24;
+const CHILD_PAGE_SIZE = CATEGORY_PAGE_SIZE;
 
 export async function generateStaticParams() {
   return buildApprovedNavTree().map((c) => ({ category: c.slug }));
@@ -29,18 +30,23 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string; category: string }>;
+  searchParams: Promise<CategorySearchParams>;
 }) {
   const { locale, category } = await params;
   const cat = getNavCategory(category);
   if (!cat) return {};
   const loc = getNavCategoryLocalized(cat, locale);
+  const sp = await searchParams;
+  const { page } = categoryPagination(sp.page, cat.children.length);
+  const categoryPath = `/services/${cat.slug}`;
   return buildMetadata({
     locale,
     title: `${loc.name} | ${brandName(locale)}`,
     description: loc.description,
-    path: `/services/${cat.slug}`,
+    path: firstCategoryQueryValue(sp.q) ? categoryPath : listPageHref(categoryPath, page),
   });
 }
 
@@ -49,7 +55,7 @@ export default async function CategoryPage({
   searchParams,
 }: {
   params: Promise<{ locale: string; category: string }>;
-  searchParams: Promise<{ page?: string; q?: string }>;
+  searchParams: Promise<CategorySearchParams>;
 }) {
   const { locale, category } = await params;
   const sp = await searchParams;
@@ -96,8 +102,8 @@ export default async function CategoryPage({
         })
       : childrenWithNames;
 
-  const q = sp.q?.trim().toLowerCase() || "";
-  const qParam = sp.q?.trim() || undefined;
+  const qParam = firstCategoryQueryValue(sp.q) || undefined;
+  const q = qParam?.toLowerCase() || "";
   const filtered = q
     ? sortedChildren.filter(
         (item) =>
@@ -107,8 +113,7 @@ export default async function CategoryPage({
       )
     : sortedChildren;
 
-  const totalPages = Math.max(1, Math.ceil(filtered.length / CHILD_PAGE_SIZE));
-  const page = Math.min(totalPages, Math.max(1, Number(sp.page || "1") || 1));
+  const { page, totalPages } = categoryPagination(sp.page, filtered.length);
   const pageItems = filtered.slice((page - 1) * CHILD_PAGE_SIZE, page * CHILD_PAGE_SIZE);
   const categoryPath = `/services/${cat.slug}`;
 
@@ -199,7 +204,7 @@ export default async function CategoryPage({
             searchPlaceholder={t("searchPlaceholder")}
             emptyLabel={t("searchEmpty")}
             cta={home("viewService")}
-            query={sp.q?.trim() || ""}
+            query={qParam || ""}
             filterLabel={pager("filter")}
           />
         </div>
