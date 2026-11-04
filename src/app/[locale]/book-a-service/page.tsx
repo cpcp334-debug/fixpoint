@@ -1,3 +1,4 @@
+import { relatedServiceQuotationCopy } from "@/lib/catalog/service-quotation-copy";
 import { toMasterLocationSlug } from "@/lib/slug/location-slug-map";
 import { toMasterServiceSlug } from "@/lib/slug/service-slug-map";
 import { serviceChoiceLabels } from "@/lib/catalog/service-choice-labels";
@@ -46,6 +47,7 @@ export default async function BookingPage({
   const err = await getTranslations("Errors");
   const nav = await getTranslations("Nav");
   const home = await getTranslations("Home");
+  const enquiryCopy = relatedServiceQuotationCopy(null, locale);
   const cta = await getTranslations("Cta");
   const allServices = await getActiveServices(locale);
   const services = allServices.filter((s) => serviceAllowsBookingType(s, type));
@@ -144,9 +146,9 @@ export default async function BookingPage({
         </div>
       </Section>
       <CtaBand
-        title={home("ctaTitle")}
-        body={home("ctaBody")}
-        quote={home("ctaQuote")}
+        title={enquiryCopy?.title ?? home("ctaTitle")}
+        body={enquiryCopy?.body ?? home("ctaBody")}
+        quote={enquiryCopy?.quote ?? home("ctaQuote")}
         ai={home("ctaAi")}
         whatsapp={cta("whatsapp")}
         aiHref={`/${locale}#alnajah-ai`}
