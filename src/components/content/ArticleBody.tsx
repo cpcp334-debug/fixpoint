@@ -9,7 +9,12 @@ function headingId(title: string) {
 }
 
 /** Render markdown-ish hub/blog bodies (## / ### / lists / paragraphs). */
-export function renderArticleBody(body: string): ReactNode[] {
+export function renderArticleBody(
+  body: string,
+  { deduplicateSections = true, headingLevel = 2 }: { deduplicateSections?: boolean; headingLevel?: 2 | 3 } = {},
+): ReactNode[] {
+  const Heading = headingLevel === 3 ? "h3" : "h2";
+  const Subheading = headingLevel === 3 ? "h4" : "h3";
   const rawBlocks = body.split(/\n\n+/).map((b) => b.trim()).filter(Boolean);
   const seenH2 = new Set<string>();
   const blocks: string[] = [];
@@ -17,7 +22,7 @@ export function renderArticleBody(body: string): ReactNode[] {
   for (const block of rawBlocks) {
     if (block.startsWith("## ")) {
       const title = block.replace(/^##\s+/, "").trim();
-      if (seenH2.has(title)) {
+      if (deduplicateSections && seenH2.has(title)) {
         skippingDupSection = true;
         continue;
       }
@@ -33,16 +38,16 @@ export function renderArticleBody(body: string): ReactNode[] {
     if (block.startsWith("## ")) {
       const title = block.replace(/^##\s+/, "");
       return (
-        <h2 key={i} id={headingId(title)} className="mt-8 scroll-mt-24 text-xl font-semibold text-navy">
+        <Heading key={i} id={deduplicateSections ? headingId(title) : `${headingId(title)}-${i}`} className="mt-8 scroll-mt-24 text-xl font-semibold text-navy">
           {title}
-        </h2>
+        </Heading>
       );
     }
     if (block.startsWith("### ")) {
       return (
-        <h3 key={i} className="mt-6 text-lg font-semibold text-navy">
+        <Subheading key={i} className="mt-6 text-lg font-semibold text-navy">
           {block.replace(/^###\s+/, "")}
-        </h3>
+        </Subheading>
       );
     }
     if (block.startsWith("- ")) {
