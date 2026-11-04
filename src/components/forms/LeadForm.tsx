@@ -147,7 +147,7 @@ export function LeadForm({
         </FormGroup>
         <FormGroup legend={t("groupJob")}>
           <ServiceModeField
-            search={mode === "contact" ? {
+            search={(mode === "contact" || mode === "quote") ? {
               label: c("serviceSearch"),
               clear: c("serviceSearchClear"),
               empty: c("serviceSearchEmpty"),
