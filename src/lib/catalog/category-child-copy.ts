@@ -19,12 +19,22 @@ const acNames: Record<string, { before: string; after: string }> = {
   "package-ac-maintenance": { before: "صيانة التكييف", after: "صيانة وحدات التكييف المجمعة" },
 };
 
+const paintingNames: Record<string, { before: string; after: string }> = {
+  "metal-painting": { before: "الدهان", after: "دهان المعادن" },
+  "wood-painting": { before: "الدهان", after: "دهان الأخشاب" },
+  "repainting": { before: "خدمة ضمن الدهان", after: "إعادة الدهان" },
+  "touch-up-painting": { before: "الدهان", after: "رتوش الدهان" },
+  "texture-painting": { before: "الدهان", after: "دهان ذو ملمس" },
+  "decorative-painting": { before: "الدهان", after: "دهان زخرفي" },
+};
+
 /** Correct known ambiguous category previews without replacing reviewed content or URLs. */
 export function categoryChildCopy(category: string, locale: string, masterSlug: string, copy: CardCopy): CardCopy {
   if (locale !== "ar") return copy;
   const replacement = category === "cleaning" ? cleaningNames[masterSlug]
     : category === "plumbing" ? plumbingNames[masterSlug]
-    : category === "ac" ? acNames[masterSlug] : undefined;
+    : category === "ac" ? acNames[masterSlug]
+    : category === "painting" ? paintingNames[masterSlug] : undefined;
   if (!replacement || copy.name !== replacement.before) return copy;
   return {
     name: replacement.after,
