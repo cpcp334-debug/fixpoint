@@ -28,13 +28,20 @@ const paintingNames: Record<string, { before: string; after: string }> = {
   "decorative-painting": { before: "الدهان", after: "دهان زخرفي" },
 };
 
+const microwaveNames: Record<string, { before: string; after: string }> = {
+  "microwave-heating-problem": { before: "المايكروويف", after: "مشكلة تسخين المايكروويف" },
+  "microwave-spark-problem": { before: "المايكروويف", after: "ظهور شرر في المايكروويف" },
+  "microwave-turntable-problem": { before: "المايكروويف", after: "مشكلة دوران طبق المايكروويف" },
+};
+
 /** Correct known ambiguous category previews without replacing reviewed content or URLs. */
 export function categoryChildCopy(category: string, locale: string, masterSlug: string, copy: CardCopy): CardCopy {
   if (locale !== "ar") return copy;
   const replacement = category === "cleaning" ? cleaningNames[masterSlug]
     : category === "plumbing" ? plumbingNames[masterSlug]
     : category === "ac" ? acNames[masterSlug]
-    : category === "painting" ? paintingNames[masterSlug] : undefined;
+    : category === "painting" ? paintingNames[masterSlug]
+    : category === "microwave" ? microwaveNames[masterSlug] : undefined;
   if (!replacement || copy.name !== replacement.before) return copy;
   return {
     name: replacement.after,
