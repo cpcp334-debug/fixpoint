@@ -11,6 +11,7 @@ export function ServiceModeField({
   labels,
   defaultSlug,
   error,
+  search,
 }: {
   idPrefix: string;
   services: Array<{ slug: string; name: string }>;
@@ -23,19 +24,26 @@ export function ServiceModeField({
   };
   defaultSlug?: string;
   error?: string;
+  search?: { label: string; clear: string; empty: string; shown: string; selected: string };
 }) {
   const [mode, setMode] = useState<ServiceMode>("catalog");
   const [selected, setSelected] = useState<string[]>(defaultSlug ? [defaultSlug] : []);
   const [other, setOther] = useState("");
+  const [query, setQuery] = useState("");
+  const normalizedQuery = search ? query.trim().toLowerCase() : "";
+  const matches = (name: string) => name.toLowerCase().includes(normalizedQuery);
+  const visibleCount = services.filter((service) => matches(service.name)).length;
 
   function setCatalogMode() {
     setMode("catalog");
     setOther("");
+    setQuery("");
   }
 
   function setCustomMode() {
     setMode("custom");
     setSelected([]);
+    setQuery("");
   }
 
   function toggleSlug(slug: string) {
@@ -59,7 +67,31 @@ export function ServiceModeField({
       </div>
 
       {mode === "catalog" ? (
+        <div>
+          {search ? (
+            <div className="mt-3">
+              <label htmlFor={`${idPrefix}-service-search`} className={fieldLabelClass}>{search.label}</label>
+              <div className="mt-2 flex gap-2">
+                <input
+                  id={`${idPrefix}-service-search`}
+                  type="search"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  onKeyDown={(event) => { if (event.key === "Enter") event.preventDefault(); }}
+                  aria-describedby={`${idPrefix}-service-results`}
+                  className={`${fieldControlClass} min-w-0 flex-1`}
+                />
+                <button type="button" onClick={() => setQuery("")} className="rounded-[10px] border border-line px-3 py-2 text-sm text-navy">
+                  {search.clear}
+                </button>
+              </div>
+              <p id={`${idPrefix}-service-results`} role="status" aria-live="polite" aria-atomic="true" className="mt-2 text-sm text-muted">
+                {visibleCount} {search.shown} · {selected.length} {search.selected}
+              </p>
+            </div>
+          ) : null}
         <div className="mt-3 max-h-56 space-y-2 overflow-y-auto rounded-[12px] border border-line bg-white p-3">
+          {search && services.length > 0 && visibleCount === 0 ? <p className="text-sm text-muted">{search.empty}</p> : null}
           {services.length === 0 ? (
             <p className="text-sm text-muted">{labels.pickOne}</p>
           ) : (
@@ -67,7 +99,7 @@ export function ServiceModeField({
               const inputId = `${idPrefix}-svc-${s.slug}`;
               const checked = selected.includes(s.slug);
               return (
-                <label key={s.slug} htmlFor={inputId} className="flex cursor-pointer items-start gap-2 text-sm text-navy">
+                <label key={s.slug} htmlFor={inputId} className={matches(s.name) ? "flex cursor-pointer items-start gap-2 text-sm text-navy" : "hidden"}>
                   <input
                     id={inputId}
                     type="checkbox"
@@ -84,6 +116,7 @@ export function ServiceModeField({
           )}
           {/* Primary slug for legacy consumers */}
           <input type="hidden" name="serviceSlug" value={selected[0] || ""} />
+        </div>
         </div>
       ) : (
         <div className="mt-3">
