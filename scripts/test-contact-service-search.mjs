@@ -73,9 +73,16 @@ for (const locale of ["en", "ar"]) {
   eq(tree.find(x => x.props.name === "serviceOther").props.value, "A custom package");
   tree.find(x => x.type === "button" && text(x) === "Choose").props.onClick(); render();
   eq(search().props.value, ""); eq(visible().length, 3); eq(successfulValues(), []);
-  state = []; props.search = undefined; props.defaultSlug = "circuit-installation"; render();
+  state = []; props.defaultSlug = "circuit-installation"; render();
+  eq(primary(), "circuit-installation"); eq(successfulValues(), ["circuit-installation"]);
+  change("gas check"); eq(visible(), ["contact-lead-svc-ac-gas-check"]);
+  eq(successfulValues(), ["circuit-installation"]); eq(primary(), "circuit-installation");
+  select("ac-gas-check"); eq(successfulValues(), ["ac-gas-check", "circuit-installation"]);
+  eq(primary(), "circuit-installation");
+  change(""); eq(visible().length, 3);
+  state = []; props.search = undefined; render();
   eq(search(), undefined); eq(primary(), "circuit-installation"); eq(successfulValues(), ["circuit-installation"]);
 }
 const lead = readFileSync(new URL("../src/components/forms/LeadForm.tsx", import.meta.url), "utf8");
-assert.match(lead, /search=\{mode === "contact" \?/); checks++;
-console.log(`${checks} Contact service-search assertions passed`);
+assert.match(lead, /search=\{\(mode === "contact" \|\| mode === "quote"\) \?/); checks++;
+console.log(`${checks} Lead form service-search assertions passed`);
