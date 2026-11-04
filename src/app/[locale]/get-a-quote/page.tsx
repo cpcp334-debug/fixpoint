@@ -1,3 +1,4 @@
+import { relatedServiceQuotationCopy } from "@/lib/catalog/service-quotation-copy";
 import { serviceChoiceLabels } from "@/lib/catalog/service-choice-labels";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getActiveEmirates, getActiveServices } from "@/lib/catalog";
@@ -25,6 +26,7 @@ export default async function QuotePage({ params, searchParams }: { params: Prom
   const t = await getTranslations("Quote");
   const nav = await getTranslations("Nav");
   const home = await getTranslations("Home");
+  const enquiryCopy = relatedServiceQuotationCopy(null, locale);
   const cta = await getTranslations("Cta");
   const services = await getActiveServices(locale);
   const query = await searchParams;
@@ -73,9 +75,9 @@ export default async function QuotePage({ params, searchParams }: { params: Prom
         </div>
       </Section>
       <CtaBand
-        title={home("ctaTitle")}
-        body={home("ctaBody")}
-        quote={home("ctaQuote")}
+        title={enquiryCopy?.title ?? home("ctaTitle")}
+        body={enquiryCopy?.body ?? home("ctaBody")}
+        quote={enquiryCopy?.quote ?? home("ctaQuote")}
         ai={home("ctaAi")}
         whatsapp={cta("whatsapp")}
         aiHref={`/${locale}#alnajah-ai`}
