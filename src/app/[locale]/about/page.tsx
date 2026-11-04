@@ -11,7 +11,7 @@ import { CtaBand } from "@/components/public/CtaBand";
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "About" });
-  return buildMetadata({ locale, title: `${t("title")} | ${brandName(locale)}`, description: t("lead"), path: "/about" });
+  return buildMetadata({ locale, title: t("title"), description: t("lead"), path: "/about" });
 }
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: string }> }) {
