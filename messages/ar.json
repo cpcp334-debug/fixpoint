@@ -360,6 +360,11 @@
     "returnHome": "العودة إلى الموقع"
   },
   "Contact": {
+    "serviceSearch": "ابحث عن خدمة",
+    "serviceSearchClear": "مسح البحث",
+    "serviceSearchEmpty": "لا توجد خدمات مطابقة. امسح البحث أو اختر كتابة طلبك.",
+    "serviceSearchShown": "خدمة ظاهرة",
+    "serviceSearchSelected": "محددة",
     "title": "اتصل بنا",
     "lead": "اتصل أو راسلنا عبر واتساب أو البريد، أو أرسل رسالة. استخدم ذكاء النجاح إذا لم تعرف الخدمة المطلوبة.",
     "formTitle": "أرسل رسالة",

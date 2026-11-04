@@ -147,6 +147,13 @@ export function LeadForm({
         </FormGroup>
         <FormGroup legend={t("groupJob")}>
           <ServiceModeField
+            search={mode === "contact" ? {
+              label: c("serviceSearch"),
+              clear: c("serviceSearchClear"),
+              empty: c("serviceSearchEmpty"),
+              shown: c("serviceSearchShown"),
+              selected: c("serviceSearchSelected"),
+            } : undefined}
             idPrefix={`${mode}-lead`}
             services={services}
             defaultSlug={defaultService}

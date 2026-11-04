@@ -360,6 +360,11 @@
     "returnHome": "Return to website"
   },
   "Contact": {
+    "serviceSearch": "Search services",
+    "serviceSearchClear": "Clear search",
+    "serviceSearchEmpty": "No matching services. Clear the search or choose Write my own.",
+    "serviceSearchShown": "services shown",
+    "serviceSearchSelected": "selected",
     "title": "Contact",
     "lead": "Call, WhatsApp, email, or send a message. Use ALNAJAH AI if you are not sure which service you need.",
     "formTitle": "Message us",
