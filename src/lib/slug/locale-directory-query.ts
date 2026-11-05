@@ -6,11 +6,31 @@ export const DIRECTORY_CATEGORY_SLUGS = [
 ] as const;
 
 const categories = new Set<string>(DIRECTORY_CATEGORY_SLUGS);
+const reviewLocations = new Set([
+  "dubai", "abu-dhabi", "sharjah", "ajman", "umm-al-quwain", "ras-al-khaimah", "fujairah",
+]);
 
 /** Carry only supported directory state, never queries on remapped detail/fallback paths. */
 export function localeDirectoryHref(pathname: string, target: string, search: string): string {
   const path = pathname.replace(/\/$/, "");
   if (target.replace(/\/$/, "") !== path) return target;
+  if (path === "/reviews") {
+    const source = new URLSearchParams(search);
+    const result = new URLSearchParams();
+    for (const key of ["service", "location", "stars", "verified"] as const) {
+      const values = source.getAll(key);
+      if (values.length !== 1) continue;
+      const value = values[0];
+      const valid = key === "service"
+        ? value.length <= 160 && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value)
+        : key === "location" ? reviewLocations.has(value)
+        : key === "stars" ? /^[1-5]$/.test(value)
+        : value === "1";
+      if (valid) result.set(key, value);
+    }
+    const query = result.toString();
+    return query ? `${target}?${query}` : target;
+  }
   const faq = path === "/faq";
   const category = /^\/services\/([^/]+)$/.exec(path)?.[1];
   if (!faq && (!category || !categories.has(category))) return target;

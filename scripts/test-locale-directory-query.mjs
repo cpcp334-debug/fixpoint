@@ -86,6 +86,13 @@ try {
   await new Promise(resolve => setImmediate(resolve));
   state = render("ar"); eq(state.link.props.locale, "en"); eq(state.link.props.href, "/services/painting?q=wood");
   state.link.props.onClick(); eq(closed, 1); eq(state.link.props.className, "switch");
+  pathname = "/reviews"; search = "service=ac-cleaning&location=dubai&stars=4&verified=1";
+  for (const locale of ["en", "ar"]) {
+    state = render(locale);
+    eq(state.link.props.locale, locale === "en" ? "ar" : "en");
+    eq(state.link.props.href, "/reviews?service=ac-cleaning&location=dubai&stars=4&verified=1");
+    eq(state.fallback.props.href, "/reviews");
+  }
   pathname = "/blog/missing"; search = "q=wood&page=2";
   state = render(); eq(state.link.props.href, "/blog"); eq(state.link.props.children, "المدونة بالعربية");
   eq(state.fallback.props.href, "/blog"); eq(state.fallback.props.children, "المدونة بالعربية");
@@ -99,3 +106,98 @@ try {
   state = render(); eq(state.link.props.href, "/localized-ac-cleaning");
 } finally { cleanup?.(); globalThis.fetch = oldFetch; }
 console.log(`${checks} directory query and switcher assertions passed`);
+
+// Reviews uses master catalogue slugs in both languages. Membership stays server-side.
+const allReviewFilters = "service=ac-cleaning&location=dubai&stars=4&verified=1";
+for (const [query, expected] of [
+  [allReviewFilters, `/reviews?${allReviewFilters}`],
+  ["verified=1&stars=4&location=dubai&service=ac-cleaning&q=ignored&page=2&utm_source=test", `/reviews?${allReviewFilters}`],
+  ["service=ac%2Dcleaning&location=%64ubai&stars=%34&verified=%31", `/reviews?${allReviewFilters}`],
+  ["service=ac-cleaning", "/reviews?service=ac-cleaning"],
+  ["location=dubai", "/reviews?location=dubai"],
+  ["stars=4", "/reviews?stars=4"],
+  ["verified=1", "/reviews?verified=1"],
+  ["verified=0", "/reviews"],
+  ["", "/reviews"],
+  ["q=wood&page=2&category=ac&redirect=https://example.com", "/reviews"],
+]) eq(helper.localeDirectoryHref("/reviews", "/reviews", query), expected);
+for (const stars of [1, 2, 3, 4, 5])
+  eq(helper.localeDirectoryHref("/reviews", "/reviews", `stars=${stars}`), `/reviews?stars=${stars}`);
+for (const location of ["dubai", "abu-dhabi", "sharjah", "ajman", "umm-al-quwain", "ras-al-khaimah", "fujairah"])
+  eq(helper.localeDirectoryHref("/reviews", "/reviews", `location=${location}`), `/reviews?location=${location}`);
+for (const [key, invalids] of Object.entries({
+  service: ["", "AC-cleaning", "ac--cleaning", "-ac", "ac-", "ac_cleaning", "ac/cleaning", " ac-cleaning", "تنظيف-التكييف", "a".repeat(161)],
+  location: ["", "Dubai", "deira", "dubai ", "unknown"],
+  stars: ["", "0", "6", "04", "4.0", "4+", " 4", "NaN"],
+  verified: ["", "0", "true", "yes", " 1", "2"],
+})) {
+  for (const value of invalids) {
+    const params = new URLSearchParams(allReviewFilters);
+    params.set(key, value);
+    const expected = new URLSearchParams(allReviewFilters);
+    expected.delete(key);
+    eq(helper.localeDirectoryHref("/reviews", "/reviews", params.toString()), `/reviews?${expected}`);
+  }
+  for (const extra of [new URLSearchParams(allReviewFilters).get(key), ""]) {
+    const params = new URLSearchParams(allReviewFilters);
+    params.append(key, extra);
+    const expected = new URLSearchParams(allReviewFilters);
+    expected.delete(key);
+    eq(helper.localeDirectoryHref("/reviews", "/reviews", params.toString()), `/reviews?${expected}`);
+  }
+}
+eq(helper.localeDirectoryHref("/reviews", "/reviews", `service=${"a".repeat(160)}`), `/reviews?service=${"a".repeat(160)}`);
+eq(helper.localeDirectoryHref("/reviews/", "/reviews/", allReviewFilters), `/reviews/?${allReviewFilters}`);
+for (const [path, target] of [["/reviews", "/"], ["/reviews/detail", "/reviews"], ["/contact", "/contact"], ["/services", "/services"]])
+  eq(helper.localeDirectoryHref(path, target, allReviewFilters), target);
+
+// Exercise the actual route without a database or a production review submission.
+const routeTokens = new Map();
+const routeComponents = new Proxy({}, { get: (_, name) => {
+  if (!routeTokens.has(name)) routeTokens.set(name, () => null);
+  return routeTokens.get(name);
+} });
+let catalogueLocale, reviewLookups;
+const reviewsRoute = load("../src/app/[locale]/reviews/page.tsx", {
+  "react/jsx-runtime": runtime,
+  "@/config/site": { brandName: () => "Fixpoint" },
+  "next-intl/server": { setRequestLocale: () => {}, getTranslations: async () => key => key },
+  "@/lib/catalog": {
+    getActiveServices: async locale => { catalogueLocale = locale; return [{ id: "service-id", slug: "ac-cleaning", t: { name: "AC" } }]; },
+    getActiveEmirates: async () => [{ id: "location-id", slug: "dubai", t: { name: "Dubai" } }],
+  },
+  "@/lib/reviews": {
+    summarizeApprovedServiceReviews: async filters => { reviewLookups.push({ summary: filters }); return { count: 0, average: null }; },
+    getApprovedServiceReviews: async filters => { reviewLookups.push({ reviews: filters }); return []; },
+    toPublicReview: () => { throw new Error("Empty fixtures must not fabricate reviews"); },
+  },
+  "@/lib/seo": { breadcrumbJsonLd: () => ({ "@type": "BreadcrumbList" }), reviewAggregateJsonLd: () => null },
+  ...Object.fromEntries([
+    ["seo/JsonLd", "JsonLd"], ["seo/Breadcrumbs", "Breadcrumbs"], ["trust/ReviewForm", "ReviewForm"],
+    ["trust/ReviewList", "ReviewList"], ["trust/ReviewSummary", "ReviewSummary"], ["ui/Button", "Button"],
+    ["ui/Section", "Section"], ["public/PageShell", "PageShell"], ["public/PublicHero", "PublicHero"],
+    ["public/CtaBand", "CtaBand"],
+  ].map(([path, name]) => [`@/components/${path}`, { [name]: routeComponents[name] }])),
+  "@/components/public/FormShell": { fieldControlClass: "control", fieldLabelClass: "label" },
+});
+const reviewNodes = node => Array.isArray(node) ? node.flatMap(reviewNodes) : node && typeof node === "object" ? [node, ...reviewNodes(node.props?.children)] : [];
+for (const locale of ["en", "ar"]) {
+  for (const query of [allReviewFilters, "", "service=unknown&location=unknown&stars=4&verified=1"]) {
+    const preserved = helper.localeDirectoryHref("/reviews", "/reviews", query);
+    const filters = Object.fromEntries(new URL(preserved, "https://fixpoint.ae").searchParams);
+    reviewLookups = [];
+    const tree = reviewNodes(await reviewsRoute.default({ params: Promise.resolve({ locale }), searchParams: Promise.resolve(filters) }));
+    const hasContext = query === allReviewFilters;
+    const form = tree.find(node => node.type === routeTokens.get("ReviewForm"));
+    eq([form.props.locale, form.props.type, form.props.serviceSlug, form.props.locationSlug], [locale, "service", hasContext ? "ac-cleaning" : undefined, hasContext ? "dubai" : undefined]);
+    eq(catalogueLocale, locale);
+    eq(reviewLookups, [
+      { summary: { serviceId: hasContext ? "service-id" : undefined, locationId: hasContext ? "location-id" : undefined } },
+      { reviews: { serviceId: hasContext ? "service-id" : undefined, locationId: hasContext ? "location-id" : undefined, minStars: query ? 4 : undefined, verifiedOnly: !!query } },
+    ]);
+    eq(tree.find(node => node.type === routeTokens.get("ReviewList")).props.reviews, []);
+    eq(tree.find(node => node.type === routeTokens.get("ReviewSummary")).props.count, 0);
+    eq(tree.filter(node => node.type === routeTokens.get("JsonLd")).map(node => node.props.data), [null, { "@type": "BreadcrumbList" }]);
+  }
+}
+console.log(`${checks} total directory query, switcher and Reviews route assertions passed`);
