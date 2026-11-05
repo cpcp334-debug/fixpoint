@@ -23,6 +23,7 @@ const plumbingNames: Record<string, { before: string; after: string }> = {
 };
 
 const acNames: Record<string, { before: string; after: string }> = {
+  "ac-noise-problem-diagnosis": { before: "تشخيص التكييف", after: "تشخيص ضوضاء التكييف" },
   "ac-gas-check": { before: "التكييف الغاز", after: "فحص غاز التكييف" },
   "ac-gas-recharge": { before: "التكييف الغاز", after: "إعادة شحن غاز التكييف" },
   "central-ac-maintenance": { before: "صيانة التكييف", after: "صيانة التكييف المركزي" },
