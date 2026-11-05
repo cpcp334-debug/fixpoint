@@ -4,6 +4,7 @@ import { buildMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { EmptyState, Section } from "@/components/ui/Section";
 import { PageShell } from "@/components/public/PageShell";
+import { ButtonLink } from "@/components/ui/Button";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -35,6 +36,10 @@ export default async function ProjectsPage({ params }: { params: Promise<{ local
         <h1 className="text-[2rem] font-semibold text-navy">{t("title")}</h1>
         <div className="mt-6">
           <EmptyState body={t("empty")} />
+          <div className="mt-4 flex flex-wrap gap-3">
+            <ButtonLink href="/services" variant="secondary">{nav("services")}</ButtonLink>
+            <ButtonLink href="/get-a-quote">{nav("quote")}</ButtonLink>
+          </div>
         </div>
       </Section>
     </PageShell>
