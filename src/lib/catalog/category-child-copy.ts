@@ -1,5 +1,10 @@
 type CardCopy = { name: string; description: string };
 
+const generalMaintenanceNames: Record<string, { before: string; after: string }> = {
+  "door-repair-and-adjustment": { before: "إصلاح الباب", after: "إصلاح الأبواب وضبطها" },
+  "door-hardware-replacement": { before: "استبدال الباب", after: "استبدال ملحقات الأبواب" },
+};
+
 const cleaningNames: Record<string, { before: string; after: string }> = {
   "residential-cleaning": { before: "تنظيف السكني", after: "تنظيف العقارات السكنية" },
   "commercial-cleaning": { before: "تنظيف التجاري", after: "التنظيف التجاري" },
@@ -50,6 +55,7 @@ const microwaveNames: Record<string, { before: string; after: string }> = {
 export function categoryChildCopy(category: string, locale: string, masterSlug: string, copy: CardCopy): CardCopy {
   if (locale !== "ar") return copy;
   const replacement = category === "cleaning" ? cleaningNames[masterSlug]
+    : category === "general-maintenance" ? generalMaintenanceNames[masterSlug]
     : category === "plumbing" ? plumbingNames[masterSlug]
     : category === "ac" ? acNames[masterSlug]
     : category === "painting" ? paintingNames[masterSlug]
