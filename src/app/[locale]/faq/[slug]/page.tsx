@@ -133,6 +133,7 @@ export default async function ServiceFaqPage({
         </div>
       </Section>
       <CtaBand
+        quoteHref={relatedService?.slug ? `/get-a-quote?service=${encodeURIComponent(relatedService.slug)}` : undefined}
         title={quotationCopy?.title ?? home("ctaTitle")}
         body={quotationCopy?.body ?? home("ctaBody")}
         quote={quotationCopy?.quote ?? home("ctaQuote")}
