@@ -59,6 +59,7 @@ export function BookingForm({
 }) {
   const router = useRouter();
   const t = useTranslations("Quote");
+  const c = useTranslations("Contact");
   const err = useTranslations("Errors");
   const [status, setStatus] = useState<"idle" | "error" | "rateLimit" | "incomplete">("idle");
   const [pending, setPending] = useState(false);
@@ -128,6 +129,13 @@ export function BookingForm({
         </FormGroup>
         <FormGroup legend={t("groupJob")}>
           <ServiceModeField
+            search={{
+              label: c("serviceSearch"),
+              clear: c("serviceSearchClear"),
+              empty: c("serviceSearchEmpty"),
+              shown: c("serviceSearchShown"),
+              selected: c("serviceSearchSelected"),
+            }}
             key={`${type}:${defaultService ?? ""}`}
             defaultSlug={defaultService}
             idPrefix={`bk-${type}`}
