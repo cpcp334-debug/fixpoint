@@ -60,6 +60,15 @@ export default async function BlogArticlePage({
   const article = await getBlogArticleBySlug(slug, locale);
   if (!article) notFound();
 
+  const projectCta = locale === "en" && [
+    "office-electrical-fit-out-dubai",
+    "electrical-testing-commissioning-readiness",
+  ].includes(toMasterBlogSlug(slug)) ? {
+    title: "Planning an electrical work package?",
+    body: "Tell us your company, project location, installation scope, current stage and target dates. Identify available drawings or BOQ documents so the team can review the enquiry.",
+    quote: "Request an electrical quotation",
+  } : null;
+
   const t = await getTranslations("Blog");
   const nav = await getTranslations("Nav");
   const home = await getTranslations("Home");
@@ -187,19 +196,19 @@ export default async function BlogArticlePage({
           ) : null}
           <div className="mt-10 rounded-xl border border-gold/30 bg-sand p-4 sm:p-5">
             <p className="text-sm font-semibold text-navy">
-              {locale === "ar" ? "الخطوة التالية" : "Next step"}
+              {projectCta?.title ?? (locale === "ar" ? "الخطوة التالية" : "Next step")}
             </p>
             <p className="mt-2 text-sm text-muted">
-              {locale === "ar"
+              {projectCta?.body ?? (locale === "ar"
                 ? "إذا احتجت مساعدة مهنية، اطلب عرض سعر مع الصور وملاحظات الوصول."
-                : "If you need professional help, request a quote with photos and access notes."}
+                : "If you need professional help, request a quote with photos and access notes.")}
             </p>
             <div className="mt-4">
               <Link
                 href="/get-a-quote"
                 className="inline-flex min-h-11 items-center justify-center rounded-lg bg-accent px-4 text-sm font-medium text-white hover:bg-accent-hover"
               >
-                {cta("quote")}
+                {projectCta?.quote ?? cta("quote")}
               </Link>
             </div>
           </div>
@@ -273,9 +282,9 @@ export default async function BlogArticlePage({
       ) : null}
 
       <CtaBand
-        title={t("ctaTitle")}
-        body={t("ctaBody")}
-        quote={home("ctaQuote")}
+        title={projectCta?.title ?? t("ctaTitle")}
+        body={projectCta?.body ?? t("ctaBody")}
+        quote={projectCta?.quote ?? home("ctaQuote")}
         ai={home("ctaAi")}
         whatsapp={cta("whatsapp")}
         aiHref={`/${locale}#alnajah-ai`}
