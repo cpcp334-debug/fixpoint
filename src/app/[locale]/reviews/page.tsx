@@ -1,3 +1,4 @@
+import { relatedServiceQuotationCopy } from "@/lib/catalog/service-quotation-copy";
 import { brandName } from "@/config/site";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getActiveEmirates, getActiveServices } from "@/lib/catalog";
@@ -41,6 +42,7 @@ export default async function ReviewsPage({
   const nav = await getTranslations("Nav");
   const home = await getTranslations("Home");
   const cta = await getTranslations("Cta");
+  const enquiryCopy = relatedServiceQuotationCopy(null, locale);
   const services = await getActiveServices(locale);
   const emirates = await getActiveEmirates(locale);
   const service = filters.service ? services.find((s) => s.slug === filters.service) : undefined;
@@ -201,9 +203,9 @@ export default async function ReviewsPage({
       </Section>
 
       <CtaBand
-        title={home("ctaTitle")}
-        body={home("ctaBody")}
-        quote={home("ctaQuote")}
+        title={enquiryCopy?.title ?? home("ctaTitle")}
+        body={enquiryCopy?.body ?? home("ctaBody")}
+        quote={enquiryCopy?.quote ?? home("ctaQuote")}
         ai={home("ctaAi")}
         whatsapp={cta("whatsapp")}
         aiHref={`/${locale}#alnajah-ai`}

@@ -158,9 +158,11 @@ const routeComponents = new Proxy({}, { get: (_, name) => {
   return routeTokens.get(name);
 } });
 let catalogueLocale, reviewLookups;
+const quotationCopy = load("../src/lib/catalog/service-quotation-copy.ts");
 const reviewsRoute = load("../src/app/[locale]/reviews/page.tsx", {
   "react/jsx-runtime": runtime,
   "@/config/site": { brandName: () => "Fixpoint" },
+  "@/lib/catalog/service-quotation-copy": quotationCopy,
   "next-intl/server": { setRequestLocale: () => {}, getTranslations: async () => key => key },
   "@/lib/catalog": {
     getActiveServices: async locale => { catalogueLocale = locale; return [{ id: "service-id", slug: "ac-cleaning", t: { name: "AC" } }]; },
@@ -190,6 +192,11 @@ for (const locale of ["en", "ar"]) {
     const hasContext = query === allReviewFilters;
     const form = tree.find(node => node.type === routeTokens.get("ReviewForm"));
     eq([form.props.locale, form.props.type, form.props.serviceSlug, form.props.locationSlug], [locale, "service", hasContext ? "ac-cleaning" : undefined, hasContext ? "dubai" : undefined]);
+    const band = tree.find(node => node.type === routeTokens.get("CtaBand"));
+    const expectedCopy = quotationCopy.relatedServiceQuotationCopy(null, locale);
+    eq([band.props.title, band.props.body, band.props.quote], [expectedCopy.title, expectedCopy.body, expectedCopy.quote]);
+    eq([band.props.ai, band.props.whatsapp, band.props.aiHref], ["ctaAi", "whatsapp", `/${locale}#alnajah-ai`]);
+    eq([band.props.quoteHref, band.props.whatsappText], [undefined, undefined]);
     eq(catalogueLocale, locale);
     eq(reviewLookups, [
       { summary: { serviceId: hasContext ? "service-id" : undefined, locationId: hasContext ? "location-id" : undefined } },
