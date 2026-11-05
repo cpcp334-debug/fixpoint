@@ -1,4 +1,5 @@
 import { ReviewedSectionPhoto } from "@/components/public/ReviewedSectionPhoto";
+import { relatedServiceQuotationCopy } from "@/lib/catalog/service-quotation-copy";
 import { brandName } from "@/config/site";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { buildVisitorNavTree, getNavCategoryLocalized } from "@/lib/catalog/approved-nav";
@@ -38,6 +39,7 @@ export default async function ServicesPage({
   const nav = await getTranslations("Nav");
   const home = await getTranslations("Home");
   const cta = await getTranslations("Cta");
+  const enquiryCopy = relatedServiceQuotationCopy(null, locale);
   const pager = await getTranslations("Pagination");
   const categories = buildVisitorNavTree();
   const catTotalPages = Math.max(1, Math.ceil(categories.length / CATEGORY_PAGE_SIZE));
@@ -190,9 +192,9 @@ export default async function ServicesPage({
       </Section>
 
       <CtaBand
-        title={home("ctaTitle")}
-        body={home("ctaBody")}
-        quote={home("ctaQuote")}
+        title={enquiryCopy?.title ?? home("ctaTitle")}
+        body={enquiryCopy?.body ?? home("ctaBody")}
+        quote={enquiryCopy?.quote ?? home("ctaQuote")}
         ai={home("ctaAi")}
         whatsapp={cta("whatsapp")}
       />
