@@ -40,6 +40,11 @@ const paintingNames: Record<string, { before: string; after: string }> = {
   "decorative-painting": { before: "الدهان", after: "دهان زخرفي" },
 };
 
+const waterHeaterNames: Record<string, { before: string; after: string }> = {
+  "water-heater-heating-element-replacement": { before: "استبدال المياه السخان", after: "استبدال عنصر تسخين سخان المياه" },
+  "water-heater-valve-replacement": { before: "استبدال المياه السخان", after: "استبدال صمام سخان المياه" },
+};
+
 const microwaveNames: Record<string, { before: string; after: string }> = {
   "microwave-fan-problem": { before: "المايكروويف المروحة", after: "مشكلة مروحة المايكروويف" },
   "microwave-internal-cleaning": { before: "تنظيف المايكروويف", after: "تنظيف المايكروويف من الداخل" },
@@ -60,6 +65,7 @@ export function categoryChildCopy(category: string, locale: string, masterSlug: 
     : category === "plumbing" ? plumbingNames[masterSlug]
     : category === "ac" ? acNames[masterSlug]
     : category === "painting" ? paintingNames[masterSlug]
+    : category === "water-heater" ? waterHeaterNames[masterSlug]
     : category === "microwave" ? microwaveNames[masterSlug] : undefined;
   if (!replacement || copy.name !== replacement.before) return copy;
   return {
