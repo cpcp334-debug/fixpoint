@@ -1,6 +1,9 @@
 type CardCopy = { name: string; description: string };
 
 const cleaningNames: Record<string, { before: string; after: string }> = {
+  "residential-cleaning": { before: "تنظيف السكني", after: "تنظيف العقارات السكنية" },
+  "commercial-cleaning": { before: "تنظيف التجاري", after: "التنظيف التجاري" },
+  "building-common-area-cleaning": { before: "تنظيف المبنى المشتركة", after: "تنظيف المناطق المشتركة في المباني" },
   "one-time-cleaning": { before: "خدمة ضمن التنظيف", after: "تنظيف لمرة واحدة" },
   "recurring-cleaning": { before: "خدمة ضمن التنظيف", after: "تنظيف متكرر" },
   "move-in-cleaning": { before: "تنظيف الانتقال", after: "تنظيف قبل الانتقال" },
