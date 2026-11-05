@@ -1,23 +1,48 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Link, usePathname } from "@/i18n/routing";
+import { localeDirectoryHref } from "@/lib/slug/locale-directory-query";
 
-/** Language switcher that remaps EN↔AR public slugs (encoded Arabic on /ar). */
-export function LocaleSwitcher({
-  locale,
-  className,
-  arLabel = "العربية",
-  enLabel = "EN",
-  onNavigate,
-}: {
+type LocaleSwitcherProps = {
   locale: string;
   className?: string;
   arLabel?: string;
   enLabel?: string;
   onNavigate?: () => void;
-}) {
+};
+
+/** Keep a usable path-only switch in static HTML while query state is resolved. */
+function LocaleSwitcherFallback({ locale, className, arLabel = "العربية", enLabel = "EN", onNavigate }: LocaleSwitcherProps) {
   const pathname = usePathname();
+  const other = locale === "ar" ? "en" : "ar";
+  const blog = /^\/blog\/[^/?#]+\/?$/.test(pathname);
+  return (
+    <Link href={blog ? "/blog" : pathname} locale={other} className={className} onClick={onNavigate}>
+      {blog ? (other === "ar" ? "المدونة بالعربية" : "Blog in English") : (other === "ar" ? arLabel : enLabel)}
+    </Link>
+  );
+}
+
+export function LocaleSwitcher(props: LocaleSwitcherProps) {
+  return (
+    <Suspense fallback={<LocaleSwitcherFallback {...props} />}>
+      <LocaleSwitcherWithQuery {...props} />
+    </Suspense>
+  );
+}
+
+/** Language switcher that remaps EN↔AR public slugs (encoded Arabic on /ar). */
+function LocaleSwitcherWithQuery({
+  locale,
+  className,
+  arLabel = "العربية",
+  enLabel = "EN",
+  onNavigate,
+}: LocaleSwitcherProps) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const other = locale === "ar" ? "en" : "ar";
   const isBlogDetail = /^\/blog\/[^/?#]+\/?$/.test(pathname);
   const [resolved, setResolved] = useState<{ key: string; href: string; available?: boolean } | null>(null);
@@ -52,7 +77,7 @@ export function LocaleSwitcher({
   }, [pathname, other, requestKey, isBlogDetail]);
 
   return (
-    <Link href={otherPath} locale={other} className={className} onClick={onNavigate}>
+    <Link href={localeDirectoryHref(pathname, otherPath, searchParams?.toString() || "")} locale={other} className={className} onClick={onNavigate}>
       {blogFallback ? (other === "ar" ? "المدونة بالعربية" : "Blog in English") : (other === "ar" ? arLabel : enLabel)}
     </Link>
   );
