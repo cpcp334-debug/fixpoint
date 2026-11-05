@@ -39,6 +39,17 @@ export default async function FaqRoute({
   const pager = await getTranslations("Pagination");
   const home = await getTranslations("Home");
   const cta = await getTranslations("Cta");
+  const quotationCopy = locale === "ar"
+    ? {
+        title: "أخبرنا بالخدمة التي تحتاجها.",
+        body: "اذكر اسم الخدمة وموقع العقار والأعمال المطلوبة. يراجع الفريق طلبك قبل تأكيد التوفر والنطاق وعرض السعر.",
+        quote: "اطلب عرض سعر للخدمة",
+      }
+    : {
+        title: "Tell us which service you need.",
+        body: "Share the service name, property location and work required. The team reviews your request before confirming availability, scope and quotation.",
+        quote: "Request a service quote",
+      };
   const pages = await getPublishedServiceFaqs(locale);
   const names = new Map(
     APPROVED_CATEGORIES.map((row) => [row.slug, locale === "ar" && row.nameAr && row.nameAr !== "REVIEW_REQUIRED" ? row.nameAr : row.nameEn]),
@@ -158,9 +169,9 @@ export default async function FaqRoute({
         </div>
       </Section>
       <CtaBand
-        title={home("ctaTitle")}
-        body={home("ctaBody")}
-        quote={home("ctaQuote")}
+        title={quotationCopy.title}
+        body={quotationCopy.body}
+        quote={quotationCopy.quote}
         ai={home("ctaAi")}
         whatsapp={cta("whatsapp")}
       />
