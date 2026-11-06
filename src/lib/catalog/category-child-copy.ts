@@ -34,6 +34,8 @@ const acNames: Record<string, { before: string; after: string }> = {
 };
 
 const paintingNames: Record<string, { before: string; after: string }> = {
+  "office-painting": { before: "المكتب الدهان", after: "دهان المكاتب" },
+  "commercial-painting": { before: "التجاري الدهان", after: "الدهان التجاري" },
   "metal-painting": { before: "الدهان", after: "دهان المعادن" },
   "wood-painting": { before: "الدهان", after: "دهان الأخشاب" },
   "repainting": { before: "خدمة ضمن الدهان", after: "إعادة الدهان" },
