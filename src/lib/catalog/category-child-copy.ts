@@ -44,6 +44,11 @@ const paintingNames: Record<string, { before: string; after: string }> = {
   "decorative-painting": { before: "الدهان", after: "دهان زخرفي" },
 };
 
+const burnerCookerNames: Record<string, { before: string; after: string; description?: { before: string; after: string } }> = {
+  "cooker-igniter-repair": { before: "إصلاح الموقد", after: "إصلاح قداحة الموقد", description: { before: "إصلاح الموقد يصلح العطل بعد تحديده.", after: "اذكر المشكلة التي تلاحظها في قداحة الموقد ونوع الجهاز، ليُراجع الفريق النطاق والتوفر قبل عرض السعر." } },
+  "electric-cooker-repair": { before: "إصلاح الموقد", after: "إصلاح الموقد الكهربائي", description: { before: "إصلاح الموقد يصلح العطل بعد تحديده.", after: "اذكر العطل الذي تلاحظه في الموقد الكهربائي ونوع الجهاز، ليُراجع الفريق الحالة قبل تأكيد النطاق وعرض السعر." } },
+};
+
 const dishwasherNames: Record<string, { before: string; after: string; description?: { before: string; after: string } }> = {
   "dishwasher-not-cleaning-properly": { before: "تنظيف غسالة الصحون", after: "ضعف تنظيف غسالة الصحون", description: { before: "تنظيف غسالة الصحون ينظّف ما تذكره في الطلب.", after: "اذكر ما تلاحظه من ضعف تنظيف الصحون ليُراجع الفريق المشكلة قبل تأكيد النطاق وعرض السعر." } },
   "dishwasher-spray-arm-cleaning": { before: "تنظيف غسالة الصحون", after: "تنظيف أذرع الرش في غسالة الصحون", description: { before: "تنظيف غسالة الصحون ينظّف ما تذكره في الطلب.", after: "اذكر متطلبات تنظيف أذرع الرش في غسالة الصحون ليُراجع الفريق النطاق والتوفر قبل عرض السعر." } },
@@ -94,6 +99,7 @@ export function categoryChildCopy(category: string, locale: string, masterSlug: 
     : category === "plumbing" ? plumbingNames[masterSlug]
     : category === "ac" ? acNames[masterSlug]
     : category === "painting" ? paintingNames[masterSlug]
+    : category === "burner-cooker" ? burnerCookerNames[masterSlug]
     : category === "dishwasher" ? dishwasherNames[masterSlug]
     : category === "washing-machine" ? washingMachineNames[masterSlug]
     : category === "refrigerator" ? refrigeratorNames[masterSlug]
@@ -102,6 +108,7 @@ export function categoryChildCopy(category: string, locale: string, masterSlug: 
     : category === "microwave" ? microwaveNames[masterSlug] : undefined;
   if (!replacement || copy.name !== replacement.before) return copy;
   const description = category === "general-maintenance" ? generalMaintenanceNames[masterSlug]?.description
+    : category === "burner-cooker" ? burnerCookerNames[masterSlug]?.description
     : category === "dishwasher" ? dishwasherNames[masterSlug]?.description
     : category === "washing-machine" ? washingMachineNames[masterSlug]?.description
     : category === "refrigerator" ? refrigeratorNames[masterSlug]?.description
