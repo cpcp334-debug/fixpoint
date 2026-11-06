@@ -205,11 +205,18 @@ export function LeadForm({
             <label htmlFor="requirement" className={fieldLabelClass}>
               {t("message")}
             </label>
+            {mode === "quote" ? (
+              <div id="quote-requirement-help" className="mb-2 space-y-2 text-sm text-muted">
+                <p>{t("projectEnquiryHelp")}</p>
+                <p>{t("documentTransferHelp")}</p>
+              </div>
+            ) : null}
             <textarea
               id="requirement"
               name="requirement"
               required
               rows={5}
+              aria-describedby={mode === "quote" ? "quote-requirement-help" : undefined}
               aria-invalid={Boolean(fieldErrors.requirement)}
               className={`${fieldControlClass} min-h-[8rem] py-2`}
             />
