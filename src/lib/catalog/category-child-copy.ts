@@ -42,6 +42,11 @@ const paintingNames: Record<string, { before: string; after: string }> = {
   "decorative-painting": { before: "الدهان", after: "دهان زخرفي" },
 };
 
+const dishwasherNames: Record<string, { before: string; after: string; description?: { before: string; after: string } }> = {
+  "dishwasher-not-cleaning-properly": { before: "تنظيف غسالة الصحون", after: "ضعف تنظيف غسالة الصحون", description: { before: "تنظيف غسالة الصحون ينظّف ما تذكره في الطلب.", after: "اذكر ما تلاحظه من ضعف تنظيف الصحون ليُراجع الفريق المشكلة قبل تأكيد النطاق وعرض السعر." } },
+  "dishwasher-spray-arm-cleaning": { before: "تنظيف غسالة الصحون", after: "تنظيف أذرع الرش في غسالة الصحون", description: { before: "تنظيف غسالة الصحون ينظّف ما تذكره في الطلب.", after: "اذكر متطلبات تنظيف أذرع الرش في غسالة الصحون ليُراجع الفريق النطاق والتوفر قبل عرض السعر." } },
+};
+
 const washingMachineNames: Record<string, { before: string; after: string; description?: { before: string; after: string } }> = {
   "washing-machine-not-starting": { before: "الغسيل الآلة", after: "مشكلة عدم تشغيل الغسالة", description: { before: "الغسيل الآلة يقيّم الحالة ويوصي بالخطوة التالية.", after: "اذكر ما يحدث عند محاولة تشغيل الغسالة ليُراجع الفريق الحالة قبل تأكيد النطاق وعرض السعر." } },
   "washing-machine-not-spinning": { before: "الغسيل الآلة", after: "مشكلة عدم عصر الغسالة", description: { before: "الغسيل الآلة يقيّم الحالة ويوصي بالخطوة التالية.", after: "اذكر ما يحدث أثناء مرحلة العصر في الغسالة ليُراجع الفريق الحالة قبل تأكيد النطاق وعرض السعر." } },
@@ -76,12 +81,18 @@ const microwaveNames: Record<string, { before: string; after: string }> = {
 
 /** Correct known ambiguous category previews without replacing reviewed content or URLs. */
 export function categoryChildCopy(category: string, locale: string, masterSlug: string, copy: CardCopy): CardCopy {
+  if (category === "dishwasher" && locale === "en" && masterSlug === "dishwasher-not-cleaning-properly"
+      && copy.name === "Dishwasher Not Cleaning Properly"
+      && copy.description === "Dishwasher Not Cleaning Properly cleans Dishwasher Not Properly for the property you name on the request.") {
+    return { ...copy, description: "Describe the poor wash results so the team can review the problem before confirming the scope and quotation." };
+  }
   if (locale !== "ar") return copy;
   const replacement = category === "cleaning" ? cleaningNames[masterSlug]
     : category === "general-maintenance" ? generalMaintenanceNames[masterSlug]
     : category === "plumbing" ? plumbingNames[masterSlug]
     : category === "ac" ? acNames[masterSlug]
     : category === "painting" ? paintingNames[masterSlug]
+    : category === "dishwasher" ? dishwasherNames[masterSlug]
     : category === "washing-machine" ? washingMachineNames[masterSlug]
     : category === "refrigerator" ? refrigeratorNames[masterSlug]
     : category === "water-tank" ? waterTankNames[masterSlug]
@@ -89,6 +100,7 @@ export function categoryChildCopy(category: string, locale: string, masterSlug: 
     : category === "microwave" ? microwaveNames[masterSlug] : undefined;
   if (!replacement || copy.name !== replacement.before) return copy;
   const description = category === "general-maintenance" ? generalMaintenanceNames[masterSlug]?.description
+    : category === "dishwasher" ? dishwasherNames[masterSlug]?.description
     : category === "washing-machine" ? washingMachineNames[masterSlug]?.description
     : category === "refrigerator" ? refrigeratorNames[masterSlug]?.description
     : category === "water-tank" ? waterTankNames[masterSlug]?.description : undefined;
