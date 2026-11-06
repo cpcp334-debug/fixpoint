@@ -311,7 +311,9 @@
     "receivedLead": "Thank you. Our team will review your request and contact you using the details you provided.",
     "reference": "Request reference",
     "notSpecified": "Not specified",
-    "returnHome": "Return to website"
+    "returnHome": "Return to website",
+    "projectEnquiryHelp": "For project enquiries, include your company and role, work scope, drawing or BOQ revision, current stage and target dates. For several activities, choose “Write my own” above.",
+    "documentTransferHelp": "There is no file upload on this form. State which documents are available and agree how to send them with the team."
   },
   "Booking": {
     "title": "Book a service",
