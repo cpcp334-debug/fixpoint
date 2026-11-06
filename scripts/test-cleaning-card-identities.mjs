@@ -15,7 +15,7 @@ for(const [category,slug,before,after] of cases){
 // Exercise every existing mapping, so new Cleaning entries cannot displace prior categories.
 for(const table of source.matchAll(/const (\w+)Names:[\s\S]*?= \{([\s\S]*?)\n};/g)){
  for(const row of table[2].matchAll(/"([^"]+)": \{ before: "([^"]+)", after: "([^"]+)" }/g)){
-  eq(copy(table[1]==='generalMaintenance'?'general-maintenance':table[1],'ar',row[1],{name:row[2],description:row[2]+' وصف'}),{name:row[3],description:row[3]+' وصف'});
+  eq(copy(table[1]==='generalMaintenance'?'general-maintenance':table[1]==='waterHeater'?'water-heater':table[1],'ar',row[1],{name:row[2],description:row[2]+' وصف'}),{name:row[3],description:row[3]+' وصف'});
  }
 }
 console.log(`${checks} category identity assertions passed`);
