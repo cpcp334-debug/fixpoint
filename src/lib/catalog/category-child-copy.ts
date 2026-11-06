@@ -1,6 +1,8 @@
 type CardCopy = { name: string; description: string };
 
-const generalMaintenanceNames: Record<string, { before: string; after: string }> = {
+const generalMaintenanceNames: Record<string, { before: string; after: string; description?: { before: string; after: string } }> = {
+  "preventive-building-maintenance": { before: "صيانة الوقائية المبنى", after: "الصيانة الوقائية للمباني", description: { before: "صيانة الوقائية المبنى يشمل العناية والفحص للعطل الظاهر.", after: "تُراجع متطلبات الصيانة الوقائية للمباني قبل تأكيد النطاق وعرض السعر." } },
+  "minor-building-repairs": { before: "البسيطة المبنى", after: "إصلاحات بسيطة للمباني", description: { before: "البسيطة المبنى يقيّم الحالة ويوصي بالخطوة التالية.", after: "تُراجع متطلبات الإصلاحات البسيطة للمباني قبل تأكيد النطاق وعرض السعر." } },
   "door-repair-and-adjustment": { before: "إصلاح الباب", after: "إصلاح الأبواب وضبطها" },
   "door-hardware-replacement": { before: "استبدال الباب", after: "استبدال ملحقات الأبواب" },
 };
@@ -68,9 +70,10 @@ export function categoryChildCopy(category: string, locale: string, masterSlug: 
     : category === "water-heater" ? waterHeaterNames[masterSlug]
     : category === "microwave" ? microwaveNames[masterSlug] : undefined;
   if (!replacement || copy.name !== replacement.before) return copy;
+  const description = category === "general-maintenance" ? generalMaintenanceNames[masterSlug]?.description : undefined;
   return {
     name: replacement.after,
-    description: copy.description.startsWith(`${replacement.before} `)
+    description: description && copy.description === description.before ? description.after : copy.description.startsWith(`${replacement.before} `)
       ? replacement.after + copy.description.slice(replacement.before.length)
       : copy.description,
   };
