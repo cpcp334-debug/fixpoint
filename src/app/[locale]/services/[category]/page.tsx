@@ -165,6 +165,7 @@ export default async function CategoryPage({
       {cat.slug === "electrical" ? (
         <Section>
           <TopElectricalServices
+            showCategoryLink={false}
             locale={locale}
             title={t("topElectricalTitle")}
             lead={t("topElectricalLead")}

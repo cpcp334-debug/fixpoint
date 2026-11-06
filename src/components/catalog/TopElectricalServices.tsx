@@ -8,11 +8,13 @@ export async function TopElectricalServices({
   title,
   lead,
   cta,
+  showCategoryLink = true,
 }: {
   locale: string;
   title: string;
   lead: string;
   cta: string;
+  showCategoryLink?: boolean;
 }) {
   const limit = 4;
   const items = (
@@ -50,11 +52,13 @@ export async function TopElectricalServices({
           </li>
         ))}
       </ul>
-      <p className="mt-3 text-sm">
-        <Link href="/services/electrical" className="font-medium text-accent">
-          {cta}
-        </Link>
-      </p>
+      {showCategoryLink ? (
+        <p className="mt-3 text-sm">
+          <Link href="/services/electrical" className="font-medium text-accent">
+            {cta}
+          </Link>
+        </p>
+      ) : null}
     </section>
   );
 }
