@@ -42,6 +42,11 @@ const paintingNames: Record<string, { before: string; after: string }> = {
   "decorative-painting": { before: "الدهان", after: "دهان زخرفي" },
 };
 
+const refrigeratorNames: Record<string, { before: string; after: string; description?: { before: string; after: string } }> = {
+  "refrigerator-freezing-problem": { before: "الثلاجة", after: "مشكلة تجميد الثلاجة", description: { before: "الثلاجة يقيّم الحالة ويوصي بالخطوة التالية.", after: "اذكر مشكلة التجميد التي تلاحظها في الثلاجة ليُراجع الفريق الحالة قبل تأكيد النطاق وعرض السعر." } },
+  "refrigerator-ice-formation-problem": { before: "الثلاجة", after: "مشكلة تكوّن الثلج في الثلاجة", description: { before: "الثلاجة يقيّم الحالة ويوصي بالخطوة التالية.", after: "اذكر موضع تكوّن الثلج في الثلاجة وما تلاحظه ليُراجع الفريق الحالة قبل تأكيد النطاق وعرض السعر." } },
+};
+
 const waterTankNames: Record<string, { before: string; after: string; description?: { before: string; after: string } }> = {
   "water-tank-cover-repair": { before: "إصلاح المياه الخزان", after: "إصلاح غطاء خزان المياه", description: { before: "إصلاح المياه الخزان يصلح العطل بعد تحديده.", after: "تُراجع مشكلة غطاء خزان المياه قبل تأكيد النطاق وعرض السعر." } },
   "water-tank-valve-repair": { before: "إصلاح المياه الخزان", after: "إصلاح صمام خزان المياه", description: { before: "إصلاح المياه الخزان يصلح العطل بعد تحديده.", after: "تُراجع مشكلة صمام خزان المياه قبل تأكيد النطاق وعرض السعر." } },
@@ -72,11 +77,13 @@ export function categoryChildCopy(category: string, locale: string, masterSlug: 
     : category === "plumbing" ? plumbingNames[masterSlug]
     : category === "ac" ? acNames[masterSlug]
     : category === "painting" ? paintingNames[masterSlug]
+    : category === "refrigerator" ? refrigeratorNames[masterSlug]
     : category === "water-tank" ? waterTankNames[masterSlug]
     : category === "water-heater" ? waterHeaterNames[masterSlug]
     : category === "microwave" ? microwaveNames[masterSlug] : undefined;
   if (!replacement || copy.name !== replacement.before) return copy;
   const description = category === "general-maintenance" ? generalMaintenanceNames[masterSlug]?.description
+    : category === "refrigerator" ? refrigeratorNames[masterSlug]?.description
     : category === "water-tank" ? waterTankNames[masterSlug]?.description : undefined;
   return {
     name: replacement.after,
