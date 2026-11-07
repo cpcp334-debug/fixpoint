@@ -91,6 +91,17 @@ const microwaveNames: Record<string, { before: string; after: string }> = {
   "microwave-turntable-problem": { before: "المايكروويف", after: "مشكلة دوران طبق المايكروويف" },
 };
 
+const electricalTradeCopy: Record<string, { before: CardCopy; after: CardCopy }> = {
+  "commercial-wiring-installation": {
+    before: { name: "تركيب التجاري التمديدات", description: "تركيب التجاري التمديدات يركّب على نقطة أو مساحة قائمة بعد فحصها." },
+    after: { name: "تركيب التمديدات الكهربائية التجارية", description: "اذكر نوع الموقع التجاري والأعمال المطلوبة والمخططات المتاحة، ليُراجع الفريق نطاق التمديدات قبل إعداد عرض السعر." },
+  },
+  "shop-electrical-maintenance": {
+    before: { name: "صيانة المحل الكهرباء", description: "صيانة المحل الكهرباء يشمل العناية والفحص للعطل الظاهر." },
+    after: { name: "صيانة كهرباء المحلات", description: "اذكر ما يحتاج إلى الصيانة أو العطل الذي لاحظته وساعات عمل المحل، ليُراجع الفريق نطاق العمل وترتيبات الدخول قبل إعداد عرض السعر." },
+  },
+};
+
 const saunaHeaterCopy: Record<string, { before: CardCopy; after: CardCopy }> = {
   "sauna-heater-inspection": {
     before: { name: "فحص الساونا السخان", description: "فحص الساونا السخان يفحص الحالة ويسجّل الخطوة المهنية التالية." },
@@ -153,11 +164,12 @@ export function categoryChildCopy(category: string, locale: string, masterSlug: 
       description: copy.description === "المسبح يقيّم الحالة ويوصي بالخطوة التالية." ? poolCopy.description : copy.description,
     };
   }
-  const saunaHeater = category === "sauna" ? saunaHeaterCopy[masterSlug] : undefined;
-  if (saunaHeater?.before && copy.name === saunaHeater.before.name) {
+  const exactCopy = category === "sauna" ? saunaHeaterCopy[masterSlug]
+    : category === "electrical" ? electricalTradeCopy[masterSlug] : undefined;
+  if (exactCopy?.before && copy.name === exactCopy.before.name) {
     return {
-      name: saunaHeater.after.name,
-      description: copy.description === saunaHeater.before.description ? saunaHeater.after.description : copy.description,
+      name: exactCopy.after.name,
+      description: copy.description === exactCopy.before.description ? exactCopy.after.description : copy.description,
     };
   }
   const replacement = category === "cleaning" ? cleaningNames[masterSlug]
