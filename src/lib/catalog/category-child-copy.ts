@@ -111,6 +111,20 @@ const gymDescriptions: Record<string, { name: string; before: string; after: str
 
 /** Correct known ambiguous category previews without replacing reviewed content or URLs. */
 export function categoryChildCopy(category: string, locale: string, masterSlug: string, copy: CardCopy): CardCopy {
+  if (category === "swimming-pool" && masterSlug === "pool-vacuum-cleaning") {
+    if (locale === "ar" && copy.name === "تنظيف المسبح") {
+      return {
+        name: "تنظيف المسبح بالمكنسة",
+        description: copy.description === "تنظيف المسبح ينظّف ما تذكره في الطلب."
+          ? "اذكر الرواسب أو المناطق المطلوب تنظيفها بالمكنسة وترتيبات الوصول إلى المسبح، ليُراجع الفريق نطاق العمل قبل إعداد عرض السعر."
+          : copy.description,
+      };
+    }
+    if (locale === "en" && copy.name === "Pool Vacuum Cleaning"
+        && copy.description === "Pool Vacuum Cleaning cleans Pool Vacuum for the property you name on the request.") {
+      return { ...copy, description: "Describe the debris or areas you want vacuumed and the available pool access so the team can review the scope before quoting." };
+    }
+  }
   const gymDescription = category === "gym" ? gymDescriptions[`${locale}:${masterSlug}`] : undefined;
   if (gymDescription && copy.name === gymDescription.name && copy.description === gymDescription.before) {
     return { ...copy, description: gymDescription.after };
