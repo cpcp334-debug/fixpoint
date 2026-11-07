@@ -91,8 +91,19 @@ const microwaveNames: Record<string, { before: string; after: string }> = {
   "microwave-turntable-problem": { before: "المايكروويف", after: "مشكلة دوران طبق المايكروويف" },
 };
 
+const gymDescriptions: Record<string, { name: string; before: string; after: string }> = {
+  "en:gym-deep-cleaning": { name: "Gym Deep Cleaning", before: "Gym Deep Cleaning cleans Gym Deep for the property you name on the request.", after: "Planning a gym deep clean? Share the areas, current condition and access window so the team can review the cleaning scope and quotation." },
+  "en:gym-regular-cleaning": { name: "Gym Regular Cleaning", before: "Gym Regular Cleaning cleans Gym Regular for the property you name on the request.", after: "Planning regular gym cleaning? Share the areas, preferred frequency and operating hours so the team can review the schedule, scope and quotation." },
+  "ar:gym-deep-cleaning": { name: "تنظيف الصالة الرياضية العميق", before: "تنظيف الصالة الرياضية العميق ينظّف ما تذكره في الطلب.", after: "هل تخطط لتنظيف عميق لصالة رياضية؟ اذكر المساحات وحالتها الحالية ووقت الدخول المتاح ليُراجع الفريق نطاق التنظيف وعرض السعر." },
+  "ar:gym-regular-cleaning": { name: "تنظيف الصالة الرياضية الدوري", before: "تنظيف الصالة الرياضية الدوري ينظّف ما تذكره في الطلب.", after: "هل تخطط لتنظيف دوري لصالة رياضية؟ اذكر المساحات والتكرار المطلوب وساعات التشغيل ليُراجع الفريق الجدول والنطاق وعرض السعر." },
+};
+
 /** Correct known ambiguous category previews without replacing reviewed content or URLs. */
 export function categoryChildCopy(category: string, locale: string, masterSlug: string, copy: CardCopy): CardCopy {
+  const gymDescription = category === "gym" ? gymDescriptions[`${locale}:${masterSlug}`] : undefined;
+  if (gymDescription && copy.name === gymDescription.name && copy.description === gymDescription.before) {
+    return { ...copy, description: gymDescription.after };
+  }
   if (category === "dishwasher" && locale === "en" && masterSlug === "dishwasher-not-cleaning-properly"
       && copy.name === "Dishwasher Not Cleaning Properly"
       && copy.description === "Dishwasher Not Cleaning Properly cleans Dishwasher Not Properly for the property you name on the request.") {
