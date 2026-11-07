@@ -10,10 +10,23 @@ const reviewLocations = new Set([
   "dubai", "abu-dhabi", "sharjah", "ajman", "umm-al-quwain", "ras-al-khaimah", "fujairah",
 ]);
 
-/** Carry only supported directory state, never queries on remapped detail/fallback paths. */
+/** Carry only supported directory or quote state, never queries on remapped detail/fallback paths. */
 export function localeDirectoryHref(pathname: string, target: string, search: string): string {
   const path = pathname.replace(/\/$/, "");
   if (target.replace(/\/$/, "") !== path) return target;
+  if (path === "/get-a-quote") {
+    const source = new URLSearchParams(search);
+    const result = new URLSearchParams();
+    for (const key of ["service", "location"] as const) {
+      const values = source.getAll(key);
+      const value = values[0];
+      if (values.length === 1 && value.length <= 160 && /^[\p{L}\p{N}][\p{L}\p{M}\p{N}]*(?:-[\p{L}\p{N}][\p{L}\p{M}\p{N}]*)*$/u.test(value)) {
+        result.set(key, value);
+      }
+    }
+    const query = result.toString();
+    return query ? `${target}?${query}` : target;
+  }
   if (path === "/reviews") {
     const source = new URLSearchParams(search);
     const result = new URLSearchParams();
