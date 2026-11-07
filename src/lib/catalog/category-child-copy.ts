@@ -91,6 +91,17 @@ const microwaveNames: Record<string, { before: string; after: string }> = {
   "microwave-turntable-problem": { before: "المايكروويف", after: "مشكلة دوران طبق المايكروويف" },
 };
 
+const saunaHeaterCopy: Record<string, { before: CardCopy; after: CardCopy }> = {
+  "sauna-heater-inspection": {
+    before: { name: "فحص الساونا السخان", description: "فحص الساونا السخان يفحص الحالة ويسجّل الخطوة المهنية التالية." },
+    after: { name: "فحص سخان الساونا", description: "اذكر طراز سخان الساونا إن كان معروفاً، وما لاحظته ووقت ظهوره، ليُراجع الفريق نطاق الفحص قبل إعداد عرض السعر." },
+  },
+  "sauna-heater-maintenance": {
+    before: { name: "صيانة الساونا السخان", description: "صيانة الساونا السخان يشمل العناية والفحص للعطل الظاهر." },
+    after: { name: "صيانة سخان الساونا", description: "اذكر طراز سخان الساونا وسجل الصيانة المتاح والوقت المناسب للدخول، ليُراجع الفريق نطاق الصيانة والتوفر قبل إعداد عرض السعر." },
+  },
+};
+
 const gymDescriptions: Record<string, { name: string; before: string; after: string }> = {
   "en:gym-deep-cleaning": { name: "Gym Deep Cleaning", before: "Gym Deep Cleaning cleans Gym Deep for the property you name on the request.", after: "Planning a gym deep clean? Share the areas, current condition and access window so the team can review the cleaning scope and quotation." },
   "en:gym-regular-cleaning": { name: "Gym Regular Cleaning", before: "Gym Regular Cleaning cleans Gym Regular for the property you name on the request.", after: "Planning regular gym cleaning? Share the areas, preferred frequency and operating hours so the team can review the schedule, scope and quotation." },
@@ -110,6 +121,13 @@ export function categoryChildCopy(category: string, locale: string, masterSlug: 
     return { ...copy, description: "Describe the poor wash results so the team can review the problem before confirming the scope and quotation." };
   }
   if (locale !== "ar") return copy;
+  const saunaHeater = category === "sauna" ? saunaHeaterCopy[masterSlug] : undefined;
+  if (saunaHeater?.before && copy.name === saunaHeater.before.name) {
+    return {
+      name: saunaHeater.after.name,
+      description: copy.description === saunaHeater.before.description ? saunaHeater.after.description : copy.description,
+    };
+  }
   const replacement = category === "cleaning" ? cleaningNames[masterSlug]
     : category === "general-maintenance" ? generalMaintenanceNames[masterSlug]
     : category === "plumbing" ? plumbingNames[masterSlug]
