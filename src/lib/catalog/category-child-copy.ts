@@ -109,6 +109,17 @@ const gymDescriptions: Record<string, { name: string; before: string; after: str
   "ar:gym-regular-cleaning": { name: "تنظيف الصالة الرياضية الدوري", before: "تنظيف الصالة الرياضية الدوري ينظّف ما تذكره في الطلب.", after: "هل تخطط لتنظيف دوري لصالة رياضية؟ اذكر المساحات والتكرار المطلوب وساعات التشغيل ليُراجع الفريق الجدول والنطاق وعرض السعر." },
 };
 
+const poolSurfaceAndWaterCopy: Record<string, CardCopy> = {
+  "pool-skimming": {
+    name: "إزالة الشوائب من سطح المسبح",
+    description: "اذكر نوع الشوائب الظاهرة على سطح الماء وحجم المسبح التقريبي وترتيبات الدخول، ليُراجع الفريق نطاق العمل قبل إعداد عرض السعر.",
+  },
+  "pool-chemical-balancing": {
+    name: "موازنة كيمياء مياه المسبح",
+    description: "شارك نتائج فحص المياه الأخيرة إن توفرت، وما لاحظته وأي معالجة سابقة، ليُراجع الفريق نطاق الخدمة قبل إعداد عرض السعر.",
+  },
+};
+
 /** Correct known ambiguous category previews without replacing reviewed content or URLs. */
 export function categoryChildCopy(category: string, locale: string, masterSlug: string, copy: CardCopy): CardCopy {
   if (category === "swimming-pool" && masterSlug === "pool-vacuum-cleaning") {
@@ -135,6 +146,13 @@ export function categoryChildCopy(category: string, locale: string, masterSlug: 
     return { ...copy, description: "Describe the poor wash results so the team can review the problem before confirming the scope and quotation." };
   }
   if (locale !== "ar") return copy;
+  const poolCopy = category === "swimming-pool" ? poolSurfaceAndWaterCopy[masterSlug] : undefined;
+  if (poolCopy?.name && copy.name === "المسبح") {
+    return {
+      name: poolCopy.name,
+      description: copy.description === "المسبح يقيّم الحالة ويوصي بالخطوة التالية." ? poolCopy.description : copy.description,
+    };
+  }
   const saunaHeater = category === "sauna" ? saunaHeaterCopy[masterSlug] : undefined;
   if (saunaHeater?.before && copy.name === saunaHeater.before.name) {
     return {
