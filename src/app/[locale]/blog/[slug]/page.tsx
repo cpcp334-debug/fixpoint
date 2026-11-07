@@ -60,7 +60,11 @@ export default async function BlogArticlePage({
   const article = await getBlogArticleBySlug(slug, locale);
   if (!article) notFound();
 
-  const projectCta = locale === "en" && [
+  const projectCta = locale === "en" && toMasterBlogSlug(slug) === "electrical-snagging-handover-checklist" ? {
+    title: "Planning electrical snagging or handover support?",
+    body: "Share your company, project location, agreed electrical scope, current snag register, available records and target handover date so the team can review the remaining work.",
+    quote: "Request an electrical quotation",
+  } : locale === "en" && [
     "office-electrical-fit-out-dubai",
     "electrical-testing-commissioning-readiness",
   ].includes(toMasterBlogSlug(slug)) ? {
