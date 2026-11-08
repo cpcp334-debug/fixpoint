@@ -65,6 +65,8 @@ const washingMachineNames: Record<string, { before: string; after: string; descr
 };
 
 const refrigeratorNames: Record<string, { before: string; after: string; description?: { before: string; after: string } }> = {
+  "refrigerator-cooling-problem": { before: "الثلاجة التبريد", after: "مشكلة تبريد الثلاجة" },
+  "refrigerator-water-leakage": { before: "الثلاجة المياه التسرب", after: "تسرب المياه من الثلاجة" },
   "refrigerator-freezing-problem": { before: "الثلاجة", after: "مشكلة تجميد الثلاجة", description: { before: "الثلاجة يقيّم الحالة ويوصي بالخطوة التالية.", after: "اذكر مشكلة التجميد التي تلاحظها في الثلاجة ليُراجع الفريق الحالة قبل تأكيد النطاق وعرض السعر." } },
   "refrigerator-ice-formation-problem": { before: "الثلاجة", after: "مشكلة تكوّن الثلج في الثلاجة", description: { before: "الثلاجة يقيّم الحالة ويوصي بالخطوة التالية.", after: "اذكر موضع تكوّن الثلج في الثلاجة وما تلاحظه ليُراجع الفريق الحالة قبل تأكيد النطاق وعرض السعر." } },
 };
