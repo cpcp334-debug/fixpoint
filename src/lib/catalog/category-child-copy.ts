@@ -55,6 +55,8 @@ const burnerCookerNames: Record<string, { before: string; after: string; descrip
 };
 
 const dishwasherNames: Record<string, { before: string; after: string; description?: { before: string; after: string } }> = {
+  "dishwasher-water-filling-problem": { before: "غسالة الصحون المياه", after: "مشكلة دخول المياه إلى غسالة الصحون" },
+  "dishwasher-drainage-problem": { before: "غسالة الصحون الصرف", after: "مشكلة تصريف المياه من غسالة الصحون" },
   "dishwasher-not-cleaning-properly": { before: "تنظيف غسالة الصحون", after: "ضعف تنظيف غسالة الصحون", description: { before: "تنظيف غسالة الصحون ينظّف ما تذكره في الطلب.", after: "اذكر ما تلاحظه من ضعف تنظيف الصحون ليُراجع الفريق المشكلة قبل تأكيد النطاق وعرض السعر." } },
   "dishwasher-spray-arm-cleaning": { before: "تنظيف غسالة الصحون", after: "تنظيف أذرع الرش في غسالة الصحون", description: { before: "تنظيف غسالة الصحون ينظّف ما تذكره في الطلب.", after: "اذكر متطلبات تنظيف أذرع الرش في غسالة الصحون ليُراجع الفريق النطاق والتوفر قبل عرض السعر." } },
 };
