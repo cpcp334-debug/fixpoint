@@ -18,6 +18,7 @@ const cleaningNames: Record<string, { before: string; after: string }> = {
 };
 
 const plumbingNames: Record<string, { before: string; after: string }> = {
+  "drain-blockage-removal": { before: "إزالة الصرف", after: "إزالة انسداد الصرف" },
   "water-leakage-detection": { before: "كشف المياه التسرب", after: "كشف تسرب المياه" },
   "water-leakage-repair": { before: "إصلاح المياه التسرب", after: "إصلاح تسرب المياه" },
   "water-pressure-problem-diagnosis": { before: "تشخيص المياه", after: "تشخيص مشاكل ضغط المياه" },
