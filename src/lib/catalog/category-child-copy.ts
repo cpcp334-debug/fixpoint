@@ -75,6 +75,8 @@ const waterTankNames: Record<string, { before: string; after: string; descriptio
 };
 
 const waterHeaterNames: Record<string, { before: string; after: string }> = {
+  "water-heater-no-hot-water": { before: "المياه السخان المياه", after: "سخان المياه لا يسخن الماء" },
+  "water-heater-slow-heating": { before: "المياه السخان", after: "بطء تسخين سخان المياه" },
   "water-heater-heating-element-replacement": { before: "استبدال المياه السخان", after: "استبدال عنصر تسخين سخان المياه" },
   "water-heater-valve-replacement": { before: "استبدال المياه السخان", after: "استبدال صمام سخان المياه" },
 };
