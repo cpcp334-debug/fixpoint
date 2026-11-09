@@ -52,6 +52,22 @@ const ovenNames: Record<string, { before: string; after: string; description?: {
 const burnerCookerNames: Record<string, { before: string; after: string; description?: { before: string; after: string } }> = {
   "cooker-igniter-repair": { before: "إصلاح الموقد", after: "إصلاح قداحة الموقد", description: { before: "إصلاح الموقد يصلح العطل بعد تحديده.", after: "اذكر المشكلة التي تلاحظها في قداحة الموقد ونوع الجهاز، ليُراجع الفريق النطاق والتوفر قبل عرض السعر." } },
   "electric-cooker-repair": { before: "إصلاح الموقد", after: "إصلاح الموقد الكهربائي", description: { before: "إصلاح الموقد يصلح العطل بعد تحديده.", after: "اذكر العطل الذي تلاحظه في الموقد الكهربائي ونوع الجهاز، ليُراجع الفريق الحالة قبل تأكيد النطاق وعرض السعر." } },
+  "cooker-knob-replacement": {
+    before: "استبدال الموقد",
+    after: "استبدال مقبض الموقد",
+    description: {
+      before: "استبدال الموقد يستبدل القطعة عندما لا يكفي الإصلاح.",
+      after: "اذكر طراز الموقد إن كان معروفاً وحالة المقبض، ليُراجع الفريق نطاق الاستبدال قبل عرض السعر.",
+    },
+  },
+  "glass-hob-maintenance": {
+    before: "صيانة الزجاج",
+    after: "صيانة سطح الموقد الزجاجي",
+    description: {
+      before: "صيانة الزجاج يشمل العناية والفحص للعطل الظاهر.",
+      after: "اذكر طراز الموقد إن كان معروفاً وما لاحظته على السطح الزجاجي، ليُراجع الفريق نطاق الصيانة قبل عرض السعر.",
+    },
+  },
 };
 
 const dishwasherNames: Record<string, { before: string; after: string; description?: { before: string; after: string } }> = {
