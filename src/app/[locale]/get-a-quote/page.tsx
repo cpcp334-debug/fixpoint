@@ -46,7 +46,7 @@ export default async function QuotePage({ params, searchParams }: { params: Prom
       }
     >
       <PublicHero locale={locale} title={t("title")} lead={t("lead")} compact />
-      <Section>
+      <Section id="quote-form">
         <Disclaimer>{siteConfig.disclaimers.quote[locale === "ar" ? "ar" : "en"]}</Disclaimer>
         <p className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted">
           <a href={telUrl()} className="hover:text-navy">
@@ -80,6 +80,7 @@ export default async function QuotePage({ params, searchParams }: { params: Prom
         quote={enquiryCopy?.quote ?? home("ctaQuote")}
         ai={home("ctaAi")}
         whatsapp={cta("whatsapp")}
+        quoteHref="#quote-form"
         aiHref={`/${locale}#alnajah-ai`}
       />
     </PageShell>
