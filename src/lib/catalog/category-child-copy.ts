@@ -45,6 +45,8 @@ const paintingNames: Record<string, { before: string; after: string }> = {
 };
 
 const ovenNames: Record<string, { before: string; after: string; description?: { before: string; after: string } }> = {
+  "oven-not-heating": { before: "الفرن", after: "الفرن لا يسخن", description: { before: "الفرن يقيّم الحالة ويوصي بالخطوة التالية.", after: "اطلب معاينة إذا كان الفرن يعمل لكنه لا يسخن." } },
+  "oven-heating-element-replacement": { before: "استبدال الفرن", after: "استبدال عنصر تسخين الفرن", description: { before: "استبدال الفرن يستبدل القطعة عندما لا يكفي الإصلاح.", after: "اطلب عرض سعر إذا حدد فني أن عنصر تسخين الفرن يحتاج إلى استبدال." } },
   "oven-uneven-heating": { before: "الفرن", after: "عدم تساوي حرارة الفرن", description: { before: "الفرن يقيّم الحالة ويوصي بالخطوة التالية.", after: "اذكر مواضع تفاوت الحرارة داخل الفرن وما تلاحظه أثناء الاستخدام، ليُراجع الفريق الحالة قبل تأكيد النطاق وعرض السعر." } },
   "oven-temperature-problem": { before: "الفرن", after: "مشكلة درجة حرارة الفرن", description: { before: "الفرن يقيّم الحالة ويوصي بالخطوة التالية.", after: "اذكر ما تلاحظه من ارتفاع أو انخفاض أو عدم ثبات درجة حرارة الفرن، ليُراجع الفريق الحالة قبل تأكيد النطاق وعرض السعر." } },
 };
