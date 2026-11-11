@@ -1,0 +1,42 @@
+name: Quote form recovery
+on:
+  pull_request:
+    paths:
+      - src/components/forms/LeadForm.tsx
+      - scripts/test-lead-form-browser.mjs
+      - .github/workflows/quote-form-recovery.yml
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npx prisma generate
+      - run: npm install --no-save --package-lock=false --ignore-scripts playwright@1.58.2
+      - run: npx playwright install --with-deps chromium
+      - run: npx tsc --noEmit
+      - run: npx eslint src/components/forms/LeadForm.tsx
+      - name: Reproduce the original reset
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          cp src/components/forms/LeadForm.tsx /tmp/LeadForm.fixed.tsx
+          trap 'cp /tmp/LeadForm.fixed.tsx src/components/forms/LeadForm.tsx' EXIT
+          git show "$BASE_SHA:src/components/forms/LeadForm.tsx" > src/components/forms/LeadForm.tsx
+          if node scripts/test-lead-form-browser.mjs > /tmp/quote-baseline.log 2>&1; then
+            echo 'Expected the original form to fail preservation.'
+            exit 1
+          fi
+          grep 'entered fields must survive' /tmp/quote-baseline.log
+      - name: Verify fixed English and Arabic forms
+        run: node scripts/test-lead-form-browser.mjs
+      - run: node scripts/test-contact-service-search.mjs
