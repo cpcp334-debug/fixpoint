@@ -1,7 +1,11 @@
-name: Quote form recovery
+name: Public enquiry regression
 on:
   pull_request:
     paths:
+      - 'src/app/**'
+      - 'src/lib/catalog/**'
+      - 'src/lib/slug/**'
+      - 'scripts/test-*.mjs'
       - src/components/forms/LeadForm.tsx
       - scripts/test-lead-form-browser.mjs
       - scripts/test-lead-form-handlers.mjs
@@ -41,10 +45,13 @@ jobs:
           echo "NODE_PATH=$RUNNER_TEMP/quote-browser/node_modules" >> "$GITHUB_ENV"
           "$RUNNER_TEMP/quote-browser/node_modules/.bin/playwright" install --with-deps chromium
       - run: npx tsc --noEmit
-      - run: npx eslint src/components/forms/LeadForm.tsx
+      - name: Lint changed public source
+        run: |
+          npx eslint src/components/forms/LeadForm.tsx src/lib/catalog/category-child-copy.ts src/lib/slug/locale-directory-query.ts 'src/app/[locale]/[service]/page.tsx' 'src/app/[locale]/contact/page.tsx' 'src/app/[locale]/diy/[slug]/page.tsx' 'src/app/[locale]/get-a-quote/page.tsx' 'src/app/[locale]/locations/[location]/page.tsx' 'src/app/[locale]/services/[category]/page.tsx'
       - name: Reproduce the original reset
         env:
-          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          # Fixed historical baseline: the PR base already contains the repair after #98.
+          BASE_SHA: 8437bb6657ed38317a6d919b5a3d4df64b12e45c
         run: |
           cp src/components/forms/LeadForm.tsx /tmp/LeadForm.fixed.tsx
           trap 'cp /tmp/LeadForm.fixed.tsx src/components/forms/LeadForm.tsx' EXIT
@@ -57,8 +64,11 @@ jobs:
           grep 'entered fields must survive' /tmp/quote-baseline.log
       - name: Verify fixed English and Arabic forms
         run: node scripts/test-lead-form-browser.mjs
-      - run: node scripts/test-contact-service-search.mjs
-      - run: node scripts/test-lead-form-handlers.mjs
+      - name: Verify catalogue, navigation, metadata and enquiry regressions
+        run: |
+          for test in scripts/test-*-card-identities.mjs scripts/test-category-pagination.mjs scripts/test-locale-directory-query.mjs scripts/test-diy-related-service-card.mjs scripts/test-diy-guide-metadata-alternates.mjs scripts/test-diy-category-metadata-alternates.mjs scripts/test-contact-service-search.mjs scripts/test-booking-service-search.mjs scripts/test-faq-quote-context.mjs scripts/test-lead-form-handlers.mjs; do
+            node --import tsx "$test" || exit 1
+          done
       - name: Create isolated build database
         run: npx prisma db push --skip-generate
       - name: Compile production application

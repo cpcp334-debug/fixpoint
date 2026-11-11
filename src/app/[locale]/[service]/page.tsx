@@ -12,6 +12,7 @@ import {
 } from "@/lib/catalog";
 import { prisma } from "@/server/db";
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd, reviewAggregateJsonLd, serviceJsonLd } from "@/lib/seo";
+import { getNavCategory, getNavCategoryLocalized } from "@/lib/catalog/approved-nav";
 import { parseJson } from "@/lib/utils";
 import { publicIntakeQuestions } from "@/lib/catalog/public-intake";
 import { parseFaqJson } from "@/lib/faq";
@@ -127,18 +128,20 @@ export default async function ServicePage({
       ? `مرحباً ${brandName("ar")}، أحتاج ${row.t.name}.`
       : `Hello ${brandName("en")}, I need ${row.t.name}.`;
   const publicPath = `/${servicePathSlug(locale, row.slug)}`;
+  const category = getNavCategory(row.category.slug);
+  const breadcrumbs = [
+    { href: "/", label: nav("home") },
+    { href: "/services", label: t("title") },
+  ];
+  if (category) {
+    breadcrumbs.push({ href: category.href, label: getNavCategoryLocalized(category, locale).name });
+  }
+  breadcrumbs.push({ href: publicPath, label: row.t.name });
 
   return (
     <PageShell
       breadcrumbs={
-        <Breadcrumbs
-          label={nav("breadcrumb")}
-          items={[
-            { href: "/", label: nav("home") },
-            { href: "/services", label: t("title") },
-            { href: publicPath, label: row.t.name },
-          ]}
-        />
+        <Breadcrumbs label={nav("breadcrumb")} items={breadcrumbs} />
       }
     >
       <JsonLd data={serviceJsonLd({ name: row.t.name, description: row.t.shortDescription, path: publicPath, locale })} />
@@ -152,7 +155,7 @@ export default async function ServicePage({
           reviews: approvedReviews.map((item) => toPublicReview(item, locale)),
         })}
       />
-      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: row.t.name, path: publicPath }], locale)} />
+      <JsonLd data={breadcrumbJsonLd(breadcrumbs.map(({ href, label }) => ({ path: href, name: label })), locale)} />
       <JsonLd data={faqJsonLd(faqs)} />
 
       <PublicHero locale={locale}

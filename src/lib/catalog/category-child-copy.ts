@@ -18,6 +18,7 @@ const cleaningNames: Record<string, { before: string; after: string }> = {
 };
 
 const plumbingNames: Record<string, { before: string; after: string }> = {
+  "drain-blockage-removal": { before: "إزالة الصرف", after: "إزالة انسداد الصرف" },
   "water-leakage-detection": { before: "كشف المياه التسرب", after: "كشف تسرب المياه" },
   "water-leakage-repair": { before: "إصلاح المياه التسرب", after: "إصلاح تسرب المياه" },
   "water-pressure-problem-diagnosis": { before: "تشخيص المياه", after: "تشخيص مشاكل ضغط المياه" },
@@ -34,6 +35,8 @@ const acNames: Record<string, { before: string; after: string }> = {
 };
 
 const paintingNames: Record<string, { before: string; after: string }> = {
+  "ceiling-painting": { before: "السقف الدهان", after: "دهان السقف" },
+  "door-painting": { before: "الباب الدهان", after: "دهان الباب" },
   "office-painting": { before: "المكتب الدهان", after: "دهان المكاتب" },
   "commercial-painting": { before: "التجاري الدهان", after: "الدهان التجاري" },
   "metal-painting": { before: "الدهان", after: "دهان المعادن" },
@@ -45,6 +48,8 @@ const paintingNames: Record<string, { before: string; after: string }> = {
 };
 
 const ovenNames: Record<string, { before: string; after: string; description?: { before: string; after: string } }> = {
+  "oven-not-heating": { before: "الفرن", after: "الفرن لا يسخن", description: { before: "الفرن يقيّم الحالة ويوصي بالخطوة التالية.", after: "اطلب معاينة إذا كان الفرن يعمل لكنه لا يسخن." } },
+  "oven-heating-element-replacement": { before: "استبدال الفرن", after: "استبدال عنصر تسخين الفرن", description: { before: "استبدال الفرن يستبدل القطعة عندما لا يكفي الإصلاح.", after: "اطلب عرض سعر إذا حدد فني أن عنصر تسخين الفرن يحتاج إلى استبدال." } },
   "oven-uneven-heating": { before: "الفرن", after: "عدم تساوي حرارة الفرن", description: { before: "الفرن يقيّم الحالة ويوصي بالخطوة التالية.", after: "اذكر مواضع تفاوت الحرارة داخل الفرن وما تلاحظه أثناء الاستخدام، ليُراجع الفريق الحالة قبل تأكيد النطاق وعرض السعر." } },
   "oven-temperature-problem": { before: "الفرن", after: "مشكلة درجة حرارة الفرن", description: { before: "الفرن يقيّم الحالة ويوصي بالخطوة التالية.", after: "اذكر ما تلاحظه من ارتفاع أو انخفاض أو عدم ثبات درجة حرارة الفرن، ليُراجع الفريق الحالة قبل تأكيد النطاق وعرض السعر." } },
 };
@@ -52,9 +57,27 @@ const ovenNames: Record<string, { before: string; after: string; description?: {
 const burnerCookerNames: Record<string, { before: string; after: string; description?: { before: string; after: string } }> = {
   "cooker-igniter-repair": { before: "إصلاح الموقد", after: "إصلاح قداحة الموقد", description: { before: "إصلاح الموقد يصلح العطل بعد تحديده.", after: "اذكر المشكلة التي تلاحظها في قداحة الموقد ونوع الجهاز، ليُراجع الفريق النطاق والتوفر قبل عرض السعر." } },
   "electric-cooker-repair": { before: "إصلاح الموقد", after: "إصلاح الموقد الكهربائي", description: { before: "إصلاح الموقد يصلح العطل بعد تحديده.", after: "اذكر العطل الذي تلاحظه في الموقد الكهربائي ونوع الجهاز، ليُراجع الفريق الحالة قبل تأكيد النطاق وعرض السعر." } },
+  "cooker-knob-replacement": {
+    before: "استبدال الموقد",
+    after: "استبدال مقبض الموقد",
+    description: {
+      before: "استبدال الموقد يستبدل القطعة عندما لا يكفي الإصلاح.",
+      after: "اذكر طراز الموقد إن كان معروفاً وحالة المقبض، ليُراجع الفريق نطاق الاستبدال قبل عرض السعر.",
+    },
+  },
+  "glass-hob-maintenance": {
+    before: "صيانة الزجاج",
+    after: "صيانة سطح الموقد الزجاجي",
+    description: {
+      before: "صيانة الزجاج يشمل العناية والفحص للعطل الظاهر.",
+      after: "اذكر طراز الموقد إن كان معروفاً وما لاحظته على السطح الزجاجي، ليُراجع الفريق نطاق الصيانة قبل عرض السعر.",
+    },
+  },
 };
 
 const dishwasherNames: Record<string, { before: string; after: string; description?: { before: string; after: string } }> = {
+  "dishwasher-water-filling-problem": { before: "غسالة الصحون المياه", after: "مشكلة دخول المياه إلى غسالة الصحون" },
+  "dishwasher-drainage-problem": { before: "غسالة الصحون الصرف", after: "مشكلة تصريف المياه من غسالة الصحون" },
   "dishwasher-not-cleaning-properly": { before: "تنظيف غسالة الصحون", after: "ضعف تنظيف غسالة الصحون", description: { before: "تنظيف غسالة الصحون ينظّف ما تذكره في الطلب.", after: "اذكر ما تلاحظه من ضعف تنظيف الصحون ليُراجع الفريق المشكلة قبل تأكيد النطاق وعرض السعر." } },
   "dishwasher-spray-arm-cleaning": { before: "تنظيف غسالة الصحون", after: "تنظيف أذرع الرش في غسالة الصحون", description: { before: "تنظيف غسالة الصحون ينظّف ما تذكره في الطلب.", after: "اذكر متطلبات تنظيف أذرع الرش في غسالة الصحون ليُراجع الفريق النطاق والتوفر قبل عرض السعر." } },
 };
@@ -65,6 +88,8 @@ const washingMachineNames: Record<string, { before: string; after: string; descr
 };
 
 const refrigeratorNames: Record<string, { before: string; after: string; description?: { before: string; after: string } }> = {
+  "refrigerator-cooling-problem": { before: "الثلاجة التبريد", after: "مشكلة تبريد الثلاجة" },
+  "refrigerator-water-leakage": { before: "الثلاجة المياه التسرب", after: "تسرب المياه من الثلاجة" },
   "refrigerator-freezing-problem": { before: "الثلاجة", after: "مشكلة تجميد الثلاجة", description: { before: "الثلاجة يقيّم الحالة ويوصي بالخطوة التالية.", after: "اذكر مشكلة التجميد التي تلاحظها في الثلاجة ليُراجع الفريق الحالة قبل تأكيد النطاق وعرض السعر." } },
   "refrigerator-ice-formation-problem": { before: "الثلاجة", after: "مشكلة تكوّن الثلج في الثلاجة", description: { before: "الثلاجة يقيّم الحالة ويوصي بالخطوة التالية.", after: "اذكر موضع تكوّن الثلج في الثلاجة وما تلاحظه ليُراجع الفريق الحالة قبل تأكيد النطاق وعرض السعر." } },
 };
@@ -75,6 +100,8 @@ const waterTankNames: Record<string, { before: string; after: string; descriptio
 };
 
 const waterHeaterNames: Record<string, { before: string; after: string }> = {
+  "water-heater-no-hot-water": { before: "المياه السخان المياه", after: "سخان المياه لا يسخن الماء" },
+  "water-heater-slow-heating": { before: "المياه السخان", after: "بطء تسخين سخان المياه" },
   "water-heater-heating-element-replacement": { before: "استبدال المياه السخان", after: "استبدال عنصر تسخين سخان المياه" },
   "water-heater-valve-replacement": { before: "استبدال المياه السخان", after: "استبدال صمام سخان المياه" },
 };
@@ -89,6 +116,17 @@ const microwaveNames: Record<string, { before: string; after: string }> = {
   "microwave-heating-problem": { before: "المايكروويف", after: "مشكلة تسخين المايكروويف" },
   "microwave-spark-problem": { before: "المايكروويف", after: "ظهور شرر في المايكروويف" },
   "microwave-turntable-problem": { before: "المايكروويف", after: "مشكلة دوران طبق المايكروويف" },
+};
+
+const electricalTradeCopy: Record<string, { before: CardCopy; after: CardCopy }> = {
+  "commercial-wiring-installation": {
+    before: { name: "تركيب التجاري التمديدات", description: "تركيب التجاري التمديدات يركّب على نقطة أو مساحة قائمة بعد فحصها." },
+    after: { name: "تركيب التمديدات الكهربائية التجارية", description: "اذكر نوع الموقع التجاري والأعمال المطلوبة والمخططات المتاحة، ليُراجع الفريق نطاق التمديدات قبل إعداد عرض السعر." },
+  },
+  "shop-electrical-maintenance": {
+    before: { name: "صيانة المحل الكهرباء", description: "صيانة المحل الكهرباء يشمل العناية والفحص للعطل الظاهر." },
+    after: { name: "صيانة كهرباء المحلات", description: "اذكر ما يحتاج إلى الصيانة أو العطل الذي لاحظته وساعات عمل المحل، ليُراجع الفريق نطاق العمل وترتيبات الدخول قبل إعداد عرض السعر." },
+  },
 };
 
 const saunaHeaterCopy: Record<string, { before: CardCopy; after: CardCopy }> = {
@@ -153,11 +191,12 @@ export function categoryChildCopy(category: string, locale: string, masterSlug: 
       description: copy.description === "المسبح يقيّم الحالة ويوصي بالخطوة التالية." ? poolCopy.description : copy.description,
     };
   }
-  const saunaHeater = category === "sauna" ? saunaHeaterCopy[masterSlug] : undefined;
-  if (saunaHeater?.before && copy.name === saunaHeater.before.name) {
+  const exactCopy = category === "sauna" ? saunaHeaterCopy[masterSlug]
+    : category === "electrical" ? electricalTradeCopy[masterSlug] : undefined;
+  if (exactCopy?.before && copy.name === exactCopy.before.name) {
     return {
-      name: saunaHeater.after.name,
-      description: copy.description === saunaHeater.before.description ? saunaHeater.after.description : copy.description,
+      name: exactCopy.after.name,
+      description: copy.description === exactCopy.before.description ? exactCopy.after.description : copy.description,
     };
   }
   const replacement = category === "cleaning" ? cleaningNames[masterSlug]
