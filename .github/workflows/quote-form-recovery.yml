@@ -53,6 +53,7 @@ jobs:
             echo 'Expected the original form to fail preservation.'
             exit 1
           fi
+          cat /tmp/quote-baseline.log
           grep 'entered fields must survive' /tmp/quote-baseline.log
       - name: Verify fixed English and Arabic forms
         run: node scripts/test-lead-form-browser.mjs

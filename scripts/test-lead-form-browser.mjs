@@ -35,6 +35,8 @@ let passed=0;
 try {
   for(const locale of ['en','ar']) for(const custom of [false,true]) for(const scenario of ['validation','rejected','rateLimit','malformed','network','success','duplicate','ignored']) {
     const page=await browser.newPage(); let calls=0; let payload;
+    page.on('pageerror', error => console.error('Browser error:', error.message));
+    console.log(`Checking ${locale} ${custom ? "custom" : "catalog"} ${scenario}`);
     await page.addInitScript(({locale,messages})=>{window.locale=locale;window.mode='quote';window.messages=messages;window.navigation=[];window.events=[];},{locale,messages:messages[locale]});
     await page.route('**/api/leads', async route=>{
       calls++;payload=route.request().postDataJSON();
