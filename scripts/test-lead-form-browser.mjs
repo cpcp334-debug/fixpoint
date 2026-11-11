@@ -10,7 +10,7 @@ const { chromium } = require('playwright');
 const root = new URL('../', import.meta.url).pathname;
 const messages = Object.fromEntries(['en', 'ar'].map(locale => [locale, JSON.parse(readFileSync(`${root}messages/${locale}.json`, 'utf8'))]));
 const mocks = {
-  'next-intl': `export const useTranslations = ns => key => window.messages[ns][key];`,
+  'next-intl': `export const useTranslations = ns => key => window.messages[ns]?.[key] ?? ns + "." + key;`,
   '@/i18n/routing': `export const useRouter = () => ({push: url => window.navigation.push(url)}); export const Link = 'a';`,
   '@/lib/analytics/client': `export const formStart = () => () => {};`,
   '@/lib/attribution/client': `export const getAttributionForSubmit = () => ({utm_source:'qa'});`,

@@ -246,7 +246,7 @@ export function LeadForm({
         {status === "ok" ? <p role="status" className="text-sm text-accent">{success}</p> : null}
         {status === "incomplete" ? (
           <p role="alert" className="text-sm text-danger">
-            {err("formIncomplete")}
+            {err("fixIncomplete")}
           </p>
         ) : null}
         {status === "error" ? (

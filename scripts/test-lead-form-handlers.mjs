@@ -40,7 +40,7 @@ try {
     const tree=render(mode,locale);
     assert.equal(calls,outcome==='validation'?0:1);
     assert.equal(tree.find(x=>x.type==='Button').props.disabled,false);
-    const expected=outcome==='validation'?'Errors.formIncomplete':outcome==='rateLimit'?'Errors.rateLimit':['reject','network','malformed'].includes(outcome)?'Quote.error':null;
+    const expected=outcome==='validation'?'Errors.fixIncomplete':outcome==='rateLimit'?'Errors.rateLimit':['reject','network','malformed'].includes(outcome)?'Quote.error':null;
     if(expected)assert.ok(tree.some(x=>x.type==='p'&&JSON.stringify(x.props.children).includes(expected)));
     assert.deepEqual(nav,mode==='quote'&&outcome==='success'?['/get-a-quote/received?ref=qa%2Fref']:[]);
     assert.equal(events.length,mode==='contact'&&outcome==='success'?1:0);
