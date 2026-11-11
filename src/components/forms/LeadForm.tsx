@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/routing";
 import { Button } from "@/components/ui/Button";
@@ -9,6 +9,7 @@ import { ServiceModeField } from "@/components/forms/ServiceModeField";
 import { formStart } from "@/lib/analytics/client";
 import { getAttributionForSubmit } from "@/lib/attribution/client";
 import { pushDataLayer } from "@/lib/analytics/datalayer";
+import { whatsappUrl } from "@/config/site";
 
 type Mode = "quote" | "booking" | "contact";
 
@@ -32,6 +33,7 @@ export function LeadForm({
   const c = useTranslations("Contact");
   const err = useTranslations("Errors");
   const router = useRouter();
+  const quoteSubmitting = useRef(false);
   const [status, setStatus] = useState<"idle" | "ok" | "error" | "rateLimit" | "incomplete">("idle");
   const [pending, setPending] = useState(false);
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
@@ -48,6 +50,7 @@ export function LeadForm({
   }
 
   async function onSubmit(formData: FormData) {
+    if (mode === "quote" && quoteSubmitting.current) return;
     const clientErrors = validate(formData);
     setFieldErrors(clientErrors);
     if (Object.keys(clientErrors).length) {
@@ -56,6 +59,7 @@ export function LeadForm({
       return;
     }
 
+    if (mode === "quote") quoteSubmitting.current = true;
     setPending(true);
     setStatus("idle");
     try {
@@ -119,6 +123,7 @@ export function LeadForm({
     } catch {
       setStatus("error");
     } finally {
+      quoteSubmitting.current = false;
       setPending(false);
     }
   }
@@ -131,7 +136,13 @@ export function LeadForm({
   return (
     <FormShell>
       <form
-        action={onSubmit}
+        action={mode === "quote" ? undefined : onSubmit}
+        onSubmit={mode === "quote" ? (event) => {
+          // React actions reset uncontrolled inputs even when an error was handled.
+          // Keep the quote draft in the form until receipt navigation succeeds.
+          event.preventDefault();
+          void onSubmit(new FormData(event.currentTarget));
+        } : undefined}
         className="grid gap-6"
         noValidate
         onFocusCapture={formStart(mode === "contact" ? "CONTACT_START" : mode === "booking" ? "BOOKING_START" : "QUOTE_START")}
@@ -235,10 +246,15 @@ export function LeadForm({
         {status === "ok" ? <p role="status" className="text-sm text-accent">{success}</p> : null}
         {status === "incomplete" ? (
           <p role="alert" className="text-sm text-danger">
-            {err("formIncomplete")}
+            {err("fixIncomplete")}
           </p>
         ) : null}
-        {status === "error" ? <p role="alert" className="text-sm text-danger">{t("error")}</p> : null}
+        {status === "error" ? (
+          <p role="alert" className="text-sm text-danger">
+            {t("error")}
+            {mode === "quote" ? <> <a href={whatsappUrl()} className="underline">{locale === "ar" ? "تواصل عبر واتساب" : "Contact us on WhatsApp"}</a></> : null}
+          </p>
+        ) : null}
         {status === "rateLimit" ? <p role="alert" className="text-sm text-danger">{err("rateLimit")}</p> : null}
       </form>
     </FormShell>

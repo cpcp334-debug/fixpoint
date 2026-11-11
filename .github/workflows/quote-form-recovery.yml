@@ -1,0 +1,65 @@
+name: Quote form recovery
+on:
+  pull_request:
+    paths:
+      - src/components/forms/LeadForm.tsx
+      - scripts/test-lead-form-browser.mjs
+      - scripts/test-lead-form-handlers.mjs
+      - .github/workflows/quote-form-recovery.yml
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    services:
+      mysql:
+        image: mariadb:11.8
+        env:
+          MYSQL_ROOT_PASSWORD: validation-only
+          MYSQL_DATABASE: fixpoint_validation
+        ports: [3306:3306]
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=10s --health-timeout=5s --health-retries=12
+    env:
+      DATABASE_URL: mysql://root:validation-only@127.0.0.1:3306/fixpoint_validation
+      NEXT_PUBLIC_SITE_URL: https://fixpoint.ae
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npx prisma generate
+      - name: Install isolated browser tooling
+        run: |
+          npm install --prefix "$RUNNER_TEMP/quote-browser" --no-save --package-lock=false --ignore-scripts playwright@1.58.2
+          echo "NODE_PATH=$RUNNER_TEMP/quote-browser/node_modules" >> "$GITHUB_ENV"
+          "$RUNNER_TEMP/quote-browser/node_modules/.bin/playwright" install --with-deps chromium
+      - run: npx tsc --noEmit
+      - run: npx eslint src/components/forms/LeadForm.tsx
+      - name: Reproduce the original reset
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          cp src/components/forms/LeadForm.tsx /tmp/LeadForm.fixed.tsx
+          trap 'cp /tmp/LeadForm.fixed.tsx src/components/forms/LeadForm.tsx' EXIT
+          git show "$BASE_SHA:src/components/forms/LeadForm.tsx" > src/components/forms/LeadForm.tsx
+          if node scripts/test-lead-form-browser.mjs > /tmp/quote-baseline.log 2>&1; then
+            echo 'Expected the original form to fail preservation.'
+            exit 1
+          fi
+          cat /tmp/quote-baseline.log
+          grep 'entered fields must survive' /tmp/quote-baseline.log
+      - name: Verify fixed English and Arabic forms
+        run: node scripts/test-lead-form-browser.mjs
+      - run: node scripts/test-contact-service-search.mjs
+      - run: node scripts/test-lead-form-handlers.mjs
+      - name: Create isolated build database
+        run: npx prisma db push --skip-generate
+      - name: Compile production application
+        run: npm run build
