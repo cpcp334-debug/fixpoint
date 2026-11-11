@@ -77,6 +77,16 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
       <Section>
         <SectionHeader title={t("formTitle")} />
         <div className="mt-8">
+          <div className="mb-6 rounded-xl border border-line bg-sand p-5">
+            <p className="mb-3 text-sm text-slate-700">
+              {locale === "ar"
+                ? "لطلب عرض سعر لمشروع كهربائي أو لحزمة أعمال من الباطن، استخدم نموذج عرض السعر لذكر نطاق العمل والمواعيد والمخططات أو جدول الكميات المتاح لديك."
+                : "For an electrical project or subcontract package, use the quote form to share your scope, timing and which drawings or BOQ you have."}
+            </p>
+            <ButtonLink href="/get-a-quote" variant="secondary">
+              {locale === "ar" ? "اطلب عرض سعر لمشروع كهربائي" : "Request an electrical project quote"}
+            </ButtonLink>
+          </div>
           <LeadForm
             mode="contact"
             locale={locale}
