@@ -70,4 +70,22 @@ for (const locale of ["en", "ar"]) {
   eq(nodes(await route.default(args)).find(x => x.type === tokens.get("CategoryChildGrid")).props.items.length, 19);
   count = 160;
 }
+// Empty search results should offer relevant guidance, without changing service matching.
+for (const [locale, query, href] of [
+  ["en", "DB Installation", "/blog/distribution-board-installation-planning"],
+  ["en", "panel installation", "/blog/distribution-board-installation-planning"],
+  ["ar", "تركيب لوحة التوزيع", "/blog/distribution-board-installation-planning"],
+  ["en", "cable   tray", "/blog/cable-tray-conduit-coordination"],
+  ["en", "conduit", "/blog/cable-tray-conduit-coordination"],
+  ["ar", "حوامل الكابلات", "/blog/cable-tray-conduit-coordination"],
+  ["ar", "مسارات الكابلات", "/blog/cable-tray-conduit-coordination"],
+  ["ar", "مواسير الكهرباء", "/blog/cable-tray-conduit-coordination"],
+]) {
+  const args={params:Promise.resolve({locale,category:"electrical"}),searchParams:Promise.resolve({q:query})};
+  const tree=nodes(await route.default(args));
+  eq(tree.filter(n=>n.type===tokens.get("Link")&&n.props.href===href).length,1);
+  eq(tree.find(n=>n.type===tokens.get("CategoryChildGrid")).props.items.length,0);
+  args.params=Promise.resolve({locale,category:"plumbing"});
+  eq(nodes(await route.default(args)).filter(n=>n.type===tokens.get("Link")&&n.props.href===href).length,0);
+}
 console.log(`${checks} category metadata and rendering assertions passed`);

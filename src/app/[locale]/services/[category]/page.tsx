@@ -24,6 +24,31 @@ import { CATEGORY_PAGE_SIZE, categoryPagination, firstCategoryQueryValue, type C
 
 const CHILD_PAGE_SIZE = CATEGORY_PAGE_SIZE;
 
+const ELECTRICAL_SEARCH_GUIDES = [
+  {
+    href: "/blog/distribution-board-installation-planning",
+    en: {
+      queries: ["db installation", "panel installation"],
+      label: "Read the distribution board installation planning guide",
+    },
+    ar: {
+      queries: ["تركيب لوحة التوزيع"],
+      label: "اقرأ دليل تخطيط تركيب لوحة التوزيع",
+    },
+  },
+  {
+    href: "/blog/cable-tray-conduit-coordination",
+    en: {
+      queries: ["cable tray", "conduit"],
+      label: "Read the cable tray and conduit coordination guide",
+    },
+    ar: {
+      queries: ["حوامل الكابلات", "مسارات الكابلات", "مواسير الكهرباء"],
+      label: "اقرأ دليل تنسيق حوامل الكابلات والمواسير",
+    },
+  },
+];
+
 export async function generateStaticParams() {
   return buildApprovedNavTree().map((c) => ({ category: c.slug }));
 }
@@ -112,6 +137,13 @@ export default async function CategoryPage({
           item.description.toLowerCase().includes(q),
       )
     : sortedChildren;
+
+  const guideLocale = locale === "en" || locale === "ar" ? locale : undefined;
+  const guideQuery = q.replace(/\s+/g, " ");
+  const guide =
+    cat.slug === "electrical" && filtered.length === 0 && guideLocale
+      ? ELECTRICAL_SEARCH_GUIDES.find((entry) => entry[guideLocale].queries.includes(guideQuery))
+      : undefined;
 
   const { page, totalPages } = categoryPagination(sp.page, filtered.length);
   const pageItems = filtered.slice((page - 1) * CHILD_PAGE_SIZE, page * CHILD_PAGE_SIZE);
@@ -208,6 +240,13 @@ export default async function CategoryPage({
             query={qParam || ""}
             filterLabel={pager("filter")}
           />
+          {guide && guideLocale ? (
+            <p className="mt-2 text-sm">
+              <Link href={guide.href} className="font-medium text-accent underline">
+                {guide[guideLocale].label}
+              </Link>
+            </p>
+          ) : null}
         </div>
         <PrevNextPagination
           currentPage={page}

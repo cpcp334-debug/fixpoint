@@ -89,6 +89,7 @@ export default async function LocationPage({
   const t = await getTranslations("Locations");
   const nav = await getTranslations("Nav");
   const cta = await getTranslations("Cta");
+  const booking = await getTranslations("Booking");
   const home = await getTranslations("Home");
   const servicesT = await getTranslations("Services");
   const services = await getActiveServices(locale);
@@ -97,7 +98,7 @@ export default async function LocationPage({
   const faqItems = normalizeFaqItems([...faqs, ...global]);
   const ctaLabels = {
     quote: cta("quote"),
-    book: cta("book"),
+    book: booking("type_standard_title"),
     inspect: cta("inspect"),
     whatsapp: cta("whatsapp"),
     call: cta("call"),

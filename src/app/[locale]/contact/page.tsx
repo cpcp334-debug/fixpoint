@@ -4,7 +4,7 @@ import { serviceChoiceLabels } from "@/lib/catalog/service-choice-labels";
 import { buildMetadata } from "@/lib/seo";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { LeadForm } from "@/components/forms/LeadForm";
-import { mailUrl, productionSiteUrl, siteConfig, telUrl, whatsappUrl, brandName, domainBrandName } from "@/config/site";
+import { mailUrl, siteConfig, telUrl, whatsappUrl, brandName, domainBrandName } from "@/config/site";
 import { ButtonLink } from "@/components/ui/Button";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { PageShell } from "@/components/public/PageShell";
@@ -44,7 +44,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         compact
         actions={
           <div className="flex flex-wrap gap-3">
-            <ButtonLink href={productionSiteUrl} variant="secondary" external>
+            <ButtonLink href="/" variant="secondary">
               {domainBrandName(locale)} · fixpoint.ae
             </ButtonLink>
             <ButtonLink href={telUrl()} external>

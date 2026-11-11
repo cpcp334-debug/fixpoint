@@ -216,6 +216,7 @@ async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) 
   const guide = await getGuideBySlug(slug, locale);
   if (!guide) notFound();
   const relatedService = guide.service ? await getServiceBySlug(guide.service.slug, locale) : null;
+  const quoteHref = relatedService ? `/get-a-quote?service=${encodeURIComponent(relatedService.slug)}` : undefined;
   const quotationCopy = relatedServiceQuotationCopy(relatedService, locale);
   const t = await getTranslations("Diy");
   const nav = await getTranslations("Nav");
@@ -359,7 +360,7 @@ async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) 
           <ProseCard title={t("fallback")}>{guide.t.professionalFallback}</ProseCard>
         </div>
         <div className="mt-8">
-          <CtaRow labels={ctaLabels} />
+          <CtaRow labels={ctaLabels} quoteHref={quoteHref} />
         </div>
       </Section>
 
@@ -454,6 +455,7 @@ async function DiyGuideView({ locale, slug }: { locale: string; slug: string }) 
 
       <CtaBand
         title={quotationCopy?.title ?? home("ctaTitle")}
+        quoteHref={quoteHref}
         body={quotationCopy?.body ?? home("ctaBody")}
         quote={quotationCopy?.quote ?? home("ctaQuote")}
         ai={home("ctaAi")}

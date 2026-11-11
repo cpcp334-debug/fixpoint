@@ -46,9 +46,20 @@ for (const [path, target, query, expected] of [
   ["/get-a-quote", "/get-a-quote", "service=&location=&ref=receipt&name=private", "/get-a-quote"],
   ["/get-a-quote", "/get-a-quote", "service=a&location=dubai&ref=receipt&name=private", "/get-a-quote?service=a&location=dubai"],
   ["/get-a-quote/received", "/get-a-quote/received", "service=a&location=dubai&ref=receipt", "/get-a-quote/received"],
+  ["/book-a-service", "/book-a-service", "service=pipe-repair&location=dubai", "/book-a-service?service=pipe-repair&location=dubai"],
+  ["/book-a-service", "/book-a-service", "location=sharjah&service=pipe-repair&type=emergency", "/book-a-service?type=emergency&service=pipe-repair&location=sharjah"],
+  ["/book-a-service", "/book-a-service", "type=standard&location=dubai", "/book-a-service?location=dubai"],
+  ["/book-a-service", "/book-a-service", "type=unknown&service=pipe-repair", "/book-a-service?service=pipe-repair"],
+  ["/book-a-service", "/book-a-service", "type=emergency&type=inspection&service=pipe-repair&location=dubai", "/book-a-service?service=pipe-repair&location=dubai"],
+  ["/book-a-service", "/book-a-service", "type=inspection&service=a&service=b&location=a/b&phone=123&ref=receipt", "/book-a-service?type=inspection"],
+  ["/book-a-service", "/book-a-service", "", "/book-a-service"],
+  ["/book-a-service/received", "/book-a-service/received", "type=emergency&service=pipe-repair&location=dubai", "/book-a-service/received"],
+  ["/get-a-quote", "/get-a-quote", "type=emergency&service=pipe-repair&location=dubai", "/get-a-quote?service=pipe-repair&location=dubai"],
   ["/", "/", "q=wood", "/"],
   ["/faq", "/faq", "", "/faq"],
 ]) eq(helper.localeDirectoryHref(path, target, query), expected);
+for (const type of ["inspection", "site_inspection", "emergency", "recurring", "recurring_cleaning", "amc", "amc_visit"])
+  eq(helper.localeDirectoryHref("/book-a-service", "/book-a-service", `type=${type}`), `/book-a-service?type=${type}`);
 for (const page of ["0", "-1", "1", "1.5", "NaN", "Infinity", "1e2", "9007199254740992", "", " 2"])
   eq(helper.localeDirectoryHref("/faq", "/faq", `category=ac&page=${encodeURIComponent(page)}`), "/faq?category=ac");
 eq(helper.localeDirectoryHref("/faq", "/faq", "page=999999"), "/faq?page=999999");
