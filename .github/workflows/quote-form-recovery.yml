@@ -4,6 +4,7 @@ on:
     paths:
       - src/components/forms/LeadForm.tsx
       - scripts/test-lead-form-browser.mjs
+      - scripts/test-lead-form-handlers.mjs
       - .github/workflows/quote-form-recovery.yml
 permissions:
   contents: read
@@ -11,6 +12,19 @@ jobs:
   browser:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
+    services:
+      mysql:
+        image: mariadb:11.8
+        env:
+          MYSQL_ROOT_PASSWORD: validation-only
+          MYSQL_DATABASE: fixpoint_validation
+        ports: [3306:3306]
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=10s --health-timeout=5s --health-retries=12
+    env:
+      DATABASE_URL: mysql://root:validation-only@127.0.0.1:3306/fixpoint_validation
+      NEXT_PUBLIC_SITE_URL: https://fixpoint.ae
     steps:
       - uses: actions/checkout@v4
         with:
@@ -21,8 +35,11 @@ jobs:
           cache: npm
       - run: npm ci --ignore-scripts
       - run: npx prisma generate
-      - run: npm install --no-save --package-lock=false --ignore-scripts playwright@1.58.2
-      - run: npx playwright install --with-deps chromium
+      - name: Install isolated browser tooling
+        run: |
+          npm install --prefix "$RUNNER_TEMP/quote-browser" --no-save --package-lock=false --ignore-scripts playwright@1.58.2
+          echo "NODE_PATH=$RUNNER_TEMP/quote-browser/node_modules" >> "$GITHUB_ENV"
+          "$RUNNER_TEMP/quote-browser/node_modules/.bin/playwright" install --with-deps chromium
       - run: npx tsc --noEmit
       - run: npx eslint src/components/forms/LeadForm.tsx
       - name: Reproduce the original reset
@@ -40,3 +57,8 @@ jobs:
       - name: Verify fixed English and Arabic forms
         run: node scripts/test-lead-form-browser.mjs
       - run: node scripts/test-contact-service-search.mjs
+      - run: node scripts/test-lead-form-handlers.mjs
+      - name: Create isolated build database
+        run: npx prisma db push --skip-generate
+      - name: Compile production application
+        run: npm run build
