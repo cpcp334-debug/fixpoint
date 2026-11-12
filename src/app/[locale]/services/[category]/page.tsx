@@ -11,6 +11,7 @@ import { getApprovedCatalogServiceBySlug, getServiceBySlug } from "@/lib/catalog
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
+import { ButtonLink } from "@/components/ui/Button";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { PageShell } from "@/components/public/PageShell";
 import { PublicHero } from "@/components/public/PublicHero";
@@ -193,6 +194,30 @@ export default async function CategoryPage({
       <JsonLd data={faqJsonLd(aeo.map((x) => ({ q: x.q, a: x.a })))} />
 
       <PublicHero locale={locale} title={loc.name} lead={loc.description} kicker={loc.childCountLabel} heroImage={pagePhoto("service-category",cat.slug) || editorialImage(null, [cat.slug])} imageAlt={editorialImageAlt(pagePhoto("service-category",cat.slug) || editorialImage(null, [cat.slug]), locale, loc.name)} />
+
+      {cat.slug === "electrical" ? (
+        <Section id="electrical-project-enquiry" tone="sand">
+          <SectionHeader
+            title={locale === "ar" ? "طلب عرض سعر لحزمة أعمال كهربائية" : "Request an electrical work-package quote"}
+            lead={locale === "ar"
+              ? "للمقاولين الرئيسيين ومقاولي الأعمال الكهروميكانيكية وشركات التجهيز الداخلي في دبي والشارقة: اذكر موقع المشروع ونطاق الأعمال والمرحلة الحالية والموعد المستهدف ومسؤوليات توريد المواد."
+              : "For main contractors, MEP contractors and fit-out companies in Dubai and Sharjah: describe the project location, work scope, current stage, target dates and material-supply responsibilities."}
+          />
+          <p className="mt-3 max-w-2xl text-sm text-muted">
+            {locale === "ar"
+              ? "اذكر مراجعة المخططات أو جدول الكميات المتاح لديك. لا يتيح نموذج عرض السعر رفع ملفات؛ اتفق مع الفريق على طريقة إرسالها. يُراجع نطاق العمل والتغطية والتوفر قبل تأكيد العرض."
+              : "State which drawing or BOQ revision is available. The quote form has no file upload; agree how to send documents with the team. Scope, coverage and availability are reviewed before a quotation is confirmed."}
+          </p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <ButtonLink href="/get-a-quote">
+              {locale === "ar" ? "اطلب عرض سعر لمشروع كهربائي" : "Request an electrical project quote"}
+            </ButtonLink>
+            <ButtonLink href="/en/blog/electrical-boq-quotation-checklist-uae" variant="secondary" external>
+              {locale === "ar" ? "قائمة تجهيز طلب عرض السعر وجدول الكميات (بالإنجليزية)" : "Read the BOQ quotation checklist"}
+            </ButtonLink>
+          </div>
+        </Section>
+      ) : null}
 
       {cat.slug === "electrical" ? (
         <Section>
