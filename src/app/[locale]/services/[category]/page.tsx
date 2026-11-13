@@ -151,6 +151,26 @@ export default async function CategoryPage({
   const categoryPath = `/services/${cat.slug}`;
 
   const aeo = [
+    ...(cat.slug === "electrical" ? [
+      {
+        q: locale === "ar" ? "ما المعلومات المطلوبة لطلب عرض سعر لحزمة أعمال كهربائية؟" : "What information should an electrical work-package enquiry include?",
+        a: locale === "ar"
+          ? "اذكر موقع المشروع في دبي أو الشارقة، ونطاق الأعمال، والمرحلة الحالية، والمواعيد المستهدفة، وترتيبات الدخول إلى الموقع. حدد مراجعة المخططات وجدول الكميات، والأعمال القائمة التي ستبقى، والأعمال الجديدة المطلوبة، والقرارات غير المحسومة. يراجع الفريق النطاق والتوفر قبل تأكيد عرض السعر."
+          : "Include the Dubai or Sharjah project location, scope, current stage, target dates and site-access arrangements. Identify the drawing and BOQ revision, existing work to retain, new work required and unresolved decisions. The team reviews scope and availability before confirming a quotation.",
+      },
+      {
+        q: locale === "ar" ? "كيف أوضح مسؤوليات المواد والاستثناءات في طلب عرض السعر؟" : "How should I specify materials and exclusions in the enquiry?",
+        a: locale === "ar"
+          ? "حدد لكل بند من يورد المواد ومن يركبها، واذكر متطلبات الاختبار والتسليم. وضح مسؤوليات المخططات والتقديمات والموافقات والدخول إلى الموقع والأعمال المستثناة. لا تفترض أن عرض التركيب يشمل جميع المواد أو الإجراءات؛ يجب تأكيد المسؤوليات والاستثناءات في العرض المكتوب."
+          : "For each item, identify who supplies materials and who installs them, and state the testing and handover requirements. Clarify responsibility for drawings, submissions, approvals, site access and excluded work. Do not assume an installation price includes every material or process; confirm responsibilities and exclusions in the written quotation.",
+      },
+      {
+        q: locale === "ar" ? "هل يمكن رفع المخططات وجدول الكميات في نموذج عرض السعر؟" : "Can I upload drawings and a BOQ in the quotation form?",
+        a: locale === "ar"
+          ? "لا يتيح نموذج عرض السعر رفع ملفات حالياً. اذكر المستندات المتاحة ومراجعاتها في وصف الطلب، ثم اتفق مع الفريق على طريقة إرسالها. إرسال الطلب لا يؤكد السعر أو الموعد أو قبول نطاق الأعمال."
+          : "The quotation form currently has no file upload. Describe the available documents and their revisions in your request, then agree how to send them with the team. Submitting a request does not confirm a price, appointment or acceptance of the work scope.",
+      },
+    ] : []),
     {
       q: t("aeoWhatQ", { category: loc.name }),
       a: t("aeoWhatA", { category: loc.name, count: childrenWithNames.length }),

@@ -88,4 +88,18 @@ for (const [locale, query, href] of [
   args.params=Promise.resolve({locale,category:"plumbing"});
   eq(nodes(await route.default(args)).filter(n=>n.type===tokens.get("Link")&&n.props.href===href).length,0);
 }
+// Buyer answers must stay visible and identical to schema in both languages,
+// without leaking electrical package copy into other category FAQs.
+for (const locale of ["en", "ar"]) {
+  for (const category of ["electrical", "plumbing"]) {
+    const tree = nodes(await route.default({ params: Promise.resolve({ locale, category }), searchParams: Promise.resolve({}) }));
+    const faq = tree.find(n => n.props?.data?.["@type"] === "FAQPage").props.data.mainEntity;
+    eq(faq.length, category === "electrical" ? 6 : 3);
+    const visible = tree.filter(n => n.type === "article");
+    for (const item of faq) {
+      eq(visible.some(n => nodes(n).some(x => x.type === "h3" && x.props.children === item.name)
+        && nodes(n).some(x => x.type === "p" && x.props.children === item.acceptedAnswer.text)), true);
+    }
+  }
+}
 console.log(`${checks} category metadata and rendering assertions passed`);
