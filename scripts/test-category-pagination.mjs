@@ -93,6 +93,8 @@ for (const [locale, query, href] of [
 for (const locale of ["en", "ar"]) {
   for (const category of ["electrical", "plumbing"]) {
     const tree = nodes(await route.default({ params: Promise.resolve({ locale, category }), searchParams: Promise.resolve({}) }));
+    const downloads = tree.filter(n => n.type === "a" && n.props.download === true);
+    eq(downloads.map(n => n.props.href), category === "electrical" ? [`/downloads/electrical-rfq-${locale}.txt`] : []);
     const faq = tree.find(n => n.props?.data?.["@type"] === "FAQPage").props.data.mainEntity;
     eq(faq.length, category === "electrical" ? 6 : 3);
     const visible = tree.filter(n => n.type === "article");
