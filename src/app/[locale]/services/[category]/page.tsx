@@ -236,6 +236,19 @@ export default async function CategoryPage({
               {locale === "ar" ? "قائمة تجهيز طلب عرض السعر وجدول الكميات (بالإنجليزية)" : "Read the BOQ quotation checklist"}
             </ButtonLink>
           </div>
+          <p className="mt-4 text-sm text-muted">
+            <a
+              href={locale === "ar" ? "/downloads/electrical-rfq-ar.txt" : "/downloads/electrical-rfq-en.txt"}
+              download
+              className="font-medium text-accent underline"
+            >
+              {locale === "ar" ? "تنزيل نموذج ملخص الأعمال الكهربائية (TXT)" : "Download the editable electrical quotation brief (.txt)"}
+            </a>
+            {" "}
+            {locale === "ar"
+              ? "أكمل الحقول التي تخص مشروعك وانسخ الملخص إلى طلب عرض السعر."
+              : "Fill in the fields that apply and paste your summary into the quote form."}
+          </p>
         </Section>
       ) : null}
 
