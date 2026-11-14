@@ -61,7 +61,14 @@ export default async function LocationEditPage({
           />
         }
       />
-      <AdminFlash ok={query.ok} error={query.error} />
+      <AdminFlash ok={query.ok} error={query.error === "faq_en" || query.error === "faq_ar" ? undefined : query.error} />
+      {query.error === "faq_en" || query.error === "faq_ar" ? (
+        <p role="alert" className="mb-4 text-sm text-danger">
+          {query.error === "faq_en" ? "English" : "Arabic"} FAQ was not saved. Use a JSON array of q/a string pairs,
+          with unique questions (3–500 characters) and answers (8–5000 characters), at most 50 pairs and 65,536 input characters.
+          Use [] only to deliberately clear the FAQs. No changes were saved.
+        </p>
+      ) : null}
       <form action={updateLocationAction} className="max-w-3xl space-y-3 rounded-md border border-line bg-white p-4">
         <input type="hidden" name="id" value={row.id} />
         <SelectField
@@ -89,6 +96,8 @@ export default async function LocationEditPage({
         <Field label="English nearby areas" name="nearbyAreasEn" defaultValue={en?.nearbyAreas} textarea rows={3} />
         <Field label="English SEO title" name="seoTitleEn" defaultValue={en?.seoTitle} />
         <Field label="English meta description" name="metaDescriptionEn" defaultValue={en?.metaDescription} textarea rows={2} />
+
+        <Field label="English FAQs (JSON array of q/a pairs)" name="faqEn" defaultValue={en?.faq} textarea rows={10} />
 
         <p className="pt-3 text-sm font-medium text-navy">Arabic (LocationI18n)</p>
         <p className="text-xs text-muted">
@@ -119,6 +128,12 @@ export default async function LocationEditPage({
           textarea
           rows={2}
         />
+
+        <Field label="Arabic FAQs (JSON array of q/a pairs)" name="faqAr" defaultValue={ar?.faq || ""} textarea rows={10} />
+        <p className="text-xs text-muted">
+          FAQ format: {JSON.stringify([{ q: "Your question?", a: "Your complete answer." }])}.
+          Keep existing pairs that do not need editing. These FAQs appear on the public hub and in its structured data.
+        </p>
 
         <label className="flex items-center gap-2 text-sm">
           <input type="checkbox" name="serves" defaultChecked={row.serves} /> Serves
