@@ -60,18 +60,32 @@ export default async function BlogArticlePage({
   const article = await getBlogArticleBySlug(slug, locale);
   if (!article) notFound();
 
-  const projectCta = locale === "en" && toMasterBlogSlug(slug) === "electrical-snagging-handover-checklist" ? {
+  const masterSlug = toMasterBlogSlug(slug);
+  const isBoqGuide = masterSlug === "electrical-boq-quotation-checklist-uae";
+  let projectCta = locale === "en" && masterSlug === "electrical-snagging-handover-checklist" ? {
     title: "Planning electrical snagging or handover support?",
     body: "Share your company, project location, agreed electrical scope, current snag register, available records and target handover date so the team can review the remaining work.",
     quote: "Request an electrical quotation",
   } : locale === "en" && [
     "office-electrical-fit-out-dubai",
     "electrical-testing-commissioning-readiness",
-  ].includes(toMasterBlogSlug(slug)) ? {
+  ].includes(masterSlug) ? {
     title: "Planning an electrical work package?",
     body: "Tell us your company, project location, installation scope, current stage and target dates. Identify available drawings or BOQ documents so the team can review the enquiry.",
     quote: "Request an electrical quotation",
   } : null;
+
+  if (isBoqGuide) {
+    projectCta = locale === "ar" ? {
+      title: "هل ترغب في تسعير حزمة أعمال كهربائية؟",
+      body: "اذكر موقع المشروع ومرجع جدول الكميات وآخر مراجعة له، وحدد المواد التي ستوردها والموعد المطلوب لاستلام العرض. اكتب الملخص في النموذج واتفق مع الفريق على طريقة إرسال الملفات.",
+      quote: "اطلب عرض سعر للأعمال الكهربائية",
+    } : {
+      title: "Ready to price an electrical work package?",
+      body: "Include the project location, BOQ reference and revision, materials you will supply, and quotation deadline. Paste your summary into the form and agree how to share the files with the team.",
+      quote: "Request an electrical package quote",
+    };
+  }
 
   const t = await getTranslations("Blog");
   const nav = await getTranslations("Nav");
@@ -214,6 +228,17 @@ export default async function BlogArticlePage({
               >
                 {projectCta?.quote ?? cta("quote")}
               </Link>
+              {isBoqGuide ? (
+                <p className="mt-3">
+                  <a
+                    href={locale === "ar" ? "/downloads/electrical-rfq-ar.txt" : "/downloads/electrical-rfq-en.txt"}
+                    download
+                    className="text-sm font-medium text-accent underline"
+                  >
+                    {locale === "ar" ? "تنزيل نموذج ملخص الأعمال الكهربائية (TXT)" : "Download the editable electrical quotation brief (.txt)"}
+                  </a>
+                </p>
+              ) : null}
             </div>
           </div>
         </article>
