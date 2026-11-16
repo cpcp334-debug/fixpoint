@@ -98,6 +98,17 @@ for (const [locale, query, href] of [
 for (const locale of ["en", "ar"]) {
   for (const category of ["electrical", "plumbing"]) {
     const tree = nodes(await route.default({ params: Promise.resolve({ locale, category }), searchParams: Promise.resolve({}) }));
+    const metadata = await route.generateMetadata({ params: Promise.resolve({ locale, category }), searchParams: Promise.resolve({}) });
+    const heading = category === "electrical"
+      ? (locale === "ar" ? "خدمات الكهرباء ومقاولات الباطن" : "Electrical Services and Subcontract Packages")
+      : "Electrical"; // Default category label from the catalogue fixture.
+    const hero = tree.find(n => n.type === token("PublicHero"));
+    const collection = tree.find(n => n.props?.data?.["@type"] === "CollectionPage").props.data;
+    eq(metadata.title, heading + " | Fixpoint");
+    eq(hero.props.title, heading);
+    eq(collection.name, heading);
+    eq(hero.props.lead, metadata.description);
+    eq(collection.description, metadata.description);
     const emailLinks = tree.filter(n => n.type === ElectricalRfqEmail);
     eq(emailLinks.length, category === "electrical" ? 1 : 0);
     if (emailLinks.length) {
