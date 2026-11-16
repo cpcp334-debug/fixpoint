@@ -7,7 +7,7 @@ import { brandName } from "@/config/site";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/routing";
-import { buildApprovedNavTree, getNavCategory, getNavCategoryLocalized } from "@/lib/catalog/approved-nav";
+import { buildApprovedNavTree, getNavCategory, getNavCategoryLocalized, type NavCategory } from "@/lib/catalog/approved-nav";
 import { getApprovedCatalogServiceBySlug, getServiceBySlug } from "@/lib/catalog";
 import { breadcrumbJsonLd, buildMetadata, faqJsonLd } from "@/lib/seo";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -51,6 +51,17 @@ const ELECTRICAL_SEARCH_GUIDES = [
   },
 ];
 
+function categoryPageIntro(cat: NavCategory, locale: string) {
+  if (cat.slug !== "electrical") return getNavCategoryLocalized(cat, locale);
+  return locale === "ar" ? {
+    name: "خدمات الكهرباء ومقاولات الباطن",
+    description: "اطلب عرض سعر لحزمة أعمال كهربائية في دبي أو الشارقة استناداً إلى المخططات وجدول الكميات، أو تصفّح خدمات فحص الكهرباء وصيانتها وإصلاح الأعطال.",
+  } : {
+    name: "Electrical Services and Subcontract Packages",
+    description: "Request a quote for an electrical work package in Dubai or Sharjah using your drawings and BOQ, or browse electrical inspection, maintenance and repair services.",
+  };
+}
+
 export async function generateStaticParams() {
   return buildApprovedNavTree().map((c) => ({ category: c.slug }));
 }
@@ -65,14 +76,14 @@ export async function generateMetadata({
   const { locale, category } = await params;
   const cat = getNavCategory(category);
   if (!cat) return {};
-  const loc = getNavCategoryLocalized(cat, locale);
+  const intro = categoryPageIntro(cat, locale);
   const sp = await searchParams;
   const { page } = categoryPagination(sp.page, cat.children.length);
   const categoryPath = `/services/${cat.slug}`;
   return buildMetadata({
     locale,
-    title: `${loc.name} | ${brandName(locale)}`,
-    description: loc.description,
+    title: `${intro.name} | ${brandName(locale)}`,
+    description: intro.description,
     path: firstCategoryQueryValue(sp.q) ? categoryPath : listPageHref(categoryPath, page),
   });
 }
@@ -96,6 +107,7 @@ export default async function CategoryPage({
   const cta = await getTranslations("Cta");
   const pager = await getTranslations("Pagination");
   const loc = getNavCategoryLocalized(cat, locale);
+  const intro = categoryPageIntro(cat, locale);
   const quotationCopy = serviceQuotationCopy(cat.slug, locale, loc.name);
 
   const anchorPublished = cat.anchorSlug ? Boolean(await getServiceBySlug(cat.anchorSlug, locale)) : false;
@@ -207,14 +219,14 @@ export default async function CategoryPage({
         data={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: loc.name,
-          description: loc.description,
+          name: intro.name,
+          description: intro.description,
           numberOfItems: childrenWithNames.length,
         }}
       />
       <JsonLd data={faqJsonLd(aeo.map((x) => ({ q: x.q, a: x.a })))} />
 
-      <PublicHero locale={locale} title={loc.name} lead={loc.description} kicker={loc.childCountLabel} heroImage={pagePhoto("service-category",cat.slug) || editorialImage(null, [cat.slug])} imageAlt={editorialImageAlt(pagePhoto("service-category",cat.slug) || editorialImage(null, [cat.slug]), locale, loc.name)} />
+      <PublicHero locale={locale} title={intro.name} lead={intro.description} kicker={loc.childCountLabel} heroImage={pagePhoto("service-category",cat.slug) || editorialImage(null, [cat.slug])} imageAlt={editorialImageAlt(pagePhoto("service-category",cat.slug) || editorialImage(null, [cat.slug]), locale, loc.name)} />
 
       {cat.slug === "electrical" ? (
         <Section id="electrical-project-enquiry" tone="sand">
