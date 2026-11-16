@@ -17,7 +17,12 @@ const load = (path, overrides = {}) => {
 const pagination = load("../src/lib/catalog/category-pagination.ts");
 const seo = load("../src/lib/seo.ts", { "@/config/site": config });
 const pager = load("../src/components/ui/PrevNextPagination.tsx");
+const mailbox = "estimates@example.test";
+const { ElectricalRfqEmail } = load("../src/components/catalog/ElectricalRfqEmail.tsx", {
+  "@/config/site": { mailUrl: () => "mailto:" + mailbox, siteConfig: { email: mailbox } },
+});
 const route = load("../src/app/[locale]/services/[category]/page.tsx", {
+  "@/components/catalog/ElectricalRfqEmail": { ElectricalRfqEmail },
   "@/lib/catalog/category-pagination": pagination,
   "@/lib/seo": seo,
   "@/config/site": config,
@@ -93,6 +98,18 @@ for (const [locale, query, href] of [
 for (const locale of ["en", "ar"]) {
   for (const category of ["electrical", "plumbing"]) {
     const tree = nodes(await route.default({ params: Promise.resolve({ locale, category }), searchParams: Promise.resolve({}) }));
+    const emailLinks = tree.filter(n => n.type === ElectricalRfqEmail);
+    eq(emailLinks.length, category === "electrical" ? 1 : 0);
+    if (emailLinks.length) {
+      const email = nodes(ElectricalRfqEmail(emailLinks[0].props));
+      const url = new URL(email.find(n => n.type === "a").props.href);
+      eq(url.protocol, "mailto:");
+      eq(url.pathname, mailbox);
+      eq(email.find(n => n.type === "bdi").props.children, mailbox);
+      eq(url.searchParams.get("subject"), locale === "ar" ? "طلب عرض سعر لأعمال كهربائية" : "Electrical work-package RFQ");
+      eq(url.searchParams.get("body").split("\r\n").length, 6);
+      eq(url.searchParams.get("body").includes(locale === "ar" ? "آخر موعد لتقديم العرض" : "Quotation deadline"), true);
+    }
     const downloads = tree.filter(n => n.type === "a" && n.props.download === true);
     eq(downloads.map(n => n.props.href), category === "electrical" ? [`/downloads/electrical-rfq-${locale}.txt`] : []);
     const faq = tree.find(n => n.props?.data?.["@type"] === "FAQPage").props.data.mainEntity;

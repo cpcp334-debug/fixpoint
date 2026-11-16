@@ -1,3 +1,4 @@
+import { ElectricalRfqEmail } from "@/components/catalog/ElectricalRfqEmail";
 import { serviceQuotationCopy } from "@/lib/catalog/service-quotation-copy";
 import { categoryChildCopy } from "@/lib/catalog/category-child-copy";
 import { pagePhoto } from "@/lib/catalog/page-photos";
@@ -167,8 +168,8 @@ export default async function CategoryPage({
       {
         q: locale === "ar" ? "هل يمكن رفع المخططات وجدول الكميات في نموذج عرض السعر؟" : "Can I upload drawings and a BOQ in the quotation form?",
         a: locale === "ar"
-          ? "لا يتيح نموذج عرض السعر رفع ملفات حالياً. اذكر المستندات المتاحة ومراجعاتها في وصف الطلب، ثم اتفق مع الفريق على طريقة إرسالها. إرسال الطلب لا يؤكد السعر أو الموعد أو قبول نطاق الأعمال."
-          : "The quotation form currently has no file upload. Describe the available documents and their revisions in your request, then agree how to send them with the team. Submitting a request does not confirm a price, appointment or acceptance of the work scope.",
+          ? "لا يتيح نموذج عرض السعر رفع ملفات حالياً. اذكر مراجع المستندات وأرقام مراجعاتها في النموذج، أو استخدم رابط البريد الإلكتروني لطلب عرض سعر وأرفق الملفات التي يمكنك مشاركتها. إرسال الطلب لا يؤكد السعر أو الموعد أو قبول نطاق الأعمال."
+          : "The quotation form currently has no file upload. List the document references and revisions in the form, or use the electrical RFQ email link to attach files you can share. Submitting a request does not confirm a price, appointment or acceptance of the work scope.",
       },
     ] : []),
     {
@@ -225,8 +226,8 @@ export default async function CategoryPage({
           />
           <p className="mt-3 max-w-2xl text-sm text-muted">
             {locale === "ar"
-              ? "اذكر مراجعة المخططات أو جدول الكميات المتاح لديك. لا يتيح نموذج عرض السعر رفع ملفات؛ اتفق مع الفريق على طريقة إرسالها. يُراجع نطاق العمل والتغطية والتوفر قبل تأكيد العرض."
-              : "State which drawing or BOQ revision is available. The quote form has no file upload; agree how to send documents with the team. Scope, coverage and availability are reviewed before a quotation is confirmed."}
+              ? "اذكر مراجعة المخططات أو جدول الكميات المتاح لديك. أرسل الملخص عبر النموذج أو أرسل المستندات التي يمكنك مشاركتها بالبريد الإلكتروني. يُراجع نطاق العمل والتغطية والتوفر قبل تأكيد العرض."
+              : "State which drawing or BOQ revision is available. Use the form for a summary, or email the documents you can share. Scope, coverage and availability are reviewed before a quotation is confirmed."}
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <ButtonLink href="/get-a-quote">
@@ -236,6 +237,7 @@ export default async function CategoryPage({
               {locale === "ar" ? "قائمة تجهيز طلب عرض السعر وجدول الكميات (بالإنجليزية)" : "Read the BOQ quotation checklist"}
             </ButtonLink>
           </div>
+          <ElectricalRfqEmail locale={locale} />
           <p className="mt-4 text-sm text-muted">
             <a
               href={locale === "ar" ? "/downloads/electrical-rfq-ar.txt" : "/downloads/electrical-rfq-en.txt"}
