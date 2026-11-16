@@ -1,3 +1,4 @@
+import { ElectricalRfqEmail } from "@/components/catalog/ElectricalRfqEmail";
 import { blogPathSlug, toMasterBlogSlug } from '@/lib/slug/blog-slug-map';
 import { getSiteUrl } from '@/config/site';
 import { notFound } from "next/navigation";
@@ -78,11 +79,11 @@ export default async function BlogArticlePage({
   if (isBoqGuide) {
     projectCta = locale === "ar" ? {
       title: "هل ترغب في تسعير حزمة أعمال كهربائية؟",
-      body: "اذكر موقع المشروع ومرجع جدول الكميات وآخر مراجعة له، وحدد المواد التي ستوردها والموعد المطلوب لاستلام العرض. اكتب الملخص في النموذج واتفق مع الفريق على طريقة إرسال الملفات.",
+      body: "اذكر موقع المشروع ومرجع جدول الكميات وآخر مراجعة له، وحدد المواد التي ستوردها والموعد المطلوب لاستلام العرض. اكتب الملخص في النموذج أو أرسل المخططات وجدول الكميات التي يمكنك مشاركتها عبر البريد الإلكتروني.",
       quote: "اطلب عرض سعر للأعمال الكهربائية",
     } : {
       title: "Ready to price an electrical work package?",
-      body: "Include the project location, BOQ reference and revision, materials you will supply, and quotation deadline. Paste your summary into the form and agree how to share the files with the team.",
+      body: "Include the project location, BOQ reference and revision, materials you will supply, and quotation deadline. Use the form for your summary or email the drawings and BOQ you can share.",
       quote: "Request an electrical package quote",
     };
   }
@@ -228,6 +229,7 @@ export default async function BlogArticlePage({
               >
                 {projectCta?.quote ?? cta("quote")}
               </Link>
+              {isBoqGuide && <ElectricalRfqEmail locale={locale} />}
               {isBoqGuide ? (
                 <p className="mt-3">
                   <a
