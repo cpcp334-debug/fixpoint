@@ -41,7 +41,7 @@ async function main() {
     '@/components/ui/Section', '@/components/public/PageShell', '@/components/public/PublicHero',
     '@/components/public/ArPublicSlugNormalize', '@/components/public/CtaRow',
     '@/components/public/CtaBand', '@/server/db', '@/lib/catalog',
-    '@/lib/blog/body-blocks', '@/components/blog/BlogBody']) imports[name] = {};
+    '@/components/catalog/ElectricalRfqEmail', '@/lib/blog/body-blocks', '@/components/blog/BlogBody']) imports[name] = {};
   const page = loadModule('src/app/[locale]/blog/[slug]/page.tsx', imports);
   const generate = page.generateMetadata as (props: {params: Promise<{locale: string; slug: string}>}) => Promise<Metadata>;
   const get = (locale: string, slug = 'electrical-testing-commissioning-readiness') =>
