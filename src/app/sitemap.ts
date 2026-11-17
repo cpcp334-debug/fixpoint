@@ -107,6 +107,7 @@ async function staticAndSmallCatalogEntries(site: string): Promise<MetadataRoute
     "",
     "/about",
     "/services",
+    "/services/electrical",
     "/electrical-services-dubai",
     "/blog",
     "/diy",
