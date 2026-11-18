@@ -7,6 +7,7 @@ on:
       - 'src/lib/slug/**'
       - 'scripts/test-*.mjs'
       - src/components/forms/LeadForm.tsx
+      - src/components/catalog/ElectricalRfqEmail.tsx
       - scripts/test-lead-form-browser.mjs
       - scripts/test-lead-form-handlers.mjs
       - .github/workflows/quote-form-recovery.yml
@@ -47,7 +48,7 @@ jobs:
       - run: npx tsc --noEmit
       - name: Lint changed public source
         run: |
-          npx eslint src/components/forms/LeadForm.tsx src/lib/catalog/category-child-copy.ts src/lib/slug/locale-directory-query.ts 'src/app/[locale]/[service]/page.tsx' 'src/app/[locale]/contact/page.tsx' 'src/app/[locale]/diy/[slug]/page.tsx' 'src/app/[locale]/get-a-quote/page.tsx' 'src/app/[locale]/locations/[location]/page.tsx' 'src/app/[locale]/services/[category]/page.tsx'
+          npx eslint src/components/catalog/ElectricalRfqEmail.tsx src/components/forms/LeadForm.tsx src/lib/catalog/category-child-copy.ts src/lib/slug/locale-directory-query.ts 'src/app/[locale]/[service]/page.tsx' 'src/app/[locale]/contact/page.tsx' 'src/app/[locale]/diy/[slug]/page.tsx' 'src/app/[locale]/get-a-quote/page.tsx' 'src/app/[locale]/locations/[location]/page.tsx' 'src/app/[locale]/services/[category]/page.tsx'
       - name: Reproduce the original reset
         env:
           # Fixed historical baseline: the PR base already contains the repair after #98.
