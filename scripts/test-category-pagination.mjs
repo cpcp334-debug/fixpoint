@@ -118,8 +118,10 @@ for (const locale of ["en", "ar"]) {
       eq(url.pathname, mailbox);
       eq(email.find(n => n.type === "bdi").props.children, mailbox);
       eq(url.searchParams.get("subject"), locale === "ar" ? "طلب عرض سعر لأعمال كهربائية" : "Electrical work-package RFQ");
-      eq(url.searchParams.get("body").split("\r\n").length, 6);
+      eq(url.searchParams.get("body").split("\r\n").length, 10);
       eq(url.searchParams.get("body").includes(locale === "ar" ? "آخر موعد لتقديم العرض" : "Quotation deadline"), true);
+      eq(url.searchParams.get("body").includes(locale === "ar" ? "قيود الدخول وساعات العمل" : "Access restrictions and working hours"), true);
+      eq(url.searchParams.get("body").includes(locale === "ar" ? "مسؤوليات التركيب والاختبار والتسليم" : "Installation, testing and handover responsibilities"), true);
     }
     const downloads = tree.filter(n => n.type === "a" && n.props.download === true);
     eq(downloads.map(n => n.props.href), category === "electrical" ? [`/downloads/electrical-rfq-${locale}.txt`] : []);
