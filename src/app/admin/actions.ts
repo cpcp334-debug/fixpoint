@@ -9,6 +9,7 @@ import { clientIp } from "@/server/rate-limit";
 import { getStaffSession, loginStaff, logoutStaff, requireStaff, revokeAllSessionsForUser, clearStaffSessionCookie } from "@/lib/admin/auth";
 import { isStaffRole } from "@/lib/admin/rbac";
 import { hashPassword, verifyPassword } from "@/lib/admin/crypto";
+import { locationFaqField } from "@/lib/admin/location-faq";
 import { bool, opt, parseLineItems, str } from "@/lib/admin/forms";
 import { createQuote, updateQuote } from "@/lib/admin/quotes";
 import { createInvoice, invoiceFromQuote, updateInvoice } from "@/lib/admin/invoices";
@@ -566,6 +567,10 @@ export async function updateLocationAction(formData: FormData) {
   if (!(LOCATION_STATUSES as readonly string[]).includes(status)) redirect(`/admin/locations/${id}?error=status`);
   const en = existing.translations.find((row) => row.locale === "en");
   const ar = existing.translations.find((row) => row.locale === "ar");
+  const faqEn = locationFaqField(formData, "faqEn", en?.faq);
+  const faqAr = locationFaqField(formData, "faqAr", ar?.faq);
+  if (!faqEn.ok) redirect(`/admin/locations/${id}?error=faq_en`);
+  if (!faqAr.ok) redirect(`/admin/locations/${id}?error=faq_ar`);
   const nameEn = str(formData, "nameEn") || en?.name || existing.slug;
   const introEn = str(formData, "introEn");
   const localServiceInfoEn = str(formData, "localServiceInfoEn");
@@ -580,70 +585,76 @@ export async function updateLocationAction(formData: FormData) {
   const nearbyAreasAr = str(formData, "nearbyAreasAr");
   const seoTitleAr = str(formData, "seoTitleAr") || nameAr;
   const metaDescriptionAr = str(formData, "metaDescriptionAr") || introAr || nameAr;
-  await prisma.location.update({
-    where: { id },
-    data: {
-      status,
-      serves: bool(formData, "serves"),
-      indexable: bool(formData, "indexable"),
-    },
+  await prisma.$transaction(async (tx) => {
+    await tx.location.update({
+      where: { id },
+      data: {
+        status,
+        serves: bool(formData, "serves"),
+        indexable: bool(formData, "indexable"),
+      },
+    });
+    if (en) {
+      await tx.locationI18n.update({
+        where: { id: en.id },
+        data: {
+          ...(faqEn.value !== undefined ? { faq: faqEn.value } : {}),
+          name: nameEn,
+          intro: introEn,
+          localServiceInfo: localServiceInfoEn,
+          propertyTypes: propertyTypesEn,
+          nearbyAreas: nearbyAreasEn,
+          seoTitle: seoTitleEn,
+          metaDescription: metaDescriptionEn,
+        },
+      });
+    } else {
+      await tx.locationI18n.create({
+        data: {
+          locationId: id,
+          locale: "en",
+          ...(faqEn.value !== undefined ? { faq: faqEn.value } : {}),
+          name: nameEn,
+          intro: introEn,
+          localServiceInfo: localServiceInfoEn,
+          propertyTypes: propertyTypesEn,
+          nearbyAreas: nearbyAreasEn,
+          seoTitle: seoTitleEn,
+          metaDescription: metaDescriptionEn,
+        },
+      });
+    }
+    if (ar) {
+      await tx.locationI18n.update({
+        where: { id: ar.id },
+        data: {
+          ...(faqAr.value !== undefined ? { faq: faqAr.value } : {}),
+          name: nameAr,
+          intro: introAr,
+          localServiceInfo: localServiceInfoAr,
+          propertyTypes: propertyTypesAr,
+          nearbyAreas: nearbyAreasAr,
+          seoTitle: seoTitleAr,
+          metaDescription: metaDescriptionAr,
+        },
+      });
+    } else {
+      await tx.locationI18n.create({
+        data: {
+          locationId: id,
+          locale: "ar",
+          ...(faqAr.value !== undefined ? { faq: faqAr.value } : {}),
+          name: nameAr,
+          intro: introAr,
+          localServiceInfo: localServiceInfoAr,
+          propertyTypes: propertyTypesAr,
+          nearbyAreas: nearbyAreasAr,
+          seoTitle: seoTitleAr,
+          metaDescription: metaDescriptionAr,
+        },
+      });
+    }
   });
-  if (en) {
-    await prisma.locationI18n.update({
-      where: { id: en.id },
-      data: {
-        name: nameEn,
-        intro: introEn,
-        localServiceInfo: localServiceInfoEn,
-        propertyTypes: propertyTypesEn,
-        nearbyAreas: nearbyAreasEn,
-        seoTitle: seoTitleEn,
-        metaDescription: metaDescriptionEn,
-      },
-    });
-  } else {
-    await prisma.locationI18n.create({
-      data: {
-        locationId: id,
-        locale: "en",
-        name: nameEn,
-        intro: introEn,
-        localServiceInfo: localServiceInfoEn,
-        propertyTypes: propertyTypesEn,
-        nearbyAreas: nearbyAreasEn,
-        seoTitle: seoTitleEn,
-        metaDescription: metaDescriptionEn,
-      },
-    });
-  }
-  if (ar) {
-    await prisma.locationI18n.update({
-      where: { id: ar.id },
-      data: {
-        name: nameAr,
-        intro: introAr,
-        localServiceInfo: localServiceInfoAr,
-        propertyTypes: propertyTypesAr,
-        nearbyAreas: nearbyAreasAr,
-        seoTitle: seoTitleAr,
-        metaDescription: metaDescriptionAr,
-      },
-    });
-  } else {
-    await prisma.locationI18n.create({
-      data: {
-        locationId: id,
-        locale: "ar",
-        name: nameAr,
-        intro: introAr,
-        localServiceInfo: localServiceInfoAr,
-        propertyTypes: propertyTypesAr,
-        nearbyAreas: nearbyAreasAr,
-        seoTitle: seoTitleAr,
-        metaDescription: metaDescriptionAr,
-      },
-    });
-  }
   await adminAudit({
     actor: session.email,
     action: "location.update",
