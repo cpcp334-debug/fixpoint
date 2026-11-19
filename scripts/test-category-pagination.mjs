@@ -126,7 +126,7 @@ for (const locale of ["en", "ar"]) {
     const downloads = tree.filter(n => n.type === "a" && n.props.download === true);
     eq(downloads.map(n => n.props.href), category === "electrical" ? [`/downloads/electrical-rfq-${locale}.txt`] : []);
     const faq = tree.find(n => n.props?.data?.["@type"] === "FAQPage").props.data.mainEntity;
-    eq(faq.length, category === "electrical" ? 6 : 3);
+    eq(faq.length, category === "electrical" ? 7 : 3);
     const visible = tree.filter(n => n.type === "article");
     for (const item of faq) {
       eq(visible.some(n => nodes(n).some(x => x.type === "h3" && x.props.children === item.name)
