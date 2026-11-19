@@ -183,6 +183,12 @@ export default async function CategoryPage({
           ? "لا يتيح نموذج عرض السعر رفع ملفات حالياً. اذكر مراجع المستندات وأرقام مراجعاتها في النموذج، أو استخدم رابط البريد الإلكتروني لطلب عرض سعر وأرفق الملفات التي يمكنك مشاركتها. إرسال الطلب لا يؤكد السعر أو الموعد أو قبول نطاق الأعمال."
           : "The quotation form currently has no file upload. List the document references and revisions in the form, or use the electrical RFQ email link to attach files you can share. Submitting a request does not confirm a price, appointment or acceptance of the work scope.",
       },
+      {
+        q: locale === "ar" ? "ماذا أذكر إذا كانت الكميات أو المواعيد غير محسومة؟" : "What should I include if quantities or dates are still provisional?",
+        a: locale === "ar"
+          ? "أرسل مراجع المخططات وجدول الكميات المتاحة مع أرقام مراجعاتها وتواريخها. افصل الكميات المؤكدة عن التقديرية، وحدد البنود التي تحتاج إلى معاينة أو قرار من جهة أخرى. اكتب «يُحدّد لاحقاً» للمواعيد غير المحسومة واذكر الجهة المسؤولة عن تأكيدها. اطلب توضيح الافتراضات والاستثناءات في العرض المكتوب قبل الاتفاق على النطاق والسعر."
+          : "Share the available drawing and BOQ references with revision numbers and dates. Separate confirmed quantities from estimates, and identify items that need a survey or another party's decision. Mark undecided dates as ‘to confirm’ and name who will confirm them. Ask for assumptions and exclusions to be stated in the written quotation before agreeing the scope and price.",
+      },
     ] : []),
     {
       q: t("aeoWhatQ", { category: loc.name }),
