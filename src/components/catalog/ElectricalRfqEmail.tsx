@@ -19,6 +19,10 @@ export function ElectricalRfqEmail({ locale }: { locale: string }) {
       {arabic
         ? "أكمل البنود التي تخص مشروعك واكتب «يُحدّد لاحقاً» للبنود غير المحسومة. أرفق جدول الكميات والمخططات التي يمكنك مشاركتها، أو اذكر مراجعها إذا كان تبادل الملفات يتطلب قناة خاصة."
         : "Complete the items that apply and mark undecided items “to confirm”. Attach the BOQ and drawings you can share, or list their references if the files need a separate transfer."}
+      <br />
+      {arabic
+        ? "عند تحديث طلب سابق، اذكر رقم المراجعة الجديد وتاريخه، وحدّد المخططات والكميات والمواعيد التي تغيّرت، وبيّن المستندات السابقة التي حلّت محلّها النسخ الجديدة."
+        : "Updating an earlier request? Give the new revision and date, identify changed drawings, quantities and deadlines, and mark which earlier documents are superseded."}
     </p>
   );
 }
