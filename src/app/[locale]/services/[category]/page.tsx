@@ -191,11 +191,26 @@ export default async function CategoryPage({
       },
     ] : []),
     {
-      q: t("aeoWhatQ", { category: loc.name }),
-      a: t("aeoWhatA", { category: loc.name, count: childrenWithNames.length }),
+      q: cat.slug === "electrical"
+        ? (locale === "ar" ? "ما الأعمال الكهربائية التي يمكنني الاستفسار عنها؟" : "What electrical work can I enquire about?")
+        : t("aeoWhatQ", { category: loc.name }),
+      a: cat.slug === "electrical"
+        ? (locale === "ar"
+          ? "يمكنك طلب عرض سعر لحزمة أعمال كهربائية لمشروع في دبي أو الشارقة، أو تصفّح خدمات الفحص والصيانة وإصلاح الأعطال. اذكر متطلبات مشروعك ليتحقق الفريق من نطاق الأعمال المطلوب وإمكانية تنفيذه والتوفر."
+          : "You can request an electrical work-package quotation for a Dubai or Sharjah project, or browse inspection, maintenance and repair services. Include your project requirements so the team can confirm the applicable scope and availability.")
+        : t("aeoWhatA", { category: loc.name, count: childrenWithNames.length }),
     },
     { q: t("aeoBookQ"), a: t("aeoBookA") },
-    { q: t("aeoCoverQ"), a: t("aeoCoverA") },
+    {
+      q: cat.slug === "electrical"
+        ? (locale === "ar" ? "هل يمكنني طلب أعمال كهربائية في دبي أو الشارقة؟" : "Can I request electrical work in Dubai or Sharjah?")
+        : t("aeoCoverQ"),
+      a: cat.slug === "electrical"
+        ? (locale === "ar"
+          ? "اذكر الإمارة والمنطقة وموقع المشروع أو اسم المبنى في طلبك، مع نطاق الأعمال والمواعيد المطلوبة. يتحقق الفريق من التغطية والتوفر لهذا المشروع قبل تأكيد العرض؛ وجود صفحة للمنطقة لا يؤكد قبول الأعمال فيها."
+          : "Include the emirate, area and project site or building in your enquiry, together with the work scope and required dates. The team checks coverage and availability for that project before confirming a quotation; a location page does not confirm acceptance of work there.")
+        : t("aeoCoverA"),
+    },
   ];
 
   return (
