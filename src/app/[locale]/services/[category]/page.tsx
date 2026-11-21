@@ -314,7 +314,16 @@ export default async function CategoryPage({
       ) : null}
 
       <Section tone="sand">
-        <SectionHeader title={t("childrenTitle")} lead={t("childrenLead", { count: childrenWithNames.length })} />
+        <SectionHeader
+          title={cat.slug === "electrical"
+            ? (locale === "ar" ? "تصفّح خدمات الكهرباء" : "Browse electrical services")
+            : t("childrenTitle")}
+          lead={cat.slug === "electrical"
+            ? (locale === "ar"
+              ? `يضم الدليل ${childrenWithNames.length} خدمة كهربائية. افتح صفحة الخدمة للاطلاع على التفاصيل، ثم اطلب تأكيد النطاق والتوفر لمشروعك.`
+              : `Browse ${childrenWithNames.length} electrical service entries. Open a service page for details, then ask the team to confirm scope and availability for your project.`)
+            : t("childrenLead", { count: childrenWithNames.length })}
+        />
         <PrevNextPagination
           currentPage={page}
           totalPages={totalPages}
@@ -327,8 +336,12 @@ export default async function CategoryPage({
         <div className="mt-6">
           <CategoryChildGrid
             items={pageItems}
-            searchPlaceholder={t("searchPlaceholder")}
-            emptyLabel={t("searchEmpty")}
+            searchPlaceholder={cat.slug === "electrical"
+              ? (locale === "ar" ? "ابحث عن خدمة كهربائية (مثال: مقبس، تمديدات، فحص)" : "Search electrical services (e.g. socket, wiring, inspection)")
+              : t("searchPlaceholder")}
+            emptyLabel={cat.slug === "electrical"
+              ? (locale === "ar" ? "لا توجد خدمات كهربائية مطابقة." : "No matching electrical services.")
+              : t("searchEmpty")}
             cta={home("viewService")}
             query={qParam || ""}
             filterLabel={pager("filter")}
