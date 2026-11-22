@@ -32,7 +32,7 @@ export default async function HomePage({params}:{params:Promise<{locale:string}>
  ];
  const steps=ar?[{title:'صف أعمال الكهرباء المطلوبة',body:'شارك موقع العقار والعطل الكهربائي أو متطلبات التركيب والسجلات المتاحة.'},{title:'راجع النطاق وعرض السعر',body:'نوضح الخطوة المناسبة وما يشمله العمل، ونؤكد التوفر والتكلفة قبل ترتيب الحجز.'},{title:'أكد ترتيبات الزيارة',body:'اتفق على تفاصيل الدخول والوقت المناسب، واحتفظ بنطاق العمل المعتمد للمتابعة.'}]:[{title:'Describe your electrical job',body:'Share the property location, electrical issue or installation requirements and available records.'},{title:'Review the scope and quote',body:'Clarify the next step, what is included and the availability and cost before booking.'},{title:'Confirm the arrangements',body:'Agree access details and a suitable time, with the scope of work clear for follow-up.'}];
  return <div>
-  <JsonLd data={organizationJsonLd()}/><JsonLd data={localBusinessJsonLd()}/><JsonLd data={breadcrumbJsonLd([{name:'Home',path:'/'}],locale)}/><JsonLd data={faqJsonLd(displayFaqs)}/>
+  <JsonLd data={organizationJsonLd(locale)}/><JsonLd data={localBusinessJsonLd()}/><JsonLd data={breadcrumbJsonLd([{name:'Home',path:'/'}],locale)}/><JsonLd data={faqJsonLd(displayFaqs)}/>
   <Hero locale={locale} copy={{kicker:homeShell?.heroKicker?.trim()||t('heroKicker'),title:homeShell?.heroTitle?.trim()||t('heroTitle'),lead:homeShell?.heroLead?.trim()||t('heroLead'),quote:homeShell?.ctaQuote?.trim()||t('ctaQuote'),ai:homeShell?.ctaAi?.trim()||t('ctaAi'),whatsapp:nav('whatsapp')}}/>
   <div className="border-b border-line bg-white">
     <Container className="flex flex-col justify-between gap-3 py-5 sm:flex-row sm:items-center">
