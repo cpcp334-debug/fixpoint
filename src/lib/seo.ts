@@ -61,7 +61,7 @@ export function buildMetadata(opts: {
 
 export type FaqItem = { q: string; a: string };
 
-export function organizationJsonLd() {
+export function organizationJsonLd(locale = "en") {
   const site = getSiteUrl();
   return {
     "@context": "https://schema.org",
@@ -72,8 +72,9 @@ export function organizationJsonLd() {
     email: siteConfig.email,
     telephone: siteConfig.phoneE164,
     areaServed: "AE",
-    description:
-      "Cleaning and building maintenance services in the United Arab Emirates.",
+    description: locale === "ar"
+      ? "استفسارات أعمال الكهرباء ومقاولات الباطن في دبي والشارقة، إلى جانب خدمات تنظيف وصيانة المباني. يتم تأكيد نطاق العمل والتوفر بعد مراجعة الطلب."
+      : "Electrical work and subcontract-package enquiries in Dubai and Sharjah, alongside cleaning and building maintenance services. Work scope and availability are confirmed after reviewing the request.",
   };
 }
 
