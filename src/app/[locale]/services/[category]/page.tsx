@@ -221,7 +221,7 @@ export default async function CategoryPage({
           items={[
             { href: "/", label: nav("home") },
             { href: "/services", label: nav("services") },
-            { href: cat.href, label: loc.name },
+            { href: cat.href, label: intro.name },
           ]}
         />
       }
@@ -229,9 +229,9 @@ export default async function CategoryPage({
       <JsonLd
         data={breadcrumbJsonLd(
           [
-            { name: "Home", path: "/" },
-            { name: "Services", path: "/services" },
-            { name: loc.name, path: cat.href },
+            { name: nav("home"), path: "/" },
+            { name: nav("services"), path: "/services" },
+            { name: intro.name, path: cat.href },
           ],
           locale,
         )}
