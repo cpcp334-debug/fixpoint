@@ -189,6 +189,12 @@ export default async function CategoryPage({
           ? "أرسل مراجع المخططات وجدول الكميات المتاحة مع أرقام مراجعاتها وتواريخها. افصل الكميات المؤكدة عن التقديرية، وحدد البنود التي تحتاج إلى معاينة أو قرار من جهة أخرى. اكتب «يُحدّد لاحقاً» للمواعيد غير المحسومة واذكر الجهة المسؤولة عن تأكيدها. اطلب توضيح الافتراضات والاستثناءات في العرض المكتوب قبل الاتفاق على النطاق والسعر."
           : "Share the available drawing and BOQ references with revision numbers and dates. Separate confirmed quantities from estimates, and identify items that need a survey or another party's decision. Mark undecided dates as ‘to confirm’ and name who will confirm them. Ask for assumptions and exclusions to be stated in the written quotation before agreeing the scope and price.",
       },
+      {
+        q: locale === "ar" ? "كيف أقارن عروض أسعار الأعمال الكهربائية على أساس موحّد؟" : "How can I compare electrical quotations on the same basis?",
+        a: locale === "ar"
+          ? "قارن العروض استناداً إلى المخططات ومراجعة جدول الكميات نفسها. راجع الكميات وتوريد المواد والتركيب والاختبار والتسليم وترتيبات الدخول إلى الموقع والاستثناءات بنداً بنداً. افصل الافتراضات والبنود غير المحسومة، واطلب توضيحها كتابةً قبل مقارنة الإجماليات أو الاتفاق على البرنامج الزمني."
+          : "Compare quotations against the same drawings and BOQ revision. Check quantities, material supply, installation, testing, handover, site access and exclusions line by line. List assumptions and unresolved items separately, and request written clarification before comparing totals or agreeing the programme.",
+      },
     ] : []),
     {
       q: cat.slug === "electrical"
