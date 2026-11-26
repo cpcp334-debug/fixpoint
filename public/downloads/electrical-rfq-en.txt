@@ -16,3 +16,21 @@ Exclusions, provisional quantities or decisions still needed:
 
 Quotation form: https://fixpoint.ae/en/get-a-quote
 List drawing references in the form. Agree how to share files with the team.
+
+Optional quotation comparison worksheet
+Use this section for your internal review; do not include another supplier's confidential quotation in an enquiry.
+Compare the same scope and document revision before comparing totals. Copy the item block for each BOQ item and quotation.
+
+Quotation reference and date:
+Drawing / BOQ revision used:
+BOQ item, location and description:
+Quantity and unit (confirmed or provisional):
+Material supply included / excluded / to confirm:
+Installation included / excluded / to confirm:
+Testing and handover included / excluded / to confirm:
+Site access and programme assumptions:
+Exclusions or differences from the requested scope:
+Clarification needed, responsible party and response deadline:
+Written clarification reference and date:
+
+Keep unresolved items visible. Confirm scope differences in writing before agreeing the price or programme.
