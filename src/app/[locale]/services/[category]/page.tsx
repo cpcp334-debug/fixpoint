@@ -283,12 +283,12 @@ export default async function CategoryPage({
               download
               className="font-medium text-accent underline"
             >
-              {locale === "ar" ? "تنزيل نموذج ملخص الأعمال الكهربائية (TXT)" : "Download the editable electrical quotation brief (.txt)"}
+              {locale === "ar" ? "تنزيل ملخص الأعمال الكهربائية ونموذج مقارنة العروض (TXT)" : "Download the electrical brief and quote-comparison worksheet (.txt)"}
             </a>
             {" "}
             {locale === "ar"
-              ? "أكمل الحقول التي تخص مشروعك وانسخ الملخص إلى طلب عرض السعر."
-              : "Fill in the fields that apply and paste your summary into the quote form."}
+              ? "أكمل حقول ملخص المشروع وانسخ الملخص إلى نموذج طلب عرض السعر. يتضمن الملف أيضاً نموذجاً اختيارياً لمقارنة البنود والمراجعات والاستثناءات للاستخدام الداخلي؛ لا ترسل عروض الأسعار السرية الخاصة بموردين آخرين."
+              : "Complete the project-brief fields and paste your summary into the quote form. The file also includes an optional worksheet for your internal comparison of items, revisions and exclusions; do not send other suppliers’ confidential quotations."}
           </p>
         </Section>
       ) : null}
