@@ -10,6 +10,9 @@ const copy = {
  en: {
   title: 'Electrical Maintenance in Dubai | Fixpoint',
   description: 'Discuss electrical maintenance for offices, shops and homes in Dubai. Request a scope review, written quotation and confirmation of availability and required approvals.',
+  packageHeading: 'Requesting an electrical subcontract package?',
+  packageBody: 'Main contractors, MEP contractors and fit-out companies can use the electrical package guide to prepare the scope, drawings or BOQ references, supply responsibilities and programme for a project enquiry in Dubai or Sharjah.',
+  packageLink: 'Prepare an electrical subcontract enquiry',
   kicker: 'OFFICES · RETAIL · HOMES', heading: 'Electrical maintenance in Dubai.',
   intro: 'For offices, shops and homes. Describe your electrical maintenance needs to Al Najah Al Daem · Fixpoint and request a clear, written quotation. Share your Dubai location, the issue and your preferred visit time so our team can review the work and confirm the next step.',
   quote: 'Request an electrical-work quotation', call: 'Call the team', whatsapp: 'Discuss your requirements',
@@ -31,6 +34,9 @@ const copy = {
   ], guides:'Electrical buyer guides', other:'Explore all existing services', sources:'Check contractor information with DEWA', footer:'Ready to discuss the work? Call the team or request a written quotation with your location, property type and a short description of the issue.',
  },
  ar: {
+  packageHeading: 'هل تريد طلب عرض سعر لحزمة أعمال كهربائية من الباطن؟',
+  packageBody: 'يمكن للمقاولين الرئيسيين ومقاولي الأعمال الكهروميكانيكية وشركات التجهيز الداخلي استخدام دليل حزم الأعمال الكهربائية لتجهيز نطاق العمل ومراجع المخططات أو جدول الكميات ومسؤوليات التوريد والبرنامج الزمني للاستفسار عن مشروع في دبي أو الشارقة.',
+  packageLink: 'جهّز طلبك لأعمال الكهرباء من الباطن',
   title:'صيانة الكهرباء في دبي | فكس بوينت',
   description:'ناقش احتياجات صيانة الكهرباء للمكاتب والمحلات والمنازل في دبي. اطلب مراجعة نطاق العمل وعرضاً مكتوباً وتأكيد التوافر والتصاريح المطلوبة.',
   kicker:'مكاتب · محلات · منازل', heading:'صيانة الكهرباء في دبي.',
@@ -65,6 +71,7 @@ export default async function ElectricalLanding({params}:{params:Promise<{locale
   <section className="bg-navy text-white"><div className="mx-auto max-w-6xl px-6 py-16 md:py-24"><p className="mb-4 text-sm font-bold tracking-widest">{c.kicker}</p><h1 className="max-w-3xl text-4xl font-bold leading-tight md:text-6xl">{c.heading}</h1><p className="mt-6 max-w-3xl text-lg leading-relaxed">{c.intro}</p><div className="mt-8 flex flex-wrap gap-3"><Link className="rounded-lg bg-white px-6 py-3 font-bold text-navy" href="/get-a-quote?service=electrical-maintenance">{c.quote}</Link><a className="rounded-lg border border-white px-6 py-3 font-bold" href={telUrl()}>{c.call}</a><a className="rounded-lg border border-white px-6 py-3 font-bold" href={whatsappUrl()}>{c.whatsapp}</a></div><p className="mt-6 max-w-3xl text-sm leading-relaxed">{c.note}</p></div></section>
   <ReviewedSectionPhoto section="electrical-services-dubai" locale={locale} title={c.heading} />
   <div className="mx-auto grid max-w-6xl gap-6 px-6 py-12 md:grid-cols-2">{c.sections.map(([title,body])=><section key={title} className="rounded-xl border border-line bg-white p-7"><h2 className="text-2xl font-bold text-navy">{title}</h2><p className="mt-4 leading-8 text-muted">{body}</p></section>)}</div>
+  <section className="mx-auto max-w-4xl px-6 pb-12"><h2 className="text-2xl font-bold text-navy">{c.packageHeading}</h2><p className="mt-4 leading-8 text-muted">{c.packageBody}</p><Link className="mt-4 inline-block font-semibold text-navy underline" href="/services/electrical">{c.packageLink}</Link></section>
   <section className="mx-auto max-w-4xl px-6 pb-12"><h2 className="mb-6 text-3xl font-bold text-navy">{locale==='ar'?'أسئلة قبل الحجز':'Questions before booking'}</h2>{c.faq.map(([q,a])=><details key={q} className="border-b border-line py-5"><summary className="cursor-pointer font-bold text-navy">{q}</summary><p className="mt-3 leading-8 text-muted">{a}</p></details>)}<p className="mt-8 leading-7">{c.footer}</p><p className="mt-4 font-semibold" dir="ltr">{siteConfig.phoneDisplay}</p><div className="mt-6 flex flex-wrap gap-6"><Link href="/services">{c.other}</Link><Link href="/blog?category=electrical">{c.guides}</Link><a href="https://www.dewa.gov.ae/en/builder/useful-tools/consultant-and-contractor-listing" rel="noopener noreferrer" target="_blank">{c.sources}</a></div></section>
  </div>;
 }
